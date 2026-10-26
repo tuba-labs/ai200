@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Kjør et serverless HTTP-API lokalt, test feil og publiser en Python Function App.">
+  <title>Workshop 14: Bygg og publiser en HTTP Function | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 14 / Domene 3 / Integrasjoner</p>
+    <h1>Bygg og publiser en HTTP Function</h1>
+    <p class="lead">Kjør et serverless HTTP-API lokalt, test feil og publiser en Python Function App.</p>
+    <div class="meta"><span class="tag">Omtrent 60 minutter</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-redis-vectors.html">← 13. Vektorindeks i Managed Redis</a><a href="./workshop-integrations.html" aria-current="page">14. Denne workshopen</a><a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#function">1. Test en HTTP-trigger</a>
+      <a href="#feil">2. Undersøk feil og restart</a>
+      <a href="#deploy">3. Publiser og konfigurer</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p>Følg <a href="./getting-started.html">Kom i gang</a> før økten.</p><p>Tidsanslaget gjelder med verktøy og eventuelle ressurser under «Klargjør før økten» klare. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Kommandoene starter i prosjektroten der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Før du starter · 10 min</h2>
+<p>Python 3.12, prosjektets .venv og Functions Core Tools v4 må være klare. Ha en Python 3.12 Function App på Linux med tilhørende Storage-konto klargjort i en egen labgruppe. Bruk en støttet hostingplan. Vi arbeider i <code>labs/integrations</code>.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+python -m pip install -r labs/integrations/requirements.txt
+Copy-Item labs/integrations/local.settings.example.json labs/integrations/local.settings.json
+Set-Location labs/integrations
+func start</code></pre>
+</section>
+      <section class="panel" id="function"><h2>1. Test en HTTP-trigger · 15 min</h2>
+<p>La host-en kjøre. Send fra en ny PowerShell-terminal:</p><pre data-language="PowerShell"><code>$body = @{ id = "doc-001"; text = "Workshop" } | ConvertTo-Json
+Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body $body</code></pre><p>Forventet: processed=true første gang og false ved samme ID. Finn route, trigger og HTTP-respons i <a href="./labs/integrations/function_app.py">function_app.py</a>.</p><label class="check-item"><input type="checkbox" data-check="w14-function"><span>Jeg har kalt en HTTP-trigger og funnet svaret i loggen.</span></label>
+</section>
+      <section class="panel" id="feil"><h2>2. Undersøk feil og restart · 10 min</h2>
+<pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body '{}'</code></pre><p>Forventet HTTP 400. Restart host-en og send doc-001 igjen: minnesettet er tømt. Forklar hvorfor HTTP-triggeren ikke gjentar klientens kall, og hvorfor varig idempotens trenger mer enn prosessminne.</p><label class="check-item"><input type="checkbox" data-check="w14-feil"><span>Jeg har testet ugyldige data og funnet begrensningen i minnelagringen.</span></label>
+</section>
+      <section class="panel" id="deploy"><h2>3. Publiser og konfigurer · 20 min</h2>
+<p>Stopp host-en. Fra labs/integrations, med miljøet aktivt:</p><pre data-language="PowerShell"><code>az login
+az account show --query "{name:name,id:id}" -o table
+func azure functionapp publish "DITT-FUNCTION-APP-NAVN"</code></pre><p>Finn Get Function URL for documents i portalen og send samme body til den komplette URL-en med nøkkel. Undersøk Function-logger og appinnstillingen FUNCTIONS_WORKER_RUNTIME. Behold appnavnet til workshop 18–19; de bruker event-hook og configuration-endepunktene fra samme kode.</p><label class="check-item"><input type="checkbox" data-check="w14-deploy"><span>Jeg har publisert og testet Function App-en i Azure.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp · 5 min</h2>
+<p>Stopp lokal host. Slett appen og den dedikerte Storage-kontoen når du er ferdig med øvelsene som bruker dem. Dersom du tar workshop 18–19 senere, kan du publisere samme kode på nytt.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local">Lokal kjøring</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-azure-cli?pivots=programming-language-python">Publisering med Core Tools</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-redis-vectors.html">← Workshop 13</a><a href="./workshop-service-bus.html">Workshop 15 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 14</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

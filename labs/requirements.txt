@@ -1,0 +1,6 @@
+-r data/requirements.txt
+-r cosmos/requirements.txt
+-r redis/requirements.txt
+-r integrations/requirements.txt
+-r security/requirements.txt
+-r observability/requirements.txt

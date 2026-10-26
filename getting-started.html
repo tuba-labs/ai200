@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Kom i gang med AI-200-workshop: sett opp Azure Pay as you go eller Free account, forstå utgiftsgrenser og budsjettvarsler, og klargjør verktøyene.">
+  <title>Kom i gang med workshop | AI-200 Studiegruppe</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+      <nav aria-label="Hovednavigasjon">
+        <a href="./index.html">Oversikt</a>
+        <a href="./getting-started.html" aria-current="page">Kom i gang</a>
+        <a href="./flashcards.html">Flashcards</a>
+      </nav>
+    </div>
+  </header>
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Workshop / Før du møter opp</p>
+      <h1>Kom i gang</h1>
+      <p class="lead">Klargjør verktøy og Azure-konto før workshopene. Løpet er delt i 22 korte økter på omtrent 60–75 minutter, med konkrete forberedelser på hver side.</p>
+      <div class="meta"><span class="tag">45–60 min felles klargjøring</span><span class="tag">2 kontovalg</span><span class="tag">22 korte workshops</span></div>
+    </div>
+  </div>
+  <nav class="workshop-nav" aria-label="Workshopløp">
+    <div class="wrap">
+      <a href="./getting-started.html" aria-current="page">0. Kom i gang</a>
+      <a href="./index.html#workshops">Alle 22 workshops</a>
+      <a href="./workshop-containers.html">Start workshop 1 →</a>
+    </div>
+  </nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc">
+      <h2>På denne siden</h2>
+      <nav aria-label="Innhold på siden">
+        <a href="#velg-lop">Slik gjennomfører vi</a>
+        <a href="#azure">1. Velg og opprett konto</a>
+        <a href="#learn">2. Microsoft Learn</a>
+        <a href="#verktoy">3. Verktøy og labfiler</a>
+        <a href="#abonnement">4. Kontroller abonnementet</a>
+        <a href="#kostnader">5. Følg med på forbruket (valgfritt)</a>
+        <a href="#opprydding">6. Rydd opp</a>
+        <a href="#klar">Klar til start?</a>
+      </nav>
+    </aside>
+    <article class="content">
+      <section class="panel" id="velg-lop">
+        <h2>Velg kontoen som passer deg</h2>
+        <p><a href="#pay-as-you-go"><strong>Pay as you go</strong></a> gir løpende betaling etter forbruk. <a href="#free-account"><strong>Free account</strong></a> gir kvalifiserte nye kunder en avgrenset prøveperiode med kreditt. Begge kan brukes til workshopene, men kostnadskontrollen er forskjellig.</p>
+        <p>Docker, Python og IntelliJ IDEA brukes på maskinen din for å bygge og teste koden før vi prøver Azure-tjenestene. Avtal øktene før dere begynner, og slett øvingsressursene etter bruk.</p>
+        <p class="notice">Pay as you go har ingen innebygd utgiftsgrense. Free Trial har en grense knyttet til prøvekreditten. Les oppsettet for kontotypen du velger før du oppretter ressurser.</p>
+      </section>
+
+      <section class="panel" id="azure">
+        <h2>1. Velg og opprett Azure-konto</h2>
+        <p>Velg oppsettet for abonnementet du vil bruke. Har du allerede et aktivt abonnement av den typen, går du videre til kontrollen av abonnement og kostnader.</p>
+        <div class="account-tabs" data-account-tabs>
+          <div class="account-tablist" data-tab-list aria-label="Azure-abonnement" hidden>
+            <button type="button" id="tab-pay-as-you-go" data-tab="pay-as-you-go" aria-controls="pay-as-you-go">Pay as you go</button>
+            <button type="button" id="tab-free-account" data-tab="free-account" aria-controls="free-account">Free account</button>
+          </div>
+          <div class="account-panel" id="pay-as-you-go" data-tab-panel>
+            <h3>Pay as you go</h3>
+            <p>Du betaler for forbruk utover eventuelle gratismengder. Direkte registrering for Pay as you go gir <strong>ikke prøvekreditten på 200 USD</strong>. Tilgjengelige gratismengder avhenger av kontotilbud og tjeneste. Se <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Microsofts kontosammenligning</a>.</p>
+            <h4>Slik registrerer du deg</h4>
+            <ol>
+              <li>Åpne <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Azure-kontosiden</a>. Velg <strong>Pay as you go</strong> og deretter <strong>Sign up</strong> under dette tilbudet.</li>
+              <li>Logg inn med Microsoft-kontoen din, eller opprett en. Fyll ut land/region, kontaktopplysninger og fakturaadresse.</li>
+              <li>Fullfør telefon- og kortverifisering med et betalingskort Azure godtar. Kortet blir betalingsmåten for fakturert forbruk. Kontroller opplysningene og godta avtalen for Pay as you go.</li>
+              <li>Åpne <a href="https://portal.azure.com/">portal.azure.com</a> → <strong>Subscriptions</strong>. Kontroller at abonnementet er aktivt og at tilbudet er <strong>Pay-As-You-Go</strong>. Noter abonnementets ID.</li>
+            </ol>
+            <p>Innlogging i portalen alene oppretter ikke et abonnement. Hvis listen er tom, kontroller konto/katalog og fullfør registreringen. At kostnadsoversikten viser 0 USD betyr heller ikke at abonnementet er gratis; du kan ennå ha lite forbruk eller vente på oppdaterte data.</p>
+            <div class="notice warning">
+              <h4>Finnes det en spending limit?</h4>
+              <p><strong>Nei. Pay as you go har ingen innebygd spending limit eller egendefinert beløpsgrense som automatisk stanser forbruket.</strong> Et budsjett er et varsel, ikke en slik grense. Se <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit">Microsofts dokumentasjon om spending limit</a>.</p>
+            </div>
+            <h4>Sett opp budsjettvarsler</h4>
+            <ol>
+              <li>Åpne <strong>Subscriptions → ditt abonnement → Budgets → Add</strong>. Kontroller at riktig abonnement er valgt som scope.</li>
+              <li>Gi budsjettet et navn, velg <strong>Monthly</strong> og angi beløpet i <strong>USD</strong>. <strong>10 USD er bare et eksempel</strong>; velg selv et beløp du vil følge opp. Beløpet er en varselterskel, ikke en automatisk utgiftsgrense.</li>
+              <li>Legg til e-postvarsler for faktisk kostnad ved for eksempel <strong>50 %, 80 % og 100 %</strong>, og lagre.</li>
+              <li>Bruk <strong>Cost analysis</strong> før og etter hver økt. Slett ferdige øvingsressurser, inkludert lagring og logger du ikke trenger.</li>
+            </ol>
+            <p><strong>Et varsel stopper ingen ressurser.</strong> Kostnadsdata er vanligvis 8–24 timer forsinket, og budsjettet vurderes daglig. Nye abonnementer kan måtte vente opptil 48 timer på alle Cost Management-funksjoner. Se <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets">budsjettveiledningen</a>.</p>
+          </div>
+          <div class="account-panel" id="free-account" data-tab-panel>
+            <h3>Free account</h3>
+            <p>Kvalifiserte nye Azure-kunder kan få <strong>200 USD i kreditt i opptil 30 dager</strong> og begrensede gratismengder. Perioden begynner ved registrering. Det er ett prøvetilbud per kvalifisert kunde, ikke per e-postadresse. Se <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Microsofts gratiskontotilbud</a>.</p>
+            <h4>Slik registrerer du deg</h4>
+            <ol>
+              <li>Rett før første workshop: åpne <a href="https://azure.microsoft.com/free/">Azure free account</a> og velg <strong>Try Azure for free</strong>.</li>
+              <li>Logg inn med Microsoft-kontoen din, eller opprett en. Fyll ut kontaktopplysninger og riktig land/region.</li>
+              <li>Bekreft identiteten med telefon og et godkjent kreditt- eller debetkort. Forhåndsbetalte og virtuelle kort godtas ikke. En midlertidig kortreservasjon kan vises.</li>
+              <li>Kontroller at tilbudet er <strong>gratis prøveperiode / Free Trial</strong>, les vilkårene og fullfør registreringen.</li>
+              <li>Åpne <a href="https://portal.azure.com/">Azure-portalen</a> → <strong>Subscriptions</strong>. Kontroller at Free Trial er aktivt. Noter ID, gjenværende kreditt og utløpsdato.</li>
+            </ol>
+            <div class="notice">
+              <h4>Utgiftsgrense i prøveperioden</h4>
+              <p><strong>Spending limit er slått på som standard og tilsvarer prøvekreditten.</strong> Du kan ikke velge et annet grensebeløp. Når kreditten er brukt eller perioden utløper, deaktiveres tjenestene hvis du ikke aktivt oppgraderer. Se <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit">utgiftsgrensens virkemåte</a>.</p>
+            </div>
+            <p>Behold grensen mens du vil bruke gratisprøven. En oppgradering til Pay as you go fjerner denne beskyttelsen og åpner for løpende kostnader; det må være et bevisst valg. Du trenger ikke oppgradere for å lese workshopene eller delta i pararbeid.</p>
+            <p>Bruk gjenværende kreditt og tid hvis du allerede har en aktiv Free Trial. Hvis du ikke kvalifiserer, kan du velge <a href="#pay-as-you-go">Pay as you go</a> eller gjøre skyøvelsene sammen med en deltaker på deres maskin. Del ikke innloggingsopplysninger. Ved registreringsproblemer, se <a href="https://learn.microsoft.com/azure/cost-management-billing/troubleshoot-subscription/troubleshoot-azure-sign-up">Microsofts registreringshjelp</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="learn">
+        <h2>2. Finn Microsoft Learn-profilen din</h2>
+        <ol>
+          <li>Åpne <a href="https://learn.microsoft.com/">Microsoft Learn</a> og velg <strong>Sign in</strong>. Bruk profilen du allerede har hvis du har tatt kurs eller eksamener tidligere.</li>
+          <li>Hvis du er ny, opprett profilen med en personlig Microsoft-konto.</li>
+          <li>Bokmerk <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">AI-200-studieveiledningen</a>. Learn-profilen holder orden på kursfremdrift og eventuell eksamensregistrering.</li>
+        </ol>
+        <p>Microsoft Learn er gratis og er en egen læringsprofil uavhengig av Azure-abonnementet. Du trenger ingen innlogging på dette nettstedet. Se <a href="https://learn.microsoft.com/en-us/training/support/learn-profile-manage">veiledningen for Learn-profiler</a>.</p>
+        <details id="esi">
+          <summary>Valgfri ekstra opplæring: ESI via jobben</summary>
+          <p><strong>Enterprise Skills Initiative (ESI)</strong>, nå omtalt som <strong>Organizational skilling</strong>, kan gi kurs og sertifiseringsfordeler hvis arbeidsgiveren deltar. Dette er ekstra læringsressurser og velger ikke Azure-abonnement for deg.</p>
+          <p>Åpne <a href="https://esi.microsoft.com/">esi.microsoft.com</a>, logg inn med jobb-e-post og se hvilke fordeler organisasjonen tilbyr. Kontroller eventuell eksamensrabatt i bestillingen; ingen bestemt rabatt er garantert. Se <a href="https://skilling-hub.com/en-US/program/esi">programbeskrivelsen</a>.</p>
+        </details>
+      </section>
+
+      <section class="panel" id="verktoy">
+        <h2>3. Installer verktøy og hent labfilene</h2>
+        <p>Vi utvikler og tester på egen maskin og bruker det valgte Azure-abonnementet til skyoppgavene. Ha noen GB ledig til container-images. Eksemplene bruker <strong>PowerShell</strong> der ikke annet er angitt. På macOS/Linux kan du bruke PowerShell eller oversette de få shell-spesifikke linjene.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Utviklerverktøy for workshopene</caption>
+            <thead><tr><th scope="col">Verktøy</th><th scope="col">Når trengs det?</th><th scope="col">Installer / sjekk</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">IntelliJ IDEA Ultimate</th><td>IDE for kode og terminal i alle øktene. Vi forutsetter at alle har Ultimate.</td><td><a href="https://www.jetbrains.com/idea/download/">Installer IntelliJ IDEA</a>, eller bruk installasjonen du har, med Ultimate aktivert. Se <a href="#intellij">oppsettet med Python-pluginen</a>.</td></tr>
+              <tr><th scope="row">Docker med Linux-containere</th><td>Domene 1 og 2.</td><td><a href="https://docs.docker.com/get-started/get-docker/">Docker-installasjon</a>. Start container-motoren før økten.</td></tr>
+              <tr><th scope="row">Python 3.12</th><td>Kodeøvelser i data, integrasjoner, sikkerhet og sporing.</td><td>Følg <a href="#python-install">installasjonen for Windows</a> under. Du kan ha flere Python-versjoner samtidig.</td></tr>
+              <tr><th scope="row">PowerShell</th><td>Shell for kommandoeksemplene.</td><td><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell">Installasjon for ditt operativsystem</a>.</td></tr>
+              <tr><th scope="row">Azure Functions Core Tools v4</th><td>Change feed i workshop 11 og Functions-øvelser i workshop 14 og 17.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local">Installer Core Tools</a>; kontroller med <code>func --version</code>.</td></tr>
+              <tr><th scope="row">Azure CLI</th><td>Skyøvelser som bruker <code>az</code>. Portaløvelser trenger bare nettleser.</td><td><a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Installer Azure CLI</a>; kontroller med <code>az version</code>.</td></tr>
+              <tr><th scope="row">Git og GitHub-konto</th><td>Valgfritt, hvis du vil lagre og dele egen øvingskode.</td><td><a href="https://git-scm.com/downloads">Git</a> og <a href="https://github.com/signup">GitHub-registrering</a>. Ingen fork kreves for å lese sidene eller kopiere eksemplene.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Docker Desktop er gratis for blant annet personlig bruk og utdanning, men jobbbruk i større organisasjoner kan kreve lisens. Bruk arbeidsgiverens godkjente oppsett eller en kompatibel container-motor. Se <a href="https://docs.docker.com/subscription-billing/desktop-license">Docker Desktop-vilkårene</a>.</p>
+        <h3 id="python-install">Installer ønsket Python-versjon på Windows</h3>
+        <p><code>No suitable Python runtime found</code> betyr at launcheren <code>py</code> ikke finner versjonen du ba om. <code>py -3.12</code> velger Python 3.12; en annen installert versjon er ikke nok. Se hva launcheren finner:</p>
+        <pre data-language="PowerShell"><code>py --list</code></pre>
+        <ol>
+          <li>Last ned og installer <strong>Python install manager</strong> fra <a href="https://www.python.org/downloads/windows/">Python.org for Windows</a>. Dette er verktøyet for å installere ønsket Python-versjon.</li>
+          <li>Åpne PowerShell på nytt etter installasjonen. Bruker du terminalen i IntelliJ, start også IntelliJ på nytt.</li>
+          <li>Installer Python 3.12 med kommandoene under. <code>pymanager</code> unngår navnekonflikt med den eldre <code>py</code>-launcheren.</li>
+        </ol>
+        <pre data-language="PowerShell"><code>pymanager install 3.12
+pymanager list</code></pre>
+        <p>Kontroller deretter versjon og pip:</p>
+        <pre data-language="PowerShell"><code>py -3.12 --version
+py -3.12 -m pip --version</code></pre>
+        <p><strong>Forventet:</strong> <code>Python 3.12.x</code> og pip for <code>python 3.12</code>. For en annen versjonsserie bytter du <code>3.12</code> i installasjons- og kontrollkommandoene. Workshopene bruker 3.12.</p>
+        <details>
+          <summary>Hvis py fortsatt ikke finner 3.12 etter installasjonen</summary>
+          <p>Bruk manageren direkte:</p>
+          <pre data-language="PowerShell"><code>pymanager exec -V:3.12 --version
+pymanager exec -V:3.12 -m pip --version</code></pre>
+          <p>Du kan erstatte <code>py -3.12</code> med <code>pymanager exec -V:3.12</code> i workshopkommandoene. Hvis <code>pymanager</code> ikke gjenkjennes, kontroller installasjonen og Windows' appkjøringsaliaser. Se <a href="https://docs.python.org/3/using/windows.html#troubleshooting">Python-feilsøking for Windows</a>.</p>
+        </details>
+        <p>Se <a href="https://docs.python.org/3/using/windows.html#python-install-manager">Python-dokumentasjonen om installasjon og versjonsvalg</a>.</p>
+        <h3>Hent kode og labfiler</h3>
+        <p>Åpne <a href="https://github.com/tuba-labs/ai200">studiegruppens GitHub-repository</a>, velg <strong>Code → Download ZIP</strong>, og pakk ut filene. I IntelliJ IDEA velger du <strong>File → Open</strong> og åpner den utpakkede prosjektmappen. Du skal se <code>index.html</code> og mappen <code>labs</code>. Ingen fork er nødvendig. Hvis repositoryet er privat, må arrangøren gi GitHub-kontoen din tilgang.</p>
+        <p>Har du Git installert, kan du i stedet kjøre dette fra mappen der du vil legge prosjektet:</p>
+        <pre data-language="PowerShell"><code>git clone https://github.com/tuba-labs/ai200.git
+Set-Location ai200</code></pre>
+        <p>Start hver workshop fra prosjektets rotmappe og følg sidens instruksjon om hvilken labmappe du skal gå inn i. Filene under <code>labs</code> er øvingseksempler du kan endre lokalt.</p>
+        <h3 id="intellij">Bruk IntelliJ IDEA Ultimate til workshopene</h3>
+        <p>Vi bruker Ultimate med pluginen <strong>Python</strong>. Åpne <strong>View → Tool Windows → Terminal</strong>, og velg PowerShell for workshopkommandoene. Selve Python-interpreteren installeres separat som beskrevet over.</p>
+        <details open>
+          <summary>Sett opp Python-pluginen og riktig interpreter</summary>
+          <p><strong>Ett Python-miljø for hele prosjektet:</strong> Alle Python-workshopene bruker samme <code>.venv</code> i prosjektroten og samme SDK i IntelliJ. Dette passer med IntelliJs <strong>Project venv</strong>, som oppretter miljøet i prosjektroten automatisk. Se <a href="https://www.jetbrains.com/help/idea/creating-empty-python-project.html">JetBrains' forklaring av Project venv</a>.</p>
+          <ol>
+            <li>Åpne <strong>Settings → Plugins → Marketplace</strong>. Finn <strong>Python</strong> fra JetBrains og velg <strong>Install</strong>. Hvis pluginen allerede er installert, kontroller at den er aktivert under <strong>Installed</strong>. Start IDE-en på nytt hvis du blir bedt om det. Se <a href="https://youtrack.jetbrains.com/articles/SUPPORT-A-1089/How-to-add-Python-support-to-IntelliJ-IDEA">JetBrains' pluginveiledning</a>.</li>
+            <li><strong>Bruk miljøet i prosjektroten med Python 3.12.</strong> Har IntelliJ allerede opprettet <code>.venv</code> der med Python 3.12, er dette steget ferdig. Hvis miljøet mangler, åpner du PowerShell-terminalen i prosjektroten, der <code>index.html</code> og <code>labs</code> ligger, og kjører denne kommandoen én gang:
+              <pre data-language="PowerShell"><code>py -3.12 -m venv .venv</code></pre>
+            </li>
+            <li><strong>Bruk denne interpreteren i IntelliJ:</strong> <code>.venv\Scripts\python.exe</code> under prosjektroten. Med prosjektet i <code>C:\java\ai200</code> er hele stien <code>C:\java\ai200\.venv\Scripts\python.exe</code>. Hvis IntelliJ allerede bruker denne, er SDK-oppsettet ferdig. Ellers åpner du <strong>File → Project Structure → SDKs → + → Add Python SDK from disk</strong>, velger en <strong>eksisterende interpreter</strong> med typen <strong>Python</strong> og blar til denne filen. Velg deretter SDK-en under <strong>Project</strong>, og trykk <strong>Apply → OK</strong>.</li>
+            <li><strong>Kontroller versjonen</strong> fra prosjektroten:
+              <pre data-language="PowerShell"><code>.\.venv\Scripts\python.exe --version</code></pre>
+              Forventet resultat er <code>Python 3.12.x</code>. Viser den en annen versjon, må du sette opp prosjektmiljøet med Python 3.12 før du begynner på Python-labene.
+            </li>
+          </ol>
+          <p>Hvis IntelliJ viser <strong>«Inherit packages from base interpreter»</strong> når du oppretter miljøet, skal boksen stå tom. Da holdes prosjektets pakker isolert fra globale pakker. Se <a href="https://www.jetbrains.com/help/idea/configuring-python-sdk.html">JetBrains' Python SDK-oppsett</a>.</p>
+          <p>Oppsettet gjøres én gang før Python-øvelsene. Når du begynner på en lab, følger du labens kommandoer for å aktivere det samme miljøet og installere pakkene laben trenger. SDK-valget gjelder IntelliJ; terminalkommandoene sørger for at terminalen bruker samme Python.</p>
+        </details>
+        <h3>Kjør en enkel forhåndssjekk</h3>
+        <p>Åpne en ny terminal etter installasjonen. Disse kommandoene er for Windows/PowerShell:</p>
+        <pre data-language="PowerShell"><code>docker version
+docker run --rm hello-world
+py -3.12 --version
+py -3.12 -m pip --version</code></pre>
+        <p><strong>Forventet resultat:</strong> Docker viser både klient og server, testcontaineren skriver «Hello from Docker!», og Python viser en 3.12-versjon. På macOS/Linux brukes vanligvis <code>python3.12</code> i stedet for <code>py -3.12</code>.</p>
+        <details>
+          <summary>Hvis forhåndssjekken feiler</summary>
+          <ul>
+            <li><strong>No suitable Python runtime found:</strong> følg <a href="#python-install">installasjonen av Python 3.12</a>, og prøv kontrollkommandoene igjen.</li>
+            <li><strong>Docker finner ikke serveren:</strong> start Docker Desktop eller container-motoren. På Windows må Linux-containere og nødvendig virtualisering/WSL være aktivert.</li>
+            <li><strong>Images kan ikke lastes ned:</strong> sjekk nettverk, VPN/proxy og organisasjonens regler. Last ned nødvendig programvare før samlingen.</li>
+            <li><strong>Kommandoen finnes ikke:</strong> åpne terminalen på nytt, og sjekk at installasjonen la verktøyet i PATH.</li>
+            <li><strong>Du mangler installasjonsrettigheter:</strong> avtal en klargjort maskin eller parprogrammering med arrangøren.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="panel" id="abonnement">
+        <h2>4. Kontroller abonnementet før du oppretter ressurser</h2>
+        <ol>
+          <li>Logg inn på <a href="https://portal.azure.com/">portal.azure.com</a>. Kontroller konto og katalog (<em>directory/tenant</em>) under profilbildet.</li>
+          <li>Søk etter <strong>Subscriptions</strong>. Kontroller at tilbudet er kontotypen du valgte og at status er aktiv. Navnet alene er ikke nok hvis et abonnement er omdøpt.</li>
+          <li><strong>Pay as you go:</strong> kontroller betalingsmåte, kostnader og budsjettvarsler. <strong>Free Trial:</strong> sjekk kreditt, utløpsdato og at utgiftsgrensen fortsatt er på.</li>
+          <li>Søk etter <strong>Resource groups → Create</strong>. Velg riktig abonnement og et navn som <code>ai200-workshop-ab-d1</code>, der <code>ab</code> er dine initialer. Bruk <code>d2</code>, <code>d3</code> og <code>d4</code> for senere økter.</li>
+          <li>Velg en region der tjenesten er tilgjengelig i abonnementet ditt. Opprett gruppen, og kontroller at den er tom før du begynner. Tjenestenes region og størrelse velges separat når de opprettes.</li>
+        </ol>
+        <p>Bruk bare workshopressurser i gruppene. En ny ressursgruppe gir ikke ny prøvekreditt eller en ny gratiskvote. Hvis en tjeneste ikke er tilgjengelig, bruk en støttet konfigurasjon eller følg en pardemonstrasjon. En eventuell kontooppgradering er et eget valg, ikke et automatisk feilsøkingstrinn.</p>
+        <h3>Valgfri kontroll med Azure CLI</h3>
+        <p>Logg inn interaktivt, finn riktig ID og sett aktivt abonnement. Bytt ut teksten i hakeparentesene før du kjører den andre blokken. Se <a href="https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-interactively">Microsofts CLI-innlogging</a>.</p>
+        <pre data-language="PowerShell"><code>az login
+az account list --output table</code></pre>
+        <pre data-language="PowerShell"><code>az account set --subscription "[din-abonnements-id]"
+az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output table</code></pre>
+        <p><strong>Kontrollpunkt:</strong> ID-en må stemme med abonnementet du valgte i portalen. Hvis ingen abonnementer vises, kontroller konto og katalog, og at registreringen faktisk er fullført.</p>
+      </section>
+
+      <details class="panel" id="kostnader">
+        <summary>5. Følg med på forbruket (valgfritt)</summary>
+        <p>Valgfri fordypning for deg som vil følge forbruket mer detaljert. Denne delen er ikke et krav for å komme i gang med workshopene.</p>
+        <p>På <strong>Pay as you go</strong> faktureres forbruk utover eventuelle gratismengder. På <strong>Free Trial</strong> kan dekket forbruk trekkes fra tilgjengelig prøvekreditt. En tjenestes gratisnivå er alltid avgrenset til bestemte mengder og vilkår.</p>
+        <ol>
+          <li>Før hver økt: åpne <strong>Cost Management + Billing</strong> for riktig abonnement. Sjekk fakturert forbruk eller gjenværende prøvekreditt, avhengig av kontotype.</li>
+          <li>Følg størrelsene og planene på workshopsiden. Regn med tilknyttet lagring og logger når du sjekker estimatet før opprettelse.</li>
+          <li>Opprett bare ressursene for dagens øvelse. Slett dem når øvelsen er ferdig, og kontroller forbruket igjen etterpå.</li>
+        </ol>
+        <p class="notice">Tilgjengelighet, pris og kvoter varierer. Kontroller kostnadsestimatet for abonnementet ditt før utrulling. Gratisprøven kan gå tom før alle utvidelser er gjennomført; Pay as you go fortsetter å belaste forbruk selv om et budsjettvarsel er utløst.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Kostnader og valg for begge kontotyper</caption>
+            <thead><tr><th scope="col">Tjeneste</th><th scope="col">Kostnader og gratismengder</th><th scope="col">Workshopvalg</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Container Apps</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/container-apps/">Consumption</a> har gratismengder for CPU, minne og forespørsler. Overskytende bruk har en pris.</td><td>Liten container, Consumption og minimum 0 replikaer. Medregn logger.</td></tr>
+              <tr><th scope="row">Azure Functions</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Plan og abonnementstilbud</a> avgjør gratismengdene. Hosting, lagring og logger kan koste.</td><td>Test med Core Tools, og bruk deretter workshopens plan uten Always Ready hvis den er tilgjengelig.</td></tr>
+              <tr><th scope="row">Event Grid</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/event-grid/">Basic</a> har en gratismengde operasjoner. Mottaker og Storage kan koste i tillegg.</td><td>Send noen få testhendelser til workshopens kø.</td></tr>
+              <tr><th scope="row">Cosmos DB for NoSQL</th><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/free-tier">Free tier</a> kan dekke opptil 1 000 RU/s og 25 GB på én valgt konto per abonnement. Velges ved opprettelse; gjelder ikke serverless.</td><td>Én region og liten provisioned throughput. Velg free tier når tilgjengelig, og kontroller prisen før opprettelse.</td></tr>
+              <tr><th scope="row">PostgreSQL</th><td><a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Kontotilbudet</a> kan omfatte begrenset Flexible Server-bruk. Andre konfigurasjoner har ordinær pris.</td><td>Vi gjør pgvector-øvelsen i Docker for å begrense skyforbruket.</td></tr>
+              <tr><th scope="row">AKS</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/">Noder og tilknyttede ressurser</a> koster selv om cluster management er gratis.</td><td>Vi oppretter ikke et AKS-cluster i dette opplegget. Kubernetes øves lokalt.</td></tr>
+              <tr><th scope="row">Container Registry (ACR)</th><td>Har ordinær pris, med eventuell <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">inkludert gratismengde</a> for riktig kontotilbud og nivå.</td><td>Vi bygger lokalt og bruker et offentlig øvings-image i Container Apps; eget registry er ikke nødvendig.</td></tr>
+              <tr><th scope="row">Service Bus</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/service-bus/">Forbruk og nivåpris</a> faktureres på Pay as you go eller bruker tilgjengelig, gyldig prøvekreditt.</td><td>Basic for køøvelsen. Topics krever Standard; kontroller pris og tilgjengelighet før utvidelsen.</td></tr>
+              <tr><th scope="row">Managed Redis</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/managed-redis/">En administrert instans</a> har løpende pris.</td><td>Vi oppretter ingen Managed Redis-instans. Redis i Docker brukes til cache- og TTL-øvelsen.</td></tr>
+              <tr><th scope="row">Key Vault, App Configuration og Monitor</th><td>Valgt plan og forbruk avgjør pris og eventuelle gratismengder. Sjekk <a href="https://azure.microsoft.com/en-us/pricing/calculator/">prisestimatet</a>.</td><td>Små testdata og bare ressursene øvelsen trenger. Slett dem etter økten.</td></tr>
+              <tr><th scope="row">AI-modeller og embeddings</th><td>Ingen modellutrulling inngår i opplegget.</td><td>Små eksempeldata lar oss øve på infrastrukturen uten modellforbruk.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Bruk standardtjenestene beskrevet i øvelsene. Marketplace-kjøp inngår ikke i opplegget. Hvis du vil bruke gratisprøven, behold utgiftsgrensen og avslutt skyarbeidet når perioden eller kreditten er brukt opp.</p>
+        <p>Se <a href="#pay-as-you-go">oppsettet for budsjettvarsler</a> hvis du bruker Pay as you go. Varslene hjelper deg å følge med; de erstatter ikke kontroll av ressursene du har opprettet.</p>
+      </details>
+
+      <section class="panel" id="opprydding">
+        <h2>6. Avslutt hver økt med opprydding</h2>
+        <ol>
+          <li>Ta vare på kode og egne notater lokalt. Ikke legg hemmeligheter, nøkler eller <code>local.settings.json</code> med ekte tilkoblinger i Git.</li>
+          <li>Følg oppryddingen på workshopsiden for containere, lokale prosesser og eventuelle data-volumer.</li>
+          <li>Åpne øvingsgruppen i Azure. Kontroller abonnement, gruppenavn og hele ressurslisten. Gruppen skal bare inneholde ressurser fra din økt.</li>
+          <li>Velg <strong>Delete resource group</strong> og bekreft navnet. Vent til slettingen er fullført, og kontroller at gruppen er borte. Feil eller ressurslåser må avklares med eieren.</li>
+          <li>Sjekk om øvelsen opprettet noe utenfor gruppen, som et delt loggområde. Kontroller forbruket igjen når kostnadsdataene er oppdatert.</li>
+        </ol>
+        <p class="notice">Å lukke nettleseren eller stoppe en app sletter ikke skyressursene. Rydd opp før dere går fra økten; lagring og andre tilknyttede ressurser kan fortsatt koste selv om appen er stoppet. Bruker du Free Trial, ta vare på kode og notater og gjør siste opprydding før prøveperioden utløper.</p>
+      </section>
+
+      <section class="panel" id="klar">
+        <h2>Klar til start?</h2>
+        <p>Huk av når oppsettet er klart for kontotypen du valgte. Avkrysningene lagres i denne nettleseren når lokal lagring er tilgjengelig, og synkroniseres ikke mellom maskiner.</p>
+        <p data-progress aria-live="polite"></p>
+        <div class="checklist">
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-access"><span>Jeg har kontrollert kontotype og aktivt abonnement, eller avtalt pararbeid på en deltakers maskin.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-limits"><span>Jeg forstår at Pay as you go mangler utgiftsgrense, og at Free Trials grense følger prøvekreditten.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-docker"><span>Docker-testen kjører, eller jeg har avtalt en maskin å jobbe på.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-tools"><span>IntelliJ IDEA Ultimate med Python-pluginen, Python 3.12 og labfiler er klare; jeg vet hvilke ekstraverktøy neste økt krever.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-cleanup"><span>Jeg vet hvordan jeg sletter øvingsressursene etter hver økt.</span></label>
+        </div>
+      </section>
+      <nav class="page-nav" aria-label="Forrige og neste side">
+        <a href="./index.html">← Til studieoversikten</a>
+        <a href="./workshop-containers.html">Start workshop 1: Container-images →</a>
+      </nav>
+    </article>
+  </main>
+  <footer class="wrap">
+    <p>AI-200 Studiegruppe · Konto-, utgiftsgrense- og budsjettkilder kontrollert 27.10.2026. Kontroller gjeldende vilkår i de lenkede Microsoft-kildene før du oppretter ressurser.</p>
+  </footer>
+</body>
+</html>

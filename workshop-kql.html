@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Bruk KQL til å korrelere tjenester, finne feil og analysere egne målinger fra sporingsøvelsen.">
+  <title>Workshop 22: Finn feil og målinger med KQL | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 22 / Domene 4 / Sikkerhet, sporing og KQL</p>
+    <h1>Finn feil og målinger med KQL</h1>
+    <p class="lead">Bruk KQL til å korrelere tjenester, finne feil og analysere egne målinger fra sporingsøvelsen.</p>
+    <div class="meta"><span class="tag">Omtrent 60 minutter</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-tracing.html">← 21. Spor et kall mellom to tjenester</a><a href="./workshop-kql.html" aria-current="page">22. Denne workshopen</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#requests">1. Finn feil og svartid</a>
+      <a href="#trace">2. Følg én trace på tvers av tjenester</a>
+      <a href="#metrics">3. Spør på egne målinger</a>
+      <a href="#opprydding">Rydd opp og oppsummer</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><strong>Bygger på:</strong> <a href="./workshop-tracing.html">21. Spor et kall mellom to tjenester</a>.</p><p>Tidsanslaget gjelder med verktøy og eventuelle ressurser under «Klargjør før økten» klare. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Kommandoene starter i prosjektroten der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Før du starter · 10 min</h2>
+<p>Bruk Application Insights og workspace fra workshop 21. Begge prosesser må bruke samme connection string. Start dem igjen ved behov og send noen vanlige, trege og feilende kall. Vent på innlesing av telemetri. Åpne Logs i den tilknyttede Log Analytics-workspace-en.</p>
+</section>
+      <section class="panel" id="requests"><h2>1. Finn feil og svartid · 15 min</h2>
+<pre data-language="KQL"><code>AppRequests
+| where TimeGenerated &gt; ago(30m)
+| where AppRoleName startswith "ai200-"
+| summarize Requests=count(), Failures=countif(Success == false),
+            P95=percentile(DurationMs, 95) by AppRoleName
+| order by Failures desc</code></pre><p>Forklar hva summarize gjør med radene, og hvorfor få kall gir en ustabil prosentil. Lag en spørring som viser bare mislykkede kall med OperationId.</p><label class="check-item"><input type="checkbox" data-check="w22-requests"><span>Jeg har funnet feilrate og svartid per tjeneste.</span></label>
+</section>
+      <section class="panel" id="trace"><h2>2. Følg én trace på tvers av tjenester · 15 min</h2>
+<pre data-language="KQL"><code>union AppRequests, AppDependencies
+| where TimeGenerated &gt; ago(30m)
+| where OperationId == "LIM-INN-TRACE-ID"
+| project TimeGenerated, AppRoleName, Name, Id, ParentId, Success, DurationMs
+| order by TimeGenerated asc</code></pre><p>Forventet: frontend, call-backend og backend i samme operasjon. Undersøk ParentId/Id. En manglende backend-rad kan bety propagasjons- eller eksportfeil, ikke bare at backend ikke ble kalt.</p><label class="check-item"><input type="checkbox" data-check="w22-trace"><span>Jeg har korrelert forespørselen mellom begge tjenestene.</span></label>
+</section>
+      <section class="panel" id="metrics"><h2>3. Spør på egne målinger · 10 min</h2>
+<pre data-language="KQL"><code>AppMetrics
+| where TimeGenerated &gt; ago(30m)
+| where AppRoleName startswith "ai200-"
+| where Name == "workshop.requests"
+| summarize Requests=sum(Sum) by bin(TimeGenerated, 1m), AppRoleName
+| render timechart</code></pre><p>Finn også workshop.duration. Undersøk Sum og Count, og beregn gjennomsnittlig varighet som sum(Sum)/sum(Count). Skill en forhåndsaggregert metrikk fra de enkelte span-radene. Dersom navnene avviker, start med å liste distinct Name fra AppMetrics.</p><label class="check-item"><input type="checkbox" data-check="w22-metrics"><span>Jeg har analysert både sporingsdata og målinger med KQL.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp og oppsummer · 10 min</h2>
+<p>Stopp tjenestene, fjern APPLICATIONINSIGHTS_CONNECTION_STRING fra terminalene, og slett dedikerte overvåkingsressurser når du er ferdig. Forklar hvor i kjeden du ville undersøkt feil hvis bare én tjeneste dukket opp.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/kusto/query/">KQL</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/appmetrics">AppMetrics</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-tracing.html">← Workshop 21</a><a href="./index.html#workshops">Til workshopoversikten →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 22</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

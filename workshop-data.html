@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Modeller en liten vektortabell, bruk metadatafilter og undersøk en HNSW-indeks.">
+  <title>Workshop 7: PostgreSQL: vektorsøk og indekser | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 07 / Domene 2 / AI-data</p>
+    <h1>PostgreSQL: vektorsøk og indekser</h1>
+    <p class="lead">Modeller en liten vektortabell, bruk metadatafilter og undersøk en HNSW-indeks.</p>
+    <div class="meta"><span class="tag">Omtrent 60 minutter</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-aks.html">← 6. Utrulling og feilsøking i AKS</a><a href="./workshop-data.html" aria-current="page">7. Denne workshopen</a><a href="./workshop-postgresql.html">8. PostgreSQL i Azure: SDK og forbindelser →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#postgres">1. Start database og schema</a>
+      <a href="#vektorsok">2. Søk og filtrer</a>
+      <a href="#indeks">3. Les planen og bygg indeks</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p>Følg <a href="./getting-started.html">Kom i gang</a> før økten.</p><p>Tidsanslaget gjelder med verktøy og eventuelle ressurser under «Klargjør før økten» klare. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Kommandoene starter i prosjektroten der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Før du starter · 5 min</h2>
+<p>Docker må kjøre. Bruk <a href="./labs/data/setup.sql">setup.sql</a> som ferdig datasett. Vektorene er små undervisningstall; øvelsen undersøker lagring, avstand og gjenfinning.</p>
+</section>
+      <section class="panel" id="postgres"><h2>1. Start database og schema · 15 min</h2>
+<pre data-language="PowerShell"><code>docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+docker exec ai200-pg pg_isready -U postgres -d workshop
+Get-Content labs/data/setup.sql -Raw | docker exec -i ai200-pg psql -U postgres -d workshop
+docker exec -it ai200-pg psql -U postgres -d workshop</code></pre><p>Vent på accepting connections før setup. Tabellen har id, topic, textinnhold og vector(3). Forklar valg av primærnøkkel og dimensjoner.</p><label class="check-item"><input type="checkbox" data-check="w7-postgres"><span>Jeg har opprettet en tabell og lagret vektorer.</span></label>
+</section>
+      <section class="panel" id="vektorsok"><h2>2. Søk og filtrer · 15 min</h2>
+<pre data-language="SQL"><code>SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+FROM workshop_notes
+WHERE topic = 'containers'
+ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector
+LIMIT 2;</code></pre><p>Forventet: dokument 2 før 1. Uten filter er dokument 3 nærmest. Forklar hvordan et metadatafilter avgrenser RAG-konteksten før en språkmodell eventuelt bruker treffene.</p><label class="check-item"><input type="checkbox" data-check="w7-vektorsok"><span>Jeg har brukt både vektoravstand og metadatafilter.</span></label>
+</section>
+      <section class="panel" id="indeks"><h2>3. Les planen og bygg indeks · 15 min</h2>
+<pre data-language="SQL"><code>CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+ON workshop_notes USING hnsw (embedding vector_cosine_ops);
+EXPLAIN (ANALYZE, BUFFERS)
+SELECT id FROM workshop_notes
+ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector LIMIT 2;</code></pre><p>Fire rader er ofte for lite til at indeksen lønner seg; Seq Scan er normalt. Sammenlign operator og operator class. Beskriv avveiningen mellom recall, minne og svartid for en større vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w7-indeks"><span>Jeg tolker planen og vet hvorfor en indeks kan bli valgt bort.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp · 10 min</h2>
+<p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code>docker stop ai200-pg
+docker rm --volumes ai200-pg</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://github.com/pgvector/pgvector">pgvector</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-aks.html">← Workshop 6</a><a href="./workshop-postgresql.html">Workshop 8 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 7</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+opentelemetry-api>=1.28,<2
+opentelemetry-sdk>=1.28,<2
+azure-identity>=1.19,<2
+azure-keyvault-secrets>=4.9,<5
+azure-appconfiguration>=1.7,<2

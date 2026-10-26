@@ -1,0 +1,6 @@
+version: v1.1.0
+steps:
+  - build: -t {{.Run.Registry}}/ai200-api:{{.Run.ID}} -f Dockerfile .
+  - push:
+      - '{{.Run.Registry}}/ai200-api:{{.Run.ID}}'
+  - cmd: '{{.Run.Registry}}/ai200-api:{{.Run.ID}} python --version'
