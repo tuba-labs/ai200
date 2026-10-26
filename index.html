@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Startside for studiegruppen som forbereder seg til Microsoft AI-200: Developing AI Cloud Solutions on Azure. Pensum, eksamensinformasjon, prøveeksamener og flashcards.">
+  <title>AI-200 | Studiegruppe og eksamensforberedelser</title>
+  <style>
+    :root {
+      --ink: #17243b; --muted:#56657c; --subtle:#6a7890; --accent:#1265bd;
+      --accent-strong:#06488b; --light:#eaf3ff; --line:#dce5f0;
+      --panel:#fff; --page:#f5f8fc; --navy:#0a2445; --green:#14745d;
+      --shadow:0 10px 32px rgba(17,48,84,.065);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; background:var(--page); color:var(--ink); font: 16px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    a:hover { color:var(--accent-strong); }
+    a:focus-visible { outline:3px solid #4599ef; outline-offset:4px; border-radius:3px; }
+    .skip { position:absolute; top:-70px; left:16px; background:#fff; z-index:10; padding:12px 18px; }
+    .skip:focus { top:8px; }
+    .wrap { width:min(1100px,calc(100% - 44px)); margin:auto; }
+    .header { background:#fff; border-bottom:1px solid var(--line); }
+    .header-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:17px 0; }
+    .brand { display:flex; align-items:center; gap:11px; color:var(--navy); font-size:16px; font-weight:800; text-decoration:none; white-space:nowrap; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:11px; background:var(--navy); color:#fff; font-size:13px; letter-spacing:-.4px; }
+    nav { display:flex; gap:22px; flex-wrap:wrap; }
+    nav a { color:#455771; text-decoration:none; font-weight:600; font-size:14px; }
+    nav a:hover { color:var(--accent); }
+    .hero { background:radial-gradient(circle at 93% 13%, #214e84 0%, transparent 36%), linear-gradient(115deg,#071c37 0%,#103961 100%); color:#fff; padding:72px 0 76px; }
+    .hero-grid { display:grid; grid-template-columns:1.4fr .6fr; gap:48px; align-items:center; }
+    .eyebrow { display:inline-block; color:#9fcdff; font-size:12px; text-transform:uppercase; letter-spacing:2px; font-weight:800; margin-bottom:11px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(42px,6.2vw,68px); line-height:1.05; letter-spacing:-2.5px; margin-bottom:10px; }
+    .subtitle { color:#cde3ff; font-size:clamp(18px,2.4vw,24px); margin-bottom:26px; font-weight:550; letter-spacing:-.3px; }
+    .hero p { color:#e1eaf5; max-width:720px; margin-bottom:16px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; border-radius:10px; padding:11px 19px; font-weight:750; text-decoration:none; transition:transform .15s ease,background .15s ease; }
+    .btn:hover { transform:translateY(-1px); }
+    .btn.primary { background:#fff; color:#123966; }
+    .btn.primary:hover { background:#e9f3ff; }
+    .btn.secondary { background:rgba(255,255,255,.09); color:#fff; border:1px solid rgba(255,255,255,.28); }
+    .btn.secondary:hover { background:rgba(255,255,255,.16); }
+    .hero-aside { border:1px solid rgba(192,224,255,.25); background:rgba(255,255,255,.06); padding:24px; border-radius:18px; backdrop-filter:blur(6px); }
+    .hero-aside p { color:#cde0f4; font-size:13px; margin:5px 0 0; }
+    .hero-aside strong { display:block; font-size:18px; }
+    .pill { display:inline-block; border:1px solid rgba(182,218,255,.4); color:#d9ecff; border-radius:20px; padding:3px 11px; font-weight:650; font-size:12px; margin-bottom:17px; }
+    .micro { color:#93b1d1; font-size:12px; margin-top:14px; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:-34px; position:relative; }
+    .stat { min-height:118px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:21px 24px; box-shadow:var(--shadow); }
+    .stat strong { display:block; font-size:27px; letter-spacing:-.8px; line-height:1.2; color:var(--navy); }
+    .stat span { display:block; font-size:13px; margin-top:8px; color:var(--muted); }
+    main { padding-bottom:75px; }
+    section { scroll-margin-top:20px; margin-top:70px; }
+    .section-head { max-width:800px; margin-bottom:25px; }
+    .section-head .kicker { color:var(--accent); font-size:12px; letter-spacing:1.5px; font-weight:850; text-transform:uppercase; margin-bottom:7px; }
+    h2 { font-size:clamp(27px,3.4vw,35px); line-height:1.2; letter-spacing:-.8px; margin-bottom:10px; }
+    .section-head p { color:var(--muted); margin:0; }
+    .notice { background:#fefefe; border:1px solid #cadbe9; border-left:5px solid var(--accent); padding:22px 25px; border-radius:12px; }
+    .notice h3 { font-size:18px; margin-bottom:9px; }
+    .notice p { margin:0 0 10px; color:var(--muted); }
+    .notice p:last-child { margin-bottom:0; }
+    .small { font-size:13px; color:var(--subtle); }
+    .grid2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .domain { display:flex; flex-direction:column; padding:27px; border:1px solid var(--line); border-radius:16px; background:var(--panel); box-shadow:var(--shadow); }
+    .domain-top { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:17px; }
+    .domain-number { font-size:13px; font-weight:850; color:var(--accent); letter-spacing:.5px; }
+    .weight { padding:5px 10px; border-radius:7px; background:var(--light); color:var(--accent-strong); font-size:13px; font-weight:800; white-space:nowrap; }
+    .domain h3 { font-size:20px; letter-spacing:-.35px; line-height:1.33; margin-bottom:12px; }
+    .domain p { color:var(--muted); margin-bottom:0; }
+    .domain ul { padding-left:20px; margin:15px 0 0; color:var(--muted); }
+    .domain li { margin:5px 0; }
+    .focus { margin-top:auto; padding-top:18px; font-size:13px; color:var(--accent-strong); font-weight:700; }
+    .resource-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
+    .resource { background:#fff; border:1px solid var(--line); border-radius:13px; padding:23px; min-width:0; }
+    .resource .tag { display:inline-block; background:#eaf2fb; color:#174e82; padding:3px 9px; border-radius:6px; font-size:11px; font-weight:800; letter-spacing:.25px; margin-bottom:13px; }
+    .resource .tag.community { background:#e8f5ef; color:var(--green); }
+    .resource h3 { font-size:19px; margin-bottom:7px; }
+    .resource p { color:var(--muted); font-size:14px; margin-bottom:10px; }
+    .resource a { font-weight:750; overflow-wrap:anywhere; }
+    .path { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .step { background:#fff; border:1px solid var(--line); border-radius:13px; padding:23px 20px; }
+    .step-count { display:grid; place-items:center; background:var(--light); color:var(--accent); font-weight:850; width:36px; height:36px; border-radius:10px; margin-bottom:16px; }
+    .step h3 { font-size:17px; line-height:1.32; margin-bottom:8px; }
+    .step p { color:var(--muted); font-size:14px; margin:0; }
+    .exam-info { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+    .info-panel { background:white; border:1px solid var(--line); border-radius:14px; padding:27px; }
+    .info-panel h3 { font-size:19px; }
+    .info-panel ul { padding-left:20px; color:var(--muted); margin:14px 0 0; }
+    .info-panel li { margin:7px 0; }
+    .info-panel p { color:var(--muted); }
+    footer { border-top:1px solid var(--line); background:#fff; padding:30px 0; }
+    .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:13px; color:var(--subtle); }
+    @media (max-width:820px) {
+      .hero-grid { grid-template-columns:1fr; gap:22px; }
+      .hero-aside { max-width:550px; }
+      .path { grid-template-columns:repeat(2,1fr); }
+      .stats { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:620px) {
+      .wrap { width:min(100% - 30px,1100px); }
+      nav { gap:10px 14px; }
+      nav a { font-size:12px; }
+      .header-inner { align-items:flex-start; flex-direction:column; gap:12px; }
+      .hero { padding:48px 0 66px; }
+      h1 { letter-spacing:-1.5px; }
+      .stats { gap:9px; }
+      .stat { padding:17px 15px; min-height:96px; }
+      .stat strong { font-size:22px; }
+      section { margin-top:52px; }
+      .grid2,.resource-grid,.exam-info { grid-template-columns:1fr; }
+      .path { grid-template-columns:1fr; }
+      .domain { padding:22px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .btn { transition:none; } }
+    @media print {
+      body { background:#fff; font-size:12px; }
+      .header, nav, .actions { display:none; }
+      .wrap { width:100%; }
+      .hero { background:#fff; padding:6px 0 12px; color:#14263e; }
+      .hero p,.subtitle { color:#34465a; }
+      .hero-aside { display:none; }
+      .stats { position:static; margin:8px 0 0; }
+      section { margin-top:24px; }
+      .stat,.domain,.resource,.step,.info-panel { box-shadow:none; break-inside:avoid; padding:14px; }
+      a { color:inherit; }
+      footer { margin-top:15px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#topp"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+      <nav aria-label="Hovednavigasjon">
+        <a href="#domener">Domener</a>
+        <a href="#ressurser">Ressurser</a>
+        <a href="flashcards.html">Øv med flashcards</a>
+        <a href="#studieplan">Studieløp</a>
+        <a href="#eksamen">Eksamen</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero" id="topp">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Microsoft Certification · Azure</span>
+        <h1>AI-200</h1>
+        <div class="subtitle">Developing AI Cloud Solutions on Azure</div>
+        <p><strong>AI-200</strong> er en Microsoft-sertifisering for utviklere som bygger, integrerer og drifter AI-løsninger i Azure. Den handler først og fremst om infrastrukturen rundt AI, ikke om å utvikle eller trene AI-modeller.</p>
+        <p>Eksamen dekker containere og Kubernetes, databaser og AI-data, integrasjoner, samt sikkerhet, overvåking og feilsøking. Den passer særlig for backend- og skyutviklere som bygger produksjonsklare AI-systemer.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Offisiell studieveiledning ↗</a>
+          <a class="btn secondary" href="flashcards.html">Øv med 68 flashcards →</a>
+          <a class="btn secondary" href="#ressurser">Se øvingsressurser ↓</a>
+        </div>
+      </div>
+      <aside class="hero-aside" aria-label="Om sertifiseringen">
+        <span class="pill">Associate · utvikler</span>
+        <strong>Azure AI Cloud Developer Associate</strong>
+        <p>Backend-tjenester, AI-data, skalerbare applikasjoner, integrasjoner og operativ drift.</p>
+        <div class="micro">Pensum per Microsoft: 7. oktober 2026</div>
+      </aside>
+    </div>
+  </div>
+
+  <main id="innhold" class="wrap">
+    <div class="stats" aria-label="Eksamen i korte trekk">
+      <div class="stat"><strong>68</strong><span>Interaktive flashcards</span></div>
+      <div class="stat"><strong>120 min</strong><span>Varighet</span></div>
+      <div class="stat"><strong>700 / 1000</strong><span>Beståttgrense</span></div>
+      <div class="stat"><strong>Online / senter</strong><span>Med eksamensvakt</span></div>
+    </div>
+
+    <section id="domener" aria-labelledby="domener-title">
+      <div class="section-head">
+        <div class="kicker">Pensum</div>
+        <h2 id="domener-title">De fire domenene</h2>
+        <p>Vektingen nedenfor følger Microsofts oppdaterte studieguide fra 7. oktober 2026. Prosentene er intervaller, ikke en fast fordeling.</p>
+      </div>
+      <div class="grid2">
+        <article class="domain">
+          <div class="domain-top"><span class="domain-number">DOMENE 01</span><span class="weight">20–25 %</span></div>
+          <h3>Containerized Solutions</h3>
+          <p>Bygging, utrulling, skalering og feilsøking av applikasjoner i containere.</p>
+          <ul>
+            <li>Docker-images og Azure Container Registry (ACR/ACR Tasks)</li>
+            <li>Azure App Service og Azure Container Apps</li>
+            <li>AKS/Kubernetes, manifests og utrulling</li>
+            <li>KEDA-autoskalering, logging og feilsøking</li>
+          </ul>
+          <div class="focus">Typisk spørsmål: Hvilken tjeneste eller konfigurasjon skal brukes?</div>
+        </article>
+        <article class="domain">
+          <div class="domain-top"><span class="domain-number">DOMENE 02</span><span class="weight">30–35 %</span></div>
+          <h3>AI Data Management</h3>
+          <p>Datatilgang, søk, vektordata og ytelse for AI-baserte applikasjoner.</p>
+          <ul>
+            <li>Azure Cosmos DB for NoSQL, SDK, RU og consistency</li>
+            <li>PostgreSQL med pgvector, indekser og tuning</li>
+            <li>Azure Managed Redis, caching og utløp</li>
+            <li>Embeddings, vektorsøk, RAG og ytelsesoptimalisering</li>
+          </ul>
+          <div class="focus">Største domene: bør få tilsvarende mye studietid.</div>
+        </article>
+        <article class="domain">
+          <div class="domain-top"><span class="domain-number">DOMENE 03</span><span class="weight">20–25 %</span></div>
+          <h3>Connect and Consume Azure Services</h3>
+          <p>Hendelsesdrevet integrasjon og meldingstjenester.</p>
+          <ul>
+            <li>Azure Service Bus: queues, topics, subscriptions og DLQ</li>
+            <li>Azure Event Grid: hendelser, filtre og retry</li>
+            <li>Azure Functions: triggers, bindings og serverless API-er</li>
+            <li>Konfigurasjon og utrulling av Function Apps</li>
+          </ul>
+          <div class="focus">Typisk spørsmål: Event Grid, Service Bus eller Functions?</div>
+        </article>
+        <article class="domain">
+          <div class="domain-top"><span class="domain-number">DOMENE 04</span><span class="weight">20–25 %</span></div>
+          <h3>Secure, Monitor and Troubleshoot</h3>
+          <p>Beskyttelse av konfigurasjon og feilsøking i distribuerte løsninger.</p>
+          <ul>
+            <li>Azure Key Vault: hemmeligheter, oppslag og rotasjon</li>
+            <li>Azure App Configuration: konfigurasjon</li>
+            <li>OpenTelemetry og distribuert tracing</li>
+            <li>KQL for analyse av logger og målinger</li>
+          </ul>
+          <div class="focus">Typisk spørsmål: Hvor finner du feilen, og hvordan sikrer du tjenesten?</div>
+        </article>
+      </div>
+      <p class="small" style="margin-top:13px">Merk: Den offisielle studieguiden hadde per 26.10.2026 en eldre prosentsats i én underoverskrift for domene 2. Oversikten «Skills at a glance» og endringsloggen angir at vektingen er økt til 30–35 %.</p>
+    </section>
+
+    <section id="ressurser" aria-labelledby="ressurser-title">
+      <div class="section-head">
+        <div class="kicker">Lenkesamling</div>
+        <h2 id="ressurser-title">Lærestoff og testeksamener</h2>
+        <p>Start med offisielle Microsoft-kilder. Bruk tredjepartsressurser til å teste forståelse, finne hull og øve på eksamensformatet.</p>
+      </div>
+      <div class="resource-grid">
+        <article class="resource">
+          <span class="tag">OFFISIELT · START HER</span>
+          <h3>Microsoft AI-200 Study Guide</h3>
+          <p>Offisielt pensum med de fire domenene, detaljerte ferdighetsmål og oppdateringer.</p>
+          <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Åpne studieveiledningen ↗</a>
+        </article>
+        <article class="resource">
+          <span class="tag">OFFISIELT · KURS</span>
+          <h3>Microsoft Learn og eksamensinformasjon</h3>
+          <p>Opplæringsmoduler, sertifiseringsdetaljer, registrering og tilgang til Microsofts eksamenssandkasse.</p>
+          <a href="https://learn.microsoft.com/nb-no/credentials/certifications/azure-ai-cloud-developer-associate/" target="_blank" rel="noopener noreferrer">Åpne Microsoft Learn ↗</a>
+        </article>
+        <article class="resource">
+          <span class="tag community">UOFFISIELT · TESTEKSAMEN</span>
+          <h3>MightyBS – eksamenssimulator</h3>
+          <p>109 spørsmål i ulike formater, inkludert caser, dra-og-slipp og rekkefølgeoppgaver. Kan brukes med tidsbegrensning og resultat per domene.</p>
+          <p class="small">Utviklet av Brian Swiger, en Microsoft-ansatt med erfaring fra sertifiseringsarbeid. Ikke en offisiell Microsoft-test.</p>
+          <a href="https://www.mightybs.com/certifications/ai-200/exam/" target="_blank" rel="noopener noreferrer">Ta testeksamen ↗</a>
+        </article>
+        <article class="resource">
+          <span class="tag community">UOFFISIELT · FLASHCARDS</span>
+          <h3>MightyBS – flashcards</h3>
+          <p>68 kort fordelt på de fire domenene, nå også som en interaktiv øvingsside med svar, filtrering og lokal fremdrift.</p>
+          <p class="small">Forslag: Besvar høyt før dere snur kortet, sorter etter hva dere kan, og øv ekstra på svakeste domene.</p>
+          <a href="flashcards.html">Start interaktive flashcards →</a><br>
+          <a href="https://www.mightybs.com/certifications/ai-200/flashcards/" target="_blank" rel="noopener noreferrer">Se PDF- og utskriftsversjonen ↗</a>
+        </article>
+        <article class="resource">
+          <span class="tag community">UOFFISIELT · SPØRSMÅLSBANK</span>
+          <h3>AI200Prep</h3>
+          <p>Spørsmålsbank, moduler, cheatsheets og korte prøver. Nyttig for mengdetrening og repetisjon.</p>
+          <p class="small">Vurdering: kan være mindre lik den faktiske eksamensformen. Siden viser også enkelte eldre tall; bruk Microsoft som fasit.</p>
+          <a href="https://ai200prep.com/" target="_blank" rel="noopener noreferrer">Åpne AI200Prep ↗</a>
+        </article>
+        <article class="resource">
+          <span class="tag community">UOFFISIELT · PRAKTISKE ØVELSER</span>
+          <h3>MightyBS – hands-on labs</h3>
+          <p>Samleside med praktiske øvelser hentet fra Microsofts AI-200T00-kurs, organisert etter domene.</p>
+          <a href="https://www.mightybs.com/certifications/ai-200/" target="_blank" rel="noopener noreferrer">Finn øvelsene i Study Hub ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="studieplan" aria-labelledby="studieplan-title">
+      <div class="section-head">
+        <div class="kicker">Arbeidsmåte</div>
+        <h2 id="studieplan-title">Forslag til felles studieløp</h2>
+        <p>En enkel syklus som kan gjentas frem til gruppen er klar for eksamen.</p>
+      </div>
+      <div class="path">
+        <article class="step"><div class="step-count">1</div><h3>Les pensum</h3><p>Gå gjennom de offisielle kompetansemålene og fordel temaer mellom deltakerne.</p></article>
+        <article class="step"><div class="step-count">2</div><h3>Ta en testeksamen</h3><p>Bruk MightyBS eller AI200Prep for å finne de svakeste områdene.</p></article>
+        <article class="step"><div class="step-count">3</div><h3>Fordyp dere</h3><p>Les Microsoft Learn, kjør praktiske øvelser og repeter med flashcards.</p></article>
+        <article class="step"><div class="step-count">4</div><h3>Test på nytt</h3><p>Ta en ny full prøve med tidsbegrensning, og gjennomgå feilene sammen.</p></article>
+      </div>
+    </section>
+
+    <section id="eksamen" aria-labelledby="eksamen-title">
+      <div class="section-head">
+        <div class="kicker">Praktisk informasjon</div>
+        <h2 id="eksamen-title">Oppmelding og gjennomføring</h2>
+        <p>AI-200 kan normalt tas med digital eksamensvakt hjemmefra eller ved et Pearson VUE-testsenter. Tilgjengelige testsentre i Oslo-området bekreftes ved bestilling.</p>
+      </div>
+      <div class="exam-info">
+        <div class="info-panel">
+          <h3>På eksamensdagen</h3>
+          <ul>
+            <li><strong>Varighet:</strong> 120 minutter.</li>
+            <li><strong>Bestått:</strong> minst 700 poeng av 1000.</li>
+            <li><strong>Format:</strong> overvåket eksamen med potensielt interaktive oppgaver.</li>
+            <li><strong>Språk:</strong> blant annet engelsk; norsk står ikke på Microsofts språkoversikt.</li>
+            <li><strong>Online:</strong> fullfør systemtesten, kontroller legitimasjon og følg reglene for rom og utstyr.</li>
+          </ul>
+          <p style="margin:17px 0 0"><a href="https://learn.microsoft.com/nb-no/credentials/certifications/azure-ai-cloud-developer-associate/" target="_blank" rel="noopener noreferrer"><strong>Se eksamensdetaljer og meld deg opp ↗</strong></a></p>
+        </div>
+        <div class="info-panel">
+          <h3>Retake og vedlikehold</h3>
+          <p>Ved stryk tillater Microsoft normalt nytt forsøk etter 24 timer første gang, deretter gjelder lengre ventetider. Et nytt forsøk er <strong>ikke automatisk gratis</strong> uten en gjeldende kampanje eller annen ordning.</p>
+          <p>Associate-sertifiseringer fornyes vanligvis årlig med en gratis online vurdering på Microsoft Learn.</p>
+          <p style="margin-bottom:0"><a href="https://www.pearsonvue.com/us/en/microsoft.html" target="_blank" rel="noopener noreferrer"><strong>Pearson VUE – Microsoft ↗</strong></a></p>
+        </div>
+      </div>
+      <div class="notice" style="margin-top:18px">
+        <h3>Tidsbegrenset kampanje: ett gratis nytt forsøk ved stryk</h3>
+        <p>Pearson VUE har en kampanje for deltakende eksamensprogrammer, inkludert Microsoft. For å kvalifisere må du <strong>melde deg på kampanjen, bruke tilsendt kode og bestille, betale for og ta første eksamen i perioden 29. september–17. november 2026</strong>. Ved stryk kan ett gratis nytt forsøk gjennomføres <strong>4. januar–7. april 2027</strong>.</p>
+        <p><strong>Viktig:</strong> Microsoft ESI er unntatt. Ordningen kan ikke kombineres med andre kampanjer, og øvrige vilkår gjelder. Kontroller betingelsene før oppmelding.</p>
+        <p><a href="https://www.pearsonvue.com/us/en/test-takers/free-retake.html" target="_blank" rel="noopener noreferrer"><strong>Les kampanjevilkår og registrer deg ↗</strong></a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>AI-200 · Felles startside for sertifiseringsgruppen</span>
+      <span>Oppdatert 26. oktober 2026 · Microsofts studieguide er fasit ved endringer.</span>
+    </div>
+  </footer>
+</body>
+</html>
