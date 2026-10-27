@@ -36,7 +36,7 @@
     <article class="content">
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Bruk den publiserte Function App-en fra workshop 14. Opprett et Event Grid custom topic i labgruppen. Finn topic endpoint og en labnøkkel. Koden har et anonymt event-hook-endepunkt som bare logger testhendelser og kan returnere en kontrollert feil.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+<p>Bruk den publiserte Function App-en fra workshop 14. Opprett et Event Grid custom topic i ressursgruppen <code>ai200-d3</code>. Finn topic endpoint og en labnøkkel. Koden har et anonymt event-hook-endepunkt som bare logger testhendelser og kan returnere en kontrollert feil.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
 python -m pip install -r labs/integrations/requirements.txt
 $env:EVENTGRID_ENDPOINT = "DITT-TOPIC-ENDPOINT"
 $env:EVENTGRID_KEY = "DIN-LAB-NOKKEL"</code></pre>
@@ -203,7 +203,7 @@ if __name__ == &quot;__main__&quot;:
 </code></pre></details>
 </section>
       <section class="panel" id="retry"><h2>3. Test levering etter feil</h2>
-<p>Bruk gruppe- og appnavnet til Function App-en fra workshop 14. Slå på den kontrollerte feilen:</p><pre data-language="PowerShell"><code>$functionGroup = &quot;DIN-FUNCTION-GRUPPE&quot;
+<p>Bruk Function App-en fra workshop 14 i ressursgruppen <code>ai200-d3</code>. Sett <code>$functionApp</code> til appnavnet ditt og tilpass <code>$functionGroup</code> hvis du brukte et annet gruppenavn. Slå på den kontrollerte feilen:</p><pre data-language="PowerShell"><code>$functionGroup = &quot;ai200-d3&quot;
 $functionApp = &quot;DITT-FUNCTION-APP-NAVN&quot;
 az functionapp config appsettings set --resource-group $functionGroup --name $functionApp --settings FAIL_EVENTS=true -o none</code></pre><p>Vent på restart, og publiser igjen. Finn HTTP 503 og leveringsfeil i Event Grid-metrikkene. Slå deretter av feilen med kommandoen og vent på retry:</p><pre data-language="PowerShell"><code>az functionapp config appsettings set --resource-group $functionGroup --name $functionApp --settings FAIL_EVENTS=false -o none</code></pre><p> Noter event-id ved vellykket levering. Retry har backoff og skjer ikke øyeblikkelig; behold abonnementet gjennom den konfigurerte perioden. Forklar hvorfor mottakeren må tåle duplikater og hva som skjer ved utløpt TTL.</p><label class="check-item"><input type="checkbox" data-check="w18-retry"><span>Jeg har observert leveringsfeil og en senere vellykket levering.</span></label>
 </section>
