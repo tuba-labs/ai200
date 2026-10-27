@@ -34,12 +34,14 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før første workshop:</strong> Følg <a href="./getting-started.html#for-du-starter">oppsettet for å hente og åpne prosjektet og klargjøre verktøyene</a> før du kjører kommandoene på denne siden.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Python 3.12, prosjektets .venv og Functions Core Tools v4 må være klare. Ha en Python 3.12 Function App på Linux med tilhørende Storage-konto klargjort i en egen labgruppe. Bruk en støttet hostingplan. Vi arbeider i <code>labs/integrations</code>.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r labs/integrations/requirements.txt
-Copy-Item labs/integrations/local.settings.example.json labs/integrations/local.settings.json
-Set-Location labs/integrations
+<p>Python 3.12, prosjektets .venv og Functions Core Tools v4 må være klare. Ha en Python 3.12 Function App på Linux med tilhørende Storage-konto klargjort i en egen labgruppe. Bruk en støttet hostingplan. Vi arbeider i <code>artifacts/labs/integrations</code>.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+python -m pip install -r artifacts/labs/integrations/requirements.txt
+if (-not (Test-Path artifacts/labs/integrations/local.settings.json)) {
+    Copy-Item artifacts/labs/integrations/local.settings.example.json artifacts/labs/integrations/local.settings.json
+}
+Set-Location artifacts/labs/integrations
 func start</code></pre>
 </section>
       <section class="panel" id="function"><h2>1. Test en HTTP-trigger</h2>
@@ -50,7 +52,7 @@ Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType 
 <pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body '{}'</code></pre><p>Forventet HTTP 400. Restart host-en og send doc-001 igjen: minnesettet er tømt. Forklar hvorfor HTTP-triggeren ikke gjentar klientens kall, og hvorfor varig idempotens trenger mer enn prosessminne.</p><label class="check-item"><input type="checkbox" data-check="w14-feil"><span>Jeg har testet ugyldige data og funnet begrensningen i minnelagringen.</span></label>
 </section>
       <section class="panel" id="deploy"><h2>3. Publiser og konfigurer</h2>
-<p>Stopp host-en. Fra labs/integrations, med miljøet aktivt:</p><pre data-language="PowerShell"><code>az login
+<p>Stopp host-en. Fra artifacts/labs/integrations, med miljøet aktivt:</p><pre data-language="PowerShell"><code>az login
 az account show --query "{name:name,id:id}" -o table
 func azure functionapp publish "DITT-FUNCTION-APP-NAVN"</code></pre><p>Finn Get Function URL for documents i portalen og send samme body til den komplette URL-en med nøkkel. Undersøk Function-logger og appinnstillingen FUNCTIONS_WORKER_RUNTIME. Behold appnavnet til workshop 18–19; de bruker event-hook og configuration-endepunktene fra samme kode.</p><label class="check-item"><input type="checkbox" data-check="w14-deploy"><span>Jeg har publisert og testet Function App-en i Azure.</span></label>
 </section>

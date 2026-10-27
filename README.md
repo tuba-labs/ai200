@@ -51,17 +51,21 @@ Domene 1 har [oppsett steg for steg](workshop-domene-containere.html#forberedels
 
 Forsiden viser pensum først og workshopene i fire faner. Velg mellom de 22 korte øktene og fire samlede domeneworkshops. Hver samlet side kan vise alle delene eller bare samling 1/2, med tilpasset ressursplan. Gjennomføringstiden er ikke målt. Delingen i samlinger er tematisk; tidsbruk avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning. Oppgavedekningen er den samme i begge formater.
 
-De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Åpne nettstedet via lokal HTTP-server eller den publiserte siden for å dele fremdrift mellom formatene i samme nettleser; separate file-URL-er kan ha adskilt lagring. Etter endringer i korte workshops, kjør fra prosjektroten:
+De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Ved push til `main` kjører [publiseringsworkflowen](.github/workflows/pages.yml) generatoren automatisk før GitHub Pages publiserer nettstedet. Fullfør engangsoppsettet under [Publiser med GitHub Pages](#publiser-med-github-pages) for å aktivere dette.
+
+Åpne nettstedet via lokal HTTP-server eller den publiserte siden for å dele fremdrift mellom formatene i samme nettleser; separate file-URL-er kan ha adskilt lagring. Vil du se endringer i de samlede sidene lokalt før du pusher, kjører du fra prosjektroten:
 
 ```powershell
 python scripts/build_domain_workshops.py
 ```
 
-Dette oppdaterer de fire statiske samlede sidene. Nettstedet krever fortsatt ingen bygging for å åpnes eller publiseres. Generatoren tilpasser rydding mellom delene; ressursplanen ligger i skriptets domenedefinisjoner.
+Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Pythons standardbibliotek og tilpasser rydding mellom delene; ressursplanen ligger i skriptets domenedefinisjoner. De ferdige HTML-filene kan åpnes direkte. Publiseringen kjører genereringen på nytt fra de aktuelle kildefilene på GitHub.
 
 ## Kjør nettstedet lokalt
 
-Følg [Hent og åpne prosjektet](getting-started.html#prosjekt) for nedlasting, åpning i IntelliJ og kontroll av terminalens plassering. Labfilene ligger i `labs/`.
+Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Malene ligger i `labs/`.
+
+Før workshopene følger du [oppsettet for arbeidsfiler](getting-started.html#arbeidsfiler), som kopierer malene fra `labs/` til `artifacts/labs/` uten å overskrive en eksisterende arbeidskopi. Alle øvelser kjøres og endres i arbeidskopien. Notater, logger, lokale konfigurasjonsfiler og eksporter lagres også under `artifacts/`. Hele mappen er ignorert av Git; `labs/` beholdes som versjonerte maler. Prosjektets felles Python-miljø ligger fortsatt i `.venv/`.
 
 Fra rotmappen med Python installert:
 
@@ -86,12 +90,16 @@ Testene kontrollerer HTTP-funksjoner, webhook-validering, bindingenes kode og tr
 
 ## Publiser med GitHub Pages
 
-1. Legg filene i et GitHub-repository. For et offentlig repository kan GitHub Pages brukes med GitHub Free; private repositories krever en plan som støtter Pages.
-2. Åpne **Settings → Pages → Build and deployment**.
-3. Velg **Deploy from a branch**, deretter **main** og **/(root)**. Velg grenen filene faktisk ligger på dersom dere bruker et annet navn.
-4. Trykk **Save** og følg utrullingen under **Actions**. Finn nettadressen via **Settings → Pages → Visit site** når den er ferdig.
+Engangsoppsett for repositoryet:
 
-Vanlig adresse er `https://<brukernavn>.github.io/<repository>/`. Relative lenker sørger for at sidene og labfilene fungerer også under repository-stien. Nye endringer publiseres når de pushes til den valgte grenen. Se [GitHubs veiledning for publiseringskilde](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+1. Åpne **Settings → Pages → Build and deployment** på GitHub. For dette repositoryet finner du innstillingen under [Pages settings](https://github.com/tuba-labs/ai200/settings/pages). Du må ha rett til å endre Pages-oppsettet.
+2. Sett **Source** til **GitHub Actions**. [Workflowen ligger allerede i prosjektet](.github/workflows/pages.yml); du trenger ikke opprette en fra en mal.
+3. Commit og push endringene, inkludert workflow-filen, til `main`.
+4. Åpne **Actions → Publiser AI-200** og kontroller at kjøringen lykkes. Finn nettadressen via **Settings → Pages → Visit site** når publiseringen er ferdig.
+
+Deretter holder det å pushe til `main`: GitHub henter koden, setter opp Python 3.12, genererer de fire samlede workshopene fra de korte og publiserer nettstedet. Generatoren krever ingen pakkeinstallasjon. Hvis genereringen feiler, stopper kjøringen før publisering. Du kan også starte den manuelt under **Actions → Publiser AI-200 → Run workflow**, med `main` valgt.
+
+Vanlig adresse er `https://<brukernavn>.github.io/<repository>/`. Relative lenker sørger for at sidene og labfilene fungerer også under repository-stien. Se [GitHubs veiledning for publiseringskilde](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) og [egne Pages-workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). For et offentlig repository kan GitHub Pages brukes med GitHub Free; private repositories krever en plan som støtter Pages.
 
 ## Kostnader og vedlikehold
 

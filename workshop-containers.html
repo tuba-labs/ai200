@@ -34,12 +34,11 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før første workshop:</strong> Følg <a href="./getting-started.html#for-du-starter">oppsettet for å hente og åpne prosjektet og klargjøre verktøyene</a> før du kjører kommandoene på denne siden.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<ol><li>Installer <a href="https://docs.docker.com/desktop/setup/install/windows-install/">Docker Desktop for Windows</a> med WSL 2-oppsett, eller bruk container-motoren arbeidsgiveren har klargjort. Fullfør eventuell omstart.</li><li>Start Docker Desktop fra Start-menyen og vent til motoren kjører. Docker må bruke Linux-containere. Viser Docker-menyen <strong>Switch to Linux containers</strong>, velg det.</li><li>Åpne prosjektmappen i IntelliJ og en PowerShell-terminal i prosjektroten, der <code>index.html</code> og <code>labs</code> ligger. Kjør kontrollene under.</li></ol><pre data-language="PowerShell"><code>docker version
+<ol><li>Installer <a href="https://docs.docker.com/desktop/setup/install/windows-install/">Docker Desktop for Windows</a> med WSL 2-oppsett, eller bruk container-motoren arbeidsgiveren har klargjort. Fullfør eventuell omstart.</li><li>Start Docker Desktop fra Start-menyen og vent til motoren kjører. Docker må bruke Linux-containere. Viser Docker-menyen <strong>Switch to Linux containers</strong>, velg det.</li></ol><pre data-language="PowerShell"><code>docker version
 docker info --format '{{.OSType}}'
-Test-Path ./labs/containers/Dockerfile
-Set-Location labs/containers</code></pre><p><strong>Kontrollpunkt:</strong> <code>docker version</code> viser både Client og Server, OS-kontrollen viser <code>linux</code>, og filkontrollen viser <code>True</code>. Mangler Server-delen, start Docker-motoren før du fortsetter. <a href="./labs/containers/app.py">app.py</a> er ferdig testkode; <a href="./labs/containers/Dockerfile">Dockerfile</a> er filen du skal forstå. Denne delen krever ingen Azure-ressurser.</p>
+Set-Location artifacts/labs/containers</code></pre><p><strong>Kontrollpunkt:</strong> <code>docker version</code> viser både Client og Server, og OS-kontrollen viser <code>linux</code>. Mangler Server-delen, start Docker-motoren før du fortsetter. <a href="./labs/containers/app.py">app.py</a> er ferdig testkode; <a href="./labs/containers/Dockerfile">Dockerfile</a> er filen du skal forstå. Denne delen krever ingen Azure-ressurser.</p>
 </section>
       <section class="panel" id="bygg"><h2>1. Bygg et image</h2>
 <pre data-language="PowerShell"><code>docker build -t ai200-api:v1 .
@@ -52,7 +51,7 @@ curl.exe -i http://localhost:8080/missing
 docker logs --tail 20 ai200-api</code></pre><p>Forventet: 200 fra <code>/health</code> og 404 fra <code>/missing</code>. Prosessen fortsetter å kjøre. Forklar hvorfor <code>EXPOSE</code> og portbindingen har ulike oppgaver.</p><label class="check-item"><input type="checkbox" data-check="w1-kjor"><span>Jeg finner vellykkede og mislykkede kall i loggen.</span></label>
 </section>
       <section class="panel" id="oppdater"><h2>3. Versjoner og tilbakerulling</h2>
-<p>Endre standardverdien for <code>APP_VERSION</code> fra <code>v1</code> til <code>v2</code> i app.py. Den gamle containeren beholder sin kopi til den erstattes.</p><pre data-language="PowerShell"><code>docker build -t ai200-api:v2 .
+<p>Endre standardverdien for <code>APP_VERSION</code> fra <code>v1</code> til <code>v2</code> i <code>artifacts/labs/containers/app.py</code>. Den gamle containeren beholder sin kopi til den erstattes.</p><pre data-language="PowerShell"><code>docker build -t ai200-api:v2 .
 docker stop ai200-api
 docker rm ai200-api
 docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v2
@@ -60,7 +59,7 @@ Invoke-RestMethod http://localhost:8080/health</code></pre><p>Forventet: v2. Gje
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
 <pre data-language="PowerShell"><code>docker stop ai200-api
-docker rm ai200-api</code></pre><p>Behold kildefilene og de lokale imagene til neste økt. Forklar forskjellen mellom en filendring, et nytt image og en ny container.</p><p>Sett standardverdien APP_VERSION tilbake til v1 i kildefilen før workshop 2.</p>
+docker rm ai200-api</code></pre><p>Behold kildefilene og de lokale imagene til neste økt. Forklar forskjellen mellom en filendring, et nytt image og en ny container.</p><p>Sett standardverdien APP_VERSION tilbake til v1 i arbeidskopien før workshop 2.</p>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://docs.docker.com/build/concepts/dockerfile/">Dockerfile</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./getting-started.html">← Kom i gang</a><a href="./workshop-acr.html">Workshop 2 →</a></nav>

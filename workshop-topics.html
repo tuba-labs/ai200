@@ -34,20 +34,20 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før første workshop:</strong> Følg <a href="./getting-started.html#for-du-starter">oppsettet for å hente og åpne prosjektet og klargjøre verktøyene</a> før du kjører kommandoene på denne siden.</p><p><strong>Bygger på:</strong> <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <p>Bruk et Standard-namespace med samme SDK-oppsett og SERVICEBUS_NAMESPACE som i workshop 15. Opprett topic <code>document-events</code> og subscriptions <code>indexer</code> og <code>audit</code>. Begge starter med standardregelen som tar imot alt.</p>
 </section>
       <section class="panel" id="kopier"><h2>1. Test uavhengige kopier</h2>
-<pre data-language="PowerShell"><code>python labs/integrations/message_bus.py topic
-python labs/integrations/message_bus.py subscription --subscription indexer
-python labs/integrations/message_bus.py subscription --subscription audit</code></pre><p>Forventet: begge mottar én kopi. Fullføring i indexer fjerner ikke audit sin kopi. Finn skillelinjen mellom topic og subscription; det er subscription som fungerer som mottakerens kø.</p><label class="check-item"><input type="checkbox" data-check="w16-kopier"><span>Jeg har mottatt uavhengige kopier av samme publisering.</span></label>
+<pre data-language="PowerShell"><code>python artifacts/labs/integrations/message_bus.py topic
+python artifacts/labs/integrations/message_bus.py subscription --subscription indexer
+python artifacts/labs/integrations/message_bus.py subscription --subscription audit</code></pre><p>Forventet: begge mottar én kopi. Fullføring i indexer fjerner ikke audit sin kopi. Finn skillelinjen mellom topic og subscription; det er subscription som fungerer som mottakerens kø.</p><label class="check-item"><input type="checkbox" data-check="w16-kopier"><span>Jeg har mottatt uavhengige kopier av samme publisering.</span></label>
 </section>
       <section class="panel" id="filter"><h2>2. Legg på et filter</h2>
 <p>På indexer i portalen: erstatt standardregelen med en SQL-filterregel <code>kind = 'note'</code>. Fjern standardregelen som matcher alt, ellers gjelder reglene som OR. Audit beholder standardregelen. Send en ny melding og motta fra begge.</p><label class="check-item"><input type="checkbox" data-check="w16-filter"><span>Jeg har satt et subscription-filter som bruker meldingsmetadata.</span></label>
 </section>
       <section class="panel" id="endring"><h2>3. Vis at filteret virker</h2>
-<p>I en lokal kopi av message_bus.py: endre application property kind fra note til other, og send på nytt. Forventet: audit mottar meldingen, indexer gjør det ikke. Sett koden tilbake. Forklar hvorfor filteret ser på metadata og ikke parser JSON-body.</p><label class="check-item"><input type="checkbox" data-check="w16-endring"><span>Jeg har verifisert både treff og avvisning i filteret.</span></label>
+<p>I arbeidskopien av message_bus.py: endre application property kind fra note til other, og send på nytt. Forventet: audit mottar meldingen, indexer gjør det ikke. Sett koden tilbake. Forklar hvorfor filteret ser på metadata og ikke parser JSON-body.</p><label class="check-item"><input type="checkbox" data-check="w16-endring"><span>Jeg har verifisert både treff og avvisning i filteret.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Tøm labsubscriptions ved å fullføre meldingene. Slett topic-et når øvelsen er ferdig. Namespace/kø kan beholdes til workshop 17.</p>

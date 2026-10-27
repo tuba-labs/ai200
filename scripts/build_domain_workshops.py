@@ -48,13 +48,13 @@ CARRY = {
     8: "Fjern PGCONNINFO fra terminalen. Slett den dedikerte PostgreSQL-serveren; de øvrige delene bruker andre tjenester.",
     9: "Behold Cosmos-kontoen, databasen og notes til del 10–11. Ved to samlinger må disse være tilgjengelige ved starten av samling 2, eller opprettes på nytt med setup-steget.",
     10: "Vectors-containeren kan slettes etter testen. Behold notes, databasen og kontoen til change feed-øvelsen i neste del.",
-    11: "Stopp Functions-host og slett local.settings.json med labnøkler. Cosmos-konto og dedikert Storage kan slettes når change feed-testen er ferdig.",
+    11: "Stopp Functions-host og slett artifacts/labs/cosmos/local.settings.json med labnøkler. Cosmos-konto og dedikert Storage kan slettes når change feed-testen er ferdig.",
     12: "Behold Managed Redis og RediSearch-oppsettet til vektorøvelsen i neste del. Sett miljøvariablene på nytt hvis du bytter terminal.",
     13: "Kjør cleanup i Redis-skriptet for å fjerne labindeksen og dens dokumenter. Fjern REDIS_KEY og slett den dedikerte instansen.",
     14: "Stopp lokal host, men behold den publiserte HTTP Function App-en til Event Grid i del 18. Den kan også brukes i domene 4.",
     15: "Kontroller at labmeldingene er håndtert. Behold Service Bus-namespace og documents-kø til del 16–17.",
     16: "Fullfør labmeldingene og slett topic/subscriptions når testen er ferdig. Behold documents-kø og namespace til bindingene i neste del.",
-    17: "Stopp bindingenes Functions-host, håndter DLQ-meldingen og slett local.settings.json. Service Bus kan slettes nå. Behold HTTP Function App-en til Event Grid.",
+    17: "Stopp bindingenes Functions-host, håndter DLQ-meldingen og slett artifacts/labs/bindings/local.settings.json. Service Bus kan slettes nå. Behold HTTP Function App-en til Event Grid.",
     18: "Slett Event Grid-abonnement og topic, fjern FAIL_EVENTS og EVENTGRID_KEY. Behold Function App-en bare hvis Key Vault-øvelsen i domene 4 skal bruke den.",
     19: "Fjern appens DEMO_SECRET-setting og rydd labhvelv/Function App når de er ferdig brukt. App Configuration-øvelsen i neste del trenger ikke Key Vault-oppslaget.",
     20: "Fjern APP_CONFIG_ENDPOINT og slett den dedikerte App Configuration-ressursen. Neste del bruker de lokale sporingsprogrammene.",
@@ -107,7 +107,6 @@ def chapter(number, session, workshop):
     return f'''<details class="panel domain-chapter" id="module-{number}" data-domain-chapter data-session="{session}" open>
 <summary><span class="chapter-number">Del {number}</span><h3>{escape(workshop["title"])}</h3></summary>
 <p class="small"><a href="./{workshop["file"]}">Åpne som kort workshop →</a></p>
-<p>Gå tilbake til prosjektmappen i terminalen fra <a href="#forberedelser">klargjøringen over</a>:</p><pre data-language="PowerShell"><code>Set-Location $projectRoot</code></pre>
 {"".join(steps)}
 </details>'''
 
@@ -125,9 +124,9 @@ def render(domain, workshops):
                         for item, keep, cleanup in domain["resources"])
     preparation_notes = ''.join(f'<p data-domain-session-note data-session="{i}">{escape(note)}</p>'
                                 for i, note in enumerate(SESSION_PREPARATION[domain["number"]], 1))
-    init = '$projectRoot = (Get-Location).Path'
+    python_activation = ''
     if domain["number"] != 1:
-        init += '\n.\\.venv\\Scripts\\Activate.ps1'
+        python_activation = '<p>Aktiver <a href="./getting-started.html#intellij">prosjektets Python-miljø</a> før Python-øvelsene:</p><pre data-language="PowerShell"><code>.\\.venv\\Scripts\\Activate.ps1</code></pre>'
     chapters = ''.join(chapter(n, i, workshops[n]) for i, (_, numbers) in enumerate(sessions, 1) for n in numbers)
     links = ''.join(f'<a href="./workshop-domene-{d["slug"]}.html"' + (' aria-current="page"' if d==domain else '') +
                     f'>{d["number"]}. {escape(d["title"])}</a>' for d in DOMAINS)
@@ -151,7 +150,7 @@ def render(domain, workshops):
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
     <article class="content" data-domain-workshop>
       <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend>{choices}</fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-{domain['number']}">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody>{agenda}</tbody></table></div></section>
-      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Før første workshop må du <a href="./getting-started.html#prosjekt">hente og åpne prosjektet i IntelliJ</a> og fullføre <a href="./getting-started.html#for-du-starter">felles oppsett av verktøy og Azure-konto</a>. Gjør dette før kommandoene under.</p><p>Bruk terminalen du åpnet i prosjektmappen i det felles oppsettet. Lagre plasseringen så du kan gå tilbake til den mellom delene:</p><pre data-language="PowerShell"><code>{escape(init)}</code></pre>{preparation_notes}</section>
+      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a> før første workshop.</p><p>Start hver del med en PowerShell-terminal i prosjektmappen. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>, som er ignorert av Git. Kodelenkene viser malene i <code>labs/</code>.</p>{python_activation}{preparation_notes}</section>
       <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Ressursplanen under gjelder denne samlede gjennomføringen. Ryddingen i delene er tilpasset overgangen til neste del. Slett bare dedikerte labressurser; en gruppe som også inneholder ressurser til senere deler må beholdes eller ryddes ressurs for ressurs.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody>{resources}</tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Hvis du ikke vil beholde ressurser mellom samlingene, noter oppsettet og klargjør dem på nytt før neste samling.</p></section>
       <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p>{chapters}</section>
       <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./{domain['syllabus']}">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>

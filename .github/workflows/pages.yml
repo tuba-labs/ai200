@@ -1,0 +1,48 @@
+name: Publiser AI-200
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Hent kildefilene
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Generer de samlede workshopene
+        run: python scripts/build_domain_workshops.py
+
+      - name: Klargjør GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Last opp nettstedet
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Publiser nettstedet
+        id: deployment
+        uses: actions/deploy-pages@v5

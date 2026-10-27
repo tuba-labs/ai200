@@ -10,6 +10,9 @@ Desktop.ini
 __pycache__/
 *.py[cod]
 
+# Local workshop working copies, generated files, notes and exports
+/artifacts/
+
 # Local runtime logs
 *.log
 .tmp/
