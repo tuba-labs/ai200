@@ -40,9 +40,81 @@
 python -m pip install -r artifacts/labs/security/requirements.txt
 az login
 $env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
+
+<details class="source-file" id="fil-labs-security-requirements-txt" data-source-file="labs/security/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/security/requirements.txt"><code># API for sporingskontekst og spans.
+opentelemetry-api&gt;=1.28,&lt;2
+# Lokalt SDK for behandling og eksport av telemetri.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Entra-autentisering med DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# Klienten for Key Vault-hemmeligheter.
+azure-keyvault-secrets&gt;=4.9,&lt;5
+# Klienten for vanlige App Configuration-verdier.
+azure-appconfiguration&gt;=1.7,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-security-gitignore" data-source-file="labs/security/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/.gitignore</code></p><pre data-language="Tekst" data-source="labs/security/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+</code></pre></details>
 </section>
       <section class="panel" id="oppslag"><h2>1. Opprett og les en testhemmelighet</h2>
-<p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <a href="./labs/security/read_settings.py">Skriptet</a> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
+<p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <code>read_settings.py</code> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
+
+<details class="source-file" id="fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
+
+# Velg Key Vault-hemmelighet eller vanlig appkonfigurasjon.
+import argparse
+# Les tjenestenes endpoint fra miljøet.
+import os
+
+# Les nøkkel-/etikettverdier fra App Configuration.
+from azure.appconfiguration import AzureAppConfigurationClient
+# Bruk Entra-identitet, for eksempel Azure CLI-innlogging på egen maskin.
+from azure.identity import DefaultAzureCredential
+# Les hemmeligheter gjennom Key Vaults data-API.
+from azure.keyvault.secrets import SecretClient
+
+# Kjør ett oppslag mot den valgte tjenesten.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de to oppslagstypene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;secret&quot;, &quot;config&quot;])
+    # Les valgt oppslagstype.
+    args = parser.parse_args()
+    # Gjenbruk samme identitetsoppsett for begge tjenester.
+    with DefaultAzureCredential() as credential:
+        # Key Vault-operasjonen krever tilgang til hemmelighetens verdi.
+        if args.mode == &quot;secret&quot;:
+            # Åpne klienten for ditt labhvelv.
+            with SecretClient(vault_url=os.environ[&quot;KEY_VAULT_URL&quot;], credential=credential) as vault:
+                # Les gjeldende versjon av demo-secret.
+                secret = vault.get_secret(&quot;demo-secret&quot;)
+                # Vis bare at verdien ble lest, aldri selve hemmeligheten.
+                print(&quot;Secret read successfully:&quot;, bool(secret.value))
+                # Bruk versjons-ID til å observere rotasjon.
+                print(&quot;Secret version:&quot;, secret.properties.version)
+            # Avslutt etter Key Vault-oppslaget.
+            return
+        # Åpne klienten for vanlig konfigurasjon.
+        with AzureAppConfigurationClient(
+            # Bruk App Configuration-endpoint og den samme Entra-identiteten.
+            base_url=os.environ[&quot;APP_CONFIG_ENDPOINT&quot;], credential=credential
+        # Lukk konfigurasjonsklienten etter bruk.
+        ) as config:
+            # Les akkurat nøkkelen og miljøetiketten som ble opprettet i portalen.
+            setting = config.get_configuration_setting(key=&quot;Workshop:Mode&quot;, label=&quot;lab&quot;)
+            # Vis den vanlige konfigurasjonsverdien i terminalen.
+            print(&quot;Workshop mode:&quot;, setting.value)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt konfigurasjonsoppslag.
+    main()
+</code></pre></details>
 </section>
       <section class="panel" id="rotasjon"><h2>2. Roter ved å opprette ny versjon</h2>
 <p>Legg til ny versjon av demo-secret med verdien workshop-only-v2. Kjør oppslaget igjen og sammenlign versjons-ID. Undersøk forskjellen på en versjonsbundet og en versjonsløs URI. Beskriv hvordan en app som cacher verdien må få den oppdatert.</p><label class="check-item"><input type="checkbox" data-check="w19-rotasjon"><span>Jeg har rotert hemmeligheten og verifisert hvilken versjon som leses.</span></label>

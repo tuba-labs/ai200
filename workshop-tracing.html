@@ -37,7 +37,217 @@
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r artifacts/labs/observability/requirements.txt</code></pre><p><a href="./labs/observability/services.py">services.py</a> kjører enten frontend på 8091 eller backend på 8092. Start dem i to terminaler, begge fra prosjektroten. Uten connection string eksporteres spans til konsollen.</p>
+python -m pip install -r artifacts/labs/observability/requirements.txt</code></pre><p><code>services.py</code> kjører enten frontend på 8091 eller backend på 8092. Start dem i to terminaler, begge fra prosjektroten. Uten connection string eksporteres spans til konsollen.</p>
+
+<details class="source-file" id="fil-labs-observability-services-py" data-source-file="labs/observability/services.py"><summary><code>services.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/observability/services.py</code></p><pre data-language="Python" data-source="labs/observability/services.py"><code>&quot;&quot;&quot;Two separate HTTP services with explicit W3C context propagation and metrics.&quot;&quot;&quot;
+# Velg frontend eller backend og eventuelle lokale porter.
+import argparse
+# Bygg HTTP-responsen med trace-ID som JSON.
+import json
+# Skriv rolle, trace-ID og status til konsollen.
+import logging
+# Les Azure Monitor-tilkoblingen fra miljøet.
+import os
+# Mål svartid og lag en kontrollert forsinkelse.
+import time
+# Importer HTTP-feiltypene som hører til nettverksklienten.
+import urllib.error
+# La frontend gjøre et faktisk HTTP-kall til backend.
+import urllib.request
+# Kjør to små HTTP-servere i separate prosesser.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Les delay og fail fra URL-ens spørringsparametere.
+from urllib.parse import parse_qs, urlsplit
+
+# Hent API-ene for målinger, sporingskontekst og spans.
+from opentelemetry import metrics, propagate, trace
+# Konfigurer hvor målinger samles og eksporteres.
+from opentelemetry.sdk.metrics import MeterProvider
+# Eksporter aggregerte målinger med et fast intervall.
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+# Gi telemetrien et tjenestenavn som skiller prosessene.
+from opentelemetry.sdk.resources import Resource
+# Konfigurer sporings-SDK-et.
+from opentelemetry.sdk.trace import TracerProvider
+# Velg købasert Azure-eksport eller direkte konsollutskrift.
+from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor
+# Merk klient-/serverspans og feilstatus eksplisitt.
+from opentelemetry.trace import SpanKind, Status, StatusCode
+
+
+# Klargjør samme telemetrioppsett for hver av de to prosessene.
+def setup(role):
+    # Skill ai200-frontend fra ai200-backend i Azure og konsollen.
+    resource = Resource.create({&quot;service.name&quot;: &quot;ai200-&quot; + role})
+    # Opprett sporingsleverandøren med tjenestens identitet.
+    provider = TracerProvider(resource=resource)
+    # Uten Azure-tilkobling opprettes ingen metrikkeksportør.
+    readers = []
+    # La miljøvariabelen velge om telemetrien skal sendes til Azure.
+    connection = os.getenv(&quot;APPLICATIONINSIGHTS_CONNECTION_STRING&quot;)
+    # Bruk Azure Monitor når en connection string er konfigurert.
+    if connection:
+        # Hent eksportørene for både målinger og spans.
+        from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter, AzureMonitorTraceExporter
+        # Send spans i bakgrunnen i samlinger.
+        provider.add_span_processor(BatchSpanProcessor(AzureMonitorTraceExporter(connection_string=connection)))
+        # Koble en periodisk leser til måleeksportøren.
+        readers.append(PeriodicExportingMetricReader(
+            # Bruk samme Azure-ressurs og eksporter målinger hvert tiende sekund.
+            AzureMonitorMetricExporter(connection_string=connection), export_interval_millis=10000))
+    # Bruk konsollen når Azure-tilkoblingen mangler.
+    else:
+        # Skriv hver avsluttet span til konsollen for lokal inspeksjon.
+        provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
+    # Gjør dette sporingsoppsettet aktivt i prosessen.
+    trace.set_tracer_provider(provider)
+    # La målingene bruke samme tjenestenavn som sporingen.
+    meter_provider = MeterProvider(resource=resource, metric_readers=readers)
+    # Gjør måleoppsettet aktivt i prosessen.
+    metrics.set_meter_provider(meter_provider)
+    # Behold leverandørene slik at de kan flushes ved avslutning.
+    return provider, meter_provider
+
+
+# Start én av tjenestene fra kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Velg hvilken tjeneste denne prosessen skal være.
+    parser.add_argument(&quot;role&quot;, choices=[&quot;frontend&quot;, &quot;backend&quot;])
+    # Tillat en annen lokal port, blant annet i testene.
+    parser.add_argument(&quot;--port&quot;, type=int)
+    # La frontend vite hvilken backend-adresse den skal kalle.
+    parser.add_argument(&quot;--backend-url&quot;, default=&quot;http://127.0.0.1:8092/lookup&quot;)
+    # Les rolle og nettverksvalg.
+    args = parser.parse_args()
+    # Vis INFO-meldinger som inneholder sporingsbevis.
+    logging.basicConfig(level=logging.INFO)
+    # Klargjør eksport før serveren tar imot kall.
+    provider, meter_provider = setup(args.role)
+    # Opprett traceren som lager labens spans.
+    tracer = trace.get_tracer(&quot;ai200.network&quot;)
+    # Opprett instrumentene for labens målinger.
+    meter = metrics.get_meter(&quot;ai200.network&quot;)
+    # Tell forespørsler per status.
+    requests = meter.create_counter(&quot;workshop.requests&quot;)
+    # Samle svartid i millisekunder.
+    duration = meter.create_histogram(&quot;workshop.duration&quot;, unit=&quot;ms&quot;)
+
+    # Definer hvordan denne tjenesten håndterer HTTP-kall.
+    class Handler(BaseHTTPRequestHandler):
+        # Behandle én GET-forespørsel.
+        def do_GET(self):
+            # Start målingen av hele forespørselen.
+            started = time.perf_counter()
+            # Skill URL-sti fra spørringsparametere.
+            parsed = urlsplit(self.path)
+            # Les parameterne som styrer forsinkelse og kontrollert feil.
+            query = parse_qs(parsed.query)
+            # Anta et vellykket kall frem til en feil oppstår.
+            status = 200
+            # Start en serverspan for den innkommende forespørselen.
+            with tracer.start_as_current_span(args.role, kind=SpanKind.SERVER,
+                                             # Les sporingskontekst fra HTTP-headerne så backend kan fortsette samme trace.
+                                             context=propagate.extract({key.lower(): value for key, value in self.headers.items()})) as span:
+                # La kontrollerte nettverks- og backend-feil gi HTTP 500.
+                try:
+                    # Frontend videresender arbeidet til en annen prosess.
+                    if args.role == &quot;frontend&quot;:
+                        # Legg en klientspan under frontendens serverspan.
+                        with tracer.start_as_current_span(&quot;call-backend&quot;, kind=SpanKind.CLIENT):
+                            # Lag headerne som skal følge det utgående kallet.
+                            headers = {}
+                            # Legg aktiv trace-kontekst i headerne før HTTP-kallet.
+                            propagate.inject(headers)
+                            # Send de samme delay-/fail-parameterne videre.
+                            url = args.backend_url + &quot;?&quot; + parsed.query
+                            # Gjør et ekte nettverkskall med sporingsheaderne.
+                            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=10) as response:
+                                # Les svaret ferdig før klientspannen avsluttes.
+                                response.read()
+                    # Backend utfører det simulerte oppslaget.
+                    else:
+                        # Avgrens den valgte forsinkelsen til mellom null og ett sekund.
+                        time.sleep(min(max(float(query.get(&quot;delay&quot;, [&quot;0.02&quot;])[0]), 0), 1))
+                        # Bruk fail=1 til å slå på en kjent feil.
+                        if query.get(&quot;fail&quot;, [&quot;0&quot;])[0] == &quot;1&quot;:
+                            # La feilen bli synlig både i backend og i klientkallet fra frontend.
+                            raise RuntimeError(&quot;Controlled backend failure&quot;)
+                # Fang feilen for å sende et kontrollert HTTP-svar.
+                except Exception as error:
+                    # Merk HTTP-svaret som en serverfeil.
+                    status = 500
+                    # Legg unntaket inn som en hendelse på spannen.
+                    span.record_exception(error)
+                    # Merk spannen som mislykket.
+                    span.set_status(Status(StatusCode.ERROR, str(error)))
+                # Ta med HTTP-statusen som span-attributt.
+                span.set_attribute(&quot;http.response.status_code&quot;, status)
+                # Gjør tjenestens rolle synlig på spannen.
+                span.set_attribute(&quot;workshop.role&quot;, args.role)
+                # Formater trace-ID slik at du kan sammenligne den mellom prosessene.
+                trace_id = format(span.get_span_context().trace_id, &quot;032x&quot;)
+                # Send rolle, trace-ID og resultat til klienten.
+                body = json.dumps({&quot;role&quot;: args.role, &quot;trace_id&quot;: trace_id, &quot;status&quot;: status}).encode()
+                # Start HTTP-svaret med resultatstatusen.
+                self.send_response(status)
+                # Oppgi at innholdet er JSON.
+                self.send_header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+                # Oppgi svarlengden i byte.
+                self.send_header(&quot;Content-Length&quot;, str(len(body)))
+                # Avslutt headerne før body sendes.
+                self.end_headers()
+                # Skriv svarinnholdet til klienten.
+                self.wfile.write(body)
+                # Vis samme trace-ID i begge tjenestenes logger.
+                logging.info(&quot;role=%s trace_id=%s status=%s&quot;, args.role, trace_id, status)
+            # Skill målingene etter HTTP-status.
+            attributes = {&quot;status&quot;: str(status)}
+            # Tell denne forespørselen.
+            requests.add(1, attributes)
+            # Registrer hele forespørselens varighet i millisekunder.
+            duration.record((time.perf_counter() - started) * 1000, attributes)
+
+    # Bruk forskjellige standardporter for de to prosessene.
+    port = args.port or (8091 if args.role == &quot;frontend&quot; else 8092)
+    # Lytt bare lokalt på maskinen.
+    server = ThreadingHTTPServer((&quot;127.0.0.1&quot;, port), Handler)
+    # La tjenesten kjøre frem til den stoppes.
+    try:
+        # Ta imot og behandle HTTP-kall.
+        server.serve_forever()
+    # Håndter Ctrl+C som en vanlig avslutning.
+    except KeyboardInterrupt:
+        # Fortsett til oppryddingen under.
+        pass
+    # Lukk serveren og tøm eksportkøene også ved avbrudd.
+    finally:
+        # Frigi lytteporten.
+        server.server_close()
+        # Forsøk å sende gjenværende spans før prosessen avsluttes.
+        provider.force_flush()
+        # Forsøk å sende gjenværende målinger.
+        meter_provider.force_flush()
+        # Stopp sporingsleverandøren.
+        provider.shutdown()
+        # Stopp måleleverandøren.
+        meter_provider.shutdown()
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør tjenesten med valgt rolle.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-observability-requirements-txt" data-source-file="labs/observability/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/observability/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/observability/requirements.txt"><code># API-er for spans, kontekstpropagering og målinger.
+opentelemetry-api&gt;=1.28,&lt;2
+# Leverandører, prosessorer og konsolleksport for telemetrien.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Eksport av spans og målinger til Azure Monitor.
+azure-monitor-opentelemetry-exporter&gt;=1.0.0b30,&lt;2
+</code></pre></details>
 </section>
       <section class="panel" id="kjore"><h2>1. Start to tjenester</h2>
 <pre data-language="PowerShell"><code>python artifacts/labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code>python artifacts/labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>

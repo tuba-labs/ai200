@@ -36,16 +36,206 @@
     <article class="content">
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Bruk notes-containeren fra workshop 9, Azure Functions Core Tools v4 og en lab-Storage-konto. Kjør Python-aktivering fra prosjektroten. Kopier <a href="./labs/cosmos/local.settings.example.json">innstillingseksemplet</a> til local.settings.json og erstatt begge connection strings med labverdier.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+<p>Bruk notes-containeren fra workshop 9, Azure Functions Core Tools v4 og en lab-Storage-konto. Kjør Python-aktivering fra prosjektroten. Kopier <code>local.settings.example.json</code> til local.settings.json og erstatt begge connection strings med labverdier.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
 python -m pip install -r artifacts/labs/cosmos/requirements.txt
 if (-not (Test-Path artifacts/labs/cosmos/local.settings.json)) {
     Copy-Item artifacts/labs/cosmos/local.settings.example.json artifacts/labs/cosmos/local.settings.json
 }
 Set-Location artifacts/labs/cosmos
 func start</code></pre>
+
+<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+# Velg hvilken Cosmos-operasjon eksemplet skal utføre.
+import argparse
+# Les endpoint, nøkkel og databasenavn fra terminalens miljø.
+import os
+
+# Bruk Cosmos SDK-et og en eksplisitt partisjonsnøkkel.
+from azure.cosmos import CosmosClient, PartitionKey
+
+# Bruk små undervisningsdokumenter med håndskrevne vektorer.
+DOCUMENTS = [
+    # Første dokument ligger i partisjonen containers.
+    {&quot;id&quot;: &quot;note-1&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Package an application&quot;, &quot;embedding&quot;: [1.0, 0.0, 0.0]},
+    # Andre dokument ligger i samme partisjon, med en lignende vektor.
+    {&quot;id&quot;: &quot;note-2&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Inspect container logs&quot;, &quot;embedding&quot;: [0.9, 0.1, 0.0]},
+    # Tredje dokument viser hvordan metadatafilter kan utelate et nært vektortreff.
+    {&quot;id&quot;: &quot;note-3&quot;, &quot;topic&quot;: &quot;data&quot;, &quot;text&quot;: &quot;Retrieve stored data&quot;, &quot;embedding&quot;: [0.0, 1.0, 0.0]},
+]
+
+
+# La SDK-et sende responsheaderne til denne callbacken.
+def report(headers, _body):
+    # Hent kostnaden i request units fra responsheaderen.
+    charge = headers.get(&quot;x-ms-request-charge&quot;)
+    # Skriv bare RU når headeren finnes.
+    if charge:
+        # Vis grunnlaget for sammenligning av oppslag.
+        print(&quot;Request charge:&quot;, charge, &quot;RU&quot;)
+
+
+# Kjør operasjonen som ble valgt på kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens valgene til operasjonene workshopene bruker.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;point&quot;, &quot;vector-setup&quot;, &quot;vector&quot;, &quot;update&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Åpne klienten med labkontoens endpoint og nøkkel, og lukk den etter bruk.
+    with CosmosClient(os.environ[&quot;COSMOS_ENDPOINT&quot;], credential=os.environ[&quot;COSMOS_KEY&quot;]) as client:
+        # Use a database without shared throughput so vector search is supported.
+        # Velg databasen; dette oppretter ikke databasen.
+        database = client.get_database_client(os.getenv(&quot;COSMOS_DATABASE&quot;, &quot;workshop&quot;))
+        # Hold vektorpolicyen i en egen container.
+        name = &quot;vectors&quot; if args.mode.startswith(&quot;vector&quot;) else &quot;notes&quot;
+        # Hent en klient for den valgte containeren.
+        container = database.get_container_client(name)
+        # Opprett labcontainer og eksempeldata ved setup.
+        if args.mode in {&quot;setup&quot;, &quot;vector-setup&quot;}:
+            # Beskriv den vanlige indekseringspolicyen.
+            policy = {
+                # Oppdater indeksene automatisk når dokumentene endres.
+                &quot;indexingMode&quot;: &quot;consistent&quot;, &quot;automatic&quot;: True,
+                # Indekser dokumentfeltene som standard.
+                &quot;includedPaths&quot;: [{&quot;path&quot;: &quot;/*&quot;}],
+                # Unnta vektorarrayet fra vanlig feltindeksering.
+                &quot;excludedPaths&quot;: [{&quot;path&quot;: &quot;/embedding/*&quot;}],
+            }
+            # Legg bare til vektorinnstillinger for vektorcontaineren.
+            extra = {}
+            # Konfigurer en egen indeks for VectorDistance-søk.
+            if args.mode == &quot;vector-setup&quot;:
+                # Bruk en flat vektorindeks på embedding-feltet.
+                policy[&quot;vectorIndexes&quot;] = [{&quot;path&quot;: &quot;/embedding&quot;, &quot;type&quot;: &quot;flat&quot;}]
+                # Beskriv hvilke vektorer embedding-feltet inneholder.
+                extra[&quot;vector_embedding_policy&quot;] = {&quot;vectorEmbeddings&quot;: [{
+                    # Lagre vektorene i embedding og behandle verdiene som float32.
+                    &quot;path&quot;: &quot;/embedding&quot;, &quot;dataType&quot;: &quot;float32&quot;,
+                    # Krev tre dimensjoner og sammenlign med cosinusavstand.
+                    &quot;dimensions&quot;: 3, &quot;distanceFunction&quot;: &quot;cosine&quot;,
+                }]}
+            # Opprett containeren hvis den mangler; eksisterende policy erstattes ikke her.
+            container = database.create_container_if_not_exists(
+                # Bruk topic som partisjonsnøkkel.
+                id=name, partition_key=PartitionKey(path=&quot;/topic&quot;),
+                # Bruk policyen over og 400 RU/s dedikert throughput.
+                indexing_policy=policy, offer_throughput=400, **extra,
+            )
+            # Skriv inn undervisningsdokumentene.
+            for document in DOCUMENTS:
+                # Opprett eller erstatt dokumentet, og vis operasjonens RU.
+                container.upsert_item(document, response_hook=report)
+            # Vis hvilken container som er klargjort.
+            print(&quot;Ready:&quot;, name)
+        # Utfør et direkte oppslag uten SQL-spørring.
+        elif args.mode == &quot;point&quot;:
+            # ID og partisjonsnøkkel identifiserer dokumentet sammen.
+            result = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;, response_hook=report)
+            # Vis dokumentets ID og tekst.
+            print(result[&quot;id&quot;], result[&quot;text&quot;])
+        # Lag en endring som change feed-triggeren kan observere.
+        elif args.mode == &quot;update&quot;:
+            # Les dokumentet før oppdateringen.
+            document = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;)
+            # Øk et synlig revisjonsnummer.
+            document[&quot;revision&quot;] = document.get(&quot;revision&quot;, 0) + 1
+            # Lagre den nye versjonen og vis skrivekostnaden.
+            container.upsert_item(document, response_hook=report)
+            # Bruk revisjonen til å kjenne igjen endringen i triggerloggen.
+            print(&quot;Updated note-1, revision&quot;, document[&quot;revision&quot;])
+        # Kjør vanlig SQL-søk eller vektorsøk.
+        else:
+            # Start med et metadatafilter.
+            sql = &quot;SELECT c.id, c.topic FROM c WHERE c.topic = @topic&quot;
+            # Send filterverdien som en parameter.
+            parameters = [{&quot;name&quot;: &quot;@topic&quot;, &quot;value&quot;: &quot;containers&quot;}]
+            # Bytt til rangering etter vektoravstand.
+            if args.mode == &quot;vector&quot;:
+                # Returner de to nærmeste treffene og deres avstand.
+                sql = (&quot;SELECT TOP 2 c.id, VectorDistance(c.embedding, @vector) AS distance &quot;
+                       # Behold emnefilteret og sorter de gjenværende dokumentene etter avstand.
+                       &quot;FROM c WHERE c.topic = @topic ORDER BY VectorDistance(c.embedding, @vector)&quot;)
+                # Bruk samme tredimensjonale spørsmålsvektor som i PostgreSQL-øvelsen.
+                parameters.append({&quot;name&quot;: &quot;@vector&quot;, &quot;value&quot;: [0.0, 1.0, 0.0]})
+            # Kjør den parameteriserte spørringen.
+            results = container.query_items(sql, parameters=parameters,
+                                            # Avgrens lesingen til containers-partisjonen og vis RU.
+                                            partition_key=&quot;containers&quot;, response_hook=report)
+            # Iterer resultatene fra SDK-et.
+            for result in results:
+                # Vis hvert treff i terminalen.
+                print(result)
+
+
+# Kjør bare når filen startes direkte.
+if __name__ == &quot;__main__&quot;:
+    # Start den valgte laboperasjonen.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json"><code>{
+  &quot;version&quot;: &quot;2.0&quot;,
+  &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
+}
+</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd><dt><code>extensionBundle.id</code></dt><dd>La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.</dd><dt><code>extensionBundle.version</code></dt><dd>Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.</dd></dl></details>
+
+<details class="source-file" id="fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING&quot;,
+    &quot;CosmosConnection&quot;: &quot;REPLACE_WITH_LAB_COSMOS_CONNECTION_STRING&quot;,
+    &quot;COSMOS_DATABASE&quot;: &quot;workshop&quot;
+  }
+}
+</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd><dt><code>Values.CosmosConnection</code></dt><dd>Labtilkoblingen som Cosmos-triggeren refererer til med connection-navnet.</dd><dt><code>Values.COSMOS_DATABASE</code></dt><dd>Databasenavnet som settes inn i triggerens %COSMOS_DATABASE%-uttrykk.</dd></dl></details>
+
+<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+azure-cosmos&gt;=4.9,&lt;5
+# Functions-typer og dekoratorer for change feed-triggeren.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-cosmos-funcignore" data-source-file="labs/cosmos/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/.funcignore</code></p><pre data-language="Tekst" data-source="labs/cosmos/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Klientskriptet kjøres lokalt og er ikke en serverfunksjon.
+demo.py
+</code></pre></details>
 </section>
       <section class="panel" id="endring"><h2>1. Observer nye endringer</h2>
-<p>Ha COSMOS_ENDPOINT, COSMOS_KEY og COSMOS_DATABASE satt i en annen, aktivert terminal i prosjektroten. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <a href="./labs/cosmos/function_app.py">cosmos_db_trigger</a>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+<p>Ha COSMOS_ENDPOINT, COSMOS_KEY og COSMOS_DATABASE satt i en annen, aktivert terminal i prosjektroten. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+
+<details class="source-file" id="fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
+# Send meldinger til Functions-hostens logg.
+import logging
+# Hent FunctionApp og dokumenttypene for Python-bindingene.
+import azure.functions as func
+
+# Opprett appen som Functions-hosten oppdager.
+app = func.FunctionApp()
+
+
+# Send endrede dokumenter til documents-argumentet.
+# Databasenavnet hentes fra appinnstillingen COSMOS_DATABASE.
+@app.cosmos_db_trigger(arg_name=&quot;documents&quot;, database_name=&quot;%COSMOS_DATABASE%&quot;,
+                      # Overvåk notes med tilkoblingen fra CosmosConnection-innstillingen.
+                      container_name=&quot;notes&quot;, connection=&quot;CosmosConnection&quot;,
+                      # Lagre fremdrift i leases; opprett lease-containeren hvis den mangler.
+                      lease_container_name=&quot;leases&quot;, create_lease_container_if_not_exists=True)
+# En triggerkjøring kan inneholde en samling endrede dokumenter.
+def changed(documents: func.DocumentList):
+    # Behandle hvert dokument i leveransen.
+    for document in documents:
+        # Logg ID og revisjon slik at du kan sammenligne med oppdateringsskriptet.
+        logging.info(&quot;changed id=%s revision=%s&quot;, document[&quot;id&quot;], document.get(&quot;revision&quot;, 0))
+</code></pre></details>
 </section>
       <section class="panel" id="checkpoint"><h2>2. Restart og undersøk leases</h2>
 <p>Finn leases i databasen. Stopp Functions-host, oppdater note-1 to ganger, og start host-en igjen. Observer at behandlingen fortsetter fra checkpoint. Sammenlign siste endringsversjon med applikasjonens behov: standard latest-version feed er ikke en komplett historikk over alle mellomliggende tilstander eller slettinger.</p><label class="check-item"><input type="checkbox" data-check="w11-checkpoint"><span>Jeg har undersøkt checkpoints og forklart hvorfor en restart ikke krever full omlasting.</span></label>

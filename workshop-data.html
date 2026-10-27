@@ -36,7 +36,43 @@
     <article class="content">
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Docker må kjøre. Bruk <a href="./labs/data/setup.sql">setup.sql</a> som ferdig datasett. Bruk arbeidskopien i <code>artifacts/labs/data/</code>, og lagre egne spørringer som <code>queries.sql</code> der. Vektorene er små undervisningstall; øvelsen undersøker lagring, avstand og gjenfinning.</p>
+<p>Docker må kjøre. Bruk <code>setup.sql</code> som ferdig datasett. Bruk arbeidskopien i <code>artifacts/labs/data/</code>, og lagre egne spørringer som <code>queries.sql</code> der. Vektorene er små undervisningstall; øvelsen undersøker lagring, avstand og gjenfinning.</p>
+
+<details class="source-file" id="fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Opprett labtabellen hvis den ikke finnes fra før.
+CREATE TABLE IF NOT EXISTS workshop_notes (
+    -- Gi hver rad en entydig identifikator.
+    id integer PRIMARY KEY,
+    -- Bruk topic som metadatafilter i søkene.
+    topic text NOT NULL,
+    -- Lagre teksten som et senere RAG-steg kan hente frem.
+    content text NOT NULL,
+    -- Lagre nøyaktig tre komponenter per undervisningsvektor.
+    embedding vector(3) NOT NULL
+);
+
+-- Hand-written teaching vectors, not output from an embedding model.
+-- Sett inn fire eksempler. Vektorene er skrevet for hånd, ikke generert av en modell.
+INSERT INTO workshop_notes (id, topic, content, embedding) VALUES
+    -- Første containerdokument peker langs første vektordimensjon.
+    (1, &#x27;containers&#x27;, &#x27;A container packages an application and its dependencies.&#x27;, &#x27;[1,0,0]&#x27;),
+    -- Andre containerdokument ligger nær det første i vektorrommet.
+    (2, &#x27;containers&#x27;, &#x27;Read container logs when an application fails to start.&#x27;, &#x27;[0.9,0.1,0]&#x27;),
+    -- Datadokumentet ligger nær spørsmålsvektoren, men kan filtreres bort av topic.
+    (3, &#x27;data&#x27;, &#x27;A database stores and retrieves application data.&#x27;, &#x27;[0,1,0]&#x27;),
+    -- Sikkerhetsdokumentet gir oss et eksempel i et annet emne.
+    (4, &#x27;security&#x27;, &#x27;Managed identity removes the need to store a credential.&#x27;, &#x27;[0,0,1]&#x27;)
+-- Oppdater eksisterende rader når skriptet kjøres på nytt.
+ON CONFLICT (id) DO UPDATE SET
+    -- Bruk emnet fra raden vi forsøkte å sette inn.
+    topic = EXCLUDED.topic,
+    -- Oppdater teksten til verdien i eksempeldatasettet.
+    content = EXCLUDED.content,
+    -- Oppdater også vektoren, og avslutt SQL-setningen.
+    embedding = EXCLUDED.embedding;
+</code></pre></details>
 </section>
       <section class="panel" id="postgres"><h2>1. Start database og schema</h2>
 <pre data-language="PowerShell"><code>docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17

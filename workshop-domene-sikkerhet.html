@@ -18,7 +18,7 @@
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
     <article class="content" data-domain-workshop>
       <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend><label><input type="radio" name="domain-session" value="all" checked><span>Én samlet økt<small>Alle 4 deler</small></span></label><label><input type="radio" name="domain-session" value="1"><span>Samling 1<small>Del 19–20</small></span></label><label><input type="radio" name="domain-session" value="2"><span>Samling 2<small>Del 21–22</small></span></label></fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-4">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody><tr><th scope="row">Samling 1: Hemmeligheter og appkonfigurasjon</th><td><a href="#module-19" aria-label="Del 19: Key Vault: oppslag, identitet og rotasjon">Del 19</a> · <a href="#module-20" aria-label="Del 20: Les appkonfigurasjon med etiketter">Del 20</a></td></tr><tr><th scope="row">Samling 2: Distribuert sporing og KQL</th><td><a href="#module-21" aria-label="Del 21: Spor et kall mellom to tjenester">Del 21</a> · <a href="#module-22" aria-label="Del 22: Finn feil og målinger med KQL">Del 22</a></td></tr></tbody></table></div></section>
-      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a> før første workshop.</p><p>Start hver del med en PowerShell-terminal i prosjektmappen. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>, som er ignorert av Git. Kodelenkene viser malene i <code>labs/</code>.</p><p>Aktiver <a href="./getting-started.html#intellij">prosjektets Python-miljø</a> før Python-øvelsene:</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1</code></pre><p data-domain-session-note data-session="1">Samling 1: Function App fra workshop 14, Key Vault, App Configuration, Azure CLI og relevante dataroller.</p><p data-domain-session-note data-session="2">Samling 2: Prosjektets Python-miljø og en Application Insights-ressurs med tilknyttet workspace. Function App, Key Vault og App Configuration trengs ikke til sporings- og KQL-delene.</p></section>
+      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a> før første workshop.</p><p>Start hver del med en PowerShell-terminal i prosjektmappen. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>, som er ignorert av Git. Åpne filpanelene i delene for å lese de kommenterte malene.</p><p>Aktiver <a href="./getting-started.html#intellij">prosjektets Python-miljø</a> før Python-øvelsene:</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1</code></pre><p data-domain-session-note data-session="1">Samling 1: Function App fra workshop 14, Key Vault, App Configuration, Azure CLI og relevante dataroller.</p><p data-domain-session-note data-session="2">Samling 2: Prosjektets Python-miljø og en Application Insights-ressurs med tilknyttet workspace. Function App, Key Vault og App Configuration trengs ikke til sporings- og KQL-delene.</p></section>
       <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Ressursplanen under gjelder denne samlede gjennomføringen. Ryddingen i delene er tilpasset overgangen til neste del. Slett bare dedikerte labressurser; en gruppe som også inneholder ressurser til senere deler må beholdes eller ryddes ressurs for ressurs.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody><tr><th scope="row">Function App og Key Vault</th><td>Del 19</td><td>Når Key Vault-øvelsen er avsluttet</td></tr><tr><th scope="row">App Configuration</th><td>Del 20</td><td>Etter del 20</td></tr><tr><th scope="row">To lokale tjenester og Application Insights</th><td>Del 21–22</td><td>Etter KQL-øvelsen; behold telemetrien mellom delene</td></tr></tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Hvis du ikke vil beholde ressurser mellom samlingene, noter oppsettet og klargjør dem på nytt før neste samling.</p></section>
       <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p><details class="panel domain-chapter" id="module-19" data-domain-chapter data-session="1" open>
 <summary><span class="chapter-number">Del 19</span><h3>Key Vault: oppslag, identitet og rotasjon</h3></summary>
@@ -27,7 +27,79 @@
 python -m pip install -r artifacts/labs/security/requirements.txt
 az login
 $env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
-</section><section class="chapter-step" id="w19-oppslag"><h4>1. Opprett og les en testhemmelighet</h4><p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <a href="./labs/security/read_settings.py">Skriptet</a> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag" data-progress-source="./workshop-security.html"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
+
+<details class="source-file" id="w19-fil-labs-security-requirements-txt" data-source-file="labs/security/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/security/requirements.txt"><code># API for sporingskontekst og spans.
+opentelemetry-api&gt;=1.28,&lt;2
+# Lokalt SDK for behandling og eksport av telemetri.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Entra-autentisering med DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# Klienten for Key Vault-hemmeligheter.
+azure-keyvault-secrets&gt;=4.9,&lt;5
+# Klienten for vanlige App Configuration-verdier.
+azure-appconfiguration&gt;=1.7,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="w19-fil-labs-security-gitignore" data-source-file="labs/security/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/.gitignore</code></p><pre data-language="Tekst" data-source="labs/security/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+</code></pre></details>
+</section><section class="chapter-step" id="w19-oppslag"><h4>1. Opprett og les en testhemmelighet</h4><p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <code>read_settings.py</code> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag" data-progress-source="./workshop-security.html"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
+
+<details class="source-file" id="w19-fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
+
+# Velg Key Vault-hemmelighet eller vanlig appkonfigurasjon.
+import argparse
+# Les tjenestenes endpoint fra miljøet.
+import os
+
+# Les nøkkel-/etikettverdier fra App Configuration.
+from azure.appconfiguration import AzureAppConfigurationClient
+# Bruk Entra-identitet, for eksempel Azure CLI-innlogging på egen maskin.
+from azure.identity import DefaultAzureCredential
+# Les hemmeligheter gjennom Key Vaults data-API.
+from azure.keyvault.secrets import SecretClient
+
+# Kjør ett oppslag mot den valgte tjenesten.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de to oppslagstypene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;secret&quot;, &quot;config&quot;])
+    # Les valgt oppslagstype.
+    args = parser.parse_args()
+    # Gjenbruk samme identitetsoppsett for begge tjenester.
+    with DefaultAzureCredential() as credential:
+        # Key Vault-operasjonen krever tilgang til hemmelighetens verdi.
+        if args.mode == &quot;secret&quot;:
+            # Åpne klienten for ditt labhvelv.
+            with SecretClient(vault_url=os.environ[&quot;KEY_VAULT_URL&quot;], credential=credential) as vault:
+                # Les gjeldende versjon av demo-secret.
+                secret = vault.get_secret(&quot;demo-secret&quot;)
+                # Vis bare at verdien ble lest, aldri selve hemmeligheten.
+                print(&quot;Secret read successfully:&quot;, bool(secret.value))
+                # Bruk versjons-ID til å observere rotasjon.
+                print(&quot;Secret version:&quot;, secret.properties.version)
+            # Avslutt etter Key Vault-oppslaget.
+            return
+        # Åpne klienten for vanlig konfigurasjon.
+        with AzureAppConfigurationClient(
+            # Bruk App Configuration-endpoint og den samme Entra-identiteten.
+            base_url=os.environ[&quot;APP_CONFIG_ENDPOINT&quot;], credential=credential
+        # Lukk konfigurasjonsklienten etter bruk.
+        ) as config:
+            # Les akkurat nøkkelen og miljøetiketten som ble opprettet i portalen.
+            setting = config.get_configuration_setting(key=&quot;Workshop:Mode&quot;, label=&quot;lab&quot;)
+            # Vis den vanlige konfigurasjonsverdien i terminalen.
+            print(&quot;Workshop mode:&quot;, setting.value)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt konfigurasjonsoppslag.
+    main()
+</code></pre></details>
 </section><section class="chapter-step" id="w19-rotasjon"><h4>2. Roter ved å opprette ny versjon</h4><p>Legg til ny versjon av demo-secret med verdien workshop-only-v2. Kjør oppslaget igjen og sammenlign versjons-ID. Undersøk forskjellen på en versjonsbundet og en versjonsløs URI. Beskriv hvordan en app som cacher verdien må få den oppdatert.</p><label class="check-item"><input type="checkbox" data-check="w19-rotasjon" data-progress-source="./workshop-security.html"><span>Jeg har rotert hemmeligheten og verifisert hvilken versjon som leses.</span></label>
 </section><section class="chapter-step" id="w19-identity"><h4>3. Gi appen egen tilgang</h4><ol><li>Aktiver system-assigned identity på Function App-en.</li><li>Gi appidentiteten Key Vault Secrets User på labhvelvet.</li><li>Legg app setting DEMO_SECRET til Function App-en med referansen under. Lagre og kontroller referansestatus.</li><li>Kall configuration-funksjonen med Get Function URL. Forventet: secret_configured=true.</li></ol><pre data-language="Text"><code>@Microsoft.KeyVault(SecretUri=https://DITT-HVELV.vault.azure.net/secrets/demo-secret/)</code></pre><p>Plattformen løser referansen. Koden leser miljøvariabelen. Oppdateringer kan være forsinket av referansens cache; følg dokumentert refresh eller endre appkonfigurasjonen hvis du skal teste ny henting.</p><label class="check-item"><input type="checkbox" data-check="w19-identity" data-progress-source="./workshop-security.html"><span>Appen bruker egen identitet til å lese hemmeligheten.</span></label>
 </section><section class="chapter-step" id="w19-opprydding"><h4>Rydding og overgang til neste del</h4><p>Fjern appens DEMO_SECRET-setting og rydd labhvelv/Function App når de er ferdig brukt. App Configuration-øvelsen i neste del trenger ikke Key Vault-oppslaget.</p></section>
@@ -35,6 +107,72 @@ $env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
 <summary><span class="chapter-number">Del 20</span><h3>Les appkonfigurasjon med etiketter</h3></summary>
 <p class="small"><a href="./workshop-app-configuration.html">Åpne som kort workshop →</a></p>
 <section class="chapter-step" id="w20-forberedelser"><h4>Før du starter</h4><p>Opprett en App Configuration-labressurs, for eksempel Free hvis tilgjengelig. Gi deg selv App Configuration Data Owner for å legge inn verdier. Bruk prosjektets .venv og <code>artifacts/labs/security/requirements.txt</code>. Innstillingene skal være vanlig konfigurasjon; hemmeligheter hører til i Key Vault.</p>
+
+<details class="source-file" id="w20-fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
+
+# Velg Key Vault-hemmelighet eller vanlig appkonfigurasjon.
+import argparse
+# Les tjenestenes endpoint fra miljøet.
+import os
+
+# Les nøkkel-/etikettverdier fra App Configuration.
+from azure.appconfiguration import AzureAppConfigurationClient
+# Bruk Entra-identitet, for eksempel Azure CLI-innlogging på egen maskin.
+from azure.identity import DefaultAzureCredential
+# Les hemmeligheter gjennom Key Vaults data-API.
+from azure.keyvault.secrets import SecretClient
+
+# Kjør ett oppslag mot den valgte tjenesten.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de to oppslagstypene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;secret&quot;, &quot;config&quot;])
+    # Les valgt oppslagstype.
+    args = parser.parse_args()
+    # Gjenbruk samme identitetsoppsett for begge tjenester.
+    with DefaultAzureCredential() as credential:
+        # Key Vault-operasjonen krever tilgang til hemmelighetens verdi.
+        if args.mode == &quot;secret&quot;:
+            # Åpne klienten for ditt labhvelv.
+            with SecretClient(vault_url=os.environ[&quot;KEY_VAULT_URL&quot;], credential=credential) as vault:
+                # Les gjeldende versjon av demo-secret.
+                secret = vault.get_secret(&quot;demo-secret&quot;)
+                # Vis bare at verdien ble lest, aldri selve hemmeligheten.
+                print(&quot;Secret read successfully:&quot;, bool(secret.value))
+                # Bruk versjons-ID til å observere rotasjon.
+                print(&quot;Secret version:&quot;, secret.properties.version)
+            # Avslutt etter Key Vault-oppslaget.
+            return
+        # Åpne klienten for vanlig konfigurasjon.
+        with AzureAppConfigurationClient(
+            # Bruk App Configuration-endpoint og den samme Entra-identiteten.
+            base_url=os.environ[&quot;APP_CONFIG_ENDPOINT&quot;], credential=credential
+        # Lukk konfigurasjonsklienten etter bruk.
+        ) as config:
+            # Les akkurat nøkkelen og miljøetiketten som ble opprettet i portalen.
+            setting = config.get_configuration_setting(key=&quot;Workshop:Mode&quot;, label=&quot;lab&quot;)
+            # Vis den vanlige konfigurasjonsverdien i terminalen.
+            print(&quot;Workshop mode:&quot;, setting.value)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt konfigurasjonsoppslag.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="w20-fil-labs-security-requirements-txt" data-source-file="labs/security/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/security/requirements.txt"><code># API for sporingskontekst og spans.
+opentelemetry-api&gt;=1.28,&lt;2
+# Lokalt SDK for behandling og eksport av telemetri.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Entra-autentisering med DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# Klienten for Key Vault-hemmeligheter.
+azure-keyvault-secrets&gt;=4.9,&lt;5
+# Klienten for vanlige App Configuration-verdier.
+azure-appconfiguration&gt;=1.7,&lt;2
+</code></pre></details>
 </section><section class="chapter-step" id="w20-lagre"><h4>1. Lag to verdier med etiketter</h4><p>I Configuration explorer: opprett nøkkel <code>Workshop:Mode</code>, label <code>lab</code>, verdi <code>practice</code>. Legg samme nøkkel med label <code>test</code> og verdi <code>review</code>. Finn endpoint på Overview.</p><label class="check-item"><input type="checkbox" data-check="w20-lagre" data-progress-source="./workshop-app-configuration.html"><span>Jeg har lagret samme nøkkel for to miljøer.</span></label>
 </section><section class="chapter-step" id="w20-hent"><h4>2. Les med SDK</h4><pre data-language="PowerShell"><code>$env:APP_CONFIG_ENDPOINT = "https://DITT-NAVN.azconfig.io"
 python artifacts/labs/security/read_settings.py config</code></pre><p>Forventet: Workshop mode: practice. Finn label=lab i koden. Endre label til test i arbeidskopien og kontroller review. For en driftet app som bare leser, holder Data Reader.</p><label class="check-item"><input type="checkbox" data-check="w20-hent" data-progress-source="./workshop-app-configuration.html"><span>Jeg har lest en bestemt nøkkel og etikett fra kode.</span></label>
@@ -44,7 +182,217 @@ python artifacts/labs/security/read_settings.py config</code></pre><p>Forventet:
 <summary><span class="chapter-number">Del 21</span><h3>Spor et kall mellom to tjenester</h3></summary>
 <p class="small"><a href="./workshop-tracing.html">Åpne som kort workshop →</a></p>
 <section class="chapter-step" id="w21-forberedelser"><h4>Før du starter</h4><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r artifacts/labs/observability/requirements.txt</code></pre><p><a href="./labs/observability/services.py">services.py</a> kjører enten frontend på 8091 eller backend på 8092. Start dem i to terminaler, begge fra prosjektroten. Uten connection string eksporteres spans til konsollen.</p>
+python -m pip install -r artifacts/labs/observability/requirements.txt</code></pre><p><code>services.py</code> kjører enten frontend på 8091 eller backend på 8092. Start dem i to terminaler, begge fra prosjektroten. Uten connection string eksporteres spans til konsollen.</p>
+
+<details class="source-file" id="w21-fil-labs-observability-services-py" data-source-file="labs/observability/services.py"><summary><code>services.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/observability/services.py</code></p><pre data-language="Python" data-source="labs/observability/services.py"><code>&quot;&quot;&quot;Two separate HTTP services with explicit W3C context propagation and metrics.&quot;&quot;&quot;
+# Velg frontend eller backend og eventuelle lokale porter.
+import argparse
+# Bygg HTTP-responsen med trace-ID som JSON.
+import json
+# Skriv rolle, trace-ID og status til konsollen.
+import logging
+# Les Azure Monitor-tilkoblingen fra miljøet.
+import os
+# Mål svartid og lag en kontrollert forsinkelse.
+import time
+# Importer HTTP-feiltypene som hører til nettverksklienten.
+import urllib.error
+# La frontend gjøre et faktisk HTTP-kall til backend.
+import urllib.request
+# Kjør to små HTTP-servere i separate prosesser.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Les delay og fail fra URL-ens spørringsparametere.
+from urllib.parse import parse_qs, urlsplit
+
+# Hent API-ene for målinger, sporingskontekst og spans.
+from opentelemetry import metrics, propagate, trace
+# Konfigurer hvor målinger samles og eksporteres.
+from opentelemetry.sdk.metrics import MeterProvider
+# Eksporter aggregerte målinger med et fast intervall.
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+# Gi telemetrien et tjenestenavn som skiller prosessene.
+from opentelemetry.sdk.resources import Resource
+# Konfigurer sporings-SDK-et.
+from opentelemetry.sdk.trace import TracerProvider
+# Velg købasert Azure-eksport eller direkte konsollutskrift.
+from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor
+# Merk klient-/serverspans og feilstatus eksplisitt.
+from opentelemetry.trace import SpanKind, Status, StatusCode
+
+
+# Klargjør samme telemetrioppsett for hver av de to prosessene.
+def setup(role):
+    # Skill ai200-frontend fra ai200-backend i Azure og konsollen.
+    resource = Resource.create({&quot;service.name&quot;: &quot;ai200-&quot; + role})
+    # Opprett sporingsleverandøren med tjenestens identitet.
+    provider = TracerProvider(resource=resource)
+    # Uten Azure-tilkobling opprettes ingen metrikkeksportør.
+    readers = []
+    # La miljøvariabelen velge om telemetrien skal sendes til Azure.
+    connection = os.getenv(&quot;APPLICATIONINSIGHTS_CONNECTION_STRING&quot;)
+    # Bruk Azure Monitor når en connection string er konfigurert.
+    if connection:
+        # Hent eksportørene for både målinger og spans.
+        from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter, AzureMonitorTraceExporter
+        # Send spans i bakgrunnen i samlinger.
+        provider.add_span_processor(BatchSpanProcessor(AzureMonitorTraceExporter(connection_string=connection)))
+        # Koble en periodisk leser til måleeksportøren.
+        readers.append(PeriodicExportingMetricReader(
+            # Bruk samme Azure-ressurs og eksporter målinger hvert tiende sekund.
+            AzureMonitorMetricExporter(connection_string=connection), export_interval_millis=10000))
+    # Bruk konsollen når Azure-tilkoblingen mangler.
+    else:
+        # Skriv hver avsluttet span til konsollen for lokal inspeksjon.
+        provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
+    # Gjør dette sporingsoppsettet aktivt i prosessen.
+    trace.set_tracer_provider(provider)
+    # La målingene bruke samme tjenestenavn som sporingen.
+    meter_provider = MeterProvider(resource=resource, metric_readers=readers)
+    # Gjør måleoppsettet aktivt i prosessen.
+    metrics.set_meter_provider(meter_provider)
+    # Behold leverandørene slik at de kan flushes ved avslutning.
+    return provider, meter_provider
+
+
+# Start én av tjenestene fra kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Velg hvilken tjeneste denne prosessen skal være.
+    parser.add_argument(&quot;role&quot;, choices=[&quot;frontend&quot;, &quot;backend&quot;])
+    # Tillat en annen lokal port, blant annet i testene.
+    parser.add_argument(&quot;--port&quot;, type=int)
+    # La frontend vite hvilken backend-adresse den skal kalle.
+    parser.add_argument(&quot;--backend-url&quot;, default=&quot;http://127.0.0.1:8092/lookup&quot;)
+    # Les rolle og nettverksvalg.
+    args = parser.parse_args()
+    # Vis INFO-meldinger som inneholder sporingsbevis.
+    logging.basicConfig(level=logging.INFO)
+    # Klargjør eksport før serveren tar imot kall.
+    provider, meter_provider = setup(args.role)
+    # Opprett traceren som lager labens spans.
+    tracer = trace.get_tracer(&quot;ai200.network&quot;)
+    # Opprett instrumentene for labens målinger.
+    meter = metrics.get_meter(&quot;ai200.network&quot;)
+    # Tell forespørsler per status.
+    requests = meter.create_counter(&quot;workshop.requests&quot;)
+    # Samle svartid i millisekunder.
+    duration = meter.create_histogram(&quot;workshop.duration&quot;, unit=&quot;ms&quot;)
+
+    # Definer hvordan denne tjenesten håndterer HTTP-kall.
+    class Handler(BaseHTTPRequestHandler):
+        # Behandle én GET-forespørsel.
+        def do_GET(self):
+            # Start målingen av hele forespørselen.
+            started = time.perf_counter()
+            # Skill URL-sti fra spørringsparametere.
+            parsed = urlsplit(self.path)
+            # Les parameterne som styrer forsinkelse og kontrollert feil.
+            query = parse_qs(parsed.query)
+            # Anta et vellykket kall frem til en feil oppstår.
+            status = 200
+            # Start en serverspan for den innkommende forespørselen.
+            with tracer.start_as_current_span(args.role, kind=SpanKind.SERVER,
+                                             # Les sporingskontekst fra HTTP-headerne så backend kan fortsette samme trace.
+                                             context=propagate.extract({key.lower(): value for key, value in self.headers.items()})) as span:
+                # La kontrollerte nettverks- og backend-feil gi HTTP 500.
+                try:
+                    # Frontend videresender arbeidet til en annen prosess.
+                    if args.role == &quot;frontend&quot;:
+                        # Legg en klientspan under frontendens serverspan.
+                        with tracer.start_as_current_span(&quot;call-backend&quot;, kind=SpanKind.CLIENT):
+                            # Lag headerne som skal følge det utgående kallet.
+                            headers = {}
+                            # Legg aktiv trace-kontekst i headerne før HTTP-kallet.
+                            propagate.inject(headers)
+                            # Send de samme delay-/fail-parameterne videre.
+                            url = args.backend_url + &quot;?&quot; + parsed.query
+                            # Gjør et ekte nettverkskall med sporingsheaderne.
+                            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=10) as response:
+                                # Les svaret ferdig før klientspannen avsluttes.
+                                response.read()
+                    # Backend utfører det simulerte oppslaget.
+                    else:
+                        # Avgrens den valgte forsinkelsen til mellom null og ett sekund.
+                        time.sleep(min(max(float(query.get(&quot;delay&quot;, [&quot;0.02&quot;])[0]), 0), 1))
+                        # Bruk fail=1 til å slå på en kjent feil.
+                        if query.get(&quot;fail&quot;, [&quot;0&quot;])[0] == &quot;1&quot;:
+                            # La feilen bli synlig både i backend og i klientkallet fra frontend.
+                            raise RuntimeError(&quot;Controlled backend failure&quot;)
+                # Fang feilen for å sende et kontrollert HTTP-svar.
+                except Exception as error:
+                    # Merk HTTP-svaret som en serverfeil.
+                    status = 500
+                    # Legg unntaket inn som en hendelse på spannen.
+                    span.record_exception(error)
+                    # Merk spannen som mislykket.
+                    span.set_status(Status(StatusCode.ERROR, str(error)))
+                # Ta med HTTP-statusen som span-attributt.
+                span.set_attribute(&quot;http.response.status_code&quot;, status)
+                # Gjør tjenestens rolle synlig på spannen.
+                span.set_attribute(&quot;workshop.role&quot;, args.role)
+                # Formater trace-ID slik at du kan sammenligne den mellom prosessene.
+                trace_id = format(span.get_span_context().trace_id, &quot;032x&quot;)
+                # Send rolle, trace-ID og resultat til klienten.
+                body = json.dumps({&quot;role&quot;: args.role, &quot;trace_id&quot;: trace_id, &quot;status&quot;: status}).encode()
+                # Start HTTP-svaret med resultatstatusen.
+                self.send_response(status)
+                # Oppgi at innholdet er JSON.
+                self.send_header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+                # Oppgi svarlengden i byte.
+                self.send_header(&quot;Content-Length&quot;, str(len(body)))
+                # Avslutt headerne før body sendes.
+                self.end_headers()
+                # Skriv svarinnholdet til klienten.
+                self.wfile.write(body)
+                # Vis samme trace-ID i begge tjenestenes logger.
+                logging.info(&quot;role=%s trace_id=%s status=%s&quot;, args.role, trace_id, status)
+            # Skill målingene etter HTTP-status.
+            attributes = {&quot;status&quot;: str(status)}
+            # Tell denne forespørselen.
+            requests.add(1, attributes)
+            # Registrer hele forespørselens varighet i millisekunder.
+            duration.record((time.perf_counter() - started) * 1000, attributes)
+
+    # Bruk forskjellige standardporter for de to prosessene.
+    port = args.port or (8091 if args.role == &quot;frontend&quot; else 8092)
+    # Lytt bare lokalt på maskinen.
+    server = ThreadingHTTPServer((&quot;127.0.0.1&quot;, port), Handler)
+    # La tjenesten kjøre frem til den stoppes.
+    try:
+        # Ta imot og behandle HTTP-kall.
+        server.serve_forever()
+    # Håndter Ctrl+C som en vanlig avslutning.
+    except KeyboardInterrupt:
+        # Fortsett til oppryddingen under.
+        pass
+    # Lukk serveren og tøm eksportkøene også ved avbrudd.
+    finally:
+        # Frigi lytteporten.
+        server.server_close()
+        # Forsøk å sende gjenværende spans før prosessen avsluttes.
+        provider.force_flush()
+        # Forsøk å sende gjenværende målinger.
+        meter_provider.force_flush()
+        # Stopp sporingsleverandøren.
+        provider.shutdown()
+        # Stopp måleleverandøren.
+        meter_provider.shutdown()
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør tjenesten med valgt rolle.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="w21-fil-labs-observability-requirements-txt" data-source-file="labs/observability/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/observability/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/observability/requirements.txt"><code># API-er for spans, kontekstpropagering og målinger.
+opentelemetry-api&gt;=1.28,&lt;2
+# Leverandører, prosessorer og konsolleksport for telemetrien.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Eksport av spans og målinger til Azure Monitor.
+azure-monitor-opentelemetry-exporter&gt;=1.0.0b30,&lt;2
+</code></pre></details>
 </section><section class="chapter-step" id="w21-kjore"><h4>1. Start to tjenester</h4><pre data-language="PowerShell"><code>python artifacts/labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code>python artifacts/labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore" data-progress-source="./workshop-tracing.html"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>
 </section><section class="chapter-step" id="w21-kontekst"><h4>2. Følg foreldre og kontekst</h4><p>Finn SERVER-spannet i frontend, CLIENT-spannet call-backend og SERVER-spannet i backend. Trace-ID er felles; span-ID-ene er ulike og ParentId kobler dem. Finn inject på senderen og extract på mottakeren. Fjern inject i arbeidskopien, restart frontend og sammenlign. Sett den tilbake etter testen.</p><label class="check-item"><input type="checkbox" data-check="w21-kontekst" data-progress-source="./workshop-tracing.html"><span>Jeg kan forklare hvordan traceparent binder de to tjenestene sammen.</span></label>
 </section><section class="chapter-step" id="w21-feil"><h4>3. Finn treghet og feil</h4><pre data-language="PowerShell"><code>Invoke-RestMethod "http://localhost:8091/process?delay=0.4"

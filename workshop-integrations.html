@@ -43,10 +43,164 @@ if (-not (Test-Path artifacts/labs/integrations/local.settings.json)) {
 }
 Set-Location artifacts/labs/integrations
 func start</code></pre>
+
+<details class="source-file" id="fil-labs-integrations-host-json" data-source-file="labs/integrations/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/host.json</code></p><pre data-language="JSON" data-source="labs/integrations/host.json"><code>{
+  &quot;version&quot;: &quot;2.0&quot;
+}
+</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd></dl></details>
+
+<details class="source-file" id="fil-labs-integrations-local-settings-example-json" data-source-file="labs/integrations/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/integrations/local.settings.example.json"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;&quot;
+  }
+}
+</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd></dl></details>
+
+<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-funcignore" data-source-file="labs/integrations/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/.funcignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.funcignore"><code># Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Git-reglene brukes lokalt, ikke av den publiserte appen.
+.gitignore
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-gitignore" data-source-file="labs/integrations/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/.gitignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke committes.
+local.settings.json
+</code></pre></details>
 </section>
       <section class="panel" id="function"><h2>1. Test en HTTP-trigger</h2>
 <p>La host-en kjøre. Send fra en ny PowerShell-terminal:</p><pre data-language="PowerShell"><code>$body = @{ id = "doc-001"; text = "Workshop" } | ConvertTo-Json
-Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body $body</code></pre><p>Forventet: processed=true første gang og false ved samme ID. Finn route, trigger og HTTP-respons i <a href="./labs/integrations/function_app.py">function_app.py</a>.</p><label class="check-item"><input type="checkbox" data-check="w14-function"><span>Jeg har kalt en HTTP-trigger og funnet svaret i loggen.</span></label>
+Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body $body</code></pre><p>Forventet: processed=true første gang og false ved samme ID. Finn route, trigger og HTTP-respons i <code>function_app.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w14-function"><span>Jeg har kalt en HTTP-trigger og funnet svaret i loggen.</span></label>
+
+<details class="source-file" id="fil-labs-integrations-function-app-py" data-source-file="labs/integrations/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/function_app.py</code></p><pre data-language="Python" data-source="labs/integrations/function_app.py"><code>&quot;&quot;&quot;Local workshop API. In-memory deduplication is deliberately not production storage.&quot;&quot;&quot;
+
+# Serialiser svarene som JSON.
+import json
+# Skriv hendelser og kontrollerte feil til Functions-loggen.
+import logging
+# Les appinnstillingene fra miljøet.
+import os
+# Beskytt det delte minnesettet mot samtidige forespørsler.
+import threading
+
+# Bruk Functions-dekoratorer og HTTP-typer.
+import azure.functions as func
+
+# Krev en Function-nøkkel på vanlige HTTP-ruter i Azure.
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+# Husk behandlede dokument-ID-er bare så lenge denne prosessen kjører.
+processed = set()
+# La kontroll og registrering av en ID skje samlet.
+processed_lock = threading.Lock()
+
+
+# Ta imot dokumenter på /api/documents.
+@app.route(route=&quot;documents&quot;, methods=[&quot;POST&quot;])
+# Valider dokumentet og demonstrer håndtering av samme ID flere ganger.
+def documents(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Forsøk å lese forespørselsinnholdet som JSON.
+    try:
+        # Konverter JSON-body til Python-data.
+        payload = req.get_json()
+    # Håndter innhold som ikke kan tolkes som JSON.
+    except ValueError:
+        # Svar med klientfeil for ugyldig JSON.
+        return func.HttpResponse(&quot;Body must be JSON&quot;, status_code=400)
+    # Krev et JSON-objekt, ikke for eksempel en liste.
+    if not isinstance(payload, dict):
+        # Forklar hvorfor datatypen ble avvist.
+        return func.HttpResponse(&quot;Body must be a JSON object&quot;, status_code=400)
+    # Hent dokument-ID-en som brukes til duplikatkontroll.
+    document_id = payload.get(&quot;id&quot;)
+    # Avvis manglende, tomme og ikke-tekstlige ID-er.
+    if not isinstance(document_id, str) or not document_id.strip():
+        # Send en tydelig valideringsfeil til klienten.
+        return func.HttpResponse(&quot;id must be a non-empty string&quot;, status_code=400)
+    # Unngå at to samtidige kall registrerer samme ID som ny.
+    with processed_lock:
+        # Kontroller om denne prosessen allerede har sett ID-en.
+        duplicate = document_id in processed
+        # Registrer ID-en før en annen tråd får tilgang.
+        processed.add(document_id)
+    # Gjør duplikathåndteringen synlig i loggen.
+    logging.info(&quot;document_received duplicate=%s&quot;, duplicate)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Vis om dette kallet ble behandlet som nytt.
+        json.dumps({&quot;id&quot;: document_id, &quot;processed&quot;: not duplicate}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# La Key Vault-øvelsen kontrollere om hemmeligheten ble levert til appen.
+@app.route(route=&quot;configuration&quot;, methods=[&quot;GET&quot;])
+# Rapporter bare status for konfigurasjonen.
+def configuration(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hemmeligheten som appinnstilling.
+    secret = os.getenv(&quot;DEMO_SECRET&quot;, &quot;&quot;)
+    # Skill en faktisk verdi fra en Key Vault-referanse som ikke er løst.
+    resolved = bool(secret) and not secret.startswith(&quot;@Microsoft.KeyVault(&quot;)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Send bare en boolsk status, aldri hemmelighetens verdi.
+        json.dumps({&quot;secret_configured&quot;: resolved}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# Gi labens Event Grid-webhook en HTTP-rute uten Function-nøkkel.
+@app.route(route=&quot;event-hook&quot;, methods=[&quot;POST&quot;], auth_level=func.AuthLevel.ANONYMOUS)
+# Håndter valideringshendelser og vanlige Event Grid-hendelser.
+def event_hook(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hendelseslisten i Event Grid Schema-format.
+    events = req.get_json()
+    # Krev en liste slik dette hendelsesskjemaet bruker.
+    if not isinstance(events, list):
+        # Avvis et annet meldingsformat.
+        return func.HttpResponse(&quot;Expected Event Grid Schema array&quot;, status_code=400)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Gjenkjenn håndtrykket som validerer webhook-abonnementet.
+        if event.get(&quot;eventType&quot;) == &quot;Microsoft.EventGrid.SubscriptionValidationEvent&quot;:
+            # Send valideringskoden tilbake i validationResponse.
+            return func.HttpResponse(json.dumps({&quot;validationResponse&quot;: event[&quot;data&quot;][&quot;validationCode&quot;]}),
+                                     # Svar med JSON slik valideringen forventer.
+                                     mimetype=&quot;application/json&quot;)
+    # Bruk en appinnstilling til å slå på en kontrollert leveringsfeil.
+    if os.getenv(&quot;FAIL_EVENTS&quot;, &quot;false&quot;).lower() == &quot;true&quot;:
+        # Gjør den fremprovoserte feilen synlig i loggen.
+        logging.warning(&quot;Controlled Event Grid delivery failure&quot;)
+        # Svar med 503 så Event Grid kan forsøke levering igjen.
+        return func.HttpResponse(&quot;Retry this delivery&quot;, status_code=503)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Vis hvilke hendelser som kom gjennom abonnementets filter.
+        logging.info(&quot;event id=%s subject=%s&quot;, event.get(&quot;id&quot;), event.get(&quot;subject&quot;))
+    # Bekreft vellykket mottak med HTTP 200.
+    return func.HttpResponse(&quot;Accepted&quot;)
+</code></pre></details>
 </section>
       <section class="panel" id="feil"><h2>2. Undersøk feil og restart</h2>
 <pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body '{}'</code></pre><p>Forventet HTTP 400. Restart host-en og send doc-001 igjen: minnesettet er tømt. Forklar hvorfor HTTP-triggeren ikke gjentar klientens kall, og hvorfor varig idempotens trenger mer enn prosessminne.</p><label class="check-item"><input type="checkbox" data-check="w14-feil"><span>Jeg har testet ugyldige data og funnet begrensningen i minnelagringen.</span></label>

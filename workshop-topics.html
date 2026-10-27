@@ -37,6 +37,94 @@
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <p>Bruk et Standard-namespace med samme SDK-oppsett og SERVICEBUS_NAMESPACE som i workshop 15. Opprett topic <code>document-events</code> og subscriptions <code>indexer</code> og <code>audit</code>. Begge starter med standardregelen som tar imot alt.</p>
+
+<details class="source-file" id="fil-labs-integrations-message-bus-py" data-source-file="labs/integrations/message_bus.py"><summary><code>message_bus.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/message_bus.py</code></p><pre data-language="Python" data-source="labs/integrations/message_bus.py"><code>&quot;&quot;&quot;Service Bus data-plane operations using the signed-in user&#x27;s identity.&quot;&quot;&quot;
+# Velg kø-, topic-, subscription- eller DLQ-operasjon.
+import argparse
+# Les Service Bus-navnet fra miljøet.
+import os
+
+# Bruk Entra-identitet, for eksempel den innloggede Azure CLI-brukeren.
+from azure.identity import DefaultAzureCredential
+# Hent klienten, meldingstypen og valget for dead-letter-køen.
+from azure.servicebus import ServiceBusClient, ServiceBusMessage, ServiceBusSubQueue
+
+
+# Kjør én operasjon mot labnamespace-et.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til dem som brukes i øvelsene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;send&quot;, &quot;receive&quot;, &quot;dlq&quot;, &quot;topic&quot;, &quot;subscription&quot;])
+    # Velg mottakende subscription; indexer er standard.
+    parser.add_argument(&quot;--subscription&quot;, default=&quot;indexer&quot;)
+    # Les valgene fra terminalen.
+    args = parser.parse_args()
+    # Opprett identitet og klient, og lukk dem etter operasjonen.
+    with DefaultAzureCredential() as credential, ServiceBusClient(
+            # Bruk namespace-adressen uten å lagre en tilkoblingsnøkkel i filen.
+            fully_qualified_namespace=os.environ[&quot;SERVICEBUS_NAMESPACE&quot;], credential=credential) as client:
+        # Disse operasjonene sender én ny melding.
+        if args.mode in {&quot;send&quot;, &quot;topic&quot;}:
+            # Send til topic-et når topic-operasjonen er valgt.
+            sender = (client.get_topic_sender(&quot;document-events&quot;) if args.mode == &quot;topic&quot;
+                      # Ellers sendes meldingen til documents-køen.
+                      else client.get_queue_sender(&quot;documents&quot;))
+            # Åpne senderen for denne sendingen.
+            with sender:
+                # Bruk en liten JSON-body som nyttelast.
+                sender.send_messages(ServiceBusMessage(&#x27;{&quot;id&quot;:&quot;doc-001&quot;}&#x27;,
+                                                       # Legg til subject og en egenskap som subscription-filtre kan bruke.
+                                                       subject=&quot;document&quot;, application_properties={&quot;kind&quot;: &quot;note&quot;}))
+            # Bekreft at SDK-sendingen er fullført.
+            print(&quot;Sent&quot;)
+        # De øvrige operasjonene mottar meldinger.
+        else:
+            # En topic-mottaker leser fra en bestemt subscription.
+            if args.mode == &quot;subscription&quot;:
+                # Velg indexer eller audit på document-events-topic-et.
+                receiver = client.get_subscription_receiver(&quot;document-events&quot;, args.subscription)
+            # Køøvelsen leser enten vanlig kø eller dens DLQ.
+            else:
+                # Opprett mottakeren for documents-køen.
+                receiver = client.get_queue_receiver(&quot;documents&quot;, sub_queue=(
+                    # Velg dead-letter-underkøen bare i dlq-modus.
+                    ServiceBusSubQueue.DEAD_LETTER if args.mode == &quot;dlq&quot; else None))
+            # Åpne mottakeren og lukk den etter bruk.
+            with receiver:
+                # Hent høyst ti meldinger og begrens ventingen til fem sekunder.
+                messages = receiver.receive_messages(max_message_count=10, max_wait_time=5)
+                # Vis hvor mange meldinger som ble hentet.
+                print(&quot;Received:&quot;, len(messages))
+                # Behandle hver mottatt melding.
+                for message in messages:
+                    # Vis body og antall leveringsforsøk.
+                    print(str(message), &quot;Delivery:&quot;, message.delivery_count)
+                    # Fremprovoser DLQ-flyten i den vanlige køøvelsen.
+                    if args.mode == &quot;receive&quot;:
+                        # Flytt meldingen til DLQ med en årsak du kan inspisere.
+                        receiver.dead_letter_message(message, reason=&quot;Workshop&quot;, error_description=&quot;Controlled demo&quot;)
+                    # Fullfør meldinger i DLQ- og subscription-øvelsene.
+                    else:
+                        # Bekreft behandling og fjern meldingen fra denne mottakerkøen.
+                        receiver.complete_message(message)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Service Bus-operasjon.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
 </section>
       <section class="panel" id="kopier"><h2>1. Test uavhengige kopier</h2>
 <pre data-language="PowerShell"><code>python artifacts/labs/integrations/message_bus.py topic

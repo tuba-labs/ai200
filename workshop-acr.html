@@ -44,16 +44,106 @@ az acr create --resource-group $rg --name $acr --location $location --sku Basic 
 az acr config authentication-as-arm update -r $acr --status enabled
 $login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
 az acr show --resource-group $rg --name $acr --query "{Name:name, LoginServer:loginServer, State:provisioningState, AdminEnabled:adminUserEnabled, RoleMode:roleAssignmentMode}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> registryet er <code>Succeeded</code>, AdminEnabled er <code>False</code> og tilgangsmodellen er <code>LegacyRegistryPermissions</code> (portalens <strong>RBAC Registry Permissions</strong>). Noter gruppenavn, registry-navn og LoginServer til del 3–6. Kjør opprettelsen én gang; ved ny terminal setter du <code>$rg</code> og <code>$acr</code> til navnene du noterte og henter <code>$login</code> på nytt.</p><p>Labben bruker bevisst RBAC Registry Permissions, der <code>AcrPull</code> gir lesetilgang. Bruker du et eksisterende registry med <strong>RBAC Registry + ABAC Repository Permissions</strong>, må repository-roller brukes i stedet; ikke endre tilgangsmodellen på et delt registry for å følge labben.</p><h3>Gi labbrukeren tilgang ved behov</h3><p>Hvis du har Owner eller Contributor på gruppen i denne RBAC-modellen, har du allerede tilgangen labben bruker til image-operasjoner og Tasks. Ved <code>AuthorizationFailed</code> kontrollerer eieren <strong>ACR → Access control (IAM)</strong> og kan gi deg <strong>AcrPush</strong>, <strong>Container Registry Tasks Contributor</strong> og <strong>Container Registry Configuration Reader and Data Access Configuration Reader</strong> på labregistryet. Rolletildeling kan bruke litt tid på å slå gjennom. Administratorinnlogging på registryet skal fortsatt være deaktivert.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/acr#az-acr-create">opprette ACR</a> og <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">tilgangsmodeller og roller</a>.</p>
+
+<details class="source-file" id="fil-labs-containers-dockerfile" data-source-file="labs/containers/Dockerfile"><summary><code>Dockerfile</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/containers/Dockerfile</code></p><pre data-language="Dockerfile" data-source="labs/containers/Dockerfile"><code># Bruk et ferdig Linux-image med Python 3.12.
+# slim-varianten har færre forhåndsinstallerte pakker enn standardimaget.
+FROM python:3.12-slim
+
+# Sett /app som arbeidsmappe i imaget. Mappen opprettes hvis den mangler.
+WORKDIR /app
+
+# Kopier app.py fra byggkonteksten til /app/app.py i imaget.
+COPY app.py .
+
+# Opprett brukeren appuser med UID 10001 under byggingen, uten hjemmemappe.
+RUN useradd --uid 10001 --no-create-home appuser
+
+# Kjør påfølgende instruksjoner og appens startkommando som UID 10001.
+# Appen kjører dermed uten root-rettigheter.
+USER 10001
+
+# Dokumenter at appen lytter på TCP-port 8080 inne i containeren.
+# Bruk docker run --publish for å gjøre porten tilgjengelig på verten.
+EXPOSE 8080
+
+# Start app.py med Python når containeren starter.
+# -u slår av bufring av stdout/stderr, slik at loggene kommer fortløpende.
+# Listeformen starter Python direkte, uten et mellomliggende shell.
+CMD [&quot;python&quot;, &quot;-u&quot;, &quot;app.py&quot;]
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-containers-app-py" data-source-file="labs/containers/app.py"><summary><code>app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/containers/app.py</code></p><pre data-language="Python" data-source="labs/containers/app.py"><code>&quot;&quot;&quot;Small, deliberately local workshop API; no external Python dependencies.&quot;&quot;&quot;
+# Gjør Python-data om til JSON i HTTP-svaret.
+import json
+# Les appkonfigurasjon fra miljøvariabler i containeren.
+import os
+# Bruk en liten HTTP-server og en handler for hver forespørsel.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Skill URL-stien fra eventuelle spørringsparametere.
+from urllib.parse import urlsplit
+
+
+# Samle behandlingen av HTTP-forespørsler i en handlerklasse.
+class Handler(BaseHTTPRequestHandler):
+    # HTTP-serveren kaller denne metoden for GET-forespørsler.
+    def do_GET(self):
+        # Hent bare stien, for eksempel /health.
+        path = urlsplit(self.path).path
+        # Helsesjekken gir 200; alle andre stier gir 404.
+        status = 200 if path == &quot;/health&quot; else 404
+        # Vis versjonen fra miljøet, med v1 som standard.
+        payload = {&quot;status&quot;: &quot;ok&quot;, &quot;version&quot;: os.getenv(&quot;APP_VERSION&quot;, &quot;v1&quot;),
+                   # Vis konfigurasjonen uten at vi trenger å bygge et nytt image.
+                   &quot;mode&quot;: os.getenv(&quot;WORKSHOP_MODE&quot;, &quot;practice&quot;),
+                   # Vis bare om en hemmelighet finnes. Selve verdien sendes aldri til klienten.
+                   # For andre stier brukes en enkel feilmelding i stedet.
+                   &quot;secret_configured&quot;: bool(os.getenv(&quot;DEMO_SECRET&quot;))} if status == 200 else {&quot;error&quot;: &quot;not found&quot;}
+        # Serialiser JSON og kod teksten som byte til nettverksforbindelsen.
+        body = json.dumps(payload).encode(&quot;utf-8&quot;)
+        # Start HTTP-svaret med statuskoden.
+        self.send_response(status)
+        # Fortell klienten at innholdet er JSON i UTF-8.
+        self.send_header(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+        # Oppgi lengden på svaret i byte.
+        self.send_header(&quot;Content-Length&quot;, str(len(body)))
+        # Avslutt headerne før selve innholdet sendes.
+        self.end_headers()
+        # Skriv JSON-innholdet til HTTP-svaret.
+        self.wfile.write(body)
+
+
+# Start serveren bare når filen kjøres som et program.
+if __name__ == &quot;__main__&quot;:
+    # Skriv en oppstartsmelding direkte til containerloggen.
+    print(&quot;Workshop API listening on port 8080&quot;, flush=True)
+    # Lytt på port 8080 på alle containerens nettverksgrensesnitt.
+    ThreadingHTTPServer((&quot;0.0.0.0&quot;, 8080), Handler).serve_forever()
+</code></pre></details>
 </section>
       <section class="panel" id="bygg"><h2>1. Bygg i ACR</h2>
 <pre data-language="PowerShell"><code>az acr build --registry $acr --image ai200-api:v1 artifacts/labs/containers
 az acr repository show-tags --name $acr --repository ai200-api --detail -o table</code></pre><p>Bygget og lagringen skjer i Azure. Finn tagg og digest. En gjenbrukt tagg kan peke på nytt innhold; digest identifiserer innholdet. Kjør bygget med en ny tagg og sammenlign.</p><label class="check-item"><input type="checkbox" data-check="w2-bygg"><span>Jeg finner image, tagg og digest i ACR.</span></label>
 </section>
       <section class="panel" id="tasks"><h2>2. Bygg, push og kjør med Tasks</h2>
-<p><a href="./labs/containers/acr-task.yaml">acr-task.yaml</a> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code>Set-Location artifacts/labs/containers
+<p><code>acr-task.yaml</code> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code>Set-Location artifacts/labs/containers
 az acr run --registry $acr --file acr-task.yaml .
 Set-Location ../../..
 az acr task list-runs --registry $acr -o table</code></pre><p>Forventet: alle tre stegene fullføres, og Python-versjonen står i loggen. Finn task-kjøringen og den unike taggen. Forklar forskjellen mellom denne manuelle kjøringen og triggere fra kildekode, base-image eller tidsplan.</p><label class="check-item"><input type="checkbox" data-check="w2-tasks"><span>Jeg har kjørt build, push og et kommando-steg i ACR Tasks.</span></label>
+
+<details class="source-file" id="fil-labs-containers-acr-task-yaml" data-source-file="labs/containers/acr-task.yaml"><summary><code>acr-task.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/containers/acr-task.yaml</code></p><pre data-language="YAML" data-source="labs/containers/acr-task.yaml"><code># Velg syntaksversjonen for ACR Tasks-filen.
+version: v1.1.0
+# Kjør stegene i den angitte rekkefølgen.
+steps:
+  # Bygg Dockerfile fra denne byggkonteksten.
+  # Registry settes av ACR, og Run.ID gir hver kjøring en egen tagg.
+  - build: -t {{.Run.Registry}}/ai200-api:{{.Run.ID}} -f Dockerfile .
+  # Last opp det ferdige imaget til registryet.
+  - push:
+      # Bruk nøyaktig samme image-navn og tagg som i byggesteget.
+      - &#x27;{{.Run.Registry}}/ai200-api:{{.Run.ID}}&#x27;
+  # Kjør imaget og skriv Python-versjonen i task-loggen.
+  - cmd: &#x27;{{.Run.Registry}}/ai200-api:{{.Run.ID}} python --version&#x27;
+</code></pre></details>
 </section>
       <section class="panel" id="hent"><h2>3. Hent og kjør</h2>
 <pre data-language="PowerShell"><code>az acr login --name $acr

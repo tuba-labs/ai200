@@ -1,2 +1,4 @@
+# Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
 azure-cosmos>=4.9,<5
+# Functions-typer og dekoratorer for change feed-triggeren.
 azure-functions>=1.20,<2

@@ -37,6 +37,72 @@
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-security.html">19. Key Vault: oppslag, identitet og rotasjon</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <p>Opprett en App Configuration-labressurs, for eksempel Free hvis tilgjengelig. Gi deg selv App Configuration Data Owner for å legge inn verdier. Bruk prosjektets .venv og <code>artifacts/labs/security/requirements.txt</code>. Innstillingene skal være vanlig konfigurasjon; hemmeligheter hører til i Key Vault.</p>
+
+<details class="source-file" id="fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
+
+# Velg Key Vault-hemmelighet eller vanlig appkonfigurasjon.
+import argparse
+# Les tjenestenes endpoint fra miljøet.
+import os
+
+# Les nøkkel-/etikettverdier fra App Configuration.
+from azure.appconfiguration import AzureAppConfigurationClient
+# Bruk Entra-identitet, for eksempel Azure CLI-innlogging på egen maskin.
+from azure.identity import DefaultAzureCredential
+# Les hemmeligheter gjennom Key Vaults data-API.
+from azure.keyvault.secrets import SecretClient
+
+# Kjør ett oppslag mot den valgte tjenesten.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de to oppslagstypene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;secret&quot;, &quot;config&quot;])
+    # Les valgt oppslagstype.
+    args = parser.parse_args()
+    # Gjenbruk samme identitetsoppsett for begge tjenester.
+    with DefaultAzureCredential() as credential:
+        # Key Vault-operasjonen krever tilgang til hemmelighetens verdi.
+        if args.mode == &quot;secret&quot;:
+            # Åpne klienten for ditt labhvelv.
+            with SecretClient(vault_url=os.environ[&quot;KEY_VAULT_URL&quot;], credential=credential) as vault:
+                # Les gjeldende versjon av demo-secret.
+                secret = vault.get_secret(&quot;demo-secret&quot;)
+                # Vis bare at verdien ble lest, aldri selve hemmeligheten.
+                print(&quot;Secret read successfully:&quot;, bool(secret.value))
+                # Bruk versjons-ID til å observere rotasjon.
+                print(&quot;Secret version:&quot;, secret.properties.version)
+            # Avslutt etter Key Vault-oppslaget.
+            return
+        # Åpne klienten for vanlig konfigurasjon.
+        with AzureAppConfigurationClient(
+            # Bruk App Configuration-endpoint og den samme Entra-identiteten.
+            base_url=os.environ[&quot;APP_CONFIG_ENDPOINT&quot;], credential=credential
+        # Lukk konfigurasjonsklienten etter bruk.
+        ) as config:
+            # Les akkurat nøkkelen og miljøetiketten som ble opprettet i portalen.
+            setting = config.get_configuration_setting(key=&quot;Workshop:Mode&quot;, label=&quot;lab&quot;)
+            # Vis den vanlige konfigurasjonsverdien i terminalen.
+            print(&quot;Workshop mode:&quot;, setting.value)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt konfigurasjonsoppslag.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-security-requirements-txt" data-source-file="labs/security/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/security/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/security/requirements.txt"><code># API for sporingskontekst og spans.
+opentelemetry-api&gt;=1.28,&lt;2
+# Lokalt SDK for behandling og eksport av telemetri.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Entra-autentisering med DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# Klienten for Key Vault-hemmeligheter.
+azure-keyvault-secrets&gt;=4.9,&lt;5
+# Klienten for vanlige App Configuration-verdier.
+azure-appconfiguration&gt;=1.7,&lt;2
+</code></pre></details>
 </section>
       <section class="panel" id="lagre"><h2>1. Lag to verdier med etiketter</h2>
 <p>I Configuration explorer: opprett nøkkel <code>Workshop:Mode</code>, label <code>lab</code>, verdi <code>practice</code>. Legg samme nøkkel med label <code>test</code> og verdi <code>review</code>. Finn endpoint på Overview.</p><label class="check-item"><input type="checkbox" data-check="w20-lagre"><span>Jeg har lagret samme nøkkel for to miljøer.</span></label>

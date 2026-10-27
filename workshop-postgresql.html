@@ -37,13 +37,161 @@
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-data.html">7. PostgreSQL: vektorsøk og indekser</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Klargjør før økten</h2>
 <p>Ha en liten Azure Database for PostgreSQL Flexible Server klar i en labgruppe, med TLS og nettverkstilgang fra din maskin. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
+
+<details class="source-file" id="fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Opprett labtabellen hvis den ikke finnes fra før.
+CREATE TABLE IF NOT EXISTS workshop_notes (
+    -- Gi hver rad en entydig identifikator.
+    id integer PRIMARY KEY,
+    -- Bruk topic som metadatafilter i søkene.
+    topic text NOT NULL,
+    -- Lagre teksten som et senere RAG-steg kan hente frem.
+    content text NOT NULL,
+    -- Lagre nøyaktig tre komponenter per undervisningsvektor.
+    embedding vector(3) NOT NULL
+);
+
+-- Hand-written teaching vectors, not output from an embedding model.
+-- Sett inn fire eksempler. Vektorene er skrevet for hånd, ikke generert av en modell.
+INSERT INTO workshop_notes (id, topic, content, embedding) VALUES
+    -- Første containerdokument peker langs første vektordimensjon.
+    (1, &#x27;containers&#x27;, &#x27;A container packages an application and its dependencies.&#x27;, &#x27;[1,0,0]&#x27;),
+    -- Andre containerdokument ligger nær det første i vektorrommet.
+    (2, &#x27;containers&#x27;, &#x27;Read container logs when an application fails to start.&#x27;, &#x27;[0.9,0.1,0]&#x27;),
+    -- Datadokumentet ligger nær spørsmålsvektoren, men kan filtreres bort av topic.
+    (3, &#x27;data&#x27;, &#x27;A database stores and retrieves application data.&#x27;, &#x27;[0,1,0]&#x27;),
+    -- Sikkerhetsdokumentet gir oss et eksempel i et annet emne.
+    (4, &#x27;security&#x27;, &#x27;Managed identity removes the need to store a credential.&#x27;, &#x27;[0,0,1]&#x27;)
+-- Oppdater eksisterende rader når skriptet kjøres på nytt.
+ON CONFLICT (id) DO UPDATE SET
+    -- Bruk emnet fra raden vi forsøkte å sette inn.
+    topic = EXCLUDED.topic,
+    -- Oppdater teksten til verdien i eksempeldatasettet.
+    content = EXCLUDED.content,
+    -- Oppdater også vektoren, og avslutt SQL-setningen.
+    embedding = EXCLUDED.embedding;
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-data-requirements-txt" data-source-file="labs/data/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/data/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/data/requirements.txt"><code># PostgreSQL-driver med ferdige binærfiler og støtte for forbindelsespool.
+psycopg[binary,pool]&gt;=3.2,&lt;4
+# Tilpasning mellom PostgreSQLs vector-type og Python.
+pgvector&gt;=0.3,&lt;1
+</code></pre></details>
 </section>
       <section class="panel" id="sdk"><h2>1. Koble til med Python</h2>
 <p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
 python -m pip install -r artifacts/labs/data/requirements.txt
 $env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
 python artifacts/labs/data/postgres_client.py setup
-python artifacts/labs/data/postgres_client.py query</code></pre><p>Forventet: dokument 2 og 1. Finn de parameteriserte verdiene i <a href="./labs/data/postgres_client.py">postgres_client.py</a> og forklar hvorfor SQL og data sendes separat.</p><label class="check-item"><input type="checkbox" data-check="w8-sdk"><span>Jeg har kjørt en parameterisert vektorspørring mot Azure PostgreSQL.</span></label>
+python artifacts/labs/data/postgres_client.py query</code></pre><p>Forventet: dokument 2 og 1. Finn de parameteriserte verdiene i <code>postgres_client.py</code> og forklar hvorfor SQL og data sendes separat.</p><label class="check-item"><input type="checkbox" data-check="w8-sdk"><span>Jeg har kjørt en parameterisert vektorspørring mot Azure PostgreSQL.</span></label>
+
+<details class="source-file" id="fil-labs-data-postgres-client-py" data-source-file="labs/data/postgres_client.py"><summary><code>postgres_client.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/data/postgres_client.py</code></p><pre data-language="Python" data-source="labs/data/postgres_client.py"><code>&quot;&quot;&quot;Run the same parameterized vector query with a direct connection and a pool.&quot;&quot;&quot;
+# Velg setup, query eller compare fra kommandolinjen.
+import argparse
+# Les tilkoblingen fra miljøet fremfor å lagre passord i filen.
+import os
+# Mål tiden brukt på direkte forbindelser og forbindelsespool.
+import time
+# Finn SQL-filen ved siden av denne arbeidskopien.
+from pathlib import Path
+
+# Bruk PostgreSQL-driveren til å kjøre SQL.
+import psycopg
+# Registrer hvordan pgvector-verdier konverteres i forbindelsen.
+from pgvector.psycopg import register_vector
+# Gjenbruk et lite antall databaseforbindelser.
+from psycopg_pool import ConnectionPool
+
+
+# Kjør dette oppsettet på hver nye forbindelse i poolen.
+def configure(connection):
+    # Lær forbindelsen å håndtere databasens vector-type.
+    register_vector(connection)
+    # Avslutt transaksjonen fra typeoppsettet før forbindelsen brukes av poolen.
+    connection.commit()
+
+
+# Bruk samme spørring i begge målingene.
+def query(connection):
+    # Kjør parameterisert SQL og hent de to nærmeste radene.
+    return connection.execute(
+        # Hent dokumentets ID, metadata og tekst.
+        &quot;SELECT id, topic, content FROM workshop_notes &quot;
+        # Filtrer på emne og sorter etter cosinusavstand med pgvector.
+        &quot;WHERE topic = %s ORDER BY embedding &lt;=&gt; %s::vector LIMIT 2&quot;,
+        # Send verdiene separat fra SQL-teksten.
+        (&quot;containers&quot;, &quot;[0,1,0]&quot;),
+    ).fetchall()
+
+
+# Samle oppsett, spørring og sammenligning i ett kjørbart eksempel.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de tre laboperasjonene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;compare&quot;])
+    # Les operasjonen deltakeren valgte.
+    args = parser.parse_args()
+    # Bruk tilkoblingsstrengen satt i terminalen.
+    connection_string = os.environ[&quot;PGCONNINFO&quot;]
+    # Disable prepared statements so the example also works through transaction pooling.
+    # Deaktiver automatisk server-side prepare for å støtte transaction pooling.
+    options = {&quot;prepare_threshold&quot;: None}
+    # Opprett skjema og eksempeldata.
+    if args.mode == &quot;setup&quot;:
+        # Åpne og lukk en direkte forbindelse for denne operasjonen.
+        with psycopg.connect(connection_string, **options) as connection:
+            # Les setup.sql fra samme mappe og kjør innholdet på serveren.
+            connection.execute(Path(__file__).with_name(&quot;setup.sql&quot;).read_text(encoding=&quot;utf-8&quot;))
+        # Bekreft at oppsettet er fullført.
+        print(&quot;Schema and four example rows ready&quot;)
+    # Kjør ett vanlig oppslag.
+    elif args.mode == &quot;query&quot;:
+        # Åpne og lukk en direkte forbindelse for denne operasjonen.
+        with psycopg.connect(connection_string, **options) as connection:
+            # Behandle radene fra den parameteriserte spørringen.
+            for row in query(connection):
+                # Vis resultatet i terminalen.
+                print(row)
+    # Sammenlign tidsbruk med og uten forbindelsespool.
+    else:
+        # Bruk samme antall operasjoner i begge målingene.
+        count = 10
+        # Start tidsmålingen for direkte forbindelser.
+        started = time.perf_counter()
+        # Åpne en ny forbindelse for hver repetisjon.
+        for _ in range(count):
+            # Inkluder forbindelsesopprettelsen i målingen.
+            with psycopg.connect(connection_string, **options) as connection:
+                # Kjør samme arbeid som i pool-varianten.
+                query(connection)
+        # Vis samlet tid for nye forbindelser.
+        print(f&quot;{count} new connections: {time.perf_counter() - started:.3f}s&quot;)
+        # Opprett en pool med mellom én og tre forbindelser.
+        with ConnectionPool(connection_string, min_size=1, max_size=3,
+                            # Bruk samme tilkoblingsvalg og registrer pgvector for hver forbindelse.
+                            kwargs=options, configure=configure) as pool:
+            # Vent til poolen er klar før målingen starter.
+            pool.wait()
+            # Start målingen etter klargjøringen av poolen.
+            started = time.perf_counter()
+            # Gjenta samme antall spørringer.
+            for _ in range(count):
+                # Lån en forbindelse og lever den tilbake etter bruk.
+                with pool.connection() as connection:
+                    # Kjør den samme spørringen på en gjenbrukt forbindelse.
+                    query(connection)
+            # Vis tiden for spørringene gjennom poolen.
+            print(f&quot;{count} pooled queries: {time.perf_counter() - started:.3f}s&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør den valgte laboperasjonen.
+    main()
+</code></pre></details>
 </section>
       <section class="panel" id="pool"><h2>2. Mål og gjenbruk forbindelser</h2>
 <pre data-language="PowerShell"><code>python artifacts/labs/data/postgres_client.py compare</code></pre><p>Skriptet sammenligner ti nye forbindelser med ti spørringer via en liten klientpool. Gjenta og noter variasjonen. Tilkoblingslatens, nettverk og oppvarming påvirker resultatene. Undersøk min_size/max_size og hvorfor hver prosess trenger sin egen pool.</p><label class="check-item"><input type="checkbox" data-check="w8-pool"><span>Jeg har målt forskjellen mellom nye og gjenbrukte forbindelser.</span></label>

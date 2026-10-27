@@ -61,6 +61,8 @@ python scripts/build_domain_workshops.py
 
 Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Pythons standardbibliotek og tilpasser rydding mellom delene; ressursplanen ligger i skriptets domenedefinisjoner. De ferdige HTML-filene kan åpnes direkte. Publiseringen kjører genereringen på nytt fra de aktuelle kildefilene på GitHub.
 
+Filpaneler med `data-source-file` viser hele den tilsvarende malen fra `labs/`, med kommentarer, og er lukket som standard. JSON beholdes gyldig og har feltforklaringer i samme panel. Rediger malen; generatoren oppdaterer både den korte og den samlede siden med samme filinnhold og beholder JSON-forklaringene.
+
 ## Kjør nettstedet lokalt
 
 Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Malene ligger i `labs/`.

@@ -79,6 +79,7 @@ td p:last-child { margin-bottom:0; }
 code { font-family:ui-monospace,"Cascadia Code",Consolas,monospace; font-size:.88em; background:#edf2f8; border-radius:4px; padding:2px 5px; overflow-wrap:anywhere; }
 pre { margin:18px 0; border:1px solid #29415f; border-radius:10px; background:#10243e; color:#e4efff; padding:20px; overflow:auto; line-height:1.6; font-size:14px; tab-size:2; }
 pre code { background:none; color:inherit; border-radius:0; padding:0; overflow-wrap:normal; font-size:inherit; }
+pre[data-source] { white-space:pre-wrap; }
 .code-block { min-width:0; margin:20px 0; }
 .code-block pre { margin:0; border-top-left-radius:0; border-top-right-radius:0; }
 .code-toolbar { display:flex; justify-content:space-between; align-items:center; gap:15px; padding:7px 12px; border:1px solid #29415f; border-bottom:0; border-radius:10px 10px 0 0; background:#1b3554; color:#c9ddf6; font-size:12px; }
@@ -96,7 +97,12 @@ pre code { background:none; color:inherit; border-radius:0; padding:0; overflow-
 .step-head { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
 details { border:1px solid var(--line); border-radius:10px; padding:15px 18px; margin:18px 0; }
 summary { cursor:pointer; font-weight:750; }
-details[open] summary { margin-bottom:15px; }
+details[open] > summary { margin-bottom:15px; }
+.source-file:not([open]) > summary { margin-bottom:0; }
+.source-file > summary code { font-size:.95em; }
+.source-file .source-notes { font-size:14px; }
+.source-notes dt { margin-top:12px; font-weight:700; }
+.source-notes dd { margin:4px 0 0; }
 footer { border-top:1px solid var(--line); padding-block:26px; font-size:13px; color:var(--muted); }
 .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
 footer p:last-child { margin-bottom:0; }

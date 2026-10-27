@@ -38,9 +38,83 @@
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <ol><li>Installer <a href="https://docs.docker.com/desktop/setup/install/windows-install/">Docker Desktop for Windows</a> med WSL 2-oppsett, eller bruk container-motoren arbeidsgiveren har klargjort. Fullfør eventuell omstart.</li><li>Start Docker Desktop fra Start-menyen og vent til motoren kjører. Docker må bruke Linux-containere. Viser Docker-menyen <strong>Switch to Linux containers</strong>, velg det.</li></ol><pre data-language="PowerShell"><code>docker version
 docker info --format '{{.OSType}}'
-Set-Location artifacts/labs/containers</code></pre><p><strong>Kontrollpunkt:</strong> <code>docker version</code> viser både Client og Server, og OS-kontrollen viser <code>linux</code>. Mangler Server-delen, start Docker-motoren før du fortsetter. <a href="./labs/containers/app.py">app.py</a> er ferdig testkode; <a href="./labs/containers/Dockerfile">Dockerfile</a> er filen du skal forstå. Denne delen krever ingen Azure-ressurser.</p>
+Set-Location artifacts/labs/containers</code></pre><p><strong>Kontrollpunkt:</strong> <code>docker version</code> viser både Client og Server, og OS-kontrollen viser <code>linux</code>. Mangler Server-delen, start Docker-motoren før du fortsetter. <code>app.py</code> er ferdig testkode. Dockerfile-en forklares nedenfor. Denne delen krever ingen Azure-ressurser.</p>
+
+<details class="source-file" id="fil-labs-containers-app-py" data-source-file="labs/containers/app.py"><summary><code>app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/containers/app.py</code></p><pre data-language="Python" data-source="labs/containers/app.py"><code>&quot;&quot;&quot;Small, deliberately local workshop API; no external Python dependencies.&quot;&quot;&quot;
+# Gjør Python-data om til JSON i HTTP-svaret.
+import json
+# Les appkonfigurasjon fra miljøvariabler i containeren.
+import os
+# Bruk en liten HTTP-server og en handler for hver forespørsel.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Skill URL-stien fra eventuelle spørringsparametere.
+from urllib.parse import urlsplit
+
+
+# Samle behandlingen av HTTP-forespørsler i en handlerklasse.
+class Handler(BaseHTTPRequestHandler):
+    # HTTP-serveren kaller denne metoden for GET-forespørsler.
+    def do_GET(self):
+        # Hent bare stien, for eksempel /health.
+        path = urlsplit(self.path).path
+        # Helsesjekken gir 200; alle andre stier gir 404.
+        status = 200 if path == &quot;/health&quot; else 404
+        # Vis versjonen fra miljøet, med v1 som standard.
+        payload = {&quot;status&quot;: &quot;ok&quot;, &quot;version&quot;: os.getenv(&quot;APP_VERSION&quot;, &quot;v1&quot;),
+                   # Vis konfigurasjonen uten at vi trenger å bygge et nytt image.
+                   &quot;mode&quot;: os.getenv(&quot;WORKSHOP_MODE&quot;, &quot;practice&quot;),
+                   # Vis bare om en hemmelighet finnes. Selve verdien sendes aldri til klienten.
+                   # For andre stier brukes en enkel feilmelding i stedet.
+                   &quot;secret_configured&quot;: bool(os.getenv(&quot;DEMO_SECRET&quot;))} if status == 200 else {&quot;error&quot;: &quot;not found&quot;}
+        # Serialiser JSON og kod teksten som byte til nettverksforbindelsen.
+        body = json.dumps(payload).encode(&quot;utf-8&quot;)
+        # Start HTTP-svaret med statuskoden.
+        self.send_response(status)
+        # Fortell klienten at innholdet er JSON i UTF-8.
+        self.send_header(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+        # Oppgi lengden på svaret i byte.
+        self.send_header(&quot;Content-Length&quot;, str(len(body)))
+        # Avslutt headerne før selve innholdet sendes.
+        self.end_headers()
+        # Skriv JSON-innholdet til HTTP-svaret.
+        self.wfile.write(body)
+
+
+# Start serveren bare når filen kjøres som et program.
+if __name__ == &quot;__main__&quot;:
+    # Skriv en oppstartsmelding direkte til containerloggen.
+    print(&quot;Workshop API listening on port 8080&quot;, flush=True)
+    # Lytt på port 8080 på alle containerens nettverksgrensesnitt.
+    ThreadingHTTPServer((&quot;0.0.0.0&quot;, 8080), Handler).serve_forever()
+</code></pre></details>
 </section>
       <section class="panel" id="bygg"><h2>1. Bygg et image</h2>
+<p>Dockerfile-en under har kommentarer til hver instruksjon. Arbeidskopien ligger i <code>artifacts/labs/containers/Dockerfile</code>.</p><details class="source-file" id="fil-labs-containers-dockerfile" data-source-file="labs/containers/Dockerfile"><summary><code>Dockerfile</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/containers/Dockerfile</code></p><pre data-language="Dockerfile" data-source="labs/containers/Dockerfile"><code># Bruk et ferdig Linux-image med Python 3.12.
+# slim-varianten har færre forhåndsinstallerte pakker enn standardimaget.
+FROM python:3.12-slim
+
+# Sett /app som arbeidsmappe i imaget. Mappen opprettes hvis den mangler.
+WORKDIR /app
+
+# Kopier app.py fra byggkonteksten til /app/app.py i imaget.
+COPY app.py .
+
+# Opprett brukeren appuser med UID 10001 under byggingen, uten hjemmemappe.
+RUN useradd --uid 10001 --no-create-home appuser
+
+# Kjør påfølgende instruksjoner og appens startkommando som UID 10001.
+# Appen kjører dermed uten root-rettigheter.
+USER 10001
+
+# Dokumenter at appen lytter på TCP-port 8080 inne i containeren.
+# Bruk docker run --publish for å gjøre porten tilgjengelig på verten.
+EXPOSE 8080
+
+# Start app.py med Python når containeren starter.
+# -u slår av bufring av stdout/stderr, slik at loggene kommer fortløpende.
+# Listeformen starter Python direkte, uten et mellomliggende shell.
+CMD [&quot;python&quot;, &quot;-u&quot;, &quot;app.py&quot;]
+</code></pre></details>
 <pre data-language="PowerShell"><code>docker build -t ai200-api:v1 .
 docker image ls ai200-api</code></pre><p>Finn base-image, arbeidsmappe, COPY, bruker og CMD i Dockerfile. Forklar hvilke filer som bygges inn. Forventet: en lokal tag <code>ai200-api:v1</code>.</p><label class="check-item"><input type="checkbox" data-check="w1-bygg"><span>Jeg kan forklare hva Dockerfile bygger inn.</span></label>
 </section>

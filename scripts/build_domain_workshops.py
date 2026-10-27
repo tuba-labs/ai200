@@ -1,5 +1,6 @@
 """Build static domain workshops from the canonical short workshop pages."""
 from html import escape, unescape
+import json
 from pathlib import Path
 import re
 
@@ -73,6 +74,67 @@ SESSION_PREPARATION = {
 }
 
 
+def lab_source(relative):
+    source = (ROOT / unescape(relative)).resolve()
+    if not source.is_relative_to((ROOT / "labs").resolve()) or not source.is_file():
+        raise ValueError(f"Invalid inline lab source: {relative}")
+    return source
+
+
+def json_explanations(source, content):
+    if source.suffix != ".json":
+        return ''
+    notes = {
+        "version": "Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.",
+        "extensionBundle.id": "La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.",
+        "extensionBundle.version": "Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.",
+        "IsEncrypted": "false betyr at de lokale innstillingene er lagret som vanlig tekst.",
+        "Values.FUNCTIONS_WORKER_RUNTIME": "Velg Python som worker for denne Function App-en.",
+        "Values.AzureWebJobsStorage": "Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.",
+        "Values.ServiceBusConnection": "Labtilkoblingen som Service Bus-bindingene refererer til med connection-navnet.",
+        "Values.CosmosConnection": "Labtilkoblingen som Cosmos-triggeren refererer til med connection-navnet.",
+        "Values.COSMOS_DATABASE": "Databasenavnet som settes inn i triggerens %COSMOS_DATABASE%-uttrykk.",
+    }
+
+    def fields(value, prefix=''):
+        for key, item in value.items():
+            name = prefix + key
+            if name in notes:
+                yield f'<dt><code>{escape(name)}</code></dt><dd>{escape(notes[name])}</dd>'
+            if isinstance(item, dict):
+                yield from fields(item, name + '.')
+
+    entries = ''.join(fields(json.loads(content)))
+    return '<p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes">' + entries + '</dl>' if entries else ''
+
+
+def source_panel(relative, panel_id=None):
+    source = lab_source(relative)
+    relative = source.relative_to(ROOT).as_posix()
+    content = source.read_text(encoding="utf-8")
+    language = {".py": "Python", ".sql": "SQL", ".yaml": "YAML", ".json": "JSON"}.get(source.suffix, "Tekst")
+    if source.name == "Dockerfile":
+        language = "Dockerfile"
+    panel_id = panel_id or 'fil-' + re.sub(r'[^a-z0-9]+', '-', relative.lower()).strip('-')
+    return (f'<details class="source-file" id="{escape(panel_id)}" data-source-file="{escape(relative)}">'
+            f'<summary><code>{escape(source.name)}</code><span class="small"> — vis fil og forklaring</span></summary>'
+            f'<p class="small">Arbeidskopi: <code>artifacts/{escape(relative)}</code></p>'
+            f'<pre data-language="{language}" data-source="{escape(relative)}"><code>{escape(content)}</code></pre>'
+            f'{json_explanations(source, content)}</details>')
+
+
+def inline_sources(text):
+    text = re.sub(r'<details class="source-file" id="([^"]+)" data-source-file="([^"]+)">[\s\S]*?</details>',
+                  lambda match: source_panel(unescape(match[2]), unescape(match[1])), text)
+
+    def embed(match):
+        source = lab_source(match[2])
+        return match[1] + escape(source.read_text(encoding="utf-8")) + match[3]
+
+    return re.sub(r'(<pre\b[^>]*\bdata-source="([^"]+)"[^>]*><code>)[\s\S]*?(</code></pre>)',
+                  embed, text)
+
+
 def read_workshops():
     result = {}
     for path in ROOT.glob("workshop-*.html"):
@@ -81,6 +143,7 @@ def read_workshops():
         if not title:
             continue
         number = int(title[1])
+        text = inline_sources(text)
         sections = re.findall(r'<section class="panel" id="([^"]+)"><h2>(.*?)</h2>\s*([\s\S]*?)</section>', text)
         if not sections:
             raise ValueError(f"No exercise sections in {path.name}")
@@ -150,7 +213,7 @@ def render(domain, workshops):
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
     <article class="content" data-domain-workshop>
       <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend>{choices}</fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-{domain['number']}">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody>{agenda}</tbody></table></div></section>
-      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a> før første workshop.</p><p>Start hver del med en PowerShell-terminal i prosjektmappen. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>, som er ignorert av Git. Kodelenkene viser malene i <code>labs/</code>.</p>{python_activation}{preparation_notes}</section>
+      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a> før første workshop.</p><p>Start hver del med en PowerShell-terminal i prosjektmappen. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>, som er ignorert av Git. Åpne filpanelene i delene for å lese de kommenterte malene.</p>{python_activation}{preparation_notes}</section>
       <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Ressursplanen under gjelder denne samlede gjennomføringen. Ryddingen i delene er tilpasset overgangen til neste del. Slett bare dedikerte labressurser; en gruppe som også inneholder ressurser til senere deler må beholdes eller ryddes ressurs for ressurs.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody>{resources}</tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Hvis du ikke vil beholde ressurser mellom samlingene, noter oppsettet og klargjør dem på nytt før neste samling.</p></section>
       <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p>{chapters}</section>
       <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./{domain['syllabus']}">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>
@@ -165,6 +228,13 @@ def render(domain, workshops):
 
 def main():
     workshops = read_workshops()
+    for workshop in workshops.values():
+        path = ROOT / workshop["file"]
+        original = path.read_text(encoding="utf-8")
+        updated = inline_sources(original)
+        if updated != original:
+            path.write_text(updated, encoding="utf-8", newline="\n")
+            print(path.name)
     for domain in DOMAINS:
         path = ROOT / f'workshop-domene-{domain["slug"]}.html'
         path.write_text(render(domain, workshops), encoding="utf-8", newline="\n")

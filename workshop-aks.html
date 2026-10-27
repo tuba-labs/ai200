@@ -57,10 +57,78 @@ kubectl auth can-i create deployments --namespace $ns</code></pre><p><strong>Kon
 kubectl get pods --namespace $ns</code></pre><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli">opprette og koble til AKS</a>, <a href="https://learn.microsoft.com/en-us/azure/aks/use-system-pools">krav til systemnoder</a> og <a href="https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration">ACR-tilgang fra AKS</a>.</p>
 </section>
       <section class="panel" id="deploy"><h2>1. Deploy et manifest</h2>
-<p>Rediger <code>artifacts/labs/containers/deployment.yaml</code> og bytt <code>image</code> til ditt ACR-image. <a href="./labs/containers/deployment.yaml">Se den opprinnelige malen</a> ved behov. Behold ressursgrenser og readiness-proben.</p><pre data-language="PowerShell"><code>kubectl apply -n $ns -f artifacts/labs/containers/deployment.yaml
+<p>Rediger <code>artifacts/labs/containers/deployment.yaml</code> og bytt <code>image</code> til ditt ACR-image.  Behold ressursgrenser og readiness-proben.</p><pre data-language="PowerShell"><code>kubectl apply -n $ns -f artifacts/labs/containers/deployment.yaml
 kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
 kubectl get pods -n $ns
 kubectl port-forward -n $ns deployment/workshop-api 8082:8080</code></pre><p>La videresendingen kjøre. Åpne en annen terminal og kjør <code>Invoke-RestMethod http://localhost:8082/health</code>. Forventet: JSON fra appen.</p><label class="check-item"><input type="checkbox" data-check="w6-deploy"><span>Jeg har deployet mitt image til AKS med et manifest.</span></label>
+
+<details class="source-file" id="fil-labs-containers-deployment-yaml" data-source-file="labs/containers/deployment.yaml"><summary><code>deployment.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/containers/deployment.yaml</code></p><pre data-language="YAML" data-source="labs/containers/deployment.yaml"><code># Bruk Kubernetes-API-et for Deployment-ressurser.
+apiVersion: apps/v1
+# En Deployment vedlikeholder ønsket antall pod-replikaer.
+kind: Deployment
+# Metadata identifiserer selve Deployment-ressursen.
+metadata:
+  # Bruk dette navnet i kubectl rollout, logs og scale.
+  name: workshop-api
+# Beskriv ønsket tilstand for Deployment-en.
+spec:
+  # Start med én pod; senere skalerer du til to.
+  replicas: 1
+  # Velg hvilke pods Deployment-en skal styre.
+  selector:
+    # Match podenes labels nøyaktig.
+    matchLabels:
+      # Selectoren må passe med labelen i pod-malen under.
+      app: workshop-api
+  # Denne malen brukes til å opprette hver pod.
+  template:
+    # Dette er metadata for podene, ikke for Deployment-en.
+    metadata:
+      # Sett labels som Deployment og Service kan velge etter.
+      labels:
+        # Bruk samme app-label som selectoren over.
+        app: workshop-api
+    # Beskriv innholdet i hver pod.
+    spec:
+      # Denne poden inneholder én applikasjonscontainer.
+      containers:
+        # Gi containeren et navn i podens logger og status.
+        - name: api
+          # Bytt til hele ACR-adressen og taggen du skal teste.
+          image: ai200-api:v2
+          # Hent imaget hvis noden ikke allerede har denne taggen lokalt.
+          imagePullPolicy: IfNotPresent
+          # Dokumenter portene containeren lytter på.
+          ports:
+            # Appen lytter på port 8080 inne i containeren.
+            - containerPort: 8080
+          # Angi ressursbehov og øvre grenser for containeren.
+          resources:
+            # Scheduler bruker disse behovene ved plassering på en node.
+            requests:
+              # Be om 0,1 CPU-kjerne.
+              cpu: 100m
+              # Be om 64 MiB minne.
+              memory: 64Mi
+            # Sett øvre grenser for containerens ressursbruk.
+            limits:
+              # Begrens CPU-bruken til 0,25 kjerne.
+              cpu: 250m
+              # Minnegrensen er 128 MiB; overskridelse kan avslutte containeren.
+              memory: 128Mi
+          # Avgjør om poden er klar til å motta tjenestens trafikk.
+          readinessProbe:
+            # Bruk en HTTP-forespørsel som readiness-kontroll.
+            httpGet:
+              # Denne stien skal gi et vellykket HTTP-svar.
+              path: /health
+              # Send kontrollen til appens containerport.
+              port: 8080
+            # Vent to sekunder før første readiness-kontroll.
+            initialDelaySeconds: 2
+            # Gjenta kontrollen hvert femte sekund.
+            periodSeconds: 5
+</code></pre></details>
 </section>
       <section class="panel" id="feil"><h2>2. Fremprovoser og finn en feil</h2>
 <p>Avslutt port-forward. Endre imagetaggen i manifestet til <code>finnes-ikke</code>, apply og undersøk:</p><pre data-language="PowerShell"><code>kubectl get pods -n $ns

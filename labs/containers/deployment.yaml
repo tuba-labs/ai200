@@ -1,33 +1,66 @@
+# Bruk Kubernetes-API-et for Deployment-ressurser.
 apiVersion: apps/v1
+# En Deployment vedlikeholder ønsket antall pod-replikaer.
 kind: Deployment
+# Metadata identifiserer selve Deployment-ressursen.
 metadata:
+  # Bruk dette navnet i kubectl rollout, logs og scale.
   name: workshop-api
+# Beskriv ønsket tilstand for Deployment-en.
 spec:
+  # Start med én pod; senere skalerer du til to.
   replicas: 1
+  # Velg hvilke pods Deployment-en skal styre.
   selector:
+    # Match podenes labels nøyaktig.
     matchLabels:
+      # Selectoren må passe med labelen i pod-malen under.
       app: workshop-api
+  # Denne malen brukes til å opprette hver pod.
   template:
+    # Dette er metadata for podene, ikke for Deployment-en.
     metadata:
+      # Sett labels som Deployment og Service kan velge etter.
       labels:
+        # Bruk samme app-label som selectoren over.
         app: workshop-api
+    # Beskriv innholdet i hver pod.
     spec:
+      # Denne poden inneholder én applikasjonscontainer.
       containers:
+        # Gi containeren et navn i podens logger og status.
         - name: api
+          # Bytt til hele ACR-adressen og taggen du skal teste.
           image: ai200-api:v2
+          # Hent imaget hvis noden ikke allerede har denne taggen lokalt.
           imagePullPolicy: IfNotPresent
+          # Dokumenter portene containeren lytter på.
           ports:
+            # Appen lytter på port 8080 inne i containeren.
             - containerPort: 8080
+          # Angi ressursbehov og øvre grenser for containeren.
           resources:
+            # Scheduler bruker disse behovene ved plassering på en node.
             requests:
+              # Be om 0,1 CPU-kjerne.
               cpu: 100m
+              # Be om 64 MiB minne.
               memory: 64Mi
+            # Sett øvre grenser for containerens ressursbruk.
             limits:
+              # Begrens CPU-bruken til 0,25 kjerne.
               cpu: 250m
+              # Minnegrensen er 128 MiB; overskridelse kan avslutte containeren.
               memory: 128Mi
+          # Avgjør om poden er klar til å motta tjenestens trafikk.
           readinessProbe:
+            # Bruk en HTTP-forespørsel som readiness-kontroll.
             httpGet:
+              # Denne stien skal gi et vellykket HTTP-svar.
               path: /health
+              # Send kontrollen til appens containerport.
               port: 8080
+            # Vent to sekunder før første readiness-kontroll.
             initialDelaySeconds: 2
+            # Gjenta kontrollen hvert femte sekund.
             periodSeconds: 5

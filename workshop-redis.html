@@ -37,13 +37,129 @@
       <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Klargjør før økten</h2>
 <p>Ha en Azure Managed Redis-labinstans klar med Enterprise clustering, TLS og en labnøkkel. Hvis du skal ta workshop 13, må RediSearch velges ved opprettelsen, med en tier som støtter modulen og NoEviction. Modulen kan ikke legges til senere. En arrangør kan klargjøre en delt labinstans.</p>
+
+<details class="source-file" id="fil-labs-redis-requirements-txt" data-source-file="labs/redis/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/redis/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/redis/requirements.txt"><code># Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
+redis&gt;=5,&lt;7
+</code></pre></details>
 </section>
       <section class="panel" id="tilkobling"><h2>1. Koble til sikkert</h2>
 <pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
 python -m pip install -r artifacts/labs/redis/requirements.txt
 $env:REDIS_HOST = "DITT-REDIS-ENDPOINT"
 $env:REDIS_PORT = "10000"
-$env:REDIS_KEY = "DIN-LAB-NOKKEL"</code></pre><p>Les tilkoblingen i <a href="./labs/redis/demo.py">demo.py</a>. Den bruker TLS og en gjenbrukt klient. Enterprise clustering gir ett logisk endepunkt til den vanlige Redis-klienten; OSS clustering krever en cluster-klient.</p><label class="check-item"><input type="checkbox" data-check="w12-tilkobling"><span>Jeg har valgt en klient som passer til Redis-konfigurasjonen.</span></label>
+$env:REDIS_KEY = "DIN-LAB-NOKKEL"</code></pre><p>Les tilkoblingen i <code>demo.py</code>. Den bruker TLS og en gjenbrukt klient. Enterprise clustering gir ett logisk endepunkt til den vanlige Redis-klienten; OSS clustering krever en cluster-klient.</p><label class="check-item"><input type="checkbox" data-check="w12-tilkobling"><span>Jeg har valgt en klient som passer til Redis-konfigurasjonen.</span></label>
+
+<details class="source-file" id="fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
+# Velg cache-, indeks-, søke- eller oppryddingsoperasjon.
+import argparse
+# Les Redis-endpoint og labnøkkel fra terminalens miljø.
+import os
+# Vent på en kort TTL for å demonstrere utløp.
+import time
+# Konverter spørsmåls- og dokumentvektorer til float32-byteverdier.
+from array import array
+
+# Bruk Redis-klienten til cache- og søkekommandoer.
+import redis
+# Beskriv metadata, tekst og vektorer i søkeindeksen.
+from redis.commands.search.field import TagField, TextField, VectorField
+# Avgrens hvilke Redis-hasher indeksen leser.
+from redis.commands.search.index_definition import IndexDefinition, IndexType
+# Bygg et søk med filter, KNN og resultatvalg.
+from redis.commands.search.query import Query
+# Gjenkjenn feilsvaret når indeksen allerede finnes.
+from redis.exceptions import ResponseError
+
+
+# Kjør én Redis-operasjon.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til labens fire valg.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;cache&quot;, &quot;index&quot;, &quot;search&quot;, &quot;cleanup&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Bruk endpoint og port for labinstansen.
+    with redis.Redis(host=os.environ[&quot;REDIS_HOST&quot;], port=int(os.getenv(&quot;REDIS_PORT&quot;, &quot;10000&quot;)),
+                     # Bruk TLS, miljøbasert labnøkkel og en avgrenset nettverkstimeout.
+                     password=os.environ[&quot;REDIS_KEY&quot;], ssl=True, socket_timeout=10) as client:
+        # Demonstrer hit, invalidering og TTL-utløp.
+        if args.mode == &quot;cache&quot;:
+            # Bruk en avgrenset nøkkel for labens cacheoppføring.
+            key = &quot;ai200:cache:containers:v1&quot;
+            # Kontroller om oppføringen finnes fra før.
+            print(&quot;Initial:&quot;, client.get(key))
+            # Cache resultatet med ti sekunders TTL.
+            client.set(key, &quot;note-1,note-2&quot;, ex=10)
+            # Les den nye oppføringen og gjenværende levetid.
+            print(&quot;Hit:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+            # Invalider oppføringen eksplisitt.
+            client.delete(key)
+            # Bekreft at oppslaget ikke lenger gir en cacheverdi.
+            print(&quot;Invalidated:&quot;, client.get(key))
+            # Legg inn en oppdatert verdi med kort TTL.
+            client.set(key, &quot;updated-note-1&quot;, ex=2)
+            # Vent lenger enn levetiden.
+            time.sleep(3)
+            # Vis at Redis har latt oppføringen utløpe.
+            print(&quot;Expired:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+        # Opprett en vektorindeks og tre dokumenter.
+        elif args.mode == &quot;index&quot;:
+            # Indekser topic som filter, text som tekst og embedding med HNSW.
+            fields = [TagField(&quot;topic&quot;), TextField(&quot;text&quot;), VectorField(&quot;embedding&quot;, &quot;HNSW&quot;, {
+                # Bruk float32, tre dimensjoner og cosinusavstand.
+                &quot;TYPE&quot;: &quot;FLOAT32&quot;, &quot;DIM&quot;: 3, &quot;DISTANCE_METRIC&quot;: &quot;COSINE&quot;,
+            })]
+            # Tillat at oppsettet kjøres flere ganger.
+            try:
+                # Opprett søkeindeksen med det valgte skjemaet.
+                client.ft(&quot;ai200-index&quot;).create_index(fields, definition=IndexDefinition(
+                    # Les bare Redis-hasher med labens vektorprefiks.
+                    prefix=[&quot;ai200:vector:&quot;], index_type=IndexType.HASH))
+            # Undersøk hvorfor indeksopprettelsen ble avvist.
+            except ResponseError as error:
+                # Ignorer bare den forventede feilen om en eksisterende indeks.
+                if &quot;index already exists&quot; not in str(error).lower():
+                    # La andre feil gå videre til terminalen.
+                    raise
+            # Første dokument ligger langs første vektordimensjon.
+            for number, topic, vector in [(1, &quot;containers&quot;, [1, 0, 0]),
+                                           # Legg til et lignende dokument og et dokument i et annet emne.
+                                           (2, &quot;containers&quot;, [0.9, 0.1, 0]), (3, &quot;data&quot;, [0, 1, 0])]:
+                # Lagre hvert dokument i en Redis-hash som indeksen overvåker.
+                client.hset(f&quot;ai200:vector:{number}&quot;, mapping={
+                    # Lagre metadata og tekst sammen med vektoren.
+                    &quot;topic&quot;: topic, &quot;text&quot;: f&quot;Teaching document {number}&quot;,
+                    # Send embedding som binære float32-verdier.
+                    &quot;embedding&quot;: array(&quot;f&quot;, vector).tobytes(),
+                })
+            # Minn om at søkeindeksen må ha rukket å behandle dataene.
+            print(&quot;Index and three documents ready; wait for indexing before search&quot;)
+        # Kombiner metadatafilter med vektorrangering.
+        elif args.mode == &quot;search&quot;:
+            # Finn to nærmeste treff innen topic=containers, med avstanden kalt score.
+            query = Query(&quot;(@topic:{containers})=&gt;[KNN 2 @embedding $vec AS score]&quot;)
+            # Sorter etter avstand og bruk søkedialekten som støtter denne syntaksen.
+            query = query.sort_by(&quot;score&quot;).return_fields(&quot;topic&quot;, &quot;text&quot;, &quot;score&quot;).dialect(2)
+            # Send spørsmålsvektoren i samme binære format som dokumentvektorene.
+            result = client.ft(&quot;ai200-index&quot;).search(query, query_params={&quot;vec&quot;: array(&quot;f&quot;, [0, 1, 0]).tobytes()})
+            # Behandle de returnerte treffene.
+            for document in result.docs:
+                # Vis ID, emne og avstand for sammenligning.
+                print(document.id, document.topic, document.score)
+        # Rydd bare labens indeks og tilknyttede dokumenter.
+        else:
+            # Slett indeksen og dokumentene som hører til den.
+            client.ft(&quot;ai200-index&quot;).dropindex(delete_documents=True)
+            # Bekreft oppryddingen.
+            print(&quot;Removed lab index and its documents&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Redis-operasjon.
+    main()
+</code></pre></details>
 </section>
       <section class="panel" id="cache"><h2>2. Hit, miss og utløp</h2>
 <pre data-language="PowerShell"><code>python artifacts/labs/redis/demo.py cache</code></pre><p>Forventet: først en miss, så en hit med positiv TTL, deretter miss etter invalidation og miss etter utløp. Skriptet sletter bare sin egen nøkkel. Kjør på nytt og sammenlign. Finn GET, SET med EX, DELETE og TTL i koden.</p><label class="check-item"><input type="checkbox" data-check="w12-cache"><span>Jeg har observert miss, hit, invalidering og utløp.</span></label>
