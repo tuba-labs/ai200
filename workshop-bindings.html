@@ -119,6 +119,8 @@ def consume(message: func.ServiceBusMessage):
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Stopp host-en, fullfør labmeldingen fra DLQ, og slett local.settings.json. Slett de dedikerte kø-/Storage-ressursene når ingen øvelser bruker dem.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+Remove-Item -LiteralPath artifacts/labs/bindings/local.settings.json -ErrorAction SilentlyContinue</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-output?pivots=programming-language-python">Service Bus output-binding</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-trigger?pivots=programming-language-python">Service Bus-trigger</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-topics.html">← Workshop 16</a><a href="./workshop-event-grid.html">Workshop 18 →</a></nav>

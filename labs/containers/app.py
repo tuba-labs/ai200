@@ -18,7 +18,7 @@ class Handler(BaseHTTPRequestHandler):
         # Helsesjekken gir 200; alle andre stier gir 404.
         status = 200 if path == "/health" else 404
         # Vis versjonen fra miljøet, med v1 som standard.
-        payload = {"status": "ok", "version": os.getenv("APP_VERSION", "v1"),
+        payload = {"status": "ok", "version": os.getenv("APP_VERSION", "v2"),
                    # Vis konfigurasjonen uten at vi trenger å bygge et nytt image.
                    "mode": os.getenv("WORKSHOP_MODE", "practice"),
                    # Vis bare om en hemmelighet finnes. Selve verdien sendes aldri til klienten.

@@ -63,6 +63,8 @@
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp og oppsummer</h2>
 <p>Stopp tjenestene, fjern APPLICATIONINSIGHTS_CONNECTION_STRING fra terminalene, og slett dedikerte overvåkingsressurser når du er ferdig. Forklar hvor i kjeden du ville undersøkt feil hvis bare én tjeneste dukket opp.</p>
+<pre data-language="PowerShell"><code># Stopp tjenestene med Ctrl+C. Kjør i begge tjenesteterminalene.
+Remove-Item Env:APPLICATIONINSIGHTS_CONNECTION_STRING -ErrorAction SilentlyContinue</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/kusto/query/">KQL</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/appmetrics">AppMetrics</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-tracing.html">← Workshop 21</a><a href="./index.html#workshops">Til workshopoversikten →</a></nav>

@@ -129,11 +129,18 @@ docker logs --tail 20 ai200-api</code></pre><p>Forventet: 200 fra <code>/health<
 docker stop ai200-api
 docker rm ai200-api
 docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v2
-Invoke-RestMethod http://localhost:8080/health</code></pre><p>Forventet: v2. Gjenta med taggen v1 og bekreft v1. Et image bør kunne identifiseres entydig.</p><label class="check-item"><input type="checkbox" data-check="w1-oppdater"><span>Jeg har kjørt to versjoner og rullet tilbake.</span></label>
+Invoke-RestMethod http://localhost:8080/health</code></pre><p>Svaret skal ha <code>version</code> lik <code>v2</code>. Det nye imaget inneholder filen slik den var da du bygget v2.</p>
+<p>Rull nå tilbake til det opprinnelige v1-imaget. La <code>app.py</code> stå med v2, og kjør disse kommandoene uten å bygge på nytt:</p>
+<pre data-language="PowerShell"><code>docker stop ai200-api
+docker rm ai200-api
+docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v1
+Invoke-RestMethod http://localhost:8080/health</code></pre>
+<p>Svaret skal igjen ha <code>version</code> lik <code>v1</code>. Containeren bruker kopien av <code>app.py</code> som ble bygget inn i v1-imaget, selv om arbeidsfilen nå inneholder v2. Dette viser at filendringer ikke endrer et eksisterende image, og at du kan rulle tilbake ved å starte det tidligere imaget. Taggene <code>v1</code> og <code>v2</code> brukes her til å velge mellom de to versjonene.</p><label class="check-item"><input type="checkbox" data-check="w1-oppdater"><span>Jeg har kjørt to versjoner og rullet tilbake.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
 <pre data-language="PowerShell"><code>docker stop ai200-api
-docker rm ai200-api</code></pre><p>Behold kildefilene og de lokale imagene til neste økt. Forklar forskjellen mellom en filendring, et nytt image og en ny container.</p><p>Sett standardverdien APP_VERSION tilbake til v1 i arbeidskopien før workshop 2.</p>
+docker rm ai200-api</code></pre><p>Behold kildefilene og de lokale imagene til neste økt. Forklar forskjellen mellom en filendring, et nytt image og en ny container.</p><p>Før workshop 2: kjør dette fra <code>artifacts/labs/containers</code> for å hente tilbake originalen av <code>app.py</code> med standardverdien <code>v1</code>. Kommandoen overskriver egne endringer i arbeidskopiens <code>app.py</code>:</p>
+<pre data-language="PowerShell"><code>Copy-Item -LiteralPath ..\..\..\labs\containers\app.py -Destination .\app.py -Force</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://docs.docker.com/build/concepts/dockerfile/">Dockerfile</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./getting-started.html">← Kom i gang</a><a href="./workshop-acr.html">Workshop 2 →</a></nav>

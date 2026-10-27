@@ -164,6 +164,8 @@ if __name__ == &quot;__main__&quot;:
 <p>Endre vektoren for dokument 2 i index-steget, kjør index og search igjen, og observer rangeringen etter at indeksen er oppdatert. Forklar forskjellen mellom en cache som inneholder ferdige søkeresultater og Redis som lagrer en søkbar vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w13-oppdater"><span>Jeg skiller cache-invalidering fra oppdatering av en søkeindeks.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<pre data-language="PowerShell"><code># Fra prosjektroten. Overskriver endringene i arbeidsfilen.
+Copy-Item -LiteralPath labs/redis/demo.py -Destination artifacts/labs/redis/demo.py -Force</code></pre>
 <pre data-language="PowerShell"><code>python artifacts/labs/redis/demo.py cleanup
 Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre><p>Cleanup fjerner bare ai200-indeksen og dens dokumenter. Slett den dedikerte Azure-instansen når økten er ferdig.</p>
 </section>

@@ -109,7 +109,9 @@ azure-appconfiguration&gt;=1.7,&lt;2
 </section>
       <section class="panel" id="hent"><h2>2. Les med SDK</h2>
 <pre data-language="PowerShell"><code>$env:APP_CONFIG_ENDPOINT = "https://DITT-NAVN.azconfig.io"
-python artifacts/labs/security/read_settings.py config</code></pre><p>Forventet: Workshop mode: practice. Finn label=lab i koden. Endre label til test i arbeidskopien og kontroller review. For en driftet app som bare leser, holder Data Reader.</p><label class="check-item"><input type="checkbox" data-check="w20-hent"><span>Jeg har lest en bestemt nøkkel og etikett fra kode.</span></label>
+python artifacts/labs/security/read_settings.py config</code></pre><p>Forventet: Workshop mode: practice. Finn label=lab i koden. Endre label til test i arbeidskopien og kontroller review. Før neste steg, gjenopprett filen med <code>label=lab</code> og kjør oppslaget igjen:</p><pre data-language="PowerShell"><code># Fra prosjektroten. Overskriver endringene i arbeidsfilen.
+Copy-Item -LiteralPath labs/security/read_settings.py -Destination artifacts/labs/security/read_settings.py -Force
+python artifacts/labs/security/read_settings.py config</code></pre><p>Forventet: <code>Workshop mode: practice</code>. For en driftet app som bare leser, holder Data Reader.</p><label class="check-item"><input type="checkbox" data-check="w20-hent"><span>Jeg har lest en bestemt nøkkel og etikett fra kode.</span></label>
 </section>
       <section class="panel" id="oppdater"><h2>3. Endre uten nytt image</h2>
 <p>Endre lab-verdien i portalen og kjør skriptet igjen. Forklar hvorfor dette korte programmet leser på nytt hver gang. En langlivet prosess trenger en bevisst strategi for refresh og cache; nytt portalinnhold alene endrer ikke gamle verdier i minnet.</p><label class="check-item"><input type="checkbox" data-check="w20-oppdater"><span>Jeg kan forklare når en oppdatert innstilling blir synlig.</span></label>

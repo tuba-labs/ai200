@@ -135,7 +135,8 @@ python artifacts/labs/integrations/message_bus.py subscription --subscription au
 <p>På indexer i portalen: erstatt standardregelen med en SQL-filterregel <code>kind = 'note'</code>. Fjern standardregelen som matcher alt, ellers gjelder reglene som OR. Audit beholder standardregelen. Send en ny melding og motta fra begge.</p><label class="check-item"><input type="checkbox" data-check="w16-filter"><span>Jeg har satt et subscription-filter som bruker meldingsmetadata.</span></label>
 </section>
       <section class="panel" id="endring"><h2>3. Vis at filteret virker</h2>
-<p>I arbeidskopien av message_bus.py: endre application property kind fra note til other, og send på nytt. Forventet: audit mottar meldingen, indexer gjør det ikke. Sett koden tilbake. Forklar hvorfor filteret ser på metadata og ikke parser JSON-body.</p><label class="check-item"><input type="checkbox" data-check="w16-endring"><span>Jeg har verifisert både treff og avvisning i filteret.</span></label>
+<p>I arbeidskopien av message_bus.py: endre application property kind fra note til other, og send på nytt. Forventet: audit mottar meldingen, indexer gjør det ikke. Forklar hvorfor filteret ser på metadata og ikke parser JSON-body.</p><p>Hent tilbake den opprinnelige senderen med <code>kind=note</code> før du fortsetter:</p><pre data-language="PowerShell"><code># Fra prosjektroten. Overskriver endringene i arbeidsfilen.
+Copy-Item -LiteralPath labs/integrations/message_bus.py -Destination artifacts/labs/integrations/message_bus.py -Force</code></pre><p>Arbeidskopien bruker nå de opprinnelige meldingsegenskapene.</p><label class="check-item"><input type="checkbox" data-check="w16-endring"><span>Jeg har verifisert både treff og avvisning i filteret.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Tøm labsubscriptions ved å fullføre meldingene. Slett topic-et når øvelsen er ferdig. Namespace/kø kan beholdes til workshop 17.</p>

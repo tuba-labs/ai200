@@ -143,6 +143,7 @@
     Copy-Item -LiteralPath labs -Destination artifacts/labs -Recurse
 }</code></pre>
         <p>Workshoppene bruker arbeidsfilene i <code>artifacts/labs/</code>. Rediger arbeidskopiene der, og lagre notater, logger og eksporter under <code>artifacts/</code>. Hele mappen er ignorert av Git. Kommandoen overskriver ikke en eksisterende arbeidskopi. Filpanelene på workshopsidene viser de kommenterte malene og er lukket som standard.</p>
+        <p>Workshoppene gir konkrete kommandoer for å tilbakestille arbeidsfiler etter kodeforsøk. <code>Copy-Item</code> henter originalen fra <code>labs/</code> og overskriver endringene i den angitte arbeidsfilen. Arbeidskopiene i <code>artifacts/</code> er Git-ignorert og kan ikke gjenopprettes med <code>git restore</code>.</p>
         <h3 id="installer-verktoy">Installer verktøyene du trenger</h3>
         <div class="table-wrap">
           <table>
