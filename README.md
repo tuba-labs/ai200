@@ -41,7 +41,7 @@ Norsk studieside for **Developing AI Cloud Solutions on Azure**, med pensumovers
 | [22. Finn feil og målinger med KQL](workshop-kql.html) | Domene 4 |
 | [Flashcards](flashcards.html) | 68 kort med filtrering og lokal fremdrift |
 
-Start med **[Kom i gang](getting-started.html)** for verktøy og Azure-konto før første samling. Begge kontovalgene bruker samme workshops, med lokal utvikling og testing som forberedelse til Azure-øvelsene. Praktisk konto- og verktøyoppsett er klargjøring; workshopenes læringsmål følger AI-200. Se [valgfri kostnadsveiledning](getting-started.html#kostnader) ved behov.
+Start med **[Før første workshop](getting-started.html#for-du-starter)**. Derfra følger du [oppskriften for å hente og åpne prosjektet i IntelliJ](getting-started.html#prosjekt), installerer verktøyene og klargjør Azure-kontoen. Begge kontovalgene bruker samme workshops, med lokal utvikling og testing som forberedelse til Azure-øvelsene. Praktisk konto- og verktøyoppsett er klargjøring; workshopenes læringsmål følger AI-200. Se [valgfri kostnadsveiledning](getting-started.html#kostnader) ved behov.
 
 På Free Trial beholder du utgiftsgrensen. Hvis en tjeneste krever oppgradering, eller kreditten/prøveperioden utløper, stopper du den skyøvelsen og vurderer kontovalget i startguiden før du eventuelt endrer abonnementet. Pay as you go har ingen innebygd hard utgiftsgrense; budsjettvarsler stopper ikke ressursene. Du kan også følge en demonstrasjon eller jobbe sammen ved en annen deltakers maskin uten å dele innloggingsopplysninger.
 
@@ -61,7 +61,7 @@ Dette oppdaterer de fire statiske samlede sidene. Nettstedet krever fortsatt ing
 
 ## Kjør nettstedet lokalt
 
-Hent prosjektet fra [GitHub](https://github.com/tuba-labs/ai200) med **Code → Download ZIP**, og pakk ut, eller klon med `git clone https://github.com/tuba-labs/ai200.git`. Labfilene ligger i `labs/`.
+Følg [Hent og åpne prosjektet](getting-started.html#prosjekt) for nedlasting, åpning i IntelliJ og kontroll av terminalens plassering. Labfilene ligger i `labs/`.
 
 Fra rotmappen med Python installert:
 

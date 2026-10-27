@@ -9,13 +9,6 @@ DOMAINS = [
         "number": 1, "slug": "containere", "title": "Containere på Azure",
         "syllabus": "pensum-containere.html", "first": 1, "last": 6,
         "parts": [("Images og hosting", [1, 2, 3]), ("Revisjoner, skalering og AKS", [4, 5, 6])],
-        "preparation": "Start med Docker og Azure CLI-innlogging. Ressursene opprettes med stegene i del 2–6 når du kommer dit. Du trenger ikke en ferdig AKS-klynge før første del. Beregn ventetid ved ressursoppretting.",
-        "preparation_steps": [(1, "Installer og kontroller Docker"),
-                              (2, "Logg inn i Azure og opprett Basic-registry"),
-                              (3, "Opprett identitet, Linux-plan og App Service-app"),
-                              (4, "Opprett identitet, Consumption-miljø og Container App"),
-                              (5, "Opprett Storage-konto, kø og apphemmelighet"),
-                              (6, "Installer kubectl og opprett eller koble til AKS")],
         "resources": [("ACR og images", "Samling 1 og 2", "Etter del 6"),
                       ("App Service-app, plan og pull-identitet", "Del 3", "Når del 3 er ferdig"),
                       ("Container App, miljø og pull-identitet", "Del 4–5", "Når del 5 er ferdig"),
@@ -26,7 +19,6 @@ DOMAINS = [
         "number": 2, "slug": "data", "title": "Datatjenester for AI",
         "syllabus": "pensum-data.html", "first": 7, "last": 13,
         "parts": [("PostgreSQL og Cosmos SDK", [7, 8, 9]), ("Vektorer, endringsflyt og Redis", [10, 11, 12, 13])],
-        "preparation": "Klargjør Azure PostgreSQL, en Cosmos DB-konto uten delt throughput og Managed Redis med RediSearch før økten. Følg kravene i delene under. Aktiver Cosmos-vektorsøk før del 10.",
         "resources": [("Lokal PostgreSQL-container", "Del 7", "Etter del 7"),
                       ("Azure PostgreSQL", "Del 8", "Etter del 8"),
                       ("Cosmos DB, notes og leases", "Del 9–11", "Etter del 11; behold notes mellom samlingene eller opprett på nytt"),
@@ -36,7 +28,6 @@ DOMAINS = [
         "number": 3, "slug": "integrasjoner", "title": "Integrasjoner og Functions",
         "syllabus": "pensum-integrasjoner.html", "first": 14, "last": 18,
         "parts": [("HTTP, køer og topics", [14, 15, 16]), ("Bindings og Event Grid", [17, 18])],
-        "preparation": "Ha Functions Core Tools, en Python Function App, en lab-Storage-konto og et Standard Service Bus-namespace klart. Standard trengs til topics. Event Grid bruker event-hook i Function App-en fra del 14.",
         "resources": [("HTTP Function App", "Del 14 og 18, eventuelt domene 4", "Etter siste øvelse som bruker appen, eller publiser på nytt senere"),
                       ("Service Bus-namespace og documents-kø", "Del 15–17", "Etter del 17"),
                       ("Topic og subscriptions", "Del 16", "Etter del 16"),
@@ -46,7 +37,6 @@ DOMAINS = [
         "number": 4, "slug": "sikkerhet", "title": "Sikkerhet, sporing og KQL",
         "syllabus": "pensum-sikkerhet.html", "first": 19, "last": 22,
         "parts": [("Hemmeligheter og appkonfigurasjon", [19, 20]), ("Distribuert sporing og KQL", [21, 22])],
-        "preparation": "Ha HTTP Function App-en fra workshop 14 tilgjengelig for Key Vault-referansen. Klargjør Key Vault, App Configuration og Application Insights med tilknyttet workspace. Sjekk dataroller og nettverkstilgang før økten.",
         "resources": [("Function App og Key Vault", "Del 19", "Når Key Vault-øvelsen er avsluttet"),
                       ("App Configuration", "Del 20", "Etter del 20"),
                       ("To lokale tjenester og Application Insights", "Del 21–22", "Etter KQL-øvelsen; behold telemetrien mellom delene")],
@@ -117,7 +107,7 @@ def chapter(number, session, workshop):
     return f'''<details class="panel domain-chapter" id="module-{number}" data-domain-chapter data-session="{session}" open>
 <summary><span class="chapter-number">Del {number}</span><h3>{escape(workshop["title"])}</h3></summary>
 <p class="small"><a href="./{workshop["file"]}">Åpne som kort workshop →</a></p>
-<p>Start denne delen i prosjektroten i terminalen du klargjorde over:</p><pre data-language="PowerShell"><code>Set-Location $projectRoot</code></pre>
+<p>Gå tilbake til prosjektmappen i terminalen fra <a href="#forberedelser">klargjøringen over</a>:</p><pre data-language="PowerShell"><code>Set-Location $projectRoot</code></pre>
 {"".join(steps)}
 </details>'''
 
@@ -135,12 +125,6 @@ def render(domain, workshops):
                         for item, keep, cleanup in domain["resources"])
     preparation_notes = ''.join(f'<p data-domain-session-note data-session="{i}">{escape(note)}</p>'
                                 for i, note in enumerate(SESSION_PREPARATION[domain["number"]], 1))
-    preparation_steps = ''
-    if domain.get("preparation_steps"):
-        preparation_steps = '<h3>Oppsett steg for steg</h3><p>Følg klargjøringen i den delen du skal arbeide med. Start med <a href="./getting-started.html#azure-cli">Azure CLI og innlogging</a> og <a href="./getting-started.html#azure-rettigheter">Azure-rettighetene</a> før del 2.</p><ol>'
-        preparation_steps += ''.join(f'<li><a href="#w{number}-forberedelser">Del {number}: {escape(label)}</a></li>'
-                                     for number, label in domain["preparation_steps"])
-        preparation_steps += '</ol>'
     init = '$projectRoot = (Get-Location).Path'
     if domain["number"] != 1:
         init += '\n.\\.venv\\Scripts\\Activate.ps1'
@@ -167,7 +151,7 @@ def render(domain, workshops):
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
     <article class="content" data-domain-workshop>
       <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend>{choices}</fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-{domain['number']}">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody>{agenda}</tbody></table></div></section>
-      <section class="panel" id="forberedelser"><h2>Klargjør før økten</h2>{preparation_notes}<details><summary>Oversikt for hele domenet</summary><p>{escape(domain['preparation'])}</p></details><p>Start fra prosjektroten, der index.html og labs ligger, og lagre rotstien i hovedterminalen. Alle Python-deler bruker samme .venv. Nye terminaler åpnes i prosjektroten og aktiveres ved behov.</p><pre data-language="PowerShell"><code>{escape(init)}</code></pre>{preparation_steps}<p>Følg i tillegg forberedelsene i hver del. Installer pakkene som den aktuelle delen trenger. Ikke del nøkler eller innlogging når dere arbeider sammen.</p></section>
+      <section class="panel" id="forberedelser"><h2>Før du starter</h2><p>Før første workshop må du <a href="./getting-started.html#prosjekt">hente og åpne prosjektet i IntelliJ</a> og fullføre <a href="./getting-started.html#for-du-starter">felles oppsett av verktøy og Azure-konto</a>. Gjør dette før kommandoene under.</p><p>Bruk terminalen du åpnet i prosjektmappen i det felles oppsettet. Lagre plasseringen så du kan gå tilbake til den mellom delene:</p><pre data-language="PowerShell"><code>{escape(init)}</code></pre>{preparation_notes}</section>
       <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Ressursplanen under gjelder denne samlede gjennomføringen. Ryddingen i delene er tilpasset overgangen til neste del. Slett bare dedikerte labressurser; en gruppe som også inneholder ressurser til senere deler må beholdes eller ryddes ressurs for ressurs.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody>{resources}</tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Hvis du ikke vil beholde ressurser mellom samlingene, noter oppsettet og klargjør dem på nytt før neste samling.</p></section>
       <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p>{chapters}</section>
       <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./{domain['syllabus']}">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>

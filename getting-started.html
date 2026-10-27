@@ -25,7 +25,7 @@
     <div class="wrap">
       <p class="eyebrow">Workshop / Før du møter opp</p>
       <h1>Kom i gang</h1>
-      <p class="lead">Klargjør verktøy og Azure-konto før workshopene. Velg 22 korte økter i eget tempo, eller samle oppgavene i én eller to samlinger per domene. <a href="./index.html#workshops">Velg workshopformat</a>.</p>
+      <p class="lead">Hent prosjektet og klargjør verktøy og Azure-konto før workshopene. Velg 22 korte økter i eget tempo, eller samle oppgavene i én eller to samlinger per domene. <a href="./index.html#workshops">Velg workshopformat</a>.</p>
       <div class="meta"><span class="tag">Felles klargjøring</span><span class="tag">2 kontovalg</span><span class="tag">22 korte workshops</span></div>
     </div>
   </div>
@@ -40,10 +40,10 @@
     <aside class="toc">
       <h2>På denne siden</h2>
       <nav aria-label="Innhold på siden">
-        <a href="#velg-lop">Slik gjennomfører vi</a>
+        <a href="#for-du-starter">Før første workshop</a>
         <a href="#azure">1. Velg og opprett konto</a>
         <a href="#learn">2. Microsoft Learn</a>
-        <a href="#verktoy">3. Verktøy og labfiler</a>
+        <a href="#verktoy">3. Prosjekt og verktøy</a>
         <a href="#abonnement">4. Kontroller abonnementet</a>
         <a href="#kostnader">5. Følg med på forbruket (valgfritt)</a>
         <a href="#opprydding">6. Rydd opp</a>
@@ -52,10 +52,13 @@
     </aside>
     <article class="content">
       <section class="panel" id="velg-lop">
-        <h2>Velg kontoen som passer deg</h2>
-        <p><a href="#pay-as-you-go"><strong>Pay as you go</strong></a> gir løpende betaling etter forbruk. <a href="#free-account"><strong>Free account</strong></a> gir kvalifiserte nye kunder en avgrenset prøveperiode med kreditt. Begge kan brukes til workshopene, men kostnadskontrollen er forskjellig.</p>
-        <p>Docker, Python og IntelliJ IDEA brukes på maskinen din for å bygge og teste koden før vi prøver Azure-tjenestene. Avtal øktene før dere begynner, og slett øvingsressursene etter bruk.</p>
-        <p class="notice">Pay as you go har ingen innebygd utgiftsgrense. Free Trial har en grense knyttet til prøvekreditten. Les oppsettet for kontotypen du velger før du oppretter ressurser.</p>
+        <h2 id="for-du-starter">Dette må gjøres før første workshop</h2>
+        <ol>
+          <li><a href="#prosjekt">Hent labfilene og åpne mappen som prosjekt i IntelliJ.</a> Oppskriften viser også hvordan du åpner terminalen i riktig mappe.</li>
+          <li><a href="#installer-verktoy">Installer verktøyene til domenet du skal arbeide med.</a> Python-øvelsene i domene 2–4 trenger også <a href="#intellij">prosjektets Python-miljø og SDK</a>.</li>
+          <li>Før Azure-oppgavene: <a href="#azure">velg eller bruk en eksisterende Azure-konto</a>, <a href="#abonnement">kontroller abonnementet</a> og <a href="#azure-cli">logg inn med Azure CLI</a> når workshopen bruker <code>az</code>-kommandoer.</li>
+        </ol>
+        <p>Dette er felles oppsett som du gjør én gang. Opprett labressursene når du kommer til klargjøringen i den enkelte workshop.</p>
       </section>
 
       <section class="panel" id="azure">
@@ -127,8 +130,29 @@
       </section>
 
       <section class="panel" id="verktoy">
-        <h2>3. Installer verktøy og hent labfilene</h2>
+        <h2>3. Hent prosjektet og installer verktøy</h2>
         <p>Vi utvikler og tester på egen maskin og bruker det valgte Azure-abonnementet til skyoppgavene. Ha noen GB ledig til container-images. Eksemplene bruker <strong>PowerShell</strong> der ikke annet er angitt. På macOS/Linux kan du bruke PowerShell eller oversette de få shell-spesifikke linjene.</p>
+        <h3 id="prosjekt">Hent og åpne prosjektet</h3>
+        <p>Prosjektet er labfilene du laster ned fra GitHub. Har du ikke IntelliJ IDEA Ultimate installert, bruk <a href="https://www.jetbrains.com/idea/download/">IntelliJ-installasjonen</a> først.</p>
+        <ol>
+          <li>Åpne <a href="https://github.com/tuba-labs/ai200">studiegruppens GitHub-repository</a> og velg <strong>Code → Download ZIP</strong>. Hvis repositoryet er privat, må arrangøren gi GitHub-kontoen din tilgang.</li>
+          <li>Pakk ut ZIP-filen til en mappe på maskinen din. Finn mappen som inneholder både <code>index.html</code> og undermappen <code>labs</code>; den kan ligge ett nivå inne i den utpakkede mappen.</li>
+          <li>I IntelliJ: velg <strong>File → Open</strong>, velg mappen med <code>index.html</code> og <code>labs</code>, og åpne den som prosjekt.</li>
+          <li>Åpne <strong>View → Tool Windows → Terminal</strong> og velg PowerShell. Terminalen skal stå i mappen du nettopp åpnet.</li>
+        </ol>
+        <details>
+          <summary>Hent med Git hvis du foretrekker det</summary>
+          <p>Har du Git installert, kan du hente filene fra mappen der du vil legge prosjektet:</p>
+          <pre data-language="PowerShell"><code>git clone https://github.com/tuba-labs/ai200.git
+Set-Location ai200</code></pre>
+          <p>Åpne deretter mappen <code>ai200</code> i IntelliJ og følg terminalsteget over.</p>
+        </details>
+        <p><strong>Prosjektroten</strong> betyr denne mappen med <code>index.html</code> og <code>labs</code>. Kontroller terminalens plassering:</p>
+        <pre data-language="PowerShell"><code>Get-Location
+Test-Path ./index.html
+Test-Path ./labs</code></pre>
+        <p><strong>Kontrollpunkt:</strong> begge <code>Test-Path</code>-kommandoene viser <code>True</code>. Hvis en viser <code>False</code>, åpne riktig mappe i IntelliJ og en ny terminal der. Start workshopkommandoene i denne mappen med mindre workshopen ber deg gå til en undermappe.</p>
+        <h3 id="installer-verktoy">Installer verktøyene du trenger</h3>
         <div class="table-wrap">
           <table>
             <caption>Utviklerverktøy for workshopene</caption>
@@ -167,14 +191,8 @@ pymanager exec -V:3.12 -m pip --version</code></pre>
           <p>Du kan erstatte <code>py -3.12</code> med <code>pymanager exec -V:3.12</code> i workshopkommandoene. Hvis <code>pymanager</code> ikke gjenkjennes, kontroller installasjonen og Windows' appkjøringsaliaser. Se <a href="https://docs.python.org/3/using/windows.html#troubleshooting">Python-feilsøking for Windows</a>.</p>
         </details>
         <p>Se <a href="https://docs.python.org/3/using/windows.html#python-install-manager">Python-dokumentasjonen om installasjon og versjonsvalg</a>.</p>
-        <h3>Hent kode og labfiler</h3>
-        <p>Åpne <a href="https://github.com/tuba-labs/ai200">studiegruppens GitHub-repository</a>, velg <strong>Code → Download ZIP</strong>, og pakk ut filene. I IntelliJ IDEA velger du <strong>File → Open</strong> og åpner den utpakkede prosjektmappen. Du skal se <code>index.html</code> og mappen <code>labs</code>. Ingen fork er nødvendig. Hvis repositoryet er privat, må arrangøren gi GitHub-kontoen din tilgang.</p>
-        <p>Har du Git installert, kan du i stedet kjøre dette fra mappen der du vil legge prosjektet:</p>
-        <pre data-language="PowerShell"><code>git clone https://github.com/tuba-labs/ai200.git
-Set-Location ai200</code></pre>
-        <p>Start hver workshop fra prosjektets rotmappe og følg sidens instruksjon om hvilken labmappe du skal gå inn i. Filene under <code>labs</code> er øvingseksempler du kan endre lokalt.</p>
         <h3 id="intellij">Bruk IntelliJ IDEA Ultimate til workshopene</h3>
-        <p>Vi bruker Ultimate med pluginen <strong>Python</strong>. Åpne <strong>View → Tool Windows → Terminal</strong>, og velg PowerShell for workshopkommandoene. Selve Python-interpreteren installeres separat som beskrevet over.</p>
+        <p>Python-øvelsene bruker Ultimate med pluginen <strong>Python</strong>. Åpne prosjektet og terminalen som beskrevet under <a href="#prosjekt">Hent og åpne prosjektet</a>. Selve Python-interpreteren installeres separat som beskrevet over.</p>
         <details open>
           <summary>Sett opp Python-pluginen og riktig interpreter</summary>
           <p><strong>Ett Python-miljø for hele prosjektet:</strong> Alle Python-workshopene bruker samme <code>.venv</code> i prosjektroten og samme SDK i IntelliJ. Dette passer med IntelliJs <strong>Project venv</strong>, som oppretter miljøet i prosjektroten automatisk. Se <a href="https://www.jetbrains.com/help/idea/creating-empty-python-project.html">JetBrains' forklaring av Project venv</a>.</p>
