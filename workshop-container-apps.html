@@ -36,27 +36,45 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Bruk ACR-registryet, <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Opprett Container Apps-ressursene nedenfor én gang. App Service-ressursene fra del 3 brukes ikke her.</p><pre data-language="PowerShell"><code>$ca = "ai200-api"
-$caEnv = "ai200-env"
-$caPullIdentityName = "ai200-ca-pull"</code></pre><h3>Gi appidentiteten lesetilgang til ACR</h3><pre data-language="PowerShell"><code>az identity create --resource-group $rg --name $caPullIdentityName --location $location -o none
-$caPullIdentityId = az identity show --resource-group $rg --name $caPullIdentityName --query id -o tsv
-$caPullPrincipalId = az identity show --resource-group $rg --name $caPullIdentityName --query principalId -o tsv
-az role assignment create --assignee-object-id $caPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none</code></pre><h3>Opprett miljø og app</h3><p>Bruk Consumption-profilen med minimum 0 og maksimum 2 replikaer. Oppsettet bruker live Log stream; det oppretter ikke et Log Analytics-workspace for historiske logger.</p><pre data-language="PowerShell"><code>az containerapp env create --resource-group $rg --name $caEnv --location $location --enable-workload-profiles true --logs-destination none -o none
-az containerapp create --resource-group $rg --name $ca --environment $caEnv --workload-profile-name Consumption --image "$login/ai200-api:v1" --user-assigned $caPullIdentityId --registry-identity $caPullIdentityId --registry-server $login --ingress external --target-port 8080 --cpu 0.25 --memory 0.5Gi --min-replicas 0 --max-replicas 2 --revisions-mode single -o none
-$caFqdn = az containerapp show --resource-group $rg --name $ca --query properties.configuration.ingress.fqdn -o tsv
-az containerapp show --resource-group $rg --name $ca --query "{Name:name, State:properties.provisioningState, Host:properties.configuration.ingress.fqdn}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> tilstanden er <code>Succeeded</code>. Helsesjekken gjøres i steg 1. Noter gruppe, appnavn, miljø, identitetsnavn og FQDN til del 5. Ved image-pull-feil kontrollerer du at identiteten har <code>AcrPull</code> på labregistryet; vent på at en ny rolle slår gjennom før du prøver opprettelsen igjen. Har du allerede disse ressursene, bruk navnene deres og hopp over opprettelsen.</p><details id="fortsett"><summary>Ny terminal: hent den eksisterende Container App-en</summary><p>Bruk appnavnet fra denne delen før du fortsetter med del 5:</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
+<p>Bruk ACR-registryet, <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Opprett Container Apps-ressursene nedenfor én gang. App Service-ressursene fra del 3 brukes ikke her.</p><pre data-language="PowerShell"><code># Sett navnet på Container App-en.
 $ca = "ai200-api"
+# Sett navnet på Container Apps-miljøet.
+$caEnv = "ai200-env"
+# Sett navnet på identiteten som skal hente Container App-ens image.
+$caPullIdentityName = "ai200-ca-pull"</code></pre><h3>Gi appidentiteten lesetilgang til ACR</h3><pre data-language="PowerShell"><code># Opprett en separat managed identity som appen kan bruke til image-pull.
+az identity create --resource-group $rg --name $caPullIdentityName --location $location -o none
+# Hent ressurs-ID-en til Container App-ens pull-identitet.
+$caPullIdentityId = az identity show --resource-group $rg --name $caPullIdentityName --query id -o tsv
+# Hent identitetens principal-ID for rolletildelingen i ACR.
+$caPullPrincipalId = az identity show --resource-group $rg --name $caPullIdentityName --query principalId -o tsv
+# Gi appidentiteten AcrPull på dette registryet.
+az role assignment create --assignee-object-id $caPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none</code></pre><h3>Opprett miljø og app</h3><p>Bruk Consumption-profilen med minimum 0 og maksimum 2 replikaer. Oppsettet bruker live Log stream; det oppretter ikke et Log Analytics-workspace for historiske logger.</p><pre data-language="PowerShell"><code># Opprett et miljø med workload profiles, uten et workspace for historiske logger.
+az containerapp env create --resource-group $rg --name $caEnv --location $location --enable-workload-profiles true --logs-destination none -o none
+# Opprett appen med managed identity, ekstern ingress på port 8080 og 0–2 replikaer.
+az containerapp create --resource-group $rg --name $ca --environment $caEnv --workload-profile-name Consumption --image "$login/ai200-api:v1" --user-assigned $caPullIdentityId --registry-identity $caPullIdentityId --registry-server $login --ingress external --target-port 8080 --cpu 0.25 --memory 0.5Gi --min-replicas 0 --max-replicas 2 --revisions-mode single -o none
+# Hent Container App-ens eksterne vertsnavn.
+$caFqdn = az containerapp show --resource-group $rg --name $ca --query properties.configuration.ingress.fqdn -o tsv
+# Vis appens navn, opprettelsesstatus og eksterne vertsnavn.
+az containerapp show --resource-group $rg --name $ca --query "{Name:name, State:properties.provisioningState, Host:properties.configuration.ingress.fqdn}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> tilstanden er <code>Succeeded</code>. Helsesjekken gjøres i steg 1. Noter gruppe, appnavn, miljø, identitetsnavn og FQDN til del 5. Ved image-pull-feil kontrollerer du at identiteten har <code>AcrPull</code> på labregistryet; vent på at en ny rolle slår gjennom før du prøver opprettelsen igjen. Har du allerede disse ressursene, bruk navnene deres og hopp over opprettelsen.</p><details id="fortsett"><summary>Ny terminal: hent den eksisterende Container App-en</summary><p>Bruk appnavnet fra denne delen før du fortsetter med del 5:</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Sett navnet på Container App-en.
+$ca = "ai200-api"
+# Hent regionen til den eksisterende Container App-en.
 $location = az containerapp show --resource-group $rg --name $ca --query location -o tsv</code></pre></details><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/container-apps/managed-identity-image-pull">image-pull med managed identity</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/containerapp/env#az-containerapp-env-create">opprette miljø</a> og <a href="https://learn.microsoft.com/en-us/cli/azure/containerapp#az-containerapp-create">opprette Container App</a>.</p>
 </section>
       <section class="panel" id="miljo"><h2>1. Undersøk miljø og ingress</h2>
-<p>Åpne appens Overview, Environment og Log stream, og kall helsesjekken:</p><pre data-language="PowerShell"><code>Invoke-RestMethod "https://$caFqdn/health"</code></pre><p>Forventet: JSON fra testappen. Noter miljøets nettverksvalg og forskjellen mellom appens inngangsadresse og containerens target port. Behold min 0 / maks 2 replikaer.</p><label class="check-item"><input type="checkbox" data-check="w4-miljo"><span>Jeg finner miljø, ingress og aktive logger.</span></label>
+<p>Åpne appens Overview, Environment og Log stream, og kall helsesjekken:</p><pre data-language="PowerShell"><code># Kall Container App-ens helsesjekk og vis JSON-svaret.
+Invoke-RestMethod "https://$caFqdn/health"</code></pre><p>Forventet: JSON fra testappen. Noter miljøets nettverksvalg og forskjellen mellom appens inngangsadresse og containerens target port. Behold min 0 / maks 2 replikaer.</p><label class="check-item"><input type="checkbox" data-check="w4-miljo"><span>Jeg finner miljø, ingress og aktive logger.</span></label>
 </section>
       <section class="panel" id="revisjoner"><h2>2. Opprett en ny revisjon</h2>
 <p>Aktiver Multiple revisions. Velg <strong>Edit and deploy</strong> og lag en revisjon med miljøvariabelen <code>APP_VERSION=v2</code>. Behold samme image slik at bare revisjonskonfigurasjonen endres. Finn begge revisjonsnavnene og vent til den nye er healthy.</p><label class="check-item"><input type="checkbox" data-check="w4-revisjoner"><span>Jeg har opprettet og identifisert to revisjoner.</span></label>
 </section>
       <section class="panel" id="trafikk"><h2>3. Fordel trafikk og rull tilbake</h2>
-<p>Sett trafikk til 50 % på hver revisjon. Kall /health gjentatte ganger med <code>curl.exe</code> uten å gjenbruke cookies. Observer begge versjonene; få kall garanterer ikke en nøyaktig halvdeling. Rull deretter tilbake ved å sende all apptrafikk til v1-revisjonen. Bruk revisjonsnavnet du fant i forrige steg:</p><pre data-language="PowerShell"><code>$v1Revision = &quot;DITT-V1-REVISJONSNAVN&quot;
-az containerapp ingress traffic set --resource-group $rg --name $ca --revision-weight &quot;$v1Revision=100&quot; -o none
+<p>Sett trafikk til 50 % på hver revisjon. Kall /health gjentatte ganger med <code>curl.exe</code> uten å gjenbruke cookies. Observer begge versjonene; få kall garanterer ikke en nøyaktig halvdeling. Rull deretter tilbake ved å sende all apptrafikk til v1-revisjonen. Bruk revisjonsnavnet du fant i forrige steg:</p><pre data-language="PowerShell"><code># Sett navnet på v1-revisjonen som skal få all trafikk.
+$v1Revision = "DITT-V1-REVISJONSNAVN"
+# Send 100 prosent av apptrafikken til v1-revisjonen.
+az containerapp ingress traffic set --resource-group $rg --name $ca --revision-weight "$v1Revision=100" -o none
+# Vis trafikkfordelingen mellom revisjonene.
 az containerapp ingress traffic show --resource-group $rg --name $ca -o table</code></pre><p>Bekreft at v2 ikke lenger får appens trafikk. Undersøk logger per revisjon. <a href="https://learn.microsoft.com/en-us/azure/container-apps/traffic-splitting">Microsoft Learn: fordele trafikk mellom revisjoner</a>.</p><label class="check-item"><input type="checkbox" data-check="w4-trafikk"><span>Jeg har fordelt trafikk og rullet tilbake til en tidligere revisjon.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>

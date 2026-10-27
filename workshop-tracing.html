@@ -249,19 +249,26 @@ azure-monitor-opentelemetry-exporter&gt;=1.0.0b30,&lt;2
 </code></pre></details>
 </section>
       <section class="panel" id="kjore"><h2>1. Start to tjenester</h2>
-<pre data-language="PowerShell"><code>python labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code>python labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>
+<pre data-language="PowerShell"><code># Start backend-tjenesten på port 8092 i denne terminalen.
+python labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code># Start frontend-tjenesten på port 8091 i denne terminalen.
+python labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code># Send et vanlig kall gjennom frontend og backend, og vis trace-ID-en.
+Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>
 </section>
       <section class="panel" id="kontekst"><h2>2. Følg foreldre og kontekst</h2>
 <p>Finn SERVER-spannet i frontend, CLIENT-spannet call-backend og SERVER-spannet i backend. Trace-ID er felles; span-ID-ene er ulike og ParentId kobler dem. Finn inject på senderen og extract på mottakeren. Fjern inject i kildefilen, restart frontend og sammenlign. Etter testen stopper du frontend med <code>Ctrl+C</code>. Gjenopprett filen fra prosjektroten og start frontend igjen:</p><pre data-language="PowerShell"><code># Forkaster kodeendringene i denne kildefilen. Backend kan fortsette å kjøre.
 git restore --source=HEAD -- labs/observability/services.py
+# Start frontend-tjenesten på port 8091 i denne terminalen.
 python labs/observability/services.py frontend</code></pre><p>Kall <code>/process</code> igjen fra den tredje terminalen og bekreft at begge tjenestene viser samme trace-ID.</p><label class="check-item"><input type="checkbox" data-check="w21-kontekst"><span>Jeg kan forklare hvordan traceparent binder de to tjenestene sammen.</span></label>
 </section>
       <section class="panel" id="feil"><h2>3. Finn treghet og feil</h2>
-<pre data-language="PowerShell"><code>Invoke-RestMethod "http://localhost:8091/process?delay=0.4"
+<pre data-language="PowerShell"><code># Send et kall med 0,4 sekunders forsinkelse i backend for å undersøke treghet.
+Invoke-RestMethod "http://localhost:8091/process?delay=0.4"
+# Utløs en kontrollert backend-feil og vis HTTP 500 med responsheaderne.
 curl.exe -i "http://localhost:8091/process?fail=1"</code></pre><p>Forventet: tregere span og deretter HTTP 500 med error-status på berørte spans. Finn hvor feilen oppstår, og skill den fra symptomene i frontend.</p><label class="check-item"><input type="checkbox" data-check="w21-feil"><span>Jeg har knyttet en frontend-feil til årsaken i backend.</span></label>
 </section>
       <section class="panel" id="eksport"><h2>4. Send til Azure og rydd opp</h2>
-<p>Forbered en Application Insights-ressurs med tilknyttet workspace i ressursgruppen <code>ai200-d4</code> før neste økt. Stopp begge tjenester og sett denne variabelen i begge aktiverte terminaler:</p><pre data-language="PowerShell"><code>$env:APPLICATIONINSIGHTS_CONNECTION_STRING = "LIM-INN-DIN-CONNECTION-STRING"</code></pre><p>Start backend og frontend igjen og gjenta kallene. Koden eksporterer både spans og egendefinerte request-/duration-målinger. Avslutt med Ctrl+C slik at eksportørene får flush.</p><label class="check-item"><input type="checkbox" data-check="w21-eksport"><span>Jeg har konfigurert eksport for begge tjenester til samme Azure-ressurs.</span></label>
+<p>Bruk <a href="./workshop-security.html#ressursgruppe">ressursgruppen fra del 19</a> og opprett én Application Insights-ressurs med tilknyttet workspace her. Stopp begge tjenester og sett denne variabelen i begge aktiverte terminaler:</p><pre data-language="PowerShell"><code># Velg Application Insights-ressursen som skal motta telemetrien.
+$env:APPLICATIONINSIGHTS_CONNECTION_STRING = "LIM-INN-DIN-CONNECTION-STRING"</code></pre><p>Start backend og frontend igjen og gjenta kallene. Koden eksporterer både spans og egendefinerte request-/duration-målinger. Avslutt med Ctrl+C slik at eksportørene får flush.</p><label class="check-item"><input type="checkbox" data-check="w21-eksport"><span>Jeg har konfigurert eksport for begge tjenester til samme Azure-ressurs.</span></label>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://opentelemetry.io/docs/concepts/context-propagation/">OpenTelemetry context propagation</a></li><li><a href="https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-exporter-readme?view=azure-python-preview">Azure Monitor-eksportør</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-app-configuration.html">← Workshop 20</a><a href="./workshop-kql.html">Workshop 22 →</a></nav>

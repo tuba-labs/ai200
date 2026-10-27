@@ -39,26 +39,43 @@
 <p>Bruk de eksisterende Application Insights- og workspace-ressursene fra <a href="./workshop-tracing.html#eksport">eksportsteget i del 21</a>. Bruk telemetrien du allerede sendte i del 21. Mangler du data i tidsvinduet, starter du tjenestene med samme connection string, sender nye kall og venter på innlesing. Åpne Logs i den tilknyttede Log Analytics-workspace-en. Lagre egne spørringer i <code>artifacts/queries.kql</code> og eventuelle dataeksporter i <code>artifacts/kql-results.csv</code>.</p>
 </section>
       <section class="panel" id="requests"><h2>1. Finn feil og svartid</h2>
-<pre data-language="KQL"><code>AppRequests
+<pre data-language="KQL"><code>// Start med forespørselstelemetri fra Application Insights.
+AppRequests
+// Ta bare med telemetri fra de siste 30 minuttene.
 | where TimeGenerated &gt; ago(30m)
+// Avgrens til tjenestene i AI-200-labben.
 | where AppRoleName startswith "ai200-"
+// Tell forespørsler og mislykkede forespørsler per gruppe.
 | summarize Requests=count(), Failures=countif(Success == false),
+            // Beregn 95-persentilen for svartid og grupper resultatet per tjeneste.
             P95=percentile(DurationMs, 95) by AppRoleName
+// Vis tjenesten med flest feil først.
 | order by Failures desc</code></pre><p>Forklar hva summarize gjør med radene, og hvorfor få kall gir en ustabil prosentil. Lag en spørring som viser bare mislykkede kall med OperationId.</p><label class="check-item"><input type="checkbox" data-check="w22-requests"><span>Jeg har funnet feilrate og svartid per tjeneste.</span></label>
 </section>
       <section class="panel" id="trace"><h2>2. Følg én trace på tvers av tjenester</h2>
-<pre data-language="KQL"><code>union AppRequests, AppDependencies
+<pre data-language="KQL"><code>// Kombiner innkommende forespørsler og utgående avhengighetskall.
+union AppRequests, AppDependencies
+// Ta bare med telemetri fra de siste 30 minuttene.
 | where TimeGenerated &gt; ago(30m)
+// Velg alle span-radene som tilhører én bestemt trace.
 | where OperationId == "LIM-INN-TRACE-ID"
+// Vis tid, tjeneste, span-ID, forelder, resultat og varighet.
 | project TimeGenerated, AppRoleName, Name, Id, ParentId, Success, DurationMs
+// Sorter span-radene i tidsrekkefølge.
 | order by TimeGenerated asc</code></pre><p>Forventet: frontend, call-backend og backend i samme operasjon. Undersøk ParentId/Id. En manglende backend-rad kan bety propagasjons- eller eksportfeil, ikke bare at backend ikke ble kalt.</p><label class="check-item"><input type="checkbox" data-check="w22-trace"><span>Jeg har korrelert forespørselen mellom begge tjenestene.</span></label>
 </section>
       <section class="panel" id="metrics"><h2>3. Spør på egne målinger</h2>
-<pre data-language="KQL"><code>AppMetrics
+<pre data-language="KQL"><code>// Start med de eksporterte målingene fra Application Insights.
+AppMetrics
+// Ta bare med telemetri fra de siste 30 minuttene.
 | where TimeGenerated &gt; ago(30m)
+// Avgrens til tjenestene i AI-200-labben.
 | where AppRoleName startswith "ai200-"
+// Velg den egendefinerte målingen som teller labforespørsler.
 | where Name == "workshop.requests"
+// Summer forespørslene per minutt og tjeneste.
 | summarize Requests=sum(Sum) by bin(TimeGenerated, 1m), AppRoleName
+// Vis resultatet som et tidsdiagram.
 | render timechart</code></pre><p>Finn også workshop.duration. Undersøk Sum og Count, og beregn gjennomsnittlig varighet som sum(Sum)/sum(Count). Skill en forhåndsaggregert metrikk fra de enkelte span-radene. Dersom navnene avviker, start med å liste distinct Name fra AppMetrics.</p><label class="check-item"><input type="checkbox" data-check="w22-metrics"><span>Jeg har analysert både sporingsdata og målinger med KQL.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp og oppsummer</h2>

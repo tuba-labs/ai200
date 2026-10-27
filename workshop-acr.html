@@ -36,18 +36,36 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-containers.html">1. Bygg og feilsøk et container-image</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Bruk Azure-innloggingen og ressursgruppen fra fellesoppsettet. Docker-motoren fra del 1 må kjøre når du senere henter imaget.</p><h3>Opprett et eget Basic-registry</h3><p>Bruk den eksisterende ressursgruppen <code>ai200-d1</code>, som du opprettet i <a href="./getting-started.html#abonnement">steg 4 i Kom i gang</a>. Har du brukt et annet gruppenavn, setter du <code>$rg</code> til det navnet. Standardregionen i veiledningen er <strong>Norway East</strong> (<code>norwayeast</code>). Bruk samme region som da du opprettet gruppen. Velg en annen støttet region hvis tjenestene ikke er tilgjengelige der for abonnementet ditt. ACR-navnet genereres med et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
+<p>Bruk Azure-innloggingen fra fellesoppsettet. Docker-motoren fra del 1 må kjøre når du senere henter imaget. <strong>Har du allerede et labregistry?</strong> Bruk <a href="#fortsett">tilkoblingsblokken for det eksisterende registryet</a> og gå direkte til <a href="#bygg">steg 1</a>.</p><h3 id="ressursgruppe">Ressursgruppen opprettes her ved behov</h3><p>Dette er første Azure-øvelse i domene 1. Blokken oppretter gruppen bare hvis den mangler. Har du allerede en labgruppe med et annet navn, bruker du det navnet i <code>$rg</code>.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Velg Norway East som region for nye ressurser.
 $location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+# Avslutt blokken.
+}</code></pre><h3>Opprett ett Basic-registry</h3><p>Hvis du ikke har et labregistry fra før, oppretter du det med blokken nedenfor én gang. ACR-navnet får et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code># Lag et globalt unikt registrynavn med et tilfeldig suffiks.
 $acr = "ai200" + (New-Guid).ToString("N").Substring(0, 12)
+# Opprett ett Basic-registry med administratorbrukeren deaktivert og RBAC som tilgangsmodell.
 az acr create --resource-group $rg --name $acr --location $location --sku Basic --admin-enabled false --role-assignment-mode rbac
+# Tillat Azure Resource Manager-tokens ved autentisering mot registryet.
 az acr config authentication-as-arm update -r $acr --status enabled
+# Hent registryets innloggingsadresse, som brukes i image-navn.
 $login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
+# Hent Azure-ressurs-ID-en til registryet for rolletildelinger.
 $acrId = az acr show --resource-group $rg --name $acr --query id -o tsv
-az acr show --resource-group $rg --name $acr --query "{Name:name, LoginServer:loginServer, State:provisioningState, AdminEnabled:adminUserEnabled, RoleMode:roleAssignmentMode}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> registryet er <code>Succeeded</code>, AdminEnabled er <code>False</code> og tilgangsmodellen er <code>LegacyRegistryPermissions</code> (portalens <strong>RBAC Registry Permissions</strong>). Behold terminalen og variablene til del 3–6, og noter registry-navnet. Ved ny terminal bruker du tilkoblingsblokken nedenfor.</p><p>Labben bruker bevisst RBAC Registry Permissions, der <code>AcrPull</code> gir lesetilgang. Bruker du et eksisterende registry med <strong>RBAC Registry + ABAC Repository Permissions</strong>, må repository-roller brukes i stedet; ikke endre tilgangsmodellen på et delt registry for å følge labben.</p><details id="fortsett"><summary>Ny terminal: hent det eksisterende registryet</summary><p>Bruk navnene du noterte. Denne blokken henter verdier til del 3–6:</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
+# Vis registryets navn, imageadresse, opprettelsesstatus og tilgangsinnstillinger.
+az acr show --resource-group $rg --name $acr --query "{Name:name, LoginServer:loginServer, State:provisioningState, AdminEnabled:adminUserEnabled, RoleMode:roleAssignmentMode}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> registryet er <code>Succeeded</code>, AdminEnabled er <code>False</code> og tilgangsmodellen er <code>LegacyRegistryPermissions</code> (portalens <strong>RBAC Registry Permissions</strong>). Behold terminalen og variablene til del 3–6, og noter registry-navnet. Ved ny terminal bruker du tilkoblingsblokken nedenfor.</p><p>Labben bruker bevisst RBAC Registry Permissions, der <code>AcrPull</code> gir lesetilgang. Bruker du et eksisterende registry med <strong>RBAC Registry + ABAC Repository Permissions</strong>, må repository-roller brukes i stedet; ikke endre tilgangsmodellen på et delt registry for å følge labben.</p><details id="fortsett"><summary>Eksisterende registry eller ny terminal: hent tilkoblingen</summary><p>Bruk navnene du noterte. Denne blokken henter verdier til del 3–6:</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Sett navnet på registryet som allerede finnes.
 $acr = "DITT-REGISTRY-NAVN"
+# Hent regionen til det eksisterende registryet.
 $location = az acr show --resource-group $rg --name $acr --query location -o tsv
+# Hent registryets innloggingsadresse, som brukes i image-navn.
 $login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
-$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv</code></pre></details><h3>Gi labbrukeren tilgang ved behov</h3><p>Hvis du har Owner eller Contributor på gruppen i denne RBAC-modellen, har du allerede tilgangen labben bruker til image-operasjoner og Tasks. Ved <code>AuthorizationFailed</code> kontrollerer eieren <strong>ACR → Access control (IAM)</strong> og kan gi deg <strong>AcrPush</strong>, <strong>Container Registry Tasks Contributor</strong> og <strong>Container Registry Configuration Reader and Data Access Configuration Reader</strong> på labregistryet. Rolletildeling kan bruke litt tid på å slå gjennom. Administratorinnlogging på registryet skal fortsatt være deaktivert.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/acr#az-acr-create">opprette ACR</a> og <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">tilgangsmodeller og roller</a>.</p>
+# Hent Azure-ressurs-ID-en til registryet for rolletildelinger.
+$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv</code></pre></details><h3>Gi labbrukeren tilgang ved behov</h3><p>Hvis du har Owner eller Contributor på gruppen i denne RBAC-modellen, har du allerede tilgangen labben bruker til image-operasjoner og Tasks. Ved <code>AuthorizationFailed</code> kontrollerer eieren <strong>ACR → Access control (IAM)</strong> og kan gi deg <strong>AcrPush</strong>, <strong>Container Registry Tasks Contributor</strong> og <strong>Container Registry Configuration Reader and Data Access Configuration Reader</strong> på labregistryet. Rolletildeling kan bruke litt tid på å slå gjennom. Administratorinnlogging på registryet skal fortsatt være deaktivert.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/group#az-group-exists">kontrollere om ressursgruppen finnes</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/acr#az-acr-create">opprette ACR</a> og <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">tilgangsmodeller og roller</a>.</p>
 
 <details class="source-file" id="fil-labs-containers-dockerfile" data-source-file="labs/containers/Dockerfile"><summary><code>Dockerfile</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/Dockerfile</code></p><pre data-language="Dockerfile" data-source="labs/containers/Dockerfile"><code># Bruk et ferdig Linux-image med Python 3.12.
 # slim-varianten har færre forhåndsinstallerte pakker enn standardimaget.
@@ -125,13 +143,19 @@ if __name__ == &quot;__main__&quot;:
 </code></pre></details>
 </section>
       <section class="panel" id="bygg"><h2>1. Bygg i ACR</h2>
-<pre data-language="PowerShell"><code>az acr build --registry $acr --image ai200-api:v1 labs/containers
+<pre data-language="PowerShell"><code># Bygg koden fra labs/containers i Azure og lagre imaget som ai200-api:v1.
+az acr build --registry $acr --image ai200-api:v1 labs/containers
+# Vis tagger og metadata for ai200-api i registryet.
 az acr repository show-tags --name $acr --repository ai200-api --detail -o table</code></pre><p>Bygget og lagringen skjer i Azure. Finn tagg og digest. En gjenbrukt tagg kan peke på nytt innhold; digest identifiserer innholdet. Kjør bygget med en ny tagg og sammenlign.</p><label class="check-item"><input type="checkbox" data-check="w2-bygg"><span>Jeg finner image, tagg og digest i ACR.</span></label>
 </section>
       <section class="panel" id="tasks"><h2>2. Bygg, push og kjør med Tasks</h2>
-<p><code>acr-task.yaml</code> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code>Set-Location labs/containers
+<p><code>acr-task.yaml</code> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code># Gå til mappen med Dockerfile-en og containerkoden.
+Set-Location labs/containers
+# Kjør bygge-, push- og kommandostegene fra acr-task.yaml i Azure.
 az acr run --registry $acr --file acr-task.yaml .
+# Gå tilbake til prosjektroten fra labmappen.
 Set-Location ../..
+# Vis ACR Tasks-kjøringene med status og kjørings-ID.
 az acr task list-runs --registry $acr -o table</code></pre><p>Forventet: alle tre stegene fullføres, og Python-versjonen står i loggen. Finn task-kjøringen og den unike taggen. Forklar forskjellen mellom denne manuelle kjøringen og triggere fra kildekode, base-image eller tidsplan.</p><label class="check-item"><input type="checkbox" data-check="w2-tasks"><span>Jeg har kjørt build, push og et kommando-steg i ACR Tasks.</span></label>
 
 <details class="source-file" id="fil-labs-containers-acr-task-yaml" data-source-file="labs/containers/acr-task.yaml"><summary><code>acr-task.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/acr-task.yaml</code></p><pre data-language="YAML" data-source="labs/containers/acr-task.yaml"><code># Velg syntaksversjonen for ACR Tasks-filen.
@@ -150,8 +174,11 @@ steps:
 </code></pre></details>
 </section>
       <section class="panel" id="hent"><h2>3. Hent og kjør</h2>
-<pre data-language="PowerShell"><code>az acr login --name $acr
+<pre data-language="PowerShell"><code># La Docker bruke Azure-innloggingen din mot registryet.
+az acr login --name $acr
+# Last ned det navngitte v1-imaget fra registryet til den lokale maskinen.
 docker pull "$login/ai200-api:v1"
+# Start ACR-imaget, vis Python-versjonen og fjern testcontaineren etterpå.
 docker run --rm "$login/ai200-api:v1" python --version</code></pre><p>Samme image kan brukes av App Service, Container Apps og AKS i de neste øktene.</p><label class="check-item"><input type="checkbox" data-check="w2-hent"><span>Jeg kan hente en bestemt image-versjon.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>

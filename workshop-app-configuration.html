@@ -36,7 +36,7 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-security.html">19. Key Vault: oppslag, identitet og rotasjon</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Opprett en App Configuration-labressurs i <code>ai200-d4</code>, for eksempel Free hvis tilgjengelig. Gi deg selv App Configuration Data Owner for å legge inn verdier. Innstillingene skal være vanlig konfigurasjon; hemmeligheter hører til i Key Vault.</p>
+<p>Opprett en App Configuration-labressurs i <a href="./workshop-security.html#ressursgruppe">ressursgruppen fra del 19</a>, for eksempel Free hvis tilgjengelig. Gi deg selv App Configuration Data Owner for å legge inn verdier. Innstillingene skal være vanlig konfigurasjon; hemmeligheter hører til i Key Vault.</p>
 
 <details class="source-file" id="fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
 
@@ -108,16 +108,20 @@ azure-appconfiguration&gt;=1.7,&lt;2
 <p>I Configuration explorer: opprett nøkkel <code>Workshop:Mode</code>, label <code>lab</code>, verdi <code>practice</code>. Legg samme nøkkel med label <code>test</code> og verdi <code>review</code>. Finn endpoint på Overview.</p><label class="check-item"><input type="checkbox" data-check="w20-lagre"><span>Jeg har lagret samme nøkkel for to miljøer.</span></label>
 </section>
       <section class="panel" id="hent"><h2>2. Les med SDK</h2>
-<pre data-language="PowerShell"><code>$env:APP_CONFIG_ENDPOINT = "https://DITT-NAVN.azconfig.io"
+<pre data-language="PowerShell"><code># Sett App Configuration-endepunktet for SDK-oppslaget.
+$env:APP_CONFIG_ENDPOINT = "https://DITT-NAVN.azconfig.io"
+# Les Workshop:Mode fra App Configuration med etiketten som er valgt i koden.
 python labs/security/read_settings.py config</code></pre><p>Forventet: Workshop mode: practice. Finn label=lab i koden. Endre label til test i kildefilen og kontroller review. Før neste steg, gjenopprett filen med <code>label=lab</code> og kjør oppslaget igjen:</p><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
 git restore --source=HEAD -- labs/security/read_settings.py
+# Les Workshop:Mode fra App Configuration med etiketten som er valgt i koden.
 python labs/security/read_settings.py config</code></pre><p>Forventet: <code>Workshop mode: practice</code>. For en driftet app som bare leser, holder Data Reader.</p><label class="check-item"><input type="checkbox" data-check="w20-hent"><span>Jeg har lest en bestemt nøkkel og etikett fra kode.</span></label>
 </section>
       <section class="panel" id="oppdater"><h2>3. Endre uten nytt image</h2>
 <p>Endre lab-verdien i portalen og kjør skriptet igjen. Forklar hvorfor dette korte programmet leser på nytt hver gang. En langlivet prosess trenger en bevisst strategi for refresh og cache; nytt portalinnhold alene endrer ikke gamle verdier i minnet.</p><label class="check-item"><input type="checkbox" data-check="w20-oppdater"><span>Jeg kan forklare når en oppdatert innstilling blir synlig.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
-<pre data-language="PowerShell"><code>Remove-Item Env:APP_CONFIG_ENDPOINT -ErrorAction SilentlyContinue</code></pre><p>Slett labressursen. Forklar hvilke av konfigurasjonsverdiene i dine tidligere øvelser som passer i App Configuration, Key Vault eller appens egne innstillinger.</p>
+<pre data-language="PowerShell"><code># Fjern APP_CONFIG_ENDPOINT fra denne terminalen.
+Remove-Item Env:APP_CONFIG_ENDPOINT -ErrorAction SilentlyContinue</code></pre><p>Slett labressursen. Forklar hvilke av konfigurasjonsverdiene i dine tidligere øvelser som passer i App Configuration, Key Vault eller appens egne innstillinger.</p>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/quickstart-python">App Configuration og Python</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-security.html">← Workshop 19</a><a href="./workshop-tracing.html">Workshop 21 →</a></nav>

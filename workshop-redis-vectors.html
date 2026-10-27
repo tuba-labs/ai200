@@ -43,7 +43,8 @@ redis&gt;=5,&lt;7
 </code></pre></details>
 </section>
       <section class="panel" id="indeks"><h2>1. Opprett en vektorindeks</h2>
-<pre data-language="PowerShell"><code>python labs/redis/demo.py index</code></pre><p>Finn VectorField, HNSW, FLOAT32 og DIM=3 i <code>demo.py</code>. De lagrede byteverdiene og spørsmålsvektoren må bruke samme dtype og dimensjon. Undersøk også TAG-feltet topic og prefikset som avgrenser labens dokumenter.</p><label class="check-item"><input type="checkbox" data-check="w13-indeks"><span>Jeg har opprettet en HNSW-vektorindeks og lagret vektorer.</span></label>
+<pre data-language="PowerShell"><code># Opprett vektorindeksen i Redis og lagre eksempeldokumentene.
+python labs/redis/demo.py index</code></pre><p>Finn VectorField, HNSW, FLOAT32 og DIM=3 i <code>demo.py</code>. De lagrede byteverdiene og spørsmålsvektoren må bruke samme dtype og dimensjon. Undersøk også TAG-feltet topic og prefikset som avgrenser labens dokumenter.</p><label class="check-item"><input type="checkbox" data-check="w13-indeks"><span>Jeg har opprettet en HNSW-vektorindeks og lagret vektorer.</span></label>
 
 <details class="source-file" id="fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
 # Velg cache-, indeks-, søke- eller oppryddingsoperasjon.
@@ -158,7 +159,8 @@ if __name__ == &quot;__main__&quot;:
 </code></pre></details>
 </section>
       <section class="panel" id="sok"><h2>2. Søk og avgrens</h2>
-<pre data-language="PowerShell"><code>python labs/redis/demo.py search</code></pre><p>Vent på indeksering hvis første søk er tomt. Forventet: dokument 2 før 1, mens dokument 3 utelates av topic-filteret. Prøv en annen søkevektor i kildefilen og forklar både metadatafilter og KNN-rangering.</p><label class="check-item"><input type="checkbox" data-check="w13-sok"><span>Jeg har brukt en binær spørsmålsvektor og metadatafilter i et KNN-søk.</span></label>
+<pre data-language="PowerShell"><code># Kjør et KNN-søk med metadatafilter mot Redis-indeksen.
+python labs/redis/demo.py search</code></pre><p>Vent på indeksering hvis første søk er tomt. Forventet: dokument 2 før 1, mens dokument 3 utelates av topic-filteret. Prøv en annen søkevektor i kildefilen og forklar både metadatafilter og KNN-rangering.</p><label class="check-item"><input type="checkbox" data-check="w13-sok"><span>Jeg har brukt en binær spørsmålsvektor og metadatafilter i et KNN-søk.</span></label>
 </section>
       <section class="panel" id="oppdater"><h2>3. Undersøk endringer</h2>
 <p>Endre vektoren for dokument 2 i index-steget, kjør index og search igjen, og observer rangeringen etter at indeksen er oppdatert. Forklar forskjellen mellom en cache som inneholder ferdige søkeresultater og Redis som lagrer en søkbar vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w13-oppdater"><span>Jeg skiller cache-invalidering fra oppdatering av en søkeindeks.</span></label>
@@ -166,7 +168,9 @@ if __name__ == &quot;__main__&quot;:
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
 git restore --source=HEAD -- labs/redis/demo.py</code></pre>
-<pre data-language="PowerShell"><code>python labs/redis/demo.py cleanup
+<pre data-language="PowerShell"><code># Fjern bare labens Redis-indeks og dokumenter.
+python labs/redis/demo.py cleanup
+# Fjern REDIS_KEY fra denne terminalen.
 Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre><p>Cleanup fjerner bare ai200-indeksen og dens dokumenter. Slett den dedikerte Azure-instansen når økten er ferdig.</p>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/redis/overview-vector-similarity">Vektorsøk i Managed Redis</a></li></ul></section>

@@ -57,26 +57,31 @@ def json_explanations(source, content):
         return ''
     notes = {
         "version": "Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.",
-        "extensionBundle.id": "La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.",
-        "extensionBundle.version": "Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.",
+        "extensionBundle": "Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.",
         "IsEncrypted": "false betyr at de lokale innstillingene er lagret som vanlig tekst.",
-        "Values.FUNCTIONS_WORKER_RUNTIME": "Velg Python som worker for denne Function App-en.",
-        "Values.AzureWebJobsStorage": "Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.",
-        "Values.ServiceBusConnection": "Labtilkoblingen som Service Bus-bindingene refererer til med connection-navnet.",
-        "Values.CosmosConnection": "Labtilkoblingen som Cosmos-triggeren refererer til med connection-navnet.",
-        "Values.COSMOS_DATABASE": "Databasenavnet som settes inn i triggerens %COSMOS_DATABASE%-uttrykk.",
+        "Values": "Start appens lokale miljøvariabler.",
+        "FUNCTIONS_WORKER_RUNTIME": "Velg Python som worker for denne Function App-en.",
+        "AzureWebJobsStorage": "Tilkobling til labens Storage-konto for Functions-hosten.",
+        "ServiceBusConnection": "Tilkoblingsstrengen som Service Bus-bindingene bruker.",
+        "CosmosConnection": "Tilkoblingsstrengen som Cosmos-triggeren bruker.",
+        "COSMOS_DATABASE": "Databasenavnet som erstatter %COSMOS_DATABASE% i triggeren.",
     }
-
-    def fields(value, prefix=''):
-        for key, item in value.items():
-            name = prefix + key
-            if name in notes:
-                yield f'<dt><code>{escape(name)}</code></dt><dd>{escape(notes[name])}</dd>'
-            if isinstance(item, dict):
-                yield from fields(item, name + '.')
-
-    entries = ''.join(fields(json.loads(content)))
-    return '<p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes">' + entries + '</dl>' if entries else ''
+    json.loads(content)
+    explanations = []
+    for line in content.splitlines():
+        key = re.match(r'\s*"([^"]+)"\s*:', line)
+        if key:
+            explanation = notes[key[1]]
+        elif line.strip() == '{':
+            explanation = "Start JSON-objektet."
+        elif line.strip() in ('}', '},'):
+            explanation = "Avslutt miljøvariablene." if line.startswith(' ') else "Avslutt JSON-objektet."
+        elif not line.strip():
+            explanation = ''
+        else:
+            raise ValueError(f"Missing JSON line explanation in {source}: {line}")
+        explanations.append('# ' + explanation if explanation else '')
+    return '<span class="code-line-notes" aria-label="Forklaring av hver JSON-linje">' + escape('\n'.join(explanations)) + '</span>'
 
 
 def source_panel(relative, panel_id=None):
@@ -87,11 +92,13 @@ def source_panel(relative, panel_id=None):
     if source.name == "Dockerfile":
         language = "Dockerfile"
     panel_id = panel_id or 'fil-' + re.sub(r'[^a-z0-9]+', '-', relative.lower()).strip('-')
+    notes = json_explanations(source, content)
+    annotated = ' class="code-with-notes"' if notes else ''
     return (f'<details class="source-file" id="{escape(panel_id)}" data-source-file="{escape(relative)}">'
             f'<summary><code>{escape(source.name)}</code><span class="small"> — vis fil og forklaring</span></summary>'
             f'<p class="small">Kildefil: <code>{escape(relative)}</code></p>'
-            f'<pre data-language="{language}" data-source="{escape(relative)}"><code>{escape(content)}</code></pre>'
-            f'{json_explanations(source, content)}</details>')
+            f'<pre data-language="{language}" data-source="{escape(relative)}"{annotated}><code>{escape(content)}</code>{notes}</pre>'
+            f'</details>')
 
 
 def inline_sources(text):
@@ -102,7 +109,7 @@ def inline_sources(text):
         source = lab_source(match[2])
         return match[1] + escape(source.read_text(encoding="utf-8")) + match[3]
 
-    return re.sub(r'(<pre\b[^>]*\bdata-source="([^"]+)"[^>]*><code>)[\s\S]*?(</code></pre>)',
+    return re.sub(r'(<pre\b[^>]*\bdata-source="([^"]+)"[^>]*><code>)[\s\S]*?(</code>)',
                   embed, text)
 
 

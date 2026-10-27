@@ -36,6 +36,16 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-data.html">7. PostgreSQL: vektorsøk og indekser</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<h3 id="ressursgruppe">Ressursgruppen for domene 2</h3><p>Dette er første Azure-øvelse i domenet. Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d2"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+# Avslutt blokken.
+}</code></pre>
 <p>Opprett en liten Azure Database for PostgreSQL Flexible Server i den eksisterende ressursgruppen <code>ai200-d2</code>, med TLS og nettverkstilgang fra din maskin. Denne serveren er ny i del 8; den lokale databasen fra del 7 brukes ikke videre. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
 
 <details class="source-file" id="fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
@@ -81,8 +91,11 @@ pgvector&gt;=0.3,&lt;1
 </code></pre></details>
 </section>
       <section class="panel" id="sdk"><h2>1. Koble til med Python</h2>
-<p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code>$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
+<p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code># Sett PostgreSQL-tilkoblingen med database, bruker, passord og påkrevd TLS.
+$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
+# Opprett labtabellen, aktiver vector og last inn de fire eksempelradene i Azure-databasen.
 python labs/data/postgres_client.py setup
+# Kjør den parameteriserte PostgreSQL-spørringen og vis de nærmeste dokumentene.
 python labs/data/postgres_client.py query</code></pre><p>Forventet: dokument 2 og 1. Finn de parameteriserte verdiene i <code>postgres_client.py</code> og forklar hvorfor SQL og data sendes separat.</p><label class="check-item"><input type="checkbox" data-check="w8-sdk"><span>Jeg har kjørt en parameterisert vektorspørring mot Azure PostgreSQL.</span></label>
 
 <details class="source-file" id="fil-labs-data-postgres-client-py" data-source-file="labs/data/postgres_client.py"><summary><code>postgres_client.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/postgres_client.py</code></p><pre data-language="Python" data-source="labs/data/postgres_client.py"><code>&quot;&quot;&quot;Run the same parameterized vector query with a direct connection and a pool.&quot;&quot;&quot;
@@ -192,13 +205,15 @@ if __name__ == &quot;__main__&quot;:
 </code></pre></details>
 </section>
       <section class="panel" id="pool"><h2>2. Mål og gjenbruk forbindelser</h2>
-<pre data-language="PowerShell"><code>python labs/data/postgres_client.py compare</code></pre><p>Skriptet sammenligner ti nye forbindelser med ti spørringer via en liten klientpool. Gjenta og noter variasjonen. Tilkoblingslatens, nettverk og oppvarming påvirker resultatene. Undersøk min_size/max_size og hvorfor hver prosess trenger sin egen pool.</p><label class="check-item"><input type="checkbox" data-check="w8-pool"><span>Jeg har målt forskjellen mellom nye og gjenbrukte forbindelser.</span></label>
+<pre data-language="PowerShell"><code># Mål ti nye forbindelser og sammenlign med ti oppslag gjennom en klientpool.
+python labs/data/postgres_client.py compare</code></pre><p>Skriptet sammenligner ti nye forbindelser med ti spørringer via en liten klientpool. Gjenta og noter variasjonen. Tilkoblingslatens, nettverk og oppvarming påvirker resultatene. Undersøk min_size/max_size og hvorfor hver prosess trenger sin egen pool.</p><label class="check-item"><input type="checkbox" data-check="w8-pool"><span>Jeg har målt forskjellen mellom nye og gjenbrukte forbindelser.</span></label>
 </section>
       <section class="panel" id="ressurser"><h2>3. Undersøk Azure-flaskehalser</h2>
 <ol><li>Åpne Metrics for CPU, minne, aktive forbindelser og lagrings-I/O. Kjør compare igjen og noter hva en så liten last faktisk kan vise.</li><li>Undersøk Compute + storage og PgBouncer. Velg et foreslått alternativ for mange samtidige oppslag og begrunn CPU/minne/lagring. Gjennomfør en endring bare på din labserver hvis øvelsen trenger den.</li><li>På en tier med innebygd PgBouncer: aktiver den, bruk port 6432 i PGCONNINFO og kjør query/compare på nytt. Hvis tier-en ikke støtter det, bruker du klientpoolen og forklarer skillet.</li></ol><p>Kombiner målingene med EXPLAIN-planen fra workshop 7. En liten datasamling er ikke en representativ kapasitetsmåling.</p><label class="check-item"><input type="checkbox" data-check="w8-ressurser"><span>Jeg kan knytte en observerbar flaskehals til forbindelser eller databasekapasitet.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
-<pre data-language="PowerShell"><code>Remove-Item Env:PGCONNINFO -ErrorAction SilentlyContinue</code></pre><p>Slett labserveren og tilknyttede ressurser når du er ferdig. Ingen andre workshops trenger denne serveren.</p>
+<pre data-language="PowerShell"><code># Fjern PGCONNINFO fra denne terminalen.
+Remove-Item Env:PGCONNINFO -ErrorAction SilentlyContinue</code></pre><p>Slett labserveren og tilknyttede ressurser når du er ferdig. Ingen andre workshops trenger denne serveren.</p>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/connect-python">Python med PostgreSQL</a></li><li><a href="https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-pgbouncer">PgBouncer</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-data.html">← Workshop 7</a><a href="./workshop-cosmos.html">Workshop 9 →</a></nav>

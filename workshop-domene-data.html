@@ -60,27 +60,53 @@ ON CONFLICT (id) DO UPDATE SET
     -- Oppdater også vektoren, og avslutt SQL-setningen.
     embedding = EXCLUDED.embedding;
 </code></pre></details>
-</section><section class="chapter-step" id="w7-postgres"><h4>1. Start database og schema</h4><pre data-language="PowerShell"><code>docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+</section><section class="chapter-step" id="w7-postgres"><h4>1. Start database og schema</h4><pre data-language="PowerShell"><code># Start en lokal PostgreSQL 17-container med pgvector og databasen workshop.
+docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+# Kontroller at PostgreSQL-containeren er klar til å motta forbindelser.
 docker exec ai200-pg pg_isready -U postgres -d workshop
+# Send SQL-filen til psql i containeren for å opprette schema og eksempeldata.
 Get-Content labs/data/setup.sql -Raw | docker exec -i ai200-pg psql -U postgres -d workshop
+# Åpne en interaktiv psql-terminal mot databasen workshop.
 docker exec -it ai200-pg psql -U postgres -d workshop</code></pre><p>Vent på accepting connections før setup. Tabellen har id, topic, textinnhold og vector(3). Forklar valg av primærnøkkel og dimensjoner.</p><label class="check-item"><input type="checkbox" data-check="w7-postgres" data-progress-source="./workshop-data.html"><span>Jeg har opprettet en tabell og lagret vektorer.</span></label>
-</section><section class="chapter-step" id="w7-vektorsok"><h4>2. Søk og filtrer</h4><pre data-language="SQL"><code>SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+</section><section class="chapter-step" id="w7-vektorsok"><h4>2. Søk og filtrer</h4><pre data-language="SQL"><code>-- Hent dokumentfeltene og beregn cosinusavstand til spørsmålsvektoren.
+SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+-- Les radene fra labtabellen workshop_notes.
 FROM workshop_notes
+-- Ta bare med dokumenter som har emnet containers.
 WHERE topic = 'containers'
+-- Sorter dokumentene etter økende cosinusavstand.
 ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector
+-- Returner bare de to nærmeste dokumentene.
 LIMIT 2;</code></pre><p>Forventet: dokument 2 før 1. Uten filter er dokument 3 nærmest. Forklar hvordan et metadatafilter avgrenser RAG-konteksten før en språkmodell eventuelt bruker treffene.</p><label class="check-item"><input type="checkbox" data-check="w7-vektorsok" data-progress-source="./workshop-data.html"><span>Jeg har brukt både vektoravstand og metadatafilter.</span></label>
-</section><section class="chapter-step" id="w7-indeks"><h4>3. Les planen og bygg indeks</h4><pre data-language="SQL"><code>CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+</section><section class="chapter-step" id="w7-indeks"><h4>3. Les planen og bygg indeks</h4><pre data-language="SQL"><code>-- Opprett den navngitte indeksen hvis den ikke finnes fra før.
+CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+-- Bygg en HNSW-indeks på embedding med operatorer for cosinusavstand.
 ON workshop_notes USING hnsw (embedding vector_cosine_ops);
+-- Kjør neste spørring og vis planen, målt tidsbruk og bufferaktivitet.
 EXPLAIN (ANALYZE, BUFFERS)
+-- Hent dokumentenes ID-er fra labtabellen.
 SELECT id FROM workshop_notes
+-- Sorter etter cosinusavstand og begrens resultatet til to dokumenter.
 ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector LIMIT 2;</code></pre><p>Fire rader er ofte for lite til at indeksen lønner seg; Seq Scan er normalt. Sammenlign operator og operator class. Beskriv avveiningen mellom recall, minne og svartid for en større vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w7-indeks" data-progress-source="./workshop-data.html"><span>Jeg tolker planen og vet hvorfor en indeks kan bli valgt bort.</span></label>
-</section><section class="chapter-step" id="w7-opprydding"><h4>Rydding og overgang til neste del</h4><p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code>docker stop ai200-pg
+</section><section class="chapter-step" id="w7-opprydding"><h4>Rydding og overgang til neste del</h4><p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code># Stopp labdatabasen før containeren fjernes.
+docker stop ai200-pg
+# Fjern den stoppede PostgreSQL-containeren og dens anonyme datavolumer.
 docker rm --volumes ai200-pg</code></pre>
 </section>
 </details><details class="panel domain-chapter" id="module-8" data-domain-chapter data-session="1" open>
 <summary><span class="chapter-number">Del 8</span><h3>PostgreSQL i Azure: SDK og forbindelser</h3></summary>
 <p class="small"><a href="./workshop-postgresql.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w8-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett en liten Azure Database for PostgreSQL Flexible Server i den eksisterende ressursgruppen <code>ai200-d2</code>, med TLS og nettverkstilgang fra din maskin. Denne serveren er ny i del 8; den lokale databasen fra del 7 brukes ikke videre. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
+<section class="chapter-step" id="w8-forberedelser"><h4>Oppsett for denne delen</h4><h5 id="w8-ressursgruppe">Ressursgruppen for domene 2</h5><p>Dette er første Azure-øvelse i domenet. Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d2"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+# Avslutt blokken.
+}</code></pre>
+<p>Opprett en liten Azure Database for PostgreSQL Flexible Server i den eksisterende ressursgruppen <code>ai200-d2</code>, med TLS og nettverkstilgang fra din maskin. Denne serveren er ny i del 8; den lokale databasen fra del 7 brukes ikke videre. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
 
 <details class="source-file" id="w8-fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -123,8 +149,11 @@ psycopg[binary,pool]&gt;=3.2,&lt;4
 # Tilpasning mellom PostgreSQLs vector-type og Python.
 pgvector&gt;=0.3,&lt;1
 </code></pre></details>
-</section><section class="chapter-step" id="w8-sdk"><h4>1. Koble til med Python</h4><p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code>$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
+</section><section class="chapter-step" id="w8-sdk"><h4>1. Koble til med Python</h4><p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code># Sett PostgreSQL-tilkoblingen med database, bruker, passord og påkrevd TLS.
+$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
+# Opprett labtabellen, aktiver vector og last inn de fire eksempelradene i Azure-databasen.
 python labs/data/postgres_client.py setup
+# Kjør den parameteriserte PostgreSQL-spørringen og vis de nærmeste dokumentene.
 python labs/data/postgres_client.py query</code></pre><p>Forventet: dokument 2 og 1. Finn de parameteriserte verdiene i <code>postgres_client.py</code> og forklar hvorfor SQL og data sendes separat.</p><label class="check-item"><input type="checkbox" data-check="w8-sdk" data-progress-source="./workshop-postgresql.html"><span>Jeg har kjørt en parameterisert vektorspørring mot Azure PostgreSQL.</span></label>
 
 <details class="source-file" id="w8-fil-labs-data-postgres-client-py" data-source-file="labs/data/postgres_client.py"><summary><code>postgres_client.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/postgres_client.py</code></p><pre data-language="Python" data-source="labs/data/postgres_client.py"><code>&quot;&quot;&quot;Run the same parameterized vector query with a direct connection and a pool.&quot;&quot;&quot;
@@ -232,15 +261,20 @@ if __name__ == &quot;__main__&quot;:
     # Kjør den valgte laboperasjonen.
     main()
 </code></pre></details>
-</section><section class="chapter-step" id="w8-pool"><h4>2. Mål og gjenbruk forbindelser</h4><pre data-language="PowerShell"><code>python labs/data/postgres_client.py compare</code></pre><p>Skriptet sammenligner ti nye forbindelser med ti spørringer via en liten klientpool. Gjenta og noter variasjonen. Tilkoblingslatens, nettverk og oppvarming påvirker resultatene. Undersøk min_size/max_size og hvorfor hver prosess trenger sin egen pool.</p><label class="check-item"><input type="checkbox" data-check="w8-pool" data-progress-source="./workshop-postgresql.html"><span>Jeg har målt forskjellen mellom nye og gjenbrukte forbindelser.</span></label>
+</section><section class="chapter-step" id="w8-pool"><h4>2. Mål og gjenbruk forbindelser</h4><pre data-language="PowerShell"><code># Mål ti nye forbindelser og sammenlign med ti oppslag gjennom en klientpool.
+python labs/data/postgres_client.py compare</code></pre><p>Skriptet sammenligner ti nye forbindelser med ti spørringer via en liten klientpool. Gjenta og noter variasjonen. Tilkoblingslatens, nettverk og oppvarming påvirker resultatene. Undersøk min_size/max_size og hvorfor hver prosess trenger sin egen pool.</p><label class="check-item"><input type="checkbox" data-check="w8-pool" data-progress-source="./workshop-postgresql.html"><span>Jeg har målt forskjellen mellom nye og gjenbrukte forbindelser.</span></label>
 </section><section class="chapter-step" id="w8-ressurser"><h4>3. Undersøk Azure-flaskehalser</h4><ol><li>Åpne Metrics for CPU, minne, aktive forbindelser og lagrings-I/O. Kjør compare igjen og noter hva en så liten last faktisk kan vise.</li><li>Undersøk Compute + storage og PgBouncer. Velg et foreslått alternativ for mange samtidige oppslag og begrunn CPU/minne/lagring. Gjennomfør en endring bare på din labserver hvis øvelsen trenger den.</li><li>På en tier med innebygd PgBouncer: aktiver den, bruk port 6432 i PGCONNINFO og kjør query/compare på nytt. Hvis tier-en ikke støtter det, bruker du klientpoolen og forklarer skillet.</li></ol><p>Kombiner målingene med EXPLAIN-planen fra workshop 7. En liten datasamling er ikke en representativ kapasitetsmåling.</p><label class="check-item"><input type="checkbox" data-check="w8-ressurser" data-progress-source="./workshop-postgresql.html"><span>Jeg kan knytte en observerbar flaskehals til forbindelser eller databasekapasitet.</span></label>
-</section><section class="chapter-step" id="w8-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code>Remove-Item Env:PGCONNINFO -ErrorAction SilentlyContinue</code></pre><p>Slett labserveren og tilknyttede ressurser når du er ferdig. Ingen andre workshops trenger denne serveren.</p>
+</section><section class="chapter-step" id="w8-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code># Fjern PGCONNINFO fra denne terminalen.
+Remove-Item Env:PGCONNINFO -ErrorAction SilentlyContinue</code></pre><p>Slett labserveren og tilknyttede ressurser når du er ferdig. Ingen andre workshops trenger denne serveren.</p>
 </section>
 </details><details class="panel domain-chapter" id="module-9" data-domain-chapter data-session="1" open>
 <summary><span class="chapter-number">Del 9</span><h3>Cosmos DB: SDK, indekser og RU</h3></summary>
 <p class="small"><a href="./workshop-cosmos.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w9-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett en Cosmos DB for NoSQL-labkonto i ressursgruppen <code>ai200-d2</code> og databasen <code>workshop</code> uten delt throughput. Skriptet oppretter hver labcontainer med 400 RU/s. Vektorsøket i neste økt støtter ikke shared throughput. Bruk en egen labkonto. Ha endpoint og en lokal labnøkkel klar. Kontoen brukes også i workshop 10–11.</p><h5 id="w9-tilkobling">Tilkobling i terminalen</h5><p>Bruk disse variablene gjennom del 9–11. Åpner du en ny terminal, setter du bare verdiene nedenfor for den eksisterende kontoen:</p><pre data-language="PowerShell"><code>$env:COSMOS_ENDPOINT = "https://DIN-KONTO.documents.azure.com:443/"
+<section class="chapter-step" id="w9-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett en Cosmos DB for NoSQL-labkonto i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> og databasen <code>workshop</code> uten delt throughput. Skriptet oppretter hver labcontainer med 400 RU/s. Vektorsøket i neste økt støtter ikke shared throughput. Bruk en egen labkonto. Ha endpoint og en lokal labnøkkel klar. Kontoen brukes også i workshop 10–11.</p><h5 id="w9-tilkobling">Tilkobling i terminalen</h5><p>Bruk disse variablene gjennom del 9–11. Åpner du en ny terminal, setter du bare verdiene nedenfor for den eksisterende kontoen:</p><pre data-language="PowerShell"><code># Sett endepunktet til den eksisterende Cosmos-kontoen.
+$env:COSMOS_ENDPOINT = "https://DIN-KONTO.documents.azure.com:443/"
+# Sett labnøkkelen til Cosmos-kontoen i denne terminalen.
 $env:COSMOS_KEY = "DIN-LAB-NOKKEL"
+# Velg databasen workshop i Cosmos-kontoen.
 $env:COSMOS_DATABASE = "workshop"</code></pre>
 
 <details class="source-file" id="w9-fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
@@ -248,8 +282,11 @@ azure-cosmos&gt;=4.9,&lt;5
 # Functions-typer og dekoratorer for change feed-triggeren.
 azure-functions&gt;=1.20,&lt;2
 </code></pre></details>
-</section><section class="chapter-step" id="w9-sdk"><h4>1. Opprett og hent dokumenter</h4><pre data-language="PowerShell"><code>python labs/cosmos/demo.py setup
+</section><section class="chapter-step" id="w9-sdk"><h4>1. Opprett og hent dokumenter</h4><pre data-language="PowerShell"><code># Opprett notes-containeren og lagre labens eksempeldokumenter.
+python labs/cosmos/demo.py setup
+# Kjør en parameterisert spørring og vis dokumentene og RU-kostnaden.
 python labs/cosmos/demo.py query
+# Hent note-1 direkte med ID og partisjonsnøkkel, og vis RU-kostnaden.
 python labs/cosmos/demo.py point</code></pre><p><code>demo.py</code> bruker /topic som partisjonsnøkkel og skriver request charge. Sammenlign spørringen med point read. Forventet: note-1 og note-2 fra query, note-1 fra point. Noter RU; tallene varierer.</p><label class="check-item"><input type="checkbox" data-check="w9-sdk" data-progress-source="./workshop-cosmos.html"><span>Jeg har brukt SDK, partisjonsnøkkel og point read.</span></label>
 
 <details class="source-file" id="w9-fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
@@ -381,12 +418,19 @@ if __name__ == &quot;__main__&quot;:
     # Start den valgte laboperasjonen.
     main()
 </code></pre></details>
-</section><section class="chapter-step" id="w9-indekser"><h4>2. Endre en indekseringspolicy</h4><p>Før indeksforsøket: lagre den opprinnelige policyen fra prosjektroten. Bruk ressursgruppen <code>ai200-d2</code> og sett <code>$cosmosAccount</code> til Cosmos-kontonavnet ditt. Tilpass <code>$cosmosGroup</code> hvis du brukte et annet gruppenavn:</p><pre data-language="PowerShell"><code>$cosmosGroup = &quot;ai200-d2&quot;
-$cosmosAccount = &quot;DITT-COSMOS-KONTONAVN&quot;
-az cosmosdb sql container show --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --query resource.indexingPolicy -o json | Set-Content -LiteralPath artifacts/notes-indexing-policy.original.json -Encoding utf8</code></pre><p>Kontroller at filen inneholder policyen før du fortsetter.</p><p>Undersøk policyen for notes: embedding-feltet er utelatt fra vanlig indeksering. Kjør SQL i Data Explorer med query metrics på. På den lille labcontaineren: ekskluder <code>/text/?</code> fra policyen og vent på fullført transformasjon. Kjør en spørring på topic og sammenlign med søk på text.</p><p>Etter sammenligningen: gjenopprett den lagrede policyen og vent på fullført indekstransformasjon:</p><pre data-language="PowerShell"><code>az cosmosdb sql container update --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --idx &quot;@artifacts/notes-indexing-policy.original.json&quot; -o none</code></pre><p>Bekreft i Data Explorer at policyen er tilbake og testunntaket <code>/text/?</code> er fjernet. <a href="https://learn.microsoft.com/en-us/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-update">Azure CLI: oppdatere en containerpolicy</a>.</p><p>Målet er å se hvilke felter som støttes effektivt av en indeks. Tre dokumenter gir ikke grunnlag for store ytelseskonklusjoner.</p><label class="check-item"><input type="checkbox" data-check="w9-indekser" data-progress-source="./workshop-cosmos.html"><span>Jeg kan forklare hvordan en indeksendring påvirker en spørring.</span></label>
-</section><section class="chapter-step" id="w9-consistency"><h4>3. Velg consistency bevisst</h4><p>Undersøk kontoens consistency og klientens session-håndtering. Sammenlign Session, Eventual og Strong i portalen og den offisielle beskrivelsen. Noter hvilke konsistenskrav en chat-historikk og en statistikkvisning kan ha. Hvis du vil endre labkontoens standard, lagre først gjeldende verdi i samme terminal:</p><pre data-language="PowerShell"><code>$originalConsistency = az cosmosdb show --resource-group $cosmosGroup --name $cosmosAccount --query consistencyPolicy.defaultConsistencyLevel -o tsv</code></pre><p>Gjør forsøket, kjør oppslagene igjen og noter RU. Gjenopprett deretter den lagrede verdien:</p><pre data-language="PowerShell"><code>az cosmosdb update --resource-group $cosmosGroup --name $cosmosAccount --default-consistency-level $originalConsistency -o none</code></pre><p>Et vellykket enkeltoppslag demonstrerer ikke alle garantiene. <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-manage-consistency">Microsoft Learn: administrere konsistens</a>.</p><label class="check-item"><input type="checkbox" data-check="w9-consistency" data-progress-source="./workshop-cosmos.html"><span>Jeg kan begrunne et consistency-valg og lese RU for oppslaget.</span></label>
+</section><section class="chapter-step" id="w9-indekser"><h4>2. Endre en indekseringspolicy</h4><p>Før indeksforsøket: lagre den opprinnelige policyen fra prosjektroten. Bruk ressursgruppen <code>ai200-d2</code> og sett <code>$cosmosAccount</code> til Cosmos-kontonavnet ditt. Tilpass <code>$cosmosGroup</code> hvis du brukte et annet gruppenavn:</p><pre data-language="PowerShell"><code># Sett ressursgruppen til den eksisterende Cosmos-kontoen.
+$cosmosGroup = "ai200-d2"
+# Sett navnet på Cosmos-kontoen som allerede finnes.
+$cosmosAccount = "DITT-COSMOS-KONTONAVN"
+# Hent notes-containerens indekseringspolicy og lagre den som en UTF-8-fil.
+az cosmosdb sql container show --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --query resource.indexingPolicy -o json | Set-Content -LiteralPath artifacts/notes-indexing-policy.original.json -Encoding utf8</code></pre><p>Kontroller at filen inneholder policyen før du fortsetter.</p><p>Undersøk policyen for notes: embedding-feltet er utelatt fra vanlig indeksering. Kjør SQL i Data Explorer med query metrics på. På den lille labcontaineren: ekskluder <code>/text/?</code> fra policyen og vent på fullført transformasjon. Kjør en spørring på topic og sammenlign med søk på text.</p><p>Etter sammenligningen: gjenopprett den lagrede policyen og vent på fullført indekstransformasjon:</p><pre data-language="PowerShell"><code># Gjenopprett indekseringspolicyen fra den lagrede JSON-filen.
+az cosmosdb sql container update --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --idx "@artifacts/notes-indexing-policy.original.json" -o none</code></pre><p>Bekreft i Data Explorer at policyen er tilbake og testunntaket <code>/text/?</code> er fjernet. <a href="https://learn.microsoft.com/en-us/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-update">Azure CLI: oppdatere en containerpolicy</a>.</p><p>Målet er å se hvilke felter som støttes effektivt av en indeks. Tre dokumenter gir ikke grunnlag for store ytelseskonklusjoner.</p><label class="check-item"><input type="checkbox" data-check="w9-indekser" data-progress-source="./workshop-cosmos.html"><span>Jeg kan forklare hvordan en indeksendring påvirker en spørring.</span></label>
+</section><section class="chapter-step" id="w9-consistency"><h4>3. Velg consistency bevisst</h4><p>Undersøk kontoens consistency og klientens session-håndtering. Sammenlign Session, Eventual og Strong i portalen og den offisielle beskrivelsen. Noter hvilke konsistenskrav en chat-historikk og en statistikkvisning kan ha. Hvis du vil endre labkontoens standard, lagre først gjeldende verdi i samme terminal:</p><pre data-language="PowerShell"><code># Lagre kontoens consistency-verdi slik at den kan gjenopprettes etter forsøket.
+$originalConsistency = az cosmosdb show --resource-group $cosmosGroup --name $cosmosAccount --query consistencyPolicy.defaultConsistencyLevel -o tsv</code></pre><p>Gjør forsøket, kjør oppslagene igjen og noter RU. Gjenopprett deretter den lagrede verdien:</p><pre data-language="PowerShell"><code># Gjenopprett consistency-verdien som du lagret før forsøket.
+az cosmosdb update --resource-group $cosmosGroup --name $cosmosAccount --default-consistency-level $originalConsistency -o none</code></pre><p>Et vellykket enkeltoppslag demonstrerer ikke alle garantiene. <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-manage-consistency">Microsoft Learn: administrere konsistens</a>.</p><label class="check-item"><input type="checkbox" data-check="w9-consistency" data-progress-source="./workshop-cosmos.html"><span>Jeg kan begrunne et consistency-valg og lese RU for oppslaget.</span></label>
 </section><section class="chapter-step" id="w9-opprydding"><h4>Rydding og overgang til neste del</h4><p>Behold kontoen, databasen, <code>notes</code> og terminalvariablene til del 10–11. Kontoen slettes etter change feed-øvelsen i del 11.</p><details><summary>Hvis du avslutter her</summary><p>Slett den dedikerte labkontoen og fjern nøkkelen fra terminalen:</p>
-<pre data-language="PowerShell"><code>Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre></details>
+<pre data-language="PowerShell"><code># Fjern COSMOS_KEY fra denne terminalen.
+Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre></details>
 </section>
 </details><details class="panel domain-chapter" id="module-10" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 10</span><h3>Vektorsøk i Cosmos DB</h3></summary>
@@ -528,8 +572,10 @@ azure-cosmos&gt;=4.9,&lt;5
 # Functions-typer og dekoratorer for change feed-triggeren.
 azure-functions&gt;=1.20,&lt;2
 </code></pre></details>
-</section><section class="chapter-step" id="w10-policy"><h4>1. Opprett policy og indeks</h4><pre data-language="PowerShell"><code>python labs/cosmos/demo.py vector-setup</code></pre><p>Les <code>vector-setup</code> i demo.py: vectorEmbeddingPolicy angir sti, tre dimensjoner, float32 og cosinus. vectorIndexes velger flat-indeks. Den vanlige array-indeksen er ekskludert. Finn policyene i portalen og forklar hvorfor en dedikert vektorindeks trengs.</p><label class="check-item"><input type="checkbox" data-check="w10-policy" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg har opprettet en container med vektorpolicy og indeks.</span></label>
-</section><section class="chapter-step" id="w10-sok"><h4>2. Utfør filtrert vektorsøk</h4><pre data-language="PowerShell"><code>python labs/cosmos/demo.py vector</code></pre><p>Forventet: note-2 før note-1 innen topic=containers. Fjern metadatafilteret i kildefilen av spørringen og kjør igjen med cross-partition query aktivert; note-3 blir nærmest. Pass både SQL-filter og partition_key til det nye søkeområdet. Endre søkevektoren og forklar rangeringen.</p><label class="check-item"><input type="checkbox" data-check="w10-sok" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg har lagret og hentet vektorer med VectorDistance og metadatafilter.</span></label>
+</section><section class="chapter-step" id="w10-policy"><h4>1. Opprett policy og indeks</h4><pre data-language="PowerShell"><code># Opprett vektorcontaineren med vektorpolicy, indeks og eksempeldata.
+python labs/cosmos/demo.py vector-setup</code></pre><p>Les <code>vector-setup</code> i demo.py: vectorEmbeddingPolicy angir sti, tre dimensjoner, float32 og cosinus. vectorIndexes velger flat-indeks. Den vanlige array-indeksen er ekskludert. Finn policyene i portalen og forklar hvorfor en dedikert vektorindeks trengs.</p><label class="check-item"><input type="checkbox" data-check="w10-policy" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg har opprettet en container med vektorpolicy og indeks.</span></label>
+</section><section class="chapter-step" id="w10-sok"><h4>2. Utfør filtrert vektorsøk</h4><pre data-language="PowerShell"><code># Kjør det filtrerte VectorDistance-søket mot vektorcontaineren.
+python labs/cosmos/demo.py vector</code></pre><p>Forventet: note-2 før note-1 innen topic=containers. Fjern metadatafilteret i kildefilen av spørringen og kjør igjen med cross-partition query aktivert; note-3 blir nærmest. Pass både SQL-filter og partition_key til det nye søkeområdet. Endre søkevektoren og forklar rangeringen.</p><label class="check-item"><input type="checkbox" data-check="w10-sok" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg har lagret og hentet vektorer med VectorDistance og metadatafilter.</span></label>
 </section><section class="chapter-step" id="w10-valg"><h4>3. Velg indeks for arbeidsmengden</h4><p>Sammenlign flat, quantizedFlat og diskANN i dokumentasjonen. Knytt valget til dimensjoner, mengde, recall og latency. Vi bruker små undervisningsvektorer for å verifisere spørringen; en virkelig løsning bruker dokument- og spørsmålsvektorer fra samme embedding-modell. Selve modellkallet er ikke del av økten.</p><label class="check-item"><input type="checkbox" data-check="w10-valg" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg kan begrunne et vektorindeksvalg og identifisere krav til embedding-data.</span></label>
 </section><section class="chapter-step" id="w10-opprydding"><h4>Rydding og overgang til neste del</h4><p>Slett labcontaineren vectors hvis du er ferdig med den. Behold notes og databasen dersom workshop 11 er neste økt. Slett hele labkontoen når ingen øvelser trenger den.</p>
 <pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
@@ -538,10 +584,15 @@ git restore --source=HEAD -- labs/cosmos/demo.py</code></pre>
 </details><details class="panel domain-chapter" id="module-11" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 11</span><h3>Behandle endringer fra Cosmos DB</h3></summary>
 <p class="small"><a href="./workshop-change-feed.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w11-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk <code>notes</code>-containeren fra <a href="./workshop-cosmos.html">workshop 9</a> og Core Tools fra fellesoppsettet. Opprett en lab-Storage-konto i den eksisterende ressursgruppen <code>ai200-d2</code> til change feed-hosten. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code>if (-not (Test-Path labs/cosmos/local.settings.json)) {
+<section class="chapter-step" id="w11-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk <code>notes</code>-containeren fra <a href="./workshop-cosmos.html">workshop 9</a> og Core Tools fra fellesoppsettet. Opprett en lab-Storage-konto i den eksisterende ressursgruppen <code>ai200-d2</code> til change feed-hosten. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/cosmos/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
     Copy-Item labs/cosmos/local.settings.example.json labs/cosmos/local.settings.json
+# Avslutt blokken.
 }</code></pre><p>Åpne <code>labs/cosmos/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>CosmosConnection</code> til Cosmos-kontoens tilkoblingsstreng. Kontroller at <code>COSMOS_DATABASE</code> er <code>workshop</code>. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
-<pre data-language="PowerShell"><code>Set-Location labs/cosmos
+<pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Cosmos change feed.
+Set-Location labs/cosmos
+# Start den lokale Functions-hosten på standardport 7071.
 func start</code></pre>
 
 <details class="source-file" id="w11-fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
@@ -674,13 +725,16 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre></details>
 
-<details class="source-file" id="w11-fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json"><code>{
+<details class="source-file" id="w11-fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json" class="code-with-notes"><code>{
   &quot;version&quot;: &quot;2.0&quot;,
   &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
 }
-</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd><dt><code>extensionBundle.id</code></dt><dd>La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.</dd><dt><code>extensionBundle.version</code></dt><dd>Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.</dd></dl></details>
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.
+# Avslutt JSON-objektet.</span></pre></details>
 
-<details class="source-file" id="w11-fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json"><code>{
+<details class="source-file" id="w11-fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json" class="code-with-notes"><code>{
   &quot;IsEncrypted&quot;: false,
   &quot;Values&quot;: {
     &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
@@ -689,7 +743,15 @@ if __name__ == &quot;__main__&quot;:
     &quot;COSMOS_DATABASE&quot;: &quot;workshop&quot;
   }
 }
-</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd><dt><code>Values.CosmosConnection</code></dt><dd>Labtilkoblingen som Cosmos-triggeren refererer til med connection-navnet.</dd><dt><code>Values.COSMOS_DATABASE</code></dt><dd>Databasenavnet som settes inn i triggerens %COSMOS_DATABASE%-uttrykk.</dd></dl></details>
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Tilkoblingsstrengen som Cosmos-triggeren bruker.
+# Databasenavnet som erstatter %COSMOS_DATABASE% i triggeren.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
 
 <details class="source-file" id="w11-fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
 azure-cosmos&gt;=4.9,&lt;5
@@ -708,7 +770,8 @@ __pycache__/
 # Klientskriptet kjøres lokalt og er ikke en serverfunksjon.
 demo.py
 </code></pre></details>
-</section><section class="chapter-step" id="w11-endring"><h4>1. Observer nye endringer</h4><p>Bruk en annen Python-terminal med <a href="./workshop-cosmos.html#tilkobling">Cosmos-tilkoblingen fra del 9</a>. Kjør fra prosjektroten:</p><pre data-language="PowerShell"><code>python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring" data-progress-source="./workshop-change-feed.html"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+</section><section class="chapter-step" id="w11-endring"><h4>1. Observer nye endringer</h4><p>Bruk en annen Python-terminal med <a href="./workshop-cosmos.html#tilkobling">Cosmos-tilkoblingen fra del 9</a>. Kjør fra prosjektroten:</p><pre data-language="PowerShell"><code># Oppdater note-1 slik at Cosmos change feed får en ny endring å behandle.
+python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring" data-progress-source="./workshop-change-feed.html"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
 
 <details class="source-file" id="w11-fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
 # Send meldinger til Functions-hostens logg.
@@ -740,19 +803,24 @@ def changed(documents: func.DocumentList):
 <pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
 # Forkaster kodeendringene og fjerner den lokale filen med labnøkler.
 git restore --source=HEAD -- labs/cosmos/function_app.py
+# Slett den lokale filen labs/cosmos/local.settings.json hvis den finnes.
 Remove-Item -LiteralPath labs/cosmos/local.settings.json -ErrorAction SilentlyContinue
+# Fjern COSMOS_KEY fra denne terminalen.
 Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre>
 </section>
 </details><details class="panel domain-chapter" id="module-12" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 12</span><h3>Caching og invalidering med Managed Redis</h3></summary>
 <p class="small"><a href="./workshop-redis.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w12-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett én Azure Managed Redis-labinstans i den eksisterende ressursgruppen <code>ai200-d2</code> med Enterprise clustering, TLS og en labnøkkel. Bruk samme instans i workshop 12–13. Velg RediSearch ved opprettelsen, med en tier som støtter modulen og NoEviction. Modulen kan ikke legges til senere. En arrangør kan klargjøre en delt labinstans.</p>
+<section class="chapter-step" id="w12-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett én Azure Managed Redis-labinstans i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> med Enterprise clustering, TLS og en labnøkkel. Bruk samme instans i workshop 12–13. Velg RediSearch ved opprettelsen, med en tier som støtter modulen og NoEviction. Modulen kan ikke legges til senere. En arrangør kan klargjøre en delt labinstans.</p>
 
 <details class="source-file" id="w12-fil-labs-redis-requirements-txt" data-source-file="labs/redis/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/redis/requirements.txt"><code># Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
 redis&gt;=5,&lt;7
 </code></pre></details>
-</section><section class="chapter-step" id="w12-tilkobling"><h4>1. Koble til sikkert</h4><pre data-language="PowerShell"><code>$env:REDIS_HOST = "DITT-REDIS-ENDPOINT"
+</section><section class="chapter-step" id="w12-tilkobling"><h4>1. Koble til sikkert</h4><pre data-language="PowerShell"><code># Sett vertsnavnet til den eksisterende Managed Redis-instansen.
+$env:REDIS_HOST = "DITT-REDIS-ENDPOINT"
+# Velg port 10000 for Redis-tilkoblingen.
 $env:REDIS_PORT = "10000"
+# Sett Redis-labnøkkelen i denne terminalen.
 $env:REDIS_KEY = "DIN-LAB-NOKKEL"</code></pre><p>Les tilkoblingen i <code>demo.py</code>. Den bruker TLS og en gjenbrukt klient. Enterprise clustering gir ett logisk endepunkt til den vanlige Redis-klienten; OSS clustering krever en cluster-klient.</p><label class="check-item"><input type="checkbox" data-check="w12-tilkobling" data-progress-source="./workshop-redis.html"><span>Jeg har valgt en klient som passer til Redis-konfigurasjonen.</span></label>
 
 <details class="source-file" id="w12-fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
@@ -866,10 +934,12 @@ if __name__ == &quot;__main__&quot;:
     # Kjør valgt Redis-operasjon.
     main()
 </code></pre></details>
-</section><section class="chapter-step" id="w12-cache"><h4>2. Hit, miss og utløp</h4><pre data-language="PowerShell"><code>python labs/redis/demo.py cache</code></pre><p>Forventet: først en miss, så en hit med positiv TTL, deretter miss etter invalidation og miss etter utløp. Skriptet sletter bare sin egen nøkkel. Kjør på nytt og sammenlign. Finn GET, SET med EX, DELETE og TTL i koden.</p><label class="check-item"><input type="checkbox" data-check="w12-cache" data-progress-source="./workshop-redis.html"><span>Jeg har observert miss, hit, invalidering og utløp.</span></label>
+</section><section class="chapter-step" id="w12-cache"><h4>2. Hit, miss og utløp</h4><pre data-language="PowerShell"><code># Demonstrer cache miss, hit, eksplisitt invalidering og TTL-utløp.
+python labs/redis/demo.py cache</code></pre><p>Forventet: først en miss, så en hit med positiv TTL, deretter miss etter invalidation og miss etter utløp. Skriptet sletter bare sin egen nøkkel. Kjør på nytt og sammenlign. Finn GET, SET med EX, DELETE og TTL i koden.</p><label class="check-item"><input type="checkbox" data-check="w12-cache" data-progress-source="./workshop-redis.html"><span>Jeg har observert miss, hit, invalidering og utløp.</span></label>
 </section><section class="chapter-step" id="w12-moenster"><h4>3. Knytt operasjonene til applikasjonen</h4><p>Tegn rekkefølgen for cache-aside: GET, databaseoppslag ved miss, SET med TTL. Beskriv deretter hva en dokumentoppdatering skal invalidere. La nøkkelen inneholde søkeområde og dataversjon. Sammenlign kort TTL med eksplisitt invalidation; de løser ulike deler av problemet.</p><label class="check-item"><input type="checkbox" data-check="w12-moenster" data-progress-source="./workshop-redis.html"><span>Jeg kan forklare hvordan applikasjonen unngår å servere gamle data.</span></label>
 </section><section class="chapter-step" id="w12-opprydding"><h4>Rydding og overgang til neste del</h4><p>Behold instansen og terminalvariablene til vektorøvelsen i del 13. Redis-instansen slettes etter den delen.</p><details><summary>Hvis du avslutter her</summary><p>Slett den dedikerte labinstansen og fjern nøkkelen fra terminalen:</p>
-<pre data-language="PowerShell"><code>Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre></details>
+<pre data-language="PowerShell"><code># Fjern REDIS_KEY fra denne terminalen.
+Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre></details>
 </section>
 </details><details class="panel domain-chapter" id="module-13" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 13</span><h3>Vektorindeks i Managed Redis</h3></summary>
@@ -879,7 +949,8 @@ if __name__ == &quot;__main__&quot;:
 <details class="source-file" id="w13-fil-labs-redis-requirements-txt" data-source-file="labs/redis/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/redis/requirements.txt"><code># Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
 redis&gt;=5,&lt;7
 </code></pre></details>
-</section><section class="chapter-step" id="w13-indeks"><h4>1. Opprett en vektorindeks</h4><pre data-language="PowerShell"><code>python labs/redis/demo.py index</code></pre><p>Finn VectorField, HNSW, FLOAT32 og DIM=3 i <code>demo.py</code>. De lagrede byteverdiene og spørsmålsvektoren må bruke samme dtype og dimensjon. Undersøk også TAG-feltet topic og prefikset som avgrenser labens dokumenter.</p><label class="check-item"><input type="checkbox" data-check="w13-indeks" data-progress-source="./workshop-redis-vectors.html"><span>Jeg har opprettet en HNSW-vektorindeks og lagret vektorer.</span></label>
+</section><section class="chapter-step" id="w13-indeks"><h4>1. Opprett en vektorindeks</h4><pre data-language="PowerShell"><code># Opprett vektorindeksen i Redis og lagre eksempeldokumentene.
+python labs/redis/demo.py index</code></pre><p>Finn VectorField, HNSW, FLOAT32 og DIM=3 i <code>demo.py</code>. De lagrede byteverdiene og spørsmålsvektoren må bruke samme dtype og dimensjon. Undersøk også TAG-feltet topic og prefikset som avgrenser labens dokumenter.</p><label class="check-item"><input type="checkbox" data-check="w13-indeks" data-progress-source="./workshop-redis-vectors.html"><span>Jeg har opprettet en HNSW-vektorindeks og lagret vektorer.</span></label>
 
 <details class="source-file" id="w13-fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
 # Velg cache-, indeks-, søke- eller oppryddingsoperasjon.
@@ -992,11 +1063,14 @@ if __name__ == &quot;__main__&quot;:
     # Kjør valgt Redis-operasjon.
     main()
 </code></pre></details>
-</section><section class="chapter-step" id="w13-sok"><h4>2. Søk og avgrens</h4><pre data-language="PowerShell"><code>python labs/redis/demo.py search</code></pre><p>Vent på indeksering hvis første søk er tomt. Forventet: dokument 2 før 1, mens dokument 3 utelates av topic-filteret. Prøv en annen søkevektor i kildefilen og forklar både metadatafilter og KNN-rangering.</p><label class="check-item"><input type="checkbox" data-check="w13-sok" data-progress-source="./workshop-redis-vectors.html"><span>Jeg har brukt en binær spørsmålsvektor og metadatafilter i et KNN-søk.</span></label>
+</section><section class="chapter-step" id="w13-sok"><h4>2. Søk og avgrens</h4><pre data-language="PowerShell"><code># Kjør et KNN-søk med metadatafilter mot Redis-indeksen.
+python labs/redis/demo.py search</code></pre><p>Vent på indeksering hvis første søk er tomt. Forventet: dokument 2 før 1, mens dokument 3 utelates av topic-filteret. Prøv en annen søkevektor i kildefilen og forklar både metadatafilter og KNN-rangering.</p><label class="check-item"><input type="checkbox" data-check="w13-sok" data-progress-source="./workshop-redis-vectors.html"><span>Jeg har brukt en binær spørsmålsvektor og metadatafilter i et KNN-søk.</span></label>
 </section><section class="chapter-step" id="w13-oppdater"><h4>3. Undersøk endringer</h4><p>Endre vektoren for dokument 2 i index-steget, kjør index og search igjen, og observer rangeringen etter at indeksen er oppdatert. Forklar forskjellen mellom en cache som inneholder ferdige søkeresultater og Redis som lagrer en søkbar vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w13-oppdater" data-progress-source="./workshop-redis-vectors.html"><span>Jeg skiller cache-invalidering fra oppdatering av en søkeindeks.</span></label>
 </section><section class="chapter-step" id="w13-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
 git restore --source=HEAD -- labs/redis/demo.py</code></pre>
-<pre data-language="PowerShell"><code>python labs/redis/demo.py cleanup
+<pre data-language="PowerShell"><code># Fjern bare labens Redis-indeks og dokumenter.
+python labs/redis/demo.py cleanup
+# Fjern REDIS_KEY fra denne terminalen.
 Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre><p>Cleanup fjerner bare ai200-indeksen og dens dokumenter. Slett den dedikerte Azure-instansen når økten er ferdig.</p>
 </section>
 </details></section>

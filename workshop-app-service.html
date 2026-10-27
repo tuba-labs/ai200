@@ -36,21 +36,35 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Bruk registryet med <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Har du åpnet en ny terminal, bruk <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for det eksisterende registryet</a>. Opprett App Service-ressursene nedenfor én gang.</p><pre data-language="PowerShell"><code>$web = "ai200-web-" + (New-Guid).ToString("N").Substring(0, 12)
+<p>Bruk registryet med <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Har du åpnet en ny terminal, bruk <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for det eksisterende registryet</a>. Opprett App Service-ressursene nedenfor én gang.</p><pre data-language="PowerShell"><code># Lag et globalt unikt navn på den nye webappen.
+$web = "ai200-web-" + (New-Guid).ToString("N").Substring(0, 12)
+# Sett navnet på Linux-planen til webappen.
 $plan = "ai200-linux"
-$webPullIdentityName = "ai200-web-pull"</code></pre><h3>Opprett identitet, Linux-plan og webapp</h3><p>Identiteten får <code>AcrPull</code> på ditt labregistry. Den brukes av App Service til å hente imaget uten registry-passord. Rolletildelingen krever <a href="./getting-started.html#azure-rettigheter">tilgangen beskrevet i Kom i gang</a>.</p><pre data-language="PowerShell"><code>az identity create --resource-group $rg --name $webPullIdentityName --location $location -o none
+# Sett navnet på identiteten som skal hente webappens image.
+$webPullIdentityName = "ai200-web-pull"</code></pre><h3>Opprett identitet, Linux-plan og webapp</h3><p>Identiteten får <code>AcrPull</code> på ditt labregistry. Den brukes av App Service til å hente imaget uten registry-passord. Rolletildelingen krever <a href="./getting-started.html#azure-rettigheter">tilgangen beskrevet i Kom i gang</a>.</p><pre data-language="PowerShell"><code># Opprett en separat managed identity som appen kan bruke til image-pull.
+az identity create --resource-group $rg --name $webPullIdentityName --location $location -o none
+# Hent ressurs-ID-en til webappens pull-identitet.
 $webPullIdentityId = az identity show --resource-group $rg --name $webPullIdentityName --query id -o tsv
+# Hent identitetens principal-ID for rolletildelingen i ACR.
 $webPullPrincipalId = az identity show --resource-group $rg --name $webPullIdentityName --query principalId -o tsv
+# Gi appidentiteten AcrPull på dette registryet.
 az role assignment create --assignee-object-id $webPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none
+# Opprett en Linux App Service-plan på B1-nivå i valgt region.
 az appservice plan create --resource-group $rg --name $plan --location $location --is-linux --sku B1 -o none
+# Opprett webappen med ACR-imaget og bruk den tildelte identiteten til image-pull.
 az webapp create --resource-group $rg --plan $plan --name $web --container-image-name "$login/ai200-api:v1" --assign-identity $webPullIdentityId --acr-use-identity --acr-identity $webPullIdentityId -o none
+# Sett WEBSITES_PORT til 8080 slik at App Service sender trafikk til riktig containerport.
 az webapp config appsettings set --resource-group $rg --name $web --settings WEBSITES_PORT=8080 -o none
+# Aktiver lagring av containerlogger i App Service.
 az webapp log config --resource-group $rg --name $web --docker-container-logging filesystem -o none
+# Hent webappens vertsnavn til helsesjekken.
 $webHost = az webapp show --resource-group $rg --name $web --query defaultHostName -o tsv
+# Vis webappens navn, kjøretilstand og vertsnavn.
 az webapp show --resource-group $rg --name $web --query "{Name:name, State:state, Host:defaultHostName}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> webappen vises som <code>Running</code>. Noter appnavn, vertsnavn, plan og identitetsnavn. Opprettelsen bruker et nytt appnavn hver gang; hopp over opprettelseskommandoene hvis appen allerede finnes. Ved ny terminal setter du navnene til de eksisterende verdiene. Plan B1 har løpende kostnad; kontroller valget i portalen før du fortsetter.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/webapp#az-webapp-create">opprette webapp med ACR og managed identity</a> og <a href="https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container">containerport og konfigurasjon</a>.</p>
 </section>
       <section class="panel" id="image"><h2>1. Få containeren i gang</h2>
-<ol><li>Åpne webappen i portalen → <strong>Identity → User assigned</strong>. Finn identiteten <code>ai200-web-pull</code> du nettopp koblet til appen. I ACR → <strong>Access control (IAM) → Role assignments</strong> finner du dens <code>AcrPull</code>-rolle.</li><li>Under <strong>Environment variables</strong> kontrollerer du <code>WEBSITES_PORT=8080</code>. CLI-oppsettet over bruker klassisk Linux custom-container-konfigurasjon.</li><li>Kall helsesjekken under og åpne <strong>Log stream</strong> i portalen. Vent på første oppstart. Ved image-pull-feil: kontroller identitet, rolle og taggen <code>ai200-api:v1</code>. En ny rolletildeling kan bruke litt tid på å slå gjennom; start da appen på nytt når rollen er tilgjengelig.</li></ol><pre data-language="PowerShell"><code>Invoke-RestMethod "https://$webHost/health"</code></pre><p>Forventet: JSON fra testappen og oppstartslogger.</p><label class="check-item"><input type="checkbox" data-check="w3-image"><span>Jeg har kjørt mitt eget ACR-image i App Service.</span></label>
+<ol><li>Åpne webappen i portalen → <strong>Identity → User assigned</strong>. Finn identiteten <code>ai200-web-pull</code> du nettopp koblet til appen. I ACR → <strong>Access control (IAM) → Role assignments</strong> finner du dens <code>AcrPull</code>-rolle.</li><li>Under <strong>Environment variables</strong> kontrollerer du <code>WEBSITES_PORT=8080</code>. CLI-oppsettet over bruker klassisk Linux custom-container-konfigurasjon.</li><li>Kall helsesjekken under og åpne <strong>Log stream</strong> i portalen. Vent på første oppstart. Ved image-pull-feil: kontroller identitet, rolle og taggen <code>ai200-api:v1</code>. En ny rolletildeling kan bruke litt tid på å slå gjennom; start da appen på nytt når rollen er tilgjengelig.</li></ol><pre data-language="PowerShell"><code># Kall webappens helsesjekk og vis JSON-svaret.
+Invoke-RestMethod "https://$webHost/health"</code></pre><p>Forventet: JSON fra testappen og oppstartslogger.</p><label class="check-item"><input type="checkbox" data-check="w3-image"><span>Jeg har kjørt mitt eget ACR-image i App Service.</span></label>
 </section>
       <section class="panel" id="miljo"><h2>2. Send konfigurasjon til containeren</h2>
 <p>Legg til <code>WORKSHOP_MODE=review</code> under Environment variables. Lagre, vent på restart og kall /health igjen. Forventet: <code>mode</code> blir <code>review</code>, uten nytt image. Finn appens konfigurasjonsendring og skill den fra en image-oppdatering.</p><label class="check-item"><input type="checkbox" data-check="w3-miljo"><span>Jeg har endret en miljøvariabel uten å bygge imaget på nytt.</span></label>

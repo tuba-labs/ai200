@@ -36,25 +36,45 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Bruk ACR-imaget <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Velg ett av klyngealternativene nedenfor.</p><p><code>kubectl</code> er installert i <a href="./getting-started.html#cli-utvidelser">fellesoppsettet for containerverktøy</a>.</p><details><summary>Alternativ A: opprett din egen AKS-labklynge</summary><p>Bruk <code>$rg</code>, <code>$location</code> og <code>$acrId</code> fra del 2. Eksemplet velger Free for kontrollplanet og to <code>Standard_D4s_v5</code>-noder. Noder, disker og nettverk har løpende kostnad. Kontroller størrelse og kvote for abonnementet og regionen før opprettelse. Ved manglende kvote eller utilgjengelig størrelse kan du bruke arrangørens klynge.</p><pre data-language="PowerShell"><code>$aks = "ai200-aks"
+<p>Bruk ACR-imaget <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Velg ett av klyngealternativene nedenfor.</p><p><code>kubectl</code> er installert i <a href="./getting-started.html#cli-utvidelser">fellesoppsettet for containerverktøy</a>.</p><details><summary>Alternativ A: opprett din egen AKS-labklynge</summary><p>Bruk <code>$rg</code>, <code>$location</code> og <code>$acrId</code> fra del 2. Eksemplet velger Free for kontrollplanet og to <code>Standard_D4s_v5</code>-noder. Noder, disker og nettverk har løpende kostnad. Kontroller størrelse og kvote for abonnementet og regionen før opprettelse. Ved manglende kvote eller utilgjengelig størrelse kan du bruke arrangørens klynge.</p><pre data-language="PowerShell"><code># Sett navnet på AKS-klyngen du skal bruke.
+$aks = "ai200-aks"
+# Sett ditt eget labnamespace i Kubernetes.
 $ns = "ai200-dittnavn"
+# Opprett labklyngen med to noder og gi kubelet-identiteten tilgang til ACR.
 az aks create --resource-group $rg --name $aks --location $location --tier free --node-count 2 --node-vm-size Standard_D4s_v5 --enable-managed-identity --attach-acr $acrId --generate-ssh-keys -o none
+# Vis klyngens opprettelsesstatus og navnet på den tilhørende nodegruppen.
 az aks show --resource-group $rg --name $aks --query "{State:provisioningState, NodeGroup:nodeResourceGroup}" -o table
+# Hent tilkoblingen til AKS og lagre den som konteksten ai200-d1-lab.
 az aks get-credentials --resource-group $rg --name $aks --context ai200-d1-lab
+# Velg labkonteksten som de neste Kubernetes-kommandoene skal bruke.
 kubectl config use-context ai200-d1-lab
+# Vis klyngens noder og kontroller at de er Ready.
 kubectl get nodes
-kubectl create namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> klargjøringstilstanden er <code>Succeeded</code>, nodene er <code>Ready</code>, og ditt namespace er opprettet. Noter også den automatisk opprettede nodegruppen. <code>--attach-acr</code> gir kubelet-identiteten <code>AcrPull</code> på labregistryet fra del 2, som bruker RBAC Registry Permissions. Kommandoen krever at du kan tildele denne rollen. Har du allerede opprettet klyngen og namespace, sett navnene til de eksisterende verdiene og hopp over opprettelsen.</p></details><details><summary>Alternativ B: koble til arrangørens delte klynge</summary><p>Be arrangøren oppgi klyngenavn, ressursgruppe og ditt eget namespace. Arrangøren må ha opprettet namespace, gitt deg <strong>Azure Kubernetes Service Cluster User Role</strong> for å hente tilkoblingen og Kubernetes-rettigheter til labressurser i ditt namespace. Klyngens kubelet-identitet må ha lesetilgang til ACR-registryet som inneholder imaget ditt. Arrangøren kan bruke <code>az aks update --resource-group GRUPPE --name KLYNGE --attach-acr ACR-RESSURS-ID</code> for registryet fra del 2. Bruk verdiene du får i blokken under; ikke opprett en ekstra klynge eller et ekstra namespace.</p><pre data-language="PowerShell"><code>$rg = "ARRANGORENS-KLYNGEGRUPPE"
+# Opprett ditt eget namespace til labressursene.
+kubectl create namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> klargjøringstilstanden er <code>Succeeded</code>, nodene er <code>Ready</code>, og ditt namespace er opprettet. Noter også den automatisk opprettede nodegruppen. <code>--attach-acr</code> gir kubelet-identiteten <code>AcrPull</code> på labregistryet fra del 2, som bruker RBAC Registry Permissions. Kommandoen krever at du kan tildele denne rollen. Har du allerede opprettet klyngen og namespace, sett navnene til de eksisterende verdiene og hopp over opprettelsen.</p></details><details><summary>Alternativ B: koble til arrangørens delte klynge</summary><p>Be arrangøren oppgi klyngenavn, ressursgruppe og ditt eget namespace. Arrangøren må ha opprettet namespace, gitt deg <strong>Azure Kubernetes Service Cluster User Role</strong> for å hente tilkoblingen og Kubernetes-rettigheter til labressurser i ditt namespace. Klyngens kubelet-identitet må ha lesetilgang til ACR-registryet som inneholder imaget ditt. Arrangøren kan bruke <code>az aks update --resource-group GRUPPE --name KLYNGE --attach-acr ACR-RESSURS-ID</code> for registryet fra del 2. Bruk verdiene du får i blokken under; ikke opprett en ekstra klynge eller et ekstra namespace.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ARRANGORENS-KLYNGEGRUPPE"
+# Sett navnet på AKS-klyngen du skal bruke.
 $aks = "ARRANGORENS-KLYNGENAVN"
+# Sett ditt eget labnamespace i Kubernetes.
 $ns = "DITT-TILDELTE-NAMESPACE"
+# Hent tilkoblingen til AKS og lagre den som konteksten ai200-d1-lab.
 az aks get-credentials --resource-group $rg --name $aks --context ai200-d1-lab
+# Velg labkonteksten som de neste Kubernetes-kommandoene skal bruke.
 kubectl config use-context ai200-d1-lab
-kubectl auth can-i create deployments --namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> siste kommando viser <code>yes</code>. Ved <code>Forbidden</code> må arrangøren kontrollere tilgangen til ditt namespace.</p></details><p>Etter valgt alternativ: kontroller at konteksten er <code>ai200-d1-lab</code>. Bruk bare ditt labnamespace i kommandoene videre.</p><pre data-language="PowerShell"><code>kubectl config current-context
+# Kontroller at du har rett til å opprette Deployments i ditt namespace.
+kubectl auth can-i create deployments --namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> siste kommando viser <code>yes</code>. Ved <code>Forbidden</code> må arrangøren kontrollere tilgangen til ditt namespace.</p></details><p>Etter valgt alternativ: kontroller at konteksten er <code>ai200-d1-lab</code>. Bruk bare ditt labnamespace i kommandoene videre.</p><pre data-language="PowerShell"><code># Vis hvilken Kubernetes-kontekst som er aktiv.
+kubectl config current-context
+# Vis podene og tilstanden deres i labnamespace-et.
 kubectl get pods --namespace $ns</code></pre><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli">opprette og koble til AKS</a>, <a href="https://learn.microsoft.com/en-us/azure/aks/use-system-pools">krav til systemnoder</a> og <a href="https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration">ACR-tilgang fra AKS</a>.</p>
 </section>
       <section class="panel" id="deploy"><h2>1. Deploy et manifest</h2>
-<p>Rediger <code>labs/containers/deployment.yaml</code> og bytt <code>image</code> til ditt ACR-image.  Behold ressursgrenser og readiness-proben.</p><pre data-language="PowerShell"><code>kubectl apply -n $ns -f labs/containers/deployment.yaml
+<p>Rediger <code>labs/containers/deployment.yaml</code> og bytt <code>image</code> til ditt ACR-image.  Behold ressursgrenser og readiness-proben.</p><pre data-language="PowerShell"><code># Opprett eller oppdater labressursene fra manifestfilen.
+kubectl apply -n $ns -f labs/containers/deployment.yaml
+# Vent opptil 120 sekunder på at utrullingen av workshop-api fullføres.
 kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
+# Vis podene og tilstanden deres i labnamespace-et.
 kubectl get pods -n $ns
+# Videresend lokal port 8082 til containerens port 8080 så lenge kommandoen kjører.
 kubectl port-forward -n $ns deployment/workshop-api 8082:8080</code></pre><p>La videresendingen kjøre. Åpne en annen terminal og kjør <code>Invoke-RestMethod http://localhost:8082/health</code>. Forventet: JSON fra appen.</p><label class="check-item"><input type="checkbox" data-check="w6-deploy"><span>Jeg har deployet mitt image til AKS med et manifest.</span></label>
 
 <details class="source-file" id="fil-labs-containers-deployment-yaml" data-source-file="labs/containers/deployment.yaml"><summary><code>deployment.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/deployment.yaml</code></p><pre data-language="YAML" data-source="labs/containers/deployment.yaml"><code># Bruk Kubernetes-API-et for Deployment-ressurser.
@@ -126,26 +146,44 @@ spec:
 </code></pre></details>
 </section>
       <section class="panel" id="feil"><h2>2. Fremprovoser og finn en feil</h2>
-<p>Avslutt port-forward. Før du lager feil, lagre en kopi av manifestet som nettopp fungerte. Kjør fra prosjektroten; kopien beholder din ACR-adresse:</p><pre data-language="PowerShell"><code>Copy-Item -LiteralPath labs/containers/deployment.yaml -Destination artifacts/deployment.before-faults.yaml -Force</code></pre><p>Endre imagetaggen i arbeidsmanifestet til <code>finnes-ikke</code>, og undersøk utrullingen:</p><pre data-language="PowerShell"><code>kubectl apply -n $ns -f labs/containers/deployment.yaml
-kubectl get pods -n $ns
-kubectl describe pods -n $ns
-kubectl get events -n $ns --sort-by=.lastTimestamp</code></pre><p>Forventet: <code>ImagePullBackOff</code> og en forklarende hendelse. Rull tilbake i klyngen og hent samtidig tilbake den fungerende arbeidsfilen:</p><pre data-language="PowerShell"><code>kubectl rollout undo -n $ns deployment/workshop-api
-kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
-Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force</code></pre><p><code>rollout undo</code> endrer klyngen; kopieringen gjenoppretter filen du bruker ved neste <code>apply</code>. Endre nå readiness-stien i arbeidsfilen til <code>/missing</code>, og kjør <code>apply</code> og undersøkelseskommandoene over igjen. Sammenlign en levende prosess med en ready pod.</p><p>Etter testen: gjenopprett manifestet med riktig image og <code>/health</code>, og rull det ut:</p><pre data-language="PowerShell"><code>Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force
+<p>Avslutt port-forward. Før du lager feil, lagre en kopi av manifestet som nettopp fungerte. Kjør fra prosjektroten; kopien beholder din ACR-adresse:</p><pre data-language="PowerShell"><code># Lagre en kopi av det fungerende manifestet før du lager testfeil.
+Copy-Item -LiteralPath labs/containers/deployment.yaml -Destination artifacts/deployment.before-faults.yaml -Force</code></pre><p>Endre imagetaggen i arbeidsmanifestet til <code>finnes-ikke</code>, og undersøk utrullingen:</p><pre data-language="PowerShell"><code># Opprett eller oppdater labressursene fra manifestfilen.
 kubectl apply -n $ns -f labs/containers/deployment.yaml
+# Vis podene og tilstanden deres i labnamespace-et.
+kubectl get pods -n $ns
+# Vis detaljer om podene, inkludert hendelser som forklarer oppstartsfeil.
+kubectl describe pods -n $ns
+# Vis hendelsene i labnamespace-et, sortert etter siste tidsstempel.
+kubectl get events -n $ns --sort-by=.lastTimestamp</code></pre><p>Forventet: <code>ImagePullBackOff</code> og en forklarende hendelse. Rull tilbake i klyngen og hent samtidig tilbake den fungerende arbeidsfilen:</p><pre data-language="PowerShell"><code># Rull workshop-api tilbake til forrige Deployment-revisjon.
+kubectl rollout undo -n $ns deployment/workshop-api
+# Vent opptil 120 sekunder på at utrullingen av workshop-api fullføres.
+kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
+# Gjenopprett arbeidsmanifestet fra kopien med riktig ACR-adresse.
+Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force</code></pre><p><code>rollout undo</code> endrer klyngen; kopieringen gjenoppretter filen du bruker ved neste <code>apply</code>. Endre nå readiness-stien i arbeidsfilen til <code>/missing</code>, og kjør <code>apply</code> og undersøkelseskommandoene over igjen. Sammenlign en levende prosess med en ready pod.</p><p>Etter testen: gjenopprett manifestet med riktig image og <code>/health</code>, og rull det ut:</p><pre data-language="PowerShell"><code># Gjenopprett arbeidsmanifestet fra kopien med riktig ACR-adresse.
+Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force
+# Opprett eller oppdater labressursene fra manifestfilen.
+kubectl apply -n $ns -f labs/containers/deployment.yaml
+# Vent opptil 120 sekunder på at utrullingen av workshop-api fullføres.
 kubectl rollout status -n $ns deployment/workshop-api --timeout=120s</code></pre><p>Forventet: utrullingen fullføres og podene blir Ready.</p><label class="check-item"><input type="checkbox" data-check="w6-feil"><span>Jeg har brukt hendelser og readiness til å finne en konkret feil.</span></label>
 </section>
       <section class="panel" id="nettverk"><h2>3. Undersøk tilgang og logger</h2>
-<pre data-language="PowerShell"><code>kubectl expose -n $ns deployment workshop-api --port=80 --target-port=8080 --type=ClusterIP
+<pre data-language="PowerShell"><code># Opprett en intern ClusterIP-tjeneste som ruter port 80 til containerport 8080.
+kubectl expose -n $ns deployment workshop-api --port=80 --target-port=8080 --type=ClusterIP
+# Vis den interne tjenesten og portene den bruker.
 kubectl get service -n $ns workshop-api
+# Les applikasjonsloggen fra podene i workshop-api.
 kubectl logs -n $ns deployment/workshop-api
+# Endre ønsket antall replikaer i workshop-api til to.
 kubectl scale -n $ns deployment/workshop-api --replicas=2</code></pre><p>Undersøk service-selector, pod-labels og target port. En ClusterIP er intern; port-forward gir din lokale testvei. Forklar hva du kontrollerer hvis en pod er ready, men klienten ikke når tjenesten.</p><label class="check-item"><input type="checkbox" data-check="w6-nettverk"><span>Jeg kan følge forbindelsen fra klient via Service til containerport.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
-<p>Slett bare ditt namespace etter å ha kontrollert navn og innhold. Bruker du arrangørens klynge, følger du arrangørens beskjed om hvem som sletter namespace; arrangøren sletter selve klyngen. For egen klynge:</p><pre data-language="PowerShell"><code>kubectl get all -n $ns
+<p>Slett bare ditt namespace etter å ha kontrollert navn og innhold. Bruker du arrangørens klynge, følger du arrangørens beskjed om hvem som sletter namespace; arrangøren sletter selve klyngen. For egen klynge:</p><pre data-language="PowerShell"><code># Kontroller ressursene i labnamespace-et før du sletter det.
+kubectl get all -n $ns
+# Slett labnamespace-et og ressursene inni det.
 kubectl delete namespace $ns</code></pre><p>Åpne deretter din egen AKS-ressurs i portalen → <strong>Delete</strong> og kontroller navnet før du bekrefter. Vent til slettingen er ferdig, og kontroller at den tilhørende nodegruppen er fjernet. Slett labregistryet når siste del som bruker det er ferdig. Hvis hele domene 1-gruppen bare inneholder ferdigbrukte labressurser, kan du følge <a href="./getting-started.html#opprydding">oppryddingen av ressursgruppen for øvelsen</a>. AKS-nodene blir ikke slettet ved å lukke terminalen.</p>
 <p>Når du er ferdig, tilbakestill manifestet til Git-versjonen. Ved en ny gjennomføring setter du ACR-adressen på nytt i deploy-steget.</p><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
-git restore --source=HEAD -- labs/containers/deployment.yaml</code></pre><pre data-language="PowerShell"><code>Remove-Item -LiteralPath artifacts/deployment.before-faults.yaml -ErrorAction SilentlyContinue</code></pre>
+git restore --source=HEAD -- labs/containers/deployment.yaml</code></pre><pre data-language="PowerShell"><code># Slett den lokale filen artifacts/deployment.before-faults.yaml hvis den finnes.
+Remove-Item -LiteralPath artifacts/deployment.before-faults.yaml -ErrorAction SilentlyContinue</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration">AKS med ACR</a></li><li><a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli">Utrulling i AKS</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-keda.html">← Workshop 5</a><a href="./workshop-data.html">Workshop 7 →</a></nav>

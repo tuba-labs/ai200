@@ -127,8 +127,11 @@ azure-eventgrid&gt;=4.20,&lt;5
 </code></pre></details>
 </section>
       <section class="panel" id="kopier"><h2>1. Test uavhengige kopier</h2>
-<pre data-language="PowerShell"><code>python labs/integrations/message_bus.py topic
+<pre data-language="PowerShell"><code># Publiser labmeldingen på topic-et document-events.
+python labs/integrations/message_bus.py topic
+# Motta og fullfør meldingen fra indexer sin uavhengige kopi.
 python labs/integrations/message_bus.py subscription --subscription indexer
+# Motta og fullfør meldingen fra audit sin uavhengige kopi.
 python labs/integrations/message_bus.py subscription --subscription audit</code></pre><p>Forventet: begge mottar én kopi. Fullføring i indexer fjerner ikke audit sin kopi. Finn skillelinjen mellom topic og subscription; det er subscription som fungerer som mottakerens kø.</p><label class="check-item"><input type="checkbox" data-check="w16-kopier"><span>Jeg har mottatt uavhengige kopier av samme publisering.</span></label>
 </section>
       <section class="panel" id="filter"><h2>2. Legg på et filter</h2>

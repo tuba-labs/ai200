@@ -36,19 +36,27 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a> · <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Bruk <code>documents</code>-køen og namespace-et fra <a href="./workshop-service-bus.html">del 15</a>, og Storage-kontoen fra <a href="./workshop-integrations.html">del 14</a>. Sett køens <strong>Max delivery count=3</strong> og opprett en Service Bus-policy med Send og Listen på labnamespace-et. Alle disse ressursene ligger i <code>ai200-d3</code>. Opprett bare den nye lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code>if (-not (Test-Path labs/bindings/local.settings.json)) {
+<p>Bruk <code>documents</code>-køen og namespace-et fra <a href="./workshop-service-bus.html">del 15</a>, og Storage-kontoen fra <a href="./workshop-integrations.html">del 14</a>. Sett køens <strong>Max delivery count=3</strong> og opprett en Service Bus-policy med Send og Listen på labnamespace-et. Alle disse ressursene ligger i <code>ai200-d3</code>. Opprett bare den nye lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/bindings/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
     Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
+# Avslutt blokken.
 }</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
-<pre data-language="PowerShell"><code>Set-Location labs/bindings
+<pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Service Bus-bindingene.
+Set-Location labs/bindings
+# Start den lokale Functions-hosten på port 7073 for bindingstesten.
 func start --port 7073</code></pre>
 
-<details class="source-file" id="fil-labs-bindings-host-json" data-source-file="labs/bindings/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/host.json</code></p><pre data-language="JSON" data-source="labs/bindings/host.json"><code>{
+<details class="source-file" id="fil-labs-bindings-host-json" data-source-file="labs/bindings/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/host.json</code></p><pre data-language="JSON" data-source="labs/bindings/host.json" class="code-with-notes"><code>{
   &quot;version&quot;: &quot;2.0&quot;,
   &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
 }
-</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd><dt><code>extensionBundle.id</code></dt><dd>La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.</dd><dt><code>extensionBundle.version</code></dt><dd>Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.</dd></dl></details>
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.
+# Avslutt JSON-objektet.</span></pre></details>
 
-<details class="source-file" id="fil-labs-bindings-local-settings-example-json" data-source-file="labs/bindings/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/bindings/local.settings.example.json"><code>{
+<details class="source-file" id="fil-labs-bindings-local-settings-example-json" data-source-file="labs/bindings/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/bindings/local.settings.example.json" class="code-with-notes"><code>{
   &quot;IsEncrypted&quot;: false,
   &quot;Values&quot;: {
     &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
@@ -56,7 +64,14 @@ func start --port 7073</code></pre>
     &quot;ServiceBusConnection&quot;: &quot;REPLACE_WITH_LAB_SERVICE_BUS_CONNECTION_STRING&quot;
   }
 }
-</code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd><dt><code>Values.ServiceBusConnection</code></dt><dd>Labtilkoblingen som Service Bus-bindingene refererer til med connection-navnet.</dd></dl></details>
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Tilkoblingsstrengen som Service Bus-bindingene bruker.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
 
 <details class="source-file" id="fil-labs-bindings-requirements-txt" data-source-file="labs/bindings/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/bindings/requirements.txt"><code># Functions-typer og dekoratorer for Python-appen.
 azure-functions&gt;=1.20,&lt;2
@@ -73,7 +88,8 @@ __pycache__/
 </code></pre></details>
 </section>
       <section class="panel" id="binding"><h2>1. Følg en melding gjennom bindingene</h2>
-<pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"doc-001"}'</code></pre><p>Forventet: HTTP 202 og deretter en Consumed-logglinje. Finn <code>service_bus_queue_output og service_bus_queue_trigger</code>. Output-bindingen sender meldingen; triggeren starter mottakeren og fullfører vellykket behandling.</p><label class="check-item"><input type="checkbox" data-check="w17-binding"><span>Jeg har brukt både output-binding og køtrigger.</span></label>
+<pre data-language="PowerShell"><code># Send et gyldig dokument til HTTP-funksjonen som legger det på Service Bus-køen.
+Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"doc-001"}'</code></pre><p>Forventet: HTTP 202 og deretter en Consumed-logglinje. Finn <code>service_bus_queue_output og service_bus_queue_trigger</code>. Output-bindingen sender meldingen; triggeren starter mottakeren og fullfører vellykket behandling.</p><label class="check-item"><input type="checkbox" data-check="w17-binding"><span>Jeg har brukt både output-binding og køtrigger.</span></label>
 
 <details class="source-file" id="fil-labs-bindings-function-app-py" data-source-file="labs/bindings/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/function_app.py</code></p><pre data-language="Python" data-source="labs/bindings/function_app.py"><code>&quot;&quot;&quot;HTTP -&gt; Service Bus output binding -&gt; Service Bus trigger.&quot;&quot;&quot;
 # Skriv behandlingsinformasjon til Functions-loggen.
@@ -112,7 +128,8 @@ def consume(message: func.ServiceBusMessage):
 </code></pre></details>
 </section>
       <section class="panel" id="retry"><h2>2. La behandlingen feile</h2>
-<pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"fail-demo"}'</code></pre><p>Koden fremprovoserer en feil når body inneholder fail. Observer gjentatte forsøk og økende delivery count. Etter køens maksimale leveringer ligger meldingen i DLQ. Inspiser feil og innhold i Explorer.</p><label class="check-item"><input type="checkbox" data-check="w17-retry"><span>Jeg har fulgt en behandlingsfeil gjennom retries til DLQ.</span></label>
+<pre data-language="PowerShell"><code># Send meldingen som får køtriggeren til å feile, slik at du kan følge retries til DLQ.
+Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"fail-demo"}'</code></pre><p>Koden fremprovoserer en feil når body inneholder fail. Observer gjentatte forsøk og økende delivery count. Etter køens maksimale leveringer ligger meldingen i DLQ. Inspiser feil og innhold i Explorer.</p><label class="check-item"><input type="checkbox" data-check="w17-retry"><span>Jeg har fulgt en behandlingsfeil gjennom retries til DLQ.</span></label>
 </section>
       <section class="panel" id="ansvar"><h2>3. Skill ansvarsområdene</h2>
 <p>Forklar forskjellen mellom klientens HTTP-retry, bindingens sendeoperasjon og brokerens nye levering. Beskriv hvor en varig idempotensnøkkel må registreres dersom behandlingen oppdaterer en database. Sammenlign denne løsningen med den direkte SDK-mottakeren fra workshop 15.</p><label class="check-item"><input type="checkbox" data-check="w17-ansvar"><span>Jeg kan forklare hvem som styrer trigger, binding og levering.</span></label>

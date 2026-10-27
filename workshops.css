@@ -80,6 +80,9 @@ code { font-family:ui-monospace,"Cascadia Code",Consolas,monospace; font-size:.8
 pre { margin:18px 0; border:1px solid #29415f; border-radius:10px; background:#10243e; color:#e4efff; padding:20px; overflow:auto; line-height:1.6; font-size:14px; tab-size:2; }
 pre code { background:none; color:inherit; border-radius:0; padding:0; overflow-wrap:normal; font-size:inherit; }
 pre[data-source] { white-space:pre-wrap; }
+pre.code-with-notes { display:flex; gap:28px; }
+pre.code-with-notes code,.code-line-notes { flex:none; white-space:pre; }
+.code-line-notes,.code-note { color:#a9c8a8; font-family:ui-monospace,"Cascadia Code",Consolas,monospace; }
 .code-block { min-width:0; margin:20px 0; }
 .code-block pre { margin:0; border-top-left-radius:0; border-top-right-radius:0; }
 .code-toolbar { display:flex; justify-content:space-between; align-items:center; gap:15px; padding:7px 12px; border:1px solid #29415f; border-bottom:0; border-radius:10px 10px 0 0; background:#1b3554; color:#c9ddf6; font-size:12px; }

@@ -59,7 +59,7 @@
           <li><a href="#installer-verktoy">Installer verktøyene til domenet du skal arbeide med.</a> Python-øvelsene i domene 2–4 trenger også <a href="#intellij">prosjektets Python-miljø og SDK</a>.</li>
           <li>Før Azure-oppgavene: <a href="#azure">velg eller bruk en eksisterende Azure-konto</a>, <a href="#abonnement">kontroller abonnementet</a> og <a href="#azure-cli">logg inn med Azure CLI</a> når workshopen bruker <code>az</code>-kommandoer.</li>
         </ol>
-        <p>Dette er felles oppsett som du gjør én gang. Installer verktøy og Python-pakker, logg inn og opprett ressursgruppene her. Opprett selve labressursene i den delen som bruker dem først, og behold dem til siste avhengige del er ferdig. Ved ny terminal følger du bare <a href="#terminal">terminaloppsettet</a>.</p>
+        <p>Dette er felles oppsett som du gjør én gang: installer verktøy og Python-pakker, logg inn og kontroller abonnementet. Ressursgrupper, registry og andre Azure-ressurser opprettes først i workshopene. Ved ny terminal følger du bare <a href="#terminal">terminaloppsettet</a>.</p>
       </section>
 
       <section class="panel" id="azure">
@@ -139,7 +139,8 @@
         <h3 id="arbeidsfiler">Kildefiler og resultater</h3>
         <p>Åpne og rediger kildefilene direkte i <code>labs/</code>. De er sporet av Git. Filpanelene på workshopsidene viser hele kildefilen med kommentarer og er lukket som standard.</p>
         <p>Lagre egne notater, spørringer, logger, sikkerhetskopier og eksporter under <code>artifacts/</code>, som er ignorert av Git. Opprett resultatmappen én gang fra prosjektmappen:</p>
-        <pre data-language="PowerShell"><code>New-Item -ItemType Directory -Path artifacts -Force | Out-Null</code></pre>
+        <pre data-language="PowerShell"><code># Opprett resultatmappen hvis den mangler, og skjul mappeobjektet i terminalen.
+New-Item -ItemType Directory -Path artifacts -Force | Out-Null</code></pre>
         <p>Workshoppene oppgir <code>git restore --source=HEAD -- FIL</code> for å tilbakestille endrede kildefiler. Kommandoen forkaster lokale endringer i den angitte filen og henter siste committede versjon. Lokale <code>local.settings.json</code>-filer med labnøkler er også Git-ignorert.</p>
         <h3 id="installer-verktoy">Installer verktøyene du trenger</h3>
         <div class="table-wrap">
@@ -163,22 +164,29 @@
         <p>Docker Desktop er gratis for blant annet personlig bruk og utdanning, men jobbbruk i større organisasjoner kan kreve lisens. Bruk arbeidsgiverens godkjente oppsett eller en kompatibel container-motor. Se <a href="https://docs.docker.com/subscription-billing/desktop-license">Docker Desktop-vilkårene</a>.</p>
         <h3 id="python-install">Installer ønsket Python-versjon på Windows</h3>
         <p><code>No suitable Python runtime found</code> betyr at launcheren <code>py</code> ikke finner versjonen du ba om. <code>py -3.12</code> velger Python 3.12; en annen installert versjon er ikke nok. Se hva launcheren finner:</p>
-        <pre data-language="PowerShell"><code>py --list</code></pre>
+        <pre data-language="PowerShell"><code># Vis hvilke Python-versjoner launcheren finner på maskinen.
+py --list</code></pre>
         <ol>
           <li>Last ned og installer <strong>Python install manager</strong> fra <a href="https://www.python.org/downloads/windows/">Python.org for Windows</a>. Dette er verktøyet for å installere ønsket Python-versjon.</li>
           <li>Åpne PowerShell på nytt etter installasjonen. Bruker du terminalen i IntelliJ, start også IntelliJ på nytt.</li>
           <li>Installer Python 3.12 med kommandoene under. <code>pymanager</code> unngår navnekonflikt med den eldre <code>py</code>-launcheren.</li>
         </ol>
-        <pre data-language="PowerShell"><code>pymanager install 3.12
+        <pre data-language="PowerShell"><code># Installer Python 3.12 med Python install manager.
+pymanager install 3.12
+# Vis Python-versjonene som install manager kjenner til.
 pymanager list</code></pre>
         <p>Kontroller deretter versjon og pip:</p>
-        <pre data-language="PowerShell"><code>py -3.12 --version
+        <pre data-language="PowerShell"><code># Kontroller at launcheren kan starte Python 3.12.
+py -3.12 --version
+# Kontroller at pip er tilgjengelig for Python 3.12.
 py -3.12 -m pip --version</code></pre>
         <p><strong>Forventet:</strong> <code>Python 3.12.x</code> og pip for <code>python 3.12</code>. For en annen versjonsserie bytter du <code>3.12</code> i installasjons- og kontrollkommandoene. Workshopene bruker 3.12.</p>
         <details>
           <summary>Hvis py fortsatt ikke finner 3.12 etter installasjonen</summary>
           <p>Bruk manageren direkte:</p>
-          <pre data-language="PowerShell"><code>pymanager exec -V:3.12 --version
+          <pre data-language="PowerShell"><code># Kontroller Python 3.12 direkte gjennom install manager.
+pymanager exec -V:3.12 --version
+# Kontroller pip gjennom install manager, uten å bruke den eldre py-launcheren.
 pymanager exec -V:3.12 -m pip --version</code></pre>
           <p>Du kan erstatte <code>py -3.12</code> med <code>pymanager exec -V:3.12</code> i workshopkommandoene. Hvis <code>pymanager</code> ikke gjenkjennes, kontroller installasjonen og Windows' appkjøringsaliaser. Se <a href="https://docs.python.org/3/using/windows.html#troubleshooting">Python-feilsøking for Windows</a>.</p>
         </details>
@@ -191,11 +199,13 @@ pymanager exec -V:3.12 -m pip --version</code></pre>
           <ol>
             <li>Åpne <strong>Settings → Plugins → Marketplace</strong>. Finn <strong>Python</strong> fra JetBrains og velg <strong>Install</strong>. Hvis pluginen allerede er installert, kontroller at den er aktivert under <strong>Installed</strong>. Start IDE-en på nytt hvis du blir bedt om det. Se <a href="https://youtrack.jetbrains.com/articles/SUPPORT-A-1089/How-to-add-Python-support-to-IntelliJ-IDEA">JetBrains' pluginveiledning</a>.</li>
             <li><strong>Bruk miljøet i prosjektroten med Python 3.12.</strong> Har IntelliJ allerede opprettet <code>.venv</code> der med Python 3.12, er dette steget ferdig. Hvis miljøet mangler, åpner du PowerShell-terminalen i prosjektroten, der <code>index.html</code> og <code>labs</code> ligger, og kjører denne kommandoen én gang:
-              <pre data-language="PowerShell"><code>py -3.12 -m venv .venv</code></pre>
+              <pre data-language="PowerShell"><code># Opprett prosjektets isolerte Python-miljø med Python 3.12.
+py -3.12 -m venv .venv</code></pre>
             </li>
             <li><strong>Bruk denne interpreteren i IntelliJ:</strong> <code>.venv\Scripts\python.exe</code> under prosjektroten. Med prosjektet i <code>C:\java\ai200</code> er hele stien <code>C:\java\ai200\.venv\Scripts\python.exe</code>. Hvis IntelliJ allerede bruker denne, er SDK-oppsettet ferdig. Ellers åpner du <strong>File → Project Structure → SDKs → + → Add Python SDK from disk</strong>, velger en <strong>eksisterende interpreter</strong> med typen <strong>Python</strong> og blar til denne filen. Velg deretter SDK-en under <strong>Project</strong>, og trykk <strong>Apply → OK</strong>.</li>
             <li><strong>Kontroller versjonen</strong> fra prosjektroten:
-              <pre data-language="PowerShell"><code>.\.venv\Scripts\python.exe --version</code></pre>
+              <pre data-language="PowerShell"><code># Kontroller Python-versjonen i prosjektets eksisterende miljø.
+.\.venv\Scripts\python.exe --version</code></pre>
               Forventet resultat er <code>Python 3.12.x</code>. Viser den en annen versjon, må du sette opp prosjektmiljøet med Python 3.12 før du begynner på Python-labene.
             </li>
           </ol>
@@ -204,15 +214,20 @@ pymanager exec -V:3.12 -m pip --version</code></pre>
         </details>
         <h3 id="python-pakker">Installer Python-pakkene én gang</h3>
         <p>Fra prosjektroten installerer du pakkene for alle Python-øvelsene i det samme miljøet. <code>labs/requirements.txt</code> samler de enkelte labenes avhengigheter:</p>
-        <pre data-language="PowerShell"><code>.\.venv\Scripts\python.exe -m pip install -r labs/requirements.txt</code></pre>
+        <pre data-language="PowerShell"><code># Installer alle labpakkene én gang i prosjektets Python-miljø.
+.\.venv\Scripts\python.exe -m pip install -r labs/requirements.txt</code></pre>
         <h3 id="terminal">Når du åpner en ny terminal</h3>
         <p>Åpne PowerShell i prosjektroten. Før Python-kommandoer aktiverer du prosjektets eksisterende miljø i hver terminal som skal kjøre Python:</p>
-        <pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1</code></pre>
+        <pre data-language="PowerShell"><code># La denne terminalen bruke prosjektets eksisterende Python-miljø.
+.\.venv\Scripts\Activate.ps1</code></pre>
         <p>Pakkene beholdes mellom terminaler. Bruk samme terminal videre gjennom øvelsene når det passer. Ved ny terminal henter du ressursnavn og nødvendige miljøvariabler fra tilkoblingssteget i den aktuelle workshopen. Azure-innloggingen beholdes også; følg <a href="#azure-cli">innloggingen</a> på nytt dersom legitimasjonen har utløpt eller du skal bytte konto.</p>
         <h3>Kjør en enkel forhåndssjekk</h3>
         <p>Åpne en ny terminal etter installasjonen. Disse kommandoene er for Windows/PowerShell:</p>
-        <pre data-language="PowerShell"><code>docker version
+        <pre data-language="PowerShell"><code># Kontroller at Docker-klienten får kontakt med container-motoren.
+docker version
+# Kontroller at container-motoren bruker Linux-containere.
 docker info --format '{{.OSType}}'
+# Kjør Dockers testcontainer og fjern den automatisk etterpå.
 docker run --rm hello-world</code></pre>
         <p><strong>Forventet resultat:</strong> Docker viser både klient og server, OS-kontrollen viser <code>linux</code>, og testcontaineren skriver «Hello from Docker!». Python-versjon og pip er kontrollert i Python-oppsettet over. På macOS/Linux brukes vanligvis <code>python3.12</code> i stedet for <code>py -3.12</code>.</p>
         <details>
@@ -229,29 +244,35 @@ docker run --rm hello-world</code></pre>
 
       <section class="panel" id="abonnement">
         <h2>4. Kontroller abonnementet før du oppretter ressurser</h2>
-        <p>Du bruker ditt eget Azure-abonnement på privatkontoen. En <strong>ressursgruppe</strong> samler Azure-ressursene til en øvelse, for eksempel et container-registry, en app og en Storage-konto. Opprett ressursgruppene under ditt eget abonnement med stegene nedenfor. Se <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal">Microsofts forklaring av ressursgrupper</a>.</p>
+        <p>Du bruker ditt eget Azure-abonnement på privatkontoen. Her kontrollerer du konto, abonnement og tilgang. Ressursgruppene og selve tjenestene opprettes i workshopene når de trengs første gang.</p>
         <ol>
           <li>Logg inn på <a href="https://portal.azure.com/">portal.azure.com</a>. Kontroller konto og katalog (<em>directory/tenant</em>) under profilbildet.</li>
           <li>Søk etter <strong>Subscriptions</strong>. Kontroller at tilbudet er kontotypen du valgte og at status er aktiv. Navnet alene er ikke nok hvis et abonnement er omdøpt.</li>
           <li><strong>Pay as you go:</strong> kontroller betalingsmåte, kostnader og budsjettvarsler. <strong>Free Trial:</strong> sjekk kreditt, utløpsdato og at utgiftsgrensen fortsatt er på.</li>
-          <li>Søk etter <strong>Resource groups → Create</strong>. Velg ditt abonnement og navnet <code>ai200-d1</code> for domene 1. Bruk <code>ai200-d2</code>, <code>ai200-d3</code> og <code>ai200-d4</code> for de andre domenene. Workshopene bruker disse samme navnene.</li>
-          <li>Velg <strong>Norway East</strong> (<code>norwayeast</code>), som er standardregionen i veiledningen. Opprett gruppen, og kontroller at den er tom før du begynner. Tjenestenes region og størrelse velges separat når de opprettes; bruk Norway East når tjenesten er tilgjengelig der i abonnementet ditt.</li>
         </ol>
-        <p>Har du allerede opprettet ressursgrupper med andre navn, kan du bruke dem. Sett da de faktiske navnene i kommandoene i stedet for eksempelnavnene.</p>
+        <p>Standardregionen i veiledningen er <strong>Norway East</strong> (<code>norwayeast</code>). Opprettelsen av ressursgruppene ligger i <a href="./workshop-acr.html#ressursgruppe">del 2</a>, <a href="./workshop-postgresql.html#ressursgruppe">del 8</a>, <a href="./workshop-integrations.html#ressursgruppe">del 14</a> og <a href="./workshop-security.html#ressursgruppe">del 19</a>. Har du allerede en labgruppe eller et labregistry, følger du gjenbrukssteget i den aktuelle delen.</p>
         <p>Bruk bare workshopressurser i gruppene. En ny ressursgruppe gir ikke ny prøvekreditt eller en ny gratiskvote. Hvis en tjeneste ikke er tilgjengelig, bruk en støttet konfigurasjon eller følg en pardemonstrasjon. En eventuell kontooppgradering er et eget valg, ikke et automatisk feilsøkingstrinn.</p>
         <h3 id="azure-cli">Installer Azure CLI og velg abonnement</h3>
         <p>Workshopene som viser <code>az</code>-kommandoer krever Azure CLI på maskinen din. På Windows kan du installere med kommandoen under, eller bruke <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows">Microsofts Windows-installasjon</a>. Etter installasjon: start IntelliJ og terminalen på nytt slik at <code>az</code> finnes i PATH. Har du allerede CLI, begynn med <code>az version</code>.</p>
-        <pre data-language="PowerShell"><code>winget install --exact --id Microsoft.AzureCLI</code></pre>
+        <pre data-language="PowerShell"><code># Installer Azure CLI med den nøyaktige pakke-ID-en i WinGet.
+winget install --exact --id Microsoft.AzureCLI</code></pre>
         <p>Åpne en ny PowerShell-terminal i prosjektroten. Logg inn interaktivt, finn riktig abonnements-ID og bytt ut teksten i hakeparentesene i den andre blokken. Se <a href="https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-interactively">Microsofts CLI-innlogging</a>.</p>
-        <pre data-language="PowerShell"><code>az login
+        <pre data-language="PowerShell"><code># Åpne interaktiv Azure-innlogging og lagre innloggingen lokalt.
+az login
+# Vis abonnementene kontoen har tilgang til.
 az account list --output table</code></pre>
-        <pre data-language="PowerShell"><code>az account set --subscription "[din-abonnements-id]"
+        <pre data-language="PowerShell"><code># Velg abonnementet som de neste Azure-kommandoene skal bruke.
+az account set --subscription "[din-abonnements-id]"
+# Vis aktivt abonnement og tenant, slik at du kan kontrollere valget.
 az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output table</code></pre>
         <p><strong>Kontrollpunkt:</strong> ID-en må stemme med abonnementet du valgte i portalen. Hvis ingen abonnementer vises, kontroller konto og katalog, og at registreringen faktisk er fullført.</p>
         <h3 id="cli-utvidelser">Installer containerverktøy én gang</h3>
         <p>Skal du ta workshop 4–6, klargjør Container Apps-utvidelsen og <code>kubectl</code> her. Har du allerede verktøyene, holder det å kontrollere dem. Bruk en administratorterminal til selve installasjonen hvis installasjonsmappen krever det.</p>
-        <pre data-language="PowerShell"><code>az extension add --name containerapp --upgrade
+        <pre data-language="PowerShell"><code># Installer eller oppdater CLI-utvidelsen for Container Apps.
+az extension add --name containerapp --upgrade
+# Installer Kubernetes-kommandolinjeverktøyene for AKS-øvelsen.
 az aks install-cli
+# Kontroller at kubectl er installert og vis klientversjonen.
 kubectl version --client</code></pre>
         <h3 id="azure-rettigheter">Kontroller tilgangen i ditt eget abonnement</h3>
         <p>I portalen: åpne <strong>Subscriptions → ditt abonnement → Access control (IAM) → View my access</strong>. Rollen <strong>Owner</strong> gir rett til å opprette ressurser og tildele roller til appenes identiteter i abonnementet. Har du denne rollen, kan du utføre stegene selv. Se <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged">Microsofts rollebeskrivelser</a>.</p>

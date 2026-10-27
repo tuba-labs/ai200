@@ -36,7 +36,8 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Opprett ett Service Bus-namespace med <strong>Standard</strong> i den eksisterende ressursgruppen <code>ai200-d3</code>, og opprett køen <code>documents</code>. Samme namespace og kø brukes i del 15–17. Gi din innloggede bruker Azure Service Bus Data Owner på labnamespace-et. SDK-pakkene og Azure-innloggingen er klare fra fellesoppsettet.</p><pre data-language="PowerShell"><code>$env:SERVICEBUS_NAMESPACE = "DITT-NAMESPACE.servicebus.windows.net"</code></pre>
+<p>Opprett ett Service Bus-namespace med <strong>Standard</strong> i <a href="./workshop-integrations.html#ressursgruppe">ressursgruppen fra del 14</a>, og opprett køen <code>documents</code>. Samme namespace og kø brukes i del 15–17. Gi din innloggede bruker Azure Service Bus Data Owner på labnamespace-et. SDK-pakkene og Azure-innloggingen er klare fra fellesoppsettet.</p><pre data-language="PowerShell"><code># Sett det fulle vertsnavnet til Service Bus-namespace-et.
+$env:SERVICEBUS_NAMESPACE = "DITT-NAMESPACE.servicebus.windows.net"</code></pre>
 
 <details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
 azure-functions&gt;=1.20,&lt;2
@@ -49,7 +50,8 @@ azure-eventgrid&gt;=4.20,&lt;5
 </code></pre></details>
 </section>
       <section class="panel" id="send"><h2>1. Send fra Python</h2>
-<pre data-language="PowerShell"><code>python labs/integrations/message_bus.py send</code></pre><p>Åpne Service Bus Explorer og bruk Peek for å se meldingen uten å fjerne den. Finn body, subject, message ID og application properties. Les senderen i <code>message_bus.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w15-send"><span>Jeg har sendt og inspisert en melding fra SDK-et.</span></label>
+<pre data-language="PowerShell"><code># Send labmeldingen til documents-køen med Service Bus-SDK-et.
+python labs/integrations/message_bus.py send</code></pre><p>Åpne Service Bus Explorer og bruk Peek for å se meldingen uten å fjerne den. Finn body, subject, message ID og application properties. Les senderen i <code>message_bus.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w15-send"><span>Jeg har sendt og inspisert en melding fra SDK-et.</span></label>
 
 <details class="source-file" id="fil-labs-integrations-message-bus-py" data-source-file="labs/integrations/message_bus.py"><summary><code>message_bus.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/message_bus.py</code></p><pre data-language="Python" data-source="labs/integrations/message_bus.py"><code>&quot;&quot;&quot;Service Bus data-plane operations using the signed-in user&#x27;s identity.&quot;&quot;&quot;
 # Velg kø-, topic-, subscription- eller DLQ-operasjon.
@@ -133,7 +135,9 @@ if __name__ == &quot;__main__&quot;:
 <p>I Explorer: Receive med PeekLock, velg Abandon, og motta på nytt. Sammenlign DeliveryCount. Forklar forskjellen mellom Peek, ReceiveAndDelete, Complete og Abandon. Ikke bruk andre køer enn labkøen.</p><label class="check-item"><input type="checkbox" data-check="w15-laas"><span>Jeg kan forklare hva en lås og ny levering betyr for mottakeren.</span></label>
 </section>
       <section class="panel" id="dlq"><h2>3. Håndter DLQ i kode</h2>
-<pre data-language="PowerShell"><code>python labs/integrations/message_bus.py receive
+<pre data-language="PowerShell"><code># Motta labmeldinger og flytt dem til DLQ med en kontrollert feilårsak.
+python labs/integrations/message_bus.py receive
+# Les meldingene i DLQ, vis innholdet og fullfør dem.
 python labs/integrations/message_bus.py dlq</code></pre><p>Receive-steget flytter mottatte meldinger til DLQ med en kontrollert feilårsak. DLQ-steget leser, skriver dem ut og fullfører dem. Inspiser reason i portalen mellom kjøringene. Diskuter hvilke feil som kan prøves på nytt og hvilke som trenger rettet innhold.</p><label class="check-item"><input type="checkbox" data-check="w15-dlq"><span>Jeg har dead-letter-et og fullført en melding med SDK-et.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>

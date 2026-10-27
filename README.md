@@ -47,7 +47,7 @@ På Free Trial beholder du utgiftsgrensen. Hvis en tjeneste krever oppgradering,
 
 Løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, nytt oppsett for den aktuelle øvelsen, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
 
-Verktøy, [Python-pakker](getting-started.html#python-pakker), [CLI-innlogging](getting-started.html#azure-cli) og ressursgrupper settes opp én gang i Kom i gang. Hver workshop oppretter bare de nye ressursene den trenger og bruker eksisterende oppsett videre. Ved ny terminal følger du [terminaloppsettet](getting-started.html#terminal). Standardregionen er Norway East (`norwayeast`).
+Verktøy, [Python-pakker](getting-started.html#python-pakker) og [CLI-innlogging](getting-started.html#azure-cli) settes opp én gang i Kom i gang. Ressursgrupper og tjenester opprettes først i workshopene som bruker dem. Eksisterende labressurser gjenbrukes. Ved ny terminal følger du [terminaloppsettet](getting-started.html#terminal). Standardregionen er Norway East (`norwayeast`).
 
 Forsiden viser pensum først og workshopene i fire faner. Velg mellom de 22 korte øktene og fire samlede domeneworkshops. Hver samlet side kan vise alle delene eller bare samling 1/2, med tilpasset ressursplan. Gjennomføringstiden er ikke målt. Delingen i samlinger er tematisk; tidsbruk avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning. Oppgavedekningen er den samme i begge formater.
 
@@ -56,12 +56,15 @@ De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og br
 Åpne nettstedet via lokal HTTP-server eller den publiserte siden for å dele fremdrift mellom formatene i samme nettleser; separate file-URL-er kan ha adskilt lagring. Vil du se endringer i de samlede sidene lokalt før du pusher, kjører du fra prosjektroten:
 
 ```powershell
+# Generer de samlede workshopsidene fra de korte kildesidene.
 python scripts/build_domain_workshops.py
 ```
 
 Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Pythons standardbibliotek og henter både oppgaver og opprydding fra de korte sidene; ressursplanen ligger i skriptets domenedefinisjoner. Endre workshopinnholdet bare i den korte kildesiden. De ferdige HTML-filene kan åpnes direkte. Publiseringen kjører genereringen på nytt fra de aktuelle kildefilene på GitHub.
 
 Filpaneler med `data-source-file` viser hele den tilsvarende kildefilen fra `labs/`, med kommentarer, og er lukket som standard. JSON beholdes gyldig og har feltforklaringer i samme panel. Rediger kildefilen; generatoren oppdaterer både den korte og den samlede siden med samme filinnhold og beholder JSON-forklaringene.
+
+Forklar hver linje i kodevinduene med kommentarer på norsk. JSON og rene innstillingsverdier får forklaringer inne i kodevinduet som holdes utenfor teksten som kopieres.
 
 ## Kjør nettstedet lokalt
 
@@ -72,6 +75,7 @@ Følg [oppsettet for kildefiler og resultater](getting-started.html#arbeidsfiler
 Fra rotmappen med Python installert:
 
 ```powershell
+# Start nettstedet lokalt på port 8000, bare tilgjengelig på denne maskinen.
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
@@ -84,6 +88,7 @@ Workshopinnholdet kan leses uten JavaScript; da vises alle fire workshopgruppene
 Kontroller sidene, filstiene og Git-tilbakestillingen uten ekstrapakker:
 
 ```powershell
+# Kjør dokumentasjonskontrollene og vis resultatet for hver test.
 python -m unittest discover -s tests -p test_workshop_docs.py -v
 ```
 
@@ -92,6 +97,7 @@ Publiseringsworkflowen kjører disse kontrollene før nettstedet publiseres.
 Med [felles Python-oppsett](getting-started.html#python-pakker) klart og prosjektets `.venv` aktivert, fra prosjektroten:
 
 ```powershell
+# Kjør labtestene lokalt og vis resultatet for hver test.
 python tests/test_workshop_labs.py -v
 ```
 

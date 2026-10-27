@@ -75,27 +75,43 @@ ON CONFLICT (id) DO UPDATE SET
 </code></pre></details>
 </section>
       <section class="panel" id="postgres"><h2>1. Start database og schema</h2>
-<pre data-language="PowerShell"><code>docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+<pre data-language="PowerShell"><code># Start en lokal PostgreSQL 17-container med pgvector og databasen workshop.
+docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+# Kontroller at PostgreSQL-containeren er klar til å motta forbindelser.
 docker exec ai200-pg pg_isready -U postgres -d workshop
+# Send SQL-filen til psql i containeren for å opprette schema og eksempeldata.
 Get-Content labs/data/setup.sql -Raw | docker exec -i ai200-pg psql -U postgres -d workshop
+# Åpne en interaktiv psql-terminal mot databasen workshop.
 docker exec -it ai200-pg psql -U postgres -d workshop</code></pre><p>Vent på accepting connections før setup. Tabellen har id, topic, textinnhold og vector(3). Forklar valg av primærnøkkel og dimensjoner.</p><label class="check-item"><input type="checkbox" data-check="w7-postgres"><span>Jeg har opprettet en tabell og lagret vektorer.</span></label>
 </section>
       <section class="panel" id="vektorsok"><h2>2. Søk og filtrer</h2>
-<pre data-language="SQL"><code>SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+<pre data-language="SQL"><code>-- Hent dokumentfeltene og beregn cosinusavstand til spørsmålsvektoren.
+SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+-- Les radene fra labtabellen workshop_notes.
 FROM workshop_notes
+-- Ta bare med dokumenter som har emnet containers.
 WHERE topic = 'containers'
+-- Sorter dokumentene etter økende cosinusavstand.
 ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector
+-- Returner bare de to nærmeste dokumentene.
 LIMIT 2;</code></pre><p>Forventet: dokument 2 før 1. Uten filter er dokument 3 nærmest. Forklar hvordan et metadatafilter avgrenser RAG-konteksten før en språkmodell eventuelt bruker treffene.</p><label class="check-item"><input type="checkbox" data-check="w7-vektorsok"><span>Jeg har brukt både vektoravstand og metadatafilter.</span></label>
 </section>
       <section class="panel" id="indeks"><h2>3. Les planen og bygg indeks</h2>
-<pre data-language="SQL"><code>CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+<pre data-language="SQL"><code>-- Opprett den navngitte indeksen hvis den ikke finnes fra før.
+CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+-- Bygg en HNSW-indeks på embedding med operatorer for cosinusavstand.
 ON workshop_notes USING hnsw (embedding vector_cosine_ops);
+-- Kjør neste spørring og vis planen, målt tidsbruk og bufferaktivitet.
 EXPLAIN (ANALYZE, BUFFERS)
+-- Hent dokumentenes ID-er fra labtabellen.
 SELECT id FROM workshop_notes
+-- Sorter etter cosinusavstand og begrens resultatet til to dokumenter.
 ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector LIMIT 2;</code></pre><p>Fire rader er ofte for lite til at indeksen lønner seg; Seq Scan er normalt. Sammenlign operator og operator class. Beskriv avveiningen mellom recall, minne og svartid for en større vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w7-indeks"><span>Jeg tolker planen og vet hvorfor en indeks kan bli valgt bort.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
-<p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code>docker stop ai200-pg
+<p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code># Stopp labdatabasen før containeren fjernes.
+docker stop ai200-pg
+# Fjern den stoppede PostgreSQL-containeren og dens anonyme datavolumer.
 docker rm --volumes ai200-pg</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://github.com/pgvector/pgvector">pgvector</a></li></ul></section>

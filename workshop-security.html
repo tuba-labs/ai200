@@ -36,7 +36,18 @@
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
-<p>Opprett et eget Key Vault i den eksisterende ressursgruppen <code>ai200-d4</code>, med Azure RBAC og nettverkstilgang fra maskinen. Bruk den publiserte Function App-en og <a href="./workshop-integrations.html#appnavn">appnavnvariablene fra del 14</a>; appen ligger fortsatt i <code>ai200-d3</code>. Gi din bruker Secrets Officer for å opprette testhemmeligheten; appen får en egen leserolle.</p><pre data-language="PowerShell"><code>$env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
+<h3 id="ressursgruppe">Ressursgruppen for domene 4</h3><p>Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d4"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+# Avslutt blokken.
+}</code></pre>
+<p>Opprett et eget Key Vault i den eksisterende ressursgruppen <code>ai200-d4</code>, med Azure RBAC og nettverkstilgang fra maskinen. Bruk den publiserte Function App-en og <a href="./workshop-integrations.html#appnavn">appnavnvariablene fra del 14</a>; appen ligger fortsatt i <code>ai200-d3</code>. Gi din bruker Secrets Officer for å opprette testhemmeligheten; appen får en egen leserolle.</p><pre data-language="PowerShell"><code># Sett URL-en til labhvelvet som SDK-et skal lese fra.
+$env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
 
 <details class="source-file" id="fil-labs-security-requirements-txt" data-source-file="labs/security/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/security/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/security/requirements.txt"><code># API for sporingskontekst og spans.
 opentelemetry-api&gt;=1.28,&lt;2
@@ -57,7 +68,8 @@ __pycache__/
 </code></pre></details>
 </section>
       <section class="panel" id="oppslag"><h2>1. Opprett og les en testhemmelighet</h2>
-<p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code>python labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <code>read_settings.py</code> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
+<p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code># Les testhemmeligheten fra Key Vault og vis at oppslaget lyktes uten å vise verdien.
+python labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <code>read_settings.py</code> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
 
 <details class="source-file" id="fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
 
@@ -117,10 +129,13 @@ if __name__ == &quot;__main__&quot;:
 <p>Legg til ny versjon av demo-secret med verdien workshop-only-v2. Kjør oppslaget igjen og sammenlign versjons-ID. Undersøk forskjellen på en versjonsbundet og en versjonsløs URI. Beskriv hvordan en app som cacher verdien må få den oppdatert.</p><label class="check-item"><input type="checkbox" data-check="w19-rotasjon"><span>Jeg har rotert hemmeligheten og verifisert hvilken versjon som leses.</span></label>
 </section>
       <section class="panel" id="identity"><h2>3. Gi appen egen tilgang</h2>
-<ol><li>Aktiver system-assigned identity på Function App-en.</li><li>Gi appidentiteten Key Vault Secrets User på labhvelvet.</li><li>Legg app setting DEMO_SECRET til Function App-en med referansen under. Lagre og kontroller referansestatus.</li><li>Kall configuration-funksjonen med Get Function URL. Forventet: secret_configured=true.</li></ol><pre data-language="Text"><code>@Microsoft.KeyVault(SecretUri=https://DITT-HVELV.vault.azure.net/secrets/demo-secret/)</code></pre><p>Plattformen løser referansen. Koden leser miljøvariabelen. Oppdateringer kan være forsinket av referansens cache; følg dokumentert refresh eller endre appkonfigurasjonen hvis du skal teste ny henting.</p><label class="check-item"><input type="checkbox" data-check="w19-identity"><span>Appen bruker egen identitet til å lese hemmeligheten.</span></label>
+<ol><li>Aktiver system-assigned identity på Function App-en.</li><li>Gi appidentiteten Key Vault Secrets User på labhvelvet.</li><li>Legg app setting DEMO_SECRET til Function App-en med referansen under. Lagre og kontroller referansestatus.</li><li>Kall configuration-funksjonen med Get Function URL. Forventet: secret_configured=true.</li></ol><pre data-language="Text"><span class="code-note"># La Azure hente siste versjon av demo-secret gjennom en versjonsløs Key Vault-referanse.
+</span><code>@Microsoft.KeyVault(SecretUri=https://DITT-HVELV.vault.azure.net/secrets/demo-secret/)</code></pre><p>Plattformen løser referansen. Koden leser miljøvariabelen. Oppdateringer kan være forsinket av referansens cache; følg dokumentert refresh eller endre appkonfigurasjonen hvis du skal teste ny henting.</p><label class="check-item"><input type="checkbox" data-check="w19-identity"><span>Appen bruker egen identitet til å lese hemmeligheten.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
-<p>Fjern først appens DEMO_SECRET-setting med de eksisterende appnavnvariablene fra del 14. <code>$functionGroup</code> er appens gruppe <code>ai200-d3</code>, selv om hvelvet ligger i <code>ai200-d4</code>:</p><pre data-language="PowerShell"><code>az functionapp config appsettings delete --resource-group $functionGroup --name $functionApp --setting-names DEMO_SECRET -o none
+<p>Fjern først appens DEMO_SECRET-setting med de eksisterende appnavnvariablene fra del 14. <code>$functionGroup</code> er appens gruppe <code>ai200-d3</code>, selv om hvelvet ligger i <code>ai200-d4</code>:</p><pre data-language="PowerShell"><code># Fjern Key Vault-referansen fra Function App-ens innstillinger.
+az functionapp config appsettings delete --resource-group $functionGroup --name $functionApp --setting-names DEMO_SECRET -o none
+# Fjern KEY_VAULT_URL fra denne terminalen.
 Remove-Item Env:KEY_VAULT_URL -ErrorAction SilentlyContinue</code></pre>
 <p>Slett deretter labhvelvet, Function App-en og dens dedikerte Storage-konto fra del 14; ingen senere deler bruker disse ressursene. Et slettet Key Vault kan ha soft delete; ikke purge for å gjenbruke et navn. Forklar forskjellen mellom brukeridentiteten under utvikling og appidentiteten under drift.</p>
 </section>

@@ -24,6 +24,8 @@ class Page(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids, self.links, self.code, self.files = [], [], [], []
         self.pre = None
+        self.in_code = False
+        self.in_note = False
         self.feed(text)
 
     def handle_starttag(self, tag, attributes):
@@ -34,13 +36,23 @@ class Page(HTMLParser):
         if tag == "details" and "source-file" in attrs.get("class", "").split():
             self.files.append(attrs)
         if tag == "pre":
-            self.pre = {"source": attrs.get("data-source"), "language": attrs.get("data-language"), "text": ""}
+            self.pre = {"source": attrs.get("data-source"), "language": attrs.get("data-language"), "text": "", "notes": ""}
+        if tag == "code" and self.pre is not None:
+            self.in_code = True
+        if tag == "span" and self.pre is not None and attrs.get("class") in ("code-line-notes", "code-note"):
+            self.in_note = True
 
     def handle_data(self, text):
-        if self.pre is not None:
+        if self.pre is not None and self.in_code:
             self.pre["text"] += text
+        if self.pre is not None and self.in_note:
+            self.pre["notes"] += text
 
     def handle_endtag(self, tag):
+        if tag == "code":
+            self.in_code = False
+        if tag == "span":
+            self.in_note = False
         if tag == "pre" and self.pre is not None:
             self.code.append(self.pre)
             self.pre = None
@@ -64,19 +76,56 @@ class WorkshopDocumentationTests(unittest.TestCase):
                 if block["language"] == "PowerShell" and not block["source"]]
 
     def test_common_setup_is_not_repeated_in_workshops(self):
-        setup = re.compile(r"\baz (?:login|account set|group create|aks install-cli|extension add)\b"
+        setup = re.compile(r"\baz (?:login|account set|aks install-cli|extension add)\b"
                            r"|\bwinget install\b|\bActivate\.ps1\b|-m (?:venv|pip install)\b")
         for name, page in self.pages.items():
             if name not in self.short and not name.startswith("workshop-domene-"):
                 continue
             for block in self.commands(page):
                 for line in block.splitlines():
+                    if line.lstrip().startswith("#"):
+                        continue
                     with self.subTest(page=name, command=line):
                         self.assertIsNone(setup.search(line), "Move shared setup to getting-started.html")
         requirements = ROOT / "labs/requirements.txt"
         included = {(requirements.parent / line[3:].strip()).resolve()
                     for line in requirements.read_text(encoding="utf-8").splitlines() if line.startswith("-r ")}
         self.assertEqual(included, {path.resolve() for path in (ROOT / "labs").glob("*/requirements.txt")})
+
+    def test_azure_resource_creation_belongs_to_workshops(self):
+        groups, registries = [], []
+        for name, page in self.short.items():
+            for block in self.commands(page):
+                for line in block.splitlines():
+                    if line.strip().startswith("az group create "):
+                        groups.append(name)
+                    if line.strip().startswith("az acr create "):
+                        registries.append(name)
+        self.assertCountEqual(groups, ["workshop-acr.html", "workshop-postgresql.html",
+                                       "workshop-integrations.html", "workshop-security.html"])
+        self.assertEqual(registries, ["workshop-acr.html"])
+        for block in self.commands(self.pages["getting-started.html"]):
+            for line in block.splitlines():
+                if not line.lstrip().startswith("#"):
+                    self.assertNotRegex(line, r"\baz\s+.*\bcreate\b")
+        self.assertNotRegex(self.html["getting-started.html"], r"Resource groups\s*(?:→|&rarr;)\s*Create")
+
+    def test_code_windows_explain_each_line(self):
+        for name, page in self.pages.items():
+            for block in page.code:
+                with self.subTest(page=name, source=block["source"], language=block["language"]):
+                    if block["language"] in ("JSON", "Text"):
+                        self.assertEqual(len(block["text"].splitlines()), len(block["notes"].splitlines()))
+                        if block["language"] == "JSON":
+                            json.loads(block["text"])
+                    if block["source"] or block["language"] not in ("PowerShell", "SQL", "KQL"):
+                        continue
+                    marker = {"SQL": "--", "KQL": "//"}.get(block["language"], "#")
+                    previous = ''
+                    for line in block["text"].splitlines():
+                        if line.strip() and not line.lstrip().startswith(marker):
+                            self.assertTrue(previous.lstrip().startswith(marker), line)
+                        previous = line
 
     def restore_commands(self):
         for name, page in self.short.items():

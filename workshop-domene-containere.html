@@ -23,7 +23,8 @@
       <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p><details class="panel domain-chapter" id="module-1" data-domain-chapter data-session="1" open>
 <summary><span class="chapter-number">Del 1</span><h3>Bygg og feilsøk et container-image</h3></summary>
 <p class="small"><a href="./workshop-containers.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w1-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk Docker med Linux-containere fra <a href="./getting-started.html#docker">fellesoppsettet</a>, og sørg for at motoren kjører. Gå til labmappen:</p><pre data-language="PowerShell"><code>Set-Location labs/containers</code></pre><p><code>app.py</code> er ferdig testkode. Dockerfile-en forklares nedenfor. Denne delen krever ingen Azure-ressurser.</p>
+<section class="chapter-step" id="w1-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk Docker med Linux-containere fra <a href="./getting-started.html#docker">fellesoppsettet</a>, og sørg for at motoren kjører. Gå til labmappen:</p><pre data-language="PowerShell"><code># Gå til mappen med Dockerfile-en og containerkoden.
+Set-Location labs/containers</code></pre><p><code>app.py</code> er ferdig testkode. Dockerfile-en forklares nedenfor. Denne delen krever ingen Azure-ressurser.</p>
 
 <details class="source-file" id="w1-fil-labs-containers-app-py" data-source-file="labs/containers/app.py"><summary><code>app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/app.py</code></p><pre data-language="Python" data-source="labs/containers/app.py"><code>&quot;&quot;&quot;Small, deliberately local workshop API; no external Python dependencies.&quot;&quot;&quot;
 # Gjør Python-data om til JSON i HTTP-svaret.
@@ -98,42 +99,78 @@ EXPOSE 8080
 # Listeformen starter Python direkte, uten et mellomliggende shell.
 CMD [&quot;python&quot;, &quot;-u&quot;, &quot;app.py&quot;]
 </code></pre></details>
-<pre data-language="PowerShell"><code>docker build -t ai200-api:v1 .
+<pre data-language="PowerShell"><code># Bygg v1-imaget fra Dockerfile-en og filene i den gjeldende mappen.
+docker build -t ai200-api:v1 .
+# Vis de lokale image-versjonene av ai200-api.
 docker image ls ai200-api</code></pre><p>Finn base-image, arbeidsmappe, COPY, bruker og CMD i Dockerfile. Forklar hvilke filer som bygges inn. Forventet: en lokal tag <code>ai200-api:v1</code>.</p><label class="check-item"><input type="checkbox" data-check="w1-bygg" data-progress-source="./workshop-containers.html"><span>Jeg kan forklare hva Dockerfile bygger inn.</span></label>
-</section><section class="chapter-step" id="w1-kjor"><h4>2. Kjør og feilsøk</h4><pre data-language="PowerShell"><code>docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v1
+</section><section class="chapter-step" id="w1-kjor"><h4>2. Kjør og feilsøk</h4><pre data-language="PowerShell"><code># Start valgt image i bakgrunnen og koble lokal port 8080 til containerport 8080.
+docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v1
+# Kall den lokale containerens helsesjekk for å se versjon og konfigurasjon.
 Invoke-RestMethod http://localhost:8080/health
+# Kall en rute som mangler og vis HTTP-statusen 404 sammen med responsen.
 curl.exe -i http://localhost:8080/missing
+# Les de 20 siste logglinjene fra den lokale API-containeren.
 docker logs --tail 20 ai200-api</code></pre><p>Forventet: 200 fra <code>/health</code> og 404 fra <code>/missing</code>. Prosessen fortsetter å kjøre. Forklar hvorfor <code>EXPOSE</code> og portbindingen har ulike oppgaver.</p><label class="check-item"><input type="checkbox" data-check="w1-kjor" data-progress-source="./workshop-containers.html"><span>Jeg finner vellykkede og mislykkede kall i loggen.</span></label>
-</section><section class="chapter-step" id="w1-oppdater"><h4>3. Versjoner og tilbakerulling</h4><p>Endre standardverdien for <code>APP_VERSION</code> fra <code>v1</code> til <code>v2</code> i <code>labs/containers/app.py</code>. Den gamle containeren beholder sin kopi til den erstattes.</p><pre data-language="PowerShell"><code>docker build -t ai200-api:v2 .
+</section><section class="chapter-step" id="w1-oppdater"><h4>3. Versjoner og tilbakerulling</h4><p>Endre standardverdien for <code>APP_VERSION</code> fra <code>v1</code> til <code>v2</code> i <code>labs/containers/app.py</code>. Den gamle containeren beholder sin kopi til den erstattes.</p><pre data-language="PowerShell"><code># Bygg v2-imaget med de endrede filene fra den gjeldende mappen.
+docker build -t ai200-api:v2 .
+# Stopp den lokale API-containeren før den erstattes eller fjernes.
 docker stop ai200-api
+# Fjern den stoppede API-containeren; imagene beholdes.
 docker rm ai200-api
+# Start valgt image i bakgrunnen og koble lokal port 8080 til containerport 8080.
 docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v2
+# Kall den lokale containerens helsesjekk for å se versjon og konfigurasjon.
 Invoke-RestMethod http://localhost:8080/health</code></pre><p>Svaret skal ha <code>version</code> lik <code>v2</code>. Det nye imaget inneholder filen slik den var da du bygget v2.</p>
 <p>Rull nå tilbake til det opprinnelige v1-imaget. La <code>app.py</code> stå med v2, og kjør disse kommandoene uten å bygge på nytt:</p>
-<pre data-language="PowerShell"><code>docker stop ai200-api
+<pre data-language="PowerShell"><code># Stopp den lokale API-containeren før den erstattes eller fjernes.
+docker stop ai200-api
+# Fjern den stoppede API-containeren; imagene beholdes.
 docker rm ai200-api
+# Start valgt image i bakgrunnen og koble lokal port 8080 til containerport 8080.
 docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v1
+# Kall den lokale containerens helsesjekk for å se versjon og konfigurasjon.
 Invoke-RestMethod http://localhost:8080/health</code></pre>
 <p>Svaret skal igjen ha <code>version</code> lik <code>v1</code>. Containeren bruker kopien av <code>app.py</code> som ble bygget inn i v1-imaget, selv om arbeidsfilen nå inneholder v2. Dette viser at filendringer ikke endrer et eksisterende image, og at du kan rulle tilbake ved å starte det tidligere imaget. Taggene <code>v1</code> og <code>v2</code> brukes her til å velge mellom de to versjonene.</p><label class="check-item"><input type="checkbox" data-check="w1-oppdater" data-progress-source="./workshop-containers.html"><span>Jeg har kjørt to versjoner og rullet tilbake.</span></label>
-</section><section class="chapter-step" id="w1-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code>docker stop ai200-api
+</section><section class="chapter-step" id="w1-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code># Stopp den lokale API-containeren før den erstattes eller fjernes.
+docker stop ai200-api
+# Fjern den stoppede API-containeren; imagene beholdes.
 docker rm ai200-api</code></pre><p>Behold de lokale v1- og v2-imagene til neste økt. Forklar forskjellen mellom en filendring, et nytt image og en ny container.</p><p>Før workshop 2: tilbakestill kildefilen <code>labs/containers/app.py</code> med Git. Kjør fra <code>labs/containers</code>; kommandoen forkaster endringene i <code>app.py</code>:</p>
-<pre data-language="PowerShell"><code>git restore --source=HEAD -- app.py</code></pre><p><strong>Sluttstatus:</strong> standardverdien for <code>APP_VERSION</code> i kildefilen skal være <code>v1</code>. De bygde imagene <code>ai200-api:v1</code> og <code>ai200-api:v2</code> beholdes; tilbakestillingen av filen endrer ikke innholdet i dem.</p>
+<pre data-language="PowerShell"><code># Forkast lokale endringer i app.py og hent den committede versjonen.
+git restore --source=HEAD -- app.py</code></pre><p><strong>Sluttstatus:</strong> standardverdien for <code>APP_VERSION</code> i kildefilen skal være <code>v1</code>. De bygde imagene <code>ai200-api:v1</code> og <code>ai200-api:v2</code> beholdes; tilbakestillingen av filen endrer ikke innholdet i dem.</p>
 </section>
 </details><details class="panel domain-chapter" id="module-2" data-domain-chapter data-session="1" open>
 <summary><span class="chapter-number">Del 2</span><h3>Lagre images og bygg med ACR Tasks</h3></summary>
 <p class="small"><a href="./workshop-acr.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w2-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk Azure-innloggingen og ressursgruppen fra fellesoppsettet. Docker-motoren fra del 1 må kjøre når du senere henter imaget.</p><h5>Opprett et eget Basic-registry</h5><p>Bruk den eksisterende ressursgruppen <code>ai200-d1</code>, som du opprettet i <a href="./getting-started.html#abonnement">steg 4 i Kom i gang</a>. Har du brukt et annet gruppenavn, setter du <code>$rg</code> til det navnet. Standardregionen i veiledningen er <strong>Norway East</strong> (<code>norwayeast</code>). Bruk samme region som da du opprettet gruppen. Velg en annen støttet region hvis tjenestene ikke er tilgjengelige der for abonnementet ditt. ACR-navnet genereres med et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
+<section class="chapter-step" id="w2-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk Azure-innloggingen fra fellesoppsettet. Docker-motoren fra del 1 må kjøre når du senere henter imaget. <strong>Har du allerede et labregistry?</strong> Bruk <a href="#w2-fortsett">tilkoblingsblokken for det eksisterende registryet</a> og gå direkte til <a href="#w2-bygg">steg 1</a>.</p><h5 id="w2-ressursgruppe">Ressursgruppen opprettes her ved behov</h5><p>Dette er første Azure-øvelse i domene 1. Blokken oppretter gruppen bare hvis den mangler. Har du allerede en labgruppe med et annet navn, bruker du det navnet i <code>$rg</code>.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Velg Norway East som region for nye ressurser.
 $location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+# Avslutt blokken.
+}</code></pre><h5>Opprett ett Basic-registry</h5><p>Hvis du ikke har et labregistry fra før, oppretter du det med blokken nedenfor én gang. ACR-navnet får et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code># Lag et globalt unikt registrynavn med et tilfeldig suffiks.
 $acr = "ai200" + (New-Guid).ToString("N").Substring(0, 12)
+# Opprett ett Basic-registry med administratorbrukeren deaktivert og RBAC som tilgangsmodell.
 az acr create --resource-group $rg --name $acr --location $location --sku Basic --admin-enabled false --role-assignment-mode rbac
+# Tillat Azure Resource Manager-tokens ved autentisering mot registryet.
 az acr config authentication-as-arm update -r $acr --status enabled
+# Hent registryets innloggingsadresse, som brukes i image-navn.
 $login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
+# Hent Azure-ressurs-ID-en til registryet for rolletildelinger.
 $acrId = az acr show --resource-group $rg --name $acr --query id -o tsv
-az acr show --resource-group $rg --name $acr --query "{Name:name, LoginServer:loginServer, State:provisioningState, AdminEnabled:adminUserEnabled, RoleMode:roleAssignmentMode}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> registryet er <code>Succeeded</code>, AdminEnabled er <code>False</code> og tilgangsmodellen er <code>LegacyRegistryPermissions</code> (portalens <strong>RBAC Registry Permissions</strong>). Behold terminalen og variablene til del 3–6, og noter registry-navnet. Ved ny terminal bruker du tilkoblingsblokken nedenfor.</p><p>Labben bruker bevisst RBAC Registry Permissions, der <code>AcrPull</code> gir lesetilgang. Bruker du et eksisterende registry med <strong>RBAC Registry + ABAC Repository Permissions</strong>, må repository-roller brukes i stedet; ikke endre tilgangsmodellen på et delt registry for å følge labben.</p><details id="w2-fortsett"><summary>Ny terminal: hent det eksisterende registryet</summary><p>Bruk navnene du noterte. Denne blokken henter verdier til del 3–6:</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
+# Vis registryets navn, imageadresse, opprettelsesstatus og tilgangsinnstillinger.
+az acr show --resource-group $rg --name $acr --query "{Name:name, LoginServer:loginServer, State:provisioningState, AdminEnabled:adminUserEnabled, RoleMode:roleAssignmentMode}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> registryet er <code>Succeeded</code>, AdminEnabled er <code>False</code> og tilgangsmodellen er <code>LegacyRegistryPermissions</code> (portalens <strong>RBAC Registry Permissions</strong>). Behold terminalen og variablene til del 3–6, og noter registry-navnet. Ved ny terminal bruker du tilkoblingsblokken nedenfor.</p><p>Labben bruker bevisst RBAC Registry Permissions, der <code>AcrPull</code> gir lesetilgang. Bruker du et eksisterende registry med <strong>RBAC Registry + ABAC Repository Permissions</strong>, må repository-roller brukes i stedet; ikke endre tilgangsmodellen på et delt registry for å følge labben.</p><details id="w2-fortsett"><summary>Eksisterende registry eller ny terminal: hent tilkoblingen</summary><p>Bruk navnene du noterte. Denne blokken henter verdier til del 3–6:</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Sett navnet på registryet som allerede finnes.
 $acr = "DITT-REGISTRY-NAVN"
+# Hent regionen til det eksisterende registryet.
 $location = az acr show --resource-group $rg --name $acr --query location -o tsv
+# Hent registryets innloggingsadresse, som brukes i image-navn.
 $login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
-$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv</code></pre></details><h5>Gi labbrukeren tilgang ved behov</h5><p>Hvis du har Owner eller Contributor på gruppen i denne RBAC-modellen, har du allerede tilgangen labben bruker til image-operasjoner og Tasks. Ved <code>AuthorizationFailed</code> kontrollerer eieren <strong>ACR → Access control (IAM)</strong> og kan gi deg <strong>AcrPush</strong>, <strong>Container Registry Tasks Contributor</strong> og <strong>Container Registry Configuration Reader and Data Access Configuration Reader</strong> på labregistryet. Rolletildeling kan bruke litt tid på å slå gjennom. Administratorinnlogging på registryet skal fortsatt være deaktivert.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/acr#az-acr-create">opprette ACR</a> og <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">tilgangsmodeller og roller</a>.</p>
+# Hent Azure-ressurs-ID-en til registryet for rolletildelinger.
+$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv</code></pre></details><h5>Gi labbrukeren tilgang ved behov</h5><p>Hvis du har Owner eller Contributor på gruppen i denne RBAC-modellen, har du allerede tilgangen labben bruker til image-operasjoner og Tasks. Ved <code>AuthorizationFailed</code> kontrollerer eieren <strong>ACR → Access control (IAM)</strong> og kan gi deg <strong>AcrPush</strong>, <strong>Container Registry Tasks Contributor</strong> og <strong>Container Registry Configuration Reader and Data Access Configuration Reader</strong> på labregistryet. Rolletildeling kan bruke litt tid på å slå gjennom. Administratorinnlogging på registryet skal fortsatt være deaktivert.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/group#az-group-exists">kontrollere om ressursgruppen finnes</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/acr#az-acr-create">opprette ACR</a> og <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">tilgangsmodeller og roller</a>.</p>
 
 <details class="source-file" id="w2-fil-labs-containers-dockerfile" data-source-file="labs/containers/Dockerfile"><summary><code>Dockerfile</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/Dockerfile</code></p><pre data-language="Dockerfile" data-source="labs/containers/Dockerfile"><code># Bruk et ferdig Linux-image med Python 3.12.
 # slim-varianten har færre forhåndsinstallerte pakker enn standardimaget.
@@ -209,11 +246,17 @@ if __name__ == &quot;__main__&quot;:
     # Lytt på port 8080 på alle containerens nettverksgrensesnitt.
     ThreadingHTTPServer((&quot;0.0.0.0&quot;, 8080), Handler).serve_forever()
 </code></pre></details>
-</section><section class="chapter-step" id="w2-bygg"><h4>1. Bygg i ACR</h4><pre data-language="PowerShell"><code>az acr build --registry $acr --image ai200-api:v1 labs/containers
+</section><section class="chapter-step" id="w2-bygg"><h4>1. Bygg i ACR</h4><pre data-language="PowerShell"><code># Bygg koden fra labs/containers i Azure og lagre imaget som ai200-api:v1.
+az acr build --registry $acr --image ai200-api:v1 labs/containers
+# Vis tagger og metadata for ai200-api i registryet.
 az acr repository show-tags --name $acr --repository ai200-api --detail -o table</code></pre><p>Bygget og lagringen skjer i Azure. Finn tagg og digest. En gjenbrukt tagg kan peke på nytt innhold; digest identifiserer innholdet. Kjør bygget med en ny tagg og sammenlign.</p><label class="check-item"><input type="checkbox" data-check="w2-bygg" data-progress-source="./workshop-acr.html"><span>Jeg finner image, tagg og digest i ACR.</span></label>
-</section><section class="chapter-step" id="w2-tasks"><h4>2. Bygg, push og kjør med Tasks</h4><p><code>acr-task.yaml</code> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code>Set-Location labs/containers
+</section><section class="chapter-step" id="w2-tasks"><h4>2. Bygg, push og kjør med Tasks</h4><p><code>acr-task.yaml</code> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code># Gå til mappen med Dockerfile-en og containerkoden.
+Set-Location labs/containers
+# Kjør bygge-, push- og kommandostegene fra acr-task.yaml i Azure.
 az acr run --registry $acr --file acr-task.yaml .
+# Gå tilbake til prosjektroten fra labmappen.
 Set-Location ../..
+# Vis ACR Tasks-kjøringene med status og kjørings-ID.
 az acr task list-runs --registry $acr -o table</code></pre><p>Forventet: alle tre stegene fullføres, og Python-versjonen står i loggen. Finn task-kjøringen og den unike taggen. Forklar forskjellen mellom denne manuelle kjøringen og triggere fra kildekode, base-image eller tidsplan.</p><label class="check-item"><input type="checkbox" data-check="w2-tasks" data-progress-source="./workshop-acr.html"><span>Jeg har kjørt build, push og et kommando-steg i ACR Tasks.</span></label>
 
 <details class="source-file" id="w2-fil-labs-containers-acr-task-yaml" data-source-file="labs/containers/acr-task.yaml"><summary><code>acr-task.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/acr-task.yaml</code></p><pre data-language="YAML" data-source="labs/containers/acr-task.yaml"><code># Velg syntaksversjonen for ACR Tasks-filen.
@@ -230,27 +273,44 @@ steps:
   # Kjør imaget og skriv Python-versjonen i task-loggen.
   - cmd: &#x27;{{.Run.Registry}}/ai200-api:{{.Run.ID}} python --version&#x27;
 </code></pre></details>
-</section><section class="chapter-step" id="w2-hent"><h4>3. Hent og kjør</h4><pre data-language="PowerShell"><code>az acr login --name $acr
+</section><section class="chapter-step" id="w2-hent"><h4>3. Hent og kjør</h4><pre data-language="PowerShell"><code># La Docker bruke Azure-innloggingen din mot registryet.
+az acr login --name $acr
+# Last ned det navngitte v1-imaget fra registryet til den lokale maskinen.
 docker pull "$login/ai200-api:v1"
+# Start ACR-imaget, vis Python-versjonen og fjern testcontaineren etterpå.
 docker run --rm "$login/ai200-api:v1" python --version</code></pre><p>Samme image kan brukes av App Service, Container Apps og AKS i de neste øktene.</p><label class="check-item"><input type="checkbox" data-check="w2-hent" data-progress-source="./workshop-acr.html"><span>Jeg kan hente en bestemt image-versjon.</span></label>
 </section><section class="chapter-step" id="w2-opprydding"><h4>Rydding og overgang til neste del</h4><p>Behold registryet bare mens workshop 3–6 bruker det. Slett egne ubrukte testtagger i repository-visningen. Når siste avhengige økt er ferdig, slett labregistryet eller ressursgruppen for øvelsen.</p>
 </section>
 </details><details class="panel domain-chapter" id="module-3" data-domain-chapter data-session="1" open>
 <summary><span class="chapter-number">Del 3</span><h3>Kjør en container i App Service</h3></summary>
 <p class="small"><a href="./workshop-app-service.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w3-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk registryet med <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Har du åpnet en ny terminal, bruk <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for det eksisterende registryet</a>. Opprett App Service-ressursene nedenfor én gang.</p><pre data-language="PowerShell"><code>$web = "ai200-web-" + (New-Guid).ToString("N").Substring(0, 12)
+<section class="chapter-step" id="w3-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk registryet med <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Har du åpnet en ny terminal, bruk <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for det eksisterende registryet</a>. Opprett App Service-ressursene nedenfor én gang.</p><pre data-language="PowerShell"><code># Lag et globalt unikt navn på den nye webappen.
+$web = "ai200-web-" + (New-Guid).ToString("N").Substring(0, 12)
+# Sett navnet på Linux-planen til webappen.
 $plan = "ai200-linux"
-$webPullIdentityName = "ai200-web-pull"</code></pre><h5>Opprett identitet, Linux-plan og webapp</h5><p>Identiteten får <code>AcrPull</code> på ditt labregistry. Den brukes av App Service til å hente imaget uten registry-passord. Rolletildelingen krever <a href="./getting-started.html#azure-rettigheter">tilgangen beskrevet i Kom i gang</a>.</p><pre data-language="PowerShell"><code>az identity create --resource-group $rg --name $webPullIdentityName --location $location -o none
+# Sett navnet på identiteten som skal hente webappens image.
+$webPullIdentityName = "ai200-web-pull"</code></pre><h5>Opprett identitet, Linux-plan og webapp</h5><p>Identiteten får <code>AcrPull</code> på ditt labregistry. Den brukes av App Service til å hente imaget uten registry-passord. Rolletildelingen krever <a href="./getting-started.html#azure-rettigheter">tilgangen beskrevet i Kom i gang</a>.</p><pre data-language="PowerShell"><code># Opprett en separat managed identity som appen kan bruke til image-pull.
+az identity create --resource-group $rg --name $webPullIdentityName --location $location -o none
+# Hent ressurs-ID-en til webappens pull-identitet.
 $webPullIdentityId = az identity show --resource-group $rg --name $webPullIdentityName --query id -o tsv
+# Hent identitetens principal-ID for rolletildelingen i ACR.
 $webPullPrincipalId = az identity show --resource-group $rg --name $webPullIdentityName --query principalId -o tsv
+# Gi appidentiteten AcrPull på dette registryet.
 az role assignment create --assignee-object-id $webPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none
+# Opprett en Linux App Service-plan på B1-nivå i valgt region.
 az appservice plan create --resource-group $rg --name $plan --location $location --is-linux --sku B1 -o none
+# Opprett webappen med ACR-imaget og bruk den tildelte identiteten til image-pull.
 az webapp create --resource-group $rg --plan $plan --name $web --container-image-name "$login/ai200-api:v1" --assign-identity $webPullIdentityId --acr-use-identity --acr-identity $webPullIdentityId -o none
+# Sett WEBSITES_PORT til 8080 slik at App Service sender trafikk til riktig containerport.
 az webapp config appsettings set --resource-group $rg --name $web --settings WEBSITES_PORT=8080 -o none
+# Aktiver lagring av containerlogger i App Service.
 az webapp log config --resource-group $rg --name $web --docker-container-logging filesystem -o none
+# Hent webappens vertsnavn til helsesjekken.
 $webHost = az webapp show --resource-group $rg --name $web --query defaultHostName -o tsv
+# Vis webappens navn, kjøretilstand og vertsnavn.
 az webapp show --resource-group $rg --name $web --query "{Name:name, State:state, Host:defaultHostName}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> webappen vises som <code>Running</code>. Noter appnavn, vertsnavn, plan og identitetsnavn. Opprettelsen bruker et nytt appnavn hver gang; hopp over opprettelseskommandoene hvis appen allerede finnes. Ved ny terminal setter du navnene til de eksisterende verdiene. Plan B1 har løpende kostnad; kontroller valget i portalen før du fortsetter.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/webapp#az-webapp-create">opprette webapp med ACR og managed identity</a> og <a href="https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container">containerport og konfigurasjon</a>.</p>
-</section><section class="chapter-step" id="w3-image"><h4>1. Få containeren i gang</h4><ol><li>Åpne webappen i portalen → <strong>Identity → User assigned</strong>. Finn identiteten <code>ai200-web-pull</code> du nettopp koblet til appen. I ACR → <strong>Access control (IAM) → Role assignments</strong> finner du dens <code>AcrPull</code>-rolle.</li><li>Under <strong>Environment variables</strong> kontrollerer du <code>WEBSITES_PORT=8080</code>. CLI-oppsettet over bruker klassisk Linux custom-container-konfigurasjon.</li><li>Kall helsesjekken under og åpne <strong>Log stream</strong> i portalen. Vent på første oppstart. Ved image-pull-feil: kontroller identitet, rolle og taggen <code>ai200-api:v1</code>. En ny rolletildeling kan bruke litt tid på å slå gjennom; start da appen på nytt når rollen er tilgjengelig.</li></ol><pre data-language="PowerShell"><code>Invoke-RestMethod "https://$webHost/health"</code></pre><p>Forventet: JSON fra testappen og oppstartslogger.</p><label class="check-item"><input type="checkbox" data-check="w3-image" data-progress-source="./workshop-app-service.html"><span>Jeg har kjørt mitt eget ACR-image i App Service.</span></label>
+</section><section class="chapter-step" id="w3-image"><h4>1. Få containeren i gang</h4><ol><li>Åpne webappen i portalen → <strong>Identity → User assigned</strong>. Finn identiteten <code>ai200-web-pull</code> du nettopp koblet til appen. I ACR → <strong>Access control (IAM) → Role assignments</strong> finner du dens <code>AcrPull</code>-rolle.</li><li>Under <strong>Environment variables</strong> kontrollerer du <code>WEBSITES_PORT=8080</code>. CLI-oppsettet over bruker klassisk Linux custom-container-konfigurasjon.</li><li>Kall helsesjekken under og åpne <strong>Log stream</strong> i portalen. Vent på første oppstart. Ved image-pull-feil: kontroller identitet, rolle og taggen <code>ai200-api:v1</code>. En ny rolletildeling kan bruke litt tid på å slå gjennom; start da appen på nytt når rollen er tilgjengelig.</li></ol><pre data-language="PowerShell"><code># Kall webappens helsesjekk og vis JSON-svaret.
+Invoke-RestMethod "https://$webHost/health"</code></pre><p>Forventet: JSON fra testappen og oppstartslogger.</p><label class="check-item"><input type="checkbox" data-check="w3-image" data-progress-source="./workshop-app-service.html"><span>Jeg har kjørt mitt eget ACR-image i App Service.</span></label>
 </section><section class="chapter-step" id="w3-miljo"><h4>2. Send konfigurasjon til containeren</h4><p>Legg til <code>WORKSHOP_MODE=review</code> under Environment variables. Lagre, vent på restart og kall /health igjen. Forventet: <code>mode</code> blir <code>review</code>, uten nytt image. Finn appens konfigurasjonsendring og skill den fra en image-oppdatering.</p><label class="check-item"><input type="checkbox" data-check="w3-miljo" data-progress-source="./workshop-app-service.html"><span>Jeg har endret en miljøvariabel uten å bygge imaget på nytt.</span></label>
 </section><section class="chapter-step" id="w3-hemmelighet"><h4>3. Lever en testhemmelighet</h4><p>Opprett app setting <code>DEMO_SECRET=workshop-only</code> og lagre. Dette er en offentlig øvingsverdi. Kall /health: secret_configured skal være true, mens selve verdien aldri returneres. Undersøk hvordan App Service lagrer og leverer innstillinger til containeren. Oppdater verdien og bekreft at samme image fortsatt brukes.</p><p>I <a href="./workshop-security.html">workshop 19</a> lærer du å erstatte en lagret hemmelighet med en Key Vault-referanse og managed identity.</p><label class="check-item"><input type="checkbox" data-check="w3-hemmelighet" data-progress-source="./workshop-app-service.html"><span>Jeg har levert en testhemmelighet til containeren gjennom appinnstillinger.</span></label>
 </section><section class="chapter-step" id="w3-opprydding"><h4>Rydding og overgang til neste del</h4><p>I portalen: åpne ressursgruppen for øvelsen, marker webappen, planen <code>ai200-linux</code> og identiteten <code>ai200-web-pull</code>, velg <strong>Delete</strong> og kontroller navnene før du bekrefter. Behold ACR til del 4–6 er ferdige. Slett planen også; den kan fortsatt koste etter at webappen er slettet. Forklar hvorfor en miljøvariabel og en hemmelighet ikke trenger et eget image.</p>
@@ -258,61 +318,111 @@ az webapp show --resource-group $rg --name $web --query "{Name:name, State:state
 </details><details class="panel domain-chapter" id="module-4" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 4</span><h3>Miljøer og revisjoner i Container Apps</h3></summary>
 <p class="small"><a href="./workshop-container-apps.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w4-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk ACR-registryet, <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Opprett Container Apps-ressursene nedenfor én gang. App Service-ressursene fra del 3 brukes ikke her.</p><pre data-language="PowerShell"><code>$ca = "ai200-api"
-$caEnv = "ai200-env"
-$caPullIdentityName = "ai200-ca-pull"</code></pre><h5>Gi appidentiteten lesetilgang til ACR</h5><pre data-language="PowerShell"><code>az identity create --resource-group $rg --name $caPullIdentityName --location $location -o none
-$caPullIdentityId = az identity show --resource-group $rg --name $caPullIdentityName --query id -o tsv
-$caPullPrincipalId = az identity show --resource-group $rg --name $caPullIdentityName --query principalId -o tsv
-az role assignment create --assignee-object-id $caPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none</code></pre><h5>Opprett miljø og app</h5><p>Bruk Consumption-profilen med minimum 0 og maksimum 2 replikaer. Oppsettet bruker live Log stream; det oppretter ikke et Log Analytics-workspace for historiske logger.</p><pre data-language="PowerShell"><code>az containerapp env create --resource-group $rg --name $caEnv --location $location --enable-workload-profiles true --logs-destination none -o none
-az containerapp create --resource-group $rg --name $ca --environment $caEnv --workload-profile-name Consumption --image "$login/ai200-api:v1" --user-assigned $caPullIdentityId --registry-identity $caPullIdentityId --registry-server $login --ingress external --target-port 8080 --cpu 0.25 --memory 0.5Gi --min-replicas 0 --max-replicas 2 --revisions-mode single -o none
-$caFqdn = az containerapp show --resource-group $rg --name $ca --query properties.configuration.ingress.fqdn -o tsv
-az containerapp show --resource-group $rg --name $ca --query "{Name:name, State:properties.provisioningState, Host:properties.configuration.ingress.fqdn}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> tilstanden er <code>Succeeded</code>. Helsesjekken gjøres i steg 1. Noter gruppe, appnavn, miljø, identitetsnavn og FQDN til del 5. Ved image-pull-feil kontrollerer du at identiteten har <code>AcrPull</code> på labregistryet; vent på at en ny rolle slår gjennom før du prøver opprettelsen igjen. Har du allerede disse ressursene, bruk navnene deres og hopp over opprettelsen.</p><details id="w4-fortsett"><summary>Ny terminal: hent den eksisterende Container App-en</summary><p>Bruk appnavnet fra denne delen før du fortsetter med del 5:</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
+<section class="chapter-step" id="w4-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk ACR-registryet, <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Opprett Container Apps-ressursene nedenfor én gang. App Service-ressursene fra del 3 brukes ikke her.</p><pre data-language="PowerShell"><code># Sett navnet på Container App-en.
 $ca = "ai200-api"
+# Sett navnet på Container Apps-miljøet.
+$caEnv = "ai200-env"
+# Sett navnet på identiteten som skal hente Container App-ens image.
+$caPullIdentityName = "ai200-ca-pull"</code></pre><h5>Gi appidentiteten lesetilgang til ACR</h5><pre data-language="PowerShell"><code># Opprett en separat managed identity som appen kan bruke til image-pull.
+az identity create --resource-group $rg --name $caPullIdentityName --location $location -o none
+# Hent ressurs-ID-en til Container App-ens pull-identitet.
+$caPullIdentityId = az identity show --resource-group $rg --name $caPullIdentityName --query id -o tsv
+# Hent identitetens principal-ID for rolletildelingen i ACR.
+$caPullPrincipalId = az identity show --resource-group $rg --name $caPullIdentityName --query principalId -o tsv
+# Gi appidentiteten AcrPull på dette registryet.
+az role assignment create --assignee-object-id $caPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none</code></pre><h5>Opprett miljø og app</h5><p>Bruk Consumption-profilen med minimum 0 og maksimum 2 replikaer. Oppsettet bruker live Log stream; det oppretter ikke et Log Analytics-workspace for historiske logger.</p><pre data-language="PowerShell"><code># Opprett et miljø med workload profiles, uten et workspace for historiske logger.
+az containerapp env create --resource-group $rg --name $caEnv --location $location --enable-workload-profiles true --logs-destination none -o none
+# Opprett appen med managed identity, ekstern ingress på port 8080 og 0–2 replikaer.
+az containerapp create --resource-group $rg --name $ca --environment $caEnv --workload-profile-name Consumption --image "$login/ai200-api:v1" --user-assigned $caPullIdentityId --registry-identity $caPullIdentityId --registry-server $login --ingress external --target-port 8080 --cpu 0.25 --memory 0.5Gi --min-replicas 0 --max-replicas 2 --revisions-mode single -o none
+# Hent Container App-ens eksterne vertsnavn.
+$caFqdn = az containerapp show --resource-group $rg --name $ca --query properties.configuration.ingress.fqdn -o tsv
+# Vis appens navn, opprettelsesstatus og eksterne vertsnavn.
+az containerapp show --resource-group $rg --name $ca --query "{Name:name, State:properties.provisioningState, Host:properties.configuration.ingress.fqdn}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> tilstanden er <code>Succeeded</code>. Helsesjekken gjøres i steg 1. Noter gruppe, appnavn, miljø, identitetsnavn og FQDN til del 5. Ved image-pull-feil kontrollerer du at identiteten har <code>AcrPull</code> på labregistryet; vent på at en ny rolle slår gjennom før du prøver opprettelsen igjen. Har du allerede disse ressursene, bruk navnene deres og hopp over opprettelsen.</p><details id="w4-fortsett"><summary>Ny terminal: hent den eksisterende Container App-en</summary><p>Bruk appnavnet fra denne delen før du fortsetter med del 5:</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Sett navnet på Container App-en.
+$ca = "ai200-api"
+# Hent regionen til den eksisterende Container App-en.
 $location = az containerapp show --resource-group $rg --name $ca --query location -o tsv</code></pre></details><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/container-apps/managed-identity-image-pull">image-pull med managed identity</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/containerapp/env#az-containerapp-env-create">opprette miljø</a> og <a href="https://learn.microsoft.com/en-us/cli/azure/containerapp#az-containerapp-create">opprette Container App</a>.</p>
-</section><section class="chapter-step" id="w4-miljo"><h4>1. Undersøk miljø og ingress</h4><p>Åpne appens Overview, Environment og Log stream, og kall helsesjekken:</p><pre data-language="PowerShell"><code>Invoke-RestMethod "https://$caFqdn/health"</code></pre><p>Forventet: JSON fra testappen. Noter miljøets nettverksvalg og forskjellen mellom appens inngangsadresse og containerens target port. Behold min 0 / maks 2 replikaer.</p><label class="check-item"><input type="checkbox" data-check="w4-miljo" data-progress-source="./workshop-container-apps.html"><span>Jeg finner miljø, ingress og aktive logger.</span></label>
+</section><section class="chapter-step" id="w4-miljo"><h4>1. Undersøk miljø og ingress</h4><p>Åpne appens Overview, Environment og Log stream, og kall helsesjekken:</p><pre data-language="PowerShell"><code># Kall Container App-ens helsesjekk og vis JSON-svaret.
+Invoke-RestMethod "https://$caFqdn/health"</code></pre><p>Forventet: JSON fra testappen. Noter miljøets nettverksvalg og forskjellen mellom appens inngangsadresse og containerens target port. Behold min 0 / maks 2 replikaer.</p><label class="check-item"><input type="checkbox" data-check="w4-miljo" data-progress-source="./workshop-container-apps.html"><span>Jeg finner miljø, ingress og aktive logger.</span></label>
 </section><section class="chapter-step" id="w4-revisjoner"><h4>2. Opprett en ny revisjon</h4><p>Aktiver Multiple revisions. Velg <strong>Edit and deploy</strong> og lag en revisjon med miljøvariabelen <code>APP_VERSION=v2</code>. Behold samme image slik at bare revisjonskonfigurasjonen endres. Finn begge revisjonsnavnene og vent til den nye er healthy.</p><label class="check-item"><input type="checkbox" data-check="w4-revisjoner" data-progress-source="./workshop-container-apps.html"><span>Jeg har opprettet og identifisert to revisjoner.</span></label>
-</section><section class="chapter-step" id="w4-trafikk"><h4>3. Fordel trafikk og rull tilbake</h4><p>Sett trafikk til 50 % på hver revisjon. Kall /health gjentatte ganger med <code>curl.exe</code> uten å gjenbruke cookies. Observer begge versjonene; få kall garanterer ikke en nøyaktig halvdeling. Rull deretter tilbake ved å sende all apptrafikk til v1-revisjonen. Bruk revisjonsnavnet du fant i forrige steg:</p><pre data-language="PowerShell"><code>$v1Revision = &quot;DITT-V1-REVISJONSNAVN&quot;
-az containerapp ingress traffic set --resource-group $rg --name $ca --revision-weight &quot;$v1Revision=100&quot; -o none
+</section><section class="chapter-step" id="w4-trafikk"><h4>3. Fordel trafikk og rull tilbake</h4><p>Sett trafikk til 50 % på hver revisjon. Kall /health gjentatte ganger med <code>curl.exe</code> uten å gjenbruke cookies. Observer begge versjonene; få kall garanterer ikke en nøyaktig halvdeling. Rull deretter tilbake ved å sende all apptrafikk til v1-revisjonen. Bruk revisjonsnavnet du fant i forrige steg:</p><pre data-language="PowerShell"><code># Sett navnet på v1-revisjonen som skal få all trafikk.
+$v1Revision = "DITT-V1-REVISJONSNAVN"
+# Send 100 prosent av apptrafikken til v1-revisjonen.
+az containerapp ingress traffic set --resource-group $rg --name $ca --revision-weight "$v1Revision=100" -o none
+# Vis trafikkfordelingen mellom revisjonene.
 az containerapp ingress traffic show --resource-group $rg --name $ca -o table</code></pre><p>Bekreft at v2 ikke lenger får appens trafikk. Undersøk logger per revisjon. <a href="https://learn.microsoft.com/en-us/azure/container-apps/traffic-splitting">Microsoft Learn: fordele trafikk mellom revisjoner</a>.</p><label class="check-item"><input type="checkbox" data-check="w4-trafikk" data-progress-source="./workshop-container-apps.html"><span>Jeg har fordelt trafikk og rullet tilbake til en tidligere revisjon.</span></label>
 </section><section class="chapter-step" id="w4-opprydding"><h4>Rydding og overgang til neste del</h4><p>I <strong>Revision management</strong>: velg den ubrukte revisjonen og <strong>Deactivate</strong>. Behold appen, miljøet og identiteten <code>ai200-ca-pull</code> til del 5. Hvis du avslutter her, slett disse tre ressursene fra ressursgruppens ressursliste. Behold ACR hvis del 6 skal bruke det. Forklar forskjellen mellom miljø, app, revisjon og replika.</p>
 </section>
 </details><details class="panel domain-chapter" id="module-5" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 5</span><h3>Hendelsesstyrt skalering med KEDA</h3></summary>
 <p class="small"><a href="./workshop-keda.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w5-forberedelser"><h4>Oppsett for denne delen</h4><p>Fortsett med Container App-en og terminalvariablene fra <a href="./workshop-container-apps.html">del 4</a>. Ved ny terminal bruker du <a href="./workshop-container-apps.html#fortsett">tilkoblingsblokken for den eksisterende appen</a>. Opprett bare den nye Storage-kontoen og labkøen nedenfor.</p><pre data-language="PowerShell"><code>$storage = "ai200q" + (New-Guid).ToString("N").Substring(0, 12)
+<section class="chapter-step" id="w5-forberedelser"><h4>Oppsett for denne delen</h4><p>Fortsett med Container App-en og terminalvariablene fra <a href="./workshop-container-apps.html">del 4</a>. Ved ny terminal bruker du <a href="./workshop-container-apps.html#fortsett">tilkoblingsblokken for den eksisterende appen</a>. Opprett bare den nye Storage-kontoen og labkøen nedenfor.</p><pre data-language="PowerShell"><code># Lag et unikt navn på den nye Storage-kontoen for skaleringsøvelsen.
+$storage = "ai200q" + (New-Guid).ToString("N").Substring(0, 12)
+# Bruk én aktiv revisjon under skaleringsøvelsen.
 az containerapp revision set-mode --resource-group $rg --name $ca --mode single -o none
+# Opprett en StorageV2-konto med lokal redundans og deaktivert anonym Blob-tilgang.
 az storage account create --resource-group $rg --name $storage --location $location --sku Standard_LRS --kind StorageV2 --allow-blob-public-access false -o none
+# Hent Storage-kontoens tilkoblingsstreng til labkøen.
 $queueConnection = az storage account show-connection-string --resource-group $rg --name $storage --query connectionString -o tsv
+# Opprett labkøen scale-demo i Storage-kontoen.
 az storage queue create --name scale-demo --connection-string $queueConnection -o none
+# Lagre køens tilkoblingsstreng som apphemmeligheten queue-connection.
 az containerapp secret set --resource-group $rg --name $ca --secrets "queue-connection=$queueConnection" -o none
+# Kontroller at labkøen finnes; forventet svar er true.
 az storage queue exists --name scale-demo --connection-string $queueConnection --query exists -o tsv</code></pre><p><strong>Kontrollpunkt:</strong> siste kommando viser <code>true</code>. I portalen: åpne Container App-en → <strong>Secrets</strong> og finn navnet <code>queue-connection</code>. Storage-kontoen er en egen labkonto i samme ressursgruppe for øvelsen; noter navnet til regel og opprydding. Tilkoblingsstrengen inneholder en kontonøkkel og skal bare ligge i terminalvariabelen og apphemmeligheten. Ved ny terminal: sett <code>$storage</code> til det eksisterende kontonavnet og hent <code>$queueConnection</code> på nytt, uten å opprette en ny konto.</p><p>Testappen demonstrerer skalering; den leser ikke meldinger fra køen. Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/storage/account#az-storage-account-create">opprette Storage-konto</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/storage/queue#az-storage-queue-create">opprette kø</a> og <a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">skaleringsregler</a>.</p>
 </section><section class="chapter-step" id="w5-regel"><h4>1. Lag en KEDA-regel</h4><p>I Scale: min 0, maks 2, Custom rule med typen <code>azure-queue</code>. Metadata: <code>queueName=scale-demo</code>, <code>accountName</code> lik Storage-kontoen og <code>queueLength=5</code>. Knytt autentiseringsparameteren <code>connection</code> til hemmeligheten <code>queue-connection</code>. Lagre og finn revisjonen som ble opprettet.</p><label class="check-item"><input type="checkbox" data-check="w5-regel" data-progress-source="./workshop-keda.html"><span>Jeg har konfigurert en hendelsesstyrt skaleringsregel.</span></label>
-</section><section class="chapter-step" id="w5-last"><h4>2. Gi køen arbeid</h4><p>Legg 15 små meldinger i labkøen med kommandoene under. I portalen: åpne Container App-en → <strong>Monitoring → Metrics</strong> og velg <strong>Replica Count</strong>. Undersøk også systemloggen i <strong>Log stream</strong>. Med terskel 5 tilsier 15 meldinger tre replikaer, men maksgrensen er 2. Vent gjennom polling og oppstart. Ved null aktivitet: sjekk kønavn, forbindelse og systemlogger.</p><pre data-language="PowerShell"><code>1..15 | ForEach-Object {
+</section><section class="chapter-step" id="w5-last"><h4>2. Gi køen arbeid</h4><p>Legg 15 små meldinger i labkøen med kommandoene under. I portalen: åpne Container App-en → <strong>Monitoring → Metrics</strong> og velg <strong>Replica Count</strong>. Undersøk også systemloggen i <strong>Log stream</strong>. Med terskel 5 tilsier 15 meldinger tre replikaer, men maksgrensen er 2. Vent gjennom polling og oppstart. Ved null aktivitet: sjekk kønavn, forbindelse og systemlogger.</p><pre data-language="PowerShell"><code># Gjenta neste kommando én gang for hvert av tallene 1 til 15.
+1..15 | ForEach-Object {
+    # Legg én labmelding i køen; løkketallet blir del av meldingsinnholdet.
     az storage message put --queue-name scale-demo --content "lab-$_" --connection-string $queueConnection -o none
+# Avslutt blokken.
 }</code></pre><label class="check-item"><input type="checkbox" data-check="w5-last" data-progress-source="./workshop-keda.html"><span>Jeg kan forklare hvordan terskelen og maksgrensen påvirker skaleringen.</span></label>
-</section><section class="chapter-step" id="w5-ned"><h4>3. Fjern arbeid og observer</h4><p>Tøm bare labkøen med kommandoen under. Observer at nedskalering tar tid. Sammenlign pollingintervallet med cooldown; disse er ulike mekanismer. Diskuter hva som ville skjedd om en ekte worker fullførte meldingene underveis.</p><pre data-language="PowerShell"><code>az storage message clear --queue-name scale-demo --connection-string $queueConnection -o none</code></pre><label class="check-item"><input type="checkbox" data-check="w5-ned" data-progress-source="./workshop-keda.html"><span>Jeg har observert oppskalering og forklart forsinket nedskalering.</span></label>
-</section><section class="chapter-step" id="w5-opprydding"><h4>Rydding og overgang til neste del</h4><p>Åpne ressursgruppen for øvelsen i portalen. Etter skaleringsforsøket: slett Container App-en, miljøet, identiteten <code>ai200-ca-pull</code> og Storage-kontoen du noterte. Sletting av appen fjerner dens skaleringsregel og hemmelighet; sletting av Storage-kontoen fjerner labkøen. Behold ACR til del 6 er ferdig. Ikke slett gruppen mens den fortsatt inneholder ACR eller andre ressurser du skal bruke. Fjern tilkoblingsstrengen fra terminalen:</p><pre data-language="PowerShell"><code>Remove-Variable queueConnection -ErrorAction SilentlyContinue</code></pre>
+</section><section class="chapter-step" id="w5-ned"><h4>3. Fjern arbeid og observer</h4><p>Tøm bare labkøen med kommandoen under. Observer at nedskalering tar tid. Sammenlign pollingintervallet med cooldown; disse er ulike mekanismer. Diskuter hva som ville skjedd om en ekte worker fullførte meldingene underveis.</p><pre data-language="PowerShell"><code># Tøm bare labkøen slik at KEDA kan skalere appen ned igjen.
+az storage message clear --queue-name scale-demo --connection-string $queueConnection -o none</code></pre><label class="check-item"><input type="checkbox" data-check="w5-ned" data-progress-source="./workshop-keda.html"><span>Jeg har observert oppskalering og forklart forsinket nedskalering.</span></label>
+</section><section class="chapter-step" id="w5-opprydding"><h4>Rydding og overgang til neste del</h4><p>Åpne ressursgruppen for øvelsen i portalen. Etter skaleringsforsøket: slett Container App-en, miljøet, identiteten <code>ai200-ca-pull</code> og Storage-kontoen du noterte. Sletting av appen fjerner dens skaleringsregel og hemmelighet; sletting av Storage-kontoen fjerner labkøen. Behold ACR til del 6 er ferdig. Ikke slett gruppen mens den fortsatt inneholder ACR eller andre ressurser du skal bruke. Fjern tilkoblingsstrengen fra terminalen:</p><pre data-language="PowerShell"><code># Fjern den lokale variabelen med Storage-tilkoblingsstrengen.
+Remove-Variable queueConnection -ErrorAction SilentlyContinue</code></pre>
 </section>
 </details><details class="panel domain-chapter" id="module-6" data-domain-chapter data-session="2" open>
 <summary><span class="chapter-number">Del 6</span><h3>Utrulling og feilsøking i AKS</h3></summary>
 <p class="small"><a href="./workshop-aks.html">Åpne som kort workshop →</a></p>
-<section class="chapter-step" id="w6-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk ACR-imaget <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Velg ett av klyngealternativene nedenfor.</p><p><code>kubectl</code> er installert i <a href="./getting-started.html#cli-utvidelser">fellesoppsettet for containerverktøy</a>.</p><details><summary>Alternativ A: opprett din egen AKS-labklynge</summary><p>Bruk <code>$rg</code>, <code>$location</code> og <code>$acrId</code> fra del 2. Eksemplet velger Free for kontrollplanet og to <code>Standard_D4s_v5</code>-noder. Noder, disker og nettverk har løpende kostnad. Kontroller størrelse og kvote for abonnementet og regionen før opprettelse. Ved manglende kvote eller utilgjengelig størrelse kan du bruke arrangørens klynge.</p><pre data-language="PowerShell"><code>$aks = "ai200-aks"
+<section class="chapter-step" id="w6-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk ACR-imaget <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Velg ett av klyngealternativene nedenfor.</p><p><code>kubectl</code> er installert i <a href="./getting-started.html#cli-utvidelser">fellesoppsettet for containerverktøy</a>.</p><details><summary>Alternativ A: opprett din egen AKS-labklynge</summary><p>Bruk <code>$rg</code>, <code>$location</code> og <code>$acrId</code> fra del 2. Eksemplet velger Free for kontrollplanet og to <code>Standard_D4s_v5</code>-noder. Noder, disker og nettverk har løpende kostnad. Kontroller størrelse og kvote for abonnementet og regionen før opprettelse. Ved manglende kvote eller utilgjengelig størrelse kan du bruke arrangørens klynge.</p><pre data-language="PowerShell"><code># Sett navnet på AKS-klyngen du skal bruke.
+$aks = "ai200-aks"
+# Sett ditt eget labnamespace i Kubernetes.
 $ns = "ai200-dittnavn"
+# Opprett labklyngen med to noder og gi kubelet-identiteten tilgang til ACR.
 az aks create --resource-group $rg --name $aks --location $location --tier free --node-count 2 --node-vm-size Standard_D4s_v5 --enable-managed-identity --attach-acr $acrId --generate-ssh-keys -o none
+# Vis klyngens opprettelsesstatus og navnet på den tilhørende nodegruppen.
 az aks show --resource-group $rg --name $aks --query "{State:provisioningState, NodeGroup:nodeResourceGroup}" -o table
+# Hent tilkoblingen til AKS og lagre den som konteksten ai200-d1-lab.
 az aks get-credentials --resource-group $rg --name $aks --context ai200-d1-lab
+# Velg labkonteksten som de neste Kubernetes-kommandoene skal bruke.
 kubectl config use-context ai200-d1-lab
+# Vis klyngens noder og kontroller at de er Ready.
 kubectl get nodes
-kubectl create namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> klargjøringstilstanden er <code>Succeeded</code>, nodene er <code>Ready</code>, og ditt namespace er opprettet. Noter også den automatisk opprettede nodegruppen. <code>--attach-acr</code> gir kubelet-identiteten <code>AcrPull</code> på labregistryet fra del 2, som bruker RBAC Registry Permissions. Kommandoen krever at du kan tildele denne rollen. Har du allerede opprettet klyngen og namespace, sett navnene til de eksisterende verdiene og hopp over opprettelsen.</p></details><details><summary>Alternativ B: koble til arrangørens delte klynge</summary><p>Be arrangøren oppgi klyngenavn, ressursgruppe og ditt eget namespace. Arrangøren må ha opprettet namespace, gitt deg <strong>Azure Kubernetes Service Cluster User Role</strong> for å hente tilkoblingen og Kubernetes-rettigheter til labressurser i ditt namespace. Klyngens kubelet-identitet må ha lesetilgang til ACR-registryet som inneholder imaget ditt. Arrangøren kan bruke <code>az aks update --resource-group GRUPPE --name KLYNGE --attach-acr ACR-RESSURS-ID</code> for registryet fra del 2. Bruk verdiene du får i blokken under; ikke opprett en ekstra klynge eller et ekstra namespace.</p><pre data-language="PowerShell"><code>$rg = "ARRANGORENS-KLYNGEGRUPPE"
+# Opprett ditt eget namespace til labressursene.
+kubectl create namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> klargjøringstilstanden er <code>Succeeded</code>, nodene er <code>Ready</code>, og ditt namespace er opprettet. Noter også den automatisk opprettede nodegruppen. <code>--attach-acr</code> gir kubelet-identiteten <code>AcrPull</code> på labregistryet fra del 2, som bruker RBAC Registry Permissions. Kommandoen krever at du kan tildele denne rollen. Har du allerede opprettet klyngen og namespace, sett navnene til de eksisterende verdiene og hopp over opprettelsen.</p></details><details><summary>Alternativ B: koble til arrangørens delte klynge</summary><p>Be arrangøren oppgi klyngenavn, ressursgruppe og ditt eget namespace. Arrangøren må ha opprettet namespace, gitt deg <strong>Azure Kubernetes Service Cluster User Role</strong> for å hente tilkoblingen og Kubernetes-rettigheter til labressurser i ditt namespace. Klyngens kubelet-identitet må ha lesetilgang til ACR-registryet som inneholder imaget ditt. Arrangøren kan bruke <code>az aks update --resource-group GRUPPE --name KLYNGE --attach-acr ACR-RESSURS-ID</code> for registryet fra del 2. Bruk verdiene du får i blokken under; ikke opprett en ekstra klynge eller et ekstra namespace.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ARRANGORENS-KLYNGEGRUPPE"
+# Sett navnet på AKS-klyngen du skal bruke.
 $aks = "ARRANGORENS-KLYNGENAVN"
+# Sett ditt eget labnamespace i Kubernetes.
 $ns = "DITT-TILDELTE-NAMESPACE"
+# Hent tilkoblingen til AKS og lagre den som konteksten ai200-d1-lab.
 az aks get-credentials --resource-group $rg --name $aks --context ai200-d1-lab
+# Velg labkonteksten som de neste Kubernetes-kommandoene skal bruke.
 kubectl config use-context ai200-d1-lab
-kubectl auth can-i create deployments --namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> siste kommando viser <code>yes</code>. Ved <code>Forbidden</code> må arrangøren kontrollere tilgangen til ditt namespace.</p></details><p>Etter valgt alternativ: kontroller at konteksten er <code>ai200-d1-lab</code>. Bruk bare ditt labnamespace i kommandoene videre.</p><pre data-language="PowerShell"><code>kubectl config current-context
+# Kontroller at du har rett til å opprette Deployments i ditt namespace.
+kubectl auth can-i create deployments --namespace $ns</code></pre><p><strong>Kontrollpunkt:</strong> siste kommando viser <code>yes</code>. Ved <code>Forbidden</code> må arrangøren kontrollere tilgangen til ditt namespace.</p></details><p>Etter valgt alternativ: kontroller at konteksten er <code>ai200-d1-lab</code>. Bruk bare ditt labnamespace i kommandoene videre.</p><pre data-language="PowerShell"><code># Vis hvilken Kubernetes-kontekst som er aktiv.
+kubectl config current-context
+# Vis podene og tilstanden deres i labnamespace-et.
 kubectl get pods --namespace $ns</code></pre><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli">opprette og koble til AKS</a>, <a href="https://learn.microsoft.com/en-us/azure/aks/use-system-pools">krav til systemnoder</a> og <a href="https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration">ACR-tilgang fra AKS</a>.</p>
-</section><section class="chapter-step" id="w6-deploy"><h4>1. Deploy et manifest</h4><p>Rediger <code>labs/containers/deployment.yaml</code> og bytt <code>image</code> til ditt ACR-image.  Behold ressursgrenser og readiness-proben.</p><pre data-language="PowerShell"><code>kubectl apply -n $ns -f labs/containers/deployment.yaml
+</section><section class="chapter-step" id="w6-deploy"><h4>1. Deploy et manifest</h4><p>Rediger <code>labs/containers/deployment.yaml</code> og bytt <code>image</code> til ditt ACR-image.  Behold ressursgrenser og readiness-proben.</p><pre data-language="PowerShell"><code># Opprett eller oppdater labressursene fra manifestfilen.
+kubectl apply -n $ns -f labs/containers/deployment.yaml
+# Vent opptil 120 sekunder på at utrullingen av workshop-api fullføres.
 kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
+# Vis podene og tilstanden deres i labnamespace-et.
 kubectl get pods -n $ns
+# Videresend lokal port 8082 til containerens port 8080 så lenge kommandoen kjører.
 kubectl port-forward -n $ns deployment/workshop-api 8082:8080</code></pre><p>La videresendingen kjøre. Åpne en annen terminal og kjør <code>Invoke-RestMethod http://localhost:8082/health</code>. Forventet: JSON fra appen.</p><label class="check-item"><input type="checkbox" data-check="w6-deploy" data-progress-source="./workshop-aks.html"><span>Jeg har deployet mitt image til AKS med et manifest.</span></label>
 
 <details class="source-file" id="w6-fil-labs-containers-deployment-yaml" data-source-file="labs/containers/deployment.yaml"><summary><code>deployment.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/deployment.yaml</code></p><pre data-language="YAML" data-source="labs/containers/deployment.yaml"><code># Bruk Kubernetes-API-et for Deployment-ressurser.
@@ -382,22 +492,40 @@ spec:
             # Gjenta kontrollen hvert femte sekund.
             periodSeconds: 5
 </code></pre></details>
-</section><section class="chapter-step" id="w6-feil"><h4>2. Fremprovoser og finn en feil</h4><p>Avslutt port-forward. Før du lager feil, lagre en kopi av manifestet som nettopp fungerte. Kjør fra prosjektroten; kopien beholder din ACR-adresse:</p><pre data-language="PowerShell"><code>Copy-Item -LiteralPath labs/containers/deployment.yaml -Destination artifacts/deployment.before-faults.yaml -Force</code></pre><p>Endre imagetaggen i arbeidsmanifestet til <code>finnes-ikke</code>, og undersøk utrullingen:</p><pre data-language="PowerShell"><code>kubectl apply -n $ns -f labs/containers/deployment.yaml
-kubectl get pods -n $ns
-kubectl describe pods -n $ns
-kubectl get events -n $ns --sort-by=.lastTimestamp</code></pre><p>Forventet: <code>ImagePullBackOff</code> og en forklarende hendelse. Rull tilbake i klyngen og hent samtidig tilbake den fungerende arbeidsfilen:</p><pre data-language="PowerShell"><code>kubectl rollout undo -n $ns deployment/workshop-api
-kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
-Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force</code></pre><p><code>rollout undo</code> endrer klyngen; kopieringen gjenoppretter filen du bruker ved neste <code>apply</code>. Endre nå readiness-stien i arbeidsfilen til <code>/missing</code>, og kjør <code>apply</code> og undersøkelseskommandoene over igjen. Sammenlign en levende prosess med en ready pod.</p><p>Etter testen: gjenopprett manifestet med riktig image og <code>/health</code>, og rull det ut:</p><pre data-language="PowerShell"><code>Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force
+</section><section class="chapter-step" id="w6-feil"><h4>2. Fremprovoser og finn en feil</h4><p>Avslutt port-forward. Før du lager feil, lagre en kopi av manifestet som nettopp fungerte. Kjør fra prosjektroten; kopien beholder din ACR-adresse:</p><pre data-language="PowerShell"><code># Lagre en kopi av det fungerende manifestet før du lager testfeil.
+Copy-Item -LiteralPath labs/containers/deployment.yaml -Destination artifacts/deployment.before-faults.yaml -Force</code></pre><p>Endre imagetaggen i arbeidsmanifestet til <code>finnes-ikke</code>, og undersøk utrullingen:</p><pre data-language="PowerShell"><code># Opprett eller oppdater labressursene fra manifestfilen.
 kubectl apply -n $ns -f labs/containers/deployment.yaml
+# Vis podene og tilstanden deres i labnamespace-et.
+kubectl get pods -n $ns
+# Vis detaljer om podene, inkludert hendelser som forklarer oppstartsfeil.
+kubectl describe pods -n $ns
+# Vis hendelsene i labnamespace-et, sortert etter siste tidsstempel.
+kubectl get events -n $ns --sort-by=.lastTimestamp</code></pre><p>Forventet: <code>ImagePullBackOff</code> og en forklarende hendelse. Rull tilbake i klyngen og hent samtidig tilbake den fungerende arbeidsfilen:</p><pre data-language="PowerShell"><code># Rull workshop-api tilbake til forrige Deployment-revisjon.
+kubectl rollout undo -n $ns deployment/workshop-api
+# Vent opptil 120 sekunder på at utrullingen av workshop-api fullføres.
+kubectl rollout status -n $ns deployment/workshop-api --timeout=120s
+# Gjenopprett arbeidsmanifestet fra kopien med riktig ACR-adresse.
+Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force</code></pre><p><code>rollout undo</code> endrer klyngen; kopieringen gjenoppretter filen du bruker ved neste <code>apply</code>. Endre nå readiness-stien i arbeidsfilen til <code>/missing</code>, og kjør <code>apply</code> og undersøkelseskommandoene over igjen. Sammenlign en levende prosess med en ready pod.</p><p>Etter testen: gjenopprett manifestet med riktig image og <code>/health</code>, og rull det ut:</p><pre data-language="PowerShell"><code># Gjenopprett arbeidsmanifestet fra kopien med riktig ACR-adresse.
+Copy-Item -LiteralPath artifacts/deployment.before-faults.yaml -Destination labs/containers/deployment.yaml -Force
+# Opprett eller oppdater labressursene fra manifestfilen.
+kubectl apply -n $ns -f labs/containers/deployment.yaml
+# Vent opptil 120 sekunder på at utrullingen av workshop-api fullføres.
 kubectl rollout status -n $ns deployment/workshop-api --timeout=120s</code></pre><p>Forventet: utrullingen fullføres og podene blir Ready.</p><label class="check-item"><input type="checkbox" data-check="w6-feil" data-progress-source="./workshop-aks.html"><span>Jeg har brukt hendelser og readiness til å finne en konkret feil.</span></label>
-</section><section class="chapter-step" id="w6-nettverk"><h4>3. Undersøk tilgang og logger</h4><pre data-language="PowerShell"><code>kubectl expose -n $ns deployment workshop-api --port=80 --target-port=8080 --type=ClusterIP
+</section><section class="chapter-step" id="w6-nettverk"><h4>3. Undersøk tilgang og logger</h4><pre data-language="PowerShell"><code># Opprett en intern ClusterIP-tjeneste som ruter port 80 til containerport 8080.
+kubectl expose -n $ns deployment workshop-api --port=80 --target-port=8080 --type=ClusterIP
+# Vis den interne tjenesten og portene den bruker.
 kubectl get service -n $ns workshop-api
+# Les applikasjonsloggen fra podene i workshop-api.
 kubectl logs -n $ns deployment/workshop-api
+# Endre ønsket antall replikaer i workshop-api til to.
 kubectl scale -n $ns deployment/workshop-api --replicas=2</code></pre><p>Undersøk service-selector, pod-labels og target port. En ClusterIP er intern; port-forward gir din lokale testvei. Forklar hva du kontrollerer hvis en pod er ready, men klienten ikke når tjenesten.</p><label class="check-item"><input type="checkbox" data-check="w6-nettverk" data-progress-source="./workshop-aks.html"><span>Jeg kan følge forbindelsen fra klient via Service til containerport.</span></label>
-</section><section class="chapter-step" id="w6-opprydding"><h4>Rydding og overgang til neste del</h4><p>Slett bare ditt namespace etter å ha kontrollert navn og innhold. Bruker du arrangørens klynge, følger du arrangørens beskjed om hvem som sletter namespace; arrangøren sletter selve klyngen. For egen klynge:</p><pre data-language="PowerShell"><code>kubectl get all -n $ns
+</section><section class="chapter-step" id="w6-opprydding"><h4>Rydding og overgang til neste del</h4><p>Slett bare ditt namespace etter å ha kontrollert navn og innhold. Bruker du arrangørens klynge, følger du arrangørens beskjed om hvem som sletter namespace; arrangøren sletter selve klyngen. For egen klynge:</p><pre data-language="PowerShell"><code># Kontroller ressursene i labnamespace-et før du sletter det.
+kubectl get all -n $ns
+# Slett labnamespace-et og ressursene inni det.
 kubectl delete namespace $ns</code></pre><p>Åpne deretter din egen AKS-ressurs i portalen → <strong>Delete</strong> og kontroller navnet før du bekrefter. Vent til slettingen er ferdig, og kontroller at den tilhørende nodegruppen er fjernet. Slett labregistryet når siste del som bruker det er ferdig. Hvis hele domene 1-gruppen bare inneholder ferdigbrukte labressurser, kan du følge <a href="./getting-started.html#opprydding">oppryddingen av ressursgruppen for øvelsen</a>. AKS-nodene blir ikke slettet ved å lukke terminalen.</p>
 <p>Når du er ferdig, tilbakestill manifestet til Git-versjonen. Ved en ny gjennomføring setter du ACR-adressen på nytt i deploy-steget.</p><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
-git restore --source=HEAD -- labs/containers/deployment.yaml</code></pre><pre data-language="PowerShell"><code>Remove-Item -LiteralPath artifacts/deployment.before-faults.yaml -ErrorAction SilentlyContinue</code></pre>
+git restore --source=HEAD -- labs/containers/deployment.yaml</code></pre><pre data-language="PowerShell"><code># Slett den lokale filen artifacts/deployment.before-faults.yaml hvis den finnes.
+Remove-Item -LiteralPath artifacts/deployment.before-faults.yaml -ErrorAction SilentlyContinue</code></pre>
 </section>
 </details></section>
       <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./pensum-containere.html">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>
