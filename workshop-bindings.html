@@ -34,11 +34,9 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a> · <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
-      <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Bruk en dedikert documents-kø med Max delivery count=3, en lab-Storage-konto og en Service Bus-policy med Send og Listen. Ressursene hører til i <code>ai200-d3</code>. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r labs/bindings/requirements.txt
-if (-not (Test-Path labs/bindings/local.settings.json)) {
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a> · <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk <code>documents</code>-køen og namespace-et fra <a href="./workshop-service-bus.html">del 15</a>, og Storage-kontoen fra <a href="./workshop-integrations.html">del 14</a>. Sett køens <strong>Max delivery count=3</strong> og opprett en Service Bus-policy med Send og Listen på labnamespace-et. Alle disse ressursene ligger i <code>ai200-d3</code>. Opprett bare den nye lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code>if (-not (Test-Path labs/bindings/local.settings.json)) {
     Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
 }</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
 <pre data-language="PowerShell"><code>Set-Location labs/bindings
@@ -120,7 +118,7 @@ def consume(message: func.ServiceBusMessage):
 <p>Forklar forskjellen mellom klientens HTTP-retry, bindingens sendeoperasjon og brokerens nye levering. Beskriv hvor en varig idempotensnøkkel må registreres dersom behandlingen oppdaterer en database. Sammenlign denne løsningen med den direkte SDK-mottakeren fra workshop 15.</p><label class="check-item"><input type="checkbox" data-check="w17-ansvar"><span>Jeg kan forklare hvem som styrer trigger, binding og levering.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
-<p>Stopp host-en, fullfør labmeldingen fra DLQ, og slett local.settings.json. Slett de dedikerte kø-/Storage-ressursene når ingen øvelser bruker dem.</p>
+<p>Stopp host-en, fullfør labmeldingen fra DLQ, og slett den lokale innstillingsfilen nedenfor. Service Bus-namespace-et og køen kan nå slettes. Behold Storage-kontoen og den publiserte HTTP Function App-en til del 18–19.</p>
 <pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
 Remove-Item -LiteralPath labs/bindings/local.settings.json -ErrorAction SilentlyContinue</code></pre>
 </section>

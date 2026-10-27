@@ -34,11 +34,9 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
-      <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Bruk notes-containeren fra workshop 9, Azure Functions Core Tools v4 og en lab-Storage-konto i ressursgruppen <code>ai200-d2</code>. Kjør fra prosjektroten for å aktivere Python-miljøet og opprette den lokale innstillingsfilen:</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r labs/cosmos/requirements.txt
-if (-not (Test-Path labs/cosmos/local.settings.json)) {
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk <code>notes</code>-containeren fra <a href="./workshop-cosmos.html">workshop 9</a> og Core Tools fra fellesoppsettet. Opprett en lab-Storage-konto i den eksisterende ressursgruppen <code>ai200-d2</code> til change feed-hosten. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code>if (-not (Test-Path labs/cosmos/local.settings.json)) {
     Copy-Item labs/cosmos/local.settings.example.json labs/cosmos/local.settings.json
 }</code></pre><p>Åpne <code>labs/cosmos/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>CosmosConnection</code> til Cosmos-kontoens tilkoblingsstreng. Kontroller at <code>COSMOS_DATABASE</code> er <code>workshop</code>. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
 <pre data-language="PowerShell"><code>Set-Location labs/cosmos
@@ -210,7 +208,7 @@ demo.py
 </code></pre></details>
 </section>
       <section class="panel" id="endring"><h2>1. Observer nye endringer</h2>
-<p>Ha COSMOS_ENDPOINT, COSMOS_KEY og COSMOS_DATABASE satt i en annen, aktivert terminal i prosjektroten. Kjør:</p><pre data-language="PowerShell"><code>python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+<p>Bruk en annen Python-terminal med <a href="./workshop-cosmos.html#tilkobling">Cosmos-tilkoblingen fra del 9</a>. Kjør fra prosjektroten:</p><pre data-language="PowerShell"><code>python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
 
 <details class="source-file" id="fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
 # Send meldinger til Functions-hostens logg.

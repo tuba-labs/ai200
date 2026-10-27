@@ -59,7 +59,7 @@
           <li><a href="#installer-verktoy">Installer verktøyene til domenet du skal arbeide med.</a> Python-øvelsene i domene 2–4 trenger også <a href="#intellij">prosjektets Python-miljø og SDK</a>.</li>
           <li>Før Azure-oppgavene: <a href="#azure">velg eller bruk en eksisterende Azure-konto</a>, <a href="#abonnement">kontroller abonnementet</a> og <a href="#azure-cli">logg inn med Azure CLI</a> når workshopen bruker <code>az</code>-kommandoer.</li>
         </ol>
-        <p>Dette er felles oppsett som du gjør én gang. Opprett labressursene når du kommer til klargjøringen i den enkelte workshop.</p>
+        <p>Dette er felles oppsett som du gjør én gang. Installer verktøy og Python-pakker, logg inn og opprett ressursgruppene her. Opprett selve labressursene i den delen som bruker dem først, og behold dem til siste avhengige del er ferdig. Ved ny terminal følger du bare <a href="#terminal">terminaloppsettet</a>.</p>
       </section>
 
       <section class="panel" id="azure">
@@ -148,15 +148,18 @@
             <thead><tr><th scope="col">Verktøy</th><th scope="col">Når trengs det?</th><th scope="col">Installer / sjekk</th></tr></thead>
             <tbody>
               <tr><th scope="row">IntelliJ IDEA Ultimate</th><td>IDE for kode og terminal i alle øktene. Vi forutsetter at alle har Ultimate.</td><td><a href="https://www.jetbrains.com/idea/download/">Installer IntelliJ IDEA</a>, eller bruk installasjonen du har, med Ultimate aktivert. Se <a href="#intellij">oppsettet med Python-pluginen</a>.</td></tr>
-              <tr><th scope="row">Docker med Linux-containere</th><td>Domene 1 og 2.</td><td><a href="https://docs.docker.com/get-started/get-docker/">Docker-installasjon</a>. Start container-motoren før økten.</td></tr>
+              <tr><th scope="row">Docker med Linux-containere</th><td>Domene 1 og 2.</td><td>Følg <a href="#docker">Docker-oppsettet</a> under.</td></tr>
               <tr><th scope="row">Python 3.12</th><td>Kodeøvelser i data, integrasjoner, sikkerhet og sporing.</td><td>Følg <a href="#python-install">installasjonen for Windows</a> under. Du kan ha flere Python-versjoner samtidig.</td></tr>
               <tr><th scope="row">PowerShell</th><td>Shell for kommandoeksemplene.</td><td><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell">Installasjon for ditt operativsystem</a>.</td></tr>
               <tr><th scope="row">Azure Functions Core Tools v4</th><td>Change feed i workshop 11 og Functions-øvelser i workshop 14 og 17.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local">Installer Core Tools</a>; kontroller med <code>func --version</code>.</td></tr>
-              <tr><th scope="row">Azure CLI</th><td>Skyøvelser som bruker <code>az</code>. Portaløvelser trenger bare nettleser.</td><td><a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Installer Azure CLI</a>; kontroller med <code>az version</code>.</td></tr>
+              <tr><th scope="row">Azure CLI</th><td>Skyøvelser og SDK-er som bruker din innloggede identitet.</td><td>Følg <a href="#azure-cli">CLI-installasjon og innlogging</a> i steg 4.</td></tr>
+              <tr><th scope="row">Container Apps-utvidelse og kubectl</th><td>Workshop 4–6.</td><td>Følg <a href="#cli-utvidelser">engangsoppsettet for containerverktøy</a> i steg 4.</td></tr>
               <tr><th scope="row">Git</th><td>Klon prosjektet og tilbakestill endrede kildefiler. Egne workshopresultater lagres under <code>artifacts/</code>.</td><td><a href="https://git-scm.com/downloads">Git</a> og <a href="https://github.com/signup">GitHub-registrering</a>. GitHub-konto og fork trengs bare hvis du vil bidra til prosjektet.</td></tr>
             </tbody>
           </table>
         </div>
+        <h3 id="docker">Installer og start Docker</h3>
+        <p>Installer <a href="https://docs.docker.com/get-started/get-docker/">Docker Desktop</a> med WSL 2-oppsett på Windows, eller bruk container-motoren arbeidsgiveren har klargjort. Fullfør eventuell omstart. Start motoren og velg Linux-containere; viser Docker-menyen <strong>Switch to Linux containers</strong>, velg det.</p>
         <p>Docker Desktop er gratis for blant annet personlig bruk og utdanning, men jobbbruk i større organisasjoner kan kreve lisens. Bruk arbeidsgiverens godkjente oppsett eller en kompatibel container-motor. Se <a href="https://docs.docker.com/subscription-billing/desktop-license">Docker Desktop-vilkårene</a>.</p>
         <h3 id="python-install">Installer ønsket Python-versjon på Windows</h3>
         <p><code>No suitable Python runtime found</code> betyr at launcheren <code>py</code> ikke finner versjonen du ba om. <code>py -3.12</code> velger Python 3.12; en annen installert versjon er ikke nok. Se hva launcheren finner:</p>
@@ -197,15 +200,21 @@ pymanager exec -V:3.12 -m pip --version</code></pre>
             </li>
           </ol>
           <p>Hvis IntelliJ viser <strong>«Inherit packages from base interpreter»</strong> når du oppretter miljøet, skal boksen stå tom. Da holdes prosjektets pakker isolert fra globale pakker. Se <a href="https://www.jetbrains.com/help/idea/configuring-python-sdk.html">JetBrains' Python SDK-oppsett</a>.</p>
-          <p>Oppsettet gjøres én gang før Python-øvelsene. Når du begynner på en lab, følger du labens kommandoer for å aktivere det samme miljøet og installere pakkene laben trenger. SDK-valget gjelder IntelliJ; terminalkommandoene sørger for at terminalen bruker samme Python.</p>
+          <p>Oppsettet gjøres én gang før Python-øvelsene. SDK-valget gjelder IntelliJ; <a href="#terminal">terminaloppsettet</a> velger samme Python i PowerShell.</p>
         </details>
+        <h3 id="python-pakker">Installer Python-pakkene én gang</h3>
+        <p>Fra prosjektroten installerer du pakkene for alle Python-øvelsene i det samme miljøet. <code>labs/requirements.txt</code> samler de enkelte labenes avhengigheter:</p>
+        <pre data-language="PowerShell"><code>.\.venv\Scripts\python.exe -m pip install -r labs/requirements.txt</code></pre>
+        <h3 id="terminal">Når du åpner en ny terminal</h3>
+        <p>Åpne PowerShell i prosjektroten. Før Python-kommandoer aktiverer du prosjektets eksisterende miljø i hver terminal som skal kjøre Python:</p>
+        <pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1</code></pre>
+        <p>Pakkene beholdes mellom terminaler. Bruk samme terminal videre gjennom øvelsene når det passer. Ved ny terminal henter du ressursnavn og nødvendige miljøvariabler fra tilkoblingssteget i den aktuelle workshopen. Azure-innloggingen beholdes også; følg <a href="#azure-cli">innloggingen</a> på nytt dersom legitimasjonen har utløpt eller du skal bytte konto.</p>
         <h3>Kjør en enkel forhåndssjekk</h3>
         <p>Åpne en ny terminal etter installasjonen. Disse kommandoene er for Windows/PowerShell:</p>
         <pre data-language="PowerShell"><code>docker version
-docker run --rm hello-world
-py -3.12 --version
-py -3.12 -m pip --version</code></pre>
-        <p><strong>Forventet resultat:</strong> Docker viser både klient og server, testcontaineren skriver «Hello from Docker!», og Python viser en 3.12-versjon. På macOS/Linux brukes vanligvis <code>python3.12</code> i stedet for <code>py -3.12</code>.</p>
+docker info --format '{{.OSType}}'
+docker run --rm hello-world</code></pre>
+        <p><strong>Forventet resultat:</strong> Docker viser både klient og server, OS-kontrollen viser <code>linux</code>, og testcontaineren skriver «Hello from Docker!». Python-versjon og pip er kontrollert i Python-oppsettet over. På macOS/Linux brukes vanligvis <code>python3.12</code> i stedet for <code>py -3.12</code>.</p>
         <details>
           <summary>Hvis forhåndssjekken feiler</summary>
           <ul>
@@ -239,6 +248,11 @@ az account list --output table</code></pre>
         <pre data-language="PowerShell"><code>az account set --subscription "[din-abonnements-id]"
 az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output table</code></pre>
         <p><strong>Kontrollpunkt:</strong> ID-en må stemme med abonnementet du valgte i portalen. Hvis ingen abonnementer vises, kontroller konto og katalog, og at registreringen faktisk er fullført.</p>
+        <h3 id="cli-utvidelser">Installer containerverktøy én gang</h3>
+        <p>Skal du ta workshop 4–6, klargjør Container Apps-utvidelsen og <code>kubectl</code> her. Har du allerede verktøyene, holder det å kontrollere dem. Bruk en administratorterminal til selve installasjonen hvis installasjonsmappen krever det.</p>
+        <pre data-language="PowerShell"><code>az extension add --name containerapp --upgrade
+az aks install-cli
+kubectl version --client</code></pre>
         <h3 id="azure-rettigheter">Kontroller tilgangen i ditt eget abonnement</h3>
         <p>I portalen: åpne <strong>Subscriptions → ditt abonnement → Access control (IAM) → View my access</strong>. Rollen <strong>Owner</strong> gir rett til å opprette ressurser og tildele roller til appenes identiteter i abonnementet. Har du denne rollen, kan du utføre stegene selv. Se <a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged">Microsofts rollebeskrivelser</a>.</p>
         <p>Før du oppretter en Azure-tjeneste i domene 1: åpne <strong>Subscriptions → ditt abonnement → Resource providers</strong> og kontroller at dens provider er <strong>Registered</strong>. ACR bruker <code>Microsoft.ContainerRegistry</code>, App Service bruker <code>Microsoft.Web</code>, Container Apps bruker <code>Microsoft.App</code>, Storage bruker <code>Microsoft.Storage</code> og identitetene bruker <code>Microsoft.ManagedIdentity</code>. Før AKS kontrollerer du også <code>Microsoft.ContainerService</code>, <code>Microsoft.Compute</code> og <code>Microsoft.Network</code>. Velg en manglende provider og <strong>Register</strong>. Med Owner på ditt abonnement kan du gjøre dette selv. Se <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider">registreringsveiledningen</a>.</p>
@@ -267,11 +281,11 @@ az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output
               <tr><th scope="row">Azure Functions</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/functions/">Plan og abonnementstilbud</a> avgjør gratismengdene. Hosting, lagring og logger kan koste.</td><td>Test med Core Tools, og bruk deretter workshopens plan uten Always Ready hvis den er tilgjengelig.</td></tr>
               <tr><th scope="row">Event Grid</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/event-grid/">Basic</a> har en gratismengde operasjoner. Mottaker og Storage kan koste i tillegg.</td><td>Send noen få testhendelser til workshopens kø.</td></tr>
               <tr><th scope="row">Cosmos DB for NoSQL</th><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/free-tier">Free tier</a> kan dekke opptil 1 000 RU/s og 25 GB på én valgt konto per abonnement. Velges ved opprettelse; gjelder ikke serverless.</td><td>Én region og liten provisioned throughput. Velg free tier når tilgjengelig, og kontroller prisen før opprettelse.</td></tr>
-              <tr><th scope="row">PostgreSQL</th><td><a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Kontotilbudet</a> kan omfatte begrenset Flexible Server-bruk. Andre konfigurasjoner har ordinær pris.</td><td>Vi gjør pgvector-øvelsen i Docker for å begrense skyforbruket.</td></tr>
+              <tr><th scope="row">PostgreSQL</th><td><a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Kontotilbudet</a> kan omfatte begrenset Flexible Server-bruk. Andre konfigurasjoner har ordinær pris.</td><td>Workshop 7 bruker Docker. Workshop 8 oppretter Azure PostgreSQL og sletter serveren etter bruk.</td></tr>
               <tr><th scope="row">AKS</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/">Noder og tilknyttede ressurser</a> koster selv om cluster management er gratis.</td><td><a href="./workshop-aks.html#forberedelser">Workshop 6</a> viser egen labklynge eller tilgang til arrangørens delte klynge. Opprett den først når den trengs, og rydd etter bruk.</td></tr>
               <tr><th scope="row">Container Registry (ACR)</th><td>Har ordinær pris, med eventuell <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">inkludert gratismengde</a> for riktig kontotilbud og nivå.</td><td><a href="./workshop-acr.html#forberedelser">Workshop 2</a> oppretter et Basic-registry. Behold det mens del 3–6 bruker imaget, og slett det etter siste bruk.</td></tr>
-              <tr><th scope="row">Service Bus</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/service-bus/">Forbruk og nivåpris</a> faktureres på Pay as you go eller bruker tilgjengelig, gyldig prøvekreditt.</td><td>Basic for køøvelsen. Topics krever Standard; kontroller pris og tilgjengelighet før utvidelsen.</td></tr>
-              <tr><th scope="row">Managed Redis</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/managed-redis/">En administrert instans</a> har løpende pris.</td><td>Vi oppretter ingen Managed Redis-instans. Redis i Docker brukes til cache- og TTL-øvelsen.</td></tr>
+              <tr><th scope="row">Service Bus</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/service-bus/">Forbruk og nivåpris</a> faktureres på Pay as you go eller bruker tilgjengelig, gyldig prøvekreditt.</td><td>Ett Standard-namespace brukes gjennom workshop 15–17, slik at kø og topics bruker samme oppsett.</td></tr>
+              <tr><th scope="row">Managed Redis</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/managed-redis/">En administrert instans</a> har løpende pris.</td><td>Workshop 12–13 bruker samme Azure Managed Redis-instans. Velg RediSearch ved opprettelsen og slett instansen etter siste del.</td></tr>
               <tr><th scope="row">Key Vault, App Configuration og Monitor</th><td>Valgt plan og forbruk avgjør pris og eventuelle gratismengder. Sjekk <a href="https://azure.microsoft.com/en-us/pricing/calculator/">prisestimatet</a>.</td><td>Små testdata og bare ressursene øvelsen trenger. Slett dem etter økten.</td></tr>
               <tr><th scope="row">AI-modeller og embeddings</th><td>Ingen modellutrulling inngår i opplegget.</td><td>Små eksempeldata lar oss øve på infrastrukturen uten modellforbruk.</td></tr>
             </tbody>
@@ -286,11 +300,11 @@ az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output
         <ol>
           <li>Ta vare på egne resultatfiler og notater under <code>artifacts/</code>. Mappen er ignorert av Git. Lokale <code>local.settings.json</code>-filer og <code>.env</code>-filer med labnøkler er også Git-ignorert.</li>
           <li>Følg oppryddingen på workshopsiden for containere, lokale prosesser og eventuelle data-volumer.</li>
-          <li>Åpne øvingsgruppen i Azure. Kontroller abonnement, gruppenavn og hele ressurslisten. Gruppen skal bare inneholde ressurser fra din økt.</li>
-          <li>Velg <strong>Delete resource group</strong> og bekreft navnet. Vent til slettingen er fullført, og kontroller at gruppen er borte. Feil eller ressurslåser må avklares med eieren.</li>
+          <li>Åpne øvingsgruppen i Azure. Kontroller abonnement, gruppenavn og hele ressurslisten. Gruppen skal bare inneholde dine labressurser; kontroller hvilke som brukes videre.</li>
+          <li>Behold ressursene som oppryddingen på workshopsiden sier at senere deler bruker. Slett de ferdigbrukte ressursene enkeltvis. Velg <strong>Delete resource group</strong> først når alle delene som bruker gruppen er ferdige. Bekreft navnet, vent til slettingen er fullført og kontroller at gruppen er borte. Feil eller ressurslåser må avklares med eieren.</li>
           <li>Sjekk om øvelsen opprettet noe utenfor gruppen, som et delt loggområde. Kontroller forbruket igjen når kostnadsdataene er oppdatert.</li>
         </ol>
-        <p class="notice">Å lukke nettleseren eller stoppe en app sletter ikke skyressursene. Rydd opp før dere går fra økten; lagring og andre tilknyttede ressurser kan fortsatt koste selv om appen er stoppet. Bruker du Free Trial, ta vare på kode og notater og gjør siste opprydding før prøveperioden utløper.</p>
+        <p class="notice">Å lukke nettleseren eller stoppe en app sletter ikke skyressursene. Slett ferdigbrukte ressurser før dere går fra økten. Ressurser som beholdes til neste del kan fortsatt koste selv om appen er stoppet. Bruker du Free Trial, ta vare på kode og notater og gjør siste opprydding før prøveperioden utløper.</p>
       </section>
 
       <section class="panel" id="klar">
@@ -302,7 +316,7 @@ az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-limits"><span>Jeg forstår at Pay as you go mangler utgiftsgrense, og at Free Trials grense følger prøvekreditten.</span></label>
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-docker"><span>Docker-testen kjører, eller jeg har avtalt en maskin å jobbe på.</span></label>
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-tools"><span>Verktøyene og kildefilene i labs er klare; jeg vet hvilke ekstraverktøy neste økt krever.</span></label>
-          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-cleanup"><span>Jeg vet hvordan jeg sletter øvingsressursene etter hver økt.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-cleanup"><span>Jeg vet hvilke ressurser neste del bruker, og hvordan jeg sletter dem etter siste bruk.</span></label>
         </div>
       </section>
       <nav class="page-nav" aria-label="Forrige og neste side">

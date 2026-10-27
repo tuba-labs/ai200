@@ -34,9 +34,9 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-data.html">7. PostgreSQL: vektorsøk og indekser</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
-      <section class="panel" id="forberedelser"><h2>Klargjør før økten</h2>
-<p>Ha en liten Azure Database for PostgreSQL Flexible Server klar i ressursgruppen <code>ai200-d2</code>, med TLS og nettverkstilgang fra din maskin. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-data.html">7. PostgreSQL: vektorsøk og indekser</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Opprett en liten Azure Database for PostgreSQL Flexible Server i den eksisterende ressursgruppen <code>ai200-d2</code>, med TLS og nettverkstilgang fra din maskin. Denne serveren er ny i del 8; den lokale databasen fra del 7 brukes ikke videre. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
 
 <details class="source-file" id="fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -81,9 +81,7 @@ pgvector&gt;=0.3,&lt;1
 </code></pre></details>
 </section>
       <section class="panel" id="sdk"><h2>1. Koble til med Python</h2>
-<p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r labs/data/requirements.txt
-$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
+<p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code>$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
 python labs/data/postgres_client.py setup
 python labs/data/postgres_client.py query</code></pre><p>Forventet: dokument 2 og 1. Finn de parameteriserte verdiene i <code>postgres_client.py</code> og forklar hvorfor SQL og data sendes separat.</p><label class="check-item"><input type="checkbox" data-check="w8-sdk"><span>Jeg har kjørt en parameterisert vektorspørring mot Azure PostgreSQL.</span></label>
 

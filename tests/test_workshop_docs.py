@@ -1,5 +1,6 @@
 """Check workshop files and recovery instructions without Azure or extra packages."""
 import ast
+from html import unescape
 from html.parser import HTMLParser
 import importlib.util
 from pathlib import Path
@@ -62,6 +63,21 @@ class WorkshopDocumentationTests(unittest.TestCase):
         return [block["text"] for block in page.code
                 if block["language"] == "PowerShell" and not block["source"]]
 
+    def test_common_setup_is_not_repeated_in_workshops(self):
+        setup = re.compile(r"\baz (?:login|account set|group create|aks install-cli|extension add)\b"
+                           r"|\bwinget install\b|\bActivate\.ps1\b|-m (?:venv|pip install)\b")
+        for name, page in self.pages.items():
+            if name not in self.short and not name.startswith("workshop-domene-"):
+                continue
+            for block in self.commands(page):
+                for line in block.splitlines():
+                    with self.subTest(page=name, command=line):
+                        self.assertIsNone(setup.search(line), "Move shared setup to getting-started.html")
+        requirements = ROOT / "labs/requirements.txt"
+        included = {(requirements.parent / line[3:].strip()).resolve()
+                    for line in requirements.read_text(encoding="utf-8").splitlines() if line.startswith("-r ")}
+        self.assertEqual(included, {path.resolve() for path in (ROOT / "labs").glob("*/requirements.txt")})
+
     def restore_commands(self):
         for name, page in self.short.items():
             directory = ROOT
@@ -115,6 +131,9 @@ class WorkshopDocumentationTests(unittest.TestCase):
                     chapter = builder.chapter(number, 1, workshops[number])
                     for section_id, _, body in workshops[number]["sections"]:
                         if section_id == "opprydding":
+                            rendered = re.search(rf'id="w{number}-opprydding"><h4>.*?</h4>([\s\S]*?)</section>', chapter)[1]
+                            plain = lambda text: re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", text))).strip()
+                            self.assertEqual(plain(body), plain(rendered), f"Changed cleanup instructions in workshop {number}")
                             for command in re.findall(r"<pre\b[\s\S]*?</pre>", body):
                                 self.assertIn(command, chapter, f"Lost cleanup command in workshop {number}")
 

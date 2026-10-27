@@ -34,14 +34,9 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
-      <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Følg <a href="./getting-started.html#azure-cli">CLI-innloggingen</a> og bruk registryet med <code>ai200-api:v1</code> fra <a href="./workshop-acr.html">del 2</a>. Har du slettet registryet, opprett det og bygg imaget på nytt med stegene der. Bruk ressursgruppen <code>ai200-d1</code> og sett <code>$acr</code> til registry-navnet fra del 2. Tilpass <code>$rg</code> hvis du brukte et annet gruppenavn. Kjør fra prosjektroten.</p><pre data-language="PowerShell"><code>$rg = "ai200-d1"
-$acr = "DITT-REGISTRY-NAVN"
-$location = az acr show --resource-group $rg --name $acr --query location -o tsv
-$login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
-$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv
-$web = "ai200-web-" + (New-Guid).ToString("N").Substring(0, 12)
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk registryet med <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Har du åpnet en ny terminal, bruk <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for det eksisterende registryet</a>. Opprett App Service-ressursene nedenfor én gang.</p><pre data-language="PowerShell"><code>$web = "ai200-web-" + (New-Guid).ToString("N").Substring(0, 12)
 $plan = "ai200-linux"
 $webPullIdentityName = "ai200-web-pull"</code></pre><h3>Opprett identitet, Linux-plan og webapp</h3><p>Identiteten får <code>AcrPull</code> på ditt labregistry. Den brukes av App Service til å hente imaget uten registry-passord. Rolletildelingen krever <a href="./getting-started.html#azure-rettigheter">tilgangen beskrevet i Kom i gang</a>.</p><pre data-language="PowerShell"><code>az identity create --resource-group $rg --name $webPullIdentityName --location $location -o none
 $webPullIdentityId = az identity show --resource-group $rg --name $webPullIdentityName --query id -o tsv

@@ -177,12 +177,10 @@
     const options = domainWorkshop.querySelector('[data-domain-session-options]');
     const choices = [...options.querySelectorAll('input[name="domain-session"]')];
     const chapters = [...domainWorkshop.querySelectorAll('[data-domain-chapter]')];
-    const sessionNotes = [...domainWorkshop.querySelectorAll('[data-domain-session-note]')];
     const selectSession = (value, updateUrl = false) => {
       const selected = ['1', '2'].includes(value) ? value : 'all';
       choices.forEach(choice => { choice.checked = choice.value === selected; });
       chapters.forEach(chapter => { chapter.hidden = selected !== 'all' && chapter.dataset.session !== selected; });
-      sessionNotes.forEach(note => { note.hidden = selected !== 'all' && note.dataset.session !== selected; });
       if (updateUrl) {
         try {
           const url = new URL(location.href);

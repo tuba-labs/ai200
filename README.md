@@ -45,9 +45,9 @@ Start med **[Før første workshop](getting-started.html#for-du-starter)**. Derf
 
 På Free Trial beholder du utgiftsgrensen. Hvis en tjeneste krever oppgradering, eller kreditten/prøveperioden utløper, stopper du den skyøvelsen og vurderer kontovalget i startguiden før du eventuelt endrer abonnementet. Pay as you go har ingen innebygd hard utgiftsgrense; budsjettvarsler stopper ikke ressursene. Du kan også følge en demonstrasjon eller jobbe sammen ved en annen deltakers maskin uten å dele innloggingsopplysninger.
 
-Løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, eventuell provisjonering før økten, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
+Løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, nytt oppsett for den aktuelle øvelsen, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
 
-Domene 1 har [oppsett steg for steg](workshop-domene-containere.html#forberedelser) for Docker, ACR, App Service, Container Apps, Storage-kø og AKS. [CLI-installasjon, innlogging og rettigheter](getting-started.html#azure-cli) forklares i Kom i gang. Ressursene opprettes i delene der de brukes; en ferdig AKS-klynge er ikke nødvendig før del 1. Veiledningene er med i både korte og samlede workshops.
+Verktøy, [Python-pakker](getting-started.html#python-pakker), [CLI-innlogging](getting-started.html#azure-cli) og ressursgrupper settes opp én gang i Kom i gang. Hver workshop oppretter bare de nye ressursene den trenger og bruker eksisterende oppsett videre. Ved ny terminal følger du [terminaloppsettet](getting-started.html#terminal). Standardregionen er Norway East (`norwayeast`).
 
 Forsiden viser pensum først og workshopene i fire faner. Velg mellom de 22 korte øktene og fire samlede domeneworkshops. Hver samlet side kan vise alle delene eller bare samling 1/2, med tilpasset ressursplan. Gjennomføringstiden er ikke målt. Delingen i samlinger er tematisk; tidsbruk avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning. Oppgavedekningen er den samme i begge formater.
 
@@ -59,7 +59,7 @@ De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og br
 python scripts/build_domain_workshops.py
 ```
 
-Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Pythons standardbibliotek og tilpasser rydding mellom delene; ressursplanen ligger i skriptets domenedefinisjoner. De ferdige HTML-filene kan åpnes direkte. Publiseringen kjører genereringen på nytt fra de aktuelle kildefilene på GitHub.
+Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Pythons standardbibliotek og henter både oppgaver og opprydding fra de korte sidene; ressursplanen ligger i skriptets domenedefinisjoner. Endre workshopinnholdet bare i den korte kildesiden. De ferdige HTML-filene kan åpnes direkte. Publiseringen kjører genereringen på nytt fra de aktuelle kildefilene på GitHub.
 
 Filpaneler med `data-source-file` viser hele den tilsvarende kildefilen fra `labs/`, med kommentarer, og er lukket som standard. JSON beholdes gyldig og har feltforklaringer i samme panel. Rediger kildefilen; generatoren oppdaterer både den korte og den samlede siden med samme filinnhold og beholder JSON-forklaringene.
 
@@ -75,7 +75,7 @@ Fra rotmappen med Python installert:
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Åpne <http://localhost:8000>. Stopp serveren med `Ctrl+C`. Ingen pakkeinstallasjon eller byggesteg er nødvendig for nettstedet. Verktøy og avhengigheter for selve labøvelsene er beskrevet på workshopsidene.
+Åpne <http://localhost:8000>. Stopp serveren med `Ctrl+C`. Ingen pakkeinstallasjon eller byggesteg er nødvendig for nettstedet. Verktøy og avhengigheter for selve labøvelsene installeres i Kom i gang.
 
 Workshopinnholdet kan leses uten JavaScript; da vises alle fire workshopgruppene. JavaScript legger til faner med tastaturnavigasjon, kopiering av kode og avhuking med fremdrift i nettleserens `localStorage`. Lenker til `index.html#workshops-domene-1` til `-4` åpner riktig fane. Siden har ingen innlogging, serverlagret fremdrift eller påmeldingsskjema. Fremdriften deles ikke mellom enheter eller nettlesere; blokkert nettleserlagring hindrer ikke lesing av øvelsene.
 
@@ -89,10 +89,9 @@ python -m unittest discover -s tests -p test_workshop_docs.py -v
 
 Publiseringsworkflowen kjører disse kontrollene før nettstedet publiseres.
 
-Med prosjektets `.venv` aktivert, fra prosjektroten:
+Med [felles Python-oppsett](getting-started.html#python-pakker) klart og prosjektets `.venv` aktivert, fra prosjektroten:
 
 ```powershell
-python -m pip install -r labs/requirements.txt
 python tests/test_workshop_labs.py -v
 ```
 
