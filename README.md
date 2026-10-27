@@ -47,6 +47,8 @@ På Free Trial beholder du utgiftsgrensen. Hvis en tjeneste krever oppgradering,
 
 Løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, eventuell provisjonering før økten, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
 
+Domene 1 har [oppsett steg for steg](workshop-domene-containere.html#forberedelser) for Docker, ACR, App Service, Container Apps, Storage-kø og AKS. [CLI-installasjon, innlogging og rettigheter](getting-started.html#azure-cli) forklares i Kom i gang. Ressursene opprettes i delene der de brukes; en ferdig AKS-klynge er ikke nødvendig før del 1. Veiledningene er med i både korte og samlede workshops.
+
 Forsiden viser pensum først og workshopene i fire faner. Velg mellom de 22 korte øktene og fire samlede domeneworkshops. Hver samlet side kan vise alle delene eller bare samling 1/2, med tilpasset ressursplan. Gjennomføringstiden er ikke målt. Delingen i samlinger er tematisk; tidsbruk avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning. Oppgavedekningen er den samme i begge formater.
 
 De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Åpne nettstedet via lokal HTTP-server eller den publiserte siden for å dele fremdrift mellom formatene i samme nettleser; separate file-URL-er kan ha adskilt lagring. Etter endringer i korte workshops, kjør fra prosjektroten:

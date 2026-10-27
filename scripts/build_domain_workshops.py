@@ -9,10 +9,17 @@ DOMAINS = [
         "number": 1, "slug": "containere", "title": "Containere på Azure",
         "syllabus": "pensum-containere.html", "first": 1, "last": 6,
         "parts": [("Images og hosting", [1, 2, 3]), ("Revisjoner, skalering og AKS", [4, 5, 6])],
-        "preparation": "Ha Docker, Azure CLI, ACR-tilgang og et klargjort AKS-labmiljø tilgjengelig. Klargjør App Service og Container Apps etter forberedelsene i de aktuelle delene. Beregn ventetid ved ressursoppretting.",
+        "preparation": "Start med Docker og Azure CLI-innlogging. Ressursene opprettes med stegene i del 2–6 når du kommer dit. Du trenger ikke en ferdig AKS-klynge før første del. Beregn ventetid ved ressursoppretting.",
+        "preparation_steps": [(1, "Installer og kontroller Docker"),
+                              (2, "Logg inn i Azure og opprett Basic-registry"),
+                              (3, "Opprett identitet, Linux-plan og App Service-app"),
+                              (4, "Opprett identitet, Consumption-miljø og Container App"),
+                              (5, "Opprett Storage-konto, kø og apphemmelighet"),
+                              (6, "Installer kubectl og opprett eller koble til AKS")],
         "resources": [("ACR og images", "Samling 1 og 2", "Etter del 6"),
-                      ("App Service-app og plan", "Del 3", "Når del 3 er ferdig"),
-                      ("Container App og miljø", "Del 4–5", "Når del 5 er ferdig"),
+                      ("App Service-app, plan og pull-identitet", "Del 3", "Når del 3 er ferdig"),
+                      ("Container App, miljø og pull-identitet", "Del 4–5", "Når del 5 er ferdig"),
+                      ("Storage-konto og scale-demo-kø", "Del 5", "Når del 5 er ferdig"),
                       ("AKS-namespace/klynge", "Del 6", "Etter økten; eieren rydder en delt klynge")],
     },
     {
@@ -47,12 +54,6 @@ DOMAINS = [
 ]
 
 CARRY = {
-    1: "Stopp og fjern den lokale testcontaineren. Behold imagene og kildefilene, og sett standardverdien APP_VERSION tilbake til v1 før neste del.",
-    2: "Behold ACR og imagene til App Service, Container Apps og AKS er gjennomført. Slett bare unødvendige testtagger nå.",
-    3: "Slett den dedikerte App Service-appen og planen når testen er ferdig. Behold ACR; det brukes i neste del.",
-    4: "Deaktiver den ubrukte revisjonen, men behold Container App og miljø til KEDA-øvelsen i neste del.",
-    5: "Fjern kømeldingene, skaleringsregelen og labhemmeligheten. Container App og miljø kan nå slettes. Behold ACR til AKS-delen.",
-    6: "Slett ditt labnamespace etter kontroll av innholdet. Slett en egen labklynge og ACR etter siste bruk; eieren rydder en delt klynge.",
     7: "Avslutt psql og slett den lokale ai200-pg-containeren med volumene når du har tatt vare på egne SQL-notater. Neste del bruker Azure PostgreSQL.",
     8: "Fjern PGCONNINFO fra terminalen. Slett den dedikerte PostgreSQL-serveren; de øvrige delene bruker andre tjenester.",
     9: "Behold Cosmos-kontoen, databasen og notes til del 10–11. Ved to samlinger må disse være tilgjengelige ved starten av samling 2, eller opprettes på nytt med setup-steget.",
@@ -71,8 +72,8 @@ CARRY = {
 }
 
 SESSION_PREPARATION = {
-    1: ["Samling 1: Docker, Azure CLI, ACR og App Service. AKS og Container Apps trengs først i samling 2.",
-        "Samling 2: Ha ACR-imaget fra samling 1 tilgjengelig, og klargjør Container Apps, en Storage-kø og AKS. App Service trengs ikke her."],
+    1: ["Samling 1: Følg Docker-oppsettet i del 1 og CLI-innloggingen i Kom i gang. Opprett ACR i del 2 og App Service i del 3 med kommandoene der. Container Apps og AKS trengs ikke ennå.",
+        "Samling 2: Bruk ACR-imaget fra samling 1. Opprett Container Apps i del 4, Storage-køen i del 5 og AKS i del 6 med stegene der. App Service trengs ikke her."],
     2: ["Samling 1: Docker/pgvector, Azure PostgreSQL og Cosmos DB med notes-containeren. Redis og change feed-host trengs først i samling 2.",
         "Samling 2: Behold eller opprett Cosmos notes fra del 9, aktiver vektorsøk og klargjør Functions Core Tools, lab-Storage og Managed Redis med RediSearch. Azure PostgreSQL trengs ikke her."],
     3: ["Samling 1: Functions Core Tools, en publiserbar HTTP Function App og et Standard Service Bus-namespace med kø, topic og subscriptions.",
@@ -103,8 +104,9 @@ def chapter(number, session, workshop):
     steps = []
     for section_id, title, body in workshop["sections"]:
         if section_id == "opprydding":
-            cleanup_commands = ''.join(re.findall(r'<pre\b[\s\S]*?</pre>', body))
-            body = f'<p>{escape(CARRY[number])}</p>' + cleanup_commands
+            if number in CARRY:
+                cleanup_commands = ''.join(re.findall(r'<pre\b[\s\S]*?</pre>', body))
+                body = f'<p>{escape(CARRY[number])}</p>' + cleanup_commands
             title = "Rydding og overgang til neste del"
         body = re.sub(r'\bid="([^"]+)"', lambda m: f'id="w{number}-{m[1]}"', body)
         body = re.sub(r'href="#([^"]+)"', lambda m: f'href="#w{number}-{m[1]}"', body)
@@ -133,6 +135,12 @@ def render(domain, workshops):
                         for item, keep, cleanup in domain["resources"])
     preparation_notes = ''.join(f'<p data-domain-session-note data-session="{i}">{escape(note)}</p>'
                                 for i, note in enumerate(SESSION_PREPARATION[domain["number"]], 1))
+    preparation_steps = ''
+    if domain.get("preparation_steps"):
+        preparation_steps = '<h3>Oppsett steg for steg</h3><p>Følg klargjøringen i den delen du skal arbeide med. Start med <a href="./getting-started.html#azure-cli">Azure CLI og innlogging</a> og <a href="./getting-started.html#azure-rettigheter">Azure-rettighetene</a> før del 2.</p><ol>'
+        preparation_steps += ''.join(f'<li><a href="#w{number}-forberedelser">Del {number}: {escape(label)}</a></li>'
+                                     for number, label in domain["preparation_steps"])
+        preparation_steps += '</ol>'
     init = '$projectRoot = (Get-Location).Path'
     if domain["number"] != 1:
         init += '\n.\\.venv\\Scripts\\Activate.ps1'
@@ -159,7 +167,7 @@ def render(domain, workshops):
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
     <article class="content" data-domain-workshop>
       <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend>{choices}</fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-{domain['number']}">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody>{agenda}</tbody></table></div></section>
-      <section class="panel" id="forberedelser"><h2>Klargjør før økten</h2>{preparation_notes}<details><summary>Oversikt for hele domenet</summary><p>{escape(domain['preparation'])}</p></details><p>Start fra prosjektroten, der index.html og labs ligger, og lagre rotstien i hovedterminalen. Alle Python-deler bruker samme .venv. Nye terminaler åpnes i prosjektroten og aktiveres ved behov.</p><pre data-language="PowerShell"><code>{escape(init)}</code></pre><p>Følg i tillegg forberedelsene i hver del. Installer pakkene som den aktuelle delen trenger. Ikke del nøkler eller innlogging når dere arbeider sammen.</p></section>
+      <section class="panel" id="forberedelser"><h2>Klargjør før økten</h2>{preparation_notes}<details><summary>Oversikt for hele domenet</summary><p>{escape(domain['preparation'])}</p></details><p>Start fra prosjektroten, der index.html og labs ligger, og lagre rotstien i hovedterminalen. Alle Python-deler bruker samme .venv. Nye terminaler åpnes i prosjektroten og aktiveres ved behov.</p><pre data-language="PowerShell"><code>{escape(init)}</code></pre>{preparation_steps}<p>Følg i tillegg forberedelsene i hver del. Installer pakkene som den aktuelle delen trenger. Ikke del nøkler eller innlogging når dere arbeider sammen.</p></section>
       <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Ressursplanen under gjelder denne samlede gjennomføringen. Ryddingen i delene er tilpasset overgangen til neste del. Slett bare dedikerte labressurser; en gruppe som også inneholder ressurser til senere deler må beholdes eller ryddes ressurs for ressurs.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody>{resources}</tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Hvis du ikke vil beholde ressurser mellom samlingene, noter oppsettet og klargjør dem på nytt før neste samling.</p></section>
       <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p>{chapters}</section>
       <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./{domain['syllabus']}">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>
