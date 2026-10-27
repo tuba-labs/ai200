@@ -34,21 +34,23 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a> · <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a> · <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Bruk en dedikert documents-kø med Max delivery count=3. I <code>local.settings.example.json</code> trenger du en lab-Storage-connection-string og en Service Bus-policy med Send og Listen. Dette er lokale innstillinger; de skal ikke committes.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r artifacts/labs/bindings/requirements.txt
-if (-not (Test-Path artifacts/labs/bindings/local.settings.json)) {
-    Copy-Item artifacts/labs/bindings/local.settings.example.json artifacts/labs/bindings/local.settings.json
-}</code></pre><p>Erstatt plassholderne, gå til artifacts/labs/bindings og kjør func start --port 7073.</p>
+<p>Bruk en dedikert documents-kø med Max delivery count=3, en lab-Storage-konto og en Service Bus-policy med Send og Listen. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+python -m pip install -r labs/bindings/requirements.txt
+if (-not (Test-Path labs/bindings/local.settings.json)) {
+    Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
+}</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code>Set-Location labs/bindings
+func start --port 7073</code></pre>
 
-<details class="source-file" id="fil-labs-bindings-host-json" data-source-file="labs/bindings/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/bindings/host.json</code></p><pre data-language="JSON" data-source="labs/bindings/host.json"><code>{
+<details class="source-file" id="fil-labs-bindings-host-json" data-source-file="labs/bindings/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/host.json</code></p><pre data-language="JSON" data-source="labs/bindings/host.json"><code>{
   &quot;version&quot;: &quot;2.0&quot;,
   &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
 }
 </code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd><dt><code>extensionBundle.id</code></dt><dd>La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.</dd><dt><code>extensionBundle.version</code></dt><dd>Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.</dd></dl></details>
 
-<details class="source-file" id="fil-labs-bindings-local-settings-example-json" data-source-file="labs/bindings/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/bindings/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/bindings/local.settings.example.json"><code>{
+<details class="source-file" id="fil-labs-bindings-local-settings-example-json" data-source-file="labs/bindings/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/bindings/local.settings.example.json"><code>{
   &quot;IsEncrypted&quot;: false,
   &quot;Values&quot;: {
     &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
@@ -58,11 +60,11 @@ if (-not (Test-Path artifacts/labs/bindings/local.settings.json)) {
 }
 </code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd><dt><code>Values.ServiceBusConnection</code></dt><dd>Labtilkoblingen som Service Bus-bindingene refererer til med connection-navnet.</dd></dl></details>
 
-<details class="source-file" id="fil-labs-bindings-requirements-txt" data-source-file="labs/bindings/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/bindings/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/bindings/requirements.txt"><code># Functions-typer og dekoratorer for Python-appen.
+<details class="source-file" id="fil-labs-bindings-requirements-txt" data-source-file="labs/bindings/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/bindings/requirements.txt"><code># Functions-typer og dekoratorer for Python-appen.
 azure-functions&gt;=1.20,&lt;2
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-bindings-funcignore" data-source-file="labs/bindings/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/bindings/.funcignore</code></p><pre data-language="Tekst" data-source="labs/bindings/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+<details class="source-file" id="fil-labs-bindings-funcignore" data-source-file="labs/bindings/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/.funcignore</code></p><pre data-language="Tekst" data-source="labs/bindings/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
 local.settings.json
 # Eksempelinnstillingene trengs bare ved lokal klargjøring.
 local.settings.example.json
@@ -75,7 +77,7 @@ __pycache__/
       <section class="panel" id="binding"><h2>1. Følg en melding gjennom bindingene</h2>
 <pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"doc-001"}'</code></pre><p>Forventet: HTTP 202 og deretter en Consumed-logglinje. Finn <code>service_bus_queue_output og service_bus_queue_trigger</code>. Output-bindingen sender meldingen; triggeren starter mottakeren og fullfører vellykket behandling.</p><label class="check-item"><input type="checkbox" data-check="w17-binding"><span>Jeg har brukt både output-binding og køtrigger.</span></label>
 
-<details class="source-file" id="fil-labs-bindings-function-app-py" data-source-file="labs/bindings/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/bindings/function_app.py</code></p><pre data-language="Python" data-source="labs/bindings/function_app.py"><code>&quot;&quot;&quot;HTTP -&gt; Service Bus output binding -&gt; Service Bus trigger.&quot;&quot;&quot;
+<details class="source-file" id="fil-labs-bindings-function-app-py" data-source-file="labs/bindings/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/function_app.py</code></p><pre data-language="Python" data-source="labs/bindings/function_app.py"><code>&quot;&quot;&quot;HTTP -&gt; Service Bus output binding -&gt; Service Bus trigger.&quot;&quot;&quot;
 # Skriv behandlingsinformasjon til Functions-loggen.
 import logging
 # Bruk Functions-dekoratorer, HTTP-typer og bindingstyper.
@@ -120,7 +122,7 @@ def consume(message: func.ServiceBusMessage):
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Stopp host-en, fullfør labmeldingen fra DLQ, og slett local.settings.json. Slett de dedikerte kø-/Storage-ressursene når ingen øvelser bruker dem.</p>
 <pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
-Remove-Item -LiteralPath artifacts/labs/bindings/local.settings.json -ErrorAction SilentlyContinue</code></pre>
+Remove-Item -LiteralPath labs/bindings/local.settings.json -ErrorAction SilentlyContinue</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-output?pivots=programming-language-python">Service Bus output-binding</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-trigger?pivots=programming-language-python">Service Bus-trigger</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-topics.html">← Workshop 16</a><a href="./workshop-event-grid.html">Workshop 18 →</a></nav>

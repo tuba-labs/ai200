@@ -5,7 +5,7 @@ import argparse
 import os
 # Mål tiden brukt på direkte forbindelser og forbindelsespool.
 import time
-# Finn SQL-filen ved siden av denne arbeidskopien.
+# Finn SQL-filen ved siden av dette skriptet.
 from pathlib import Path
 
 # Bruk PostgreSQL-driveren til å kjøre SQL.

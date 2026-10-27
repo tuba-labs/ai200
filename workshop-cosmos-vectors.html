@@ -34,11 +34,11 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <p>Bruk kontoen og Python-miljøet fra workshop 9. Sett COSMOS_ENDPOINT, COSMOS_KEY og COSMOS_DATABASE igjen i denne terminalen. Aktiver vector search under kontoens Features og vent på at funksjonen er klar. Vi oppretter en ny container fordi vektorpolicyen fastsettes ved opprettelsen.</p><p>Databasen skal ha separat throughput per container, og vektorfunksjonen kan bruke omtrent 15 minutter på å aktiveres. Klargjør dette før økten.</p>
 
-<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
 # Velg hvilken Cosmos-operasjon eksemplet skal utføre.
 import argparse
 # Les endpoint, nøkkel og databasenavn fra terminalens miljø.
@@ -168,25 +168,25 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
 azure-cosmos&gt;=4.9,&lt;5
 # Functions-typer og dekoratorer for change feed-triggeren.
 azure-functions&gt;=1.20,&lt;2
 </code></pre></details>
 </section>
       <section class="panel" id="policy"><h2>1. Opprett policy og indeks</h2>
-<pre data-language="PowerShell"><code>python artifacts/labs/cosmos/demo.py vector-setup</code></pre><p>Les <code>vector-setup</code> i demo.py: vectorEmbeddingPolicy angir sti, tre dimensjoner, float32 og cosinus. vectorIndexes velger flat-indeks. Den vanlige array-indeksen er ekskludert. Finn policyene i portalen og forklar hvorfor en dedikert vektorindeks trengs.</p><label class="check-item"><input type="checkbox" data-check="w10-policy"><span>Jeg har opprettet en container med vektorpolicy og indeks.</span></label>
+<pre data-language="PowerShell"><code>python labs/cosmos/demo.py vector-setup</code></pre><p>Les <code>vector-setup</code> i demo.py: vectorEmbeddingPolicy angir sti, tre dimensjoner, float32 og cosinus. vectorIndexes velger flat-indeks. Den vanlige array-indeksen er ekskludert. Finn policyene i portalen og forklar hvorfor en dedikert vektorindeks trengs.</p><label class="check-item"><input type="checkbox" data-check="w10-policy"><span>Jeg har opprettet en container med vektorpolicy og indeks.</span></label>
 </section>
       <section class="panel" id="sok"><h2>2. Utfør filtrert vektorsøk</h2>
-<pre data-language="PowerShell"><code>python artifacts/labs/cosmos/demo.py vector</code></pre><p>Forventet: note-2 før note-1 innen topic=containers. Fjern metadatafilteret i arbeidskopien av spørringen og kjør igjen med cross-partition query aktivert; note-3 blir nærmest. Pass både SQL-filter og partition_key til det nye søkeområdet. Endre søkevektoren og forklar rangeringen.</p><label class="check-item"><input type="checkbox" data-check="w10-sok"><span>Jeg har lagret og hentet vektorer med VectorDistance og metadatafilter.</span></label>
+<pre data-language="PowerShell"><code>python labs/cosmos/demo.py vector</code></pre><p>Forventet: note-2 før note-1 innen topic=containers. Fjern metadatafilteret i kildefilen av spørringen og kjør igjen med cross-partition query aktivert; note-3 blir nærmest. Pass både SQL-filter og partition_key til det nye søkeområdet. Endre søkevektoren og forklar rangeringen.</p><label class="check-item"><input type="checkbox" data-check="w10-sok"><span>Jeg har lagret og hentet vektorer med VectorDistance og metadatafilter.</span></label>
 </section>
       <section class="panel" id="valg"><h2>3. Velg indeks for arbeidsmengden</h2>
 <p>Sammenlign flat, quantizedFlat og diskANN i dokumentasjonen. Knytt valget til dimensjoner, mengde, recall og latency. Vi bruker små undervisningsvektorer for å verifisere spørringen; en virkelig løsning bruker dokument- og spørsmålsvektorer fra samme embedding-modell. Selve modellkallet er ikke del av økten.</p><label class="check-item"><input type="checkbox" data-check="w10-valg"><span>Jeg kan begrunne et vektorindeksvalg og identifisere krav til embedding-data.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Slett labcontaineren vectors hvis du er ferdig med den. Behold notes og databasen dersom workshop 11 er neste økt. Slett hele labkontoen når ingen øvelser trenger den.</p>
-<pre data-language="PowerShell"><code># Fra prosjektroten. Overskriver endringene i arbeidsfilen.
-Copy-Item -LiteralPath labs/cosmos/demo.py -Destination artifacts/labs/cosmos/demo.py -Force</code></pre>
+<pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
+git restore --source=HEAD -- labs/cosmos/demo.py</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-vector-index-query">Vektorindekser med Python</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-cosmos.html">← Workshop 9</a><a href="./workshop-change-feed.html">Workshop 11 →</a></nav>

@@ -9,8 +9,9 @@ Desktop.ini
 .venv/
 __pycache__/
 *.py[cod]
+.python_packages/
 
-# Local workshop working copies, generated files, notes and exports
+# Generated workshop files, notes and exports
 /artifacts/
 
 # Local runtime logs

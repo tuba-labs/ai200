@@ -55,7 +55,7 @@
         <h2 id="for-du-starter">Dette må gjøres før første workshop</h2>
         <ol>
           <li><a href="#prosjekt">Hent labfilene og åpne mappen som prosjekt i IntelliJ.</a></li>
-          <li><a href="#arbeidsfiler">Opprett arbeidskopien i <code>artifacts/labs</code>.</a> Bruk denne til øvelsene.</li>
+          <li><a href="#arbeidsfiler">Bruk kildefilene i <code>labs/</code> og lagre resultater i <code>artifacts/</code>.</a></li>
           <li><a href="#installer-verktoy">Installer verktøyene til domenet du skal arbeide med.</a> Python-øvelsene i domene 2–4 trenger også <a href="#intellij">prosjektets Python-miljø og SDK</a>.</li>
           <li>Før Azure-oppgavene: <a href="#azure">velg eller bruk en eksisterende Azure-konto</a>, <a href="#abonnement">kontroller abonnementet</a> og <a href="#azure-cli">logg inn med Azure CLI</a> når workshopen bruker <code>az</code>-kommandoer.</li>
         </ol>
@@ -134,16 +134,13 @@
         <h2>3. Hent prosjektet og installer verktøy</h2>
         <p>Vi utvikler og tester på egen maskin og bruker det valgte Azure-abonnementet til skyoppgavene. Ha noen GB ledig til container-images. Eksemplene bruker <strong>PowerShell</strong> der ikke annet er angitt. På macOS/Linux kan du bruke PowerShell eller oversette de få shell-spesifikke linjene.</p>
         <h3 id="prosjekt">Hent og åpne prosjektet</h3>
-        <p>Klon <a href="https://github.com/tuba-labs/ai200">labprosjektet fra GitHub</a>, eller velg <strong>Code → Download ZIP</strong> og pakk ut filene. Åpne prosjektmappen i IntelliJ med <strong>File → Open</strong>.</p>
+        <p>Klon <a href="https://github.com/tuba-labs/ai200">labprosjektet fra GitHub</a> med <a href="https://git-scm.com/downloads">Git</a>, slik at du kan tilbakestille øvingsendringene med <code>git restore</code>. Åpne prosjektmappen i IntelliJ med <strong>File → Open</strong>.</p>
         <p>Åpne PowerShell i prosjektmappen, der <code>index.html</code> og <code>labs</code> ligger. Kommandoene tar utgangspunkt i denne mappen med mindre annet er angitt.</p>
-        <h3 id="arbeidsfiler">Arbeidsfiler og resultater i artifacts</h3>
-        <p><code>labs/</code> inneholder malene. Kjør dette én gang fra prosjektmappen for å lage arbeidskopien:</p>
-        <pre data-language="PowerShell"><code>if (-not (Test-Path artifacts/labs)) {
-    New-Item -ItemType Directory -Path artifacts -Force | Out-Null
-    Copy-Item -LiteralPath labs -Destination artifacts/labs -Recurse
-}</code></pre>
-        <p>Workshoppene bruker arbeidsfilene i <code>artifacts/labs/</code>. Rediger arbeidskopiene der, og lagre notater, logger og eksporter under <code>artifacts/</code>. Hele mappen er ignorert av Git. Kommandoen overskriver ikke en eksisterende arbeidskopi. Filpanelene på workshopsidene viser de kommenterte malene og er lukket som standard.</p>
-        <p>Workshoppene gir konkrete kommandoer for å tilbakestille arbeidsfiler etter kodeforsøk. <code>Copy-Item</code> henter originalen fra <code>labs/</code> og overskriver endringene i den angitte arbeidsfilen. Arbeidskopiene i <code>artifacts/</code> er Git-ignorert og kan ikke gjenopprettes med <code>git restore</code>.</p>
+        <h3 id="arbeidsfiler">Kildefiler og resultater</h3>
+        <p>Åpne og rediger kildefilene direkte i <code>labs/</code>. De er sporet av Git. Filpanelene på workshopsidene viser hele kildefilen med kommentarer og er lukket som standard.</p>
+        <p>Lagre egne notater, spørringer, logger, sikkerhetskopier og eksporter under <code>artifacts/</code>, som er ignorert av Git. Opprett resultatmappen én gang fra prosjektmappen:</p>
+        <pre data-language="PowerShell"><code>New-Item -ItemType Directory -Path artifacts -Force | Out-Null</code></pre>
+        <p>Workshoppene oppgir <code>git restore --source=HEAD -- FIL</code> for å tilbakestille endrede kildefiler. Kommandoen forkaster lokale endringer i den angitte filen og henter siste committede versjon. Lokale <code>local.settings.json</code>-filer med labnøkler er også Git-ignorert.</p>
         <h3 id="installer-verktoy">Installer verktøyene du trenger</h3>
         <div class="table-wrap">
           <table>
@@ -156,7 +153,7 @@
               <tr><th scope="row">PowerShell</th><td>Shell for kommandoeksemplene.</td><td><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell">Installasjon for ditt operativsystem</a>.</td></tr>
               <tr><th scope="row">Azure Functions Core Tools v4</th><td>Change feed i workshop 11 og Functions-øvelser i workshop 14 og 17.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local">Installer Core Tools</a>; kontroller med <code>func --version</code>.</td></tr>
               <tr><th scope="row">Azure CLI</th><td>Skyøvelser som bruker <code>az</code>. Portaløvelser trenger bare nettleser.</td><td><a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Installer Azure CLI</a>; kontroller med <code>az version</code>.</td></tr>
-              <tr><th scope="row">Git og GitHub-konto</th><td>Valgfritt for å klone prosjektet eller bidra til malene. Egne workshopresultater lagres under <code>artifacts/</code>.</td><td><a href="https://git-scm.com/downloads">Git</a> og <a href="https://github.com/signup">GitHub-registrering</a>. Ingen fork kreves for å lese sidene eller kopiere eksemplene.</td></tr>
+              <tr><th scope="row">Git</th><td>Klon prosjektet og tilbakestill endrede kildefiler. Egne workshopresultater lagres under <code>artifacts/</code>.</td><td><a href="https://git-scm.com/downloads">Git</a> og <a href="https://github.com/signup">GitHub-registrering</a>. GitHub-konto og fork trengs bare hvis du vil bidra til prosjektet.</td></tr>
             </tbody>
           </table>
         </div>
@@ -281,7 +278,7 @@ az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output
       <section class="panel" id="opprydding">
         <h2>6. Avslutt hver økt med opprydding</h2>
         <ol>
-          <li>Ta vare på egne arbeidsfiler og notater under <code>artifacts/</code>. Mappen er ignorert av Git, inkludert lokale konfigurasjonsfiler og labnøkler.</li>
+          <li>Ta vare på egne resultatfiler og notater under <code>artifacts/</code>. Mappen er ignorert av Git. Lokale <code>local.settings.json</code>-filer og <code>.env</code>-filer med labnøkler er også Git-ignorert.</li>
           <li>Følg oppryddingen på workshopsiden for containere, lokale prosesser og eventuelle data-volumer.</li>
           <li>Åpne øvingsgruppen i Azure. Kontroller abonnement, gruppenavn og hele ressurslisten. Gruppen skal bare inneholde ressurser fra din økt.</li>
           <li>Velg <strong>Delete resource group</strong> og bekreft navnet. Vent til slettingen er fullført, og kontroller at gruppen er borte. Feil eller ressurslåser må avklares med eieren.</li>
@@ -298,7 +295,7 @@ az account show --query "{Name:name, Subscription:id, Tenant:tenantId}" --output
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-access"><span>Jeg har kontrollert kontotype og aktivt abonnement, eller avtalt pararbeid på en deltakers maskin.</span></label>
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-limits"><span>Jeg forstår at Pay as you go mangler utgiftsgrense, og at Free Trials grense følger prøvekreditten.</span></label>
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-docker"><span>Docker-testen kjører, eller jeg har avtalt en maskin å jobbe på.</span></label>
-          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-tools"><span>Verktøyene og arbeidskopien i artifacts/labs er klare; jeg vet hvilke ekstraverktøy neste økt krever.</span></label>
+          <label class="check-item"><input type="checkbox" data-check="azure-account-v3-tools"><span>Verktøyene og kildefilene i labs er klare; jeg vet hvilke ekstraverktøy neste økt krever.</span></label>
           <label class="check-item"><input type="checkbox" data-check="azure-account-v3-cleanup"><span>Jeg vet hvordan jeg sletter øvingsressursene etter hver økt.</span></label>
         </div>
       </section>

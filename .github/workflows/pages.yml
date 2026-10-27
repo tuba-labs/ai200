@@ -35,6 +35,9 @@ jobs:
       - name: Generer de samlede workshopene
         run: python scripts/build_domain_workshops.py
 
+      - name: Kontroller workshopfiler og tilbakestilling
+        run: python -m unittest discover -s tests -p test_workshop_docs.py -v
+
       - name: Klargjør GitHub Pages
         uses: actions/configure-pages@v5
 

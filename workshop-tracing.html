@@ -34,12 +34,12 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r artifacts/labs/observability/requirements.txt</code></pre><p><code>services.py</code> kjører enten frontend på 8091 eller backend på 8092. Start dem i to terminaler, begge fra prosjektroten. Uten connection string eksporteres spans til konsollen.</p>
+python -m pip install -r labs/observability/requirements.txt</code></pre><p><code>services.py</code> kjører enten frontend på 8091 eller backend på 8092. Start dem i to terminaler, begge fra prosjektroten. Uten connection string eksporteres spans til konsollen.</p>
 
-<details class="source-file" id="fil-labs-observability-services-py" data-source-file="labs/observability/services.py"><summary><code>services.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/observability/services.py</code></p><pre data-language="Python" data-source="labs/observability/services.py"><code>&quot;&quot;&quot;Two separate HTTP services with explicit W3C context propagation and metrics.&quot;&quot;&quot;
+<details class="source-file" id="fil-labs-observability-services-py" data-source-file="labs/observability/services.py"><summary><code>services.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/observability/services.py</code></p><pre data-language="Python" data-source="labs/observability/services.py"><code>&quot;&quot;&quot;Two separate HTTP services with explicit W3C context propagation and metrics.&quot;&quot;&quot;
 # Velg frontend eller backend og eventuelle lokale porter.
 import argparse
 # Bygg HTTP-responsen med trace-ID som JSON.
@@ -241,7 +241,7 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-observability-requirements-txt" data-source-file="labs/observability/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/observability/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/observability/requirements.txt"><code># API-er for spans, kontekstpropagering og målinger.
+<details class="source-file" id="fil-labs-observability-requirements-txt" data-source-file="labs/observability/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/observability/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/observability/requirements.txt"><code># API-er for spans, kontekstpropagering og målinger.
 opentelemetry-api&gt;=1.28,&lt;2
 # Leverandører, prosessorer og konsolleksport for telemetrien.
 opentelemetry-sdk&gt;=1.28,&lt;2
@@ -250,12 +250,12 @@ azure-monitor-opentelemetry-exporter&gt;=1.0.0b30,&lt;2
 </code></pre></details>
 </section>
       <section class="panel" id="kjore"><h2>1. Start to tjenester</h2>
-<pre data-language="PowerShell"><code>python artifacts/labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code>python artifacts/labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>
+<pre data-language="PowerShell"><code>python labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code>python labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>
 </section>
       <section class="panel" id="kontekst"><h2>2. Følg foreldre og kontekst</h2>
-<p>Finn SERVER-spannet i frontend, CLIENT-spannet call-backend og SERVER-spannet i backend. Trace-ID er felles; span-ID-ene er ulike og ParentId kobler dem. Finn inject på senderen og extract på mottakeren. Fjern inject i arbeidskopien, restart frontend og sammenlign. Etter testen stopper du frontend med <code>Ctrl+C</code>. Gjenopprett filen fra prosjektroten og start frontend igjen:</p><pre data-language="PowerShell"><code># Overskriver kodeendringene i arbeidsfilen. Backend kan fortsette å kjøre.
-Copy-Item -LiteralPath labs/observability/services.py -Destination artifacts/labs/observability/services.py -Force
-python artifacts/labs/observability/services.py frontend</code></pre><p>Kall <code>/process</code> igjen fra den tredje terminalen og bekreft at begge tjenestene viser samme trace-ID.</p><label class="check-item"><input type="checkbox" data-check="w21-kontekst"><span>Jeg kan forklare hvordan traceparent binder de to tjenestene sammen.</span></label>
+<p>Finn SERVER-spannet i frontend, CLIENT-spannet call-backend og SERVER-spannet i backend. Trace-ID er felles; span-ID-ene er ulike og ParentId kobler dem. Finn inject på senderen og extract på mottakeren. Fjern inject i kildefilen, restart frontend og sammenlign. Etter testen stopper du frontend med <code>Ctrl+C</code>. Gjenopprett filen fra prosjektroten og start frontend igjen:</p><pre data-language="PowerShell"><code># Forkaster kodeendringene i denne kildefilen. Backend kan fortsette å kjøre.
+git restore --source=HEAD -- labs/observability/services.py
+python labs/observability/services.py frontend</code></pre><p>Kall <code>/process</code> igjen fra den tredje terminalen og bekreft at begge tjenestene viser samme trace-ID.</p><label class="check-item"><input type="checkbox" data-check="w21-kontekst"><span>Jeg kan forklare hvordan traceparent binder de to tjenestene sammen.</span></label>
 </section>
       <section class="panel" id="feil"><h2>3. Finn treghet og feil</h2>
 <pre data-language="PowerShell"><code>Invoke-RestMethod "http://localhost:8091/process?delay=0.4"

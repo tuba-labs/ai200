@@ -61,13 +61,13 @@ python scripts/build_domain_workshops.py
 
 Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Pythons standardbibliotek og tilpasser rydding mellom delene; ressursplanen ligger i skriptets domenedefinisjoner. De ferdige HTML-filene kan åpnes direkte. Publiseringen kjører genereringen på nytt fra de aktuelle kildefilene på GitHub.
 
-Filpaneler med `data-source-file` viser hele den tilsvarende malen fra `labs/`, med kommentarer, og er lukket som standard. JSON beholdes gyldig og har feltforklaringer i samme panel. Rediger malen; generatoren oppdaterer både den korte og den samlede siden med samme filinnhold og beholder JSON-forklaringene.
+Filpaneler med `data-source-file` viser hele den tilsvarende kildefilen fra `labs/`, med kommentarer, og er lukket som standard. JSON beholdes gyldig og har feltforklaringer i samme panel. Rediger kildefilen; generatoren oppdaterer både den korte og den samlede siden med samme filinnhold og beholder JSON-forklaringene.
 
 ## Kjør nettstedet lokalt
 
-Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Malene ligger i `labs/`.
+Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Kildefilene ligger i `labs/`.
 
-Før workshopene følger du [oppsettet for arbeidsfiler](getting-started.html#arbeidsfiler), som kopierer malene fra `labs/` til `artifacts/labs/` uten å overskrive en eksisterende arbeidskopi. Alle øvelser kjøres og endres i arbeidskopien. Notater, logger, lokale konfigurasjonsfiler og eksporter lagres også under `artifacts/`. Hele mappen er ignorert av Git; `labs/` beholdes som versjonerte maler. Prosjektets felles Python-miljø ligger fortsatt i `.venv/`.
+Følg [oppsettet for kildefiler og resultater](getting-started.html#arbeidsfiler). Rediger og kjør kildefilene direkte i `labs/`. Workshopene bruker `git restore --source=HEAD -- FIL` til å forkaste lokale øvingsendringer og hente siste committede versjon av den angitte filen. Notater, spørringer, sikkerhetskopier, logger og eksporter lagres under den Git-ignorerte mappen `artifacts/`. Lokale `local.settings.json`- og `.env`-filer med labnøkler er også ignorert. Prosjektets felles Python-miljø ligger i `.venv/`.
 
 Fra rotmappen med Python installert:
 
@@ -80,6 +80,14 @@ python -m http.server 8000 --bind 127.0.0.1
 Workshopinnholdet kan leses uten JavaScript; da vises alle fire workshopgruppene. JavaScript legger til faner med tastaturnavigasjon, kopiering av kode og avhuking med fremdrift i nettleserens `localStorage`. Lenker til `index.html#workshops-domene-1` til `-4` åpner riktig fane. Siden har ingen innlogging, serverlagret fremdrift eller påmeldingsskjema. Fremdriften deles ikke mellom enheter eller nettlesere; blokkert nettleserlagring hindrer ikke lesing av øvelsene.
 
 ## Kontroller labkoden lokalt
+
+Kontroller sidene, filstiene og Git-tilbakestillingen uten ekstrapakker:
+
+```powershell
+python -m unittest discover -s tests -p test_workshop_docs.py -v
+```
+
+Publiseringsworkflowen kjører disse kontrollene før nettstedet publiseres.
 
 Med prosjektets `.venv` aktivert, fra prosjektroten:
 

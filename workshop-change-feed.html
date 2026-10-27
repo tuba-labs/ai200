@@ -34,17 +34,17 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Bruk notes-containeren fra workshop 9, Azure Functions Core Tools v4 og en lab-Storage-konto. Kjør Python-aktivering fra prosjektroten. Kopier <code>local.settings.example.json</code> til local.settings.json og erstatt begge connection strings med labverdier.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r artifacts/labs/cosmos/requirements.txt
-if (-not (Test-Path artifacts/labs/cosmos/local.settings.json)) {
-    Copy-Item artifacts/labs/cosmos/local.settings.example.json artifacts/labs/cosmos/local.settings.json
-}
-Set-Location artifacts/labs/cosmos
+<p>Bruk notes-containeren fra workshop 9, Azure Functions Core Tools v4 og en lab-Storage-konto. Kjør fra prosjektroten for å aktivere Python-miljøet og opprette den lokale innstillingsfilen:</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+python -m pip install -r labs/cosmos/requirements.txt
+if (-not (Test-Path labs/cosmos/local.settings.json)) {
+    Copy-Item labs/cosmos/local.settings.example.json labs/cosmos/local.settings.json
+}</code></pre><p>Åpne <code>labs/cosmos/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>CosmosConnection</code> til Cosmos-kontoens tilkoblingsstreng. Kontroller at <code>COSMOS_DATABASE</code> er <code>workshop</code>. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code>Set-Location labs/cosmos
 func start</code></pre>
 
-<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
 # Velg hvilken Cosmos-operasjon eksemplet skal utføre.
 import argparse
 # Les endpoint, nøkkel og databasenavn fra terminalens miljø.
@@ -174,13 +174,13 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json"><code>{
+<details class="source-file" id="fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json"><code>{
   &quot;version&quot;: &quot;2.0&quot;,
   &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
 }
 </code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd><dt><code>extensionBundle.id</code></dt><dd>La Functions-hosten laste bindingene fra Microsofts utvidelsespakke.</dd><dt><code>extensionBundle.version</code></dt><dd>Bruk bundle 4.x; øvre grense 5.0.0 er ikke inkludert.</dd></dl></details>
 
-<details class="source-file" id="fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json"><code>{
+<details class="source-file" id="fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json"><code>{
   &quot;IsEncrypted&quot;: false,
   &quot;Values&quot;: {
     &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
@@ -191,13 +191,13 @@ if __name__ == &quot;__main__&quot;:
 }
 </code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd><dt><code>Values.CosmosConnection</code></dt><dd>Labtilkoblingen som Cosmos-triggeren refererer til med connection-navnet.</dd><dt><code>Values.COSMOS_DATABASE</code></dt><dd>Databasenavnet som settes inn i triggerens %COSMOS_DATABASE%-uttrykk.</dd></dl></details>
 
-<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
 azure-cosmos&gt;=4.9,&lt;5
 # Functions-typer og dekoratorer for change feed-triggeren.
 azure-functions&gt;=1.20,&lt;2
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-cosmos-funcignore" data-source-file="labs/cosmos/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/.funcignore</code></p><pre data-language="Tekst" data-source="labs/cosmos/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+<details class="source-file" id="fil-labs-cosmos-funcignore" data-source-file="labs/cosmos/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/.funcignore</code></p><pre data-language="Tekst" data-source="labs/cosmos/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
 local.settings.json
 # Eksempelinnstillingene trengs bare ved lokal klargjøring.
 local.settings.example.json
@@ -210,9 +210,9 @@ demo.py
 </code></pre></details>
 </section>
       <section class="panel" id="endring"><h2>1. Observer nye endringer</h2>
-<p>Ha COSMOS_ENDPOINT, COSMOS_KEY og COSMOS_DATABASE satt i en annen, aktivert terminal i prosjektroten. Kjør:</p><pre data-language="PowerShell"><code>python artifacts/labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+<p>Ha COSMOS_ENDPOINT, COSMOS_KEY og COSMOS_DATABASE satt i en annen, aktivert terminal i prosjektroten. Kjør:</p><pre data-language="PowerShell"><code>python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
 
-<details class="source-file" id="fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
+<details class="source-file" id="fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
 # Send meldinger til Functions-hostens logg.
 import logging
 # Hent FunctionApp og dokumenttypene for Python-bindingene.
@@ -246,9 +246,9 @@ def changed(documents: func.DocumentList):
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Stopp host-en. Slett local.settings.json med labnøklene og slett den dedikerte Cosmos-kontoen/Storage-kontoen når du er ferdig. Slett ikke leases for en prosessor som skal fortsette; det kan endre hvor behandlingen starter.</p>
 <pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
-# Overskriver kodeendringene og fjerner den lokale filen med labnøkler.
-Copy-Item -LiteralPath labs/cosmos/function_app.py -Destination artifacts/labs/cosmos/function_app.py -Force
-Remove-Item -LiteralPath artifacts/labs/cosmos/local.settings.json -ErrorAction SilentlyContinue
+# Forkaster kodeendringene og fjerner den lokale filen med labnøkler.
+git restore --source=HEAD -- labs/cosmos/function_app.py
+Remove-Item -LiteralPath labs/cosmos/local.settings.json -ErrorAction SilentlyContinue
 Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger?pivots=programming-language-python">Cosmos DB-trigger</a></li></ul></section>

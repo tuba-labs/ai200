@@ -34,22 +34,22 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">opprett arbeidskopien i artifacts/labs</a>. Rediger og lagre arbeidsfiler og resultater under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <div class="notice"><p><strong>Før du starter:</strong> Fullfør <a href="./getting-started.html#for-du-starter">felles oppsett</a> og <a href="./getting-started.html#arbeidsfiler">oppsettet for kildefiler og resultater</a>. Rediger kildefilene i <code>labs/</code>. Lagre notater, logger og eksporter under <code>artifacts/</code>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Følg klargjøringen i denne delen før oppgavene. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Start kommandoene i <a href="./getting-started.html#prosjekt">prosjektmappen du åpnet i IntelliJ</a>, der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
       <section class="panel" id="forberedelser"><h2>Før du starter</h2>
-<p>Python 3.12, prosjektets .venv og Functions Core Tools v4 må være klare. Ha en Python 3.12 Function App på Linux med tilhørende Storage-konto klargjort i en egen labgruppe. Bruk en støttet hostingplan. Vi arbeider i <code>artifacts/labs/integrations</code>.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
-python -m pip install -r artifacts/labs/integrations/requirements.txt
-if (-not (Test-Path artifacts/labs/integrations/local.settings.json)) {
-    Copy-Item artifacts/labs/integrations/local.settings.example.json artifacts/labs/integrations/local.settings.json
-}
-Set-Location artifacts/labs/integrations
+<p>Python 3.12, prosjektets .venv og Functions Core Tools v4 må være klare. Ha en Python 3.12 Function App på Linux med tilhørende Storage-konto klargjort i en egen labgruppe. Bruk en støttet hostingplan. Vi arbeider i <code>labs/integrations</code>.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
+python -m pip install -r labs/integrations/requirements.txt
+if (-not (Test-Path labs/integrations/local.settings.json)) {
+    Copy-Item labs/integrations/local.settings.example.json labs/integrations/local.settings.json
+}</code></pre><p>Åpne <code>labs/integrations/local.settings.json</code> og sett <code>AzureWebJobsStorage</code> til labens Storage-tilkoblingsstreng. Dette er filen for lokale innstillinger; <code>local.settings.example.json</code> beholdes som eksempel. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code>Set-Location labs/integrations
 func start</code></pre>
 
-<details class="source-file" id="fil-labs-integrations-host-json" data-source-file="labs/integrations/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/host.json</code></p><pre data-language="JSON" data-source="labs/integrations/host.json"><code>{
+<details class="source-file" id="fil-labs-integrations-host-json" data-source-file="labs/integrations/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/host.json</code></p><pre data-language="JSON" data-source="labs/integrations/host.json"><code>{
   &quot;version&quot;: &quot;2.0&quot;
 }
 </code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>version</code></dt><dd>Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.</dd></dl></details>
 
-<details class="source-file" id="fil-labs-integrations-local-settings-example-json" data-source-file="labs/integrations/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/integrations/local.settings.example.json"><code>{
+<details class="source-file" id="fil-labs-integrations-local-settings-example-json" data-source-file="labs/integrations/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/integrations/local.settings.example.json"><code>{
   &quot;IsEncrypted&quot;: false,
   &quot;Values&quot;: {
     &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
@@ -58,7 +58,7 @@ func start</code></pre>
 }
 </code></pre><p class="small">Forklaring av feltene (JSON-filen kan kopieres som den er):</p><dl class="source-notes"><dt><code>IsEncrypted</code></dt><dd>false betyr at de lokale innstillingene er lagret som vanlig tekst.</dd><dt><code>Values.FUNCTIONS_WORKER_RUNTIME</code></dt><dd>Velg Python som worker for denne Function App-en.</dd><dt><code>Values.AzureWebJobsStorage</code></dt><dd>Tilkobling til labens Storage-konto som Functions-hosten og triggerne kan bruke.</dd></dl></details>
 
-<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
 azure-functions&gt;=1.20,&lt;2
 # Entra-autentisering gjennom DefaultAzureCredential.
 azure-identity&gt;=1.19,&lt;2
@@ -68,7 +68,7 @@ azure-servicebus&gt;=7.12,&lt;8
 azure-eventgrid&gt;=4.20,&lt;5
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-integrations-funcignore" data-source-file="labs/integrations/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/.funcignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.funcignore"><code># Hold det lokale Python-miljøet utenfor publiseringen.
+<details class="source-file" id="fil-labs-integrations-funcignore" data-source-file="labs/integrations/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/.funcignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.funcignore"><code># Hold det lokale Python-miljøet utenfor publiseringen.
 .venv/
 # Hold generert Python-bytecode utenfor publiseringen.
 __pycache__/
@@ -80,7 +80,7 @@ local.settings.example.json
 .gitignore
 </code></pre></details>
 
-<details class="source-file" id="fil-labs-integrations-gitignore" data-source-file="labs/integrations/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/.gitignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+<details class="source-file" id="fil-labs-integrations-gitignore" data-source-file="labs/integrations/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/.gitignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
 .venv/
 # Hold generert Python-bytecode utenfor Git.
 __pycache__/
@@ -92,7 +92,7 @@ local.settings.json
 <p>La host-en kjøre. Send fra en ny PowerShell-terminal:</p><pre data-language="PowerShell"><code>$body = @{ id = "doc-001"; text = "Workshop" } | ConvertTo-Json
 Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body $body</code></pre><p>Forventet: processed=true første gang og false ved samme ID. Finn route, trigger og HTTP-respons i <code>function_app.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w14-function"><span>Jeg har kalt en HTTP-trigger og funnet svaret i loggen.</span></label>
 
-<details class="source-file" id="fil-labs-integrations-function-app-py" data-source-file="labs/integrations/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Arbeidskopi: <code>artifacts/labs/integrations/function_app.py</code></p><pre data-language="Python" data-source="labs/integrations/function_app.py"><code>&quot;&quot;&quot;Local workshop API. In-memory deduplication is deliberately not production storage.&quot;&quot;&quot;
+<details class="source-file" id="fil-labs-integrations-function-app-py" data-source-file="labs/integrations/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/function_app.py</code></p><pre data-language="Python" data-source="labs/integrations/function_app.py"><code>&quot;&quot;&quot;Local workshop API. In-memory deduplication is deliberately not production storage.&quot;&quot;&quot;
 
 # Serialiser svarene som JSON.
 import json
@@ -206,14 +206,14 @@ def event_hook(req: func.HttpRequest) -&gt; func.HttpResponse:
 <pre data-language="PowerShell"><code>Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body '{}'</code></pre><p>Forventet HTTP 400. Restart host-en og send doc-001 igjen: minnesettet er tømt. Forklar hvorfor HTTP-triggeren ikke gjentar klientens kall, og hvorfor varig idempotens trenger mer enn prosessminne.</p><label class="check-item"><input type="checkbox" data-check="w14-feil"><span>Jeg har testet ugyldige data og funnet begrensningen i minnelagringen.</span></label>
 </section>
       <section class="panel" id="deploy"><h2>3. Publiser og konfigurer</h2>
-<p>Stopp host-en. Fra artifacts/labs/integrations, med miljøet aktivt:</p><pre data-language="PowerShell"><code>az login
+<p>Stopp host-en. Fra labs/integrations, med miljøet aktivt:</p><pre data-language="PowerShell"><code>az login
 az account show --query "{name:name,id:id}" -o table
 func azure functionapp publish "DITT-FUNCTION-APP-NAVN"</code></pre><p>Finn Get Function URL for documents i portalen og send samme body til den komplette URL-en med nøkkel. Undersøk Function-logger og appinnstillingen FUNCTIONS_WORKER_RUNTIME. Behold appnavnet til workshop 18–19; de bruker event-hook og configuration-endepunktene fra samme kode.</p><label class="check-item"><input type="checkbox" data-check="w14-deploy"><span>Jeg har publisert og testet Function App-en i Azure.</span></label>
 </section>
       <section class="panel" id="opprydding"><h2>Rydd opp</h2>
 <p>Stopp lokal host. Slett appen og den dedikerte Storage-kontoen når du er ferdig med øvelsene som bruker dem. Dersom du tar workshop 18–19 senere, kan du publisere samme kode på nytt.</p>
 <pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
-Remove-Item -LiteralPath artifacts/labs/integrations/local.settings.json -ErrorAction SilentlyContinue</code></pre>
+Remove-Item -LiteralPath labs/integrations/local.settings.json -ErrorAction SilentlyContinue</code></pre>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local">Lokal kjøring</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-azure-cli?pivots=programming-language-python">Publisering med Core Tools</a></li></ul></section>
       <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-redis-vectors.html">← Workshop 13</a><a href="./workshop-service-bus.html">Workshop 15 →</a></nav>
