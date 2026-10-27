@@ -13,37 +13,49 @@ Norsk studieside for **Developing AI Cloud Solutions on Azure**, med pensumovers
 | [Pensum 2: AI-data](pensum-data.html) | Kompetansemål og workshop 7–13 |
 | [Pensum 3: Integrasjoner](pensum-integrasjoner.html) | Kompetansemål og workshop 14–18 |
 | [Pensum 4: Sikkerhet og drift](pensum-sikkerhet.html) | Kompetansemål og workshop 19–22 |
-| [1. Bygg og feilsøk et container-image](workshop-containers.html) | Domene 1 · omtrent 60 min |
-| [2. Lagre images og bygg med ACR Tasks](workshop-acr.html) | Domene 1 · omtrent 60 min |
-| [3. Kjør en container i App Service](workshop-app-service.html) | Domene 1 · omtrent 60 min |
-| [4. Miljøer og revisjoner i Container Apps](workshop-container-apps.html) | Domene 1 · omtrent 60 min |
-| [5. Hendelsesstyrt skalering med KEDA](workshop-keda.html) | Domene 1 · omtrent 60 min |
-| [6. Utrulling og feilsøking i AKS](workshop-aks.html) | Domene 1 · omtrent 75 min |
-| [7. PostgreSQL: vektorsøk og indekser](workshop-data.html) | Domene 2 · omtrent 60 min |
-| [8. PostgreSQL i Azure: SDK og forbindelser](workshop-postgresql.html) | Domene 2 · omtrent 75 min |
-| [9. Cosmos DB: SDK, indekser og RU](workshop-cosmos.html) | Domene 2 · omtrent 60 min |
-| [10. Vektorsøk i Cosmos DB](workshop-cosmos-vectors.html) | Domene 2 · omtrent 60 min |
-| [11. Behandle endringer fra Cosmos DB](workshop-change-feed.html) | Domene 2 · omtrent 60 min |
-| [12. Caching og invalidering med Managed Redis](workshop-redis.html) | Domene 2 · omtrent 60 min |
-| [13. Vektorindeks i Managed Redis](workshop-redis-vectors.html) | Domene 2 · omtrent 60 min |
-| [14. Bygg og publiser en HTTP Function](workshop-integrations.html) | Domene 3 · omtrent 60 min |
-| [15. Behandle kømeldinger og DLQ i kode](workshop-service-bus.html) | Domene 3 · omtrent 60 min |
-| [16. Service Bus: topics og subscriptions](workshop-topics.html) | Domene 3 · omtrent 60 min |
-| [17. Functions: triggere og output-binding](workshop-bindings.html) | Domene 3 · omtrent 60 min |
-| [18. Event Grid: filtre, egne hendelser og retries](workshop-event-grid.html) | Domene 3 · omtrent 75 min |
-| [19. Key Vault: oppslag, identitet og rotasjon](workshop-security.html) | Domene 4 · omtrent 75 min |
-| [20. Les appkonfigurasjon med etiketter](workshop-app-configuration.html) | Domene 4 · omtrent 60 min |
-| [21. Spor et kall mellom to tjenester](workshop-tracing.html) | Domene 4 · omtrent 60 min |
-| [22. Finn feil og målinger med KQL](workshop-kql.html) | Domene 4 · omtrent 60 min |
+| [Samlet: Containere](workshop-domene-containere.html) | Del 1–6 samlet, eller samling 1: del 1–3 / samling 2: del 4–6 |
+| [Samlet: AI-data](workshop-domene-data.html) | Del 7–13 samlet, eller samling 1: del 7–9 / samling 2: del 10–13 |
+| [Samlet: Integrasjoner](workshop-domene-integrasjoner.html) | Del 14–18 samlet, eller samling 1: del 14–16 / samling 2: del 17–18 |
+| [Samlet: Sikkerhet og drift](workshop-domene-sikkerhet.html) | Del 19–22 samlet, eller samling 1: del 19–20 / samling 2: del 21–22 |
+| [1. Bygg og feilsøk et container-image](workshop-containers.html) | Domene 1 |
+| [2. Lagre images og bygg med ACR Tasks](workshop-acr.html) | Domene 1 |
+| [3. Kjør en container i App Service](workshop-app-service.html) | Domene 1 |
+| [4. Miljøer og revisjoner i Container Apps](workshop-container-apps.html) | Domene 1 |
+| [5. Hendelsesstyrt skalering med KEDA](workshop-keda.html) | Domene 1 |
+| [6. Utrulling og feilsøking i AKS](workshop-aks.html) | Domene 1 |
+| [7. PostgreSQL: vektorsøk og indekser](workshop-data.html) | Domene 2 |
+| [8. PostgreSQL i Azure: SDK og forbindelser](workshop-postgresql.html) | Domene 2 |
+| [9. Cosmos DB: SDK, indekser og RU](workshop-cosmos.html) | Domene 2 |
+| [10. Vektorsøk i Cosmos DB](workshop-cosmos-vectors.html) | Domene 2 |
+| [11. Behandle endringer fra Cosmos DB](workshop-change-feed.html) | Domene 2 |
+| [12. Caching og invalidering med Managed Redis](workshop-redis.html) | Domene 2 |
+| [13. Vektorindeks i Managed Redis](workshop-redis-vectors.html) | Domene 2 |
+| [14. Bygg og publiser en HTTP Function](workshop-integrations.html) | Domene 3 |
+| [15. Behandle kømeldinger og DLQ i kode](workshop-service-bus.html) | Domene 3 |
+| [16. Service Bus: topics og subscriptions](workshop-topics.html) | Domene 3 |
+| [17. Functions: triggere og output-binding](workshop-bindings.html) | Domene 3 |
+| [18. Event Grid: filtre, egne hendelser og retries](workshop-event-grid.html) | Domene 3 |
+| [19. Key Vault: oppslag, identitet og rotasjon](workshop-security.html) | Domene 4 |
+| [20. Les appkonfigurasjon med etiketter](workshop-app-configuration.html) | Domene 4 |
+| [21. Spor et kall mellom to tjenester](workshop-tracing.html) | Domene 4 |
+| [22. Finn feil og målinger med KQL](workshop-kql.html) | Domene 4 |
 | [Flashcards](flashcards.html) | 68 kort med filtrering og lokal fremdrift |
 
 Start med **[Kom i gang](getting-started.html)** for verktøy og Azure-konto før første samling. Begge kontovalgene bruker samme workshops, med lokal utvikling og testing som forberedelse til Azure-øvelsene. Praktisk konto- og verktøyoppsett er klargjøring; workshopenes læringsmål følger AI-200. Se [valgfri kostnadsveiledning](getting-started.html#kostnader) ved behov.
 
 På Free Trial beholder du utgiftsgrensen. Hvis en tjeneste krever oppgradering, eller kreditten/prøveperioden utløper, stopper du den skyøvelsen og vurderer kontovalget i startguiden før du eventuelt endrer abonnementet. Pay as you go har ingen innebygd hard utgiftsgrense; budsjettvarsler stopper ikke ressursene. Du kan også følge en demonstrasjon eller jobbe sammen ved en annen deltakers maskin uten å dele innloggingsopplysninger.
 
-Løpet består av 22 avgrensede workshops på omtrent 60–75 minutter. Hver side angir forkunnskaper, eventuell provisjonering før økten, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
+Løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, eventuell provisjonering før økten, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
 
-Forsiden viser pensum først og workshopene i fire faner. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning, og beskriver hva som bør studeres videre. Vurderingen gjelder oppgavenes omfang og er ikke en beregnet eksamensprosent.
+Forsiden viser pensum først og workshopene i fire faner. Velg mellom de 22 korte øktene og fire samlede domeneworkshops. Hver samlet side kan vise alle delene eller bare samling 1/2, med tilpasset ressursplan. Gjennomføringstiden er ikke målt. Delingen i samlinger er tematisk; tidsbruk avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning. Oppgavedekningen er den samme i begge formater.
+
+De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Åpne nettstedet via lokal HTTP-server eller den publiserte siden for å dele fremdrift mellom formatene i samme nettleser; separate file-URL-er kan ha adskilt lagring. Etter endringer i korte workshops, kjør fra prosjektroten:
+
+```powershell
+python scripts/build_domain_workshops.py
+```
+
+Dette oppdaterer de fire statiske samlede sidene. Nettstedet krever fortsatt ingen bygging for å åpnes eller publiseres. Generatoren tilpasser rydding mellom delene; ressursplanen ligger i skriptets domenedefinisjoner.
 
 ## Kjør nettstedet lokalt
 

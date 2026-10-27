@@ -19,7 +19,7 @@
     <p class="eyebrow">Workshop 19 / Domene 4 / Sikkerhet, sporing og KQL</p>
     <h1>Key Vault: oppslag, identitet og rotasjon</h1>
     <p class="lead">Les en hemmelighet fra Python, roter den og gi en driftet app tilgang med managed identity.</p>
-    <div class="meta"><span class="tag">Omtrent 75 minutter</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
   </div></div>
   <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
     <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-event-grid.html">← 18. Event Grid: filtre, egne hendelser og retries</a><a href="./workshop-security.html" aria-current="page">19. Denne workshopen</a><a href="./workshop-app-configuration.html">20. Les appkonfigurasjon med etiketter →</a>
@@ -34,23 +34,23 @@
       <a href="#kilder">Pensum og kilder</a>
     </nav></aside>
     <article class="content">
-      <div class="notice"><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p><p>Tidsanslaget gjelder med verktøy og eventuelle ressurser under «Klargjør før økten» klare. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Kommandoene starter i prosjektroten der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
-      <section class="panel" id="forberedelser"><h2>Før du starter · 10 min</h2>
+      <div class="notice"><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p><p>Gjennomføringstiden er ikke målt. Sett av tid til å forklare valgene og prøve egne varianter. Klargjør verktøy og eventuelle ressurser under «Klargjør før økten» før du starter. Python-øvelsene bruker samme <a href="./getting-started.html#intellij">.venv i prosjektroten</a>. Kommandoene starter i prosjektroten der ikke annet er angitt.</p><p>Bruk egne labressurser og rydd opp etter bruk. <a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>.</p></div>
+      <section class="panel" id="forberedelser"><h2>Før du starter</h2>
 <p>Bruk en egen Key Vault med Azure RBAC og nettverkstilgang fra maskinen, og Function App-en fra workshop 14. Gi din bruker Secrets Officer for å opprette testhemmeligheten; appen får en egen leserolle. Ha Azure CLI innlogget.</p><pre data-language="PowerShell"><code>.\.venv\Scripts\Activate.ps1
 python -m pip install -r labs/security/requirements.txt
 az login
 $env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
 </section>
-      <section class="panel" id="oppslag"><h2>1. Opprett og les en testhemmelighet · 15 min</h2>
+      <section class="panel" id="oppslag"><h2>1. Opprett og les en testhemmelighet</h2>
 <p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code>python labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <a href="./labs/security/read_settings.py">Skriptet</a> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
 </section>
-      <section class="panel" id="rotasjon"><h2>2. Roter ved å opprette ny versjon · 15 min</h2>
+      <section class="panel" id="rotasjon"><h2>2. Roter ved å opprette ny versjon</h2>
 <p>Legg til ny versjon av demo-secret med verdien workshop-only-v2. Kjør oppslaget igjen og sammenlign versjons-ID. Undersøk forskjellen på en versjonsbundet og en versjonsløs URI. Beskriv hvordan en app som cacher verdien må få den oppdatert.</p><label class="check-item"><input type="checkbox" data-check="w19-rotasjon"><span>Jeg har rotert hemmeligheten og verifisert hvilken versjon som leses.</span></label>
 </section>
-      <section class="panel" id="identity"><h2>3. Gi appen egen tilgang · 20 min</h2>
+      <section class="panel" id="identity"><h2>3. Gi appen egen tilgang</h2>
 <ol><li>Aktiver system-assigned identity på Function App-en.</li><li>Gi appidentiteten Key Vault Secrets User på labhvelvet.</li><li>Legg app setting DEMO_SECRET til Function App-en med referansen under. Lagre og kontroller referansestatus.</li><li>Kall configuration-funksjonen med Get Function URL. Forventet: secret_configured=true.</li></ol><pre data-language="Text"><code>@Microsoft.KeyVault(SecretUri=https://DITT-HVELV.vault.azure.net/secrets/demo-secret/)</code></pre><p>Plattformen løser referansen. Koden leser miljøvariabelen. Oppdateringer kan være forsinket av referansens cache; følg dokumentert refresh eller endre appkonfigurasjonen hvis du skal teste ny henting.</p><label class="check-item"><input type="checkbox" data-check="w19-identity"><span>Appen bruker egen identitet til å lese hemmeligheten.</span></label>
 </section>
-      <section class="panel" id="opprydding"><h2>Rydd opp og forklar · 15 min</h2>
+      <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
 <p>Fjern appens DEMO_SECRET-setting, og slett hvelv/Function App når de er ferdig brukt. Et slettet Key Vault kan ha soft delete; ikke purge for å gjenbruke et navn. Forklar forskjellen mellom brukeridentiteten under utvikling og appidentiteten under drift.</p>
 </section>
       <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python">Key Vault fra Python</a></li><li><a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references">Key Vault-referanser</a></li></ul></section>
