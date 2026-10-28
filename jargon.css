@@ -49,6 +49,29 @@
 .jargon-entry .jargon-full-name { font-weight: 650; color: #345c7d; margin-bottom: 10px; }
 .jargon-entry .jargon-aliases { font-size: 13px; color: #51667e; }
 .jargon-entry .jargon-entry-sources { font-size: 13px; margin-bottom: 0; }
+.jargon-example { margin: 16px 0; padding-top: 12px; border-top: 1px solid #dce6ef; }
+.jargon-example[hidden] { display: none !important; }
+.jargon-example h3 { margin: 0 0 8px; font: 700 14px/1.4 system-ui, sans-serif; color: #284e70; letter-spacing: 0; }
+.jargon-example pre {
+  display: block; max-width: 100%; margin: 8px 0; padding: 11px 13px; border: 1px solid #d5e2ed;
+  border-radius: 7px; background: #f2f6fa; color: #162e46; white-space: pre-wrap; overflow-wrap: anywhere;
+  font: 13px/1.55 ui-monospace, Consolas, monospace; text-align: left;
+}
+.jargon-example pre code { font: inherit; white-space: inherit; }
+.jargon-example p,.jargon-popover .jargon-example p { margin: 8px 0 0; font-size: 13px; color: #425c72; }
+.jargon-example-page { max-width: 1000px; }
+.jargon-example-page pre { max-height: none; }
+.jargon-related { margin: 16px 0; padding-top: 12px; border-top: 1px solid #dce6ef; }
+.jargon-related[hidden] { display: none !important; }
+.jargon-related h3 { margin: 0 0 10px; font: 700 14px/1.4 system-ui, sans-serif; color: #284e70; letter-spacing: 0; }
+.jargon-relations-list { margin: 0; padding: 0; }
+.jargon-relation + .jargon-relation { margin-top: 13px; padding-top: 12px; border-top: 1px solid #e7edf4; }
+.jargon-relation dt { font: 650 14px/1.4 system-ui, sans-serif; color: #203f5d; }
+.jargon-relation-meta { display: block; margin-bottom: 4px; color: #52677a; font: 500 11px/1.4 system-ui, sans-serif; }
+.jargon-relation dd { margin: 5px 0 0; }
+.jargon-relation dd p,.jargon-popover .jargon-relation dd p { margin: 0; font-size: 13px; line-height: 1.5; }
+.jargon-relation .jargon-relation-source { display: inline-block; margin-top: 5px; font-size: 12px; }
+.jargon-popover .jargon-related-more { margin: 10px 0 0; color: #52677a; font-size: 12px; }
 @media (max-width: 700px) {
   .jargon-directory .filters { grid-template-columns: 1fr; }
   .jargon-entries { grid-template-columns: 1fr; }

@@ -13,6 +13,7 @@ from pathlib import Path
 
 from workshop_curriculum import WORKSHOPS, GLOSSARY, CATEGORY_DOCS
 from build_jargon import attach_assets, render_page as render_jargon_page
+from flashcard_scope import load_review
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "workshops"
@@ -51,6 +52,7 @@ def course_deck(deck):
 
 def compile_coverage(deck):
     deck = course_deck(deck)
+    retired = load_review()['removed']
     categories = {category["id"]: category for category in deck["categories"]}
     seen_categories, seen_activities, coverage = set(), set(), {}
     for workshop in WORKSHOPS:
@@ -71,7 +73,11 @@ def compile_coverage(deck):
                 seen_activities.add(activity["id"])
                 for pattern in activity["cards"]:
                     matches = [card for card in cards if fnmatchcase(card["id"], pattern)]
-                    if not matches:
+                    # Existing lessons remain intact when cards are retired.
+                    # An unmatched pattern must point to an explicitly reviewed
+                    # retirement; misspellings and unknown patterns still fail.
+                    was_retired = any(card['category'] == category and fnmatchcase(card['id'], pattern) for card in retired)
+                    if not matches and not was_retired:
                         raise ValueError(f"No card matches {category}/{activity['id']}: {pattern}")
                     for card in matches:
                         entry = coverage[card["id"]]
@@ -188,7 +194,7 @@ def render_index(deck, coverage):
             body += ''.join(f'<li><a href="./{workshop["id"]}.html#category-{chapter["category"]}">{escape(categories[chapter["category"]])}</a></li>' for chapter in workshop["chapters"])
             body += f'</ul><p class="small">{counts["practical"]} praktisk · {counts["analysis"]} analyse · {counts["review"]} repetisjon</p><a class="button" href="./{workshop["id"]}.html">Åpne workshop {workshop["id"].upper()} →</a></article>'
         body += '</div></section>'
-    body += '<section class="panel"><h2>Hva som er bevart</h2><p><a href="../old/index.html">old/</a> inneholder en kopi av nettstedet og labkildene før dette løpet ble laget. De eksisterende workshopfilene i prosjektroten ligger også urørt. Nye oppgaver og eventuelle øvingsendringer ligger under workshops/.</p><p><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts studieguide</a> er referansen for kompetansemålene. En spørsmålsbank kan også inneholde tilleggstemaer; her er disse beholdt med sin faktiske oppgavetype.</p></section>'
+    body += '<section class="panel"><h2>Hva som er bevart</h2><p><a href="../old/index.html">old/</a> inneholder en kopi av nettstedet og labkildene før dette løpet ble laget. De eksisterende workshopfilene i prosjektroten ligger også urørt. Nye oppgaver og eventuelle øvingsendringer ligger under workshops/.</p><p><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts studieguide</a> er referansen for kompetansemålene. Flashcardene er avgrenset etter en <a href="../reports/ai200-card-review.txt">pensumkontroll</a>. Eksisterende fordypningsoppgaver er bevart; korttall og dekningsmerker viser bare de aktive kortene.</p></section>'
     return page("Åtte workshops, fire domener", "Arbeid praktisk og analytisk med flashcard-temaene, samlet i to workshops per domene og kategorier som kapitler.", body, current="home")
 
 

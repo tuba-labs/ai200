@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Builds an image that starts Python’s built-in HTTP server."><title>Dockerfile: eksempel | AI-200</title>
+<link rel="stylesheet" href="../workshops/course.css">
+  <link rel="stylesheet" href="../jargon.css" data-ai200-jargon>
+  <script src="../jargon-data.js" defer></script>
+  <script src="../jargon.js" defer></script>
+</head>
+<body><a class="skip" href="#innhold">Hopp til eksemplet</a>
+<header><div class="wrap header-inner"><a class="brand" href="../index.html">AI-200 <span>Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="../index.html">Oversikt</a><a href="../workshops/index.html">Workshops</a><a href="../flashcards.html">Flashcards</a><a class="jargon-nav-link" href="../jargon.html">Begreper</a></nav></div></header>
+<div class="hero"><div class="wrap"><p class="eyebrow">Se hvordan det ser ut</p><h1>Dockerfile: eksempel</h1><p class="lead" lang="en">Builds an image that starts Python’s built-in HTTP server.</p></div></div>
+<main id="innhold" class="wrap jargon-example-page" data-jargon-exclude="dockerfile">
+<section class="panel"><h2><code>Dockerfile</code></h2>
+<pre data-language="Dockerfile"><code>FROM python:3.12-slim
+WORKDIR /app
+EXPOSE 8000
+CMD [&quot;python&quot;, &quot;-m&quot;, &quot;http.server&quot;, &quot;8000&quot;, &quot;--bind&quot;, &quot;0.0.0.0&quot;]</code></pre>
+<p><a href="./dockerfile/Dockerfile" download>Last ned Dockerfile</a></p>
+<h2>Hva viser eksemplet?</h2><ul lang="en"><li>FROM selects the base image containing Python. WORKDIR sets the working directory inside the image.</li><li>CMD starts the server when a container starts. Python serves the contents of /app.</li><li>EXPOSE documents the container port; publishing that port to the host is a separate runtime setting.</li></ul><p>Til begrepene: <a href="../jargon.html#dockerfile">Dockerfile</a></p><p><a href="https://docs.docker.com/reference/dockerfile/">Offisiell kilde 1</a></p></section></main>
+<footer><div class="wrap"><p>AI-200 studiegruppe · <a href="../jargon.html">Alle begreper og eksempler</a></p></div></footer></body></html>

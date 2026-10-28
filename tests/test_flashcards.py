@@ -3,11 +3,14 @@ from collections import Counter
 import json
 from pathlib import Path
 import re
+import sys
 import unicodedata
 import unittest
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from flashcard_scope import load_review, validate_deck
 
 
 def normalize(question):
@@ -52,10 +55,42 @@ class FlashcardContentTests(unittest.TestCase):
                 self.assertRegex(card["id"], r"^[a-z0-9][a-z0-9-]+$")
 
     def test_legacy_progress_has_complete_mapping(self):
-        self.assertEqual({old for card in self.cards for old in card["legacyIds"]}, set(range(1, 69)))
+        retired = load_review()['removed']
+        self.assertEqual({old for card in [*self.cards, *retired] for old in card["legacyIds"]}, set(range(1, 69)))
         for card in self.cards:
             if card["origin"] in {"prep", "terms"}:
                 self.assertEqual(card["legacyIds"], [], card["id"])
+
+    def test_all_remaining_cards_have_a_reviewed_skill_or_prerequisite(self):
+        review = validate_deck(self.deck)
+        self.assertEqual(review['guideEffective'], '2026-10-07')
+        self.assertEqual(review['source'], 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200')
+        self.assertEqual(len(review['objectives']), 27)
+        self.assertEqual({card['id'] for card in self.cards}, set(review['retained']))
+        self.assertNotIn('m-06-2-1', review['retained'])
+        self.assertIn('m-25-5-1', review['retained'])  # Python change feed remains relevant.
+        for identifier in ['term-d1-dapr', 'prep-ca-007', 'prep-eh-001', 'prep-p-fn-006', 'm-45-1-1']:
+            self.assertNotIn(identifier, review['retained'])
+        # A destination name is not a separate topic: collecting platform logs
+        # still supports KQL, and generic Kubernetes probes support deployment.
+        for identifier in ['prep-p-mon-009', 'm-11-1-1', 'term-d1-daemonset']:
+            self.assertIn(identifier, review['retained'])
+
+    def test_removed_cards_are_documented_and_absent_from_the_pool(self):
+        review = load_review()
+        report = (ROOT / 'reports/ai200-card-review.txt').read_text(encoding='utf-8')
+        active = {card['id'] for card in self.cards}
+        retired = review['removed']
+        self.assertEqual(len({card['id'] for card in retired}), len(retired))
+        self.assertEqual(len({card['previousNumber'] for card in retired}), len(retired))
+        self.assertEqual(len(active) + len(retired), review['sourceDeckSize'])
+        for card in retired:
+            self.assertNotIn(card['id'], active)
+            self.assertIn(card['id'], report)
+            self.assertTrue(card['reason'].strip())
+        for identifier in ['prep-sb-007', 'prep-sb-017']:
+            card = next(card for card in self.cards if card['id'] == identifier)
+            self.assertNotIn('.NET', card['answers'][0])
 
     def test_every_card_has_traceable_sources(self):
         for card in self.cards:

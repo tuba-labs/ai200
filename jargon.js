@@ -4,6 +4,8 @@
   if (!window.AI200_JARGON || window.AI200Jargon) return;
   const glossaryURL = new URL('./jargon.html', document.currentScript.src).href;
   const terms = new Map(window.AI200_JARGON.terms.map(term => [term.id, term]));
+  const platforms = window.AI200_JARGON.platforms || {};
+  const relationKinds = window.AI200_JARGON.relationKinds || {};
   const names = new Map();
   const key = value => value.replace(/[\t \u00a0]+/g, ' ').toLocaleLowerCase();
   for (const term of terms.values()) {
@@ -53,9 +55,73 @@
   definition.id = 'jargon-explanation-description';
   definition.lang = 'en';
   const aliases = make('p', 'jargon-popover-aliases');
+  const exampleArea = make('section', 'jargon-example');
+  exampleArea.dataset.noJargon = '';
+  exampleArea.hidden = true;
+  const relatedArea = make('section', 'jargon-related');
+  relatedArea.dataset.noJargon = '';
+  relatedArea.hidden = true;
   const entryLink = make('a', 'jargon-entry-link', 'Alle navn og kilder i begrepslisten →');
-  popup.append(heading, fullName, definition, aliases, entryLink);
+  popup.append(heading, fullName, definition, exampleArea, relatedArea, aliases, entryLink);
   document.body.append(popup);
+
+  function renderExample(container, example) {
+    container.replaceChildren();
+    container.hidden = !example;
+    if (!example) return;
+    container.classList.add('jargon-example');
+    container.append(make('h3', '', 'Eksempel · ' + example.language));
+    if (example.mode === 'inline') {
+      const pre = make('pre', '');
+      pre.append(make('code', '', example.code));
+      container.append(pre);
+    } else {
+      const link = make('a', '', 'Se hele eksemplet i ' + example.language + ' (ny fane) ↗');
+      link.href = new URL(example.url, glossaryURL).href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      container.append(link);
+    }
+    const summary = make('p', '', example.summary);
+    summary.lang = 'en';
+    container.append(summary);
+  }
+
+  function renderRelated(related) {
+    relatedArea.replaceChildren();
+    relatedArea.hidden = !related?.length;
+    if (!related?.length) return;
+    relatedArea.append(make('h3', '', 'Liknende begreper og viktige forskjeller'));
+    const list = make('dl', 'jargon-relations-list');
+    for (const row of related.slice(0, 3)) {
+      const item = make('div', 'jargon-relation');
+      const name = make('dt', '');
+      name.append(make('span', 'jargon-relation-meta', platforms[row.platform] + ' · ' + relationKinds[row.kind]));
+      const link = make('a', '', row.name);
+      link.href = row.term ? glossaryURL + '#' + row.term : row.url;
+      if (!row.term) { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+      name.append(link);
+      const details = make('dd', '');
+      const note = make('p', '', row.note);
+      note.lang = 'en';
+      details.append(note);
+      item.append(name, details);
+      list.append(item);
+    }
+    relatedArea.append(list);
+    if (related.length > 3) {
+      const remaining = related.length - 3;
+      relatedArea.append(make('p', 'jargon-related-more', '+ ' + remaining + (remaining === 1 ? ' sammenligning' : ' sammenligninger') + ' i begrepslisten.'));
+    }
+  }
+  const examplesByCard = new Map([...terms.values()].filter(term => term.sourceCard && term.example)
+    .map(term => [term.sourceCard, term.example]));
+  function renderCardExample() {
+    const container = document.getElementById('card-example');
+    if (!container) return;
+    const example = container.dataset.answer === 'true' ? examplesByCard.get(container.dataset.cardId) : null;
+    renderExample(container, example);
+  }
 
   function position() {
     if (!active?.isConnected || popup.hidden) return;
@@ -96,21 +162,26 @@
     if (pinned && active !== trigger && !pin) return;
     const term = terms.get(trigger.dataset.jargonId);
     if (!term) return;
-    if (active !== trigger) hide();
+    const changed = active !== trigger;
+    if (changed) hide();
     active = trigger; pinned = pinned || pin;
     title.textContent = term.primary;
     fullName.textContent = term.fullName;
     fullName.hidden = !term.fullName || term.fullName === term.primary;
     definition.textContent = term.definition;
+    renderExample(exampleArea, term.example);
+    renderRelated(term.related);
     const otherNames = term.aliases.filter(name => name !== term.fullName);
     aliases.textContent = otherNames.length ? 'Andre navn: ' + otherNames.slice(0, 5).join(', ') + (otherNames.length > 5 ? ' …' : '') : '';
     aliases.hidden = !otherNames.length;
     entryLink.href = glossaryURL + '#' + term.id;
+    entryLink.textContent = term.related?.length ? 'Alle sammenligninger, navn og kilder →' : 'Alle navn og kilder i begrepslisten →';
     if (!descriptions.has(trigger)) descriptions.set(trigger, trigger.getAttribute('aria-describedby') || '');
     const before = descriptions.get(trigger);
     trigger.setAttribute('aria-describedby', [before, term.fullName ? fullName.id : '', definition.id].filter(Boolean).join(' '));
     if (trigger.tagName === 'BUTTON') trigger.setAttribute('aria-expanded', 'true');
     popup.hidden = false;
+    if (changed) popup.scrollTop = 0;
     position();
   }
   function scheduleHide() {
@@ -219,7 +290,7 @@
     if (active === trigger && pinned) { dismissed = trigger; hide(); return; }
     dismissed = null;
     show(trigger, true);
-    if (event.detail === 0) entryLink.focus();
+    if (event.detail === 0) (exampleArea.querySelector('a') || entryLink).focus();
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !popup.hidden) {
@@ -227,7 +298,7 @@
       const restore = popup.contains(document.activeElement);
       hide(restore); event.preventDefault(); event.stopPropagation();
     } else if (event.key === 'ArrowDown' && triggerFrom(event.target)?.tagName === 'BUTTON') {
-      dismissed = null; show(triggerFrom(event.target), true); entryLink.focus(); event.preventDefault(); event.stopPropagation();
+      dismissed = null; show(triggerFrom(event.target), true); (exampleArea.querySelector('a') || entryLink).focus(); event.preventDefault(); event.stopPropagation();
     } else if (event.key === 'Tab' && popup.contains(event.target)) {
       if ((!event.shiftKey && event.target === entryLink) || (event.shiftKey && event.target === closeButton)) {
         const previous = active;
@@ -308,5 +379,6 @@
     for (const root of roots) annotate(root);
   });
   observer.observe(document.body, {subtree: true, childList: true, characterData: true});
-  window.AI200Jargon = {annotate, close: () => hide(), terms};
+  window.AI200Jargon = {annotate, close: () => hide(), terms, renderCardExample};
+  renderCardExample();
 })();

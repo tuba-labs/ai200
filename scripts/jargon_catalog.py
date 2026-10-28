@@ -578,3 +578,172 @@ EXTRA = [
     ('SessionId', 'session-id',
      'The Service Bus message property grouping related messages into a session. Messages with the same session ID are handled through a session receiver, allowing ordered processing for that group.', 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions'),
 ]
+
+
+# Reference-only vocabulary retained after the exam deck was narrowed.
+# These definitions are glossary entries, not active flashcards.
+EXTRA += [('Dapr',
+  'Distributed Application Runtime',
+  'It supplies reusable building blocks such as service-to-service calls and state storage. An app calls '
+  'Dapr’s local APIs, commonly through a helper process called a sidecar, and configured components connect '
+  'those APIs to the actual backend services.',
+  'https://learn.microsoft.com/en-us/azure/container-apps/dapr-overview',
+  'Distributed Application Runtime'),
+ ('Dapr application ID',
+  'Dapr app ID|Dapr app-id',
+  'The Dapr application ID identifies a Dapr-enabled application for discovery and invocation. For example, '
+  'a caller can invoke the app ID orders rather than hard-coding the address of a particular orders '
+  'container replica.',
+  'https://learn.microsoft.com/en-us/azure/container-apps/dapr-overview',
+  ''),
+ ('Event Hubs',
+  'Azure Event Hubs|Event Hub|Azure Event Hub',
+  'A service for ingesting high-volume event streams, such as device telemetry. It stores events in '
+  'partitioned logs that consumers can read and replay within retention. Reading an event does not remove it '
+  'as completing a work-queue message would.',
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features',
+  ''),
+ ('Event stream',
+  'event streams|hendelsesstrøm|hendelsesstrømmer',
+  'An ongoing sequence of events, such as temperature readings arriving from devices. Consumers read it to '
+  'analyze or react to changes over time. Services such as Event Hubs retain events for a configured period '
+  'so consumers can replay them.',
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features',
+  ''),
+ ('Event Hubs partition',
+  'Event Hubs partitions|Event Hub partition',
+  'One ordered log within an event hub. Incoming events are distributed among partitions, which can be '
+  'processed in parallel. Events have an order within each partition, but there is no single guaranteed '
+  'order across all partitions.',
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features',
+  ''),
+ ('Consumer group',
+  'consumer groups|konsumentgruppe|konsumentgrupper|konsumentgruppene',
+  'An independent view of an event hub’s retained stream. Different applications use different groups to '
+  'read the same events at their own pace and maintain separate progress. Cooperating instances within one '
+  'group coordinate partition ownership when using a processor client.',
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features',
+  ''),
+ ('Event offset',
+  'offset|offsets|event offsets',
+  'A position identifying where an event is located within a partition’s log. A consumer can use a supported '
+  'offset to resume or replay reading. The position is not a copy of the event and cannot recover data that '
+  'has already left the retention window.',
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features',
+  ''),
+ ('Durable orchestration',
+  'orchestration|orchestrations|orchestrator|orchestrators|orkestrering|orkestrator',
+  'A persisted workflow coordinating steps such as activities, timers and external events. It can resume '
+  'after the process restarts because the runtime records its progress. The orchestrator decides the '
+  'sequence; activity functions perform external work such as calling a service.',
+  'https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview',
+  ''),
+ ('Durable activity',
+  'Durable activities|activity function|activity functions|aktivitetsfunksjon|aktivitetsfunksjoner',
+  'A function that performs a unit of work for an orchestrator, such as generating a report or calling an '
+  'external API. The runtime records its result for later orchestration replay. An activity can run again '
+  'after a retry or failure, so repeating it should be safe.',
+  'https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview',
+  ''),
+ ('MQTT',
+  'Message Queuing Telemetry Transport',
+  'A lightweight publish/subscribe messaging protocol often used by devices. A device publishes to a topic '
+  'name, and the broker sends that message to clients subscribed to the matching topic.',
+  'https://learn.microsoft.com/en-us/azure/event-grid/overview',
+  'Message Queuing Telemetry Transport'),
+ ('Throughput unit',
+  'TU|TUs|throughput units',
+  'A provisioned unit of event ingestion and delivery capacity in Event Hubs Standard. TU stands for '
+  'throughput unit. Adding TUs increases how much event traffic the namespace can handle; it does not add '
+  "partitions or speed up the consumer's own code.",
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-auto-inflate',
+  ''),
+ ('Event Grid domain',
+  'Event Grid domains|event domain|event domains',
+  'An event domain groups many related topics behind one publishing endpoint, useful when an application '
+  'serves many tenants. Each published event identifies its target topic, and subscriptions can be scoped '
+  'accordingly. A single custom topic does not require an event domain.',
+  'https://learn.microsoft.com/en-us/azure/event-grid/event-domains',
+  ''),
+ ('Checkpoint',
+  'checkpoints|checkpointing|sjekkpunkt|sjekkpunkter',
+  'The saved processing position for one partition, typically its offset and/or sequence number. A processor '
+  'resumes after that point following restart or ownership transfer. Events handled after the last '
+  'checkpoint may be read again, so the processing logic should tolerate replay.',
+  'https://learn.microsoft.com/en-us/azure/event-hubs/event-processor-balance-partition-load',
+  ''),
+ ('Durable entity',
+  'Durable entities|entity function',
+  'A named piece of persistent state with operations that read or change it, such as a counter for one '
+  'customer. The runtime saves the state and handles operations for that entity one at a time. Other '
+  'functions use its supported API instead of sharing an ordinary in-memory object.',
+  'https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities',
+  ''),
+ ('MFA',
+  'Multifactor Authentication|multi-factor authentication|flerfaktorautentisering',
+  'A sign-in requires evidence from more than one factor, such as something you know and something you have. '
+  'For example, a password plus a registered authenticator can add protection beyond the password alone. Two '
+  'different passwords are still the same kind of factor.',
+  'https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mfa-howitworks',
+  'Multifactor Authentication'),
+ ('Cryptographic key',
+  'cryptographic keys|kryptografisk nøkkel|kryptografiske nøkler',
+  'Key material used for operations such as encryption, decryption or signing. The service can perform '
+  'supported private-key operations without the application downloading the private key. It differs from an '
+  'API credential stored as a plain secret value.',
+  'https://learn.microsoft.com/en-us/azure/key-vault/keys/about-keys-details',
+  ''),
+ ('HSM',
+  'HSMs|Hardware Security Module|Hardware Security Modules',
+  'Specialized hardware that protects cryptographic keys and performs operations such as signing without '
+  'exposing the protected key material. Azure Managed HSM provides a managed pool of these modules for '
+  'supported keys.',
+  'https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview',
+  'Hardware Security Module'),
+ ('DEK',
+  'Data Encryption Key',
+  'It is the key that directly encrypts the actual content, such as stored file data. In envelope '
+  'encryption, another key protects this data key so the application can store its wrapped form alongside '
+  'the encrypted data.',
+  'https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption',
+  'Data Encryption Key'),
+ ('KEK',
+  'Key Encryption Key',
+  'It protects another key, usually by encrypting or wrapping a data encryption key. The wrapped data key '
+  'can be stored with the content while the KEK stays protected separately, for example in Key Vault.',
+  'https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption',
+  'Key Encryption Key'),
+ ('WAF',
+  'Web Application Firewall',
+  'It inspects HTTP/HTTPS application traffic and applies rules to detect or block attacks such as malicious '
+  'request patterns. It differs from a network security group that mainly filters network flows by '
+  'addresses, ports and protocol.',
+  'https://learn.microsoft.com/en-us/azure/application-gateway/ingress-controller-overview',
+  'Web Application Firewall'),
+ ('Azure Monitor workbook',
+  'workbook|workbooks|arbeidsbok|arbeidsbøker',
+  'A reusable interactive report combining text, log queries, metrics, parameters and visualizations. For '
+  'example, an operator can choose a service and time range, then view its failures, latency and relevant '
+  'logs together.',
+  'https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview',
+  ''),
+ ('PIM',
+  'Privileged Identity Management',
+  'Microsoft Entra Privileged Identity Management (PIM). It lets an eligible user activate a privileged role '
+  'for a limited time instead of keeping it permanently active. Configuration can require approval, '
+  'justification or multifactor authentication (MFA), and activation/access can be audited.',
+  'https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure',
+  'Privileged Identity Management'),
+ ('Azure Policy initiative',
+  'policy initiative|policy initiatives|initiativ',
+  'A group of Azure Policy definitions that can be assigned and monitored together. For example, a security '
+  'baseline can combine policies for allowed regions, diagnostic settings and required tags.',
+  'https://learn.microsoft.com/en-us/azure/governance/policy/overview',
+  ''),
+ ('Access reviews',
+  'access review|tilgangsgjennomgang|tilgangsgjennomganger',
+  'Microsoft Entra access reviews. Reviewers periodically check whether users or groups should retain access '
+  'to supported resources or roles. Decisions can remove access when configured to apply results. This '
+  'complements initial permission assignment by addressing access that is no longer needed.',
+  'https://learn.microsoft.com/en-us/entra/id-governance/access-reviews-overview',
+  '')]

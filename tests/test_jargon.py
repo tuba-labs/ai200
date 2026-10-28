@@ -1,6 +1,8 @@
 """Keep glossary meanings, aliases and every current page in sync offline."""
 import json
+from html import unescape
 from pathlib import Path
+import re
 import sys
 import unittest
 from urllib.parse import urlsplit
@@ -15,7 +17,7 @@ class JargonTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.terms = jargon.load_catalog()
-        cls.pages = list(ROOT.glob('*.html')) + list((ROOT / 'workshops').glob('*.html'))
+        cls.pages = list(ROOT.glob('*.html')) + list((ROOT / 'workshops').glob('*.html')) + list((ROOT / 'jargon-examples').glob('*.html'))
 
     def test_each_reviewed_term_has_one_matching_glossary_entry(self):
         deck = json.loads((ROOT / 'flashcards-data.js').read_text(encoding='utf-8')
@@ -58,7 +60,7 @@ class JargonTests(unittest.TestCase):
         for path in self.pages:
             with self.subTest(page=path.relative_to(ROOT)):
                 html = path.read_text(encoding='utf-8')
-                prefix = '../' if path.parent.name == 'workshops' else './'
+                prefix = '../' * len(path.parent.relative_to(ROOT).parts) or './'
                 for name in ['jargon.css', 'jargon-data.js', 'jargon.js']:
                     self.assertEqual(html.count(f'"{prefix}{name}"'), 1)
                     self.assertTrue((path.parent / (prefix + name)).resolve().is_file())
@@ -79,6 +81,93 @@ class JargonTests(unittest.TestCase):
                 url = urlsplit(href)
                 if not url.scheme and url.path:
                     self.assertTrue((path.parent / url.path).resolve().exists(), href)
+
+    def test_examples_use_short_snippets_or_complete_linked_files(self):
+        terms = {term['id']: term for term in self.terms}
+        for identifier, example in jargon.EXAMPLES.items():
+            with self.subTest(example=identifier):
+                for term_id in example['terms']:
+                    data = terms[term_id]['example']
+                    self.assertEqual(data['id'], identifier)
+                    if jargon.inline(example):
+                        self.assertEqual(data['mode'], 'inline')
+                        self.assertLessEqual(len(data['code'].splitlines()), 2)
+                        self.assertEqual(data['code'], example['code'].rstrip())
+                    else:
+                        self.assertEqual(data['mode'], 'page')
+                        self.assertTrue((ROOT / data['url']).is_file())
+                        source = ROOT / 'jargon-examples' / identifier / example['filename']
+                        self.assertEqual(source.read_text(encoding='utf-8'), example['code'].rstrip() + '\n')
+                for prefix in ['./', '../']:
+                    html = jargon.render_example(terms[example['terms'][0]]['example'], prefix)
+                    if not jargon.inline(example):
+                        self.assertIn('target="_blank"', html)
+                        self.assertIn('rel="noopener noreferrer"', html)
+
+    def test_comparisons_link_to_real_terms_and_official_product_sources(self):
+        terms = {term['id']: term for term in self.terms}
+        official_hosts = {'learn.microsoft.com', 'docs.aws.amazon.com', 'docs.cloud.google.com',
+                          'kubernetes.io', 'kafka.apache.org', 'activemq.apache.org',
+                          'artemis.apache.org', 'www.rabbitmq.com', 'jakarta.ee',
+                          'developer.hashicorp.com'}
+        for term in self.terms:
+            for row in term.get('related', []):
+                with self.subTest(term=term['id'], related=row['name']):
+                    self.assertIn(row['platform'], jargon.PLATFORMS)
+                    self.assertIn(row['kind'], jargon.RELATION_KINDS)
+                    self.assertTrue(row['name'].strip())
+                    self.assertTrue(row['note'].strip())
+                    self.assertEqual(urlsplit(row['url']).scheme, 'https')
+                    self.assertIn(urlsplit(row['url']).hostname, official_hosts)
+                    if row.get('term'):
+                        self.assertIn(row['term'], terms)
+                        self.assertNotEqual(row['term'], term['id'])
+        # Guard the differences that prompted this feature, not just its schema.
+        kafka_endpoint = next(row for row in terms['event-hubs']['related'] if row.get('term') == 'apache-kafka')
+        self.assertEqual(kafka_endpoint['kind'], 'partial')
+        self.assertIn('Kafka-compatible endpoint', kafka_endpoint['note'])
+        self.assertIn('Classic', terms['apache-artemis']['definition'])
+        self.assertIn('streams', terms['rabbitmq']['definition'])
+        self.assertIn('different wire protocols', terms['amqp']['related'][0]['note'])
+
+    def test_related_names_are_searchable_without_becoming_synonyms(self):
+        names = {name.casefold(): term['id'] for term in self.terms
+                 for name in [term['primary'], *term['aliases']]}
+        self.assertEqual(names['activemq'], 'activemq-classic')
+        self.assertEqual(names['activemq artemis'], 'apache-artemis')
+        self.assertEqual(names['eventbus'], 'event-bus')
+        for first, second in [('AKS', 'EKS'), ('Event Hubs', 'Kafka'),
+                              ('Service Bus', 'SQS'), ('Pub/Sub', 'Cloud Pub/Sub'),
+                              ('ActiveMQ', 'Artemis')]:
+            self.assertNotEqual(names[first.casefold()], names[second.casefold()])
+        html = jargon.render_page(terms=self.terms)
+        for identifier, query in [('aks', 'amazon eks'), ('event-hubs', 'kafka'),
+                                  ('service-bus', 'activemq'), ('event-grid', 'eventbridge')]:
+            article = re.search(r'<article[^>]*id="' + identifier + r'"[^>]*>', html)[0]
+            search = unescape(re.search(r'data-search="([^"]*)"', article)[1]).casefold()
+            self.assertIn(query, search)
+        related = jargon.render_relations(next(t for t in self.terms if t['id'] == 'service-bus')['related'])
+        self.assertIn('data-no-jargon', related)
+        self.assertIn('href="#activemq-classic"', related)
+        self.assertIn('target="_blank" rel="noopener noreferrer"', related)
+
+    def test_example_pages_have_working_navigation_downloads_and_sources(self):
+        rendered = jargon.outputs()
+        for name, html in rendered.items():
+            if not name.startswith('jargon-examples/') or not name.endswith('.html'):
+                continue
+            page = Page(html)
+            path = ROOT / name
+            with self.subTest(page=name):
+                self.assertEqual(len(page.ids), len(set(page.ids)))
+                self.assertEqual(len(page.code), 1)
+                for href in page.links:
+                    url = urlsplit(href)
+                    if not url.scheme and url.path:
+                        self.assertTrue((path.parent / url.path).resolve().exists(), href)
+        self.assertEqual(json.loads(jargon.EXAMPLES['json']['code']), {'service': 'orders', 'replicas': 2})
+        command = next(line for line in jargon.EXAMPLES['dockerfile']['code'].splitlines() if line.startswith('CMD '))
+        self.assertEqual(json.loads(command[4:])[:3], ['python', '-m', 'http.server'])
 
 
 if __name__ == '__main__':

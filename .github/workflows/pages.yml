@@ -35,6 +35,9 @@ jobs:
       - name: Generer de samlede workshopene
         run: python scripts/build_domain_workshops.py
 
+      - name: Generer begreper og eksempler
+        run: python scripts/build_jargon.py
+
       - name: Generer det nye workshopløpet og kortkoblingene
         run: python scripts/build_workshops.py
 
@@ -43,6 +46,9 @@ jobs:
 
       - name: Kontroller flashcards og kategorier
         run: python -m unittest discover -s tests -p test_flashcards.py -v
+
+      - name: Kontroller begreper og eksempler
+        run: python -m unittest discover -s tests -p test_jargon.py -v
 
       - name: Kontroller nye workshops, arkiv og kortdekning
         run: python -m unittest discover -s tests -p test_new_workshops.py -v

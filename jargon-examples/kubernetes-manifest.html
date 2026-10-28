@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Describes a Kubernetes Deployment with two web-server pods."><title>YAML · Kubernetes: eksempel | AI-200</title>
+<link rel="stylesheet" href="../workshops/course.css">
+  <link rel="stylesheet" href="../jargon.css" data-ai200-jargon>
+  <script src="../jargon-data.js" defer></script>
+  <script src="../jargon.js" defer></script>
+</head>
+<body><a class="skip" href="#innhold">Hopp til eksemplet</a>
+<header><div class="wrap header-inner"><a class="brand" href="../index.html">AI-200 <span>Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="../index.html">Oversikt</a><a href="../workshops/index.html">Workshops</a><a href="../flashcards.html">Flashcards</a><a class="jargon-nav-link" href="../jargon.html">Begreper</a></nav></div></header>
+<div class="hero"><div class="wrap"><p class="eyebrow">Se hvordan det ser ut</p><h1>YAML · Kubernetes: eksempel</h1><p class="lead" lang="en">Describes a Kubernetes Deployment with two web-server pods.</p></div></div>
+<main id="innhold" class="wrap jargon-example-page" data-jargon-exclude="kubernetes-manifest kubernetes-deployment">
+<section class="panel"><h2><code>deployment.yaml</code></h2>
+<pre data-language="YAML · Kubernetes"><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-web
+  template:
+    metadata:
+      labels:
+        app: hello-web
+    spec:
+      containers:
+        - name: web
+          image: nginx:stable-alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: &quot;100m&quot;
+              memory: &quot;64Mi&quot;
+            limits:
+              cpu: &quot;250m&quot;
+              memory: &quot;128Mi&quot;</code></pre>
+<p><a href="./kubernetes-manifest/deployment.yaml" download>Last ned deployment.yaml</a></p>
+<h2>Hva viser eksemplet?</h2><ul lang="en"><li>apiVersion and kind identify the Kubernetes resource. metadata.name gives the Deployment its name.</li><li>replicas: 2 requests two pods. The selector matches the labels in the pod template.</li><li>The container runs nginx on port 80. Its requests reserve 0.1 CPU core and 64 MiB; the limits cap CPU at 0.25 core and memory at 128 MiB.</li></ul><p>Til begrepene: <a href="../jargon.html#kubernetes-deployment">Kubernetes Deployment</a> · <a href="../jargon.html#kubernetes-manifest">Kubernetes manifest</a></p><p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Offisiell kilde 1</a> · <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/">Offisiell kilde 2</a></p></section></main>
+<footer><div class="wrap"><p>AI-200 studiegruppe · <a href="../jargon.html">Alle begreper og eksempler</a></p></div></footer></body></html>

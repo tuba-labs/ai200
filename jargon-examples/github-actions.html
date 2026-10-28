@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A continuous integration workflow that checks Python syntax on a push or a manual run."><title>YAML · GitHub Actions: eksempel | AI-200</title>
+<link rel="stylesheet" href="../workshops/course.css">
+  <link rel="stylesheet" href="../jargon.css" data-ai200-jargon>
+  <script src="../jargon-data.js" defer></script>
+  <script src="../jargon.js" defer></script>
+</head>
+<body><a class="skip" href="#innhold">Hopp til eksemplet</a>
+<header><div class="wrap header-inner"><a class="brand" href="../index.html">AI-200 <span>Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="../index.html">Oversikt</a><a href="../workshops/index.html">Workshops</a><a href="../flashcards.html">Flashcards</a><a class="jargon-nav-link" href="../jargon.html">Begreper</a></nav></div></header>
+<div class="hero"><div class="wrap"><p class="eyebrow">Se hvordan det ser ut</p><h1>YAML · GitHub Actions: eksempel</h1><p class="lead" lang="en">A continuous integration workflow that checks Python syntax on a push or a manual run.</p></div></div>
+<main id="innhold" class="wrap jargon-example-page" data-jargon-exclude="github-actions ci">
+<section class="panel"><h2><code>check-python.yml</code></h2>
+<pre data-language="YAML · GitHub Actions"><code>name: Check Python
+on: [push, workflow_dispatch]
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: &#x27;3.12&#x27;
+      - name: Check Python syntax
+        run: python -m compileall -q .</code></pre>
+<p><a href="./github-actions/check-python.yml" download>Last ned check-python.yml</a></p>
+<h2>Hva viser eksemplet?</h2><ul lang="en"><li>Save the workflow under .github/workflows/ in a repository. on chooses the events that start it.</li><li>The job checks out the repository and selects Python 3.12 on a hosted Linux runner.</li><li>compileall checks Python syntax. It is a CI check; it does not run application tests or deploy an app.</li></ul><p>Til begrepene: <a href="../jargon.html#ci">CI</a> · <a href="../jargon.html#github-actions">GitHub Actions</a></p><p><a href="https://learn.microsoft.com/en-us/devops/develop/what-is-continuous-integration">Offisiell kilde 1</a> · <a href="https://docs.github.com/en/actions/about-github-actions/understanding-github-actions">Offisiell kilde 2</a></p></section></main>
+<footer><div class="wrap"><p>AI-200 studiegruppe · <a href="../jargon.html">Alle begreper og eksempler</a></p></div></footer></body></html>

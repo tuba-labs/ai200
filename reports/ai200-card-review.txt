@@ -1,0 +1,170 @@
+AI-200 FLASHCARD SCOPE REVIEW — 29 OCTOBER 2026
+Study guide: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200
+Skills version: 7 October 2026.
+Reviewed 691 cards. Retained 578. Removed 113.
+Remaining card IDs are unchanged. Display numbers follow the reduced deck.
+The guide names Python. A resource link alone is not a measured objective.
+General Docker, Kubernetes, SQL, networking and identity prerequisites remain.
+These are our scope decisions. Microsoft notes that related topics can appear.
+Existing workshops and the requested broad jargon reference remain available.
+
+REMOVED FROM THE ACTIVE DECK
+
+Dapr (4)
+Optional Dapr integration is outside the guide’s stated Container Apps deployment, revision and KEDA tasks.
+  Previous #051 | term-d1-dapr | What does Dapr stand for?
+  Previous #064 | prep-ca-030 | What does a Dapr appId identify?
+  Previous #173 | prep-ca-007 | Which Dapr component connects an application to a persistent state backend?
+  Previous #176 | prep-p-ca-009 | How does Dapr service invocation help one Container App call another?
+
+Other-language APIs (12)
+Requires a .NET/C#/Node-specific API or programming-model detail. The current audience profile emphasizes Python; the language-neutral and Python skills remain.
+  Previous #087 | m-06-2-1 | How should nested .NET configuration keys be named in Linux App Service app settings?
+  Previous #430 | m-45-1-1 | What is the .NET ServiceBusProcessor initialization sequence?
+  Previous #431 | m-45-2-1 | Which handlers must be registered before starting a .NET ServiceBusProcessor?
+  Previous #432 | m-45-3-1 | What are the default .NET ServiceBusProcessor receive and auto-complete settings?
+  Previous #433 | m-45-4-1 | What happens when a ServiceBusProcessor message handler throws without settling?
+  Previous #434 | m-45-5-1 | How does a .NET ServiceBusProcessor handler dead-letter an invalid message?
+  Previous #440 | m-47-2-1 | How do C# and Node.js v4 default HTTP trigger authorization levels differ?
+  Previous #486 | prep-sb-022 | Which .NET ServiceBusProcessor option bounds simultaneous message callbacks?
+  Previous #494 | prep-sb-034 | Which .NET Service Bus client configuration controls transient-operation retries?
+  Previous #517 | prep-p-fn-016 | How should a .NET function reuse HTTP connections across invocations?
+  Previous #593 | m-55-2-1 | How does App Configuration's .NET provider refresh interval differ from secret refresh?
+  Previous #608 | m-59-3-1 | How is request-driven refresh enabled with the App Configuration .NET provider?
+
+Classic telemetry API (1)
+Tests the classic Application Insights custom-event API rather than the stated OpenTelemetry tracing skill.
+  Previous #636 | m-65-4-1 | What does Application Insights TelemetryClient.TrackEvent record?
+
+Event streaming (24)
+Event Hubs appears in the resource links, but stream ingestion, partitions, checkpoints and Stream Analytics are not among the measured tasks. The Service Bus and Event Grid cards remain.
+  Previous #378 | term-d3-event-hubs | What is Azure Event Hubs?
+  Previous #379 | term-d3-stream | What is an event stream?
+  Previous #380 | term-d3-partition | What is a partition in Event Hubs?
+  Previous #381 | term-d3-consumer-group | What is a consumer group in Event Hubs?
+  Previous #382 | term-d3-offset | What is an offset in an event stream?
+  Previous #392 | term-d3-tu | What is a throughput unit in Event Hubs?
+  Previous #397 | prep-p-eh-004 | What does an Event Hubs checkpoint record?
+  Previous #459 | prep-eh-001 | What workload is Azure Event Hubs designed to ingest?
+  Previous #460 | prep-p-eh-002 | Within what boundary does Event Hubs preserve event order?
+  Previous #461 | prep-p-eh-003 | How are related Event Hubs events kept in the same ordered partition?
+  Previous #462 | prep-p-eh-001 | What limits the number of active Event Hubs processor instances in one consumer group?
+  Previous #463 | prep-eh-002 | How can two applications read the same Event Hubs stream independently?
+  Previous #464 | prep-p-eh-006 | Which Event Hubs feature writes incoming events to Blob Storage or Data Lake without custom consumer code?
+  Previous #465 | prep-p-eh-007 | What does Event Hubs Standard auto-inflate increase during demand spikes?
+  Previous #466 | prep-p-eh-008 | Can an Event Hubs partition count normally be reduced in place?
+  Previous #467 | prep-eh-006 | Which Event Hubs data-plane role allows an app identity to consume events?
+  Previous #468 | prep-p-eh-014 | Which Event Hubs data-plane role allows an app identity to publish events?
+  Previous #469 | prep-p-eh-010 | Which Event Hubs endpoint supports compatible Kafka clients?
+  Previous #470 | prep-p-eh-011 | What happens after an Event Hubs event leaves the retention window?
+  Previous #471 | prep-p-eh-012 | What storage is commonly used to coordinate Event Hubs processor ownership and checkpoints?
+  Previous #472 | prep-p-eh-015 | How can an Event Hubs consumer replay previously retained events?
+  Previous #473 | prep-eh-010 | Which Azure service can apply streaming SQL transformations to Event Hubs input?
+  Previous #474 | prep-p-eh-020 | Why can checkpointing every Event Hubs event reduce throughput?
+  Previous #475 | prep-p-eh-022 | How can a stream processor move past an event that repeatedly fails?
+
+Durable orchestration (9)
+Durable-specific orchestration, entities and replay rules extend beyond the stated serverless API, binding and deployment tasks. Background processing and ordinary Functions remain.
+  Previous #388 | term-d3-orchestration | What is an orchestration in Durable Functions?
+  Previous #389 | term-d3-activity | What is an activity in Durable Functions?
+  Previous #399 | prep-p-fn-013 | What is a Durable Functions entity?
+  Previous #510 | prep-p-fn-004 | Which Durable Functions pattern passes each activity's result into the next activity?
+  Previous #511 | prep-p-fn-005 | How can a Durable orchestration wait for an external approval with a deadline?
+  Previous #512 | prep-p-fn-006 | Why must Durable Functions orchestrator code be deterministic?
+  Previous #513 | prep-func-006 | Which Durable Functions pattern runs parallel activities and waits for their combined result?
+  Previous #516 | prep-p-fn-012 | How does the Durable Functions async HTTP API pattern avoid a long synchronous response?
+  Previous #518 | prep-p-fn-018 | How can a Durable orchestration retry a failing activity with backoff?
+
+Cluster infrastructure administration (13)
+Focuses on cluster/node-pool infrastructure, maintenance, service mesh or specialized networking rather than deploying and troubleshooting application workloads through manifests.
+  Previous #108 | m-10-3-1 | What are the default AKS node-pool upgrade surge and unavailability settings?
+  Previous #135 | m-16-4-1 | When does the Kubernetes cluster autoscaler add nodes?
+  Previous #153 | prep-aks-001 | What runs in an AKS system node pool?
+  Previous #158 | prep-aks-016 | Which AKS ingress integration uses Azure Application Gateway and its WAF?
+  Previous #159 | prep-aks-017 | What does an AKS private cluster make private?
+  Previous #160 | prep-aks-019 | Which AKS pool suits workloads that tolerate eviction in exchange for lower compute cost?
+  Previous #162 | prep-aks-021 | What can the managed Istio service mesh add between AKS services?
+  Previous #163 | prep-aks-022 | How does Azure CNI Overlay reduce VNet address consumption?
+  Previous #164 | prep-p-aks-014 | Which kubectl operation evicts workloads for node maintenance while respecting disruption budgets?
+  Previous #165 | prep-aks-031 | What does kubectl cordon do to existing pods?
+  Previous #166 | prep-aks-026 | Which Azure CLI command stops an eligible AKS cluster while preserving its configuration?
+  Previous #167 | prep-aks-027 | How can an AKS node pool refresh its operating-system image without choosing a new Kubernetes version?
+  Previous #168 | prep-aks-028 | What does a Deny Azure Policy admission rule do to a non-compliant Kubernetes workload?
+
+Identity governance and resource policy (15)
+Administrative governance, custom-role authoring, Graph permissions or organizational policy is beyond the application secret/configuration tasks. App identities and permissions needed by the retained SDK tasks remain.
+  Previous #532 | term-d4-mfa | What does MFA stand for?
+  Previous #551 | term-d4-waf | What does WAF stand for?
+  Previous #568 | prep-rbac-006 | Which Entra feature provides eligible, time-bound privileged role activation?
+  Previous #569 | prep-rbac-016 | What is an Azure Policy initiative?
+  Previous #571 | prep-rbac-022 | Which Entra feature supports periodic review of who should retain access?
+  Previous #664 | prep-rbac-011 | What can an Azure deny assignment block despite an allow role assignment?
+  Previous #665 | prep-rbac-007 | What does the actions field of a custom Azure RBAC role define?
+  Previous #666 | prep-p-rbac-010 | What does assignableScopes constrain in a custom Azure RBAC role?
+  Previous #667 | prep-rbac-008 | Which Azure service checks resources against organizational standards such as allowed locations or required tags?
+  Previous #668 | prep-rbac-012 | What does the Azure Policy Deny effect do to a non-compliant resource request?
+  Previous #669 | prep-rbac-019 | Which Azure Policy effect can add or change supported resource properties such as tags?
+  Previous #671 | prep-p-rbac-014 | What does a CanNotDelete resource lock block?
+  Previous #672 | prep-p-rbac-017 | What does the Azure User Access Administrator role allow?
+  Previous #673 | prep-p-rbac-018 | Why assign Azure roles to an Entra group rather than separately to every team member?
+  Previous #674 | prep-rbac-021 | Which permission type is used for a background application's Microsoft Graph access without a signed-in user?
+
+Cryptographic-key infrastructure (9)
+Tests key-encryption architecture, signing, HSMs or managed certificates instead of retrieving and rotating application secrets.
+  Previous #151 | prep-p-acr-014 | What does ACR need to encrypt registry data with a customer-managed Key Vault key?
+  Previous #536 | term-d4-crypto-key | What is a cryptographic key in Key Vault?
+  Previous #541 | term-d4-hsm | What does HSM stand for?
+  Previous #542 | term-d4-dek | What does DEK stand for?
+  Previous #543 | term-d4-kek | What does KEK stand for?
+  Previous #654 | prep-kv-012 | How do the DEK and KEK work in envelope encryption?
+  Previous #656 | prep-p-kv-011 | What related Key Vault objects accompany a managed certificate?
+  Previous #657 | prep-p-kv-016 | How can an application sign using a Key Vault key without retrieving its private key?
+  Previous #658 | prep-p-kv-024 | How does Azure Managed HSM differ from a normal Key Vault?
+
+Vault administrative roles (3)
+Specialized purge, delegated role-management and recovery permissions are peripheral to the app’s secret retrieval and rotation flow.
+  Previous #580 | m-52-5-1 | What does Key Vault Purge Operator permit?
+  Previous #581 | m-52-5-2 | What does Key Vault Data Access Administrator manage?
+  Previous #598 | m-56-5-1 | Does Key Vault's recover permission allow reading a secret value?
+
+Monitoring configuration extensions (9)
+Dashboard authoring, alert configuration, availability tests, managed Prometheus storage or metric-View configuration extends beyond the stated OpenTelemetry tracing and KQL-query tasks.
+  Previous #566 | m-63-3-1 | What is an Azure Monitor workbook used for?
+  Previous #635 | m-65-3-1 | What does an OpenTelemetry metric View configure?
+  Previous #679 | prep-mon-004 | Which Azure Monitor alert type evaluates a numeric metric against a threshold?
+  Previous #680 | prep-p-mon-005 | Which Azure Monitor alert type evaluates a scheduled KQL query?
+  Previous #681 | prep-p-mon-004 | Which Azure Monitor object defines notification and automation actions for alert rules?
+  Previous #682 | prep-mon-006 | What does an Application Insights standard availability test check?
+  Previous #683 | prep-p-mon-007 | Which Application Insights feature shows near-real-time telemetry during an incident or deployment?
+  Previous #685 | prep-p-mon-012 | Which Azure Monitor mechanism can suppress configured alert actions during a planned period?
+  Previous #686 | prep-p-mon-014 | Where does Azure's managed Prometheus service store AKS metric data?
+
+Additional Event Grid delivery models (4)
+Domain administration, namespace pull delivery and MQTT are adjacent features; this deck focuses on event workflows, filtering, custom events and retries.
+  Previous #391 | term-d3-mqtt | What does MQTT stand for?
+  Previous #393 | m-43-3-1 | What is an Event Grid domain used for?
+  Previous #504 | prep-eg-020 | Which Event Grid namespace capability lets clients retrieve events at their own pace?
+  Previous #506 | prep-p-eg-025 | Which Event Grid namespace capability supports MQTT device messaging?
+
+Database administration extensions (4)
+High-availability architecture, reporting replicas, point-in-time recovery and cron jobs are outside the stated application-query and vector-workload tasks.
+  Previous #327 | prep-pg-001 | What does zone-redundant high availability add to Azure PostgreSQL Flexible Server?
+  Previous #328 | prep-pg-013 | Which Azure PostgreSQL feature scales read-only reporting separately from the primary?
+  Previous #338 | prep-pg-021 | What does PostgreSQL point-in-time restore recover?
+  Previous #342 | prep-pg-027 | Which PostgreSQL extension provides cron-style database job scheduling?
+
+Additional data-service features (3)
+Dedicated-gateway cache deployment, Redis streaming and legacy Azure Cache tier ports are outside the selected Cosmos query/index/consistency and Azure Managed Redis tasks.
+  Previous #301 | m-33-2-1 | Which ports are used by Azure Cache for Redis Basic, Standard and Premium?
+  Previous #326 | prep-c-ct-002 | Where does the Cosmos DB integrated cache run?
+  Previous #353 | prep-redis-009 | How do Redis Streams differ from Redis pub/sub for offline consumers?
+
+Container job and billing extensions (3)
+Finite Container Apps job triggers and billing-unit trivia extend beyond the named app hosting, revision and event-scaling tasks.
+  Previous #174 | prep-ca-010 | Which Container Apps resource runs finite work on a cron schedule?
+  Previous #175 | prep-p-ca-022 | Which Container Apps job trigger runs finite work on demand?
+  Previous #184 | prep-ca-027 | Which resource-time units are used for Container Apps Consumption compute usage?
+
+RETAINED OBJECTIVE MAPPINGS
+The JSON review records an objective, prerequisite/skill distinction and content fingerprint for every remaining card.
+Source: ../data/ai200-card-review.json
