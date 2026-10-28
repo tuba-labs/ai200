@@ -44,7 +44,6 @@ $location = "norwayeast"
 if ((az group exists --name $rg -o tsv) -eq "false") {
     # Opprett den manglende ressursgruppen i valgt region.
     az group create --name $rg --location $location -o none
-# Avslutt blokken.
 }</code></pre><h3>Opprett ett Basic-registry</h3><p>Hvis du ikke har et labregistry fra før, oppretter du det med blokken nedenfor én gang. ACR-navnet får et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code># Lag et globalt unikt registrynavn med et tilfeldig suffiks.
 $acr = "ai200" + (New-Guid).ToString("N").Substring(0, 12)
 # Opprett ett Basic-registry med administratorbrukeren deaktivert og RBAC som tilgangsmodell.

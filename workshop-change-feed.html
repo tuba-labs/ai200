@@ -40,7 +40,6 @@
 if (-not (Test-Path labs/cosmos/local.settings.json)) {
     # Opprett appens lokale innstillingsfil fra eksempelfilen.
     Copy-Item labs/cosmos/local.settings.example.json labs/cosmos/local.settings.json
-# Avslutt blokken.
 }</code></pre><p>Åpne <code>labs/cosmos/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>CosmosConnection</code> til Cosmos-kontoens tilkoblingsstreng. Kontroller at <code>COSMOS_DATABASE</code> er <code>workshop</code>. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
 <pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Cosmos change feed.
 Set-Location labs/cosmos

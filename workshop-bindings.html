@@ -40,7 +40,6 @@
 if (-not (Test-Path labs/bindings/local.settings.json)) {
     # Opprett appens lokale innstillingsfil fra eksempelfilen.
     Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
-# Avslutt blokken.
 }</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
 <pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Service Bus-bindingene.
 Set-Location labs/bindings

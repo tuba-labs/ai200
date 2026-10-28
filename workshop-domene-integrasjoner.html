@@ -31,13 +31,11 @@ $location = "norwayeast"
 if ((az group exists --name $rg -o tsv) -eq "false") {
     # Opprett den manglende ressursgruppen i valgt region.
     az group create --name $rg --location $location -o none
-# Avslutt blokken.
 }</code></pre>
 <p>Opprett én Python 3.12 Function App på Linux med tilhørende Storage-konto i den eksisterende ressursgruppen <code>ai200-d3</code>. Bruk en støttet hostingplan og noter appnavnet og Storage-kontoen; disse brukes videre til del 19. Python og Core Tools er klare fra fellesoppsettet. Opprett nå den lokale innstillingsfilen:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
 if (-not (Test-Path labs/integrations/local.settings.json)) {
     # Opprett appens lokale innstillingsfil fra eksempelfilen.
     Copy-Item labs/integrations/local.settings.example.json labs/integrations/local.settings.json
-# Avslutt blokken.
 }</code></pre><p>Åpne <code>labs/integrations/local.settings.json</code> og sett <code>AzureWebJobsStorage</code> til labens Storage-tilkoblingsstreng. Dette er filen for lokale innstillinger; <code>local.settings.example.json</code> beholdes som eksempel. Start deretter host-en:</p>
 <pre data-language="PowerShell"><code># Gå til den lokale HTTP Function-appen før du starter eller publiserer den.
 Set-Location labs/integrations
@@ -432,7 +430,6 @@ git restore --source=HEAD -- labs/integrations/message_bus.py</code></pre><p>Kil
 if (-not (Test-Path labs/bindings/local.settings.json)) {
     # Opprett appens lokale innstillingsfil fra eksempelfilen.
     Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
-# Avslutt blokken.
 }</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
 <pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Service Bus-bindingene.
 Set-Location labs/bindings

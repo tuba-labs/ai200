@@ -149,7 +149,6 @@ $location = "norwayeast"
 if ((az group exists --name $rg -o tsv) -eq "false") {
     # Opprett den manglende ressursgruppen i valgt region.
     az group create --name $rg --location $location -o none
-# Avslutt blokken.
 }</code></pre><h5>Opprett ett Basic-registry</h5><p>Hvis du ikke har et labregistry fra før, oppretter du det med blokken nedenfor én gang. ACR-navnet får et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code># Lag et globalt unikt registrynavn med et tilfeldig suffiks.
 $acr = "ai200" + (New-Guid).ToString("N").Substring(0, 12)
 # Opprett ett Basic-registry med administratorbrukeren deaktivert og RBAC som tilgangsmodell.
@@ -376,7 +375,6 @@ az storage queue exists --name scale-demo --connection-string $queueConnection -
 1..15 | ForEach-Object {
     # Legg én labmelding i køen; løkketallet blir del av meldingsinnholdet.
     az storage message put --queue-name scale-demo --content "lab-$_" --connection-string $queueConnection -o none
-# Avslutt blokken.
 }</code></pre><label class="check-item"><input type="checkbox" data-check="w5-last" data-progress-source="./workshop-keda.html"><span>Jeg kan forklare hvordan terskelen og maksgrensen påvirker skaleringen.</span></label>
 </section><section class="chapter-step" id="w5-ned"><h4>3. Fjern arbeid og observer</h4><p>Tøm bare labkøen med kommandoen under. Observer at nedskalering tar tid. Sammenlign pollingintervallet med cooldown; disse er ulike mekanismer. Diskuter hva som ville skjedd om en ekte worker fullførte meldingene underveis.</p><pre data-language="PowerShell"><code># Tøm bare labkøen slik at KEDA kan skalere appen ned igjen.
 az storage message clear --queue-name scale-demo --connection-string $queueConnection -o none</code></pre><label class="check-item"><input type="checkbox" data-check="w5-ned" data-progress-source="./workshop-keda.html"><span>Jeg har observert oppskalering og forklart forsinket nedskalering.</span></label>

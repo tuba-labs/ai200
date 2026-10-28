@@ -44,7 +44,6 @@ $location = "norwayeast"
 if ((az group exists --name $rg -o tsv) -eq "false") {
     # Opprett den manglende ressursgruppen i valgt region.
     az group create --name $rg --location $location -o none
-# Avslutt blokken.
 }</code></pre>
 <p>Opprett et eget Key Vault i den eksisterende ressursgruppen <code>ai200-d4</code>, med Azure RBAC og nettverkstilgang fra maskinen. Bruk den publiserte Function App-en og <a href="./workshop-integrations.html#appnavn">appnavnvariablene fra del 14</a>; appen ligger fortsatt i <code>ai200-d3</code>. Gi din bruker Secrets Officer for å opprette testhemmeligheten; appen får en egen leserolle.</p><pre data-language="PowerShell"><code># Sett URL-en til labhvelvet som SDK-et skal lese fra.
 $env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>

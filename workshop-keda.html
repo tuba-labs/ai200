@@ -59,7 +59,6 @@ az storage queue exists --name scale-demo --connection-string $queueConnection -
 1..15 | ForEach-Object {
     # Legg én labmelding i køen; løkketallet blir del av meldingsinnholdet.
     az storage message put --queue-name scale-demo --content "lab-$_" --connection-string $queueConnection -o none
-# Avslutt blokken.
 }</code></pre><label class="check-item"><input type="checkbox" data-check="w5-last"><span>Jeg kan forklare hvordan terskelen og maksgrensen påvirker skaleringen.</span></label>
 </section>
       <section class="panel" id="ned"><h2>3. Fjern arbeid og observer</h2>
