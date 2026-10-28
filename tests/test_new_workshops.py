@@ -17,7 +17,8 @@ from test_workshop_docs import Page
 class NewWorkshopTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.deck = builder.load_deck()
+        cls.full_deck = builder.load_deck()
+        cls.deck = builder.course_deck(cls.full_deck)
         cls.metadata = json.loads((ROOT / "workshops/coverage.json").read_text(encoding="utf-8"))
         cls.pages = {path.resolve(): Page(path.read_text(encoding="utf-8")) for path in (ROOT / "workshops").glob("*.html")}
 
@@ -50,6 +51,18 @@ class NewWorkshopTests(unittest.TestCase):
                               if path.stem in self.metadata["workshops"] for identifier in page.ids if identifier.startswith("card-"))
         self.assertEqual(set(occurrences), set(self.metadata["cards"]))
         self.assertTrue(all(count == 1 for count in occurrences.values()))
+
+    def test_new_terms_do_not_inflate_workshop_coverage(self):
+        coverage = self.metadata["cards"]
+        self.assertEqual(coverage, builder.compile_coverage(self.full_deck))
+        for card in self.full_deck["cards"]:
+            with self.subTest(card=card["id"]):
+                if card["origin"] == "terms":
+                    self.assertNotIn(card["id"], coverage)
+                elif card.get("kind") == "term":
+                    self.assertEqual(coverage[card["id"]]["category"], card["coverageCategory"])
+                else:
+                    self.assertIn(card["id"], coverage)
 
     def test_generated_files_and_inline_sources_are_current(self):
         for name, content in builder.outputs().items():

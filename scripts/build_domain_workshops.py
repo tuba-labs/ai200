@@ -2,6 +2,7 @@
 from html import escape, unescape
 import json
 from pathlib import Path
+from build_jargon import attach_assets
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -163,7 +164,7 @@ def render(domain, workshops):
     chapters = ''.join(chapter(n, i, workshops[n]) for i, (_, numbers) in enumerate(sessions, 1) for n in numbers)
     links = ''.join(f'<a href="./workshop-domene-{d["slug"]}.html"' + (' aria-current="page"' if d==domain else '') +
                     f'>{d["number"]}. {escape(d["title"])}</a>' for d in DOMAINS)
-    return f'''<!doctype html>
+    return attach_assets(f'''<!doctype html>
 <html lang="nb">
 <head>
   <meta charset="utf-8">
@@ -193,7 +194,7 @@ def render(domain, workshops):
   <footer><div class="wrap footer-inner"><span>AI-200 · Samlet domene {domain['number']}</span><a href="./{domain['syllabus']}">Pensum og videre studier</a></div></footer>
 </body>
 </html>
-'''
+''')
 
 
 def main():

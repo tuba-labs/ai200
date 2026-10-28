@@ -1,0 +1,64 @@
+/* Inline explanations inherit the surrounding text and remain selectable. */
+.jargon-term {
+  all: unset; display: inline; font: inherit; color: inherit; line-height: inherit;
+  white-space: inherit; user-select: text; -webkit-user-select: text; cursor: help;
+  text-decoration-line: underline; text-decoration-style: dotted;
+  text-decoration-color: currentColor; text-underline-offset: .2em; text-decoration-thickness: 1px;
+  border-radius: 2px;
+}
+.jargon-term:hover,.jargon-term:focus { background: none; color: inherit; text-decoration-style: solid; }
+.jargon-term:focus-visible { outline: 2px solid #2586e8; outline-offset: 3px; }
+.jargon-tools { display: inline-flex; align-items: center; }
+.jargon-toggle {
+  border: 1px solid #c9d8e9; border-radius: 7px; background: #f5f8fc; color: #234867;
+  font: 600 12px/1.3 system-ui, sans-serif; padding: 6px 9px; cursor: pointer;
+}
+.jargon-toggle:focus-visible,.jargon-close:focus-visible,.jargon-entry-link:focus-visible {
+  outline: 3px solid #2586e8; outline-offset: 3px;
+}
+.jargon-popover {
+  box-sizing: border-box; position: fixed; z-index: 2147483000; width: 390px;
+  margin: 0; padding: 18px 20px; border: 1px solid #bad0e6; border-radius: 13px;
+  background: #fff; color: #172b43; box-shadow: 0 10px 38px #152e4b33;
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: auto; overscroll-behavior: contain; overflow-wrap: anywhere; text-align: left;
+}
+.jargon-popover[hidden],.jargon-entry[hidden] { display: none !important; }
+.jargon-popover-heading { display: flex; gap: 15px; align-items: flex-start; justify-content: space-between; }
+.jargon-popover h2 { font: 750 19px/1.25 system-ui, sans-serif; color: #102d4e; margin: 2px 0 9px; letter-spacing: 0; }
+.jargon-close {
+  all: unset; flex-shrink: 0; display: grid; place-items: center; width: 30px; height: 30px;
+  margin: -6px -8px 0 0; border-radius: 6px; color: #405b72; font-size: 25px; cursor: pointer;
+}
+.jargon-close:hover { background: #edf3fa; }
+.jargon-popover p { color: inherit; margin: 0 0 12px; max-width: none; font: inherit; }
+.jargon-popover .jargon-popover-full { color: #335c80; font-size: 13px; font-weight: 650; }
+.jargon-popover .jargon-popover-aliases { color: #52677a; font-size: 12px; border-top: 1px solid #e1e9f1; padding-top: 10px; }
+.jargon-popover a { color: #075ca5; font: 650 13px/1.4 system-ui, sans-serif; text-underline-offset: 3px; }
+.jargon-directory { margin-bottom: 24px; }
+.jargon-directory .filters { grid-template-columns: minmax(0,2fr) minmax(0,1fr); }
+.jargon-directory input { width: 100%; }
+.jargon-entries { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-bottom: 50px; }
+.jargon-entry {
+  min-width: 0; padding: 23px 25px; border: 1px solid #d6e2ef; border-radius: 12px;
+  background: #fff; scroll-margin-top: 25px; overflow-wrap: anywhere;
+}
+.jargon-entry:target { outline: 3px solid #4b9ae3; outline-offset: 3px; }
+.jargon-entry h2 { font-size: 23px; margin-bottom: 10px; }
+.jargon-entry h2 a { text-decoration: none; }
+.jargon-entry .jargon-full-name { font-weight: 650; color: #345c7d; margin-bottom: 10px; }
+.jargon-entry .jargon-aliases { font-size: 13px; color: #51667e; }
+.jargon-entry .jargon-entry-sources { font-size: 13px; margin-bottom: 0; }
+@media (max-width: 700px) {
+  .jargon-directory .filters { grid-template-columns: 1fr; }
+  .jargon-entries { grid-template-columns: 1fr; }
+  .jargon-entry { padding: 20px; }
+  .jargon-popover { padding: 16px 18px; font-size: 14px; }
+}
+@media (forced-colors: active) {
+  .jargon-popover { border: 2px solid CanvasText; }
+}
+@media print {
+  .jargon-popover,.jargon-tools { display: none !important; }
+  .jargon-term { text-decoration: none; }
+}

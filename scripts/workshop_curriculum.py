@@ -409,7 +409,7 @@ python workshops/labs/data/postgres_client.py compare'''),
                 "m-32-1-1 m-35-1-1 m-35-2-1 m-35-3-1 m-35-5-1 m-36-1-1",
                 ["Sett Redis-variablene og behold en fungerende PGCONNINFO. Kjør read to ganger for id 1: forvent først miss med databaseoppslag, deretter hit.",
                  "Kjør update med en ny ufarlig dokumenttekst og les igjen. Skriptet oppdaterer datakilden og invaliderer den tilhørende cachen. Noter hva som kunne skjedd hvis invalideringen feilet.",
-                 "Kjør cache-demoen for fast TTL. Les skriptet og legg inn EXPIRE på hit i din nye labkopi for å prøve sliding expiration. Forklar hvorfor eviction eller mer minne ikke alene gir ferskere data."],
+                 "Kjør cache-demoen for fast TTL. Bytt cache.get(key) til cache.getex(key, ex=600) i din nye cache_aside-kopi for å prøve sliding expiration på strengverdien. Observer at et hit fornyer levetiden til ti minutter. Forklar hvorfor eviction eller mer minne ikke alene gir ferskere data."],
                 "Miss → hit → kildeoppdatering → invalidering → miss med ny tekst. Denne enkle sekvensen er ikke en atomisk transaksjon mellom PostgreSQL og Redis.",
                 '''# Hent fra PostgreSQL ved cache-miss.
 python workshops/labs/redis/cache_aside.py read --id 1
@@ -469,11 +469,11 @@ python workshops/labs/cosmos/demo.py vector-setup
 # Kjør det metadatafiltrerte vektorsøket.
 python workshops/labs/cosmos/demo.py vector'''),
             activity("cosmos-feed", "Observer endringer og lease-fremdrift", "practical",
-                "m-21-1-1 m-21-3-1 m-21-4-1 m-25-1-1 m-25-3-1 m-25-4-1 m-25-5-1 m-25-6-1",
+                "m-21-1-1 m-21-3-1 m-21-4-1 m-25-1-1 m-25-3-1 m-25-4-1 m-25-5-1",
                 ["Kopier local.settings.example.json til local.settings.json i den nye cosmos-mappen. Fyll CosmosConnection, COSMOS_DATABASE=workshop og AzureWebJobsStorage før hosten startes.",
                  "Start hosten med script-root i ny cosmos-mappe. Kjør update i en annen terminal. Finn samme id og revisjon i triggerloggen, og se lease-containeren i Data Explorer.",
                  "Stopp og start hosten igjen. Utfør en ny oppdatering og observer fremdrift. Tegn monitored container, compute instance, handler og lease container. Skil det du observerte fra fordelingen du bare har analysert med én worker."],
-                "En logg med dokument-id/revisjon og et lease-dokument som viser fremdrift. Python-funksjonen bruker hostens change feed processor; sterkere konsistens fordeler ikke arbeidet mellom workere.",
+                "En logg med dokument-id/revisjon og et lease-dokument som viser fremdrift. Python-funksjonen bruker hostens change feed processor til å følge endringene.",
                 '''# Opprett bare den nye appens lokale innstillingsfil.
 Copy-Item workshops/labs/cosmos/local.settings.example.json workshops/labs/cosmos/local.settings.json
 # Start etter at alle nødvendige innstillinger er fylt ut.
@@ -481,10 +481,11 @@ func start --script-root workshops/labs/cosmos
 # Kjør i en annen terminal for å utløse en dokumentendring.
 python workshops/labs/cosmos/demo.py update''', ["cosmos/function_app.py", "cosmos/local.settings.example.json"]),
             activity("cosmos-design", "Velg konsistens, indekser og kapasitet fra krav", "analysis",
-                "m-18-* m-19-2-1 m-19-3-1 m-19-4-1 m-19-6-1 m-20-2-1 m-20-3-1 m-20-4-1 m-21-2-1 m-22-* m-24-4-1 prep-cosmos-002 prep-cosmos-004 prep-cosmos-013 prep-p-cos-010 prep-c-ct-002",
+                "m-18-* m-19-2-1 m-19-3-1 m-19-4-1 m-19-6-1 m-20-2-1 m-20-3-1 m-20-4-1 m-21-2-1 m-22-* m-24-4-1 m-25-6-1 prep-cosmos-002 prep-cosmos-004 prep-cosmos-013 prep-p-cos-010 prep-c-ct-002",
                 ["Lag fem lesetidslinjer for Strong, Bounded staleness, Session, Consistent prefix og Eventual. Marker hva klienten kan observere, hvilke grenser som gjelder og hva ett-region-laben ikke kan demonstrere.",
                  "Fyll en valgtabell for serverless, manual og autoscale RU/s, shared/dedicated throughput, hot partition, throttling, integrert cache og flere skriveregioner. Angi relevant SDK-atferd ved 429 og hva du vil måle før kapasitet endres.",
-                 "Sammenlign flat, quantizedFlat og DiskANN samt vanlig, composite og vektorindeks. Tegn overlappende included/excluded paths. Planlegg TTL og endringsfeed-modus ved behov for slettinger; marker backup-forutsetningene."],
+                 "Sammenlign flat, quantizedFlat og DiskANN samt vanlig, composite og vektorindeks. Tegn overlappende included/excluded paths. Planlegg TTL og endringsfeed-modus ved behov for slettinger; marker backup-forutsetningene.",
+                 "Tegn en worker som fullfører en forretningshandling og krasjer før checkpoint lagres. Forklar hvorfor samme batch kan komme igjen, og hvordan en varig operasjons-id koordinert med handlingen kan hindre at den utføres to ganger. Dette er en feilanalyse; restart-forsøket demonstrerer ikke dette krasjtilfellet."],
                 "En kravbegrunnet tabell og tidslinjer. Multi-region-garantier, stalenessgrenser og avanserte indekser er analyse i denne workshopen, ikke observasjoner fra tre dokumenter i én region."),
          ])],
         "Stopp den lokale Functions-hosten. Slett Cosmos-konto og Storage i ai200-v2-d2b etter å ha bevart notater. local.settings.json skal fortsatt være ignorert. Slett ikke leases under en kjørende prosessor som du vil bevare fremdriften til."),
@@ -590,7 +591,7 @@ python workshops/labs/integrations/message_bus.py subscription --subscription au
                 "m-41-5-1 m-42-1-1 m-42-3-1 m-42-4-1 m-44-5-1 m-45-* prep-sb-002 prep-sb-007 prep-p-sb-006 prep-sb-018 prep-p-sb-014 prep-sb-022 prep-p-sb-017 prep-p-sb-018 prep-p-sb-019 prep-p-sb-021 prep-sb-030 prep-sb-028 prep-sb-034 prep-p-sb-025",
                 ["Lag en tidslinje for lang behandling, låsfornyelse, lock expiry og lock loss. Planlegg session-id, duplicate detection/message-id, scheduled delivery og request/reply-egenskaper for dokumentjobber.",
                  "Tegn en transactional outbox med database og broker. Marker hvilke Service Bus-operasjoner som kan være i samme broker-transaksjon, og hvordan en stor payload kan bruke claim-check.",
-                 "Skriv pseudokode for .NET ServiceBusProcessor: klient, processor, message/error handlers, start og stopp. Angi auto-complete, callback-concurrency og retry. Skill dette fra Functions-hostens concurrency og identity-based connection. Velg metrikk ved backlog og regel ved auto-forward/AutoDeleteOnIdle."],
+                 "Skriv pseudokode for .NET ServiceBusProcessor: klient, processor, message/error handlers, start og stopp. Ta med DeadLetterMessageAsync for en ugyldig melding. Angi auto-complete, callback-concurrency og retry. Skill dette fra Functions-hostens concurrency og identity-based connection. Velg metrikk ved backlog og regel ved auto-forward/AutoDeleteOnIdle."],
                 "Tidslinje, transaksjonsskisse og pseudokode. .NET-prosessoren analyseres; Python-SDK-mottaket er det som faktisk ble kjørt."),
          ]),
          chapter("event-hubs", "Bevar sammenhørende rekkefølge og prøv uavhengig gjenlesing.", ["SDK", "TU", "AMQP", "JSON", "RBAC"], [

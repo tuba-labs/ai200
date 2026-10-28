@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 
 from workshop_curriculum import WORKSHOPS, GLOSSARY, CATEGORY_DOCS
+from build_jargon import attach_assets, render_page as render_jargon_page
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "workshops"
@@ -33,7 +34,23 @@ def load_deck():
     return json.loads(source.split("window.AI200_FLASHCARDS = ", 1)[1].strip().removesuffix(";"))
 
 
+def course_deck(deck):
+    """Keep exercise mappings stable when an existing definition moves to Terms.
+
+    New vocabulary cards are prerequisites, not evidence of exercise coverage.
+    Reused definitions retain their original workshop category through metadata.
+    """
+    cards = [
+        dict(card, category=card.get("coverageCategory", card["category"]))
+        for card in deck["cards"]
+        if card.get("kind") != "term" or card.get("coverageCategory")
+    ]
+    return dict(deck, cards=cards,
+                categories=[category for category in deck["categories"] if category.get("kind") != "term"])
+
+
 def compile_coverage(deck):
+    deck = course_deck(deck)
     categories = {category["id"]: category for category in deck["categories"]}
     seen_categories, seen_activities, coverage = set(), set(), {}
     for workshop in WORKSHOPS:
@@ -67,7 +84,7 @@ def compile_coverage(deck):
 
 
 def page(title, intro, body, current="", toc=""):
-    return f'''<!doctype html>
+    return attach_assets(f'''<!doctype html>
 <html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{escape(intro, quote=True)}"><title>{escape(title)} | AI-200</title>
 <link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script></head>
@@ -76,7 +93,7 @@ def page(title, intro, body, current="", toc=""):
 <div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>{escape(title)}</h1><p class="lead">{escape(intro)}</p></div></div>
 <main id="innhold" class="wrap {'layout' if toc else ''}">{('<aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold">'+toc+'</nav></aside>') if toc else ''}<div class="content">{body}</div></main>
 <footer><div class="wrap"><p>AI-200 studiegruppe · Nytt løp · <a href="./glossary.html">Forkortelser og begreper</a> · <a href="../index.html">Hele studiesiden</a></p></div></footer></body></html>
-'''
+''', '../')
 
 
 def kind_badge(kind):
@@ -149,18 +166,20 @@ def card_questions(cards, coverage, domain, category):
         return ''
     result = f'<details class="questions"><summary>Kontrollspørsmål ({len(cards)}) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p>'
     for card in cards:
+        flashcard_category = f'terms-{domain}' if card.get("kind") == "term" else category
         result += (f'<details class="recall" id="card-{card["id"]}"><summary>{escape(card["question"])}</summary>'
-            f'<p>{escape(card["answers"][0])}</p><p class="small"><code>{card["id"]}</code> · '
-            f'<a href="../flashcards.html?domain={domain}&amp;category={category}&amp;card={card["id"]}">Åpne dette flashcardet</a></p></details>')
+            f'<p class="recall-answer">{escape(card["answers"][0])}</p><p class="small"><code>{card["id"]}</code> · '
+            f'<a href="../flashcards.html?domain={domain}&amp;category={flashcard_category}&amp;card={card["id"]}">Åpne dette flashcardet</a></p></details>')
     return result + '</details>'
 
 
 def render_index(deck, coverage):
     body = '<section class="panel"><h2>To workshops per domene</h2><p>De åtte workshopene samler kategoriene i gjennomgående oppdrag. Velg domene først, deretter workshop og kategori. Hvert kontrollspørsmål har stabil kort-ID og en sporbar kobling til en oppgave der det finnes.</p>'
     body += stats(deck["cards"], coverage)
+    body += '<p><a href="../flashcards.html?source=terms">Begynn med begrepskortene</a> hvis ord som node, slot eller provision er nye. Nye orddefinisjoner øver ordforrådet og er ikke tatt med som ekstra oppgavedekning.</p>'
     body += '<p>Praktiske oppgaver og analyseoppgaver teller som oppgavedekning. Ren repetisjon vises som et gjenstående øvingshull. Dette er en planlagt kobling til kortene, ikke en garanti for eksamensdekning eller et bevis på gjennomført læring.</p><div class="actions"><a class="button" href="./coverage.html">Se alle kort og oppgaver</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Åpne tidligere workshops</a></div></section>'
     for domain, name in DOMAIN_NAMES.items():
-        body += f'<section class="domain" id="domain-{domain}"><p class="eyebrow">Domene {domain}</p><h2>{escape(name)}</h2><div class="workshop-grid">'
+        body += f'<section class="domain" id="domain-{domain}"><p class="eyebrow">Domene {domain}</p><h2>{escape(name)}</h2><p><a href="../flashcards.html?domain={domain}&amp;category=terms-{domain}">Lær domenets begreper først →</a></p><div class="workshop-grid">'
         for workshop in [item for item in WORKSHOPS if item["domain"] == domain]:
             cards = [card for card in deck["cards"] if coverage[card["id"]]["workshop"] == workshop["id"]]
             categories = {item["id"]: item["label"] for item in deck["categories"]}
@@ -183,15 +202,14 @@ def render_coverage(deck, coverage):
             f'<td>{entry["domain"]}</td><td>{escape(next(item["label"] for item in deck["categories"] if item["id"]==entry["category"]))}</td>'
             f'<th scope="row">{escape(card["question"])}<small>{card["id"]}</small></th><td>{kind_badge(entry["kind"])}</td>'
             f'<td><a href="../{entry["url"]}">{entry["workshop"].upper()} · {escape(entry["activityTitle"])}</a></td></tr>')
-    body = f'''<section class="panel"><h2>Hva betyr dekningen?</h2>{stats(deck['cards'], coverage)}<p>Praktisk: temaet inngår i en konkret kode-, konfigurasjons- eller tjenesteøvelse. Analyse: en begrunnet løsning, tabell eller skisse. Repetisjon: kontrollspørsmål uten egen øvingsoppgave, og dermed et synlig øvingshull. Kategorien alene gir aldri merket «dekket».</p><p>Dekningen er en faglig plan for oppgavene. Azure-øvelsene må gjennomføres i din konto; siden fører ikke bevis på at en tjenestetest har kjørt.</p>
+    body = f'''<section class="panel"><h2>Hva betyr dekningen?</h2>{stats(deck['cards'], coverage)}<p>Praktisk: temaet inngår i en konkret kode-, konfigurasjons- eller tjenesteøvelse. Analyse: en begrunnet løsning, tabell eller skisse. Repetisjon: kontrollspørsmål uten egen øvingsoppgave, og dermed et synlig øvingshull. Kategorien alene gir aldri merket «dekket».</p><p><a href="../flashcards.html?source=terms">Begrepskort</a> forklarer ordforrådet. Nye definisjoner er ikke lagt til som oppgavedekning; tidligere kort som er flyttet til Terms beholder sin konkrete oppgavekobling.</p><p>Dekningen er en faglig plan for oppgavene. Azure-øvelsene må gjennomføres i din konto; siden fører ikke bevis på at en tjenestetest har kjørt.</p>
 <form class="filters" data-coverage-filters><label>Domene<select name="domain"><option value="all">Alle domener</option>{domains}</select></label><label>Kategori<select name="category"><option value="all">Alle kategorier</option>{categories}</select></label><label>Dekning<select name="kind"><option value="all">Alle typer</option><option value="practical">Praktisk oppgave</option><option value="analysis">Analyseoppgave</option><option value="review">Kun repetisjon</option></select></label><label>Søk<input name="search" type="search" placeholder="Spørsmål, kort-ID eller oppgave"></label></form><p data-coverage-count aria-live="polite">{len(deck['cards'])} kort</p>
 <div class="table-wrap"><table class="coverage-table"><caption>Alle kort med kategori og konkret oppgavekobling</caption><thead><tr><th scope="col">Domene</th><th scope="col">Kategori</th><th scope="col">Spørsmål</th><th scope="col">Dekning</th><th scope="col">Oppgave eller repetisjon</th></tr></thead><tbody>{rows}</tbody></table></div></section>'''
     return page("Flashcards og workshopdekning", "Se nøyaktig hvor hvert kort øves, og hvilke kort som foreløpig bare har repetisjon.", body, current="coverage")
 
 
 def render_glossary():
-    rows = ''.join(f'<tr><th scope="row">{escape(term)}</th><td>{escape(full)}</td><td>{escape(explanation)}</td><td><a href="{escape(url, quote=True)}">Les mer</a></td></tr>' for term, (full, explanation, url) in sorted(GLOSSARY.items(), key=lambda item: item[0].casefold()))
-    return page("Forkortelser og begreper", "Bruk hele navnet og knytt begrepet til det du gjør i øvelsen.", '<section class="panel"><h2>Begrepsliste</h2><div class="table-wrap"><table><caption>Forkortelse, fullt navn, forklaring og offisiell referanse</caption><thead><tr><th scope="col">Begrep</th><th scope="col">Fullt navn</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>')
+    return render_jargon_page('../')
 
 
 def render_setup():
@@ -207,7 +225,7 @@ python -m http.server 8000 --bind 127.0.0.1''')
 
 
 def outputs():
-    deck = load_deck()
+    deck = course_deck(load_deck())
     coverage = compile_coverage(deck)
     # Universal-newline reading keeps generated metadata stable across Git checkouts.
     metadata = dict(version=1, deckSha256=sha256((ROOT / "flashcards-data.js").read_text(encoding="utf-8").encode("utf-8")).hexdigest(),
@@ -236,7 +254,7 @@ def main():
             path.write_text(text, encoding="utf-8", newline="\n")
     if stale:
         raise SystemExit("Regenerate new workshops: " + ", ".join(stale))
-    deck = load_deck()
+    deck = course_deck(load_deck())
     counts = Counter(entry["kind"] for entry in compile_coverage(deck).values())
     print(f"8 workshops, {len(deck['categories'])} categories, {len(deck['cards'])} cards: {dict(counts)}")
 

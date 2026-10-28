@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Gjør verktøyoppsettet én gang, og opprett bare ressursene oppgaven faktisk trenger."><title>Felles oppsett for de nye workshopene | AI-200</title>
-<link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script></head>
+<link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script>
+  <link rel="stylesheet" href="../jargon.css" data-ai200-jargon>
+  <script src="../jargon-data.js" defer></script>
+  <script src="../jargon.js" defer></script>
+</head>
 <body><a class="skip" href="#innhold">Hopp til innhold</a>
-<header><div class="wrap header-inner"><a class="brand" href="./index.html">AI-200 <span>Nye workshops</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html">Domener</a><a href="./coverage.html">Kortdekning</a><a href="../flashcards.html">Flashcards</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav></div></header>
+<header><div class="wrap header-inner"><a class="brand" href="./index.html">AI-200 <span>Nye workshops</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html">Domener</a><a href="./coverage.html">Kortdekning</a><a href="../flashcards.html">Flashcards</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a><a class="jargon-nav-link" href="../jargon.html">Begreper</a></nav></div></header>
 <div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>Felles oppsett for de nye workshopene</h1><p class="lead">Gjør verktøyoppsettet én gang, og opprett bare ressursene oppgaven faktisk trenger.</p></div></div>
 <main id="innhold" class="wrap "><div class="content"><section class="panel"><h2>Arbeid i det nye løpet</h2><p>Alle kommandoer kjøres fra prosjektroten C:\java\ai200 med mindre en oppgave sier noe annet. Rediger bare filer under workshops/labs/. Dagens øvrige workshops og old/ endres ikke av dette løpet.</p><ol><li>Bruk verktøy-, Python- og CLI-oppsettet fra <a href="../getting-started.html#for-du-starter">Kom i gang</a>. Behold prosjektets ene .venv.</li><li>Installer det nye løpets pakker i det aktive miljøet med kommandoen under. Det inkluderer Event Hubs, Blob-checkpoints og App Configuration-provider.</li><li>Opprett den nye ressursgruppen og ressursene fra hver workshop i din egen konto. Portalen er et fullverdig alternativ til egne IaC-filer. Bruk Norway East der tjeneste og SKU støttes; velg en støttet region når den aktuelle kombinasjonen ikke finnes der.</li><li>Fyll lokale miljøvariabler og ignorerte local.settings.json før skript/host startes. Variabler arves ikke automatisk til en ny terminal; sett dem der også.</li></ol><pre data-language="PowerShell"><code># Installer bare i prosjektets aktiverte Python-miljø.
 python -m pip install -r workshops/labs/requirements.txt

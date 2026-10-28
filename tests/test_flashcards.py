@@ -44,7 +44,7 @@ class FlashcardContentTests(unittest.TestCase):
         self.assertEqual(len({card["id"] for card in self.cards}), len(self.cards))
         self.assertEqual(len(self.categories), len(self.deck["categories"]))
         self.assertEqual({card["domain"] for card in self.cards}, {1, 2, 3, 4})
-        self.assertEqual({card["origin"] for card in self.cards}, {"original", "prep"})
+        self.assertEqual({card["origin"] for card in self.cards}, {"original", "prep", "terms"})
         for card in self.cards:
             with self.subTest(card=card["id"]):
                 self.assertIn(card["category"], self.categories)
@@ -54,7 +54,7 @@ class FlashcardContentTests(unittest.TestCase):
     def test_legacy_progress_has_complete_mapping(self):
         self.assertEqual({old for card in self.cards for old in card["legacyIds"]}, set(range(1, 69)))
         for card in self.cards:
-            if card["origin"] == "prep":
+            if card["origin"] in {"prep", "terms"}:
                 self.assertEqual(card["legacyIds"], [], card["id"])
 
     def test_every_card_has_traceable_sources(self):
@@ -65,7 +65,7 @@ class FlashcardContentTests(unittest.TestCase):
                     self.assertTrue(reference["label"].strip())
                     url = urlsplit(reference["url"])
                     self.assertEqual(url.scheme, "https")
-                    self.assertIn(url.hostname, {"www.mightybs.com", "ai200prep.com"})
+                    self.assertIn(url.hostname, {"www.mightybs.com", "ai200prep.com", "learn.microsoft.com", "kubernetes.io", "opentelemetry.io", "github.com", "redis.io", "www.postgresql.org", "www.psycopg.org", "keda.sh", "docs.dapr.io", "www.w3.org", "docs.docker.com"})
 
     def test_displayed_counts_match_card_data(self):
         html = (ROOT / "flashcards.html").read_text(encoding="utf-8")
@@ -76,6 +76,47 @@ class FlashcardContentTests(unittest.TestCase):
         for number, count in domains.items():
             self.assertRegex(html, rf'<option value="{number}">{number} · [^<]+ \({count}\)</option>')
         self.assertIn('src="./flashcards-data.js"', html)
+
+    def test_every_card_has_completed_primary_source_review(self):
+        for card in self.cards:
+            with self.subTest(card=card["id"]):
+                review = card["review"]
+                self.assertRegex(review["date"], r"^\d{4}-\d{2}-\d{2}$")
+                self.assertIn(review["status"], {"confirmed", "clarified", "corrected"})
+                self.assertTrue(review["note"].strip())
+                self.assertTrue(review["sources"])
+                primary = {
+                    reference["url"] for reference in card["references"]
+                    if reference.get("kind") == "primary"
+                }
+                self.assertEqual(set(review["sources"]), primary)
+                for url in primary:
+                    self.assertNotIn(urlsplit(url).hostname, {"ai200prep.com", "www.mightybs.com"})
+
+    def test_terms_start_each_domain_and_reuse_existing_definitions(self):
+        terms = [card for card in self.cards if card.get("kind") == "term"]
+        self.assertTrue(terms)
+        self.assertEqual(len({normalize(card["term"]) for card in terms}), len(terms))
+        self.assertEqual([card["domain"] for card in self.cards],
+                         sorted(card["domain"] for card in self.cards))
+        for domain in range(1, 5):
+            with self.subTest(domain=domain):
+                category = self.categories[f"terms-{domain}"]
+                self.assertEqual(category["kind"], "term")
+                cards = [card for card in self.cards if card["domain"] == domain]
+                self.assertEqual(cards[0]["kind"], "term")
+                kinds = [card.get("kind") == "term" for card in cards]
+                self.assertEqual(kinds, sorted(kinds, reverse=True))
+                for card in cards:
+                    self.assertEqual(card["category"] == category["id"], card.get("kind") == "term")
+        for card in terms:
+            with self.subTest(card=card["id"]):
+                self.assertTrue(card["term"].strip())
+                if card["origin"] == "terms":
+                    self.assertNotIn("coverageCategory", card)
+                else:
+                    self.assertIn(card["coverageCategory"], self.categories)
+                    self.assertNotEqual(card["coverageCategory"], card["category"])
 
 
 if __name__ == "__main__":

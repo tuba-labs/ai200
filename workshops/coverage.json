@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "deckSha256": "827923c57c3dc4a9d44f266a01eea69563173a01f7654232a0898d77f4300ddf",
+  "deckSha256": "a5e23f83e8d1af5b6e158536a8509e3b1592f1b36a598b68720b73c9002da02e",
   "kinds": {
     "practical": "Praktisk oppgave",
     "analysis": "Analyseoppgave",
@@ -407,6 +407,36 @@
       "activityTitle": "Planlegg staging, secrets og oppdateringer",
       "url": "workshops/d1a.html#app-settings"
     },
+    "prep-ca-001": {
+      "workshop": "d1a",
+      "workshopTitle": "Fra kildekode til en driftet container",
+      "domain": 1,
+      "category": "container-apps",
+      "kind": "practical",
+      "activity": "ca-revisions",
+      "activityTitle": "Sammenlign single og multiple revisions",
+      "url": "workshops/d1a.html#ca-revisions"
+    },
+    "prep-ca-002": {
+      "workshop": "d1a",
+      "workshopTitle": "Fra kildekode til en driftet container",
+      "domain": 1,
+      "category": "container-apps",
+      "kind": "practical",
+      "activity": "ca-revisions",
+      "activityTitle": "Sammenlign single og multiple revisions",
+      "url": "workshops/d1a.html#ca-revisions"
+    },
+    "prep-ca-030": {
+      "workshop": "d1a",
+      "workshopTitle": "Fra kildekode til en driftet container",
+      "domain": 1,
+      "category": "container-apps",
+      "kind": "analysis",
+      "activity": "ca-design",
+      "activityTitle": "Velg hosting, integrasjon og secret-livsløp",
+      "url": "workshops/d1a.html#ca-design"
+    },
     "m-12-1-1": {
       "workshop": "d1a",
       "workshopTitle": "Fra kildekode til en driftet container",
@@ -577,26 +607,6 @@
       "activityTitle": "Velg hosting, integrasjon og secret-livsløp",
       "url": "workshops/d1a.html#ca-design"
     },
-    "prep-ca-001": {
-      "workshop": "d1a",
-      "workshopTitle": "Fra kildekode til en driftet container",
-      "domain": 1,
-      "category": "container-apps",
-      "kind": "practical",
-      "activity": "ca-revisions",
-      "activityTitle": "Sammenlign single og multiple revisions",
-      "url": "workshops/d1a.html#ca-revisions"
-    },
-    "prep-ca-002": {
-      "workshop": "d1a",
-      "workshopTitle": "Fra kildekode til en driftet container",
-      "domain": 1,
-      "category": "container-apps",
-      "kind": "practical",
-      "activity": "ca-revisions",
-      "activityTitle": "Sammenlign single og multiple revisions",
-      "url": "workshops/d1a.html#ca-revisions"
-    },
     "prep-ca-003": {
       "workshop": "d1a",
       "workshopTitle": "Fra kildekode til en driftet container",
@@ -638,16 +648,6 @@
       "url": "workshops/d1a.html#ca-design"
     },
     "prep-p-ca-009": {
-      "workshop": "d1a",
-      "workshopTitle": "Fra kildekode til en driftet container",
-      "domain": 1,
-      "category": "container-apps",
-      "kind": "analysis",
-      "activity": "ca-design",
-      "activityTitle": "Velg hosting, integrasjon og secret-livsløp",
-      "url": "workshops/d1a.html#ca-design"
-    },
-    "prep-ca-030": {
       "workshop": "d1a",
       "workshopTitle": "Fra kildekode til en driftet container",
       "domain": 1,
@@ -807,6 +807,56 @@
       "activityTitle": "La kølengden styre antall replikaer",
       "url": "workshops/d1b.html#keda-queue"
     },
+    "m-11-3-1": {
+      "workshop": "d1b",
+      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
+      "domain": 1,
+      "category": "aks",
+      "kind": "analysis",
+      "activity": "aks-capacity",
+      "activityTitle": "Lag en driftsplan for podder og noder",
+      "url": "workshops/d1b.html#aks-capacity"
+    },
+    "m-16-1-1": {
+      "workshop": "d1b",
+      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
+      "domain": 1,
+      "category": "aks",
+      "kind": "analysis",
+      "activity": "aks-capacity",
+      "activityTitle": "Lag en driftsplan for podder og noder",
+      "url": "workshops/d1b.html#aks-capacity"
+    },
+    "m-16-3-1": {
+      "workshop": "d1b",
+      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
+      "domain": 1,
+      "category": "aks",
+      "kind": "analysis",
+      "activity": "aks-capacity",
+      "activityTitle": "Lag en driftsplan for podder og noder",
+      "url": "workshops/d1b.html#aks-capacity"
+    },
+    "prep-aks-015": {
+      "workshop": "d1b",
+      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
+      "domain": 1,
+      "category": "aks",
+      "kind": "analysis",
+      "activity": "aks-capacity",
+      "activityTitle": "Lag en driftsplan for podder og noder",
+      "url": "workshops/d1b.html#aks-capacity"
+    },
+    "prep-aks-023": {
+      "workshop": "d1b",
+      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
+      "domain": 1,
+      "category": "aks",
+      "kind": "analysis",
+      "activity": "aks-capacity",
+      "activityTitle": "Lag en driftsplan for podder og noder",
+      "url": "workshops/d1b.html#aks-capacity"
+    },
     "m-09-1-1": {
       "workshop": "d1b",
       "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
@@ -907,16 +957,6 @@
       "activityTitle": "Skill readiness fra en ødelagt Service-selector",
       "url": "workshops/d1b.html#aks-connectivity"
     },
-    "m-11-3-1": {
-      "workshop": "d1b",
-      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
-      "domain": 1,
-      "category": "aks",
-      "kind": "analysis",
-      "activity": "aks-capacity",
-      "activityTitle": "Lag en driftsplan for podder og noder",
-      "url": "workshops/d1b.html#aks-capacity"
-    },
     "m-11-4-1": {
       "workshop": "d1b",
       "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
@@ -977,27 +1017,7 @@
       "activityTitle": "Lag en driftsplan for podder og noder",
       "url": "workshops/d1b.html#aks-capacity"
     },
-    "m-16-1-1": {
-      "workshop": "d1b",
-      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
-      "domain": 1,
-      "category": "aks",
-      "kind": "analysis",
-      "activity": "aks-capacity",
-      "activityTitle": "Lag en driftsplan for podder og noder",
-      "url": "workshops/d1b.html#aks-capacity"
-    },
     "m-16-2-1": {
-      "workshop": "d1b",
-      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
-      "domain": 1,
-      "category": "aks",
-      "kind": "analysis",
-      "activity": "aks-capacity",
-      "activityTitle": "Lag en driftsplan for podder og noder",
-      "url": "workshops/d1b.html#aks-capacity"
-    },
-    "m-16-3-1": {
       "workshop": "d1b",
       "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
       "domain": 1,
@@ -1117,16 +1137,6 @@
       "activityTitle": "Tegn nettverk og identitet for en privat arbeidslast",
       "url": "workshops/d1b.html#aks-trust"
     },
-    "prep-aks-015": {
-      "workshop": "d1b",
-      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
-      "domain": 1,
-      "category": "aks",
-      "kind": "analysis",
-      "activity": "aks-capacity",
-      "activityTitle": "Lag en driftsplan for podder og noder",
-      "url": "workshops/d1b.html#aks-capacity"
-    },
     "prep-p-aks-008": {
       "workshop": "d1b",
       "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
@@ -1206,16 +1216,6 @@
       "activity": "aks-trust",
       "activityTitle": "Tegn nettverk og identitet for en privat arbeidslast",
       "url": "workshops/d1b.html#aks-trust"
-    },
-    "prep-aks-023": {
-      "workshop": "d1b",
-      "workshopTitle": "Hendelsesstyrt skalering og Kubernetes-drift",
-      "domain": 1,
-      "category": "aks",
-      "kind": "analysis",
-      "activity": "aks-capacity",
-      "activityTitle": "Lag en driftsplan for podder og noder",
-      "url": "workshops/d1b.html#aks-capacity"
     },
     "prep-p-aks-014": {
       "workshop": "d1b",
@@ -1787,6 +1787,16 @@
       "activityTitle": "Velg indeks, kapasitet og tilgjengelighet fra symptomet",
       "url": "workshops/d2a.html#pg-design"
     },
+    "prep-redis-004": {
+      "workshop": "d2a",
+      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
+      "domain": 2,
+      "category": "redis",
+      "kind": "analysis",
+      "activity": "redis-operations",
+      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
+      "url": "workshops/d2a.html#redis-operations"
+    },
     "m-31-1-1": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
@@ -2068,16 +2078,6 @@
       "url": "workshops/d2a.html#redis-vector"
     },
     "prep-redis-002": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "prep-redis-004": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
       "domain": 2,
@@ -2602,10 +2602,10 @@
       "workshopTitle": "Cosmos DB fra partisjon til endringsflyt",
       "domain": 2,
       "category": "cosmos",
-      "kind": "practical",
-      "activity": "cosmos-feed",
-      "activityTitle": "Observer endringer og lease-fremdrift",
-      "url": "workshops/d2b.html#cosmos-feed"
+      "kind": "analysis",
+      "activity": "cosmos-design",
+      "activityTitle": "Velg konsistens, indekser og kapasitet fra krav",
+      "url": "workshops/d2b.html#cosmos-design"
     },
     "prep-cosmos-002": {
       "workshop": "d2b",
@@ -2676,6 +2676,46 @@
       "activity": "cosmos-design",
       "activityTitle": "Velg konsistens, indekser og kapasitet fra krav",
       "url": "workshops/d2b.html#cosmos-design"
+    },
+    "m-49-3-1": {
+      "workshop": "d3a",
+      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
+      "domain": 3,
+      "category": "functions",
+      "kind": "practical",
+      "activity": "functions-background",
+      "activityTitle": "Flytt arbeid til en Storage-kø og observer poison queue",
+      "url": "workshops/d3a.html#functions-background"
+    },
+    "m-50-2-1": {
+      "workshop": "d3a",
+      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
+      "domain": 3,
+      "category": "functions",
+      "kind": "practical",
+      "activity": "functions-http",
+      "activityTitle": "Valider input og sammenlign lokal med publisert autorisasjon",
+      "url": "workshops/d3a.html#functions-http"
+    },
+    "prep-func-010": {
+      "workshop": "d3a",
+      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
+      "domain": 3,
+      "category": "functions",
+      "kind": "practical",
+      "activity": "functions-http",
+      "activityTitle": "Valider input og sammenlign lokal med publisert autorisasjon",
+      "url": "workshops/d3a.html#functions-http"
+    },
+    "prep-p-fn-013": {
+      "workshop": "d3a",
+      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
+      "domain": 3,
+      "category": "functions",
+      "kind": "analysis",
+      "activity": "functions-design",
+      "activityTitle": "Design lange og tilstandsfulle arbeidsflyter",
+      "url": "workshops/d3a.html#functions-design"
     },
     "m-46-1-1": {
       "workshop": "d3a",
@@ -2847,16 +2887,6 @@
       "activityTitle": "Design lange og tilstandsfulle arbeidsflyter",
       "url": "workshops/d3a.html#functions-design"
     },
-    "m-49-3-1": {
-      "workshop": "d3a",
-      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
-      "domain": 3,
-      "category": "functions",
-      "kind": "practical",
-      "activity": "functions-background",
-      "activityTitle": "Flytt arbeid til en Storage-kø og observer poison queue",
-      "url": "workshops/d3a.html#functions-background"
-    },
     "m-49-4-1": {
       "workshop": "d3a",
       "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
@@ -2876,16 +2906,6 @@
       "activity": "functions-design",
       "activityTitle": "Design lange og tilstandsfulle arbeidsflyter",
       "url": "workshops/d3a.html#functions-design"
-    },
-    "m-50-2-1": {
-      "workshop": "d3a",
-      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
-      "domain": 3,
-      "category": "functions",
-      "kind": "practical",
-      "activity": "functions-http",
-      "activityTitle": "Valider input og sammenlign lokal med publisert autorisasjon",
-      "url": "workshops/d3a.html#functions-http"
     },
     "m-51-1-1": {
       "workshop": "d3a",
@@ -3037,26 +3057,6 @@
       "activityTitle": "Design lange og tilstandsfulle arbeidsflyter",
       "url": "workshops/d3a.html#functions-design"
     },
-    "prep-func-010": {
-      "workshop": "d3a",
-      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
-      "domain": 3,
-      "category": "functions",
-      "kind": "practical",
-      "activity": "functions-http",
-      "activityTitle": "Valider input og sammenlign lokal med publisert autorisasjon",
-      "url": "workshops/d3a.html#functions-http"
-    },
-    "prep-p-fn-013": {
-      "workshop": "d3a",
-      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
-      "domain": 3,
-      "category": "functions",
-      "kind": "analysis",
-      "activity": "functions-design",
-      "activityTitle": "Design lange og tilstandsfulle arbeidsflyter",
-      "url": "workshops/d3a.html#functions-design"
-    },
     "prep-p-fn-016": {
       "workshop": "d3a",
       "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
@@ -3106,6 +3106,16 @@
       "activity": "functions-design",
       "activityTitle": "Design lange og tilstandsfulle arbeidsflyter",
       "url": "workshops/d3a.html#functions-design"
+    },
+    "m-43-3-1": {
+      "workshop": "d3a",
+      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
+      "domain": 3,
+      "category": "event-grid",
+      "kind": "analysis",
+      "activity": "eg-design",
+      "activityTitle": "Velg eventmodell og bevaring ved leveringsfeil",
+      "url": "workshops/d3a.html#eg-design"
     },
     "m-38-1-1": {
       "workshop": "d3a",
@@ -3257,16 +3267,6 @@
       "activityTitle": "Velg eventmodell og bevaring ved leveringsfeil",
       "url": "workshops/d3a.html#eg-design"
     },
-    "m-43-3-1": {
-      "workshop": "d3a",
-      "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
-      "domain": 3,
-      "category": "event-grid",
-      "kind": "analysis",
-      "activity": "eg-design",
-      "activityTitle": "Velg eventmodell og bevaring ved leveringsfeil",
-      "url": "workshops/d3a.html#eg-design"
-    },
     "m-43-4-1": {
       "workshop": "d3a",
       "workshopTitle": "Fra HTTP-kall til bakgrunnsarbeid og hendelser",
@@ -3397,6 +3397,16 @@
       "activityTitle": "Velg eventmodell og bevaring ved leveringsfeil",
       "url": "workshops/d3a.html#eg-design"
     },
+    "m-44-5-1": {
+      "workshop": "d3b",
+      "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
+      "domain": 3,
+      "category": "service-bus",
+      "kind": "analysis",
+      "activity": "sb-contract",
+      "activityTitle": "Planlegg sessions, låser og transaksjonsgrenser",
+      "url": "workshops/d3b.html#sb-contract"
+    },
     "m-41-1-1": {
       "workshop": "d3b",
       "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
@@ -3526,16 +3536,6 @@
       "activity": "sb-settlement",
       "activityTitle": "Prøv complete, abandon, defer og dead-letter",
       "url": "workshops/d3b.html#sb-settlement"
-    },
-    "m-44-5-1": {
-      "workshop": "d3b",
-      "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
-      "domain": 3,
-      "category": "service-bus",
-      "kind": "analysis",
-      "activity": "sb-contract",
-      "activityTitle": "Planlegg sessions, låser og transaksjonsgrenser",
-      "url": "workshops/d3b.html#sb-contract"
     },
     "m-45-1-1": {
       "workshop": "d3b",
@@ -3787,6 +3787,16 @@
       "activityTitle": "Planlegg sessions, låser og transaksjonsgrenser",
       "url": "workshops/d3b.html#sb-contract"
     },
+    "prep-p-eh-004": {
+      "workshop": "d3b",
+      "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
+      "domain": 3,
+      "category": "event-hubs",
+      "kind": "practical",
+      "activity": "eh-replay",
+      "activityTitle": "Send med partisjonsnøkkel og les i to grupper",
+      "url": "workshops/d3b.html#eh-replay"
+    },
     "prep-eh-001": {
       "workshop": "d3b",
       "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
@@ -3828,16 +3838,6 @@
       "url": "workshops/d3b.html#eh-replay"
     },
     "prep-eh-002": {
-      "workshop": "d3b",
-      "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
-      "domain": 3,
-      "category": "event-hubs",
-      "kind": "practical",
-      "activity": "eh-replay",
-      "activityTitle": "Send med partisjonsnøkkel og les i to grupper",
-      "url": "workshops/d3b.html#eh-replay"
-    },
-    "prep-p-eh-004": {
       "workshop": "d3b",
       "workshopTitle": "Pålitelig køarbeid og gjenlesbare hendelsesstrømmer",
       "domain": 3,
@@ -3967,6 +3967,56 @@
       "activityTitle": "Velg kapasitet og håndter en problemhendelse",
       "url": "workshops/d3b.html#eh-capacity"
     },
+    "prep-rbac-006": {
+      "workshop": "d4a",
+      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
+      "domain": 4,
+      "category": "identity-rbac",
+      "kind": "analysis",
+      "activity": "identity-design",
+      "activityTitle": "Fordel minste tilgang og styr privilegier",
+      "url": "workshops/d4a.html#identity-design"
+    },
+    "prep-rbac-016": {
+      "workshop": "d4a",
+      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
+      "domain": 4,
+      "category": "identity-rbac",
+      "kind": "analysis",
+      "activity": "identity-design",
+      "activityTitle": "Fordel minste tilgang og styr privilegier",
+      "url": "workshops/d4a.html#identity-design"
+    },
+    "prep-rbac-015": {
+      "workshop": "d4a",
+      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
+      "domain": 4,
+      "category": "identity-rbac",
+      "kind": "analysis",
+      "activity": "identity-design",
+      "activityTitle": "Fordel minste tilgang og styr privilegier",
+      "url": "workshops/d4a.html#identity-design"
+    },
+    "prep-rbac-022": {
+      "workshop": "d4a",
+      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
+      "domain": 4,
+      "category": "identity-rbac",
+      "kind": "analysis",
+      "activity": "identity-design",
+      "activityTitle": "Fordel minste tilgang og styr privilegier",
+      "url": "workshops/d4a.html#identity-design"
+    },
+    "prep-rbac-028": {
+      "workshop": "d4a",
+      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
+      "domain": 4,
+      "category": "identity-rbac",
+      "kind": "analysis",
+      "activity": "identity-design",
+      "activityTitle": "Fordel minste tilgang og styr privilegier",
+      "url": "workshops/d4a.html#identity-design"
+    },
     "m-05-2-1": {
       "workshop": "d4a",
       "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
@@ -4057,16 +4107,6 @@
       "activityTitle": "Fordel minste tilgang og styr privilegier",
       "url": "workshops/d4a.html#identity-design"
     },
-    "prep-rbac-006": {
-      "workshop": "d4a",
-      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
-      "domain": 4,
-      "category": "identity-rbac",
-      "kind": "analysis",
-      "activity": "identity-design",
-      "activityTitle": "Fordel minste tilgang og styr privilegier",
-      "url": "workshops/d4a.html#identity-design"
-    },
     "prep-rbac-007": {
       "workshop": "d4a",
       "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
@@ -4117,27 +4157,7 @@
       "activityTitle": "Fordel minste tilgang og styr privilegier",
       "url": "workshops/d4a.html#identity-design"
     },
-    "prep-rbac-016": {
-      "workshop": "d4a",
-      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
-      "domain": 4,
-      "category": "identity-rbac",
-      "kind": "analysis",
-      "activity": "identity-design",
-      "activityTitle": "Fordel minste tilgang og styr privilegier",
-      "url": "workshops/d4a.html#identity-design"
-    },
     "prep-p-rbac-007": {
-      "workshop": "d4a",
-      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
-      "domain": 4,
-      "category": "identity-rbac",
-      "kind": "analysis",
-      "activity": "identity-design",
-      "activityTitle": "Fordel minste tilgang og styr privilegier",
-      "url": "workshops/d4a.html#identity-design"
-    },
-    "prep-rbac-015": {
       "workshop": "d4a",
       "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
       "domain": 4,
@@ -4187,16 +4207,6 @@
       "activityTitle": "Fordel minste tilgang og styr privilegier",
       "url": "workshops/d4a.html#identity-design"
     },
-    "prep-rbac-022": {
-      "workshop": "d4a",
-      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
-      "domain": 4,
-      "category": "identity-rbac",
-      "kind": "analysis",
-      "activity": "identity-design",
-      "activityTitle": "Fordel minste tilgang og styr privilegier",
-      "url": "workshops/d4a.html#identity-design"
-    },
     "prep-p-rbac-023": {
       "workshop": "d4a",
       "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
@@ -4218,16 +4228,6 @@
       "url": "workshops/d4a.html#identity-design"
     },
     "prep-rbac-027": {
-      "workshop": "d4a",
-      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
-      "domain": 4,
-      "category": "identity-rbac",
-      "kind": "analysis",
-      "activity": "identity-design",
-      "activityTitle": "Fordel minste tilgang og styr privilegier",
-      "url": "workshops/d4a.html#identity-design"
-    },
-    "prep-rbac-028": {
       "workshop": "d4a",
       "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
       "domain": 4,
@@ -4547,6 +4547,16 @@
       "activityTitle": "Skill objekttype, kontrollplan og datatilgang",
       "url": "workshops/d4a.html#vault-design"
     },
+    "m-55-3-1": {
+      "workshop": "d4a",
+      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
+      "domain": 4,
+      "category": "app-configuration",
+      "kind": "practical",
+      "activity": "config-refresh",
+      "activityTitle": "Observer nøkkel, label og sentinel i en kjørende prosess",
+      "url": "workshops/d4a.html#config-refresh"
+    },
     "m-55-1-1": {
       "workshop": "d4a",
       "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
@@ -4566,16 +4576,6 @@
       "activity": "config-provider",
       "activityTitle": "Sammenlign SDK og provider i Python og .NET",
       "url": "workshops/d4a.html#config-provider"
-    },
-    "m-55-3-1": {
-      "workshop": "d4a",
-      "workshopTitle": "Identitet, hemmeligheter og dynamisk konfigurasjon",
-      "domain": 4,
-      "category": "app-configuration",
-      "kind": "practical",
-      "activity": "config-refresh",
-      "activityTitle": "Observer nøkkel, label og sentinel i en kjørende prosess",
-      "url": "workshops/d4a.html#config-refresh"
     },
     "m-55-4-1": {
       "workshop": "d4a",
@@ -5047,6 +5047,16 @@
       "activityTitle": "Finn feilrate, treghet og relaterte kall",
       "url": "workshops/d4b.html#kql-investigate"
     },
+    "m-63-3-1": {
+      "workshop": "d4b",
+      "workshopTitle": "Finn en distribuert feil med OpenTelemetry og KQL",
+      "domain": 4,
+      "category": "monitor",
+      "kind": "analysis",
+      "activity": "monitor-design",
+      "activityTitle": "Lag en driftsvisning som ikke skjuler datatap",
+      "url": "workshops/d4b.html#monitor-design"
+    },
     "m-63-1-1": {
       "workshop": "d4b",
       "workshopTitle": "Finn en distribuert feil med OpenTelemetry og KQL",
@@ -5058,16 +5068,6 @@
       "url": "workshops/d4b.html#monitor-alert"
     },
     "m-63-2-1": {
-      "workshop": "d4b",
-      "workshopTitle": "Finn en distribuert feil med OpenTelemetry og KQL",
-      "domain": 4,
-      "category": "monitor",
-      "kind": "analysis",
-      "activity": "monitor-design",
-      "activityTitle": "Lag en driftsvisning som ikke skjuler datatap",
-      "url": "workshops/d4b.html#monitor-design"
-    },
-    "m-63-3-1": {
       "workshop": "d4b",
       "workshopTitle": "Finn en distribuert feil med OpenTelemetry og KQL",
       "domain": 4,
