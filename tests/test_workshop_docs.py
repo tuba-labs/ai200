@@ -110,6 +110,15 @@ class WorkshopDocumentationTests(unittest.TestCase):
                     self.assertNotRegex(line, r"\baz\s+.*\bcreate\b")
         self.assertNotRegex(self.html["getting-started.html"], r"Resource groups\s*(?:→|&rarr;)\s*Create")
 
+    def assert_code_lines_explained(self, text, marker):
+        previous = ''
+        for line in text.splitlines():
+            # Closing delimiters carry no operation that needs its own explanation.
+            closing_only = re.fullmatch(r"[}\])\s]+[;,]?", line)
+            if line.strip() and not line.lstrip().startswith(marker) and not closing_only:
+                self.assertTrue(previous.lstrip().startswith(marker), line)
+            previous = line
+
     def test_code_windows_explain_each_line(self):
         for name, page in self.pages.items():
             for block in page.code:
@@ -121,11 +130,17 @@ class WorkshopDocumentationTests(unittest.TestCase):
                     if block["source"] or block["language"] not in ("PowerShell", "SQL", "KQL"):
                         continue
                     marker = {"SQL": "--", "KQL": "//"}.get(block["language"], "#")
-                    previous = ''
-                    for line in block["text"].splitlines():
-                        if line.strip() and not line.lstrip().startswith(marker):
-                            self.assertTrue(previous.lstrip().startswith(marker), line)
-                        previous = line
+                    self.assert_code_lines_explained(block["text"], marker)
+
+    def test_code_explanations_allow_closures_but_still_require_commands(self):
+        for marker in ("#", "--", "//"):
+            with self.subTest(marker=marker):
+                self.assert_code_lines_explained(
+                    f"{marker} Explain the operation.\noperation(\n    )\n]\n}}\n  }} ) ];\n),", marker)
+                for line in ("operation()", "} else {", "); operation()"):
+                    with self.subTest(line=line), self.assertRaises(AssertionError):
+                        self.assert_code_lines_explained(
+                            f"{marker} Explain the first operation.\noperation()\n}}\n{line}", marker)
 
     def restore_commands(self):
         for name, page in self.short.items():
