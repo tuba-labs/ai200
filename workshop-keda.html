@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#regel">1. Lag en KEDA-regel</a>
       <a href="#last">2. Gi køen arbeid</a>
@@ -35,6 +36,23 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-container-apps.html">4. Miljøer og revisjoner i Container Apps</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-keda" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>KEDA</span></label></th><td>Kubernetes Event-driven Autoscaling: mekanismen bak hendelsesstyrt skalering i Container Apps. Vi bruker kølengde som signal.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om KEDA</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-scaler" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Scaler og skaleringsregel</span></label></th><td>Scaleren leser en bestemt kilde; regelen angir type, metadata og autentisering. Her velger vi azure-queue for en Azure Storage-kø.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Scaler og skaleringsregel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-queue" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Storage Queue</span></label></th><td>En kø som lagrer meldinger. Testappen i denne økten tømmer ikke køen; vi legger til og fjerner arbeid for å se skaleringssignalet.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Azure Storage Queue</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-metadata" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>queueName og queueLength</span></label></th><td>queueName velger køen; queueLength er målverdien per replika. Vi prøver terskel 5 og ser hvordan 15 meldinger møter maksgrensen.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om queueName og queueLength</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-bounds" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Min/max replicas og scale-to-zero</span></label></th><td>Min og maks er nedre og øvre grense for antall kopier. Minimum 0 gjør det mulig å stoppe alle replikaer når det ikke er arbeid.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Min/max replicas og scale-to-zero</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-timing" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Polling og cooldown</span></label></th><td>Polling er jevnlig avlesning av signalet. Cooldown er ventetid før nedskalering mot null; dette er forskjellige deler av skaleringsforløpet.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Polling og cooldown</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-secret" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tilkoblingsstreng og secret</span></label></th><td>Tilkoblingsstrengen inneholder kontonøkkelen. Vi legger den i en apphemmelighet som skaleringsregelen bruker til autentisering.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Tilkoblingsstreng og secret</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Fortsett med Container App-en og terminalvariablene fra <a href="./workshop-container-apps.html">del 4</a>. Ved ny terminal bruker du <a href="./workshop-container-apps.html#fortsett">tilkoblingsblokken for den eksisterende appen</a>. Opprett bare den nye Storage-kontoen og labkøen nedenfor.</p><pre data-language="PowerShell"><code># Lag et unikt navn på den nye Storage-kontoen for skaleringsøvelsen.
 $storage = "ai200q" + (New-Guid).ToString("N").Substring(0, 12)

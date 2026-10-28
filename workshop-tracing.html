@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#kjore">1. Start to tjenester</a>
       <a href="#kontekst">2. Følg foreldre og kontekst</a>
@@ -35,6 +36,25 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-otel" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>OpenTelemetry / OTel</span></label></th><td>Felles verktøy og grensesnitt for telemetri. OTel er kortformen; SDK betyr Software Development Kit og API betyr Application Programming Interface.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om OpenTelemetry / OTel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-trace" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Trace, span og ID</span></label></th><td>En trace samler operasjonen på tvers av tjenester; en span måler ett steg. ID betyr identifier, identifikator: trace-ID er felles, mens hver span har egen ID.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om Trace, span og ID</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-parent" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ParentId og span-kind</span></label></th><td>ParentId peker på forelderens span. SERVER markerer mottak og CLIENT et utgående kall; sammen viser de hvem som kalte hvem.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om ParentId og span-kind</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-context" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>W3C traceparent</span></label></th><td>W3C er World Wide Web Consortium. traceparent er en standardisert header som frakter sporingsidentifikatorer og flagg mellom tjenestene.</td><td><a href="https://opentelemetry.io/docs/concepts/context-propagation/">Les mer<span class="sr-only"> om W3C traceparent</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-propagation" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Inject og extract</span></label></th><td>Inject skriver aktiv sporingskontekst til utgående headere; extract leser den ved mottak. Vi fjerner inject for å se hvordan sammenhengen brytes.</td><td><a href="https://opentelemetry.io/docs/concepts/context-propagation/">Les mer<span class="sr-only"> om Inject og extract</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-provider" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TracerProvider, processor og exporter</span></label></th><td>Provideren styrer sporing; en span processor kobler spans til eksportøren. BatchSpanProcessor sender i bakgrunnen, og eksportøren velger mottaker.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om TracerProvider, processor og exporter</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-insights" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Application Insights og workspace</span></label></th><td>Application Insights tar imot apptelemetri. Den tilknyttede Log Analytics-workspace-en lagrer data vi undersøker med spørringer i neste økt.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Les mer<span class="sr-only"> om Application Insights og workspace</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-metrics" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metrikk, counter og histogram</span></label></th><td>En metrikk er en måling. En counter teller forespørsler; et histogram samler varigheter, som senere kan analyseres samlet.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Les mer<span class="sr-only"> om Metrikk, counter og histogram</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og latency</span></label></th><td>HTTP betyr Hypertext Transfer Protocol, protokollen mellom tjenestene. Latency er svartid; en treg backend gir også utslag i frontendens samlede varighet.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og latency</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Øvelsen bruker to Python-terminaler i prosjektroten: én til backend på port 8092 og én til frontend på port 8091. Begge kjøres med <code>services.py</code> og startes i steg 1. Uten connection string eksporteres spans til konsollen.</p>
 

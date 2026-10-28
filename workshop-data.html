@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#postgres">1. Start database og schema</a>
       <a href="#vektorsok">2. Søk og filtrer</a>
@@ -35,6 +36,24 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-postgres" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>PostgreSQL og pgvector</span></label></th><td>PostgreSQL er databasen. Utvidelsen pgvector gir datatypen vector og operatorene og indeksene som brukes til vektorsøk.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om PostgreSQL og pgvector</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-sql" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL, schema og primærnøkkel</span></label></th><td>SQL betyr Structured Query Language. Schema beskriver datastrukturen; primærnøkkelen identifiserer hver rad entydig.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om SQL, schema og primærnøkkel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-embedding" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Embedding og dimensjon</span></label></th><td>En embedding er en tallvektor som representerer innhold. vector(3) krever tre komponenter; her bruker vi håndskrevne undervisningsvektorer.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Embedding og dimensjon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-cosine" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosinusavstand og &lt;=&gt;</span></label></th><td>Operatoren &lt;=&gt; beregner cosinusavstand mellom vektorer. Lavere avstand gir høyere plassering når vi sorterer stigende.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Cosinusavstand og &lt;=&gt;</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-rag" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metadatafilter og RAG</span></label></th><td>RAG betyr Retrieval-Augmented Generation, generering med gjenfunnet kontekst. Metadatafilteret avgrenser hvilke dokumenter som kan bli med i gjenfinningen.</td><td><a href="https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview">Les mer<span class="sr-only"> om Metadatafilter og RAG</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-hnsw" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HNSW</span></label></th><td>Hierarchical Navigable Small World: grafbasert indeks for tilnærmet søk etter nærmeste vektorer. Recall, minnebruk og svartid må veies mot hverandre.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om HNSW</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-explain" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>EXPLAIN ANALYZE og Seq Scan</span></label></th><td>Viser hvordan spørringen kjøres og målt tidsbruk. Seq Scan er sekvensiell gjennomlesing; et lite datasett kan gjøre den billigere enn indeksoppslag.</td><td><a href="https://www.postgresql.org/docs/17/using-explain.html">Les mer<span class="sr-only"> om EXPLAIN ANALYZE og Seq Scan</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-recall" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Recall og latency</span></label></th><td>Recall er andelen relevante nærmeste naboer søket finner sammenlignet med et eksakt søk. Latency er svartid; høyere recall kan kreve mer arbeid.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Recall og latency</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Docker må kjøre. Bruk <code>labs/data/setup.sql</code> som ferdig datasett, og lagre egne spørringer i <code>artifacts/queries.sql</code>. Vektorene er små undervisningstall; øvelsen undersøker lagring, avstand og gjenfinning.</p>
 

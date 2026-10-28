@@ -160,7 +160,7 @@
       <a class="brand" href="#topp"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
       <nav aria-label="Hovednavigasjon">
         <a href="#domener">Pensum</a>
-        <a href="#workshops">Workshops</a>
+        <a href="./workshops/index.html">Workshops</a>
         <a href="studiedekning.html">Studiedekning</a>
         <a href="getting-started.html">Kom i gang</a>
         <a href="flashcards.html">Flashcards</a>
@@ -195,7 +195,7 @@
 
   <main id="innhold" class="wrap">
     <div class="stats" aria-label="Eksamen i korte trekk">
-      <div class="stat"><strong>68</strong><span>Interaktive flashcards</span></div>
+      <div class="stat"><strong>523</strong><span>Interaktive flashcards</span></div>
       <div class="stat"><strong>120 min</strong><span>Varighet</span></div>
       <div class="stat"><strong>700 / 1000</strong><span>Beståttgrense</span></div>
       <div class="stat"><strong>Online / senter</strong><span>Med eksamensvakt</span></div>
@@ -212,28 +212,28 @@
           <div class="domain-top"><span class="domain-number">DOMENE 01</span><span class="weight">20–25 %</span></div>
           <h3><a href="pensum-containere.html">Containere på Azure</a></h3>
           <p>Images, hosting, revisjoner, skalering og feilsøking.</p>
-          <div class="focus">7 delmål · Workshop 1–6</div>
+          <div class="focus">7 delmål · Workshop 1A og 1B</div>
           <div class="domain-links"><a href="pensum-containere.html">Pensum og videre studier →</a><a href="#workshops-domene-1">Vis workshops →</a></div>
         </article>
         <article class="domain">
           <div class="domain-top"><span class="domain-number">DOMENE 02</span><span class="weight">30–35 %</span></div>
           <h3><a href="pensum-data.html">Datatjenester for AI</a></h3>
           <p>Cosmos DB, PostgreSQL og Managed Redis med vektorsøk og ytelse.</p>
-          <div class="focus">12 delmål · Workshop 7–13</div>
+          <div class="focus">12 delmål · Workshop 2A og 2B</div>
           <div class="domain-links"><a href="pensum-data.html">Pensum og videre studier →</a><a href="#workshops-domene-2">Vis workshops →</a></div>
         </article>
         <article class="domain">
           <div class="domain-top"><span class="domain-number">DOMENE 03</span><span class="weight">20–25 %</span></div>
           <h3><a href="pensum-integrasjoner.html">Integrasjoner og Functions</a></h3>
           <p>Meldinger, hendelser, serverless API-er, triggere og bindings.</p>
-          <div class="focus">4 delmål · Workshop 14–18</div>
+          <div class="focus">4 delmål · Workshop 3A og 3B</div>
           <div class="domain-links"><a href="pensum-integrasjoner.html">Pensum og videre studier →</a><a href="#workshops-domene-3">Vis workshops →</a></div>
         </article>
         <article class="domain">
           <div class="domain-top"><span class="domain-number">DOMENE 04</span><span class="weight">20–25 %</span></div>
           <h3><a href="pensum-sikkerhet.html">Sikkerhet, sporing og KQL</a></h3>
           <p>Hemmeligheter, appkonfigurasjon og feilsøking på tvers av tjenester.</p>
-          <div class="focus">4 delmål · Workshop 19–22</div>
+          <div class="focus">4 delmål · Workshop 4A og 4B</div>
           <div class="domain-links"><a href="pensum-sikkerhet.html">Pensum og videre studier →</a><a href="#workshops-domene-4">Vis workshops →</a></div>
         </article>
       </div>
@@ -242,262 +242,17 @@
 
     <section id="workshops" aria-labelledby="workshops-title">
       <div class="section-head">
-        <div class="kicker">Lær ved å bygge</div>
-        <h2 id="workshops-title">Velg workshopformat</h2>
-        <p>Velg korte økter eller en samlet gjennomføring per domene. De samme øvelsene kan tas som én sammenhengende workshop eller deles i to samlinger. Gjennomføringstiden er ikke målt.</p>
+        <div class="kicker">Nytt workshopløp</div>
+        <h2 id="workshops-title">To workshops per domene</h2>
+        <p>Åtte nye workshops med kategorier som kapitler. Flashcardene lenker til konkrete praktiske oppgaver eller analyseoppgaver. <a href="./workshops/coverage.html">Se kortdekning og gjenstående repetisjonskort →</a></p>
       </div>
-      <p class="workshop-help"><a href="getting-started.html#for-du-starter">Før første workshop: hent prosjektet og klargjør verktøyene</a> · <a href="studiedekning.html">Studiedekning og videre læring</a></p>
-      <fieldset class="format-options" data-workshop-format-options hidden>
-        <legend>Hvordan vil du gjennomføre?</legend>
-        <label><input type="radio" name="workshop-format" value="short" checked><span>Korte økter<small>22 avgrensede workshops · eget tempo</small></span></label>
-        <label><input type="radio" name="workshop-format" value="domain"><span>Samlet per domene<small>Én økt eller to samlinger · samme oppgaver</small></span></label>
-      </fieldset>
-      <div class="workshop-tabs" data-tabs>
-        <div class="workshop-tablist" data-tab-list aria-label="Velg pensumdomene" hidden>
-          <button type="button" id="workshop-tab-1" data-tab="workshops-domene-1">1. Containere<span>6 workshops</span></button>
-          <button type="button" id="workshop-tab-2" data-tab="workshops-domene-2">2. AI-data<span>7 workshops</span></button>
-          <button type="button" id="workshop-tab-3" data-tab="workshops-domene-3">3. Integrasjoner<span>5 workshops</span></button>
-          <button type="button" id="workshop-tab-4" data-tab="workshops-domene-4">4. Sikkerhet og drift<span>4 workshops</span></button>
-        </div>
-        <section class="workshop-panel" id="workshops-domene-1" data-tab-panel>
-          <h3>Domene 1 · Containere på Azure</h3>
-          <p class="small"><a href="pensum-containere.html">Se pensummål og videre studier for dette domenet →</a></p>
-          <div data-workshop-format="short">
-          <div class="resource-grid">
-        <article class="resource">
-          <span class="tag">WORKSHOP 01 · KORT ØKT</span>
-          <h3>Bygg og feilsøk et container-image</h3>
-          <p>Bygg en liten ferdig testtjeneste, finn en HTTP-feil og kjør to image-versjoner.</p>
-          <p class="small">Start etter felles klargjøring.</p>
-          <a href="workshop-containers.html">Åpne workshop 1 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 02 · KORT ØKT</span>
-          <h3>Lagre images og bygg med ACR Tasks</h3>
-          <p>Bygg og kjør images i Azure Container Registry, og finn igjen tagger, digester og task-logger.</p>
-          <p class="small">Bygger på workshop 1.</p>
-          <a href="workshop-acr.html">Åpne workshop 2 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 03 · KORT ØKT</span>
-          <h3>Kjør en container i App Service</h3>
-          <p>Kjør ditt ACR-image som en webapp og gi containeren konfigurasjon og en testhemmelighet.</p>
-          <p class="small">Bygger på workshop 2.</p>
-          <a href="workshop-app-service.html">Åpne workshop 3 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 04 · KORT ØKT</span>
-          <h3>Miljøer og revisjoner i Container Apps</h3>
-          <p>Opprett et Container Apps-miljø og test to revisjoner med trafikkfordeling og tilbakerulling.</p>
-          <p class="small">Bygger på workshop 2.</p>
-          <a href="workshop-container-apps.html">Åpne workshop 4 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 05 · KORT ØKT</span>
-          <h3>Hendelsesstyrt skalering med KEDA</h3>
-          <p>La en kø styre antall replikaer, og sammenlign terskel, polling og nedskalering.</p>
-          <p class="small">Bygger på workshop 4.</p>
-          <a href="workshop-keda.html">Åpne workshop 5 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 06 · KORT ØKT</span>
-          <h3>Utrulling og feilsøking i AKS</h3>
-          <p>Deploy et ACR-image med manifest, og finn feil ved image-pull, readiness og nettverk.</p>
-          <p class="small">Bygger på workshop 2.</p>
-          <a href="workshop-aks.html">Åpne workshop 6 →</a>
-        </article>
-          </div>
-          </div>
-          <div class="domain-format" data-workshop-format="domain">
-            <article class="resource">
-              <span class="tag">SAMLET DOMENE 1 · 6 DELER</span>
-              <h3>Containere på Azure</h3>
-              <p>Del 1–6 samlet på én side, med felles klargjøring, ressursplan og samme avkrysninger som de korte øktene.</p>
-              <p class="small">Samling 1: del 1–3 · Samling 2: del 4–6. <a href="workshop-domene-containere.html#forberedelser">Før du starter →</a></p>
-              <div class="domain-session-links">
-                <a href="workshop-domene-containere.html">Én samlet økt →</a>
-                <a href="workshop-domene-containere.html?samling=1">Samling 1 →</a>
-                <a href="workshop-domene-containere.html?samling=2">Samling 2 →</a>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="workshop-panel" id="workshops-domene-2" data-tab-panel>
-          <h3>Domene 2 · Datatjenester for AI</h3>
-          <p class="small"><a href="pensum-data.html">Se pensummål og videre studier for dette domenet →</a></p>
-          <div data-workshop-format="short">
-          <div class="resource-grid">
-        <article class="resource">
-          <span class="tag">WORKSHOP 07 · KORT ØKT</span>
-          <h3>PostgreSQL: vektorsøk og indekser</h3>
-          <p>Modeller en liten vektortabell, bruk metadatafilter og undersøk en HNSW-indeks.</p>
-          <p class="small">Start etter felles klargjøring.</p>
-          <a href="workshop-data.html">Åpne workshop 7 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 08 · KORT ØKT</span>
-          <h3>PostgreSQL i Azure: SDK og forbindelser</h3>
-          <p>Koble Python til Azure Database for PostgreSQL, mål forbindelser og vurder ressursbruk for vektorsøk.</p>
-          <p class="small">Bygger på workshop 7.</p>
-          <a href="workshop-postgresql.html">Åpne workshop 8 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 09 · KORT ØKT</span>
-          <h3>Cosmos DB: SDK, indekser og RU</h3>
-          <p>Bruk Cosmos SDK til oppslag og spørringer, og undersøk hvordan partisjon, indekser og consistency påvirker RU.</p>
-          <p class="small">Start etter felles klargjøring.</p>
-          <a href="workshop-cosmos.html">Åpne workshop 9 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 10 · KORT ØKT</span>
-          <h3>Vektorsøk i Cosmos DB</h3>
-          <p>Opprett vektorpolicy og indeks i Cosmos DB, lagre vektorer og utfør filtrert likhetssøk.</p>
-          <p class="small">Bygger på workshop 9.</p>
-          <a href="workshop-cosmos-vectors.html">Åpne workshop 10 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 11 · KORT ØKT</span>
-          <h3>Behandle endringer fra Cosmos DB</h3>
-          <p>Bruk en Cosmos DB-trigger som change feed-prosessor, og undersøk leases, checkpoints og gjentatt levering.</p>
-          <p class="small">Bygger på workshop 9.</p>
-          <a href="workshop-change-feed.html">Åpne workshop 11 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 12 · KORT ØKT</span>
-          <h3>Caching og invalidering med Managed Redis</h3>
-          <p>Koble Python til Managed Redis og øv på cache hit, miss, utløp og eksplisitt invalidering.</p>
-          <p class="small">Start etter felles klargjøring.</p>
-          <a href="workshop-redis.html">Åpne workshop 12 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 13 · KORT ØKT</span>
-          <h3>Vektorindeks i Managed Redis</h3>
-          <p>Lagre binære vektorer i Managed Redis og søk med en HNSW-indeks og et metadatafilter.</p>
-          <p class="small">Bygger på workshop 12.</p>
-          <a href="workshop-redis-vectors.html">Åpne workshop 13 →</a>
-        </article>
-          </div>
-          </div>
-          <div class="domain-format" data-workshop-format="domain">
-            <article class="resource">
-              <span class="tag">SAMLET DOMENE 2 · 7 DELER</span>
-              <h3>Datatjenester for AI</h3>
-              <p>Del 7–13 samlet på én side, med felles klargjøring, ressursplan og samme avkrysninger som de korte øktene.</p>
-              <p class="small">Samling 1: del 7–9 · Samling 2: del 10–13. Delingen er tematisk.</p>
-              <div class="domain-session-links">
-                <a href="workshop-domene-data.html">Én samlet økt →</a>
-                <a href="workshop-domene-data.html?samling=1">Samling 1 →</a>
-                <a href="workshop-domene-data.html?samling=2">Samling 2 →</a>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="workshop-panel" id="workshops-domene-3" data-tab-panel>
-          <h3>Domene 3 · Functions, meldinger og hendelser</h3>
-          <p class="small"><a href="pensum-integrasjoner.html">Se pensummål og videre studier for dette domenet →</a></p>
-          <div data-workshop-format="short">
-          <div class="resource-grid">
-        <article class="resource">
-          <span class="tag">WORKSHOP 14 · KORT ØKT</span>
-          <h3>Bygg og publiser en HTTP Function</h3>
-          <p>Kjør et serverless HTTP-API lokalt, test feil og publiser en Python Function App.</p>
-          <p class="small">Start etter felles klargjøring.</p>
-          <a href="workshop-integrations.html">Åpne workshop 14 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 15 · KORT ØKT</span>
-          <h3>Behandle kømeldinger og DLQ i kode</h3>
-          <p>Send og motta meldinger med Service Bus SDK, og flytt en kontrollert feil til dead-letter queue.</p>
-          <p class="small">Bygger på workshop 14.</p>
-          <a href="workshop-service-bus.html">Åpne workshop 15 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 16 · KORT ØKT</span>
-          <h3>Service Bus: topics og subscriptions</h3>
-          <p>Send én hendelse til uavhengige mottakere og filtrer hvilke subscriptions som får en kopi.</p>
-          <p class="small">Bygger på workshop 15.</p>
-          <a href="workshop-topics.html">Åpne workshop 16 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 17 · KORT ØKT</span>
-          <h3>Functions: triggere og output-binding</h3>
-          <p>Koble en HTTP-trigger til Service Bus med output-binding og behandle kømeldingen med en egen trigger.</p>
-          <p class="small">Bygger på workshop 14 og 15.</p>
-          <a href="workshop-bindings.html">Åpne workshop 17 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 18 · KORT ØKT</span>
-          <h3>Event Grid: filtre, egne hendelser og retries</h3>
-          <p>Filtrer egne Event Grid-hendelser, og observer en webhook som feiler og blir forsøkt levert igjen.</p>
-          <p class="small">Bygger på workshop 14.</p>
-          <a href="workshop-event-grid.html">Åpne workshop 18 →</a>
-        </article>
-          </div>
-          </div>
-          <div class="domain-format" data-workshop-format="domain">
-            <article class="resource">
-              <span class="tag">SAMLET DOMENE 3 · 5 DELER</span>
-              <h3>Integrasjoner og Functions</h3>
-              <p>Del 14–18 samlet på én side, med felles klargjøring, ressursplan og samme avkrysninger som de korte øktene.</p>
-              <p class="small">Samling 1: del 14–16 · Samling 2: del 17–18. Delingen er tematisk.</p>
-              <div class="domain-session-links">
-                <a href="workshop-domene-integrasjoner.html">Én samlet økt →</a>
-                <a href="workshop-domene-integrasjoner.html?samling=1">Samling 1 →</a>
-                <a href="workshop-domene-integrasjoner.html?samling=2">Samling 2 →</a>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="workshop-panel" id="workshops-domene-4" data-tab-panel>
-          <h3>Domene 4 · Hemmeligheter, konfigurasjon og observability</h3>
-          <p class="small"><a href="pensum-sikkerhet.html">Se pensummål og videre studier for dette domenet →</a></p>
-          <div data-workshop-format="short">
-          <div class="resource-grid">
-        <article class="resource">
-          <span class="tag">WORKSHOP 19 · KORT ØKT</span>
-          <h3>Key Vault: oppslag, identitet og rotasjon</h3>
-          <p>Les en hemmelighet fra Python, roter den og gi en driftet app tilgang med managed identity.</p>
-          <p class="small">Bygger på workshop 14.</p>
-          <a href="workshop-security.html">Åpne workshop 19 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 20 · KORT ØKT</span>
-          <h3>Les appkonfigurasjon med etiketter</h3>
-          <p>Hent vanlige innstillinger fra App Configuration, og velg riktig verdi med en etikett.</p>
-          <p class="small">Bygger på workshop 19.</p>
-          <a href="workshop-app-configuration.html">Åpne workshop 20 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 21 · KORT ØKT</span>
-          <h3>Spor et kall mellom to tjenester</h3>
-          <p>Følg én HTTP-forespørsel gjennom to prosesser med samme trace-ID og riktig foreldrekobling.</p>
-          <p class="small">Start etter felles klargjøring.</p>
-          <a href="workshop-tracing.html">Åpne workshop 21 →</a>
-        </article>
-        <article class="resource">
-          <span class="tag">WORKSHOP 22 · KORT ØKT</span>
-          <h3>Finn feil og målinger med KQL</h3>
-          <p>Bruk KQL til å korrelere tjenester, finne feil og analysere egne målinger fra sporingsøvelsen.</p>
-          <p class="small">Bygger på workshop 21.</p>
-          <a href="workshop-kql.html">Åpne workshop 22 →</a>
-        </article>
-          </div>
-          </div>
-          <div class="domain-format" data-workshop-format="domain">
-            <article class="resource">
-              <span class="tag">SAMLET DOMENE 4 · 4 DELER</span>
-              <h3>Sikkerhet, sporing og KQL</h3>
-              <p>Del 19–22 samlet på én side, med felles klargjøring, ressursplan og samme avkrysninger som de korte øktene.</p>
-              <p class="small">Samling 1: del 19–20 · Samling 2: del 21–22. Delingen er tematisk.</p>
-              <div class="domain-session-links">
-                <a href="workshop-domene-sikkerhet.html">Én samlet økt →</a>
-                <a href="workshop-domene-sikkerhet.html?samling=1">Samling 1 →</a>
-                <a href="workshop-domene-sikkerhet.html?samling=2">Samling 2 →</a>
-              </div>
-            </article>
-          </div>
-        </section>
+      <div class="grid2">
+        <article class="domain" id="workshops-domene-1"><span class="domain-number">DOMENE 01</span><h3>Containere</h3><p>Images, hosting, skalering og Kubernetes.</p><div class="domain-links"><a href="./workshops/d1a.html">1A · Kildekode til driftet container →</a><a href="./workshops/d1b.html">1B · Skalering og Kubernetes-drift →</a></div></article>
+        <article class="domain" id="workshops-domene-2"><span class="domain-number">DOMENE 02</span><h3>AI-data</h3><p>Vektorsøk, caching, partisjoner og endringsflyt.</p><div class="domain-links"><a href="./workshops/d2a.html">2A · PostgreSQL og Redis →</a><a href="./workshops/d2b.html">2B · Cosmos DB og endringsflyt →</a></div></article>
+        <article class="domain" id="workshops-domene-3"><span class="domain-number">DOMENE 03</span><h3>Integrasjoner</h3><p>HTTP, bakgrunnsarbeid, hendelser og meldinger.</p><div class="domain-links"><a href="./workshops/d3a.html">3A · Functions og Event Grid →</a><a href="./workshops/d3b.html">3B · Service Bus og Event Hubs →</a></div></article>
+        <article class="domain" id="workshops-domene-4"><span class="domain-number">DOMENE 04</span><h3>Sikkerhet og observasjon</h3><p>Identitet, hemmeligheter, konfigurasjon og feilsøking.</p><div class="domain-links"><a href="./workshops/d4a.html">4A · Identitet og konfigurasjon →</a><a href="./workshops/d4b.html">4B · OpenTelemetry og KQL →</a></div></article>
       </div>
+      <p class="workshop-help"><a href="./workshops/index.html">Åpne workshopløpet</a> · <a href="./workshops/setup.html">Felles oppsett for workshopene</a></p>
     </section>
 
     <section id="ressurser" aria-labelledby="ressurser-title">
@@ -528,8 +283,8 @@
         </article>
         <article class="resource">
           <span class="tag community">UOFFISIELT · FLASHCARDS</span>
-          <h3>MightyBS – flashcards</h3>
-          <p>68 kort fordelt på de fire domenene, nå også som en interaktiv øvingsside med svar, filtrering og lokal fremdrift.</p>
+          <h3>Flashcards med ett spørsmål per kort</h3>
+          <p>523 kort fra oppdelte MightyBS-kort og nye spørsmål fra AI-200 Prep. Filtrer på fagdomene, kategori, kortsett og fremdrift.</p>
           <p class="small">Forslag: Besvar høyt før dere snur kortet, sorter etter hva dere kan, og øv ekstra på svakeste domene.</p>
           <a href="flashcards.html">Start interaktive flashcards →</a><br>
           <a href="https://www.mightybs.com/certifications/ai-200/flashcards/" target="_blank" rel="noopener noreferrer">Se PDF- og utskriftsversjonen ↗</a>
@@ -587,6 +342,7 @@
   <footer>
     <div class="wrap footer-inner">
       <span>AI-200 · Felles startside for sertifiseringsgruppen</span>
+      <a href="./old/index.html">Tidligere workshops (arkiv)</a>
       <span>Oppdatert 27. oktober 2026 · Microsofts studieguide er fasit ved endringer.</span>
     </div>
   </footer>

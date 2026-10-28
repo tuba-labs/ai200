@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Klargjør før økten</a>
       <a href="#tilkobling">1. Koble til sikkert</a>
       <a href="#cache">2. Hit, miss og utløp</a>
@@ -35,6 +36,23 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-redis" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Managed Redis</span></label></th><td>Azure-driftet Redis, en datatjeneste som holder arbeidsdata i minnet. Her bruker vi den som cache foran et tenkt databaseoppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om Azure Managed Redis</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-aside" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache-aside</span></label></th><td>Appen leser cachen først. Ved manglende verdi henter den fra datakilden og lagrer resultatet i cachen for senere bruk.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Cache-aside</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-hit-miss" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache hit og miss</span></label></th><td>Hit betyr at nøkkelen har en verdi i cachen; miss betyr at den mangler. Vi følger begge situasjoner i terminalen.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Cache hit og miss</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-ttl" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TTL</span></label></th><td>Time to Live: hvor lenge en cacheoppføring får leve. Vi setter utløp ved lagring; et vanlig oppslag forlenger ikke denne levetiden.</td><td><a href="https://redis.io/docs/latest/commands/expire/">Les mer<span class="sr-only"> om TTL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-invalidate" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Invalidering</span></label></th><td>Fjerning av cacheoppføringer som er blitt gamle når kildedata endres. Dette utfyller automatisk utløp og krever riktige nøkler.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Invalidering</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-tls" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TLS</span></label></th><td>Transport Layer Security: kryptert forbindelse til Redis. Klienten bruker ssl=True og labens nøkkel fra miljøet.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om TLS</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-clustering" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Enterprise og OSS clustering</span></label></th><td>OSS betyr Open Source Software. Enterprise-modellen gir ett logisk endepunkt til vanlig klient; OSS-modellen krever en klient som håndterer klyngens fordeling.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om Enterprise og OSS clustering</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Opprett én Azure Managed Redis-labinstans i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> med Enterprise clustering, TLS og en labnøkkel. Bruk samme instans i workshop 12–13. Velg RediSearch ved opprettelsen, med en tier som støtter modulen og NoEviction. Modulen kan ikke legges til senere. En arrangør kan klargjøre en delt labinstans.</p>
 

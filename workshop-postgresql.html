@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Klargjør før økten</a>
       <a href="#sdk">1. Koble til med Python</a>
       <a href="#pool">2. Mål og gjenbruk forbindelser</a>
@@ -35,6 +36,24 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-data.html">7. PostgreSQL: vektorsøk og indekser</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-postgres" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Database for PostgreSQL</span></label></th><td>En Azure-driftet PostgreSQL-server. Vi skiller serverkapasitet og nettverk fra databasen og tabellene appen spør mot.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om Azure Database for PostgreSQL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-sql" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL-parametere</span></label></th><td>SQL betyr Structured Query Language. Verdiene sendes separat fra SQL-teksten til execute, slik at brukerdata ikke tolkes som SQL-kode.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om SQL-parametere</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-tls" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TLS</span></label></th><td>Transport Layer Security: beskytter data under overføring. Vi krever kryptert forbindelse med sslmode=require.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om TLS</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-pool" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Connection pool</span></label></th><td>En forbindelsespool gjenbruker åpne databaseforbindelser. Min/max-størrelse styrer kapasiteten; hver prosess har sin egen klientpool.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer">Les mer<span class="sr-only"> om Connection pool</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-pgbouncer" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>PgBouncer</span></label></th><td>En separat pooler foran PostgreSQL. Innebygd PgBouncer i Azure bruker port 6432 og er forskjellig fra klientpoolen i Python.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer">Les mer<span class="sr-only"> om PgBouncer</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-resources" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>CPU, minne og I/O</span></label></th><td>CPU er Central Processing Unit, prosessoren. I/O er Input/Output, inn- og utlesing; vi sammenligner prosessor, minne, forbindelser og lagringsaktivitet som mulige flaskehalser.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om CPU, minne og I/O</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-latency" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tilkoblingslatens</span></label></th><td>Tiden det tar å opprette en forbindelse før spørringen kan starte. Vi sammenligner nye forbindelser med gjenbruk, og gjentar målingen for å se variasjon.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer">Les mer<span class="sr-only"> om Tilkoblingslatens</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <h3 id="ressursgruppe">Ressursgruppen for domene 2</h3><p>Dette er første Azure-øvelse i domenet. Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
 $rg = "ai200-d2"

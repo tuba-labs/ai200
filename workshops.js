@@ -106,6 +106,10 @@
   }
 
   const checks = [...document.querySelectorAll('input[type="checkbox"][data-check]')];
+  const keywordSummaries = [...document.querySelectorAll('[data-keyword-progress]')].map(summary => ({
+    summary,
+    items: [...summary.closest('section').querySelectorAll('input[data-check-kind="keyword"]')]
+  }));
   const checkKeys = new Map();
   const checkGroups = new Map();
   let storageAvailable = true;
@@ -141,10 +145,21 @@
     (last.closest('.check-item') || last.parentElement).after(progress);
   }
   const updateProgress = () => {
+    keywordSummaries.forEach(({ summary, items }) => {
+      const known = items.filter(check => check.checked).length;
+      summary.textContent = `${known} av ${items.length} begreper avkrysset. ` + (storageAvailable
+        ? 'Lagres bare i denne nettleseren.'
+        : 'Nettleseren kan ikke lagre avhuking; den gjelder bare til siden lukkes.');
+    });
     if (!progress) return;
     const active = checks.filter(check => !check.closest('[data-domain-chapter]')?.hidden);
-    const done = active.filter(check => check.checked).length;
-    progress.textContent = `${done} av ${active.length} sjekkpunkter fullført. `;
+    const exercises = active.filter(check => check.dataset.checkKind !== 'keyword');
+    const keywords = active.filter(check => check.dataset.checkKind === 'keyword');
+    const done = exercises.filter(check => check.checked).length;
+    progress.textContent = `${done} av ${exercises.length} øvelsessjekkpunkter fullført. `;
+    if (keywords.length) {
+      progress.textContent += `${keywords.filter(check => check.checked).length} av ${keywords.length} begreper avkrysset. `;
+    }
     const note = document.createElement('span');
     note.className = 'progress-note';
     note.textContent = storageAvailable

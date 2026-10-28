@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#bygg">1. Bygg et image</a>
       <a href="#kjor">2. Kjør og feilsøk</a>
@@ -35,6 +36,23 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-docker" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Docker</span></label></th><td>Verktøy for å bygge images og starte containere. Docker-motoren må kjøre før vi bruker kommandoene i terminalen.</td><td><a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Les mer<span class="sr-only"> om Docker</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-image" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Container-image</span></label></th><td>En pakket versjon av appen med nødvendige filer og avhengigheter. Endringer i kildefilen blir først med etter et nytt bygg.</td><td><a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Les mer<span class="sr-only"> om Container-image</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-container" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Container</span></label></th><td>En kjørende instans av et image med egen prosess og isolert miljø. Vi starter, stopper og undersøker den lokalt.</td><td><a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Les mer<span class="sr-only"> om Container</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-dockerfile" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Dockerfile</span></label></th><td>Byggeoppskriften: FROM velger base, WORKDIR arbeidsmappe, COPY filer og CMD standardkommando. USER velger brukeren prosessen kjører som.</td><td><a href="https://docs.docker.com/reference/dockerfile/">Les mer<span class="sr-only"> om Dockerfile</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-port" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>EXPOSE og portbinding</span></label></th><td>EXPOSE dokumenterer containerporten. Portbinding med --publish kobler en port på maskinen til porten i containeren.</td><td><a href="https://docs.docker.com/reference/dockerfile/">Les mer<span class="sr-only"> om EXPOSE og portbinding</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-tag" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tagg og tilbakerulling</span></label></th><td>En tagg er et navn på en image-versjon. Vi beholder v1 og v2, og ruller tilbake ved å starte det tidligere imaget.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version">Les mer<span class="sr-only"> om Tagg og tilbakerulling</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og API</span></label></th><td>HTTP er Hypertext Transfer Protocol, protokollen for forespørsel og svar. API er Application Programming Interface, grensesnittet appen tilbyr; vi tester ruter og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og API</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Bruk Docker med Linux-containere fra <a href="./getting-started.html#docker">fellesoppsettet</a>, og sørg for at motoren kjører. Gå til labmappen:</p><pre data-language="PowerShell"><code># Gå til mappen med Dockerfile-en og containerkoden.
 Set-Location labs/containers</code></pre><p><code>app.py</code> er ferdig testkode. Dockerfile-en forklares nedenfor. Denne delen krever ingen Azure-ressurser.</p>

@@ -2,11 +2,24 @@
 
 Norsk studieside for **Developing AI Cloud Solutions on Azure**, med pensumoversikt, flashcards og praktiske workshops. Nettstedet består av statiske HTML-, CSS- og JavaScript-filer og kan publiseres direkte med GitHub Pages.
 
+## Nytt workshopløp
+
+[workshops/index.html](workshops/index.html) samler 523 flashcards i to nye workshops per domene, med 18 emnekategorier som kapitler. Hvert kort er koblet til en konkret praktisk oppgave eller analyseoppgave der en slik finnes. Kort uten egen oppgave vises som repetisjon i [dekningsoversikten](workshops/coverage.html), og teller ikke som oppgavedekning. Flashcardsiden viser typen som et klikkbart merke og kan filtrere på dekning eller workshop.
+
+De eksisterende workshopfilene i prosjektroten er bevart. [old/](old/index.html) inneholder også en uendret kopi av nettstedet og labkildene fra før det nye løpet, med kontrollsummer i `old/manifest.json`. De nye labkildene ligger separat i `workshops/labs/`. Praktisk/analytisk dekning beskriver opplegget; den bekrefter ikke gjennomføring eller full eksamensdekning. Azure-øvelsene krever egen konto og kontrolleres ved gjennomføring.
+
+Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `python scripts/build_workshops.py`. Dette genererer bare filer under `workshops/`, inkludert `coverage.json` og `flashcard-coverage.js`. `--check` kontrollerer om de genererte filene er oppdaterte uten å skrive. Nye kort får repetisjonsstatus til de er koblet til en oppgave. Notater og avkryssing i det nye løpet har egen lokal lagring og kan eksporteres som JSON.
+
+Den følgende oversikten beskriver også de tidligere workshopformatene, som fortsatt er tilgjengelige.
+
 ## Sider
 
 | Side | Innhold |
 | --- | --- |
-| [Oversikt](index.html) | Pensum, 22 workshops, studieløp og eksamensressurser |
+| [Oversikt](index.html) | Pensum, nye og tidligere workshops, studieløp og eksamensressurser |
+| [Nytt workshopløp](workshops/index.html) | To workshops per domene, med kategorier som kapitler |
+| [Kortdekning](workshops/coverage.html) | Hvert flashcard koblet til praktisk oppgave, analyse eller repetisjon |
+| [Tidligere workshops](old/index.html) | Bevart kopi av nettsted og labkilder før det nye løpet |
 | [Kom i gang](getting-started.html) | Felles verktøy, én Python-interpreter og Azure-konto |
 | [Studiedekning](studiedekning.html) | Kartlegging av 27 delmål, begrensninger og videre studier |
 | [Pensum 1: Containere](pensum-containere.html) | Kompetansemål og workshop 1–6 |
@@ -39,17 +52,17 @@ Norsk studieside for **Developing AI Cloud Solutions on Azure**, med pensumovers
 | [20. Les appkonfigurasjon med etiketter](workshop-app-configuration.html) | Domene 4 |
 | [21. Spor et kall mellom to tjenester](workshop-tracing.html) | Domene 4 |
 | [22. Finn feil og målinger med KQL](workshop-kql.html) | Domene 4 |
-| [Flashcards](flashcards.html) | 68 kort med filtrering og lokal fremdrift |
+| [Flashcards](flashcards.html) | 523 kort med ett spørsmål, kategorier og lokal fremdrift |
 
 Start med **[Før første workshop](getting-started.html#for-du-starter)**. Derfra følger du [oppskriften for å hente og åpne prosjektet i IntelliJ](getting-started.html#prosjekt), installerer verktøyene og klargjør Azure-kontoen. Begge kontovalgene bruker samme workshops, med lokal utvikling og testing som forberedelse til Azure-øvelsene. Praktisk konto- og verktøyoppsett er klargjøring; workshopenes læringsmål følger AI-200. Se [valgfri kostnadsveiledning](getting-started.html#kostnader) ved behov.
 
 På Free Trial beholder du utgiftsgrensen. Hvis en tjeneste krever oppgradering, eller kreditten/prøveperioden utløper, stopper du den skyøvelsen og vurderer kontovalget i startguiden før du eventuelt endrer abonnementet. Pay as you go har ingen innebygd hard utgiftsgrense; budsjettvarsler stopper ikke ressursene. Du kan også følge en demonstrasjon eller jobbe sammen ved en annen deltakers maskin uten å dele innloggingsopplysninger.
 
-Løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, nytt oppsett for den aktuelle øvelsen, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
+Det tidligere løpet består av 22 avgrensede workshops som kan tas i eget tempo. Hver side angir forkunnskaper, nytt oppsett for den aktuelle øvelsen, forventede resultater og opprydding. Workshopene er gruppert etter de fire domenene og følger [Microsofts studieveiledning](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200). Alle Python-øvelser bruker én `.venv` i prosjektroten.
 
 Verktøy, [Python-pakker](getting-started.html#python-pakker) og [CLI-innlogging](getting-started.html#azure-cli) settes opp én gang i Kom i gang. Ressursgrupper og tjenester opprettes først i workshopene som bruker dem. Eksisterende labressurser gjenbrukes. Ved ny terminal følger du [terminaloppsettet](getting-started.html#terminal). Standardregionen er Norway East (`norwayeast`).
 
-Forsiden viser pensum først og workshopene i fire faner. Velg mellom de 22 korte øktene og fire samlede domeneworkshops. Hver samlet side kan vise alle delene eller bare samling 1/2, med tilpasset ressursplan. Gjennomføringstiden er ikke målt. Delingen i samlinger er tematisk; tidsbruk avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring. Pensumsidene kobler hvert delmål til aktuelle økter. [Studiedekning](studiedekning.html) skiller mellom grunnøvelse og delvis dekning. Oppgavedekningen er den samme i begge formater.
+Forsiden viser pensum først og deretter de åtte nye workshopene, to per domene. Domenelenkene går til det nye løpet. De tidligere workshopene og valget mellom korte og samlede økter er fjernet fra forsiden; arkivet nås gjennom én lenke i bunnteksten. I [old/](old/index.html) er den tidligere navigasjonen bevart.
 
 De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Ved push til `main` kjører [publiseringsworkflowen](.github/workflows/pages.yml) generatoren automatisk før GitHub Pages publiserer nettstedet. Fullfør engangsoppsettet under [Publiser med GitHub Pages](#publiser-med-github-pages) for å aktivere dette.
 
@@ -64,7 +77,9 @@ Dette oppdaterer de fire statiske samlede sidene. Generatoren bruker bare Python
 
 Filpaneler med `data-source-file` viser hele den tilsvarende kildefilen fra `labs/`, med kommentarer, og er lukket som standard. JSON beholdes gyldig og har feltforklaringer i samme panel. Rediger kildefilen; generatoren oppdaterer både den korte og den samlede siden med samme filinnhold og beholder JSON-forklaringene.
 
-Forklar hver linje i kodevinduene med kommentarer på norsk. JSON og rene innstillingsverdier får forklaringer inne i kodevinduet som holdes utenfor teksten som kopieres.
+Hver workshop starter med **Dette lærer vi om nå**: en tabell med sentrale begreper, forklarte forkortelser og leselenker. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Begrepsavkryssing og øvelsessjekkpunkter telles hver for seg og deles mellom korte og samlede workshops i samme nettleser. Rediger begrepstabellen i den korte HTML-siden; generatoren tar den med i domenesiden.
+
+Forklar meningsbærende linjer i kodevinduene med kommentarer på norsk. Linjer som bare lukker blokker, parenteser eller lister, trenger ikke egen kommentar. JSON og rene innstillingsverdier får forklaringer inne i kodevinduet som holdes utenfor teksten som kopieres.
 
 ## Kjør nettstedet lokalt
 
@@ -81,7 +96,7 @@ python -m http.server 8000 --bind 127.0.0.1
 
 Åpne <http://localhost:8000>. Stopp serveren med `Ctrl+C`. Ingen pakkeinstallasjon eller byggesteg er nødvendig for nettstedet. Verktøy og avhengigheter for selve labøvelsene installeres i Kom i gang.
 
-Workshopinnholdet kan leses uten JavaScript; da vises alle fire workshopgruppene. JavaScript legger til faner med tastaturnavigasjon, kopiering av kode og avhuking med fremdrift i nettleserens `localStorage`. Lenker til `index.html#workshops-domene-1` til `-4` åpner riktig fane. Siden har ingen innlogging, serverlagret fremdrift eller påmeldingsskjema. Fremdriften deles ikke mellom enheter eller nettlesere; blokkert nettleserlagring hindrer ikke lesing av øvelsene.
+Workshopinnholdet kan leses uten JavaScript. De nye workshopene bruker JavaScript til notater, avkryssing og eksport, mens arkivet beholder de tidligere fanene og formatvalgene. Lenker til `index.html#workshops-domene-1` til `-4` går nå til domenets to nye workshops. Siden har ingen innlogging, serverlagret fremdrift eller påmeldingsskjema. Fremdriften deles ikke mellom enheter eller nettlesere; blokkert nettleserlagring hindrer ikke lesing av øvelsene.
 
 ## Kontroller labkoden lokalt
 
@@ -121,3 +136,15 @@ Vanlig adresse er `https://<brukernavn>.github.io/<repository>/`. Relative lenke
 Azure-forbruk utover gjeldende gratiskvoter bruker tilgjengelig prøvekreditt eller faktureres på Pay as you go. Kontroller kostnader, eventuell gjenværende kreditt og tjenestevilkår før hver økt. Samlet labforbruk er ikke målt, så det gis ingen garanti for at prøvekreditten dekker alle øvelsene. Slett workshopressursene etter bruk. På Free Trial avslutter du skyarbeidet før prøveperioden eller kreditten er brukt opp; på Pay as you go følger du med på forbruket og rydder opp manuelt. Se [startguidens kostnadskontroll](getting-started.html#kostnader).
 
 Kildelenker og dato står på workshopsidene. Kontroller priser, kvoter og pensum på nytt før en ny workshoprunde. Felles utseende og funksjonalitet ligger i `workshops.css` og `workshops.js`; tekst og kodeeksempler ligger i hver HTML-side, med tilhørende filer under `labs/`.
+
+## Flashcards
+
+[flashcards.html](flashcards.html) viser 523 kort: 324 fra de oppdelte eldre kortene og 199 nye, bearbeidede kort fra AI-200 Prep. Spørsmål og svar er på engelsk. Hvert kort i [flashcards-data.js](flashcards-data.js) har stabil ID, ett spørsmål, svar, fagdomene, emnekategori og kildehenvisninger. Like læringspunkter er slått sammen. Kort med lignende ordlyd beholdes når de tester ulike regler, for eksempel readiness mot liveness eller senderrolle mot mottakerrolle.
+
+Filtrene kombinerer domene, kategori, kortsett, status og fritekstsøk. Gamle fremdriftsmarkeringer migreres til delkortene; ved motstridende markeringer på et sammenslått kort prioriteres «Må repetere». Nye kort starter uten markering. Dataene lastes som et vanlig skript, så siden fungerer både fra fil og via HTTP uten et byggesteg.
+
+Kontroller kortdataene uten ekstrapakker:
+
+```powershell
+python -m unittest discover -s tests -p test_flashcards.py -v
+```

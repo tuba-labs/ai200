@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#policy">1. Opprett policy og indeks</a>
       <a href="#sok">2. Utfør filtrert vektorsøk</a>
@@ -35,6 +36,24 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-cosmos" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosmos DB og RU</span></label></th><td>DB betyr database, og RU betyr Request Unit, målet på operasjonskostnad. Vi undersøker vektorsøk i Cosmos DB for NoSQL, ofte kalt Not only SQL.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Cosmos DB og RU</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-policy" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Vector embedding policy</span></label></th><td>Beskriver feltsti, talltype, antall dimensjoner og avstandsmål. Dokument- og spørsmålsvektorer må følge samme representasjon.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Vector embedding policy</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-index" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>flat og quantizedFlat</span></label></th><td>flat sammenligner vektorer uten kvantisering. quantizedFlat komprimerer tallrepresentasjonen for å spare arbeid og plass, med en avveining mot treffnøyaktighet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om flat og quantizedFlat</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-diskann" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DiskANN</span></label></th><td>Disk-based Approximate Nearest Neighbor: indeks for tilnærmet søk blant store vektormengder. Vi sammenligner den med de flate indeksvalgene.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om DiskANN</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-distance" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>VectorDistance og TOP</span></label></th><td>SQL, Structured Query Language, bruker VectorDistance til avstand og TOP til å begrense antall treff. ORDER BY sorterer slik at de nærmeste kommer først.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om VectorDistance og TOP</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-partition" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metadatafilter og cross-partition</span></label></th><td>Filteret avgrenser dokumentutvalget. Et søk på tvers av partisjoner må ha spørring og partisjonsvalg som passer til det nye søkeområdet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Metadatafilter og cross-partition</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-embedding" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Embedding-modell og recall</span></label></th><td>Modellen lager tallvektorer for dokumenter og spørsmål. Recall beskriver hvor mange av de nærmeste treffene vi finner; håndskrevne labvektorer måler ikke virkelig treffkvalitet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Embedding-modell og recall</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Fortsett med kontoen og terminalvariablene fra <a href="./workshop-cosmos.html">workshop 9</a>. Ved ny terminal bruker du <a href="./workshop-cosmos.html#tilkobling">tilkoblingsverdiene for den eksisterende kontoen</a>. Aktiver vector search under kontoens Features og vent på at funksjonen er klar; det kan ta omtrent 15 minutter. Vi oppretter en ny container fordi vektorpolicyen fastsettes ved opprettelsen.</p><p>Databasen skal ha separat throughput per container.</p>
 

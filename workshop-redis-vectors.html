@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#indeks">1. Opprett en vektorindeks</a>
       <a href="#sok">2. Søk og avgrens</a>
@@ -35,6 +36,23 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-redis.html">12. Caching og invalidering med Managed Redis</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-redis" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Redis og RediSearch</span></label></th><td>Redis lagrer dokumentene; søkefunksjonen RediSearch indekserer dem. Vektorverdier alene oppretter ikke en søkbar vektorindeks.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om Redis og RediSearch</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-hnsw" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HNSW</span></label></th><td>Hierarchical Navigable Small World: grafbasert indeks for tilnærmet vektorsøk. Vi oppretter den med VectorField i søkeskjemaet.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om HNSW</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-knn" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>KNN</span></label></th><td>K-Nearest Neighbors: søk etter de k nærmeste vektorene. KNN 2 betyr at vi ber om de to nærmeste innenfor metadatafilteret.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om KNN</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-format" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>FLOAT32 og DIM</span></label></th><td>FLOAT32 er 32-bits flyttall; DIM betyr dimension, antall komponenter. Dokumenter og spørsmålsvektor må ha samme talltype og dimensjon.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om FLOAT32 og DIM</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-hash" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HASH og TAG</span></label></th><td>En hash lagrer dokumentets felter. TAG-feltet indekserer en kategoriverdi som topic, slik at vi kan filtrere før vektorrangeringen.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om HASH og TAG</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-binary" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Binær vektor</span></label></th><td>Tallrekken sendes som byteverdier til Redis. Tekst som ser ut som en liste, er ikke den samme representasjonen.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om Binær vektor</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-index" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Indeksoppdatering og rangering</span></label></th><td>Når en lagret vektor endres, må søkeindeksen ta endringen med før resultatene oppdateres. Vi skiller dette fra invalidering av ferdige søkeresultater.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om Indeksoppdatering og rangering</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Fortsett med RediSearch-instansen og terminalvariablene fra <a href="./workshop-redis.html">workshop 12</a>. Ved ny terminal bruker du <a href="./workshop-redis.html#tilkobling">tilkoblingsverdiene for den eksisterende instansen</a>. En standard Redis-instans uten søkemodulen kan ikke kjøre FT.CREATE.</p>
 

@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#function">1. Test en HTTP-trigger</a>
       <a href="#feil">2. Undersøk feil og restart</a>
@@ -35,6 +36,25 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-function" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Functions og Function App</span></label></th><td>Functions kjører hendelsesutløst kode. En Function App samler funksjonene med felles innstillinger og vertsmiljø.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Azure Functions og Function App</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og API</span></label></th><td>HTTP er Hypertext Transfer Protocol, protokollen for forespørsel og svar. API er Application Programming Interface, grensesnittet appen tilbyr; vi tester ruter og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og API</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-json" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>JSON</span></label></th><td>JavaScript Object Notation: tekstformat for strukturerte data med objekter, felter og lister. Vi sender eller leser dette formatet i øvelsen.</td><td><a href="https://www.rfc-editor.org/rfc/rfc8259.html">Les mer<span class="sr-only"> om JSON</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-trigger" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP-trigger og rute</span></label></th><td>Triggeren starter funksjonen når et kall kommer til ruten. Ruten documents mottar POST; koden bestemmer responsen.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om HTTP-trigger og rute</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-key" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Function key</span></label></th><td>En delt nøkkel som gir tilgang til HTTP-ruter med tilgangsnivå Function i Azure. Den er forskjellig fra Microsoft Entra ID, identitetstjenesten.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om Function key</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-settings" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>local.settings.json og app settings</span></label></th><td>Den lokale filen inneholder utviklingsinnstillinger og holdes utenfor Git. Den publiserte Function App-en har egne appinnstillinger i Azure.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om local.settings.json og app settings</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-idempotent" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-tools" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Core Tools og CLI</span></label></th><td>Azure Functions Core Tools bygger, starter og publiserer appen. CLI betyr Command-Line Interface; vi bruker blant annet func start og func azure functionapp publish.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Core Tools og CLI</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-url" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>URL</span></label></th><td>Uniform Resource Locator: adressen til en ressurs eller rute. Get Function URL gir den komplette kalladressen, med nøkkel når den kreves.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om URL</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <h3 id="ressursgruppe">Ressursgruppen for domene 3</h3><p>Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
 $rg = "ai200-d3"

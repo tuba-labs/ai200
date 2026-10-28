@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#lagre">1. Lag to verdier med etiketter</a>
       <a href="#hent">2. Les med SDK</a>
@@ -35,6 +36,23 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-security.html">19. Key Vault: oppslag, identitet og rotasjon</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-config" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure App Configuration</span></label></th><td>Sentral tjeneste for vanlige appinnstillinger. Hemmelige verdier hører hjemme i Key Vault; vi lagrer en ufarlig driftsmodus her.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview">Les mer<span class="sr-only"> om Azure App Configuration</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-key" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Key-value</span></label></th><td>En nøkkel og dens verdi, for eksempel Workshop:Mode og practice. Navnet identifiserer hvilken innstilling appen ber om.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-key-value">Les mer<span class="sr-only"> om Key-value</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-label" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Label / etikett</span></label></th><td>Skiller varianter av samme nøkkel, for eksempel lab og test. Appen velger både nøkkel og etikett når verdien leses.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-key-value">Les mer<span class="sr-only"> om Label / etikett</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-default-credential" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DefaultAzureCredential</span></label></th><td>Velger en tilgjengelig Azure-identitet, for eksempel utviklerens lokale innlogging eller appens managed identity i Azure. Identiteten trenger fortsatt rettigheter til dataene.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/overview">Les mer<span class="sr-only"> om DefaultAzureCredential</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-roles" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Data Owner og Data Reader</span></label></th><td>Dataplanroller for App Configuration. Den som legger inn verdier trenger skriverett; en app som bare leser, trenger leserett.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview">Les mer<span class="sr-only"> om Data Owner og Data Reader</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w20-begrep-refresh" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache og refresh</span></label></th><td>Cache er verdier som holdes i minnet; refresh betyr å hente oppdateringer. En langlivet prosess må ha en plan for når gamle innstillinger erstattes.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview">Les mer<span class="sr-only"> om Cache og refresh</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Opprett en App Configuration-labressurs i <a href="./workshop-security.html#ressursgruppe">ressursgruppen fra del 19</a>, for eksempel Free hvis tilgjengelig. Gi deg selv App Configuration Data Owner for å legge inn verdier. Innstillingene skal være vanlig konfigurasjon; hemmeligheter hører til i Key Vault.</p>
 

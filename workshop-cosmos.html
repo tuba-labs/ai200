@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#sdk">1. Opprett og hent dokumenter</a>
       <a href="#indekser">2. Endre en indekseringspolicy</a>
@@ -35,6 +36,24 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-cosmos" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosmos DB for NoSQL</span></label></th><td>Azure-database for dokumenter. DB betyr database; NoSQL omtales ofte som Not only SQL. Vi bruker dokumenter som JSON (JavaScript Object Notation).</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Cosmos DB for NoSQL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-partition" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Partisjonsnøkkel</span></label></th><td>Verdien som plasserer dokumentet i en logisk partisjon. Vi bruker /topic og sender partisjonsverdien ved målrettede oppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Partisjonsnøkkel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-point" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Point read</span></label></th><td>Direkte lesing med både dokumentets identifikator og partisjonsnøkkel. Vi sammenligner dette med å kjøre en SQL-spørring, Structured Query Language.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Point read</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-ru" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RU og RU/s</span></label></th><td>Request Unit måler kostnaden for en databaseoperasjon. RU/s er tilgjengelige request units per sekund; vi leser request charge for hvert oppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om RU og RU/s</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-index" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Indekseringspolicy</span></label></th><td>Bestemmer hvilke dokumentstier som indekseres. Vi utelater vektorarrayet fra vanlig indeksering og undersøker en endring i text-feltet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Indekseringspolicy</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-consistency" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Consistency og Session</span></label></th><td>Konsistensnivået beskriver hvilke skriveverdier en lesing kan se. Session bevarer garantier innen en klientsesjon; vi sammenligner med Strong og Eventual.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels">Les mer<span class="sr-only"> om Consistency og Session</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-throughput" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Dedikert og delt throughput</span></label></th><td>Throughput er tilgjengelig behandlingskapasitet. Laben gir hver container egen kapasitet; shared throughput deler en databasekapasitet mellom containere.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Dedikert og delt throughput</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Opprett en Cosmos DB for NoSQL-labkonto i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> og databasen <code>workshop</code> uten delt throughput. Skriptet oppretter hver labcontainer med 400 RU/s. Vektorsøket i neste økt støtter ikke shared throughput. Bruk en egen labkonto. Ha endpoint og en lokal labnøkkel klar. Kontoen brukes også i workshop 10–11.</p><h3 id="tilkobling">Tilkobling i terminalen</h3><p>Bruk disse variablene gjennom del 9–11. Åpner du en ny terminal, setter du bare verdiene nedenfor for den eksisterende kontoen:</p><pre data-language="PowerShell"><code># Sett endepunktet til den eksisterende Cosmos-kontoen.
 $env:COSMOS_ENDPOINT = "https://DIN-KONTO.documents.azure.com:443/"

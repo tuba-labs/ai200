@@ -26,6 +26,7 @@
   </div></nav>
   <main id="innhold" class="wrap workshop-layout">
     <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
       <a href="#forberedelser">Før du starter</a>
       <a href="#kopier">1. Test uavhengige kopier</a>
       <a href="#filter">2. Legg på et filter</a>
@@ -35,6 +36,23 @@
     </nav></aside>
     <article class="content">
       <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-topic" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Service Bus topic</span></label></th><td>Publiseringspunktet som kan sende én melding videre til flere uavhengige abonnementer. Vi sender til document-events.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Service Bus topic</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-subscription" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Subscription</span></label></th><td>Et abonnement som beholder sin egen kopi. Fullføring i indexer fjerner ikke audit sin melding.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Subscription</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-pubsub" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Pub/sub og fan-out</span></label></th><td>Publish/subscribe: avsender publiserer uten å kjenne alle mottakerne. Fan-out betyr at samme publisering fordeles til flere abonnementer.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Pub/sub og fan-out</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-sql" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL-filter</span></label></th><td>SQL betyr Structured Query Language. Subscription-regelen bruker et uttrykk som kind = &#x27;note&#x27; til å velge meldinger etter metadata.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om SQL-filter</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-or" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Standardregel og OR</span></label></th><td>OR betyr logisk eller: det holder at én regel treffer. En regel som fortsatt tar imot alt, gjør derfor det smalere filteret uten virkning.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Standardregel og OR</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-properties" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Application properties og body</span></label></th><td>Application properties er meldingsegenskaper filteret kan lese. Det parser ikke automatisk JSON-bodyen; JSON betyr JavaScript Object Notation.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Application properties og body</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
       <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
 <p>Bruk det eksisterende Standard-namespace-et og <code>SERVICEBUS_NAMESPACE</code> fra <a href="./workshop-service-bus.html">workshop 15</a>. Opprett topic <code>document-events</code> og subscriptions <code>indexer</code> og <code>audit</code>. Begge starter med standardregelen som tar imot alt.</p>
 
