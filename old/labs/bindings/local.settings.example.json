@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING",
+    "ServiceBusConnection": "REPLACE_WITH_LAB_SERVICE_BUS_CONNECTION_STRING"
+  }
+}

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Bygg en liten ferdig testtjeneste, finn en HTTP-feil og kjør to image-versjoner.">
+  <title>Workshop 1: Bygg og feilsøk et container-image | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 01 / Domene 1 / Containere</p>
+    <h1>Bygg og feilsøk et container-image</h1>
+    <p class="lead">Bygg en liten ferdig testtjeneste, finn en HTTP-feil og kjør to image-versjoner.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-containers.html" aria-current="page">1. Denne workshopen</a><a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#bygg">1. Bygg et image</a>
+      <a href="#kjor">2. Kjør og feilsøk</a>
+      <a href="#oppdater">3. Versjoner og tilbakerulling</a>
+      <a href="#opprydding">Rydd opp og forklar</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-docker" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Docker</span></label></th><td>Verktøy for å bygge images og starte containere. Docker-motoren må kjøre før vi bruker kommandoene i terminalen.</td><td><a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Les mer<span class="sr-only"> om Docker</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-image" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Container-image</span></label></th><td>En pakket versjon av appen med nødvendige filer og avhengigheter. Endringer i kildefilen blir først med etter et nytt bygg.</td><td><a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Les mer<span class="sr-only"> om Container-image</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-container" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Container</span></label></th><td>En kjørende instans av et image med egen prosess og isolert miljø. Vi starter, stopper og undersøker den lokalt.</td><td><a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">Les mer<span class="sr-only"> om Container</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-dockerfile" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Dockerfile</span></label></th><td>Byggeoppskriften: FROM velger base, WORKDIR arbeidsmappe, COPY filer og CMD standardkommando. USER velger brukeren prosessen kjører som.</td><td><a href="https://docs.docker.com/reference/dockerfile/">Les mer<span class="sr-only"> om Dockerfile</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-port" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>EXPOSE og portbinding</span></label></th><td>EXPOSE dokumenterer containerporten. Portbinding med --publish kobler en port på maskinen til porten i containeren.</td><td><a href="https://docs.docker.com/reference/dockerfile/">Les mer<span class="sr-only"> om EXPOSE og portbinding</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-tag" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tagg og tilbakerulling</span></label></th><td>En tagg er et navn på en image-versjon. Vi beholder v1 og v2, og ruller tilbake ved å starte det tidligere imaget.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version">Les mer<span class="sr-only"> om Tagg og tilbakerulling</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w1-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og API</span></label></th><td>HTTP er Hypertext Transfer Protocol, protokollen for forespørsel og svar. API er Application Programming Interface, grensesnittet appen tilbyr; vi tester ruter og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og API</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk Docker med Linux-containere fra <a href="./getting-started.html#docker">fellesoppsettet</a>, og sørg for at motoren kjører. Gå til labmappen:</p><pre data-language="PowerShell"><code># Gå til mappen med Dockerfile-en og containerkoden.
+Set-Location labs/containers</code></pre><p><code>app.py</code> er ferdig testkode. Dockerfile-en forklares nedenfor. Denne delen krever ingen Azure-ressurser.</p>
+
+<details class="source-file" id="fil-labs-containers-app-py" data-source-file="labs/containers/app.py"><summary><code>app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/app.py</code></p><pre data-language="Python" data-source="labs/containers/app.py"><code>&quot;&quot;&quot;Small, deliberately local workshop API; no external Python dependencies.&quot;&quot;&quot;
+# Gjør Python-data om til JSON i HTTP-svaret.
+import json
+# Les appkonfigurasjon fra miljøvariabler i containeren.
+import os
+# Bruk en liten HTTP-server og en handler for hver forespørsel.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Skill URL-stien fra eventuelle spørringsparametere.
+from urllib.parse import urlsplit
+
+
+# Samle behandlingen av HTTP-forespørsler i en handlerklasse.
+class Handler(BaseHTTPRequestHandler):
+    # HTTP-serveren kaller denne metoden for GET-forespørsler.
+    def do_GET(self):
+        # Hent bare stien, for eksempel /health.
+        path = urlsplit(self.path).path
+        # Helsesjekken gir 200; alle andre stier gir 404.
+        status = 200 if path == &quot;/health&quot; else 404
+        # Vis versjonen fra miljøet, med v1 som standard.
+        payload = {&quot;status&quot;: &quot;ok&quot;, &quot;version&quot;: os.getenv(&quot;APP_VERSION&quot;, &quot;v1&quot;),
+                   # Vis konfigurasjonen uten at vi trenger å bygge et nytt image.
+                   &quot;mode&quot;: os.getenv(&quot;WORKSHOP_MODE&quot;, &quot;practice&quot;),
+                   # Vis bare om en hemmelighet finnes. Selve verdien sendes aldri til klienten.
+                   # For andre stier brukes en enkel feilmelding i stedet.
+                   &quot;secret_configured&quot;: bool(os.getenv(&quot;DEMO_SECRET&quot;))} if status == 200 else {&quot;error&quot;: &quot;not found&quot;}
+        # Serialiser JSON og kod teksten som byte til nettverksforbindelsen.
+        body = json.dumps(payload).encode(&quot;utf-8&quot;)
+        # Start HTTP-svaret med statuskoden.
+        self.send_response(status)
+        # Fortell klienten at innholdet er JSON i UTF-8.
+        self.send_header(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+        # Oppgi lengden på svaret i byte.
+        self.send_header(&quot;Content-Length&quot;, str(len(body)))
+        # Avslutt headerne før selve innholdet sendes.
+        self.end_headers()
+        # Skriv JSON-innholdet til HTTP-svaret.
+        self.wfile.write(body)
+
+
+# Start serveren bare når filen kjøres som et program.
+if __name__ == &quot;__main__&quot;:
+    # Skriv en oppstartsmelding direkte til containerloggen.
+    print(&quot;Workshop API listening on port 8080&quot;, flush=True)
+    # Lytt på port 8080 på alle containerens nettverksgrensesnitt.
+    ThreadingHTTPServer((&quot;0.0.0.0&quot;, 8080), Handler).serve_forever()
+</code></pre></details>
+</section>
+      <section class="panel" id="bygg"><h2>1. Bygg et image</h2>
+<p>Dockerfile-en under har kommentarer til hver instruksjon. Kildefilen ligger i <code>labs/containers/Dockerfile</code>.</p><details class="source-file" id="fil-labs-containers-dockerfile" data-source-file="labs/containers/Dockerfile"><summary><code>Dockerfile</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/Dockerfile</code></p><pre data-language="Dockerfile" data-source="labs/containers/Dockerfile"><code># Bruk et ferdig Linux-image med Python 3.12.
+# slim-varianten har færre forhåndsinstallerte pakker enn standardimaget.
+FROM python:3.12-slim
+
+# Sett /app som arbeidsmappe i imaget. Mappen opprettes hvis den mangler.
+WORKDIR /app
+
+# Kopier app.py fra byggkonteksten til /app/app.py i imaget.
+COPY app.py .
+
+# Opprett brukeren appuser med UID 10001 under byggingen, uten hjemmemappe.
+RUN useradd --uid 10001 --no-create-home appuser
+
+# Kjør påfølgende instruksjoner og appens startkommando som UID 10001.
+# Appen kjører dermed uten root-rettigheter.
+USER 10001
+
+# Dokumenter at appen lytter på TCP-port 8080 inne i containeren.
+# Bruk docker run --publish for å gjøre porten tilgjengelig på verten.
+EXPOSE 8080
+
+# Start app.py med Python når containeren starter.
+# -u slår av bufring av stdout/stderr, slik at loggene kommer fortløpende.
+# Listeformen starter Python direkte, uten et mellomliggende shell.
+CMD [&quot;python&quot;, &quot;-u&quot;, &quot;app.py&quot;]
+</code></pre></details>
+<pre data-language="PowerShell"><code># Bygg v1-imaget fra Dockerfile-en og filene i den gjeldende mappen.
+docker build -t ai200-api:v1 .
+# Vis de lokale image-versjonene av ai200-api.
+docker image ls ai200-api</code></pre><p>Finn base-image, arbeidsmappe, COPY, bruker og CMD i Dockerfile. Forklar hvilke filer som bygges inn. Forventet: en lokal tag <code>ai200-api:v1</code>.</p><label class="check-item"><input type="checkbox" data-check="w1-bygg"><span>Jeg kan forklare hva Dockerfile bygger inn.</span></label>
+</section>
+      <section class="panel" id="kjor"><h2>2. Kjør og feilsøk</h2>
+<pre data-language="PowerShell"><code># Start valgt image i bakgrunnen og koble lokal port 8080 til containerport 8080.
+docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v1
+# Kall den lokale containerens helsesjekk for å se versjon og konfigurasjon.
+Invoke-RestMethod http://localhost:8080/health
+# Kall en rute som mangler og vis HTTP-statusen 404 sammen med responsen.
+curl.exe -i http://localhost:8080/missing
+# Les de 20 siste logglinjene fra den lokale API-containeren.
+docker logs --tail 20 ai200-api</code></pre><p>Forventet: 200 fra <code>/health</code> og 404 fra <code>/missing</code>. Prosessen fortsetter å kjøre. Forklar hvorfor <code>EXPOSE</code> og portbindingen har ulike oppgaver.</p><label class="check-item"><input type="checkbox" data-check="w1-kjor"><span>Jeg finner vellykkede og mislykkede kall i loggen.</span></label>
+</section>
+      <section class="panel" id="oppdater"><h2>3. Versjoner og tilbakerulling</h2>
+<p>Endre standardverdien for <code>APP_VERSION</code> fra <code>v1</code> til <code>v2</code> i <code>labs/containers/app.py</code>. Den gamle containeren beholder sin kopi til den erstattes.</p><pre data-language="PowerShell"><code># Bygg v2-imaget med de endrede filene fra den gjeldende mappen.
+docker build -t ai200-api:v2 .
+# Stopp den lokale API-containeren før den erstattes eller fjernes.
+docker stop ai200-api
+# Fjern den stoppede API-containeren; imagene beholdes.
+docker rm ai200-api
+# Start valgt image i bakgrunnen og koble lokal port 8080 til containerport 8080.
+docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v2
+# Kall den lokale containerens helsesjekk for å se versjon og konfigurasjon.
+Invoke-RestMethod http://localhost:8080/health</code></pre><p>Svaret skal ha <code>version</code> lik <code>v2</code>. Det nye imaget inneholder filen slik den var da du bygget v2.</p>
+<p>Rull nå tilbake til det opprinnelige v1-imaget. La <code>app.py</code> stå med v2, og kjør disse kommandoene uten å bygge på nytt:</p>
+<pre data-language="PowerShell"><code># Stopp den lokale API-containeren før den erstattes eller fjernes.
+docker stop ai200-api
+# Fjern den stoppede API-containeren; imagene beholdes.
+docker rm ai200-api
+# Start valgt image i bakgrunnen og koble lokal port 8080 til containerport 8080.
+docker run --detach --name ai200-api --publish 127.0.0.1:8080:8080 ai200-api:v1
+# Kall den lokale containerens helsesjekk for å se versjon og konfigurasjon.
+Invoke-RestMethod http://localhost:8080/health</code></pre>
+<p>Svaret skal igjen ha <code>version</code> lik <code>v1</code>. Containeren bruker kopien av <code>app.py</code> som ble bygget inn i v1-imaget, selv om arbeidsfilen nå inneholder v2. Dette viser at filendringer ikke endrer et eksisterende image, og at du kan rulle tilbake ved å starte det tidligere imaget. Taggene <code>v1</code> og <code>v2</code> brukes her til å velge mellom de to versjonene.</p><label class="check-item"><input type="checkbox" data-check="w1-oppdater"><span>Jeg har kjørt to versjoner og rullet tilbake.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
+<pre data-language="PowerShell"><code># Stopp den lokale API-containeren før den erstattes eller fjernes.
+docker stop ai200-api
+# Fjern den stoppede API-containeren; imagene beholdes.
+docker rm ai200-api</code></pre><p>Behold de lokale v1- og v2-imagene til neste økt. Forklar forskjellen mellom en filendring, et nytt image og en ny container.</p><p>Før workshop 2: tilbakestill kildefilen <code>labs/containers/app.py</code> med Git. Kjør fra <code>labs/containers</code>; kommandoen forkaster endringene i <code>app.py</code>:</p>
+<pre data-language="PowerShell"><code># Forkast lokale endringer i app.py og hent den committede versjonen.
+git restore --source=HEAD -- app.py</code></pre><p><strong>Sluttstatus:</strong> standardverdien for <code>APP_VERSION</code> i kildefilen skal være <code>v1</code>. De bygde imagene <code>ai200-api:v1</code> og <code>ai200-api:v2</code> beholdes; tilbakestillingen av filen endrer ikke innholdet i dem.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://docs.docker.com/build/concepts/dockerfile/">Dockerfile</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./getting-started.html">← Kom i gang</a><a href="./workshop-acr.html">Workshop 2 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 1</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

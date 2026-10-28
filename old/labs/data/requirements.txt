@@ -1,0 +1,4 @@
+# PostgreSQL-driver med ferdige binærfiler og støtte for forbindelsespool.
+psycopg[binary,pool]>=3.2,<4
+# Tilpasning mellom PostgreSQLs vector-type og Python.
+pgvector>=0.3,<1

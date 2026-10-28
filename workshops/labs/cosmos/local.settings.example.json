@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING",
+    "CosmosConnection": "REPLACE_WITH_LAB_COSMOS_CONNECTION_STRING",
+    "COSMOS_DATABASE": "workshop"
+  }
+}

@@ -1,0 +1,2 @@
+# Functions-typer og dekoratorer for Python-appen.
+azure-functions>=1.20,<2

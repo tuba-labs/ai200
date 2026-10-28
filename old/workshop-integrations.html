@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Kjør et serverless HTTP-API lokalt, test feil og publiser en Python Function App.">
+  <title>Workshop 14: Bygg og publiser en HTTP Function | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 14 / Domene 3 / Integrasjoner</p>
+    <h1>Bygg og publiser en HTTP Function</h1>
+    <p class="lead">Kjør et serverless HTTP-API lokalt, test feil og publiser en Python Function App.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-redis-vectors.html">← 13. Vektorindeks i Managed Redis</a><a href="./workshop-integrations.html" aria-current="page">14. Denne workshopen</a><a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#function">1. Test en HTTP-trigger</a>
+      <a href="#feil">2. Undersøk feil og restart</a>
+      <a href="#deploy">3. Publiser og konfigurer</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-function" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Functions og Function App</span></label></th><td>Functions kjører hendelsesutløst kode. En Function App samler funksjonene med felles innstillinger og vertsmiljø.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Azure Functions og Function App</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og API</span></label></th><td>HTTP er Hypertext Transfer Protocol, protokollen for forespørsel og svar. API er Application Programming Interface, grensesnittet appen tilbyr; vi tester ruter og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og API</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-json" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>JSON</span></label></th><td>JavaScript Object Notation: tekstformat for strukturerte data med objekter, felter og lister. Vi sender eller leser dette formatet i øvelsen.</td><td><a href="https://www.rfc-editor.org/rfc/rfc8259.html">Les mer<span class="sr-only"> om JSON</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-trigger" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP-trigger og rute</span></label></th><td>Triggeren starter funksjonen når et kall kommer til ruten. Ruten documents mottar POST; koden bestemmer responsen.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om HTTP-trigger og rute</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-key" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Function key</span></label></th><td>En delt nøkkel som gir tilgang til HTTP-ruter med tilgangsnivå Function i Azure. Den er forskjellig fra Microsoft Entra ID, identitetstjenesten.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om Function key</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-settings" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>local.settings.json og app settings</span></label></th><td>Den lokale filen inneholder utviklingsinnstillinger og holdes utenfor Git. Den publiserte Function App-en har egne appinnstillinger i Azure.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om local.settings.json og app settings</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-idempotent" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-tools" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Core Tools og CLI</span></label></th><td>Azure Functions Core Tools bygger, starter og publiserer appen. CLI betyr Command-Line Interface; vi bruker blant annet func start og func azure functionapp publish.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Core Tools og CLI</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-url" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>URL</span></label></th><td>Uniform Resource Locator: adressen til en ressurs eller rute. Get Function URL gir den komplette kalladressen, med nøkkel når den kreves.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om URL</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<h3 id="ressursgruppe">Ressursgruppen for domene 3</h3><p>Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d3"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+}</code></pre>
+<p>Opprett én Python 3.12 Function App på Linux med tilhørende Storage-konto i den eksisterende ressursgruppen <code>ai200-d3</code>. Bruk en støttet hostingplan og noter appnavnet og Storage-kontoen; disse brukes videre til del 19. Python og Core Tools er klare fra fellesoppsettet. Opprett nå den lokale innstillingsfilen:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/integrations/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
+    Copy-Item labs/integrations/local.settings.example.json labs/integrations/local.settings.json
+}</code></pre><p>Åpne <code>labs/integrations/local.settings.json</code> og sett <code>AzureWebJobsStorage</code> til labens Storage-tilkoblingsstreng. Dette er filen for lokale innstillinger; <code>local.settings.example.json</code> beholdes som eksempel. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code># Gå til den lokale HTTP Function-appen før du starter eller publiserer den.
+Set-Location labs/integrations
+# Start den lokale Functions-hosten på standardport 7071.
+func start</code></pre>
+
+<details class="source-file" id="fil-labs-integrations-host-json" data-source-file="labs/integrations/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/host.json</code></p><pre data-language="JSON" data-source="labs/integrations/host.json" class="code-with-notes"><code>{
+  &quot;version&quot;: &quot;2.0&quot;
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-local-settings-example-json" data-source-file="labs/integrations/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/integrations/local.settings.example.json" class="code-with-notes"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;&quot;
+  }
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-funcignore" data-source-file="labs/integrations/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/.funcignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.funcignore"><code># Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Git-reglene brukes lokalt, ikke av den publiserte appen.
+.gitignore
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-gitignore" data-source-file="labs/integrations/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/.gitignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke committes.
+local.settings.json
+</code></pre></details>
+</section>
+      <section class="panel" id="function"><h2>1. Test en HTTP-trigger</h2>
+<p>La host-en kjøre. Send fra en ny PowerShell-terminal:</p><pre data-language="PowerShell"><code># Lag eksempeldata og konverter dem til JSON for HTTP-kallet.
+$body = @{ id = "doc-001"; text = "Workshop" } | ConvertTo-Json
+# Send eksempeldokumentet til den lokale HTTP-funksjonen.
+Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body $body</code></pre><p>Forventet: processed=true første gang og false ved samme ID. Finn route, trigger og HTTP-respons i <code>function_app.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w14-function"><span>Jeg har kalt en HTTP-trigger og funnet svaret i loggen.</span></label>
+
+<details class="source-file" id="fil-labs-integrations-function-app-py" data-source-file="labs/integrations/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/function_app.py</code></p><pre data-language="Python" data-source="labs/integrations/function_app.py"><code>&quot;&quot;&quot;Local workshop API. In-memory deduplication is deliberately not production storage.&quot;&quot;&quot;
+
+# Serialiser svarene som JSON.
+import json
+# Skriv hendelser og kontrollerte feil til Functions-loggen.
+import logging
+# Les appinnstillingene fra miljøet.
+import os
+# Beskytt det delte minnesettet mot samtidige forespørsler.
+import threading
+
+# Bruk Functions-dekoratorer og HTTP-typer.
+import azure.functions as func
+
+# Krev en Function-nøkkel på vanlige HTTP-ruter i Azure.
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+# Husk behandlede dokument-ID-er bare så lenge denne prosessen kjører.
+processed = set()
+# La kontroll og registrering av en ID skje samlet.
+processed_lock = threading.Lock()
+
+
+# Ta imot dokumenter på /api/documents.
+@app.route(route=&quot;documents&quot;, methods=[&quot;POST&quot;])
+# Valider dokumentet og demonstrer håndtering av samme ID flere ganger.
+def documents(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Forsøk å lese forespørselsinnholdet som JSON.
+    try:
+        # Konverter JSON-body til Python-data.
+        payload = req.get_json()
+    # Håndter innhold som ikke kan tolkes som JSON.
+    except ValueError:
+        # Svar med klientfeil for ugyldig JSON.
+        return func.HttpResponse(&quot;Body must be JSON&quot;, status_code=400)
+    # Krev et JSON-objekt, ikke for eksempel en liste.
+    if not isinstance(payload, dict):
+        # Forklar hvorfor datatypen ble avvist.
+        return func.HttpResponse(&quot;Body must be a JSON object&quot;, status_code=400)
+    # Hent dokument-ID-en som brukes til duplikatkontroll.
+    document_id = payload.get(&quot;id&quot;)
+    # Avvis manglende, tomme og ikke-tekstlige ID-er.
+    if not isinstance(document_id, str) or not document_id.strip():
+        # Send en tydelig valideringsfeil til klienten.
+        return func.HttpResponse(&quot;id must be a non-empty string&quot;, status_code=400)
+    # Unngå at to samtidige kall registrerer samme ID som ny.
+    with processed_lock:
+        # Kontroller om denne prosessen allerede har sett ID-en.
+        duplicate = document_id in processed
+        # Registrer ID-en før en annen tråd får tilgang.
+        processed.add(document_id)
+    # Gjør duplikathåndteringen synlig i loggen.
+    logging.info(&quot;document_received duplicate=%s&quot;, duplicate)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Vis om dette kallet ble behandlet som nytt.
+        json.dumps({&quot;id&quot;: document_id, &quot;processed&quot;: not duplicate}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# La Key Vault-øvelsen kontrollere om hemmeligheten ble levert til appen.
+@app.route(route=&quot;configuration&quot;, methods=[&quot;GET&quot;])
+# Rapporter bare status for konfigurasjonen.
+def configuration(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hemmeligheten som appinnstilling.
+    secret = os.getenv(&quot;DEMO_SECRET&quot;, &quot;&quot;)
+    # Skill en faktisk verdi fra en Key Vault-referanse som ikke er løst.
+    resolved = bool(secret) and not secret.startswith(&quot;@Microsoft.KeyVault(&quot;)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Send bare en boolsk status, aldri hemmelighetens verdi.
+        json.dumps({&quot;secret_configured&quot;: resolved}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# Gi labens Event Grid-webhook en HTTP-rute uten Function-nøkkel.
+@app.route(route=&quot;event-hook&quot;, methods=[&quot;POST&quot;], auth_level=func.AuthLevel.ANONYMOUS)
+# Håndter valideringshendelser og vanlige Event Grid-hendelser.
+def event_hook(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hendelseslisten i Event Grid Schema-format.
+    events = req.get_json()
+    # Krev en liste slik dette hendelsesskjemaet bruker.
+    if not isinstance(events, list):
+        # Avvis et annet meldingsformat.
+        return func.HttpResponse(&quot;Expected Event Grid Schema array&quot;, status_code=400)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Gjenkjenn håndtrykket som validerer webhook-abonnementet.
+        if event.get(&quot;eventType&quot;) == &quot;Microsoft.EventGrid.SubscriptionValidationEvent&quot;:
+            # Send valideringskoden tilbake i validationResponse.
+            return func.HttpResponse(json.dumps({&quot;validationResponse&quot;: event[&quot;data&quot;][&quot;validationCode&quot;]}),
+                                     # Svar med JSON slik valideringen forventer.
+                                     mimetype=&quot;application/json&quot;)
+    # Bruk en appinnstilling til å slå på en kontrollert leveringsfeil.
+    if os.getenv(&quot;FAIL_EVENTS&quot;, &quot;false&quot;).lower() == &quot;true&quot;:
+        # Gjør den fremprovoserte feilen synlig i loggen.
+        logging.warning(&quot;Controlled Event Grid delivery failure&quot;)
+        # Svar med 503 så Event Grid kan forsøke levering igjen.
+        return func.HttpResponse(&quot;Retry this delivery&quot;, status_code=503)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Vis hvilke hendelser som kom gjennom abonnementets filter.
+        logging.info(&quot;event id=%s subject=%s&quot;, event.get(&quot;id&quot;), event.get(&quot;subject&quot;))
+    # Bekreft vellykket mottak med HTTP 200.
+    return func.HttpResponse(&quot;Accepted&quot;)
+</code></pre></details>
+</section>
+      <section class="panel" id="feil"><h2>2. Undersøk feil og restart</h2>
+<pre data-language="PowerShell"><code># Send et tomt JSON-objekt for å teste valideringsfeilen HTTP 400.
+Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body '{}'</code></pre><p>Forventet HTTP 400. Restart host-en og send doc-001 igjen: minnesettet er tømt. Forklar hvorfor HTTP-triggeren ikke gjentar klientens kall, og hvorfor varig idempotens trenger mer enn prosessminne.</p><label class="check-item"><input type="checkbox" data-check="w14-feil"><span>Jeg har testet ugyldige data og funnet begrensningen i minnelagringen.</span></label>
+</section>
+      <section class="panel" id="deploy"><h2>3. Publiser og konfigurer</h2>
+<p>Stopp host-en.</p><h3 id="appnavn">Navnene som brukes videre i del 18–19</h3><p>Sett navnene til den eksisterende appen. Ved ny terminal henter du bare disse verdiene:</p><pre data-language="PowerShell"><code># Sett ressursgruppen til Function App-en fra del 14.
+$functionGroup = "ai200-d3"
+# Sett navnet på Function App-en som allerede finnes.
+$functionApp = "DITT-FUNCTION-APP-NAVN"</code></pre><p>Publiser deretter koden fra <code>labs/integrations</code>, med Python-miljøet aktivt:</p><pre data-language="PowerShell"><code># Publiser koden fra den gjeldende labmappen til den eksisterende Function App-en.
+func azure functionapp publish $functionApp</code></pre><p>Finn Get Function URL for documents i portalen og send samme body til den komplette URL-en med nøkkel. Undersøk Function-logger og appinnstillingen FUNCTIONS_WORKER_RUNTIME. Behold appnavnet til workshop 18–19; de bruker event-hook og configuration-endepunktene fra samme kode.</p><label class="check-item"><input type="checkbox" data-check="w14-deploy"><span>Jeg har publisert og testet Function App-en i Azure.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Stopp lokal host og fjern den lokale innstillingsfilen nedenfor. Behold den publiserte Function App-en og Storage-kontoen til del 19. Del 17 bruker samme Storage-konto, og del 18–19 bruker den publiserte appen. Hvis du avslutter hele løpet her, sletter du begge ressursene.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+Remove-Item -LiteralPath labs/integrations/local.settings.json -ErrorAction SilentlyContinue</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local">Lokal kjøring</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-azure-cli?pivots=programming-language-python">Publisering med Core Tools</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-redis-vectors.html">← Workshop 13</a><a href="./workshop-service-bus.html">Workshop 15 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 14</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

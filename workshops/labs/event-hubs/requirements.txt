@@ -1,0 +1,6 @@
+# Send og motta hendelser med Event Hubs SDK-et.
+azure-eventhub>=5.12,<6
+# Lagre partisjonsfremdrift og eierskap i Blob Storage.
+azure-eventhub-checkpointstoreblob>=1.1,<2
+# Bruk samme Entra-credential som i resten av løpet.
+azure-identity>=1.19,<2

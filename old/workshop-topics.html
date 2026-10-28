@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Send én hendelse til uavhengige mottakere og filtrer hvilke subscriptions som får en kopi.">
+  <title>Workshop 16: Service Bus: topics og subscriptions | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 16 / Domene 3 / Integrasjoner</p>
+    <h1>Service Bus: topics og subscriptions</h1>
+    <p class="lead">Send én hendelse til uavhengige mottakere og filtrer hvilke subscriptions som får en kopi.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-service-bus.html">← 15. Behandle kømeldinger og DLQ i kode</a><a href="./workshop-topics.html" aria-current="page">16. Denne workshopen</a><a href="./workshop-bindings.html">17. Functions: triggere og output-binding →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#kopier">1. Test uavhengige kopier</a>
+      <a href="#filter">2. Legg på et filter</a>
+      <a href="#endring">3. Vis at filteret virker</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-topic" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Service Bus topic</span></label></th><td>Publiseringspunktet som kan sende én melding videre til flere uavhengige abonnementer. Vi sender til document-events.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Service Bus topic</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-subscription" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Subscription</span></label></th><td>Et abonnement som beholder sin egen kopi. Fullføring i indexer fjerner ikke audit sin melding.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Subscription</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-pubsub" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Pub/sub og fan-out</span></label></th><td>Publish/subscribe: avsender publiserer uten å kjenne alle mottakerne. Fan-out betyr at samme publisering fordeles til flere abonnementer.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Pub/sub og fan-out</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-sql" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL-filter</span></label></th><td>SQL betyr Structured Query Language. Subscription-regelen bruker et uttrykk som kind = &#x27;note&#x27; til å velge meldinger etter metadata.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om SQL-filter</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-or" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Standardregel og OR</span></label></th><td>OR betyr logisk eller: det holder at én regel treffer. En regel som fortsatt tar imot alt, gjør derfor det smalere filteret uten virkning.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Standardregel og OR</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-properties" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Application properties og body</span></label></th><td>Application properties er meldingsegenskaper filteret kan lese. Det parser ikke automatisk JSON-bodyen; JSON betyr JavaScript Object Notation.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Application properties og body</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk det eksisterende Standard-namespace-et og <code>SERVICEBUS_NAMESPACE</code> fra <a href="./workshop-service-bus.html">workshop 15</a>. Opprett topic <code>document-events</code> og subscriptions <code>indexer</code> og <code>audit</code>. Begge starter med standardregelen som tar imot alt.</p>
+
+<details class="source-file" id="fil-labs-integrations-message-bus-py" data-source-file="labs/integrations/message_bus.py"><summary><code>message_bus.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/message_bus.py</code></p><pre data-language="Python" data-source="labs/integrations/message_bus.py"><code>&quot;&quot;&quot;Service Bus data-plane operations using the signed-in user&#x27;s identity.&quot;&quot;&quot;
+# Velg kø-, topic-, subscription- eller DLQ-operasjon.
+import argparse
+# Les Service Bus-navnet fra miljøet.
+import os
+
+# Bruk Entra-identitet, for eksempel den innloggede Azure CLI-brukeren.
+from azure.identity import DefaultAzureCredential
+# Hent klienten, meldingstypen og valget for dead-letter-køen.
+from azure.servicebus import ServiceBusClient, ServiceBusMessage, ServiceBusSubQueue
+
+
+# Kjør én operasjon mot labnamespace-et.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til dem som brukes i øvelsene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;send&quot;, &quot;receive&quot;, &quot;dlq&quot;, &quot;topic&quot;, &quot;subscription&quot;])
+    # Velg mottakende subscription; indexer er standard.
+    parser.add_argument(&quot;--subscription&quot;, default=&quot;indexer&quot;)
+    # Les valgene fra terminalen.
+    args = parser.parse_args()
+    # Opprett identitet og klient, og lukk dem etter operasjonen.
+    with DefaultAzureCredential() as credential, ServiceBusClient(
+            # Bruk namespace-adressen uten å lagre en tilkoblingsnøkkel i filen.
+            fully_qualified_namespace=os.environ[&quot;SERVICEBUS_NAMESPACE&quot;], credential=credential) as client:
+        # Disse operasjonene sender én ny melding.
+        if args.mode in {&quot;send&quot;, &quot;topic&quot;}:
+            # Send til topic-et når topic-operasjonen er valgt.
+            sender = (client.get_topic_sender(&quot;document-events&quot;) if args.mode == &quot;topic&quot;
+                      # Ellers sendes meldingen til documents-køen.
+                      else client.get_queue_sender(&quot;documents&quot;))
+            # Åpne senderen for denne sendingen.
+            with sender:
+                # Bruk en liten JSON-body som nyttelast.
+                sender.send_messages(ServiceBusMessage(&#x27;{&quot;id&quot;:&quot;doc-001&quot;}&#x27;,
+                                                       # Legg til subject og en egenskap som subscription-filtre kan bruke.
+                                                       subject=&quot;document&quot;, application_properties={&quot;kind&quot;: &quot;note&quot;}))
+            # Bekreft at SDK-sendingen er fullført.
+            print(&quot;Sent&quot;)
+        # De øvrige operasjonene mottar meldinger.
+        else:
+            # En topic-mottaker leser fra en bestemt subscription.
+            if args.mode == &quot;subscription&quot;:
+                # Velg indexer eller audit på document-events-topic-et.
+                receiver = client.get_subscription_receiver(&quot;document-events&quot;, args.subscription)
+            # Køøvelsen leser enten vanlig kø eller dens DLQ.
+            else:
+                # Opprett mottakeren for documents-køen.
+                receiver = client.get_queue_receiver(&quot;documents&quot;, sub_queue=(
+                    # Velg dead-letter-underkøen bare i dlq-modus.
+                    ServiceBusSubQueue.DEAD_LETTER if args.mode == &quot;dlq&quot; else None))
+            # Åpne mottakeren og lukk den etter bruk.
+            with receiver:
+                # Hent høyst ti meldinger og begrens ventingen til fem sekunder.
+                messages = receiver.receive_messages(max_message_count=10, max_wait_time=5)
+                # Vis hvor mange meldinger som ble hentet.
+                print(&quot;Received:&quot;, len(messages))
+                # Behandle hver mottatt melding.
+                for message in messages:
+                    # Vis body og antall leveringsforsøk.
+                    print(str(message), &quot;Delivery:&quot;, message.delivery_count)
+                    # Fremprovoser DLQ-flyten i den vanlige køøvelsen.
+                    if args.mode == &quot;receive&quot;:
+                        # Flytt meldingen til DLQ med en årsak du kan inspisere.
+                        receiver.dead_letter_message(message, reason=&quot;Workshop&quot;, error_description=&quot;Controlled demo&quot;)
+                    # Fullfør meldinger i DLQ- og subscription-øvelsene.
+                    else:
+                        # Bekreft behandling og fjern meldingen fra denne mottakerkøen.
+                        receiver.complete_message(message)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Service Bus-operasjon.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+</section>
+      <section class="panel" id="kopier"><h2>1. Test uavhengige kopier</h2>
+<pre data-language="PowerShell"><code># Publiser labmeldingen på topic-et document-events.
+python labs/integrations/message_bus.py topic
+# Motta og fullfør meldingen fra indexer sin uavhengige kopi.
+python labs/integrations/message_bus.py subscription --subscription indexer
+# Motta og fullfør meldingen fra audit sin uavhengige kopi.
+python labs/integrations/message_bus.py subscription --subscription audit</code></pre><p>Forventet: begge mottar én kopi. Fullføring i indexer fjerner ikke audit sin kopi. Finn skillelinjen mellom topic og subscription; det er subscription som fungerer som mottakerens kø.</p><label class="check-item"><input type="checkbox" data-check="w16-kopier"><span>Jeg har mottatt uavhengige kopier av samme publisering.</span></label>
+</section>
+      <section class="panel" id="filter"><h2>2. Legg på et filter</h2>
+<p>På indexer i portalen: erstatt standardregelen med en SQL-filterregel <code>kind = 'note'</code>. Fjern standardregelen som matcher alt, ellers gjelder reglene som OR. Audit beholder standardregelen. Send en ny melding og motta fra begge.</p><label class="check-item"><input type="checkbox" data-check="w16-filter"><span>Jeg har satt et subscription-filter som bruker meldingsmetadata.</span></label>
+</section>
+      <section class="panel" id="endring"><h2>3. Vis at filteret virker</h2>
+<p>I kildefilen av message_bus.py: endre application property kind fra note til other, og send på nytt. Forventet: audit mottar meldingen, indexer gjør det ikke. Forklar hvorfor filteret ser på metadata og ikke parser JSON-body.</p><p>Hent tilbake den opprinnelige senderen med <code>kind=note</code> før du fortsetter:</p><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
+git restore --source=HEAD -- labs/integrations/message_bus.py</code></pre><p>Kildefilen bruker nå de opprinnelige meldingsegenskapene.</p><label class="check-item"><input type="checkbox" data-check="w16-endring"><span>Jeg har verifisert både treff og avvisning i filteret.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Tøm labsubscriptions ved å fullføre meldingene. Slett topic-et når øvelsen er ferdig. Namespace/kø kan beholdes til workshop 17.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions">Topics og subscriptions</a></li><li><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/topic-filters">Subscription-filtre</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-service-bus.html">← Workshop 15</a><a href="./workshop-bindings.html">Workshop 17 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 16</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

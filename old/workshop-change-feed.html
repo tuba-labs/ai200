@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Bruk en Cosmos DB-trigger som change feed-prosessor, og undersøk leases, checkpoints og gjentatt levering.">
+  <title>Workshop 11: Behandle endringer fra Cosmos DB | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 11 / Domene 2 / AI-data</p>
+    <h1>Behandle endringer fra Cosmos DB</h1>
+    <p class="lead">Bruk en Cosmos DB-trigger som change feed-prosessor, og undersøk leases, checkpoints og gjentatt levering.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-cosmos-vectors.html">← 10. Vektorsøk i Cosmos DB</a><a href="./workshop-change-feed.html" aria-current="page">11. Denne workshopen</a><a href="./workshop-redis.html">12. Caching og invalidering med Managed Redis →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#endring">1. Observer nye endringer</a>
+      <a href="#checkpoint">2. Restart og undersøk leases</a>
+      <a href="#behandling">3. Gjør behandlingen robust</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-cosmos.html">9. Cosmos DB: SDK, indekser og RU</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-feed" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Change feed</span></label></th><td>En strøm av dokumentendringer fra Cosmos DB, der DB betyr database. Vi reagerer på endringer i stedet for å lese hele datasettet på nytt.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Change feed</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-processor" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Change feed-prosessor</span></label></th><td>Leser endringer, kaller behandlingskoden og holder rede på fremdrift. Azure Functions-triggeren bruker denne mekanismen for oss.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Change feed-prosessor</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-lease" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Lease-container</span></label></th><td>Lagrer checkpoints og koordinerer hvem som behandler hvilken partisjon. Flere prosessorinstanser kan fordele arbeidet gjennom samme lease-oppsett.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Lease-container</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-checkpoint" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Checkpoint</span></label></th><td>Lagret posisjon i endringsstrømmen som lar behandlingen fortsette etter restart. Sletting av leases kan endre hvor den starter.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Checkpoint</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-latest" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Latest-version feed</span></label></th><td>Standardmodusen viser nye og oppdaterte dokumentversjoner. Den er ikke en komplett hendelseshistorikk over alle mellomtilstander og slettinger.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Latest-version feed</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-idempotent" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-etag" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ETag</span></label></th><td>Entity Tag: versjonsmarkør for dokumentet. Vi undersøker _etag som del av grunnlaget for å gjenkjenne en bestemt endring.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger">Les mer<span class="sr-only"> om ETag</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-host" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Functions-host og trigger</span></label></th><td>Host-en kjører funksjonene; triggeren bestemmer når koden starter. Her er en endring i den overvåkede Cosmos-containeren startsignalet.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger">Les mer<span class="sr-only"> om Functions-host og trigger</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-ru" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RU</span></label></th><td>Request Unit: målet på kostnaden for en Cosmos DB-operasjon. DB betyr database; skriptet viser RU når dokumentet oppdateres.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om RU</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk <code>notes</code>-containeren fra <a href="./workshop-cosmos.html">workshop 9</a> og Core Tools fra fellesoppsettet. Opprett en lab-Storage-konto i den eksisterende ressursgruppen <code>ai200-d2</code> til change feed-hosten. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/cosmos/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
+    Copy-Item labs/cosmos/local.settings.example.json labs/cosmos/local.settings.json
+}</code></pre><p>Åpne <code>labs/cosmos/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>CosmosConnection</code> til Cosmos-kontoens tilkoblingsstreng. Kontroller at <code>COSMOS_DATABASE</code> er <code>workshop</code>. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Cosmos change feed.
+Set-Location labs/cosmos
+# Start den lokale Functions-hosten på standardport 7071.
+func start</code></pre>
+
+<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+# Velg hvilken Cosmos-operasjon eksemplet skal utføre.
+import argparse
+# Les endpoint, nøkkel og databasenavn fra terminalens miljø.
+import os
+
+# Bruk Cosmos SDK-et og en eksplisitt partisjonsnøkkel.
+from azure.cosmos import CosmosClient, PartitionKey
+
+# Bruk små undervisningsdokumenter med håndskrevne vektorer.
+DOCUMENTS = [
+    # Første dokument ligger i partisjonen containers.
+    {&quot;id&quot;: &quot;note-1&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Package an application&quot;, &quot;embedding&quot;: [1.0, 0.0, 0.0]},
+    # Andre dokument ligger i samme partisjon, med en lignende vektor.
+    {&quot;id&quot;: &quot;note-2&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Inspect container logs&quot;, &quot;embedding&quot;: [0.9, 0.1, 0.0]},
+    # Tredje dokument viser hvordan metadatafilter kan utelate et nært vektortreff.
+    {&quot;id&quot;: &quot;note-3&quot;, &quot;topic&quot;: &quot;data&quot;, &quot;text&quot;: &quot;Retrieve stored data&quot;, &quot;embedding&quot;: [0.0, 1.0, 0.0]},
+]
+
+
+# La SDK-et sende responsheaderne til denne callbacken.
+def report(headers, _body):
+    # Hent kostnaden i request units fra responsheaderen.
+    charge = headers.get(&quot;x-ms-request-charge&quot;)
+    # Skriv bare RU når headeren finnes.
+    if charge:
+        # Vis grunnlaget for sammenligning av oppslag.
+        print(&quot;Request charge:&quot;, charge, &quot;RU&quot;)
+
+
+# Kjør operasjonen som ble valgt på kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens valgene til operasjonene workshopene bruker.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;point&quot;, &quot;vector-setup&quot;, &quot;vector&quot;, &quot;update&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Åpne klienten med labkontoens endpoint og nøkkel, og lukk den etter bruk.
+    with CosmosClient(os.environ[&quot;COSMOS_ENDPOINT&quot;], credential=os.environ[&quot;COSMOS_KEY&quot;]) as client:
+        # Use a database without shared throughput so vector search is supported.
+        # Velg databasen; dette oppretter ikke databasen.
+        database = client.get_database_client(os.getenv(&quot;COSMOS_DATABASE&quot;, &quot;workshop&quot;))
+        # Hold vektorpolicyen i en egen container.
+        name = &quot;vectors&quot; if args.mode.startswith(&quot;vector&quot;) else &quot;notes&quot;
+        # Hent en klient for den valgte containeren.
+        container = database.get_container_client(name)
+        # Opprett labcontainer og eksempeldata ved setup.
+        if args.mode in {&quot;setup&quot;, &quot;vector-setup&quot;}:
+            # Beskriv den vanlige indekseringspolicyen.
+            policy = {
+                # Oppdater indeksene automatisk når dokumentene endres.
+                &quot;indexingMode&quot;: &quot;consistent&quot;, &quot;automatic&quot;: True,
+                # Indekser dokumentfeltene som standard.
+                &quot;includedPaths&quot;: [{&quot;path&quot;: &quot;/*&quot;}],
+                # Unnta vektorarrayet fra vanlig feltindeksering.
+                &quot;excludedPaths&quot;: [{&quot;path&quot;: &quot;/embedding/*&quot;}],
+            }
+            # Legg bare til vektorinnstillinger for vektorcontaineren.
+            extra = {}
+            # Konfigurer en egen indeks for VectorDistance-søk.
+            if args.mode == &quot;vector-setup&quot;:
+                # Bruk en flat vektorindeks på embedding-feltet.
+                policy[&quot;vectorIndexes&quot;] = [{&quot;path&quot;: &quot;/embedding&quot;, &quot;type&quot;: &quot;flat&quot;}]
+                # Beskriv hvilke vektorer embedding-feltet inneholder.
+                extra[&quot;vector_embedding_policy&quot;] = {&quot;vectorEmbeddings&quot;: [{
+                    # Lagre vektorene i embedding og behandle verdiene som float32.
+                    &quot;path&quot;: &quot;/embedding&quot;, &quot;dataType&quot;: &quot;float32&quot;,
+                    # Krev tre dimensjoner og sammenlign med cosinusavstand.
+                    &quot;dimensions&quot;: 3, &quot;distanceFunction&quot;: &quot;cosine&quot;,
+                }]}
+            # Opprett containeren hvis den mangler; eksisterende policy erstattes ikke her.
+            container = database.create_container_if_not_exists(
+                # Bruk topic som partisjonsnøkkel.
+                id=name, partition_key=PartitionKey(path=&quot;/topic&quot;),
+                # Bruk policyen over og 400 RU/s dedikert throughput.
+                indexing_policy=policy, offer_throughput=400, **extra,
+            )
+            # Skriv inn undervisningsdokumentene.
+            for document in DOCUMENTS:
+                # Opprett eller erstatt dokumentet, og vis operasjonens RU.
+                container.upsert_item(document, response_hook=report)
+            # Vis hvilken container som er klargjort.
+            print(&quot;Ready:&quot;, name)
+        # Utfør et direkte oppslag uten SQL-spørring.
+        elif args.mode == &quot;point&quot;:
+            # ID og partisjonsnøkkel identifiserer dokumentet sammen.
+            result = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;, response_hook=report)
+            # Vis dokumentets ID og tekst.
+            print(result[&quot;id&quot;], result[&quot;text&quot;])
+        # Lag en endring som change feed-triggeren kan observere.
+        elif args.mode == &quot;update&quot;:
+            # Les dokumentet før oppdateringen.
+            document = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;)
+            # Øk et synlig revisjonsnummer.
+            document[&quot;revision&quot;] = document.get(&quot;revision&quot;, 0) + 1
+            # Lagre den nye versjonen og vis skrivekostnaden.
+            container.upsert_item(document, response_hook=report)
+            # Bruk revisjonen til å kjenne igjen endringen i triggerloggen.
+            print(&quot;Updated note-1, revision&quot;, document[&quot;revision&quot;])
+        # Kjør vanlig SQL-søk eller vektorsøk.
+        else:
+            # Start med et metadatafilter.
+            sql = &quot;SELECT c.id, c.topic FROM c WHERE c.topic = @topic&quot;
+            # Send filterverdien som en parameter.
+            parameters = [{&quot;name&quot;: &quot;@topic&quot;, &quot;value&quot;: &quot;containers&quot;}]
+            # Bytt til rangering etter vektoravstand.
+            if args.mode == &quot;vector&quot;:
+                # Returner de to nærmeste treffene og deres avstand.
+                sql = (&quot;SELECT TOP 2 c.id, VectorDistance(c.embedding, @vector) AS distance &quot;
+                       # Behold emnefilteret og sorter de gjenværende dokumentene etter avstand.
+                       &quot;FROM c WHERE c.topic = @topic ORDER BY VectorDistance(c.embedding, @vector)&quot;)
+                # Bruk samme tredimensjonale spørsmålsvektor som i PostgreSQL-øvelsen.
+                parameters.append({&quot;name&quot;: &quot;@vector&quot;, &quot;value&quot;: [0.0, 1.0, 0.0]})
+            # Kjør den parameteriserte spørringen.
+            results = container.query_items(sql, parameters=parameters,
+                                            # Avgrens lesingen til containers-partisjonen og vis RU.
+                                            partition_key=&quot;containers&quot;, response_hook=report)
+            # Iterer resultatene fra SDK-et.
+            for result in results:
+                # Vis hvert treff i terminalen.
+                print(result)
+
+
+# Kjør bare når filen startes direkte.
+if __name__ == &quot;__main__&quot;:
+    # Start den valgte laboperasjonen.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json" class="code-with-notes"><code>{
+  &quot;version&quot;: &quot;2.0&quot;,
+  &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json" class="code-with-notes"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING&quot;,
+    &quot;CosmosConnection&quot;: &quot;REPLACE_WITH_LAB_COSMOS_CONNECTION_STRING&quot;,
+    &quot;COSMOS_DATABASE&quot;: &quot;workshop&quot;
+  }
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Tilkoblingsstrengen som Cosmos-triggeren bruker.
+# Databasenavnet som erstatter %COSMOS_DATABASE% i triggeren.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+azure-cosmos&gt;=4.9,&lt;5
+# Functions-typer og dekoratorer for change feed-triggeren.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-cosmos-funcignore" data-source-file="labs/cosmos/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/.funcignore</code></p><pre data-language="Tekst" data-source="labs/cosmos/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Klientskriptet kjøres lokalt og er ikke en serverfunksjon.
+demo.py
+</code></pre></details>
+</section>
+      <section class="panel" id="endring"><h2>1. Observer nye endringer</h2>
+<p>Bruk en annen Python-terminal med <a href="./workshop-cosmos.html#tilkobling">Cosmos-tilkoblingen fra del 9</a>. Kjør fra prosjektroten:</p><pre data-language="PowerShell"><code># Oppdater note-1 slik at Cosmos change feed får en ny endring å behandle.
+python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+
+<details class="source-file" id="fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
+# Send meldinger til Functions-hostens logg.
+import logging
+# Hent FunctionApp og dokumenttypene for Python-bindingene.
+import azure.functions as func
+
+# Opprett appen som Functions-hosten oppdager.
+app = func.FunctionApp()
+
+
+# Send endrede dokumenter til documents-argumentet.
+# Databasenavnet hentes fra appinnstillingen COSMOS_DATABASE.
+@app.cosmos_db_trigger(arg_name=&quot;documents&quot;, database_name=&quot;%COSMOS_DATABASE%&quot;,
+                      # Overvåk notes med tilkoblingen fra CosmosConnection-innstillingen.
+                      container_name=&quot;notes&quot;, connection=&quot;CosmosConnection&quot;,
+                      # Lagre fremdrift i leases; opprett lease-containeren hvis den mangler.
+                      lease_container_name=&quot;leases&quot;, create_lease_container_if_not_exists=True)
+# En triggerkjøring kan inneholde en samling endrede dokumenter.
+def changed(documents: func.DocumentList):
+    # Behandle hvert dokument i leveransen.
+    for document in documents:
+        # Logg ID og revisjon slik at du kan sammenligne med oppdateringsskriptet.
+        logging.info(&quot;changed id=%s revision=%s&quot;, document[&quot;id&quot;], document.get(&quot;revision&quot;, 0))
+</code></pre></details>
+</section>
+      <section class="panel" id="checkpoint"><h2>2. Restart og undersøk leases</h2>
+<p>Finn leases i databasen. Stopp Functions-host, oppdater note-1 to ganger, og start host-en igjen. Observer at behandlingen fortsetter fra checkpoint. Sammenlign siste endringsversjon med applikasjonens behov: standard latest-version feed er ikke en komplett historikk over alle mellomliggende tilstander eller slettinger.</p><label class="check-item"><input type="checkbox" data-check="w11-checkpoint"><span>Jeg har undersøkt checkpoints og forklart hvorfor en restart ikke krever full omlasting.</span></label>
+</section>
+      <section class="panel" id="behandling"><h2>3. Gjør behandlingen robust</h2>
+<p>Forklar hvorfor sideeffekter må tåle gjentatt levering. Utvid logglinjen med dokumentets _etag og diskuter en varig nøkkel for en indeksoppdatering. I denne laben er sideeffekten bare logging; en applikasjon må registrere ferdig behandling før den kan stole på deduplisering.</p><label class="check-item"><input type="checkbox" data-check="w11-behandling"><span>Jeg kan forklare leases og behovet for idempotent behandling.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Stopp host-en. Slett local.settings.json med labnøklene og slett den dedikerte Cosmos-kontoen/Storage-kontoen når du er ferdig. Slett ikke leases for en prosessor som skal fortsette; det kan endre hvor behandlingen starter.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+# Forkaster kodeendringene og fjerner den lokale filen med labnøkler.
+git restore --source=HEAD -- labs/cosmos/function_app.py
+# Slett den lokale filen labs/cosmos/local.settings.json hvis den finnes.
+Remove-Item -LiteralPath labs/cosmos/local.settings.json -ErrorAction SilentlyContinue
+# Fjern COSMOS_KEY fra denne terminalen.
+Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger?pivots=programming-language-python">Cosmos DB-trigger</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-cosmos-vectors.html">← Workshop 10</a><a href="./workshop-redis.html">Workshop 12 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 11</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

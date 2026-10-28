@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Modeller en liten vektortabell, bruk metadatafilter og undersøk en HNSW-indeks.">
+  <title>Workshop 7: PostgreSQL: vektorsøk og indekser | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 07 / Domene 2 / AI-data</p>
+    <h1>PostgreSQL: vektorsøk og indekser</h1>
+    <p class="lead">Modeller en liten vektortabell, bruk metadatafilter og undersøk en HNSW-indeks.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-aks.html">← 6. Utrulling og feilsøking i AKS</a><a href="./workshop-data.html" aria-current="page">7. Denne workshopen</a><a href="./workshop-postgresql.html">8. PostgreSQL i Azure: SDK og forbindelser →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#postgres">1. Start database og schema</a>
+      <a href="#vektorsok">2. Søk og filtrer</a>
+      <a href="#indeks">3. Les planen og bygg indeks</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-postgres" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>PostgreSQL og pgvector</span></label></th><td>PostgreSQL er databasen. Utvidelsen pgvector gir datatypen vector og operatorene og indeksene som brukes til vektorsøk.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om PostgreSQL og pgvector</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-sql" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL, schema og primærnøkkel</span></label></th><td>SQL betyr Structured Query Language. Schema beskriver datastrukturen; primærnøkkelen identifiserer hver rad entydig.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om SQL, schema og primærnøkkel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-embedding" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Embedding og dimensjon</span></label></th><td>En embedding er en tallvektor som representerer innhold. vector(3) krever tre komponenter; her bruker vi håndskrevne undervisningsvektorer.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Embedding og dimensjon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-cosine" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosinusavstand og &lt;=&gt;</span></label></th><td>Operatoren &lt;=&gt; beregner cosinusavstand mellom vektorer. Lavere avstand gir høyere plassering når vi sorterer stigende.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Cosinusavstand og &lt;=&gt;</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-rag" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metadatafilter og RAG</span></label></th><td>RAG betyr Retrieval-Augmented Generation, generering med gjenfunnet kontekst. Metadatafilteret avgrenser hvilke dokumenter som kan bli med i gjenfinningen.</td><td><a href="https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview">Les mer<span class="sr-only"> om Metadatafilter og RAG</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-hnsw" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HNSW</span></label></th><td>Hierarchical Navigable Small World: grafbasert indeks for tilnærmet søk etter nærmeste vektorer. Recall, minnebruk og svartid må veies mot hverandre.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om HNSW</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-explain" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>EXPLAIN ANALYZE og Seq Scan</span></label></th><td>Viser hvordan spørringen kjøres og målt tidsbruk. Seq Scan er sekvensiell gjennomlesing; et lite datasett kan gjøre den billigere enn indeksoppslag.</td><td><a href="https://www.postgresql.org/docs/17/using-explain.html">Les mer<span class="sr-only"> om EXPLAIN ANALYZE og Seq Scan</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-recall" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Recall og latency</span></label></th><td>Recall er andelen relevante nærmeste naboer søket finner sammenlignet med et eksakt søk. Latency er svartid; høyere recall kan kreve mer arbeid.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Recall og latency</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Docker må kjøre. Bruk <code>labs/data/setup.sql</code> som ferdig datasett, og lagre egne spørringer i <code>artifacts/queries.sql</code>. Vektorene er små undervisningstall; øvelsen undersøker lagring, avstand og gjenfinning.</p>
+
+<details class="source-file" id="fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Opprett labtabellen hvis den ikke finnes fra før.
+CREATE TABLE IF NOT EXISTS workshop_notes (
+    -- Gi hver rad en entydig identifikator.
+    id integer PRIMARY KEY,
+    -- Bruk topic som metadatafilter i søkene.
+    topic text NOT NULL,
+    -- Lagre teksten som et senere RAG-steg kan hente frem.
+    content text NOT NULL,
+    -- Lagre nøyaktig tre komponenter per undervisningsvektor.
+    embedding vector(3) NOT NULL
+);
+
+-- Hand-written teaching vectors, not output from an embedding model.
+-- Sett inn fire eksempler. Vektorene er skrevet for hånd, ikke generert av en modell.
+INSERT INTO workshop_notes (id, topic, content, embedding) VALUES
+    -- Første containerdokument peker langs første vektordimensjon.
+    (1, &#x27;containers&#x27;, &#x27;A container packages an application and its dependencies.&#x27;, &#x27;[1,0,0]&#x27;),
+    -- Andre containerdokument ligger nær det første i vektorrommet.
+    (2, &#x27;containers&#x27;, &#x27;Read container logs when an application fails to start.&#x27;, &#x27;[0.9,0.1,0]&#x27;),
+    -- Datadokumentet ligger nær spørsmålsvektoren, men kan filtreres bort av topic.
+    (3, &#x27;data&#x27;, &#x27;A database stores and retrieves application data.&#x27;, &#x27;[0,1,0]&#x27;),
+    -- Sikkerhetsdokumentet gir oss et eksempel i et annet emne.
+    (4, &#x27;security&#x27;, &#x27;Managed identity removes the need to store a credential.&#x27;, &#x27;[0,0,1]&#x27;)
+-- Oppdater eksisterende rader når skriptet kjøres på nytt.
+ON CONFLICT (id) DO UPDATE SET
+    -- Bruk emnet fra raden vi forsøkte å sette inn.
+    topic = EXCLUDED.topic,
+    -- Oppdater teksten til verdien i eksempeldatasettet.
+    content = EXCLUDED.content,
+    -- Oppdater også vektoren, og avslutt SQL-setningen.
+    embedding = EXCLUDED.embedding;
+</code></pre></details>
+</section>
+      <section class="panel" id="postgres"><h2>1. Start database og schema</h2>
+<pre data-language="PowerShell"><code># Start en lokal PostgreSQL 17-container med pgvector og databasen workshop.
+docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+# Kontroller at PostgreSQL-containeren er klar til å motta forbindelser.
+docker exec ai200-pg pg_isready -U postgres -d workshop
+# Send SQL-filen til psql i containeren for å opprette schema og eksempeldata.
+Get-Content labs/data/setup.sql -Raw | docker exec -i ai200-pg psql -U postgres -d workshop
+# Åpne en interaktiv psql-terminal mot databasen workshop.
+docker exec -it ai200-pg psql -U postgres -d workshop</code></pre><p>Vent på accepting connections før setup. Tabellen har id, topic, textinnhold og vector(3). Forklar valg av primærnøkkel og dimensjoner.</p><label class="check-item"><input type="checkbox" data-check="w7-postgres"><span>Jeg har opprettet en tabell og lagret vektorer.</span></label>
+</section>
+      <section class="panel" id="vektorsok"><h2>2. Søk og filtrer</h2>
+<pre data-language="SQL"><code>-- Hent dokumentfeltene og beregn cosinusavstand til spørsmålsvektoren.
+SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+-- Les radene fra labtabellen workshop_notes.
+FROM workshop_notes
+-- Ta bare med dokumenter som har emnet containers.
+WHERE topic = 'containers'
+-- Sorter dokumentene etter økende cosinusavstand.
+ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector
+-- Returner bare de to nærmeste dokumentene.
+LIMIT 2;</code></pre><p>Forventet: dokument 2 før 1. Uten filter er dokument 3 nærmest. Forklar hvordan et metadatafilter avgrenser RAG-konteksten før en språkmodell eventuelt bruker treffene.</p><label class="check-item"><input type="checkbox" data-check="w7-vektorsok"><span>Jeg har brukt både vektoravstand og metadatafilter.</span></label>
+</section>
+      <section class="panel" id="indeks"><h2>3. Les planen og bygg indeks</h2>
+<pre data-language="SQL"><code>-- Opprett den navngitte indeksen hvis den ikke finnes fra før.
+CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+-- Bygg en HNSW-indeks på embedding med operatorer for cosinusavstand.
+ON workshop_notes USING hnsw (embedding vector_cosine_ops);
+-- Kjør neste spørring og vis planen, målt tidsbruk og bufferaktivitet.
+EXPLAIN (ANALYZE, BUFFERS)
+-- Hent dokumentenes ID-er fra labtabellen.
+SELECT id FROM workshop_notes
+-- Sorter etter cosinusavstand og begrens resultatet til to dokumenter.
+ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector LIMIT 2;</code></pre><p>Fire rader er ofte for lite til at indeksen lønner seg; Seq Scan er normalt. Sammenlign operator og operator class. Beskriv avveiningen mellom recall, minne og svartid for en større vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w7-indeks"><span>Jeg tolker planen og vet hvorfor en indeks kan bli valgt bort.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code># Stopp labdatabasen før containeren fjernes.
+docker stop ai200-pg
+# Fjern den stoppede PostgreSQL-containeren og dens anonyme datavolumer.
+docker rm --volumes ai200-pg</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://github.com/pgvector/pgvector">pgvector</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-aks.html">← Workshop 6</a><a href="./workshop-postgresql.html">Workshop 8 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 7</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

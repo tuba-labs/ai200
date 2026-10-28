@@ -1,0 +1,10 @@
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Git-reglene brukes lokalt, ikke av den publiserte appen.
+.gitignore

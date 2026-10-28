@@ -1,0 +1,10 @@
+-r data/requirements.txt
+-r cosmos/requirements.txt
+-r redis/requirements.txt
+-r integrations/requirements.txt
+-r bindings/requirements.txt
+-r security/requirements.txt
+-r observability/requirements.txt
+-r event-hubs/requirements.txt
+# Provider for dynamisk konfigurasjon og sentinel-refresh i Python.
+azure-appconfiguration-provider>=2.5,<3

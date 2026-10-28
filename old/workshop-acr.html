@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Bygg og kjør images i Azure Container Registry, og finn igjen tagger, digester og task-logger.">
+  <title>Workshop 2: Lagre images og bygg med ACR Tasks | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 02 / Domene 1 / Containere</p>
+    <h1>Lagre images og bygg med ACR Tasks</h1>
+    <p class="lead">Bygg og kjør images i Azure Container Registry, og finn igjen tagger, digester og task-logger.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-containers.html">← 1. Bygg og feilsøk et container-image</a><a href="./workshop-acr.html" aria-current="page">2. Denne workshopen</a><a href="./workshop-app-service.html">3. Kjør en container i App Service →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#bygg">1. Bygg i ACR</a>
+      <a href="#tasks">2. Bygg, push og kjør med Tasks</a>
+      <a href="#hent">3. Hent og kjør</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-containers.html">1. Bygg og feilsøk et container-image</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-acr" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ACR</span></label></th><td>Azure Container Registry: privat register for container-images. Vi bygger i Azure og finner imaget som senere skal kjøres av appene.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview">Les mer<span class="sr-only"> om ACR</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-tasks" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ACR Tasks</span></label></th><td>Tjenesten som utfører bygge-, push- og kommandosteg i Azure. Et manuelt task-kall er forskjellig fra et automatisk utløst bygg.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview">Les mer<span class="sr-only"> om ACR Tasks</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-context" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Build context</span></label></th><td>Filene byggeprosessen får tilgang til. I laben er dette labs/containers; i automatiserte bygg kan det være et kildekoderepository.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview">Les mer<span class="sr-only"> om Build context</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-trigger" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Trigger og CI/CD</span></label></th><td>En trigger starter et bygg ved kildekodeendring, endret base-image eller tidsplan. CI/CD betyr Continuous Integration / Continuous Delivery, automatisk integrasjon og levering.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview">Les mer<span class="sr-only"> om Trigger og CI/CD</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-tag-digest" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tagg, digest og SHA</span></label></th><td>Taggen er et flyttbart navn. En digest er et innholdsavtrykk, vanligvis SHA-256 (Secure Hash Algorithm med 256 bit), som identifiserer det eksakte imaget.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version">Les mer<span class="sr-only"> om Tagg, digest og SHA</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-rbac" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RBAC og AcrPull/AcrPush</span></label></th><td>Role-Based Access Control: rettigheter gis gjennom roller. AcrPull kan hente images; AcrPush kan også laste opp i registryets RBAC-modell.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">Les mer<span class="sr-only"> om RBAC og AcrPull/AcrPush</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-abac" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ABAC</span></label></th><td>Attribute-Based Access Control: tilgang kan avgrenses med attributter og betingelser. Registry-modellen med repository-rettigheter bruker andre roller enn labens RBAC-modell.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">Les mer<span class="sr-only"> om ABAC</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-cli" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure CLI</span></label></th><td>Command-Line Interface: kommandolinjeverktøyet az. Innlogging med Microsoft Entra ID lar oss bygge og hente images uten registryets administratorpassord.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview">Les mer<span class="sr-only"> om Azure CLI</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-yaml" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>YAML</span></label></th><td>YAML Ain&#x27;t Markup Language: tekstformat der innrykk beskriver strukturen. Vi bruker det til deklarasjoner eller oppgaver som ligger i versjonskontroll.</td><td><a href="https://yaml.org/">Les mer<span class="sr-only"> om YAML</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w2-begrep-iam" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>IAM</span></label></th><td>Identity and Access Management: identitets- og tilgangsstyring. I Azure-portalen finner vi rolletildelingene under Access control (IAM).</td><td><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">Les mer<span class="sr-only"> om IAM</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk Azure-innloggingen fra fellesoppsettet. Docker-motoren fra del 1 må kjøre når du senere henter imaget. <strong>Har du allerede et labregistry?</strong> Bruk <a href="#fortsett">tilkoblingsblokken for det eksisterende registryet</a> og gå direkte til <a href="#bygg">steg 1</a>.</p><h3 id="ressursgruppe">Ressursgruppen opprettes her ved behov</h3><p>Dette er første Azure-øvelse i domene 1. Blokken oppretter gruppen bare hvis den mangler. Har du allerede en labgruppe med et annet navn, bruker du det navnet i <code>$rg</code>.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+}</code></pre><h3>Opprett ett Basic-registry</h3><p>Hvis du ikke har et labregistry fra før, oppretter du det med blokken nedenfor én gang. ACR-navnet får et tilfeldig suffiks fordi det må være globalt unikt.</p><pre data-language="PowerShell"><code># Lag et globalt unikt registrynavn med et tilfeldig suffiks.
+$acr = "ai200" + (New-Guid).ToString("N").Substring(0, 12)
+# Opprett ett Basic-registry med administratorbrukeren deaktivert og RBAC som tilgangsmodell.
+az acr create --resource-group $rg --name $acr --location $location --sku Basic --admin-enabled false --role-assignment-mode rbac
+# Tillat Azure Resource Manager-tokens ved autentisering mot registryet.
+az acr config authentication-as-arm update -r $acr --status enabled
+# Hent registryets innloggingsadresse, som brukes i image-navn.
+$login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
+# Hent Azure-ressurs-ID-en til registryet for rolletildelinger.
+$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv
+# Vis registryets navn, imageadresse, opprettelsesstatus og tilgangsinnstillinger.
+az acr show --resource-group $rg --name $acr --query "{Name:name, LoginServer:loginServer, State:provisioningState, AdminEnabled:adminUserEnabled, RoleMode:roleAssignmentMode}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> registryet er <code>Succeeded</code>, AdminEnabled er <code>False</code> og tilgangsmodellen er <code>LegacyRegistryPermissions</code> (portalens <strong>RBAC Registry Permissions</strong>). Behold terminalen og variablene til del 3–6, og noter registry-navnet. Ved ny terminal bruker du tilkoblingsblokken nedenfor.</p><p>Labben bruker bevisst RBAC Registry Permissions, der <code>AcrPull</code> gir lesetilgang. Bruker du et eksisterende registry med <strong>RBAC Registry + ABAC Repository Permissions</strong>, må repository-roller brukes i stedet; ikke endre tilgangsmodellen på et delt registry for å følge labben.</p><details id="fortsett"><summary>Eksisterende registry eller ny terminal: hent tilkoblingen</summary><p>Bruk navnene du noterte. Denne blokken henter verdier til del 3–6:</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Sett navnet på registryet som allerede finnes.
+$acr = "DITT-REGISTRY-NAVN"
+# Hent regionen til det eksisterende registryet.
+$location = az acr show --resource-group $rg --name $acr --query location -o tsv
+# Hent registryets innloggingsadresse, som brukes i image-navn.
+$login = az acr show --resource-group $rg --name $acr --query loginServer -o tsv
+# Hent Azure-ressurs-ID-en til registryet for rolletildelinger.
+$acrId = az acr show --resource-group $rg --name $acr --query id -o tsv</code></pre></details><h3>Gi labbrukeren tilgang ved behov</h3><p>Hvis du har Owner eller Contributor på gruppen i denne RBAC-modellen, har du allerede tilgangen labben bruker til image-operasjoner og Tasks. Ved <code>AuthorizationFailed</code> kontrollerer eieren <strong>ACR → Access control (IAM)</strong> og kan gi deg <strong>AcrPush</strong>, <strong>Container Registry Tasks Contributor</strong> og <strong>Container Registry Configuration Reader and Data Access Configuration Reader</strong> på labregistryet. Rolletildeling kan bruke litt tid på å slå gjennom. Administratorinnlogging på registryet skal fortsatt være deaktivert.</p><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/group#az-group-exists">kontrollere om ressursgruppen finnes</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/acr#az-acr-create">opprette ACR</a> og <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview">tilgangsmodeller og roller</a>.</p>
+
+<details class="source-file" id="fil-labs-containers-dockerfile" data-source-file="labs/containers/Dockerfile"><summary><code>Dockerfile</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/Dockerfile</code></p><pre data-language="Dockerfile" data-source="labs/containers/Dockerfile"><code># Bruk et ferdig Linux-image med Python 3.12.
+# slim-varianten har færre forhåndsinstallerte pakker enn standardimaget.
+FROM python:3.12-slim
+
+# Sett /app som arbeidsmappe i imaget. Mappen opprettes hvis den mangler.
+WORKDIR /app
+
+# Kopier app.py fra byggkonteksten til /app/app.py i imaget.
+COPY app.py .
+
+# Opprett brukeren appuser med UID 10001 under byggingen, uten hjemmemappe.
+RUN useradd --uid 10001 --no-create-home appuser
+
+# Kjør påfølgende instruksjoner og appens startkommando som UID 10001.
+# Appen kjører dermed uten root-rettigheter.
+USER 10001
+
+# Dokumenter at appen lytter på TCP-port 8080 inne i containeren.
+# Bruk docker run --publish for å gjøre porten tilgjengelig på verten.
+EXPOSE 8080
+
+# Start app.py med Python når containeren starter.
+# -u slår av bufring av stdout/stderr, slik at loggene kommer fortløpende.
+# Listeformen starter Python direkte, uten et mellomliggende shell.
+CMD [&quot;python&quot;, &quot;-u&quot;, &quot;app.py&quot;]
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-containers-app-py" data-source-file="labs/containers/app.py"><summary><code>app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/app.py</code></p><pre data-language="Python" data-source="labs/containers/app.py"><code>&quot;&quot;&quot;Small, deliberately local workshop API; no external Python dependencies.&quot;&quot;&quot;
+# Gjør Python-data om til JSON i HTTP-svaret.
+import json
+# Les appkonfigurasjon fra miljøvariabler i containeren.
+import os
+# Bruk en liten HTTP-server og en handler for hver forespørsel.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Skill URL-stien fra eventuelle spørringsparametere.
+from urllib.parse import urlsplit
+
+
+# Samle behandlingen av HTTP-forespørsler i en handlerklasse.
+class Handler(BaseHTTPRequestHandler):
+    # HTTP-serveren kaller denne metoden for GET-forespørsler.
+    def do_GET(self):
+        # Hent bare stien, for eksempel /health.
+        path = urlsplit(self.path).path
+        # Helsesjekken gir 200; alle andre stier gir 404.
+        status = 200 if path == &quot;/health&quot; else 404
+        # Vis versjonen fra miljøet, med v1 som standard.
+        payload = {&quot;status&quot;: &quot;ok&quot;, &quot;version&quot;: os.getenv(&quot;APP_VERSION&quot;, &quot;v1&quot;),
+                   # Vis konfigurasjonen uten at vi trenger å bygge et nytt image.
+                   &quot;mode&quot;: os.getenv(&quot;WORKSHOP_MODE&quot;, &quot;practice&quot;),
+                   # Vis bare om en hemmelighet finnes. Selve verdien sendes aldri til klienten.
+                   # For andre stier brukes en enkel feilmelding i stedet.
+                   &quot;secret_configured&quot;: bool(os.getenv(&quot;DEMO_SECRET&quot;))} if status == 200 else {&quot;error&quot;: &quot;not found&quot;}
+        # Serialiser JSON og kod teksten som byte til nettverksforbindelsen.
+        body = json.dumps(payload).encode(&quot;utf-8&quot;)
+        # Start HTTP-svaret med statuskoden.
+        self.send_response(status)
+        # Fortell klienten at innholdet er JSON i UTF-8.
+        self.send_header(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+        # Oppgi lengden på svaret i byte.
+        self.send_header(&quot;Content-Length&quot;, str(len(body)))
+        # Avslutt headerne før selve innholdet sendes.
+        self.end_headers()
+        # Skriv JSON-innholdet til HTTP-svaret.
+        self.wfile.write(body)
+
+
+# Start serveren bare når filen kjøres som et program.
+if __name__ == &quot;__main__&quot;:
+    # Skriv en oppstartsmelding direkte til containerloggen.
+    print(&quot;Workshop API listening on port 8080&quot;, flush=True)
+    # Lytt på port 8080 på alle containerens nettverksgrensesnitt.
+    ThreadingHTTPServer((&quot;0.0.0.0&quot;, 8080), Handler).serve_forever()
+</code></pre></details>
+</section>
+      <section class="panel" id="bygg"><h2>1. Bygg i ACR</h2>
+<pre data-language="PowerShell"><code># Bygg koden fra labs/containers i Azure og lagre imaget som ai200-api:v1.
+az acr build --registry $acr --image ai200-api:v1 labs/containers
+# Vis tagger og metadata for ai200-api i registryet.
+az acr repository show-tags --name $acr --repository ai200-api --detail -o table</code></pre><p>Bygget og lagringen skjer i Azure. Finn tagg og digest. En gjenbrukt tagg kan peke på nytt innhold; digest identifiserer innholdet. Kjør bygget med en ny tagg og sammenlign.</p><label class="check-item"><input type="checkbox" data-check="w2-bygg"><span>Jeg finner image, tagg og digest i ACR.</span></label>
+</section>
+      <section class="panel" id="tasks"><h2>2. Bygg, push og kjør med Tasks</h2>
+<p><code>acr-task.yaml</code> bygger med run-ID som tagg, lagrer imaget og kjører <code>python --version</code> i det.</p><pre data-language="PowerShell"><code># Gå til mappen med Dockerfile-en og containerkoden.
+Set-Location labs/containers
+# Kjør bygge-, push- og kommandostegene fra acr-task.yaml i Azure.
+az acr run --registry $acr --file acr-task.yaml .
+# Gå tilbake til prosjektroten fra labmappen.
+Set-Location ../..
+# Vis ACR Tasks-kjøringene med status og kjørings-ID.
+az acr task list-runs --registry $acr -o table</code></pre><p>Forventet: alle tre stegene fullføres, og Python-versjonen står i loggen. Finn task-kjøringen og den unike taggen. Forklar forskjellen mellom denne manuelle kjøringen og triggere fra kildekode, base-image eller tidsplan.</p><label class="check-item"><input type="checkbox" data-check="w2-tasks"><span>Jeg har kjørt build, push og et kommando-steg i ACR Tasks.</span></label>
+
+<details class="source-file" id="fil-labs-containers-acr-task-yaml" data-source-file="labs/containers/acr-task.yaml"><summary><code>acr-task.yaml</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/containers/acr-task.yaml</code></p><pre data-language="YAML" data-source="labs/containers/acr-task.yaml"><code># Velg syntaksversjonen for ACR Tasks-filen.
+version: v1.1.0
+# Kjør stegene i den angitte rekkefølgen.
+steps:
+  # Bygg Dockerfile fra denne byggkonteksten.
+  # Registry settes av ACR, og Run.ID gir hver kjøring en egen tagg.
+  - build: -t {{.Run.Registry}}/ai200-api:{{.Run.ID}} -f Dockerfile .
+  # Last opp det ferdige imaget til registryet.
+  - push:
+      # Bruk nøyaktig samme image-navn og tagg som i byggesteget.
+      - &#x27;{{.Run.Registry}}/ai200-api:{{.Run.ID}}&#x27;
+  # Kjør imaget og skriv Python-versjonen i task-loggen.
+  - cmd: &#x27;{{.Run.Registry}}/ai200-api:{{.Run.ID}} python --version&#x27;
+</code></pre></details>
+</section>
+      <section class="panel" id="hent"><h2>3. Hent og kjør</h2>
+<pre data-language="PowerShell"><code># La Docker bruke Azure-innloggingen din mot registryet.
+az acr login --name $acr
+# Last ned det navngitte v1-imaget fra registryet til den lokale maskinen.
+docker pull "$login/ai200-api:v1"
+# Start ACR-imaget, vis Python-versjonen og fjern testcontaineren etterpå.
+docker run --rm "$login/ai200-api:v1" python --version</code></pre><p>Samme image kan brukes av App Service, Container Apps og AKS i de neste øktene.</p><label class="check-item"><input type="checkbox" data-check="w2-hent"><span>Jeg kan hente en bestemt image-versjon.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Behold registryet bare mens workshop 3–6 bruker det. Slett egne ubrukte testtagger i repository-visningen. Når siste avhengige økt er ferdig, slett labregistryet eller ressursgruppen for øvelsen.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview">ACR Tasks</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-containers.html">← Workshop 1</a><a href="./workshop-app-service.html">Workshop 3 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 2</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

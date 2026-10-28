@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="La en kø styre antall replikaer, og sammenlign terskel, polling og nedskalering.">
+  <title>Workshop 5: Hendelsesstyrt skalering med KEDA | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 05 / Domene 1 / Containere</p>
+    <h1>Hendelsesstyrt skalering med KEDA</h1>
+    <p class="lead">La en kø styre antall replikaer, og sammenlign terskel, polling og nedskalering.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-container-apps.html">← 4. Miljøer og revisjoner i Container Apps</a><a href="./workshop-keda.html" aria-current="page">5. Denne workshopen</a><a href="./workshop-aks.html">6. Utrulling og feilsøking i AKS →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#regel">1. Lag en KEDA-regel</a>
+      <a href="#last">2. Gi køen arbeid</a>
+      <a href="#ned">3. Fjern arbeid og observer</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-container-apps.html">4. Miljøer og revisjoner i Container Apps</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-keda" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>KEDA</span></label></th><td>Kubernetes Event-driven Autoscaling: mekanismen bak hendelsesstyrt skalering i Container Apps. Vi bruker kølengde som signal.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om KEDA</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-scaler" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Scaler og skaleringsregel</span></label></th><td>Scaleren leser en bestemt kilde; regelen angir type, metadata og autentisering. Her velger vi azure-queue for en Azure Storage-kø.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Scaler og skaleringsregel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-queue" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Storage Queue</span></label></th><td>En kø som lagrer meldinger. Testappen i denne økten tømmer ikke køen; vi legger til og fjerner arbeid for å se skaleringssignalet.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Azure Storage Queue</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-metadata" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>queueName og queueLength</span></label></th><td>queueName velger køen; queueLength er målverdien per replika. Vi prøver terskel 5 og ser hvordan 15 meldinger møter maksgrensen.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om queueName og queueLength</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-bounds" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Min/max replicas og scale-to-zero</span></label></th><td>Min og maks er nedre og øvre grense for antall kopier. Minimum 0 gjør det mulig å stoppe alle replikaer når det ikke er arbeid.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Min/max replicas og scale-to-zero</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-timing" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Polling og cooldown</span></label></th><td>Polling er jevnlig avlesning av signalet. Cooldown er ventetid før nedskalering mot null; dette er forskjellige deler av skaleringsforløpet.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Polling og cooldown</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w5-begrep-secret" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tilkoblingsstreng og secret</span></label></th><td>Tilkoblingsstrengen inneholder kontonøkkelen. Vi legger den i en apphemmelighet som skaleringsregelen bruker til autentisering.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Tilkoblingsstreng og secret</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Fortsett med Container App-en og terminalvariablene fra <a href="./workshop-container-apps.html">del 4</a>. Ved ny terminal bruker du <a href="./workshop-container-apps.html#fortsett">tilkoblingsblokken for den eksisterende appen</a>. Opprett bare den nye Storage-kontoen og labkøen nedenfor.</p><pre data-language="PowerShell"><code># Lag et unikt navn på den nye Storage-kontoen for skaleringsøvelsen.
+$storage = "ai200q" + (New-Guid).ToString("N").Substring(0, 12)
+# Bruk én aktiv revisjon under skaleringsøvelsen.
+az containerapp revision set-mode --resource-group $rg --name $ca --mode single -o none
+# Opprett en StorageV2-konto med lokal redundans og deaktivert anonym Blob-tilgang.
+az storage account create --resource-group $rg --name $storage --location $location --sku Standard_LRS --kind StorageV2 --allow-blob-public-access false -o none
+# Hent Storage-kontoens tilkoblingsstreng til labkøen.
+$queueConnection = az storage account show-connection-string --resource-group $rg --name $storage --query connectionString -o tsv
+# Opprett labkøen scale-demo i Storage-kontoen.
+az storage queue create --name scale-demo --connection-string $queueConnection -o none
+# Lagre køens tilkoblingsstreng som apphemmeligheten queue-connection.
+az containerapp secret set --resource-group $rg --name $ca --secrets "queue-connection=$queueConnection" -o none
+# Kontroller at labkøen finnes; forventet svar er true.
+az storage queue exists --name scale-demo --connection-string $queueConnection --query exists -o tsv</code></pre><p><strong>Kontrollpunkt:</strong> siste kommando viser <code>true</code>. I portalen: åpne Container App-en → <strong>Secrets</strong> og finn navnet <code>queue-connection</code>. Storage-kontoen er en egen labkonto i samme ressursgruppe for øvelsen; noter navnet til regel og opprydding. Tilkoblingsstrengen inneholder en kontonøkkel og skal bare ligge i terminalvariabelen og apphemmeligheten. Ved ny terminal: sett <code>$storage</code> til det eksisterende kontonavnet og hent <code>$queueConnection</code> på nytt, uten å opprette en ny konto.</p><p>Testappen demonstrerer skalering; den leser ikke meldinger fra køen. Microsoft Learn: <a href="https://learn.microsoft.com/en-us/cli/azure/storage/account#az-storage-account-create">opprette Storage-konto</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/storage/queue#az-storage-queue-create">opprette kø</a> og <a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">skaleringsregler</a>.</p>
+</section>
+      <section class="panel" id="regel"><h2>1. Lag en KEDA-regel</h2>
+<p>I Scale: min 0, maks 2, Custom rule med typen <code>azure-queue</code>. Metadata: <code>queueName=scale-demo</code>, <code>accountName</code> lik Storage-kontoen og <code>queueLength=5</code>. Knytt autentiseringsparameteren <code>connection</code> til hemmeligheten <code>queue-connection</code>. Lagre og finn revisjonen som ble opprettet.</p><label class="check-item"><input type="checkbox" data-check="w5-regel"><span>Jeg har konfigurert en hendelsesstyrt skaleringsregel.</span></label>
+</section>
+      <section class="panel" id="last"><h2>2. Gi køen arbeid</h2>
+<p>Legg 15 små meldinger i labkøen med kommandoene under. I portalen: åpne Container App-en → <strong>Monitoring → Metrics</strong> og velg <strong>Replica Count</strong>. Undersøk også systemloggen i <strong>Log stream</strong>. Med terskel 5 tilsier 15 meldinger tre replikaer, men maksgrensen er 2. Vent gjennom polling og oppstart. Ved null aktivitet: sjekk kønavn, forbindelse og systemlogger.</p><pre data-language="PowerShell"><code># Gjenta neste kommando én gang for hvert av tallene 1 til 15.
+1..15 | ForEach-Object {
+    # Legg én labmelding i køen; løkketallet blir del av meldingsinnholdet.
+    az storage message put --queue-name scale-demo --content "lab-$_" --connection-string $queueConnection -o none
+}</code></pre><label class="check-item"><input type="checkbox" data-check="w5-last"><span>Jeg kan forklare hvordan terskelen og maksgrensen påvirker skaleringen.</span></label>
+</section>
+      <section class="panel" id="ned"><h2>3. Fjern arbeid og observer</h2>
+<p>Tøm bare labkøen med kommandoen under. Observer at nedskalering tar tid. Sammenlign pollingintervallet med cooldown; disse er ulike mekanismer. Diskuter hva som ville skjedd om en ekte worker fullførte meldingene underveis.</p><pre data-language="PowerShell"><code># Tøm bare labkøen slik at KEDA kan skalere appen ned igjen.
+az storage message clear --queue-name scale-demo --connection-string $queueConnection -o none</code></pre><label class="check-item"><input type="checkbox" data-check="w5-ned"><span>Jeg har observert oppskalering og forklart forsinket nedskalering.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Åpne ressursgruppen for øvelsen i portalen. Etter skaleringsforsøket: slett Container App-en, miljøet, identiteten <code>ai200-ca-pull</code> og Storage-kontoen du noterte. Sletting av appen fjerner dens skaleringsregel og hemmelighet; sletting av Storage-kontoen fjerner labkøen. Behold ACR til del 6 er ferdig. Ikke slett gruppen mens den fortsatt inneholder ACR eller andre ressurser du skal bruke. Fjern tilkoblingsstrengen fra terminalen:</p><pre data-language="PowerShell"><code># Fjern den lokale variabelen med Storage-tilkoblingsstrengen.
+Remove-Variable queueConnection -ErrorAction SilentlyContinue</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Skalering i Container Apps</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-container-apps.html">← Workshop 4</a><a href="./workshop-aks.html">Workshop 6 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 5</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

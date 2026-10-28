@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Følg én HTTP-forespørsel gjennom to prosesser med samme trace-ID og riktig foreldrekobling.">
+  <title>Workshop 21: Spor et kall mellom to tjenester | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 21 / Domene 4 / Sikkerhet, sporing og KQL</p>
+    <h1>Spor et kall mellom to tjenester</h1>
+    <p class="lead">Følg én HTTP-forespørsel gjennom to prosesser med samme trace-ID og riktig foreldrekobling.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-app-configuration.html">← 20. Les appkonfigurasjon med etiketter</a><a href="./workshop-tracing.html" aria-current="page">21. Denne workshopen</a><a href="./workshop-kql.html">22. Finn feil og målinger med KQL →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#kjore">1. Start to tjenester</a>
+      <a href="#kontekst">2. Følg foreldre og kontekst</a>
+      <a href="#feil">3. Finn treghet og feil</a>
+      <a href="#eksport">4. Send til Azure og rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-otel" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>OpenTelemetry / OTel</span></label></th><td>Felles verktøy og grensesnitt for telemetri. OTel er kortformen; SDK betyr Software Development Kit og API betyr Application Programming Interface.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om OpenTelemetry / OTel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-trace" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Trace, span og ID</span></label></th><td>En trace samler operasjonen på tvers av tjenester; en span måler ett steg. ID betyr identifier, identifikator: trace-ID er felles, mens hver span har egen ID.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om Trace, span og ID</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-parent" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ParentId og span-kind</span></label></th><td>ParentId peker på forelderens span. SERVER markerer mottak og CLIENT et utgående kall; sammen viser de hvem som kalte hvem.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om ParentId og span-kind</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-context" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>W3C traceparent</span></label></th><td>W3C er World Wide Web Consortium. traceparent er en standardisert header som frakter sporingsidentifikatorer og flagg mellom tjenestene.</td><td><a href="https://opentelemetry.io/docs/concepts/context-propagation/">Les mer<span class="sr-only"> om W3C traceparent</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-propagation" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Inject og extract</span></label></th><td>Inject skriver aktiv sporingskontekst til utgående headere; extract leser den ved mottak. Vi fjerner inject for å se hvordan sammenhengen brytes.</td><td><a href="https://opentelemetry.io/docs/concepts/context-propagation/">Les mer<span class="sr-only"> om Inject og extract</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-provider" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TracerProvider, processor og exporter</span></label></th><td>Provideren styrer sporing; en span processor kobler spans til eksportøren. BatchSpanProcessor sender i bakgrunnen, og eksportøren velger mottaker.</td><td><a href="https://opentelemetry.io/docs/concepts/signals/traces/">Les mer<span class="sr-only"> om TracerProvider, processor og exporter</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-insights" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Application Insights og workspace</span></label></th><td>Application Insights tar imot apptelemetri. Den tilknyttede Log Analytics-workspace-en lagrer data vi undersøker med spørringer i neste økt.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Les mer<span class="sr-only"> om Application Insights og workspace</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-metrics" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metrikk, counter og histogram</span></label></th><td>En metrikk er en måling. En counter teller forespørsler; et histogram samler varigheter, som senere kan analyseres samlet.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Les mer<span class="sr-only"> om Metrikk, counter og histogram</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w21-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og latency</span></label></th><td>HTTP betyr Hypertext Transfer Protocol, protokollen mellom tjenestene. Latency er svartid; en treg backend gir også utslag i frontendens samlede varighet.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og latency</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Øvelsen bruker to Python-terminaler i prosjektroten: én til backend på port 8092 og én til frontend på port 8091. Begge kjøres med <code>services.py</code> og startes i steg 1. Uten connection string eksporteres spans til konsollen.</p>
+
+<details class="source-file" id="fil-labs-observability-services-py" data-source-file="labs/observability/services.py"><summary><code>services.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/observability/services.py</code></p><pre data-language="Python" data-source="labs/observability/services.py"><code>&quot;&quot;&quot;Two separate HTTP services with explicit W3C context propagation and metrics.&quot;&quot;&quot;
+# Velg frontend eller backend og eventuelle lokale porter.
+import argparse
+# Bygg HTTP-responsen med trace-ID som JSON.
+import json
+# Skriv rolle, trace-ID og status til konsollen.
+import logging
+# Les Azure Monitor-tilkoblingen fra miljøet.
+import os
+# Mål svartid og lag en kontrollert forsinkelse.
+import time
+# Importer HTTP-feiltypene som hører til nettverksklienten.
+import urllib.error
+# La frontend gjøre et faktisk HTTP-kall til backend.
+import urllib.request
+# Kjør to små HTTP-servere i separate prosesser.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Les delay og fail fra URL-ens spørringsparametere.
+from urllib.parse import parse_qs, urlsplit
+
+# Hent API-ene for målinger, sporingskontekst og spans.
+from opentelemetry import metrics, propagate, trace
+# Konfigurer hvor målinger samles og eksporteres.
+from opentelemetry.sdk.metrics import MeterProvider
+# Eksporter aggregerte målinger med et fast intervall.
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+# Gi telemetrien et tjenestenavn som skiller prosessene.
+from opentelemetry.sdk.resources import Resource
+# Konfigurer sporings-SDK-et.
+from opentelemetry.sdk.trace import TracerProvider
+# Velg købasert Azure-eksport eller direkte konsollutskrift.
+from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor
+# Merk klient-/serverspans og feilstatus eksplisitt.
+from opentelemetry.trace import SpanKind, Status, StatusCode
+
+
+# Klargjør samme telemetrioppsett for hver av de to prosessene.
+def setup(role):
+    # Skill ai200-frontend fra ai200-backend i Azure og konsollen.
+    resource = Resource.create({&quot;service.name&quot;: &quot;ai200-&quot; + role})
+    # Opprett sporingsleverandøren med tjenestens identitet.
+    provider = TracerProvider(resource=resource)
+    # Uten Azure-tilkobling opprettes ingen metrikkeksportør.
+    readers = []
+    # La miljøvariabelen velge om telemetrien skal sendes til Azure.
+    connection = os.getenv(&quot;APPLICATIONINSIGHTS_CONNECTION_STRING&quot;)
+    # Bruk Azure Monitor når en connection string er konfigurert.
+    if connection:
+        # Hent eksportørene for både målinger og spans.
+        from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter, AzureMonitorTraceExporter
+        # Send spans i bakgrunnen i samlinger.
+        provider.add_span_processor(BatchSpanProcessor(AzureMonitorTraceExporter(connection_string=connection)))
+        # Koble en periodisk leser til måleeksportøren.
+        readers.append(PeriodicExportingMetricReader(
+            # Bruk samme Azure-ressurs og eksporter målinger hvert tiende sekund.
+            AzureMonitorMetricExporter(connection_string=connection), export_interval_millis=10000))
+    # Bruk konsollen når Azure-tilkoblingen mangler.
+    else:
+        # Skriv hver avsluttet span til konsollen for lokal inspeksjon.
+        provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
+    # Gjør dette sporingsoppsettet aktivt i prosessen.
+    trace.set_tracer_provider(provider)
+    # La målingene bruke samme tjenestenavn som sporingen.
+    meter_provider = MeterProvider(resource=resource, metric_readers=readers)
+    # Gjør måleoppsettet aktivt i prosessen.
+    metrics.set_meter_provider(meter_provider)
+    # Behold leverandørene slik at de kan flushes ved avslutning.
+    return provider, meter_provider
+
+
+# Start én av tjenestene fra kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Velg hvilken tjeneste denne prosessen skal være.
+    parser.add_argument(&quot;role&quot;, choices=[&quot;frontend&quot;, &quot;backend&quot;])
+    # Tillat en annen lokal port, blant annet i testene.
+    parser.add_argument(&quot;--port&quot;, type=int)
+    # La frontend vite hvilken backend-adresse den skal kalle.
+    parser.add_argument(&quot;--backend-url&quot;, default=&quot;http://127.0.0.1:8092/lookup&quot;)
+    # Les rolle og nettverksvalg.
+    args = parser.parse_args()
+    # Vis INFO-meldinger som inneholder sporingsbevis.
+    logging.basicConfig(level=logging.INFO)
+    # Klargjør eksport før serveren tar imot kall.
+    provider, meter_provider = setup(args.role)
+    # Opprett traceren som lager labens spans.
+    tracer = trace.get_tracer(&quot;ai200.network&quot;)
+    # Opprett instrumentene for labens målinger.
+    meter = metrics.get_meter(&quot;ai200.network&quot;)
+    # Tell forespørsler per status.
+    requests = meter.create_counter(&quot;workshop.requests&quot;)
+    # Samle svartid i millisekunder.
+    duration = meter.create_histogram(&quot;workshop.duration&quot;, unit=&quot;ms&quot;)
+
+    # Definer hvordan denne tjenesten håndterer HTTP-kall.
+    class Handler(BaseHTTPRequestHandler):
+        # Behandle én GET-forespørsel.
+        def do_GET(self):
+            # Start målingen av hele forespørselen.
+            started = time.perf_counter()
+            # Skill URL-sti fra spørringsparametere.
+            parsed = urlsplit(self.path)
+            # Les parameterne som styrer forsinkelse og kontrollert feil.
+            query = parse_qs(parsed.query)
+            # Anta et vellykket kall frem til en feil oppstår.
+            status = 200
+            # Start en serverspan for den innkommende forespørselen.
+            with tracer.start_as_current_span(args.role, kind=SpanKind.SERVER,
+                                             # Les sporingskontekst fra HTTP-headerne så backend kan fortsette samme trace.
+                                             context=propagate.extract({key.lower(): value for key, value in self.headers.items()})) as span:
+                # La kontrollerte nettverks- og backend-feil gi HTTP 500.
+                try:
+                    # Frontend videresender arbeidet til en annen prosess.
+                    if args.role == &quot;frontend&quot;:
+                        # Legg en klientspan under frontendens serverspan.
+                        with tracer.start_as_current_span(&quot;call-backend&quot;, kind=SpanKind.CLIENT):
+                            # Lag headerne som skal følge det utgående kallet.
+                            headers = {}
+                            # Legg aktiv trace-kontekst i headerne før HTTP-kallet.
+                            propagate.inject(headers)
+                            # Send de samme delay-/fail-parameterne videre.
+                            url = args.backend_url + &quot;?&quot; + parsed.query
+                            # Gjør et ekte nettverkskall med sporingsheaderne.
+                            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=10) as response:
+                                # Les svaret ferdig før klientspannen avsluttes.
+                                response.read()
+                    # Backend utfører det simulerte oppslaget.
+                    else:
+                        # Avgrens den valgte forsinkelsen til mellom null og ett sekund.
+                        time.sleep(min(max(float(query.get(&quot;delay&quot;, [&quot;0.02&quot;])[0]), 0), 1))
+                        # Bruk fail=1 til å slå på en kjent feil.
+                        if query.get(&quot;fail&quot;, [&quot;0&quot;])[0] == &quot;1&quot;:
+                            # La feilen bli synlig både i backend og i klientkallet fra frontend.
+                            raise RuntimeError(&quot;Controlled backend failure&quot;)
+                # Fang feilen for å sende et kontrollert HTTP-svar.
+                except Exception as error:
+                    # Merk HTTP-svaret som en serverfeil.
+                    status = 500
+                    # Legg unntaket inn som en hendelse på spannen.
+                    span.record_exception(error)
+                    # Merk spannen som mislykket.
+                    span.set_status(Status(StatusCode.ERROR, str(error)))
+                # Ta med HTTP-statusen som span-attributt.
+                span.set_attribute(&quot;http.response.status_code&quot;, status)
+                # Gjør tjenestens rolle synlig på spannen.
+                span.set_attribute(&quot;workshop.role&quot;, args.role)
+                # Formater trace-ID slik at du kan sammenligne den mellom prosessene.
+                trace_id = format(span.get_span_context().trace_id, &quot;032x&quot;)
+                # Send rolle, trace-ID og resultat til klienten.
+                body = json.dumps({&quot;role&quot;: args.role, &quot;trace_id&quot;: trace_id, &quot;status&quot;: status}).encode()
+                # Start HTTP-svaret med resultatstatusen.
+                self.send_response(status)
+                # Oppgi at innholdet er JSON.
+                self.send_header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+                # Oppgi svarlengden i byte.
+                self.send_header(&quot;Content-Length&quot;, str(len(body)))
+                # Avslutt headerne før body sendes.
+                self.end_headers()
+                # Skriv svarinnholdet til klienten.
+                self.wfile.write(body)
+                # Vis samme trace-ID i begge tjenestenes logger.
+                logging.info(&quot;role=%s trace_id=%s status=%s&quot;, args.role, trace_id, status)
+            # Skill målingene etter HTTP-status.
+            attributes = {&quot;status&quot;: str(status)}
+            # Tell denne forespørselen.
+            requests.add(1, attributes)
+            # Registrer hele forespørselens varighet i millisekunder.
+            duration.record((time.perf_counter() - started) * 1000, attributes)
+
+    # Bruk forskjellige standardporter for de to prosessene.
+    port = args.port or (8091 if args.role == &quot;frontend&quot; else 8092)
+    # Lytt bare lokalt på maskinen.
+    server = ThreadingHTTPServer((&quot;127.0.0.1&quot;, port), Handler)
+    # La tjenesten kjøre frem til den stoppes.
+    try:
+        # Ta imot og behandle HTTP-kall.
+        server.serve_forever()
+    # Håndter Ctrl+C som en vanlig avslutning.
+    except KeyboardInterrupt:
+        # Fortsett til oppryddingen under.
+        pass
+    # Lukk serveren og tøm eksportkøene også ved avbrudd.
+    finally:
+        # Frigi lytteporten.
+        server.server_close()
+        # Forsøk å sende gjenværende spans før prosessen avsluttes.
+        provider.force_flush()
+        # Forsøk å sende gjenværende målinger.
+        meter_provider.force_flush()
+        # Stopp sporingsleverandøren.
+        provider.shutdown()
+        # Stopp måleleverandøren.
+        meter_provider.shutdown()
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør tjenesten med valgt rolle.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-observability-requirements-txt" data-source-file="labs/observability/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/observability/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/observability/requirements.txt"><code># API-er for spans, kontekstpropagering og målinger.
+opentelemetry-api&gt;=1.28,&lt;2
+# Leverandører, prosessorer og konsolleksport for telemetrien.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Eksport av spans og målinger til Azure Monitor.
+azure-monitor-opentelemetry-exporter&gt;=1.0.0b30,&lt;2
+</code></pre></details>
+</section>
+      <section class="panel" id="kjore"><h2>1. Start to tjenester</h2>
+<pre data-language="PowerShell"><code># Start backend-tjenesten på port 8092 i denne terminalen.
+python labs/observability/services.py backend</code></pre><p>I den andre aktiverte terminalen:</p><pre data-language="PowerShell"><code># Start frontend-tjenesten på port 8091 i denne terminalen.
+python labs/observability/services.py frontend</code></pre><p>I en tredje terminal:</p><pre data-language="PowerShell"><code># Send et vanlig kall gjennom frontend og backend, og vis trace-ID-en.
+Invoke-RestMethod http://localhost:8091/process</code></pre><p>Forventet: status 200 og en trace-ID. Finn samme ID i begge konsollene.</p><label class="check-item"><input type="checkbox" data-check="w21-kjore"><span>Jeg har fulgt et faktisk HTTP-kall mellom to prosesser.</span></label>
+</section>
+      <section class="panel" id="kontekst"><h2>2. Følg foreldre og kontekst</h2>
+<p>Finn SERVER-spannet i frontend, CLIENT-spannet call-backend og SERVER-spannet i backend. Trace-ID er felles; span-ID-ene er ulike og ParentId kobler dem. Finn inject på senderen og extract på mottakeren. Fjern inject i kildefilen, restart frontend og sammenlign. Etter testen stopper du frontend med <code>Ctrl+C</code>. Gjenopprett filen fra prosjektroten og start frontend igjen:</p><pre data-language="PowerShell"><code># Forkaster kodeendringene i denne kildefilen. Backend kan fortsette å kjøre.
+git restore --source=HEAD -- labs/observability/services.py
+# Start frontend-tjenesten på port 8091 i denne terminalen.
+python labs/observability/services.py frontend</code></pre><p>Kall <code>/process</code> igjen fra den tredje terminalen og bekreft at begge tjenestene viser samme trace-ID.</p><label class="check-item"><input type="checkbox" data-check="w21-kontekst"><span>Jeg kan forklare hvordan traceparent binder de to tjenestene sammen.</span></label>
+</section>
+      <section class="panel" id="feil"><h2>3. Finn treghet og feil</h2>
+<pre data-language="PowerShell"><code># Send et kall med 0,4 sekunders forsinkelse i backend for å undersøke treghet.
+Invoke-RestMethod "http://localhost:8091/process?delay=0.4"
+# Utløs en kontrollert backend-feil og vis HTTP 500 med responsheaderne.
+curl.exe -i "http://localhost:8091/process?fail=1"</code></pre><p>Forventet: tregere span og deretter HTTP 500 med error-status på berørte spans. Finn hvor feilen oppstår, og skill den fra symptomene i frontend.</p><label class="check-item"><input type="checkbox" data-check="w21-feil"><span>Jeg har knyttet en frontend-feil til årsaken i backend.</span></label>
+</section>
+      <section class="panel" id="eksport"><h2>4. Send til Azure og rydd opp</h2>
+<p>Bruk <a href="./workshop-security.html#ressursgruppe">ressursgruppen fra del 19</a> og opprett én Application Insights-ressurs med tilknyttet workspace her. Stopp begge tjenester og sett denne variabelen i begge aktiverte terminaler:</p><pre data-language="PowerShell"><code># Velg Application Insights-ressursen som skal motta telemetrien.
+$env:APPLICATIONINSIGHTS_CONNECTION_STRING = "LIM-INN-DIN-CONNECTION-STRING"</code></pre><p>Start backend og frontend igjen og gjenta kallene. Koden eksporterer både spans og egendefinerte request-/duration-målinger. Avslutt med Ctrl+C slik at eksportørene får flush.</p><label class="check-item"><input type="checkbox" data-check="w21-eksport"><span>Jeg har konfigurert eksport for begge tjenester til samme Azure-ressurs.</span></label>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://opentelemetry.io/docs/concepts/context-propagation/">OpenTelemetry context propagation</a></li><li><a href="https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-exporter-readme?view=azure-python-preview">Azure Monitor-eksportør</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-app-configuration.html">← Workshop 20</a><a href="./workshop-kql.html">Workshop 22 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 21</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

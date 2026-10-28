@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Bruk KQL til å korrelere tjenester, finne feil og analysere egne målinger fra sporingsøvelsen.">
+  <title>Workshop 22: Finn feil og målinger med KQL | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 22 / Domene 4 / Sikkerhet, sporing og KQL</p>
+    <h1>Finn feil og målinger med KQL</h1>
+    <p class="lead">Bruk KQL til å korrelere tjenester, finne feil og analysere egne målinger fra sporingsøvelsen.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-tracing.html">← 21. Spor et kall mellom to tjenester</a><a href="./workshop-kql.html" aria-current="page">22. Denne workshopen</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#requests">1. Finn feil og svartid</a>
+      <a href="#trace">2. Følg én trace på tvers av tjenester</a>
+      <a href="#metrics">3. Spør på egne målinger</a>
+      <a href="#opprydding">Rydd opp og oppsummer</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-tracing.html">21. Spor et kall mellom to tjenester</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-kql" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>KQL</span></label></th><td>Kusto Query Language: språket vi bruker til å undersøke telemetri i Azure Monitor Logs. Rørtegnet | sender resultatet videre til neste operator.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Les mer<span class="sr-only"> om KQL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-tables" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>AppRequests, AppDependencies og AppMetrics</span></label></th><td>Tabellene inneholder henholdsvis innkommende forespørsler, utgående avhengighetskall og målinger. Vi velger tabell etter hva vi vil undersøke.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview">Les mer<span class="sr-only"> om AppRequests, AppDependencies og AppMetrics</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-where" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>where og ago</span></label></th><td>where filtrerer rader; ago beregner et tidspunkt relativt til nå. TimeGenerated &gt; ago(30m) avgrenser til de siste 30 minuttene.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Les mer<span class="sr-only"> om where og ago</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-summarize" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>summarize, count og countif</span></label></th><td>summarize grupperer og aggregerer rader. count teller alle; countif teller bare dem som oppfyller et vilkår, for eksempel mislykkede kall.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Les mer<span class="sr-only"> om summarize, count og countif</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-p95" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>P95 og percentile</span></label></th><td>P95 er 95-persentilen: omtrent 95 prosent av varighetene er på eller under denne verdien. Få kall gir et usikkert bilde av en vanlig responstid.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Les mer<span class="sr-only"> om P95 og percentile</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-project" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>project og order by</span></label></th><td>project velger kolonnene som vises. order by sorterer radene; vi bruker det til tidsrekkefølge eller flest feil først.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Les mer<span class="sr-only"> om project og order by</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-union" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>union</span></label></th><td>Legger rader fra flere tabeller i samme resultat. Vi kombinerer forespørsler og avhengighetskall og filtrerer til én operasjon.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Les mer<span class="sr-only"> om union</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-correlation" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>OperationId, Id og ParentId</span></label></th><td>ID betyr identifier, identifikator. OperationId binder sammen en trace, Id identifiserer en span og ParentId peker på forelderen.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Les mer<span class="sr-only"> om OperationId, Id og ParentId</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w22-begrep-aggregation" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Sum, Count og forhåndsaggregering</span></label></th><td>En metrikklinje kan representere flere målinger. Gjennomsnittlig varighet beregnes fra samlet Sum delt på samlet Count, ikke fra antall tabellrader.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview">Les mer<span class="sr-only"> om Sum, Count og forhåndsaggregering</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk de eksisterende Application Insights- og workspace-ressursene fra <a href="./workshop-tracing.html#eksport">eksportsteget i del 21</a>. Bruk telemetrien du allerede sendte i del 21. Mangler du data i tidsvinduet, starter du tjenestene med samme connection string, sender nye kall og venter på innlesing. Åpne Logs i den tilknyttede Log Analytics-workspace-en. Lagre egne spørringer i <code>artifacts/queries.kql</code> og eventuelle dataeksporter i <code>artifacts/kql-results.csv</code>.</p>
+</section>
+      <section class="panel" id="requests"><h2>1. Finn feil og svartid</h2>
+<pre data-language="KQL"><code>// Start med forespørselstelemetri fra Application Insights.
+AppRequests
+// Ta bare med telemetri fra de siste 30 minuttene.
+| where TimeGenerated &gt; ago(30m)
+// Avgrens til tjenestene i AI-200-labben.
+| where AppRoleName startswith "ai200-"
+// Tell forespørsler og mislykkede forespørsler per gruppe.
+| summarize Requests=count(), Failures=countif(Success == false),
+            // Beregn 95-persentilen for svartid og grupper resultatet per tjeneste.
+            P95=percentile(DurationMs, 95) by AppRoleName
+// Vis tjenesten med flest feil først.
+| order by Failures desc</code></pre><p>Forklar hva summarize gjør med radene, og hvorfor få kall gir en ustabil prosentil. Lag en spørring som viser bare mislykkede kall med OperationId.</p><label class="check-item"><input type="checkbox" data-check="w22-requests"><span>Jeg har funnet feilrate og svartid per tjeneste.</span></label>
+</section>
+      <section class="panel" id="trace"><h2>2. Følg én trace på tvers av tjenester</h2>
+<pre data-language="KQL"><code>// Kombiner innkommende forespørsler og utgående avhengighetskall.
+union AppRequests, AppDependencies
+// Ta bare med telemetri fra de siste 30 minuttene.
+| where TimeGenerated &gt; ago(30m)
+// Velg alle span-radene som tilhører én bestemt trace.
+| where OperationId == "LIM-INN-TRACE-ID"
+// Vis tid, tjeneste, span-ID, forelder, resultat og varighet.
+| project TimeGenerated, AppRoleName, Name, Id, ParentId, Success, DurationMs
+// Sorter span-radene i tidsrekkefølge.
+| order by TimeGenerated asc</code></pre><p>Forventet: frontend, call-backend og backend i samme operasjon. Undersøk ParentId/Id. En manglende backend-rad kan bety propagasjons- eller eksportfeil, ikke bare at backend ikke ble kalt.</p><label class="check-item"><input type="checkbox" data-check="w22-trace"><span>Jeg har korrelert forespørselen mellom begge tjenestene.</span></label>
+</section>
+      <section class="panel" id="metrics"><h2>3. Spør på egne målinger</h2>
+<pre data-language="KQL"><code>// Start med de eksporterte målingene fra Application Insights.
+AppMetrics
+// Ta bare med telemetri fra de siste 30 minuttene.
+| where TimeGenerated &gt; ago(30m)
+// Avgrens til tjenestene i AI-200-labben.
+| where AppRoleName startswith "ai200-"
+// Velg den egendefinerte målingen som teller labforespørsler.
+| where Name == "workshop.requests"
+// Summer forespørslene per minutt og tjeneste.
+| summarize Requests=sum(Sum) by bin(TimeGenerated, 1m), AppRoleName
+// Vis resultatet som et tidsdiagram.
+| render timechart</code></pre><p>Finn også workshop.duration. Undersøk Sum og Count, og beregn gjennomsnittlig varighet som sum(Sum)/sum(Count). Skill en forhåndsaggregert metrikk fra de enkelte span-radene. Dersom navnene avviker, start med å liste distinct Name fra AppMetrics.</p><label class="check-item"><input type="checkbox" data-check="w22-metrics"><span>Jeg har analysert både sporingsdata og målinger med KQL.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp og oppsummer</h2>
+<p>Stopp tjenestene, fjern APPLICATIONINSIGHTS_CONNECTION_STRING fra terminalene, og slett dedikerte overvåkingsressurser når du er ferdig. Forklar hvor i kjeden du ville undersøkt feil hvis bare én tjeneste dukket opp.</p>
+<pre data-language="PowerShell"><code># Stopp tjenestene med Ctrl+C. Kjør i begge tjenesteterminalene.
+Remove-Item Env:APPLICATIONINSIGHTS_CONNECTION_STRING -ErrorAction SilentlyContinue</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/kusto/query/">KQL</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/appmetrics">AppMetrics</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-tracing.html">← Workshop 21</a><a href="./index.html#workshops">Til workshopoversikten →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 22</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

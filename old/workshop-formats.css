@@ -1,0 +1,26 @@
+.format-options { display:flex; flex-wrap:wrap; gap:10px; min-width:0; margin:20px 0 24px; padding:0; border:0; }
+.format-options legend { margin-bottom:10px; padding:0; font-size:15px; font-weight:750; color:var(--ink); }
+.format-options label { display:flex; align-items:center; flex:1 1 200px; gap:10px; min-width:0; padding:13px 15px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); cursor:pointer; font-size:14px; font-weight:700; }
+.format-options label:has(input:checked) { background:var(--light); border-color:var(--accent); }
+.format-options input { flex-shrink:0; width:18px; height:18px; margin:0; accent-color:var(--accent); }
+.format-options label small { display:block; margin-top:2px; color:var(--muted); font-size:12px; font-weight:400; }
+.domain-format { margin-top:20px; }
+.domain-format .domain-session-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; font-size:14px; }
+.domain-exercises { margin:0 0 24px; }
+.domain-chapter > summary { display:flex; align-items:center; flex-wrap:wrap; gap:8px 14px; }
+.domain-chapter > summary::before { content:'▸'; color:var(--accent); }
+.domain-chapter[open] > summary::before { content:'▾'; }
+.domain-chapter > summary h3 { display:inline; flex:1 1 230px; margin:0; font-size:20px; }
+.chapter-number { color:var(--accent-strong); font-size:13px; font-weight:800; }
+.chapter-step { margin-top:25px; }
+.chapter-step + .chapter-step { padding-top:22px; border-top:1px solid var(--line); }
+.chapter-step h4 { margin-top:0; font-size:19px; }
+.chapter-step h5 { font-size:17px; }
+@media (max-width:620px) {
+  .format-options label { flex-basis:100%; }
+  .domain-chapter > summary h3 { flex-basis:100%; font-size:19px; }
+}
+@media print {
+  .format-options { display:none; }
+  .domain-chapter { box-shadow:none; }
+}

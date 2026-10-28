@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Samlet workshop i Integrasjoner og Functions, som én økt eller to samlinger. Samme øvelser og fremdrift som de korte workshopene.">
+  <title>Samlet workshop: Integrasjoner og Functions | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <link rel="stylesheet" href="./workshop-formats.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner"><a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html#domener">Pensum</a><a href="./index.html?format=domain#workshops-domene-3">Workshopformat</a><a href="./studiedekning.html">Studiedekning</a></nav></div></header>
+  <div class="hero"><div class="wrap"><p class="eyebrow">Samlet workshop / Domene 3</p><h1>Integrasjoner og Functions</h1><p class="lead">Gjennomfør del 14–18 som én sammenhengende workshop eller to samlinger. Du bruker de samme oppgavene som i de korte øktene.</p><div class="meta"><span class="tag">5 deler</span><span class="tag">Én eller to samlinger</span></div></div></div>
+  <nav class="workshop-nav" aria-label="Samlede workshops"><div class="wrap"><a href="./workshop-domene-containere.html">1. Containere på Azure</a><a href="./workshop-domene-data.html">2. Datatjenester for AI</a><a href="./workshop-domene-integrasjoner.html" aria-current="page">3. Integrasjoner og Functions</a><a href="./workshop-domene-sikkerhet.html">4. Sikkerhet, sporing og KQL</a></div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
+    <article class="content" data-domain-workshop>
+      <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend><label><input type="radio" name="domain-session" value="all" checked><span>Én samlet økt<small>Alle 5 deler</small></span></label><label><input type="radio" name="domain-session" value="1"><span>Samling 1<small>Del 14–16</small></span></label><label><input type="radio" name="domain-session" value="2"><span>Samling 2<small>Del 17–18</small></span></label></fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-3">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody><tr><th scope="row">Samling 1: HTTP, køer og topics</th><td><a href="#module-14" aria-label="Del 14: Bygg og publiser en HTTP Function">Del 14</a> · <a href="#module-15" aria-label="Del 15: Behandle kømeldinger og DLQ i kode">Del 15</a> · <a href="#module-16" aria-label="Del 16: Service Bus: topics og subscriptions">Del 16</a></td></tr><tr><th scope="row">Samling 2: Bindings og Event Grid</th><td><a href="#module-17" aria-label="Del 17: Functions: triggere og output-binding">Del 17</a> · <a href="#module-18" aria-label="Del 18: Event Grid: filtre, egne hendelser og retries">Del 18</a></td></tr></tbody></table></div></section>
+      <section class="panel" id="forberedelser"><h2>Felles oppsett</h2><p><a href="./getting-started.html#for-du-starter">Kom i gang</a> gjøres én gang. Ved ny terminal bruker du <a href="./getting-started.html#terminal">terminaloppsettet</a>. Ressursene opprettes i den delen som bruker dem først; følg delene i rekkefølge.</p></section>
+      <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Tabellen viser hva som brukes videre mellom deler og samlinger. Oppryddingen i hver del er den samme i begge workshopformater.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody><tr><th scope="row">HTTP Function App og Storage</th><td>Del 14 og 17–19</td><td>Etter Key Vault-øvelsen i del 19</td></tr><tr><th scope="row">Service Bus-namespace og documents-kø</th><td>Del 15–17</td><td>Etter del 17</td></tr><tr><th scope="row">Topic og subscriptions</th><td>Del 16</td><td>Etter del 16</td></tr><tr><th scope="row">Event Grid-topic og abonnement</th><td>Del 18</td><td>Etter at retry-testen er avsluttet</td></tr></tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Avslutter du løpet før siste avhengige del, sletter du også ressursene som ellers skulle vært brukt videre.</p></section>
+      <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p><details class="panel domain-chapter" id="module-14" data-domain-chapter data-session="1" open>
+<summary><span class="chapter-number">Del 14</span><h3>Bygg og publiser en HTTP Function</h3></summary>
+<p class="small"><a href="./workshop-integrations.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w14-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-function" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Functions og Function App</span></label></th><td>Functions kjører hendelsesutløst kode. En Function App samler funksjonene med felles innstillinger og vertsmiljø.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Azure Functions og Function App</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-http" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og API</span></label></th><td>HTTP er Hypertext Transfer Protocol, protokollen for forespørsel og svar. API er Application Programming Interface, grensesnittet appen tilbyr; vi tester ruter og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og API</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-json" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>JSON</span></label></th><td>JavaScript Object Notation: tekstformat for strukturerte data med objekter, felter og lister. Vi sender eller leser dette formatet i øvelsen.</td><td><a href="https://www.rfc-editor.org/rfc/rfc8259.html">Les mer<span class="sr-only"> om JSON</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-trigger" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP-trigger og rute</span></label></th><td>Triggeren starter funksjonen når et kall kommer til ruten. Ruten documents mottar POST; koden bestemmer responsen.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om HTTP-trigger og rute</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-key" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Function key</span></label></th><td>En delt nøkkel som gir tilgang til HTTP-ruter med tilgangsnivå Function i Azure. Den er forskjellig fra Microsoft Entra ID, identitetstjenesten.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om Function key</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-settings" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>local.settings.json og app settings</span></label></th><td>Den lokale filen inneholder utviklingsinnstillinger og holdes utenfor Git. Den publiserte Function App-en har egne appinnstillinger i Azure.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om local.settings.json og app settings</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-idempotent" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-tools" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Core Tools og CLI</span></label></th><td>Azure Functions Core Tools bygger, starter og publiserer appen. CLI betyr Command-Line Interface; vi bruker blant annet func start og func azure functionapp publish.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Core Tools og CLI</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w14-begrep-url" data-progress-source="./workshop-integrations.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>URL</span></label></th><td>Uniform Resource Locator: adressen til en ressurs eller rute. Get Function URL gir den komplette kalladressen, med nøkkel når den kreves.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om URL</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w14-forberedelser"><h4>Oppsett for denne delen</h4><h5 id="w14-ressursgruppe">Ressursgruppen for domene 3</h5><p>Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d3"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+}</code></pre>
+<p>Opprett én Python 3.12 Function App på Linux med tilhørende Storage-konto i den eksisterende ressursgruppen <code>ai200-d3</code>. Bruk en støttet hostingplan og noter appnavnet og Storage-kontoen; disse brukes videre til del 19. Python og Core Tools er klare fra fellesoppsettet. Opprett nå den lokale innstillingsfilen:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/integrations/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
+    Copy-Item labs/integrations/local.settings.example.json labs/integrations/local.settings.json
+}</code></pre><p>Åpne <code>labs/integrations/local.settings.json</code> og sett <code>AzureWebJobsStorage</code> til labens Storage-tilkoblingsstreng. Dette er filen for lokale innstillinger; <code>local.settings.example.json</code> beholdes som eksempel. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code># Gå til den lokale HTTP Function-appen før du starter eller publiserer den.
+Set-Location labs/integrations
+# Start den lokale Functions-hosten på standardport 7071.
+func start</code></pre>
+
+<details class="source-file" id="w14-fil-labs-integrations-host-json" data-source-file="labs/integrations/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/host.json</code></p><pre data-language="JSON" data-source="labs/integrations/host.json" class="code-with-notes"><code>{
+  &quot;version&quot;: &quot;2.0&quot;
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="w14-fil-labs-integrations-local-settings-example-json" data-source-file="labs/integrations/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/integrations/local.settings.example.json" class="code-with-notes"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;&quot;
+  }
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="w14-fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+
+<details class="source-file" id="w14-fil-labs-integrations-funcignore" data-source-file="labs/integrations/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/.funcignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.funcignore"><code># Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Git-reglene brukes lokalt, ikke av den publiserte appen.
+.gitignore
+</code></pre></details>
+
+<details class="source-file" id="w14-fil-labs-integrations-gitignore" data-source-file="labs/integrations/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/.gitignore</code></p><pre data-language="Tekst" data-source="labs/integrations/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke committes.
+local.settings.json
+</code></pre></details>
+</section><section class="chapter-step" id="w14-function"><h4>1. Test en HTTP-trigger</h4><p>La host-en kjøre. Send fra en ny PowerShell-terminal:</p><pre data-language="PowerShell"><code># Lag eksempeldata og konverter dem til JSON for HTTP-kallet.
+$body = @{ id = "doc-001"; text = "Workshop" } | ConvertTo-Json
+# Send eksempeldokumentet til den lokale HTTP-funksjonen.
+Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body $body</code></pre><p>Forventet: processed=true første gang og false ved samme ID. Finn route, trigger og HTTP-respons i <code>function_app.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w14-function" data-progress-source="./workshop-integrations.html"><span>Jeg har kalt en HTTP-trigger og funnet svaret i loggen.</span></label>
+
+<details class="source-file" id="w14-fil-labs-integrations-function-app-py" data-source-file="labs/integrations/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/function_app.py</code></p><pre data-language="Python" data-source="labs/integrations/function_app.py"><code>&quot;&quot;&quot;Local workshop API. In-memory deduplication is deliberately not production storage.&quot;&quot;&quot;
+
+# Serialiser svarene som JSON.
+import json
+# Skriv hendelser og kontrollerte feil til Functions-loggen.
+import logging
+# Les appinnstillingene fra miljøet.
+import os
+# Beskytt det delte minnesettet mot samtidige forespørsler.
+import threading
+
+# Bruk Functions-dekoratorer og HTTP-typer.
+import azure.functions as func
+
+# Krev en Function-nøkkel på vanlige HTTP-ruter i Azure.
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+# Husk behandlede dokument-ID-er bare så lenge denne prosessen kjører.
+processed = set()
+# La kontroll og registrering av en ID skje samlet.
+processed_lock = threading.Lock()
+
+
+# Ta imot dokumenter på /api/documents.
+@app.route(route=&quot;documents&quot;, methods=[&quot;POST&quot;])
+# Valider dokumentet og demonstrer håndtering av samme ID flere ganger.
+def documents(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Forsøk å lese forespørselsinnholdet som JSON.
+    try:
+        # Konverter JSON-body til Python-data.
+        payload = req.get_json()
+    # Håndter innhold som ikke kan tolkes som JSON.
+    except ValueError:
+        # Svar med klientfeil for ugyldig JSON.
+        return func.HttpResponse(&quot;Body must be JSON&quot;, status_code=400)
+    # Krev et JSON-objekt, ikke for eksempel en liste.
+    if not isinstance(payload, dict):
+        # Forklar hvorfor datatypen ble avvist.
+        return func.HttpResponse(&quot;Body must be a JSON object&quot;, status_code=400)
+    # Hent dokument-ID-en som brukes til duplikatkontroll.
+    document_id = payload.get(&quot;id&quot;)
+    # Avvis manglende, tomme og ikke-tekstlige ID-er.
+    if not isinstance(document_id, str) or not document_id.strip():
+        # Send en tydelig valideringsfeil til klienten.
+        return func.HttpResponse(&quot;id must be a non-empty string&quot;, status_code=400)
+    # Unngå at to samtidige kall registrerer samme ID som ny.
+    with processed_lock:
+        # Kontroller om denne prosessen allerede har sett ID-en.
+        duplicate = document_id in processed
+        # Registrer ID-en før en annen tråd får tilgang.
+        processed.add(document_id)
+    # Gjør duplikathåndteringen synlig i loggen.
+    logging.info(&quot;document_received duplicate=%s&quot;, duplicate)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Vis om dette kallet ble behandlet som nytt.
+        json.dumps({&quot;id&quot;: document_id, &quot;processed&quot;: not duplicate}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# La Key Vault-øvelsen kontrollere om hemmeligheten ble levert til appen.
+@app.route(route=&quot;configuration&quot;, methods=[&quot;GET&quot;])
+# Rapporter bare status for konfigurasjonen.
+def configuration(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hemmeligheten som appinnstilling.
+    secret = os.getenv(&quot;DEMO_SECRET&quot;, &quot;&quot;)
+    # Skill en faktisk verdi fra en Key Vault-referanse som ikke er løst.
+    resolved = bool(secret) and not secret.startswith(&quot;@Microsoft.KeyVault(&quot;)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Send bare en boolsk status, aldri hemmelighetens verdi.
+        json.dumps({&quot;secret_configured&quot;: resolved}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# Gi labens Event Grid-webhook en HTTP-rute uten Function-nøkkel.
+@app.route(route=&quot;event-hook&quot;, methods=[&quot;POST&quot;], auth_level=func.AuthLevel.ANONYMOUS)
+# Håndter valideringshendelser og vanlige Event Grid-hendelser.
+def event_hook(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hendelseslisten i Event Grid Schema-format.
+    events = req.get_json()
+    # Krev en liste slik dette hendelsesskjemaet bruker.
+    if not isinstance(events, list):
+        # Avvis et annet meldingsformat.
+        return func.HttpResponse(&quot;Expected Event Grid Schema array&quot;, status_code=400)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Gjenkjenn håndtrykket som validerer webhook-abonnementet.
+        if event.get(&quot;eventType&quot;) == &quot;Microsoft.EventGrid.SubscriptionValidationEvent&quot;:
+            # Send valideringskoden tilbake i validationResponse.
+            return func.HttpResponse(json.dumps({&quot;validationResponse&quot;: event[&quot;data&quot;][&quot;validationCode&quot;]}),
+                                     # Svar med JSON slik valideringen forventer.
+                                     mimetype=&quot;application/json&quot;)
+    # Bruk en appinnstilling til å slå på en kontrollert leveringsfeil.
+    if os.getenv(&quot;FAIL_EVENTS&quot;, &quot;false&quot;).lower() == &quot;true&quot;:
+        # Gjør den fremprovoserte feilen synlig i loggen.
+        logging.warning(&quot;Controlled Event Grid delivery failure&quot;)
+        # Svar med 503 så Event Grid kan forsøke levering igjen.
+        return func.HttpResponse(&quot;Retry this delivery&quot;, status_code=503)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Vis hvilke hendelser som kom gjennom abonnementets filter.
+        logging.info(&quot;event id=%s subject=%s&quot;, event.get(&quot;id&quot;), event.get(&quot;subject&quot;))
+    # Bekreft vellykket mottak med HTTP 200.
+    return func.HttpResponse(&quot;Accepted&quot;)
+</code></pre></details>
+</section><section class="chapter-step" id="w14-feil"><h4>2. Undersøk feil og restart</h4><pre data-language="PowerShell"><code># Send et tomt JSON-objekt for å teste valideringsfeilen HTTP 400.
+Invoke-RestMethod http://localhost:7071/api/documents -Method Post -ContentType application/json -Body '{}'</code></pre><p>Forventet HTTP 400. Restart host-en og send doc-001 igjen: minnesettet er tømt. Forklar hvorfor HTTP-triggeren ikke gjentar klientens kall, og hvorfor varig idempotens trenger mer enn prosessminne.</p><label class="check-item"><input type="checkbox" data-check="w14-feil" data-progress-source="./workshop-integrations.html"><span>Jeg har testet ugyldige data og funnet begrensningen i minnelagringen.</span></label>
+</section><section class="chapter-step" id="w14-deploy"><h4>3. Publiser og konfigurer</h4><p>Stopp host-en.</p><h5 id="w14-appnavn">Navnene som brukes videre i del 18–19</h5><p>Sett navnene til den eksisterende appen. Ved ny terminal henter du bare disse verdiene:</p><pre data-language="PowerShell"><code># Sett ressursgruppen til Function App-en fra del 14.
+$functionGroup = "ai200-d3"
+# Sett navnet på Function App-en som allerede finnes.
+$functionApp = "DITT-FUNCTION-APP-NAVN"</code></pre><p>Publiser deretter koden fra <code>labs/integrations</code>, med Python-miljøet aktivt:</p><pre data-language="PowerShell"><code># Publiser koden fra den gjeldende labmappen til den eksisterende Function App-en.
+func azure functionapp publish $functionApp</code></pre><p>Finn Get Function URL for documents i portalen og send samme body til den komplette URL-en med nøkkel. Undersøk Function-logger og appinnstillingen FUNCTIONS_WORKER_RUNTIME. Behold appnavnet til workshop 18–19; de bruker event-hook og configuration-endepunktene fra samme kode.</p><label class="check-item"><input type="checkbox" data-check="w14-deploy" data-progress-source="./workshop-integrations.html"><span>Jeg har publisert og testet Function App-en i Azure.</span></label>
+</section><section class="chapter-step" id="w14-opprydding"><h4>Rydding og overgang til neste del</h4><p>Stopp lokal host og fjern den lokale innstillingsfilen nedenfor. Behold den publiserte Function App-en og Storage-kontoen til del 19. Del 17 bruker samme Storage-konto, og del 18–19 bruker den publiserte appen. Hvis du avslutter hele løpet her, sletter du begge ressursene.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+Remove-Item -LiteralPath labs/integrations/local.settings.json -ErrorAction SilentlyContinue</code></pre>
+</section>
+</details><details class="panel domain-chapter" id="module-15" data-domain-chapter data-session="1" open>
+<summary><span class="chapter-number">Del 15</span><h3>Behandle kømeldinger og DLQ i kode</h3></summary>
+<p class="small"><a href="./workshop-service-bus.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w15-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-namespace" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Service Bus og namespace</span></label></th><td>Service Bus er en meldingsmegler som lagrer og leverer meldinger. Et namespace er tjenesteområdet som inneholder køene og topic-ene våre.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Service Bus og namespace</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-queue" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Kø, Peek og PeekLock</span></label></th><td>En kø holder arbeid til en mottaker kan behandle det. Peek inspiserer uten å låse; PeekLock mottar med en midlertidig lås før fullføring.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement">Les mer<span class="sr-only"> om Kø, Peek og PeekLock</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-settlement" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Complete og Abandon</span></label></th><td>Complete bekrefter behandling og fjerner meldingen. Abandon frigir den for ny levering; vi sammenligner DeliveryCount etterpå.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement">Les mer<span class="sr-only"> om Complete og Abandon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-receive-delete" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ReceiveAndDelete</span></label></th><td>Mottaksmodus der meldingen regnes som ferdig når den sendes til klienten. Et senere klientkrasj kan derfor miste arbeidet.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement">Les mer<span class="sr-only"> om ReceiveAndDelete</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-dlq" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DLQ</span></label></th><td>Dead-Letter Queue: egen underkø for meldinger som må undersøkes. Vi ser på feilårsak og hvordan meldingen leses og fullføres derfra.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Les mer<span class="sr-only"> om DLQ</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-sdk" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-entra" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Microsoft Entra ID</span></label></th><td>Azures identitetstjeneste. DefaultAzureCredential bruker vår innlogging, og rollen Azure Service Bus Data Owner gir labbrukeren datatilgang.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/overview">Les mer<span class="sr-only"> om Microsoft Entra ID</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-metadata" data-progress-source="./workshop-service-bus.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Body og meldingsegenskaper</span></label></th><td>Body er innholdet; subject og application properties er metadata. Message ID er meldingsidentifikatoren, som må skilles fra antall leveringsforsøk.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Body og meldingsegenskaper</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w15-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett ett Service Bus-namespace med <strong>Standard</strong> i <a href="./workshop-integrations.html#ressursgruppe">ressursgruppen fra del 14</a>, og opprett køen <code>documents</code>. Samme namespace og kø brukes i del 15–17. Gi din innloggede bruker Azure Service Bus Data Owner på labnamespace-et. SDK-pakkene og Azure-innloggingen er klare fra fellesoppsettet.</p><pre data-language="PowerShell"><code># Sett det fulle vertsnavnet til Service Bus-namespace-et.
+$env:SERVICEBUS_NAMESPACE = "DITT-NAMESPACE.servicebus.windows.net"</code></pre>
+
+<details class="source-file" id="w15-fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+</section><section class="chapter-step" id="w15-send"><h4>1. Send fra Python</h4><pre data-language="PowerShell"><code># Send labmeldingen til documents-køen med Service Bus-SDK-et.
+python labs/integrations/message_bus.py send</code></pre><p>Åpne Service Bus Explorer og bruk Peek for å se meldingen uten å fjerne den. Finn body, subject, message ID og application properties. Les senderen i <code>message_bus.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w15-send" data-progress-source="./workshop-service-bus.html"><span>Jeg har sendt og inspisert en melding fra SDK-et.</span></label>
+
+<details class="source-file" id="w15-fil-labs-integrations-message-bus-py" data-source-file="labs/integrations/message_bus.py"><summary><code>message_bus.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/message_bus.py</code></p><pre data-language="Python" data-source="labs/integrations/message_bus.py"><code>&quot;&quot;&quot;Service Bus data-plane operations using the signed-in user&#x27;s identity.&quot;&quot;&quot;
+# Velg kø-, topic-, subscription- eller DLQ-operasjon.
+import argparse
+# Les Service Bus-navnet fra miljøet.
+import os
+
+# Bruk Entra-identitet, for eksempel den innloggede Azure CLI-brukeren.
+from azure.identity import DefaultAzureCredential
+# Hent klienten, meldingstypen og valget for dead-letter-køen.
+from azure.servicebus import ServiceBusClient, ServiceBusMessage, ServiceBusSubQueue
+
+
+# Kjør én operasjon mot labnamespace-et.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til dem som brukes i øvelsene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;send&quot;, &quot;receive&quot;, &quot;dlq&quot;, &quot;topic&quot;, &quot;subscription&quot;])
+    # Velg mottakende subscription; indexer er standard.
+    parser.add_argument(&quot;--subscription&quot;, default=&quot;indexer&quot;)
+    # Les valgene fra terminalen.
+    args = parser.parse_args()
+    # Opprett identitet og klient, og lukk dem etter operasjonen.
+    with DefaultAzureCredential() as credential, ServiceBusClient(
+            # Bruk namespace-adressen uten å lagre en tilkoblingsnøkkel i filen.
+            fully_qualified_namespace=os.environ[&quot;SERVICEBUS_NAMESPACE&quot;], credential=credential) as client:
+        # Disse operasjonene sender én ny melding.
+        if args.mode in {&quot;send&quot;, &quot;topic&quot;}:
+            # Send til topic-et når topic-operasjonen er valgt.
+            sender = (client.get_topic_sender(&quot;document-events&quot;) if args.mode == &quot;topic&quot;
+                      # Ellers sendes meldingen til documents-køen.
+                      else client.get_queue_sender(&quot;documents&quot;))
+            # Åpne senderen for denne sendingen.
+            with sender:
+                # Bruk en liten JSON-body som nyttelast.
+                sender.send_messages(ServiceBusMessage(&#x27;{&quot;id&quot;:&quot;doc-001&quot;}&#x27;,
+                                                       # Legg til subject og en egenskap som subscription-filtre kan bruke.
+                                                       subject=&quot;document&quot;, application_properties={&quot;kind&quot;: &quot;note&quot;}))
+            # Bekreft at SDK-sendingen er fullført.
+            print(&quot;Sent&quot;)
+        # De øvrige operasjonene mottar meldinger.
+        else:
+            # En topic-mottaker leser fra en bestemt subscription.
+            if args.mode == &quot;subscription&quot;:
+                # Velg indexer eller audit på document-events-topic-et.
+                receiver = client.get_subscription_receiver(&quot;document-events&quot;, args.subscription)
+            # Køøvelsen leser enten vanlig kø eller dens DLQ.
+            else:
+                # Opprett mottakeren for documents-køen.
+                receiver = client.get_queue_receiver(&quot;documents&quot;, sub_queue=(
+                    # Velg dead-letter-underkøen bare i dlq-modus.
+                    ServiceBusSubQueue.DEAD_LETTER if args.mode == &quot;dlq&quot; else None))
+            # Åpne mottakeren og lukk den etter bruk.
+            with receiver:
+                # Hent høyst ti meldinger og begrens ventingen til fem sekunder.
+                messages = receiver.receive_messages(max_message_count=10, max_wait_time=5)
+                # Vis hvor mange meldinger som ble hentet.
+                print(&quot;Received:&quot;, len(messages))
+                # Behandle hver mottatt melding.
+                for message in messages:
+                    # Vis body og antall leveringsforsøk.
+                    print(str(message), &quot;Delivery:&quot;, message.delivery_count)
+                    # Fremprovoser DLQ-flyten i den vanlige køøvelsen.
+                    if args.mode == &quot;receive&quot;:
+                        # Flytt meldingen til DLQ med en årsak du kan inspisere.
+                        receiver.dead_letter_message(message, reason=&quot;Workshop&quot;, error_description=&quot;Controlled demo&quot;)
+                    # Fullfør meldinger i DLQ- og subscription-øvelsene.
+                    else:
+                        # Bekreft behandling og fjern meldingen fra denne mottakerkøen.
+                        receiver.complete_message(message)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Service Bus-operasjon.
+    main()
+</code></pre></details>
+</section><section class="chapter-step" id="w15-laas"><h4>2. Lås, frigjør og lever igjen</h4><p>I Explorer: Receive med PeekLock, velg Abandon, og motta på nytt. Sammenlign DeliveryCount. Forklar forskjellen mellom Peek, ReceiveAndDelete, Complete og Abandon. Ikke bruk andre køer enn labkøen.</p><label class="check-item"><input type="checkbox" data-check="w15-laas" data-progress-source="./workshop-service-bus.html"><span>Jeg kan forklare hva en lås og ny levering betyr for mottakeren.</span></label>
+</section><section class="chapter-step" id="w15-dlq"><h4>3. Håndter DLQ i kode</h4><pre data-language="PowerShell"><code># Motta labmeldinger og flytt dem til DLQ med en kontrollert feilårsak.
+python labs/integrations/message_bus.py receive
+# Les meldingene i DLQ, vis innholdet og fullfør dem.
+python labs/integrations/message_bus.py dlq</code></pre><p>Receive-steget flytter mottatte meldinger til DLQ med en kontrollert feilårsak. DLQ-steget leser, skriver dem ut og fullfører dem. Inspiser reason i portalen mellom kjøringene. Diskuter hvilke feil som kan prøves på nytt og hvilke som trenger rettet innhold.</p><label class="check-item"><input type="checkbox" data-check="w15-dlq" data-progress-source="./workshop-service-bus.html"><span>Jeg har dead-letter-et og fullført en melding med SDK-et.</span></label>
+</section><section class="chapter-step" id="w15-opprydding"><h4>Rydding og overgang til neste del</h4><p>Kontroller at hovedkø og DLQ er tomme. Behold namespace-et bare til workshop 16–17 hvis du fortsetter. Slett det når du er ferdig.</p>
+</section>
+</details><details class="panel domain-chapter" id="module-16" data-domain-chapter data-session="1" open>
+<summary><span class="chapter-number">Del 16</span><h3>Service Bus: topics og subscriptions</h3></summary>
+<p class="small"><a href="./workshop-topics.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w16-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-topic" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Service Bus topic</span></label></th><td>Publiseringspunktet som kan sende én melding videre til flere uavhengige abonnementer. Vi sender til document-events.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Service Bus topic</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-subscription" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Subscription</span></label></th><td>Et abonnement som beholder sin egen kopi. Fullføring i indexer fjerner ikke audit sin melding.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Subscription</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-pubsub" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Pub/sub og fan-out</span></label></th><td>Publish/subscribe: avsender publiserer uten å kjenne alle mottakerne. Fan-out betyr at samme publisering fordeles til flere abonnementer.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Pub/sub og fan-out</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-sql" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL-filter</span></label></th><td>SQL betyr Structured Query Language. Subscription-regelen bruker et uttrykk som kind = &#x27;note&#x27; til å velge meldinger etter metadata.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om SQL-filter</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-or" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Standardregel og OR</span></label></th><td>OR betyr logisk eller: det holder at én regel treffer. En regel som fortsatt tar imot alt, gjør derfor det smalere filteret uten virkning.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Standardregel og OR</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-properties" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Application properties og body</span></label></th><td>Application properties er meldingsegenskaper filteret kan lese. Det parser ikke automatisk JSON-bodyen; JSON betyr JavaScript Object Notation.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Application properties og body</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w16-begrep-sdk" data-progress-source="./workshop-topics.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w16-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk det eksisterende Standard-namespace-et og <code>SERVICEBUS_NAMESPACE</code> fra <a href="./workshop-service-bus.html">workshop 15</a>. Opprett topic <code>document-events</code> og subscriptions <code>indexer</code> og <code>audit</code>. Begge starter med standardregelen som tar imot alt.</p>
+
+<details class="source-file" id="w16-fil-labs-integrations-message-bus-py" data-source-file="labs/integrations/message_bus.py"><summary><code>message_bus.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/message_bus.py</code></p><pre data-language="Python" data-source="labs/integrations/message_bus.py"><code>&quot;&quot;&quot;Service Bus data-plane operations using the signed-in user&#x27;s identity.&quot;&quot;&quot;
+# Velg kø-, topic-, subscription- eller DLQ-operasjon.
+import argparse
+# Les Service Bus-navnet fra miljøet.
+import os
+
+# Bruk Entra-identitet, for eksempel den innloggede Azure CLI-brukeren.
+from azure.identity import DefaultAzureCredential
+# Hent klienten, meldingstypen og valget for dead-letter-køen.
+from azure.servicebus import ServiceBusClient, ServiceBusMessage, ServiceBusSubQueue
+
+
+# Kjør én operasjon mot labnamespace-et.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til dem som brukes i øvelsene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;send&quot;, &quot;receive&quot;, &quot;dlq&quot;, &quot;topic&quot;, &quot;subscription&quot;])
+    # Velg mottakende subscription; indexer er standard.
+    parser.add_argument(&quot;--subscription&quot;, default=&quot;indexer&quot;)
+    # Les valgene fra terminalen.
+    args = parser.parse_args()
+    # Opprett identitet og klient, og lukk dem etter operasjonen.
+    with DefaultAzureCredential() as credential, ServiceBusClient(
+            # Bruk namespace-adressen uten å lagre en tilkoblingsnøkkel i filen.
+            fully_qualified_namespace=os.environ[&quot;SERVICEBUS_NAMESPACE&quot;], credential=credential) as client:
+        # Disse operasjonene sender én ny melding.
+        if args.mode in {&quot;send&quot;, &quot;topic&quot;}:
+            # Send til topic-et når topic-operasjonen er valgt.
+            sender = (client.get_topic_sender(&quot;document-events&quot;) if args.mode == &quot;topic&quot;
+                      # Ellers sendes meldingen til documents-køen.
+                      else client.get_queue_sender(&quot;documents&quot;))
+            # Åpne senderen for denne sendingen.
+            with sender:
+                # Bruk en liten JSON-body som nyttelast.
+                sender.send_messages(ServiceBusMessage(&#x27;{&quot;id&quot;:&quot;doc-001&quot;}&#x27;,
+                                                       # Legg til subject og en egenskap som subscription-filtre kan bruke.
+                                                       subject=&quot;document&quot;, application_properties={&quot;kind&quot;: &quot;note&quot;}))
+            # Bekreft at SDK-sendingen er fullført.
+            print(&quot;Sent&quot;)
+        # De øvrige operasjonene mottar meldinger.
+        else:
+            # En topic-mottaker leser fra en bestemt subscription.
+            if args.mode == &quot;subscription&quot;:
+                # Velg indexer eller audit på document-events-topic-et.
+                receiver = client.get_subscription_receiver(&quot;document-events&quot;, args.subscription)
+            # Køøvelsen leser enten vanlig kø eller dens DLQ.
+            else:
+                # Opprett mottakeren for documents-køen.
+                receiver = client.get_queue_receiver(&quot;documents&quot;, sub_queue=(
+                    # Velg dead-letter-underkøen bare i dlq-modus.
+                    ServiceBusSubQueue.DEAD_LETTER if args.mode == &quot;dlq&quot; else None))
+            # Åpne mottakeren og lukk den etter bruk.
+            with receiver:
+                # Hent høyst ti meldinger og begrens ventingen til fem sekunder.
+                messages = receiver.receive_messages(max_message_count=10, max_wait_time=5)
+                # Vis hvor mange meldinger som ble hentet.
+                print(&quot;Received:&quot;, len(messages))
+                # Behandle hver mottatt melding.
+                for message in messages:
+                    # Vis body og antall leveringsforsøk.
+                    print(str(message), &quot;Delivery:&quot;, message.delivery_count)
+                    # Fremprovoser DLQ-flyten i den vanlige køøvelsen.
+                    if args.mode == &quot;receive&quot;:
+                        # Flytt meldingen til DLQ med en årsak du kan inspisere.
+                        receiver.dead_letter_message(message, reason=&quot;Workshop&quot;, error_description=&quot;Controlled demo&quot;)
+                    # Fullfør meldinger i DLQ- og subscription-øvelsene.
+                    else:
+                        # Bekreft behandling og fjern meldingen fra denne mottakerkøen.
+                        receiver.complete_message(message)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Service Bus-operasjon.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="w16-fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+</section><section class="chapter-step" id="w16-kopier"><h4>1. Test uavhengige kopier</h4><pre data-language="PowerShell"><code># Publiser labmeldingen på topic-et document-events.
+python labs/integrations/message_bus.py topic
+# Motta og fullfør meldingen fra indexer sin uavhengige kopi.
+python labs/integrations/message_bus.py subscription --subscription indexer
+# Motta og fullfør meldingen fra audit sin uavhengige kopi.
+python labs/integrations/message_bus.py subscription --subscription audit</code></pre><p>Forventet: begge mottar én kopi. Fullføring i indexer fjerner ikke audit sin kopi. Finn skillelinjen mellom topic og subscription; det er subscription som fungerer som mottakerens kø.</p><label class="check-item"><input type="checkbox" data-check="w16-kopier" data-progress-source="./workshop-topics.html"><span>Jeg har mottatt uavhengige kopier av samme publisering.</span></label>
+</section><section class="chapter-step" id="w16-filter"><h4>2. Legg på et filter</h4><p>På indexer i portalen: erstatt standardregelen med en SQL-filterregel <code>kind = 'note'</code>. Fjern standardregelen som matcher alt, ellers gjelder reglene som OR. Audit beholder standardregelen. Send en ny melding og motta fra begge.</p><label class="check-item"><input type="checkbox" data-check="w16-filter" data-progress-source="./workshop-topics.html"><span>Jeg har satt et subscription-filter som bruker meldingsmetadata.</span></label>
+</section><section class="chapter-step" id="w16-endring"><h4>3. Vis at filteret virker</h4><p>I kildefilen av message_bus.py: endre application property kind fra note til other, og send på nytt. Forventet: audit mottar meldingen, indexer gjør det ikke. Forklar hvorfor filteret ser på metadata og ikke parser JSON-body.</p><p>Hent tilbake den opprinnelige senderen med <code>kind=note</code> før du fortsetter:</p><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
+git restore --source=HEAD -- labs/integrations/message_bus.py</code></pre><p>Kildefilen bruker nå de opprinnelige meldingsegenskapene.</p><label class="check-item"><input type="checkbox" data-check="w16-endring" data-progress-source="./workshop-topics.html"><span>Jeg har verifisert både treff og avvisning i filteret.</span></label>
+</section><section class="chapter-step" id="w16-opprydding"><h4>Rydding og overgang til neste del</h4><p>Tøm labsubscriptions ved å fullføre meldingene. Slett topic-et når øvelsen er ferdig. Namespace/kø kan beholdes til workshop 17.</p>
+</section>
+</details><details class="panel domain-chapter" id="module-17" data-domain-chapter data-session="2" open>
+<summary><span class="chapter-number">Del 17</span><h3>Functions: triggere og output-binding</h3></summary>
+<p class="small"><a href="./workshop-bindings.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w17-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-trigger" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Trigger</span></label></th><td>Startsammenhengen for funksjonen. En HTTP-trigger starter ved et nettkall; en Service Bus-køtrigger starter når en melding kan behandles.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Trigger</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-binding" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Output-binding</span></label></th><td>En deklarert kobling som sender funksjonens resultat til en tjeneste. Vi fyller message-outputen; Functions-hosten håndterer sendingen.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Output-binding</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-http" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP 202 og asynkron behandling</span></label></th><td>HTTP er Hypertext Transfer Protocol. Status 202 betyr at arbeidet er akseptert; kømottakeren behandler meldingen etter at klienten har fått svar.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om HTTP 202 og asynkron behandling</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-retry" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Retry og DeliveryCount</span></label></th><td>Retry er et nytt forsøk. Ved behandlingsfeil leverer Service Bus meldingen på nytt; DeliveryCount teller forsøk, og Max delivery count setter grensen.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Les mer<span class="sr-only"> om Retry og DeliveryCount</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-dlq" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DLQ</span></label></th><td>Dead-Letter Queue: egen underkø for meldinger som må undersøkes. Vi ser på feilårsak og hvordan meldingen leses og fullføres derfra.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Les mer<span class="sr-only"> om DLQ</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-idempotent" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-connection" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tilkoblingsstreng og lokal konfigurasjon</span></label></th><td>Bindingen finner forbindelsen gjennom det navngitte innstillingsfeltet. Labens lokale JSON-fil, JavaScript Object Notation, har nøkler og skal ikke i Git.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Tilkoblingsstreng og lokal konfigurasjon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-sdk" data-progress-source="./workshop-bindings.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w17-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk <code>documents</code>-køen og namespace-et fra <a href="./workshop-service-bus.html">del 15</a>, og Storage-kontoen fra <a href="./workshop-integrations.html">del 14</a>. Sett køens <strong>Max delivery count=3</strong> og opprett en Service Bus-policy med Send og Listen på labnamespace-et. Alle disse ressursene ligger i <code>ai200-d3</code>. Opprett bare den nye lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/bindings/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
+    Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
+}</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Service Bus-bindingene.
+Set-Location labs/bindings
+# Start den lokale Functions-hosten på port 7073 for bindingstesten.
+func start --port 7073</code></pre>
+
+<details class="source-file" id="w17-fil-labs-bindings-host-json" data-source-file="labs/bindings/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/host.json</code></p><pre data-language="JSON" data-source="labs/bindings/host.json" class="code-with-notes"><code>{
+  &quot;version&quot;: &quot;2.0&quot;,
+  &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="w17-fil-labs-bindings-local-settings-example-json" data-source-file="labs/bindings/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/bindings/local.settings.example.json" class="code-with-notes"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING&quot;,
+    &quot;ServiceBusConnection&quot;: &quot;REPLACE_WITH_LAB_SERVICE_BUS_CONNECTION_STRING&quot;
+  }
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Tilkoblingsstrengen som Service Bus-bindingene bruker.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="w17-fil-labs-bindings-requirements-txt" data-source-file="labs/bindings/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/bindings/requirements.txt"><code># Functions-typer og dekoratorer for Python-appen.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="w17-fil-labs-bindings-funcignore" data-source-file="labs/bindings/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/.funcignore</code></p><pre data-language="Tekst" data-source="labs/bindings/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+</code></pre></details>
+</section><section class="chapter-step" id="w17-binding"><h4>1. Følg en melding gjennom bindingene</h4><pre data-language="PowerShell"><code># Send et gyldig dokument til HTTP-funksjonen som legger det på Service Bus-køen.
+Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"doc-001"}'</code></pre><p>Forventet: HTTP 202 og deretter en Consumed-logglinje. Finn <code>service_bus_queue_output og service_bus_queue_trigger</code>. Output-bindingen sender meldingen; triggeren starter mottakeren og fullfører vellykket behandling.</p><label class="check-item"><input type="checkbox" data-check="w17-binding" data-progress-source="./workshop-bindings.html"><span>Jeg har brukt både output-binding og køtrigger.</span></label>
+
+<details class="source-file" id="w17-fil-labs-bindings-function-app-py" data-source-file="labs/bindings/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/function_app.py</code></p><pre data-language="Python" data-source="labs/bindings/function_app.py"><code>&quot;&quot;&quot;HTTP -&gt; Service Bus output binding -&gt; Service Bus trigger.&quot;&quot;&quot;
+# Skriv behandlingsinformasjon til Functions-loggen.
+import logging
+# Bruk Functions-dekoratorer, HTTP-typer og bindingstyper.
+import azure.functions as func
+
+# Krev en Function-nøkkel på HTTP-rutene når appen kjører i Azure.
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+
+
+# Ta imot HTTP POST på /api/enqueue.
+@app.route(route=&quot;enqueue&quot;, methods=[&quot;POST&quot;])
+# Koble message-outputen til documents-køen med den navngitte appinnstillingen.
+@app.service_bus_queue_output(arg_name=&quot;message&quot;, queue_name=&quot;documents&quot;, connection=&quot;ServiceBusConnection&quot;)
+# Motta HTTP-kallet og et output-objekt som Functions-hosten håndterer.
+def enqueue(req: func.HttpRequest, message: func.Out[str]) -&gt; func.HttpResponse:
+    # Legg HTTP-body i output-bindingen; hosten står for sendingen.
+    message.set(req.get_body().decode(&quot;utf-8&quot;))
+    # Svar at forespørselen er akseptert.
+    return func.HttpResponse(&quot;Queued&quot;, status_code=202)
+
+
+# Start denne funksjonen når en melding kan behandles fra documents-køen.
+@app.service_bus_queue_trigger(arg_name=&quot;message&quot;, queue_name=&quot;documents&quot;, connection=&quot;ServiceBusConnection&quot;)
+# Motta meldingen og metadataene fra triggeren.
+def consume(message: func.ServiceBusMessage):
+    # Les meldingsteksten som UTF-8.
+    body = message.get_body().decode(&quot;utf-8&quot;)
+    # Bruk en bestemt tekst til å fremprovosere behandlingsfeil.
+    if &quot;fail&quot; in body.lower():
+        # La feilen gå til hosten så ny levering og DLQ kan observeres.
+        raise ValueError(&quot;Controlled failure for delivery-count and DLQ exercise&quot;)
+    # Vis meldingens ID og antall leveringsforsøk ved vellykket behandling.
+    logging.info(&quot;Consumed id=%s delivery=%s&quot;, message.message_id, message.delivery_count)
+</code></pre></details>
+</section><section class="chapter-step" id="w17-retry"><h4>2. La behandlingen feile</h4><pre data-language="PowerShell"><code># Send meldingen som får køtriggeren til å feile, slik at du kan følge retries til DLQ.
+Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"fail-demo"}'</code></pre><p>Koden fremprovoserer en feil når body inneholder fail. Observer gjentatte forsøk og økende delivery count. Etter køens maksimale leveringer ligger meldingen i DLQ. Inspiser feil og innhold i Explorer.</p><label class="check-item"><input type="checkbox" data-check="w17-retry" data-progress-source="./workshop-bindings.html"><span>Jeg har fulgt en behandlingsfeil gjennom retries til DLQ.</span></label>
+</section><section class="chapter-step" id="w17-ansvar"><h4>3. Skill ansvarsområdene</h4><p>Forklar forskjellen mellom klientens HTTP-retry, bindingens sendeoperasjon og brokerens nye levering. Beskriv hvor en varig idempotensnøkkel må registreres dersom behandlingen oppdaterer en database. Sammenlign denne løsningen med den direkte SDK-mottakeren fra workshop 15.</p><label class="check-item"><input type="checkbox" data-check="w17-ansvar" data-progress-source="./workshop-bindings.html"><span>Jeg kan forklare hvem som styrer trigger, binding og levering.</span></label>
+</section><section class="chapter-step" id="w17-opprydding"><h4>Rydding og overgang til neste del</h4><p>Stopp host-en, fullfør labmeldingen fra DLQ, og slett den lokale innstillingsfilen nedenfor. Service Bus-namespace-et og køen kan nå slettes. Behold Storage-kontoen og den publiserte HTTP Function App-en til del 18–19.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+Remove-Item -LiteralPath labs/bindings/local.settings.json -ErrorAction SilentlyContinue</code></pre>
+</section>
+</details><details class="panel domain-chapter" id="module-18" data-domain-chapter data-session="2" open>
+<summary><span class="chapter-number">Del 18</span><h3>Event Grid: filtre, egne hendelser og retries</h3></summary>
+<p class="small"><a href="./workshop-event-grid.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w18-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-event" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Event Grid</span></label></th><td>Tjeneste som ruter hendelser fra en kilde til interesserte mottakere. Vi publiserer egne hendelser og bruker push-levering til webhooken.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/concepts">Les mer<span class="sr-only"> om Event Grid</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-topic" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Custom topic og event subscription</span></label></th><td>Topic-et tar imot hendelser; abonnementet velger mottaker, filter og leveringsvalg. Dette er andre objekter enn Service Bus topics og subscriptions.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/concepts">Les mer<span class="sr-only"> om Custom topic og event subscription</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-webhook" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Webhook og HTTP</span></label></th><td>Et nettendepunkt som en annen tjeneste kaller ved en hendelse. HTTP betyr Hypertext Transfer Protocol; vi observerer svarene 503 og senere suksess.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/concepts">Les mer<span class="sr-only"> om Webhook og HTTP</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-schema" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Event Grid Schema og JSON</span></label></th><td>Schema beskriver hendelsens felter, blant annet id, subject, eventType og data. JSON betyr JavaScript Object Notation, tekstformatet for disse dataene.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/concepts">Les mer<span class="sr-only"> om Event Grid Schema og JSON</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-filter" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Subject- og event type-filter</span></label></th><td>Event type velger hendelsestype. Subject-filteret undersøker begynnelse og slutt av subject-strengen; vi slipper bare gjennom documents/*.txt.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/event-filtering">Les mer<span class="sr-only"> om Subject- og event type-filter</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-retry" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Retry, backoff og TTL</span></label></th><td>Retry er ny levering; backoff øker ventingen mellom forsøk. TTL betyr Time to Live og begrenser hvor lenge en hendelse kan forsøkes levert.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry">Les mer<span class="sr-only"> om Retry, backoff og TTL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-validation" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Abonnementsvalidering</span></label></th><td>En innledende kontroll som bekrefter at webhooken vil ta imot hendelser. Mottakeren svarer med koden fra valideringshendelsen.</td><td><a href="https://learn.microsoft.com/en-us/azure/event-grid/concepts">Les mer<span class="sr-only"> om Abonnementsvalidering</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-idempotent" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w18-begrep-sdk" data-progress-source="./workshop-event-grid.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w18-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk den publiserte Function App-en og <a href="./workshop-integrations.html#appnavn">appnavnvariablene fra del 14</a>. Opprett et Event Grid custom topic i ressursgruppen <code>ai200-d3</code>. Finn topic endpoint og en labnøkkel. Koden har et anonymt event-hook-endepunkt som bare logger testhendelser og kan returnere en kontrollert feil.</p><pre data-language="PowerShell"><code># Sett URL-en som brukes til å publisere hendelser på labtopic-et.
+$env:EVENTGRID_ENDPOINT = "DITT-TOPIC-ENDPOINT"
+# Sett labnøkkelen for publisering til Event Grid.
+$env:EVENTGRID_KEY = "DIN-LAB-NOKKEL"</code></pre>
+
+<details class="source-file" id="w18-fil-labs-integrations-function-app-py" data-source-file="labs/integrations/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/function_app.py</code></p><pre data-language="Python" data-source="labs/integrations/function_app.py"><code>&quot;&quot;&quot;Local workshop API. In-memory deduplication is deliberately not production storage.&quot;&quot;&quot;
+
+# Serialiser svarene som JSON.
+import json
+# Skriv hendelser og kontrollerte feil til Functions-loggen.
+import logging
+# Les appinnstillingene fra miljøet.
+import os
+# Beskytt det delte minnesettet mot samtidige forespørsler.
+import threading
+
+# Bruk Functions-dekoratorer og HTTP-typer.
+import azure.functions as func
+
+# Krev en Function-nøkkel på vanlige HTTP-ruter i Azure.
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+# Husk behandlede dokument-ID-er bare så lenge denne prosessen kjører.
+processed = set()
+# La kontroll og registrering av en ID skje samlet.
+processed_lock = threading.Lock()
+
+
+# Ta imot dokumenter på /api/documents.
+@app.route(route=&quot;documents&quot;, methods=[&quot;POST&quot;])
+# Valider dokumentet og demonstrer håndtering av samme ID flere ganger.
+def documents(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Forsøk å lese forespørselsinnholdet som JSON.
+    try:
+        # Konverter JSON-body til Python-data.
+        payload = req.get_json()
+    # Håndter innhold som ikke kan tolkes som JSON.
+    except ValueError:
+        # Svar med klientfeil for ugyldig JSON.
+        return func.HttpResponse(&quot;Body must be JSON&quot;, status_code=400)
+    # Krev et JSON-objekt, ikke for eksempel en liste.
+    if not isinstance(payload, dict):
+        # Forklar hvorfor datatypen ble avvist.
+        return func.HttpResponse(&quot;Body must be a JSON object&quot;, status_code=400)
+    # Hent dokument-ID-en som brukes til duplikatkontroll.
+    document_id = payload.get(&quot;id&quot;)
+    # Avvis manglende, tomme og ikke-tekstlige ID-er.
+    if not isinstance(document_id, str) or not document_id.strip():
+        # Send en tydelig valideringsfeil til klienten.
+        return func.HttpResponse(&quot;id must be a non-empty string&quot;, status_code=400)
+    # Unngå at to samtidige kall registrerer samme ID som ny.
+    with processed_lock:
+        # Kontroller om denne prosessen allerede har sett ID-en.
+        duplicate = document_id in processed
+        # Registrer ID-en før en annen tråd får tilgang.
+        processed.add(document_id)
+    # Gjør duplikathåndteringen synlig i loggen.
+    logging.info(&quot;document_received duplicate=%s&quot;, duplicate)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Vis om dette kallet ble behandlet som nytt.
+        json.dumps({&quot;id&quot;: document_id, &quot;processed&quot;: not duplicate}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# La Key Vault-øvelsen kontrollere om hemmeligheten ble levert til appen.
+@app.route(route=&quot;configuration&quot;, methods=[&quot;GET&quot;])
+# Rapporter bare status for konfigurasjonen.
+def configuration(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hemmeligheten som appinnstilling.
+    secret = os.getenv(&quot;DEMO_SECRET&quot;, &quot;&quot;)
+    # Skill en faktisk verdi fra en Key Vault-referanse som ikke er løst.
+    resolved = bool(secret) and not secret.startswith(&quot;@Microsoft.KeyVault(&quot;)
+    # Returner et JSON-svar til klienten.
+    return func.HttpResponse(
+        # Send bare en boolsk status, aldri hemmelighetens verdi.
+        json.dumps({&quot;secret_configured&quot;: resolved}),
+        # Angi riktig innholdstype for JSON-responsen.
+        mimetype=&quot;application/json&quot;,
+    )
+
+
+# Gi labens Event Grid-webhook en HTTP-rute uten Function-nøkkel.
+@app.route(route=&quot;event-hook&quot;, methods=[&quot;POST&quot;], auth_level=func.AuthLevel.ANONYMOUS)
+# Håndter valideringshendelser og vanlige Event Grid-hendelser.
+def event_hook(req: func.HttpRequest) -&gt; func.HttpResponse:
+    # Les hendelseslisten i Event Grid Schema-format.
+    events = req.get_json()
+    # Krev en liste slik dette hendelsesskjemaet bruker.
+    if not isinstance(events, list):
+        # Avvis et annet meldingsformat.
+        return func.HttpResponse(&quot;Expected Event Grid Schema array&quot;, status_code=400)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Gjenkjenn håndtrykket som validerer webhook-abonnementet.
+        if event.get(&quot;eventType&quot;) == &quot;Microsoft.EventGrid.SubscriptionValidationEvent&quot;:
+            # Send valideringskoden tilbake i validationResponse.
+            return func.HttpResponse(json.dumps({&quot;validationResponse&quot;: event[&quot;data&quot;][&quot;validationCode&quot;]}),
+                                     # Svar med JSON slik valideringen forventer.
+                                     mimetype=&quot;application/json&quot;)
+    # Bruk en appinnstilling til å slå på en kontrollert leveringsfeil.
+    if os.getenv(&quot;FAIL_EVENTS&quot;, &quot;false&quot;).lower() == &quot;true&quot;:
+        # Gjør den fremprovoserte feilen synlig i loggen.
+        logging.warning(&quot;Controlled Event Grid delivery failure&quot;)
+        # Svar med 503 så Event Grid kan forsøke levering igjen.
+        return func.HttpResponse(&quot;Retry this delivery&quot;, status_code=503)
+    # Gå gjennom hendelsene i leveransen.
+    for event in events:
+        # Vis hvilke hendelser som kom gjennom abonnementets filter.
+        logging.info(&quot;event id=%s subject=%s&quot;, event.get(&quot;id&quot;), event.get(&quot;subject&quot;))
+    # Bekreft vellykket mottak med HTTP 200.
+    return func.HttpResponse(&quot;Accepted&quot;)
+</code></pre></details>
+
+<details class="source-file" id="w18-fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+</section><section class="chapter-step" id="w18-abonnement"><h4>1. Lag et filtrert abonnement</h4><p>På topic-et: opprett Event Subscription med Event Grid Schema og Web Hook <code>https://DIN-APP.azurewebsites.net/api/event-hook</code>. Koden svarer på valideringshendelsen. Filtrer event type <code>AI200.DocumentCreated</code>, subject begins with <code>documents/</code> og ends with <code>.txt</code>. Sett retry-policy til for eksempel 10 forsøk og 30 minutter TTL.</p><label class="check-item"><input type="checkbox" data-check="w18-abonnement" data-progress-source="./workshop-event-grid.html"><span>Jeg har opprettet og validert et filtrert abonnement.</span></label>
+</section><section class="chapter-step" id="w18-publiser"><h4>2. Publiser egne hendelser</h4><pre data-language="PowerShell"><code># Publiser testhendelsene til Event Grid for å undersøke filter og levering.
+python labs/integrations/publish_event.py</code></pre><p>Forventet: bare note.txt kommer til webhooken. Finn event-id og subject i Function-loggene. <code>publish_event.py</code> sender både en .txt- og en .csv-hendelse; kontroller at avvisningen skyldes filteret. Sammenlign en egen hendelse med BlobCreated fra en Azure-kilde.</p><label class="check-item"><input type="checkbox" data-check="w18-publiser" data-progress-source="./workshop-event-grid.html"><span>Jeg har publisert egne hendelser og testet filteret.</span></label>
+
+<details class="source-file" id="w18-fil-labs-integrations-publish-event-py" data-source-file="labs/integrations/publish_event.py"><summary><code>publish_event.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/publish_event.py</code></p><pre data-language="Python" data-source="labs/integrations/publish_event.py"><code>&quot;&quot;&quot;Publish custom Event Grid events to a dedicated workshop topic.&quot;&quot;&quot;
+# Les topic-endpoint og labnøkkel fra miljøet.
+import os
+# Pakk inn Event Grid-nøkkelen i SDK-ets credential-type.
+from azure.core.credentials import AzureKeyCredential
+# Bruk Event Grid Schema-hendelser og publisher-klienten.
+from azure.eventgrid import EventGridEvent, EventGridPublisherClient
+
+
+# Publiser to hendelser for å teste abonnementets filter.
+def main():
+    # Koble publisher-klienten til ditt eget labtopic.
+    client = EventGridPublisherClient(os.environ[&quot;EVENTGRID_ENDPOINT&quot;],
+                                     # Les tilgangen fra terminalen; ingen nøkkel lagres i kodefilen.
+                                     AzureKeyCredential(os.environ[&quot;EVENTGRID_KEY&quot;]))
+    # Lukk nettverksklienten etter sendingen.
+    with client:
+        # Første hendelse har subject som matcher documents/ og .txt-filteret.
+        client.send([EventGridEvent(subject=&quot;documents/note.txt&quot;, event_type=&quot;AI200.DocumentCreated&quot;,
+                                    # Versjoner nyttelastskjemaet og send en liten dokument-ID.
+                                    data_version=&quot;1.0&quot;, data={&quot;id&quot;: &quot;doc-001&quot;}),
+                     # Andre hendelse har samme type, men en annen filendelse.
+                     EventGridEvent(subject=&quot;documents/note.csv&quot;, event_type=&quot;AI200.DocumentCreated&quot;,
+                                    # Send begge i samme operasjon; abonnementet velger hvilke som leveres.
+                                    data_version=&quot;1.0&quot;, data={&quot;id&quot;: &quot;doc-002&quot;})])
+    # Sammenlign bekreftelsen med hendelsene i webhook-loggen.
+    print(&quot;Published two events; the .txt subject filter should deliver only the first&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Send labhendelsene.
+    main()
+</code></pre></details>
+</section><section class="chapter-step" id="w18-retry"><h4>3. Test levering etter feil</h4><p>Bruk <code>$functionGroup</code> og <code>$functionApp</code> fra del 14. Slå på den kontrollerte feilen:</p><pre data-language="PowerShell"><code># La webhooken returnere den kontrollerte feilen som utløser Event Grid-retries.
+az functionapp config appsettings set --resource-group $functionGroup --name $functionApp --settings FAIL_EVENTS=true -o none</code></pre><p>Vent på restart, og publiser igjen. Finn HTTP 503 og leveringsfeil i Event Grid-metrikkene. Slå deretter av feilen med kommandoen og vent på retry:</p><pre data-language="PowerShell"><code># La webhooken lykkes igjen slik at en senere retry kan leveres.
+az functionapp config appsettings set --resource-group $functionGroup --name $functionApp --settings FAIL_EVENTS=false -o none</code></pre><p> Noter event-id ved vellykket levering. Retry har backoff og skjer ikke øyeblikkelig; behold abonnementet gjennom den konfigurerte perioden. Forklar hvorfor mottakeren må tåle duplikater og hva som skjer ved utløpt TTL.</p><label class="check-item"><input type="checkbox" data-check="w18-retry" data-progress-source="./workshop-event-grid.html"><span>Jeg har observert leveringsfeil og en senere vellykket levering.</span></label>
+</section><section class="chapter-step" id="w18-opprydding"><h4>Rydding og overgang til neste del</h4><p>Slett abonnement/topic, fjern FAIL_EVENTS og EVENTGRID_KEY, og behold Function App-en bare hvis workshop 19 bruker den. Kontroller at retry-testen ikke fortsetter mot en app som skal slettes.</p>
+<pre data-language="PowerShell"><code># Fjern appinnstillingen som styrte den kontrollerte webhook-feilen.
+az functionapp config appsettings delete --resource-group $functionGroup --name $functionApp --setting-names FAIL_EVENTS -o none
+# Fjern EVENTGRID_KEY fra denne terminalen.
+Remove-Item Env:EVENTGRID_KEY -ErrorAction SilentlyContinue</code></pre><p><a href="https://learn.microsoft.com/en-us/cli/azure/functionapp/config/appsettings">Azure CLI: endre og fjerne appinnstillinger</a>.</p>
+</section>
+</details></section>
+      <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./pensum-integrasjoner.html">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>
+      <nav class="page-nav" aria-label="Andre formater"><a href="./index.html?format=short#workshops-domene-3">Korte workshops →</a><a href="./index.html?format=domain#workshops-domene-3">Samlede workshops →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 · Samlet domene 3</span><a href="./pensum-integrasjoner.html">Pensum og videre studier</a></div></footer>
+</body>
+</html>

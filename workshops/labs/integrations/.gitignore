@@ -1,0 +1,6 @@
+# Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+# Lokale tilkoblinger og nøkler skal ikke committes.
+local.settings.json

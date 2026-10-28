@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Bruk Cosmos SDK til oppslag og spørringer, og undersøk hvordan partisjon, indekser og consistency påvirker RU.">
+  <title>Workshop 9: Cosmos DB: SDK, indekser og RU | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 09 / Domene 2 / AI-data</p>
+    <h1>Cosmos DB: SDK, indekser og RU</h1>
+    <p class="lead">Bruk Cosmos SDK til oppslag og spørringer, og undersøk hvordan partisjon, indekser og consistency påvirker RU.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-postgresql.html">← 8. PostgreSQL i Azure: SDK og forbindelser</a><a href="./workshop-cosmos.html" aria-current="page">9. Denne workshopen</a><a href="./workshop-cosmos-vectors.html">10. Vektorsøk i Cosmos DB →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#sdk">1. Opprett og hent dokumenter</a>
+      <a href="#indekser">2. Endre en indekseringspolicy</a>
+      <a href="#consistency">3. Velg consistency bevisst</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-cosmos" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosmos DB for NoSQL</span></label></th><td>Azure-database for dokumenter. DB betyr database; NoSQL omtales ofte som Not only SQL. Vi bruker dokumenter som JSON (JavaScript Object Notation).</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Cosmos DB for NoSQL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-partition" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Partisjonsnøkkel</span></label></th><td>Verdien som plasserer dokumentet i en logisk partisjon. Vi bruker /topic og sender partisjonsverdien ved målrettede oppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Partisjonsnøkkel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-point" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Point read</span></label></th><td>Direkte lesing med både dokumentets identifikator og partisjonsnøkkel. Vi sammenligner dette med å kjøre en SQL-spørring, Structured Query Language.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Point read</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-ru" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RU og RU/s</span></label></th><td>Request Unit måler kostnaden for en databaseoperasjon. RU/s er tilgjengelige request units per sekund; vi leser request charge for hvert oppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om RU og RU/s</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-index" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Indekseringspolicy</span></label></th><td>Bestemmer hvilke dokumentstier som indekseres. Vi utelater vektorarrayet fra vanlig indeksering og undersøker en endring i text-feltet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Indekseringspolicy</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-consistency" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Consistency og Session</span></label></th><td>Konsistensnivået beskriver hvilke skriveverdier en lesing kan se. Session bevarer garantier innen en klientsesjon; vi sammenligner med Strong og Eventual.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels">Les mer<span class="sr-only"> om Consistency og Session</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-throughput" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Dedikert og delt throughput</span></label></th><td>Throughput er tilgjengelig behandlingskapasitet. Laben gir hver container egen kapasitet; shared throughput deler en databasekapasitet mellom containere.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Dedikert og delt throughput</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Opprett en Cosmos DB for NoSQL-labkonto i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> og databasen <code>workshop</code> uten delt throughput. Skriptet oppretter hver labcontainer med 400 RU/s. Vektorsøket i neste økt støtter ikke shared throughput. Bruk en egen labkonto. Ha endpoint og en lokal labnøkkel klar. Kontoen brukes også i workshop 10–11.</p><h3 id="tilkobling">Tilkobling i terminalen</h3><p>Bruk disse variablene gjennom del 9–11. Åpner du en ny terminal, setter du bare verdiene nedenfor for den eksisterende kontoen:</p><pre data-language="PowerShell"><code># Sett endepunktet til den eksisterende Cosmos-kontoen.
+$env:COSMOS_ENDPOINT = "https://DIN-KONTO.documents.azure.com:443/"
+# Sett labnøkkelen til Cosmos-kontoen i denne terminalen.
+$env:COSMOS_KEY = "DIN-LAB-NOKKEL"
+# Velg databasen workshop i Cosmos-kontoen.
+$env:COSMOS_DATABASE = "workshop"</code></pre>
+
+<details class="source-file" id="fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+azure-cosmos&gt;=4.9,&lt;5
+# Functions-typer og dekoratorer for change feed-triggeren.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+</section>
+      <section class="panel" id="sdk"><h2>1. Opprett og hent dokumenter</h2>
+<pre data-language="PowerShell"><code># Opprett notes-containeren og lagre labens eksempeldokumenter.
+python labs/cosmos/demo.py setup
+# Kjør en parameterisert spørring og vis dokumentene og RU-kostnaden.
+python labs/cosmos/demo.py query
+# Hent note-1 direkte med ID og partisjonsnøkkel, og vis RU-kostnaden.
+python labs/cosmos/demo.py point</code></pre><p><code>demo.py</code> bruker /topic som partisjonsnøkkel og skriver request charge. Sammenlign spørringen med point read. Forventet: note-1 og note-2 fra query, note-1 fra point. Noter RU; tallene varierer.</p><label class="check-item"><input type="checkbox" data-check="w9-sdk"><span>Jeg har brukt SDK, partisjonsnøkkel og point read.</span></label>
+
+<details class="source-file" id="fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+# Velg hvilken Cosmos-operasjon eksemplet skal utføre.
+import argparse
+# Les endpoint, nøkkel og databasenavn fra terminalens miljø.
+import os
+
+# Bruk Cosmos SDK-et og en eksplisitt partisjonsnøkkel.
+from azure.cosmos import CosmosClient, PartitionKey
+
+# Bruk små undervisningsdokumenter med håndskrevne vektorer.
+DOCUMENTS = [
+    # Første dokument ligger i partisjonen containers.
+    {&quot;id&quot;: &quot;note-1&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Package an application&quot;, &quot;embedding&quot;: [1.0, 0.0, 0.0]},
+    # Andre dokument ligger i samme partisjon, med en lignende vektor.
+    {&quot;id&quot;: &quot;note-2&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Inspect container logs&quot;, &quot;embedding&quot;: [0.9, 0.1, 0.0]},
+    # Tredje dokument viser hvordan metadatafilter kan utelate et nært vektortreff.
+    {&quot;id&quot;: &quot;note-3&quot;, &quot;topic&quot;: &quot;data&quot;, &quot;text&quot;: &quot;Retrieve stored data&quot;, &quot;embedding&quot;: [0.0, 1.0, 0.0]},
+]
+
+
+# La SDK-et sende responsheaderne til denne callbacken.
+def report(headers, _body):
+    # Hent kostnaden i request units fra responsheaderen.
+    charge = headers.get(&quot;x-ms-request-charge&quot;)
+    # Skriv bare RU når headeren finnes.
+    if charge:
+        # Vis grunnlaget for sammenligning av oppslag.
+        print(&quot;Request charge:&quot;, charge, &quot;RU&quot;)
+
+
+# Kjør operasjonen som ble valgt på kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens valgene til operasjonene workshopene bruker.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;point&quot;, &quot;vector-setup&quot;, &quot;vector&quot;, &quot;update&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Åpne klienten med labkontoens endpoint og nøkkel, og lukk den etter bruk.
+    with CosmosClient(os.environ[&quot;COSMOS_ENDPOINT&quot;], credential=os.environ[&quot;COSMOS_KEY&quot;]) as client:
+        # Use a database without shared throughput so vector search is supported.
+        # Velg databasen; dette oppretter ikke databasen.
+        database = client.get_database_client(os.getenv(&quot;COSMOS_DATABASE&quot;, &quot;workshop&quot;))
+        # Hold vektorpolicyen i en egen container.
+        name = &quot;vectors&quot; if args.mode.startswith(&quot;vector&quot;) else &quot;notes&quot;
+        # Hent en klient for den valgte containeren.
+        container = database.get_container_client(name)
+        # Opprett labcontainer og eksempeldata ved setup.
+        if args.mode in {&quot;setup&quot;, &quot;vector-setup&quot;}:
+            # Beskriv den vanlige indekseringspolicyen.
+            policy = {
+                # Oppdater indeksene automatisk når dokumentene endres.
+                &quot;indexingMode&quot;: &quot;consistent&quot;, &quot;automatic&quot;: True,
+                # Indekser dokumentfeltene som standard.
+                &quot;includedPaths&quot;: [{&quot;path&quot;: &quot;/*&quot;}],
+                # Unnta vektorarrayet fra vanlig feltindeksering.
+                &quot;excludedPaths&quot;: [{&quot;path&quot;: &quot;/embedding/*&quot;}],
+            }
+            # Legg bare til vektorinnstillinger for vektorcontaineren.
+            extra = {}
+            # Konfigurer en egen indeks for VectorDistance-søk.
+            if args.mode == &quot;vector-setup&quot;:
+                # Bruk en flat vektorindeks på embedding-feltet.
+                policy[&quot;vectorIndexes&quot;] = [{&quot;path&quot;: &quot;/embedding&quot;, &quot;type&quot;: &quot;flat&quot;}]
+                # Beskriv hvilke vektorer embedding-feltet inneholder.
+                extra[&quot;vector_embedding_policy&quot;] = {&quot;vectorEmbeddings&quot;: [{
+                    # Lagre vektorene i embedding og behandle verdiene som float32.
+                    &quot;path&quot;: &quot;/embedding&quot;, &quot;dataType&quot;: &quot;float32&quot;,
+                    # Krev tre dimensjoner og sammenlign med cosinusavstand.
+                    &quot;dimensions&quot;: 3, &quot;distanceFunction&quot;: &quot;cosine&quot;,
+                }]}
+            # Opprett containeren hvis den mangler; eksisterende policy erstattes ikke her.
+            container = database.create_container_if_not_exists(
+                # Bruk topic som partisjonsnøkkel.
+                id=name, partition_key=PartitionKey(path=&quot;/topic&quot;),
+                # Bruk policyen over og 400 RU/s dedikert throughput.
+                indexing_policy=policy, offer_throughput=400, **extra,
+            )
+            # Skriv inn undervisningsdokumentene.
+            for document in DOCUMENTS:
+                # Opprett eller erstatt dokumentet, og vis operasjonens RU.
+                container.upsert_item(document, response_hook=report)
+            # Vis hvilken container som er klargjort.
+            print(&quot;Ready:&quot;, name)
+        # Utfør et direkte oppslag uten SQL-spørring.
+        elif args.mode == &quot;point&quot;:
+            # ID og partisjonsnøkkel identifiserer dokumentet sammen.
+            result = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;, response_hook=report)
+            # Vis dokumentets ID og tekst.
+            print(result[&quot;id&quot;], result[&quot;text&quot;])
+        # Lag en endring som change feed-triggeren kan observere.
+        elif args.mode == &quot;update&quot;:
+            # Les dokumentet før oppdateringen.
+            document = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;)
+            # Øk et synlig revisjonsnummer.
+            document[&quot;revision&quot;] = document.get(&quot;revision&quot;, 0) + 1
+            # Lagre den nye versjonen og vis skrivekostnaden.
+            container.upsert_item(document, response_hook=report)
+            # Bruk revisjonen til å kjenne igjen endringen i triggerloggen.
+            print(&quot;Updated note-1, revision&quot;, document[&quot;revision&quot;])
+        # Kjør vanlig SQL-søk eller vektorsøk.
+        else:
+            # Start med et metadatafilter.
+            sql = &quot;SELECT c.id, c.topic FROM c WHERE c.topic = @topic&quot;
+            # Send filterverdien som en parameter.
+            parameters = [{&quot;name&quot;: &quot;@topic&quot;, &quot;value&quot;: &quot;containers&quot;}]
+            # Bytt til rangering etter vektoravstand.
+            if args.mode == &quot;vector&quot;:
+                # Returner de to nærmeste treffene og deres avstand.
+                sql = (&quot;SELECT TOP 2 c.id, VectorDistance(c.embedding, @vector) AS distance &quot;
+                       # Behold emnefilteret og sorter de gjenværende dokumentene etter avstand.
+                       &quot;FROM c WHERE c.topic = @topic ORDER BY VectorDistance(c.embedding, @vector)&quot;)
+                # Bruk samme tredimensjonale spørsmålsvektor som i PostgreSQL-øvelsen.
+                parameters.append({&quot;name&quot;: &quot;@vector&quot;, &quot;value&quot;: [0.0, 1.0, 0.0]})
+            # Kjør den parameteriserte spørringen.
+            results = container.query_items(sql, parameters=parameters,
+                                            # Avgrens lesingen til containers-partisjonen og vis RU.
+                                            partition_key=&quot;containers&quot;, response_hook=report)
+            # Iterer resultatene fra SDK-et.
+            for result in results:
+                # Vis hvert treff i terminalen.
+                print(result)
+
+
+# Kjør bare når filen startes direkte.
+if __name__ == &quot;__main__&quot;:
+    # Start den valgte laboperasjonen.
+    main()
+</code></pre></details>
+</section>
+      <section class="panel" id="indekser"><h2>2. Endre en indekseringspolicy</h2>
+<p>Før indeksforsøket: lagre den opprinnelige policyen fra prosjektroten. Bruk ressursgruppen <code>ai200-d2</code> og sett <code>$cosmosAccount</code> til Cosmos-kontonavnet ditt. Tilpass <code>$cosmosGroup</code> hvis du brukte et annet gruppenavn:</p><pre data-language="PowerShell"><code># Sett ressursgruppen til den eksisterende Cosmos-kontoen.
+$cosmosGroup = "ai200-d2"
+# Sett navnet på Cosmos-kontoen som allerede finnes.
+$cosmosAccount = "DITT-COSMOS-KONTONAVN"
+# Hent notes-containerens indekseringspolicy og lagre den som en UTF-8-fil.
+az cosmosdb sql container show --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --query resource.indexingPolicy -o json | Set-Content -LiteralPath artifacts/notes-indexing-policy.original.json -Encoding utf8</code></pre><p>Kontroller at filen inneholder policyen før du fortsetter.</p><p>Undersøk policyen for notes: embedding-feltet er utelatt fra vanlig indeksering. Kjør SQL i Data Explorer med query metrics på. På den lille labcontaineren: ekskluder <code>/text/?</code> fra policyen og vent på fullført transformasjon. Kjør en spørring på topic og sammenlign med søk på text.</p><p>Etter sammenligningen: gjenopprett den lagrede policyen og vent på fullført indekstransformasjon:</p><pre data-language="PowerShell"><code># Gjenopprett indekseringspolicyen fra den lagrede JSON-filen.
+az cosmosdb sql container update --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --idx "@artifacts/notes-indexing-policy.original.json" -o none</code></pre><p>Bekreft i Data Explorer at policyen er tilbake og testunntaket <code>/text/?</code> er fjernet. <a href="https://learn.microsoft.com/en-us/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-update">Azure CLI: oppdatere en containerpolicy</a>.</p><p>Målet er å se hvilke felter som støttes effektivt av en indeks. Tre dokumenter gir ikke grunnlag for store ytelseskonklusjoner.</p><label class="check-item"><input type="checkbox" data-check="w9-indekser"><span>Jeg kan forklare hvordan en indeksendring påvirker en spørring.</span></label>
+</section>
+      <section class="panel" id="consistency"><h2>3. Velg consistency bevisst</h2>
+<p>Undersøk kontoens consistency og klientens session-håndtering. Sammenlign Session, Eventual og Strong i portalen og den offisielle beskrivelsen. Noter hvilke konsistenskrav en chat-historikk og en statistikkvisning kan ha. Hvis du vil endre labkontoens standard, lagre først gjeldende verdi i samme terminal:</p><pre data-language="PowerShell"><code># Lagre kontoens consistency-verdi slik at den kan gjenopprettes etter forsøket.
+$originalConsistency = az cosmosdb show --resource-group $cosmosGroup --name $cosmosAccount --query consistencyPolicy.defaultConsistencyLevel -o tsv</code></pre><p>Gjør forsøket, kjør oppslagene igjen og noter RU. Gjenopprett deretter den lagrede verdien:</p><pre data-language="PowerShell"><code># Gjenopprett consistency-verdien som du lagret før forsøket.
+az cosmosdb update --resource-group $cosmosGroup --name $cosmosAccount --default-consistency-level $originalConsistency -o none</code></pre><p>Et vellykket enkeltoppslag demonstrerer ikke alle garantiene. <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-manage-consistency">Microsoft Learn: administrere konsistens</a>.</p><label class="check-item"><input type="checkbox" data-check="w9-consistency"><span>Jeg kan begrunne et consistency-valg og lese RU for oppslaget.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Behold kontoen, databasen, <code>notes</code> og terminalvariablene til del 10–11. Kontoen slettes etter change feed-øvelsen i del 11.</p><details><summary>Hvis du avslutter her</summary><p>Slett den dedikerte labkontoen og fjern nøkkelen fra terminalen:</p>
+<pre data-language="PowerShell"><code># Fjern COSMOS_KEY fra denne terminalen.
+Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre></details>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/python/api/overview/azure/cosmos-readme?view=azure-python">Python SDK</a></li><li><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Indekser</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-postgresql.html">← Workshop 8</a><a href="./workshop-cosmos-vectors.html">Workshop 10 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 9</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

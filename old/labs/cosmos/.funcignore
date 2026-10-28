@@ -1,0 +1,10 @@
+# Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Klientskriptet kjøres lokalt og er ikke en serverfunksjon.
+demo.py

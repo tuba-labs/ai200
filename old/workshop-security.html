@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Les en hemmelighet fra Python, roter den og gi en driftet app tilgang med managed identity.">
+  <title>Workshop 19: Key Vault: oppslag, identitet og rotasjon | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 19 / Domene 4 / Sikkerhet, sporing og KQL</p>
+    <h1>Key Vault: oppslag, identitet og rotasjon</h1>
+    <p class="lead">Les en hemmelighet fra Python, roter den og gi en driftet app tilgang med managed identity.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-event-grid.html">← 18. Event Grid: filtre, egne hendelser og retries</a><a href="./workshop-security.html" aria-current="page">19. Denne workshopen</a><a href="./workshop-app-configuration.html">20. Les appkonfigurasjon med etiketter →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#oppslag">1. Opprett og les en testhemmelighet</a>
+      <a href="#rotasjon">2. Roter ved å opprette ny versjon</a>
+      <a href="#identity">3. Gi appen egen tilgang</a>
+      <a href="#opprydding">Rydd opp og forklar</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-vault" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Key Vault</span></label></th><td>Et sentralt hvelv for hemmeligheter, kryptografiske nøkler og sertifikater. I denne økten jobber vi med en hemmelighet, ikke et kryptografisk nøkkelobjekt.</td><td><a href="https://learn.microsoft.com/en-us/azure/key-vault/general/overview">Les mer<span class="sr-only"> om Azure Key Vault</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-secret" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Secret / hemmelighet</span></label></th><td>En sensitiv tekstverdi, for eksempel et passord eller en tjenestenøkkel. Vi bruker ufarlige testverdier og skriver bare at oppslaget lyktes.</td><td><a href="https://learn.microsoft.com/en-us/azure/key-vault/general/overview">Les mer<span class="sr-only"> om Secret / hemmelighet</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-identity" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Managed identity og Microsoft Entra ID</span></label></th><td>En Azure-administrert appidentitet i Microsoft Entra ID, Azures identitetstjeneste. System-assigned følger ressursen; user-assigned kan knyttes til flere ressurser.</td><td><a href="https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview">Les mer<span class="sr-only"> om Managed identity og Microsoft Entra ID</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-rbac" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RBAC</span></label></th><td>Role-Based Access Control: identiteten får rettigheter gjennom en rolle på et bestemt omfang. Appen får lesetilgang på labhvelvet.</td><td><a href="https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide">Les mer<span class="sr-only"> om RBAC</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-roles" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Secrets User og Secrets Officer</span></label></th><td>Key Vault Secrets User kan lese hemmeligheter. Secrets Officer kan også administrere dem; appen trenger derfor ikke samme rolle som den som setter opp laben.</td><td><a href="https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide">Les mer<span class="sr-only"> om Secrets User og Secrets Officer</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-planes" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Data plane og management plane</span></label></th><td>Dataplanet leser selve hemmeligheten. Administrasjonsplanet håndterer hvelvressursen; rett til ressursadministrasjon gir ikke i seg selv rett til hemmelighetsverdien.</td><td><a href="https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide">Les mer<span class="sr-only"> om Data plane og management plane</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK og SecretClient</span></label></th><td>SDK betyr Software Development Kit. Python-klienten SecretClient utfører get_secret med en identitet fra DefaultAzureCredential.</td><td><a href="https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python">Les mer<span class="sr-only"> om SDK og SecretClient</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-version" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Versjon og URI/URL</span></label></th><td>URI betyr Uniform Resource Identifier; URL betyr Uniform Resource Locator, en adresse. En versjonsbundet secret-adresse velger én versjon; uten versjon kan siste versjon hentes.</td><td><a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references">Les mer<span class="sr-only"> om Versjon og URI/URL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-reference" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Key Vault-referanse</span></label></th><td>En appinnstilling som lar plattformen hente en hemmelighet ved hjelp av appidentiteten. Appkoden leser den leverte miljøvariabelen.</td><td><a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references">Les mer<span class="sr-only"> om Key Vault-referanse</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-rotation" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Rotasjon, cache og refresh</span></label></th><td>Rotasjon lager en ny hemmelighetsversjon. En bufret verdi kan være gammel til den hentes på nytt; vi skiller ny versjon fra oppdatering av appens verdi.</td><td><a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references">Les mer<span class="sr-only"> om Rotasjon, cache og refresh</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w19-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP og API</span></label></th><td>HTTP er Hypertext Transfer Protocol, protokollen for forespørsel og svar. API er Application Programming Interface, grensesnittet appen tilbyr; vi tester ruter og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer<span class="sr-only"> om HTTP og API</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<h3 id="ressursgruppe">Ressursgruppen for domene 4</h3><p>Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d4"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+}</code></pre>
+<p>Opprett et eget Key Vault i den eksisterende ressursgruppen <code>ai200-d4</code>, med Azure RBAC og nettverkstilgang fra maskinen. Bruk den publiserte Function App-en og <a href="./workshop-integrations.html#appnavn">appnavnvariablene fra del 14</a>; appen ligger fortsatt i <code>ai200-d3</code>. Gi din bruker Secrets Officer for å opprette testhemmeligheten; appen får en egen leserolle.</p><pre data-language="PowerShell"><code># Sett URL-en til labhvelvet som SDK-et skal lese fra.
+$env:KEY_VAULT_URL = "https://DITT-HVELV.vault.azure.net/"</code></pre>
+
+<details class="source-file" id="fil-labs-security-requirements-txt" data-source-file="labs/security/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/security/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/security/requirements.txt"><code># API for sporingskontekst og spans.
+opentelemetry-api&gt;=1.28,&lt;2
+# Lokalt SDK for behandling og eksport av telemetri.
+opentelemetry-sdk&gt;=1.28,&lt;2
+# Entra-autentisering med DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# Klienten for Key Vault-hemmeligheter.
+azure-keyvault-secrets&gt;=4.9,&lt;5
+# Klienten for vanlige App Configuration-verdier.
+azure-appconfiguration&gt;=1.7,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-security-gitignore" data-source-file="labs/security/.gitignore"><summary><code>.gitignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/security/.gitignore</code></p><pre data-language="Tekst" data-source="labs/security/.gitignore"><code># Hold det lokale Python-miljøet utenfor Git.
+.venv/
+# Hold generert Python-bytecode utenfor Git.
+__pycache__/
+</code></pre></details>
+</section>
+      <section class="panel" id="oppslag"><h2>1. Opprett og les en testhemmelighet</h2>
+<p>I hvelvet: opprett demo-secret med verdien workshop-only-v1. Kjør:</p><pre data-language="PowerShell"><code># Les testhemmeligheten fra Key Vault og vis at oppslaget lyktes uten å vise verdien.
+python labs/security/read_settings.py secret</code></pre><p>Forventet: Secret read successfully: True og en versjons-ID. <code>read_settings.py</code> bruker DefaultAzureCredential og skriver aldri verdien. Forklar hvorfor data-plane-tilgang trengs i tillegg til rett til å administrere ressursen.</p><label class="check-item"><input type="checkbox" data-check="w19-oppslag"><span>Jeg har lest en hemmelighet med SDK og riktig identitet.</span></label>
+
+<details class="source-file" id="fil-labs-security-read-settings-py" data-source-file="labs/security/read_settings.py"><summary><code>read_settings.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/security/read_settings.py</code></p><pre data-language="Python" data-source="labs/security/read_settings.py"><code>&quot;&quot;&quot;Optional Azure exercise: read a demo secret and ordinary configuration via Entra ID.&quot;&quot;&quot;
+
+# Velg Key Vault-hemmelighet eller vanlig appkonfigurasjon.
+import argparse
+# Les tjenestenes endpoint fra miljøet.
+import os
+
+# Les nøkkel-/etikettverdier fra App Configuration.
+from azure.appconfiguration import AzureAppConfigurationClient
+# Bruk Entra-identitet, for eksempel Azure CLI-innlogging på egen maskin.
+from azure.identity import DefaultAzureCredential
+# Les hemmeligheter gjennom Key Vaults data-API.
+from azure.keyvault.secrets import SecretClient
+
+# Kjør ett oppslag mot den valgte tjenesten.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de to oppslagstypene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;secret&quot;, &quot;config&quot;])
+    # Les valgt oppslagstype.
+    args = parser.parse_args()
+    # Gjenbruk samme identitetsoppsett for begge tjenester.
+    with DefaultAzureCredential() as credential:
+        # Key Vault-operasjonen krever tilgang til hemmelighetens verdi.
+        if args.mode == &quot;secret&quot;:
+            # Åpne klienten for ditt labhvelv.
+            with SecretClient(vault_url=os.environ[&quot;KEY_VAULT_URL&quot;], credential=credential) as vault:
+                # Les gjeldende versjon av demo-secret.
+                secret = vault.get_secret(&quot;demo-secret&quot;)
+                # Vis bare at verdien ble lest, aldri selve hemmeligheten.
+                print(&quot;Secret read successfully:&quot;, bool(secret.value))
+                # Bruk versjons-ID til å observere rotasjon.
+                print(&quot;Secret version:&quot;, secret.properties.version)
+            # Avslutt etter Key Vault-oppslaget.
+            return
+        # Åpne klienten for vanlig konfigurasjon.
+        with AzureAppConfigurationClient(
+            # Bruk App Configuration-endpoint og den samme Entra-identiteten.
+            base_url=os.environ[&quot;APP_CONFIG_ENDPOINT&quot;], credential=credential
+        # Lukk konfigurasjonsklienten etter bruk.
+        ) as config:
+            # Les akkurat nøkkelen og miljøetiketten som ble opprettet i portalen.
+            setting = config.get_configuration_setting(key=&quot;Workshop:Mode&quot;, label=&quot;lab&quot;)
+            # Vis den vanlige konfigurasjonsverdien i terminalen.
+            print(&quot;Workshop mode:&quot;, setting.value)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt konfigurasjonsoppslag.
+    main()
+</code></pre></details>
+</section>
+      <section class="panel" id="rotasjon"><h2>2. Roter ved å opprette ny versjon</h2>
+<p>Legg til ny versjon av demo-secret med verdien workshop-only-v2. Kjør oppslaget igjen og sammenlign versjons-ID. Undersøk forskjellen på en versjonsbundet og en versjonsløs URI. Beskriv hvordan en app som cacher verdien må få den oppdatert.</p><label class="check-item"><input type="checkbox" data-check="w19-rotasjon"><span>Jeg har rotert hemmeligheten og verifisert hvilken versjon som leses.</span></label>
+</section>
+      <section class="panel" id="identity"><h2>3. Gi appen egen tilgang</h2>
+<ol><li>Aktiver system-assigned identity på Function App-en.</li><li>Gi appidentiteten Key Vault Secrets User på labhvelvet.</li><li>Legg app setting DEMO_SECRET til Function App-en med referansen under. Lagre og kontroller referansestatus.</li><li>Kall configuration-funksjonen med Get Function URL. Forventet: secret_configured=true.</li></ol><pre data-language="Text"><span class="code-note"># La Azure hente siste versjon av demo-secret gjennom en versjonsløs Key Vault-referanse.
+</span><code>@Microsoft.KeyVault(SecretUri=https://DITT-HVELV.vault.azure.net/secrets/demo-secret/)</code></pre><p>Plattformen løser referansen. Koden leser miljøvariabelen. Oppdateringer kan være forsinket av referansens cache; følg dokumentert refresh eller endre appkonfigurasjonen hvis du skal teste ny henting.</p><label class="check-item"><input type="checkbox" data-check="w19-identity"><span>Appen bruker egen identitet til å lese hemmeligheten.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
+<p>Fjern først appens DEMO_SECRET-setting med de eksisterende appnavnvariablene fra del 14. <code>$functionGroup</code> er appens gruppe <code>ai200-d3</code>, selv om hvelvet ligger i <code>ai200-d4</code>:</p><pre data-language="PowerShell"><code># Fjern Key Vault-referansen fra Function App-ens innstillinger.
+az functionapp config appsettings delete --resource-group $functionGroup --name $functionApp --setting-names DEMO_SECRET -o none
+# Fjern KEY_VAULT_URL fra denne terminalen.
+Remove-Item Env:KEY_VAULT_URL -ErrorAction SilentlyContinue</code></pre>
+<p>Slett deretter labhvelvet, Function App-en og dens dedikerte Storage-konto fra del 14; ingen senere deler bruker disse ressursene. Et slettet Key Vault kan ha soft delete; ikke purge for å gjenbruke et navn. Forklar forskjellen mellom brukeridentiteten under utvikling og appidentiteten under drift.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-sikkerhet.html">Se pensummål og videre studier for domene 4</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 4 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python">Key Vault fra Python</a></li><li><a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references">Key Vault-referanser</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-event-grid.html">← Workshop 18</a><a href="./workshop-app-configuration.html">Workshop 20 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 19</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

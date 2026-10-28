@@ -1,0 +1,87 @@
+// SPØRRING 1: Syntetiske data gjør fasiten uavhengig av ventetid på Azure-telemetri.
+let observations = datatable(OperationId:string, Role:string, DurationMs:real, Success:bool, AgeMinutes:int)
+// Fire forespørsler, hvor to feiler.
+[
+// Første rad er et vellykket kall.
+"a", "frontend", 20.0, true, 1,
+// Andre rad er et mislykket kall med samme operasjons-ID.
+"a", "frontend", 30.0, false, 2,
+// Tredje rad viser en treg og feilende backend.
+"b", "backend", 2500.0, false, 3,
+// Fjerde rad er et nytt vellykket kall.
+"c", "frontend", 10.0, true, 4
+];
+// Bruk datasettet som kildetabell.
+observations
+// Lag en aktuell tidskolonne fra den relative alderen.
+| extend TimeGenerated = now() - AgeMinutes * 1m
+// Avgrens tid før aggregeringen.
+| where TimeGenerated > ago(30m)
+// Velg de kolonnene resten av spørringen trenger.
+| project OperationId, Role, DurationMs, Success
+// Tell alle og feilende rader og beregn en percentil.
+| summarize Requests = count(), Failures = countif(Success == false), P95Ms = percentile(DurationMs, 95)
+// To av fire gir 50 prosent i denne syntetiske testen.
+| extend FailureRate = 100.0 * Failures / Requests
+
+// SPØRRING 2: En standard inner-join beholder begge a-radene på venstre side.
+let incoming = datatable(OperationId:string, Attempt:int)["a",1,"a",2,"b",1];
+// Høyre side har én komponent per operasjon.
+let components = datatable(OperationId:string, Component:string)["a","frontend","b","backend"];
+// Start på venstre side med tre rader.
+incoming
+// Fjern kind=inner og sammenlign med standard innerunique: to rader i stedet for tre.
+| join kind=inner components on OperationId
+// Vis bare nøkkel, forsøk og komponent.
+| project OperationId, Attempt, Component
+
+// SPØRRING 3: Grupper tidsstempler og be om en visualisering.
+let observations = datatable(AgeMinutes:int, Role:string)[1,"frontend",2,"frontend",3,"backend"];
+// Start med de tre relative tidspunktene.
+observations
+// Lag faktiske tidsstempler ved kjøring.
+| extend TimeGenerated = now() - AgeMinutes * 1m
+// Tell rader per femminuttersbøtte og rolle.
+| summarize Requests = count() by bin(TimeGenerated, 5m), Role
+// Be klienten vise resultatet som tidsdiagram.
+| render timechart
+
+// SPØRRING 4: Skill unike verdier fra alle inngående rader.
+datatable(Role:string)["frontend","frontend","backend"]
+// Resultatet skal ha to roller.
+| distinct Role
+
+// SPØRRING 5: Kjør i Log Analytics-workspace etter at egen telemetri er ingestert.
+AppRequests
+// Bruk riktig tidskolonne for workspace-skjemaet.
+| where TimeGenerated > ago(30m)
+// Avgrens til de to tjenestenavnene fra services.py.
+| where AppRoleName startswith "ai200-"
+// Mål per komponent, med varighet i millisekunder.
+| summarize Requests=count(), Failures=countif(Success == false), P95Ms=percentile(DurationMs,95) by AppRoleName
+
+// SPØRRING 6: Alternativet brukes i Application Insights sin spørringskontekst.
+requests
+// Samme tidsfilter har et annet kolonnenavn her.
+| where timestamp > ago(30m)
+// Filtrer på rollen i Application Insights-skjemaet.
+| where cloud_RoleName startswith "ai200-"
+// Samme signal har andre kolonnenavn, men samme varighetsenhet.
+| summarize Requests=count(), Failures=countif(success == false), P95Ms=percentile(duration,95) by cloud_RoleName
+
+// SPØRRING 7: Finn relaterte requests og dependencies i workspace-skjemaet.
+AppRequests
+// Avgrens venstre tabell tidlig.
+| where TimeGenerated > ago(30m) and AppRoleName startswith "ai200-"
+// Koble på dependencies med samme OperationId.
+| join kind=leftouter (
+    // Velg den tilsvarende workspace-tabellen.
+    AppDependencies
+    // Avgrens også høyre tabell før join.
+    | where TimeGenerated > ago(30m)
+    // Gi avhengighetsfeltene tydelige resultatnavn.
+    | project OperationId, DependencyName=Name, DependencyMs=DurationMs
+// Avslutt høyre uttrykk og angi nøkkelen.
+) on OperationId
+// Velg bare felter som hjelper å forklare det distribuerte kallet.
+| project TimeGenerated, OperationId, AppRoleName, Success, DurationMs, DependencyName, DependencyMs

@@ -1,0 +1,22 @@
+# Bruk Kubernetes sitt stabile kjerne-API.
+apiVersion: v1
+# Opprett en intern tjeneste for poddene.
+kind: Service
+# Identifiser tjenesten i det valgte namespace-et.
+metadata:
+  # Navnet brukes ved port-forward og oppslag.
+  name: workshop-api
+# Beskriv trafikkvalget.
+spec:
+  # Velg bare podder med denne etiketten.
+  selector:
+    # Dette skal matche Deployment-malens label.
+    app: workshop-api
+  # Eksponer en tjenesteport som videresendes til appen.
+  ports:
+    # La interne klienter bruke port 80.
+    - port: 80
+      # Containeren lytter på 8080.
+      targetPort: 8080
+  # Ingen offentlig lastbalanserer opprettes av denne manifesten.
+  type: ClusterIP

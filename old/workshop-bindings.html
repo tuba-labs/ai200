@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Koble en HTTP-trigger til Service Bus med output-binding og behandle kømeldingen med en egen trigger.">
+  <title>Workshop 17: Functions: triggere og output-binding | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 17 / Domene 3 / Integrasjoner</p>
+    <h1>Functions: triggere og output-binding</h1>
+    <p class="lead">Koble en HTTP-trigger til Service Bus med output-binding og behandle kømeldingen med en egen trigger.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-topics.html">← 16. Service Bus: topics og subscriptions</a><a href="./workshop-bindings.html" aria-current="page">17. Denne workshopen</a><a href="./workshop-event-grid.html">18. Event Grid: filtre, egne hendelser og retries →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#binding">1. Følg en melding gjennom bindingene</a>
+      <a href="#retry">2. La behandlingen feile</a>
+      <a href="#ansvar">3. Skill ansvarsområdene</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a> · <a href="./workshop-service-bus.html">15. Behandle kømeldinger og DLQ i kode</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-trigger" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Trigger</span></label></th><td>Startsammenhengen for funksjonen. En HTTP-trigger starter ved et nettkall; en Service Bus-køtrigger starter når en melding kan behandles.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Trigger</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-binding" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Output-binding</span></label></th><td>En deklarert kobling som sender funksjonens resultat til en tjeneste. Vi fyller message-outputen; Functions-hosten håndterer sendingen.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Output-binding</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-http" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HTTP 202 og asynkron behandling</span></label></th><td>HTTP er Hypertext Transfer Protocol. Status 202 betyr at arbeidet er akseptert; kømottakeren behandler meldingen etter at klienten har fått svar.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger">Les mer<span class="sr-only"> om HTTP 202 og asynkron behandling</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-retry" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Retry og DeliveryCount</span></label></th><td>Retry er et nytt forsøk. Ved behandlingsfeil leverer Service Bus meldingen på nytt; DeliveryCount teller forsøk, og Max delivery count setter grensen.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Les mer<span class="sr-only"> om Retry og DeliveryCount</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-dlq" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DLQ</span></label></th><td>Dead-Letter Queue: egen underkø for meldinger som må undersøkes. Vi ser på feilårsak og hvordan meldingen leses og fullføres derfra.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Les mer<span class="sr-only"> om DLQ</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-idempotent" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-connection" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tilkoblingsstreng og lokal konfigurasjon</span></label></th><td>Bindingen finner forbindelsen gjennom det navngitte innstillingsfeltet. Labens lokale JSON-fil, JavaScript Object Notation, har nøkler og skal ikke i Git.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Les mer<span class="sr-only"> om Tilkoblingsstreng og lokal konfigurasjon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w17-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk <code>documents</code>-køen og namespace-et fra <a href="./workshop-service-bus.html">del 15</a>, og Storage-kontoen fra <a href="./workshop-integrations.html">del 14</a>. Sett køens <strong>Max delivery count=3</strong> og opprett en Service Bus-policy med Send og Listen på labnamespace-et. Alle disse ressursene ligger i <code>ai200-d3</code>. Opprett bare den nye lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/bindings/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
+    Copy-Item labs/bindings/local.settings.example.json labs/bindings/local.settings.json
+}</code></pre><p>Åpne <code>labs/bindings/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>ServiceBusConnection</code> til Service Bus-policyens tilkoblingsstreng. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Service Bus-bindingene.
+Set-Location labs/bindings
+# Start den lokale Functions-hosten på port 7073 for bindingstesten.
+func start --port 7073</code></pre>
+
+<details class="source-file" id="fil-labs-bindings-host-json" data-source-file="labs/bindings/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/host.json</code></p><pre data-language="JSON" data-source="labs/bindings/host.json" class="code-with-notes"><code>{
+  &quot;version&quot;: &quot;2.0&quot;,
+  &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="fil-labs-bindings-local-settings-example-json" data-source-file="labs/bindings/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/bindings/local.settings.example.json" class="code-with-notes"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING&quot;,
+    &quot;ServiceBusConnection&quot;: &quot;REPLACE_WITH_LAB_SERVICE_BUS_CONNECTION_STRING&quot;
+  }
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Tilkoblingsstrengen som Service Bus-bindingene bruker.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="fil-labs-bindings-requirements-txt" data-source-file="labs/bindings/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/bindings/requirements.txt"><code># Functions-typer og dekoratorer for Python-appen.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="fil-labs-bindings-funcignore" data-source-file="labs/bindings/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/.funcignore</code></p><pre data-language="Tekst" data-source="labs/bindings/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+</code></pre></details>
+</section>
+      <section class="panel" id="binding"><h2>1. Følg en melding gjennom bindingene</h2>
+<pre data-language="PowerShell"><code># Send et gyldig dokument til HTTP-funksjonen som legger det på Service Bus-køen.
+Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"doc-001"}'</code></pre><p>Forventet: HTTP 202 og deretter en Consumed-logglinje. Finn <code>service_bus_queue_output og service_bus_queue_trigger</code>. Output-bindingen sender meldingen; triggeren starter mottakeren og fullfører vellykket behandling.</p><label class="check-item"><input type="checkbox" data-check="w17-binding"><span>Jeg har brukt både output-binding og køtrigger.</span></label>
+
+<details class="source-file" id="fil-labs-bindings-function-app-py" data-source-file="labs/bindings/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/bindings/function_app.py</code></p><pre data-language="Python" data-source="labs/bindings/function_app.py"><code>&quot;&quot;&quot;HTTP -&gt; Service Bus output binding -&gt; Service Bus trigger.&quot;&quot;&quot;
+# Skriv behandlingsinformasjon til Functions-loggen.
+import logging
+# Bruk Functions-dekoratorer, HTTP-typer og bindingstyper.
+import azure.functions as func
+
+# Krev en Function-nøkkel på HTTP-rutene når appen kjører i Azure.
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+
+
+# Ta imot HTTP POST på /api/enqueue.
+@app.route(route=&quot;enqueue&quot;, methods=[&quot;POST&quot;])
+# Koble message-outputen til documents-køen med den navngitte appinnstillingen.
+@app.service_bus_queue_output(arg_name=&quot;message&quot;, queue_name=&quot;documents&quot;, connection=&quot;ServiceBusConnection&quot;)
+# Motta HTTP-kallet og et output-objekt som Functions-hosten håndterer.
+def enqueue(req: func.HttpRequest, message: func.Out[str]) -&gt; func.HttpResponse:
+    # Legg HTTP-body i output-bindingen; hosten står for sendingen.
+    message.set(req.get_body().decode(&quot;utf-8&quot;))
+    # Svar at forespørselen er akseptert.
+    return func.HttpResponse(&quot;Queued&quot;, status_code=202)
+
+
+# Start denne funksjonen når en melding kan behandles fra documents-køen.
+@app.service_bus_queue_trigger(arg_name=&quot;message&quot;, queue_name=&quot;documents&quot;, connection=&quot;ServiceBusConnection&quot;)
+# Motta meldingen og metadataene fra triggeren.
+def consume(message: func.ServiceBusMessage):
+    # Les meldingsteksten som UTF-8.
+    body = message.get_body().decode(&quot;utf-8&quot;)
+    # Bruk en bestemt tekst til å fremprovosere behandlingsfeil.
+    if &quot;fail&quot; in body.lower():
+        # La feilen gå til hosten så ny levering og DLQ kan observeres.
+        raise ValueError(&quot;Controlled failure for delivery-count and DLQ exercise&quot;)
+    # Vis meldingens ID og antall leveringsforsøk ved vellykket behandling.
+    logging.info(&quot;Consumed id=%s delivery=%s&quot;, message.message_id, message.delivery_count)
+</code></pre></details>
+</section>
+      <section class="panel" id="retry"><h2>2. La behandlingen feile</h2>
+<pre data-language="PowerShell"><code># Send meldingen som får køtriggeren til å feile, slik at du kan følge retries til DLQ.
+Invoke-RestMethod http://localhost:7073/api/enqueue -Method Post -ContentType application/json -Body '{"id":"fail-demo"}'</code></pre><p>Koden fremprovoserer en feil når body inneholder fail. Observer gjentatte forsøk og økende delivery count. Etter køens maksimale leveringer ligger meldingen i DLQ. Inspiser feil og innhold i Explorer.</p><label class="check-item"><input type="checkbox" data-check="w17-retry"><span>Jeg har fulgt en behandlingsfeil gjennom retries til DLQ.</span></label>
+</section>
+      <section class="panel" id="ansvar"><h2>3. Skill ansvarsområdene</h2>
+<p>Forklar forskjellen mellom klientens HTTP-retry, bindingens sendeoperasjon og brokerens nye levering. Beskriv hvor en varig idempotensnøkkel må registreres dersom behandlingen oppdaterer en database. Sammenlign denne løsningen med den direkte SDK-mottakeren fra workshop 15.</p><label class="check-item"><input type="checkbox" data-check="w17-ansvar"><span>Jeg kan forklare hvem som styrer trigger, binding og levering.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Stopp host-en, fullfør labmeldingen fra DLQ, og slett den lokale innstillingsfilen nedenfor. Service Bus-namespace-et og køen kan nå slettes. Behold Storage-kontoen og den publiserte HTTP Function App-en til del 18–19.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+Remove-Item -LiteralPath labs/bindings/local.settings.json -ErrorAction SilentlyContinue</code></pre>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-output?pivots=programming-language-python">Service Bus output-binding</a></li><li><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-trigger?pivots=programming-language-python">Service Bus-trigger</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-topics.html">← Workshop 16</a><a href="./workshop-event-grid.html">Workshop 18 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 17</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

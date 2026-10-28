@@ -1,0 +1,36 @@
+# Bruk autoscaling-API-et som støtter mål for ressursutnyttelse.
+apiVersion: autoscaling/v2
+# Beskriv en horisontal pod-autoskalerer.
+kind: HorizontalPodAutoscaler
+# Identifiser skaleringsressursen.
+metadata:
+  # Navnet gjelder bare i valgt namespace.
+  name: workshop-api
+# Definer hva og hvordan det skaleres.
+spec:
+  # Pek på Deployment-ressursen som skal få flere eller færre replikaer.
+  scaleTargetRef:
+    # Bruk samme API-versjon som Deployment-en.
+    apiVersion: apps/v1
+    # Målressursen er en Deployment.
+    kind: Deployment
+    # Navnet må passe med manifestet i samme mappe.
+    name: workshop-api
+  # Behold minst én replika i dette eksemplet.
+  minReplicas: 1
+  # Avgrens demoen til tre replikaer.
+  maxReplicas: 3
+  # Bruk en ressursmåling, ikke en ekstern kølengde.
+  metrics:
+    # Velg poddenes CPU-måling.
+    - type: Resource
+      # Beskriv ressurs og mål.
+      resource:
+        # CPU er målingen vi ønsker.
+        name: cpu
+        # Sammenlign bruken med poddenes CPU requests.
+        target:
+          # Utilization er en andel av requests.
+          type: Utilization
+          # Målverdien er 50 prosent, med fungerende ressursmålinger.
+          averageUtilization: 50

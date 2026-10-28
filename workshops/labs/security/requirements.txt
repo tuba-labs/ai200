@@ -1,0 +1,10 @@
+# API for sporingskontekst og spans.
+opentelemetry-api>=1.28,<2
+# Lokalt SDK for behandling og eksport av telemetri.
+opentelemetry-sdk>=1.28,<2
+# Entra-autentisering med DefaultAzureCredential.
+azure-identity>=1.19,<2
+# Klienten for Key Vault-hemmeligheter.
+azure-keyvault-secrets>=4.9,<5
+# Klienten for vanlige App Configuration-verdier.
+azure-appconfiguration>=1.7,<2

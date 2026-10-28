@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="En frontend kaller en backend som av og til feiler eller blir treg. Du skal bevise sammenhengen mellom kallene, finne feilraten og velge varsling som faktisk treffer problemet."><title>Finn en distribuert feil med OpenTelemetry og KQL | AI-200</title>
+<link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script></head>
+<body><a class="skip" href="#innhold">Hopp til innhold</a>
+<header><div class="wrap header-inner"><a class="brand" href="./index.html">AI-200 <span>Nye workshops</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html">Domener</a><a href="./coverage.html">Kortdekning</a><a href="../flashcards.html">Flashcards</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav></div></header>
+<div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>Finn en distribuert feil med OpenTelemetry og KQL</h1><p class="lead">En frontend kaller en backend som av og til feiler eller blir treg. Du skal bevise sammenhengen mellom kallene, finne feilraten og velge varsling som faktisk treffer problemet.</p></div></div>
+<main id="innhold" class="wrap layout"><aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#start">Start og dekning</a><a href="#begreper">Dette lærer vi om nå</a><a href="#ressurser">Ressurser</a><a href="#category-opentelemetry">OpenTelemetry og sporing</a><a href="#category-kql">KQL</a><a href="#category-monitor">Azure Monitor og Application Insights</a><a href="#avslutning">Avslutt og rydd opp</a></nav></aside><div class="content"><section class="panel" id="start"><p class="eyebrow">Domene 4 · Workshop D4B</p><h2>Oppdrag og forventet leveranse</h2><p>En frontend kaller en backend som av og til feiler eller blir treg. Du skal bevise sammenhengen mellom kallene, finne feilraten og velge varsling som faktisk treffer problemet.</p><div class="stats" aria-label="Planlagt kortdekning"><div><strong>57</strong><span>Kort i utvalget</span></div><div class="practical"><strong>34</strong><span>Praktisk oppgave</span></div><div class="analysis"><strong>23</strong><span>Analyseoppgave</span></div><div class="review"><strong>0</strong><span>Repetisjon</span></div></div>
+<p>Praktisk betyr at kortets tema undersøkes i kode, konfigurasjon eller en kjørende tjeneste. Analyse krever en begrunnet løsning, tabell eller skisse. Repetisjonskort har foreløpig ingen egen oppgave og teller ikke som oppgavedekning. Tallene beskriver opplegget; de bekrefter ikke at du har gjennomført det.</p>
+<p>Bruk to terminaler med samme Python-miljø. Begynn lokalt uten Application Insights-tilkobling. Azure-delen bruker ai200-v2-d4b med Log Analytics og workspace-basert Application Insights.</p><p>Dette er omfattende workshops med flere kapitler. Gjennomføringstid er ikke målt; ta pauser mellom kategoriene og lagre observasjonene før ressurser slettes.</p>
+<div class="study-tools"><button data-export="d4b" type="button">Eksporter notater</button><span data-progress-summary aria-live="polite"></span></div><p class="small" data-storage-note>Notater og avkryssing lagres lokalt i denne nettleseren. Flashcardenes «kan/må repetere» vurderes separat.</p></section>
+<section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2><p>Kryss av når du kan forklare begrepet og koble det til en observasjon eller et begrunnet valg.</p><div class="table-wrap"><table><caption>Begreper, fulle navn og leselenker</caption><thead><tr><th scope="col">Begrep</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead><tbody><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-OTel" data-kind="term">OTel</label></th><td><strong>OpenTelemetry</strong>. Åpne API-er og SDK-er for spor, målinger og logger.</td><td><a href="https://opentelemetry.io/docs/">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-SDK" data-kind="term">SDK</label></th><td><strong>Software Development Kit</strong>. Biblioteker som gir programkode tilgang til en tjeneste.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-HTTP" data-kind="term">HTTP</label></th><td><strong>Hypertext Transfer Protocol</strong>. Forespørsler og svar med metoder, headere og statuskoder.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-W3C" data-kind="term">W3C</label></th><td><strong>World Wide Web Consortium</strong>. Standardiseringsorganisasjonen bak Trace Context-standarden.</td><td><a href="https://www.w3.org/TR/trace-context/">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-API" data-kind="term">API</label></th><td><strong>Application Programming Interface</strong>. Et grensesnitt et program kan kalle.</td><td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-KQL" data-kind="term">KQL</label></th><td><strong>Kusto Query Language</strong>. Spørringsspråk for blant annet Azure Monitor Logs.</td><td><a href="https://learn.microsoft.com/en-us/kusto/query/">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-SQL" data-kind="term">SQL</label></th><td><strong>Structured Query Language</strong>. Spørringsspråk for blant annet PostgreSQL og Cosmos DB for NoSQL.</td><td><a href="https://www.postgresql.org/docs/current/tutorial-sql.html">Les mer</a></td></tr><tr><th scope="row"><label><input type="checkbox" data-progress="d4b-term-Azure Monitor" data-kind="term">Azure Monitor</label></th><td><strong>Azure Monitor</strong>. Analyse av målinger og logger, inkludert Application Insights.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/overview">Les mer</a></td></tr></tbody></table></div><p><a href="./glossary.html">Hele begrepslisten</a></p></section>
+<section class="panel" id="ressurser"><h2>Ressurser og klargjøring</h2><p><a href="./setup.html">Gjør fellesoppsettet først</a>. Opprett ressursene i den nye labgruppen fra oppdraget. Bruk egne unike navn og kontroller abonnementet før oppretting.</p><div class="table-wrap"><table><caption>Oppsett i Azure Portal eller egne IaC-filer</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Valg som øvelsen forutsetter</th></tr></thead><tbody><tr><th scope="row">Lokale tjenester</th><td>Frontend på 8091 og backend på 8092. Begge lytter bare på 127.0.0.1 og bruker W3C Trace Context.</td></tr><tr><th scope="row">Azure Monitor</th><td>Sett APPLICATIONINSIGHTS_CONNECTION_STRING før begge prosesser startes for Azure-eksport. Bruk samme ressurs i begge. Vent på faktisk ingestering før en tom spørring tolkes som kodefeil.</td></tr></tbody></table></div><p>Oppsett, rollepropagering og tjenestestøtte må kontrolleres i din konto. Analyseoppgavene krever ikke at alle avanserte eller dyrere tjenestevalg opprettes.</p></section><section class="category" id="category-opentelemetry"><h2>OpenTelemetry og sporing</h2><p>Følg ett faktisk kall gjennom to prosesser.</p><p><a href="https://opentelemetry.io/docs/languages/python/">Offisiell dokumentasjon</a> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry">Øv på kategoriens kort</a></p><section class="panel activity" id="otel-trace"><div class="activity-meta"><span class="badge practical">Praktisk oppgave</span><span>9 tilknyttede kort</span></div><h3>Finn samme trace-id i frontend og backend</h3><ol><li>Start backend og frontend i hver sin terminal. Send ett normalt kall, ett tregt kall og ett kontrollert feilende kall.</li><li>Finn frontend-server, klientspan og backend-server med samme trace-id og riktig parent. Følg TracerProvider → processor → exporter i koden.</li><li>I den nye labkopien fjerner du midlertidig propagate.inject, starter frontend på nytt og sammenligner trace-id-er. Gjenopprett linjen før du fortsetter. En lokal aktiv span er ikke automatisk kontekst i en annen prosess.</li></ol><pre data-language="PowerShell"><code># Kjør backend i første terminal.
+python workshops/labs/observability/services.py backend
+# Kjør frontend i en annen terminal.
+python workshops/labs/observability/services.py frontend
+# Kjør i en tredje terminal for et normalt kall.
+Invoke-RestMethod http://localhost:8091/search
+# Bevis kontrollert treghet i backend.
+Invoke-RestMethod &#x27;http://localhost:8091/search?delay=0.5&#x27;
+# Utløs en kontrollert serverfeil; HTTP 500 er forventet.
+Invoke-WebRequest &#x27;http://localhost:8091/search?fail=1&#x27;</code></pre><details class="source"><summary>Vis kildefil: observability/services.py</summary><p><a href="./labs/observability/services.py" download>Last ned filen</a>. Rediger bare kopien under <code>workshops/labs/</code>.</p><pre data-source="labs/observability/services.py"><code>&quot;&quot;&quot;Two separate HTTP services with explicit W3C context propagation and metrics.&quot;&quot;&quot;
+# Velg frontend eller backend og eventuelle lokale porter.
+import argparse
+# Bygg HTTP-responsen med trace-ID som JSON.
+import json
+# Skriv rolle, trace-ID og status til konsollen.
+import logging
+# Les Azure Monitor-tilkoblingen fra miljøet.
+import os
+# Mål svartid og lag en kontrollert forsinkelse.
+import time
+# Importer HTTP-feiltypene som hører til nettverksklienten.
+import urllib.error
+# La frontend gjøre et faktisk HTTP-kall til backend.
+import urllib.request
+# Kjør to små HTTP-servere i separate prosesser.
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+# Les delay og fail fra URL-ens spørringsparametere.
+from urllib.parse import parse_qs, urlsplit
+
+# Hent API-ene for målinger, sporingskontekst og spans.
+from opentelemetry import metrics, propagate, trace
+# Konfigurer hvor målinger samles og eksporteres.
+from opentelemetry.sdk.metrics import MeterProvider
+# Eksporter aggregerte målinger med et fast intervall.
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+# Gi telemetrien et tjenestenavn som skiller prosessene.
+from opentelemetry.sdk.resources import Resource
+# Konfigurer sporings-SDK-et.
+from opentelemetry.sdk.trace import TracerProvider
+# Velg købasert Azure-eksport eller direkte konsollutskrift.
+from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter, SimpleSpanProcessor
+# Velg en eksplisitt sampler for det nye eksperimentet.
+from opentelemetry.sdk.trace.sampling import ALWAYS_ON, ParentBased, TraceIdRatioBased
+# Merk klient-/serverspans og feilstatus eksplisitt.
+from opentelemetry.trace import SpanKind, Status, StatusCode
+
+
+# Klargjør samme telemetrioppsett for hver av de to prosessene.
+def setup(role, sampler_mode=&quot;all&quot;):
+    # Skill ai200-frontend fra ai200-backend i Azure og konsollen.
+    resource = Resource.create({&quot;service.name&quot;: &quot;ai200-&quot; + role})
+    # Opprett sporingsleverandøren med tjenestens identitet.
+    # En root-ratio kan brukes alene eller med barn som følger upstream-beslutningen.
+    ratio = TraceIdRatioBased(0.1)
+    # Standardvalget i denne laben er eksplisitt all, uavhengig av distro-standarder.
+    sampler = ALWAYS_ON if sampler_mode == &quot;all&quot; else ParentBased(ratio) if sampler_mode == &quot;parent-ratio&quot; else ratio
+    # Koble sampleren til leverandøren før spans opprettes.
+    provider = TracerProvider(resource=resource, sampler=sampler)
+    # Uten Azure-tilkobling opprettes ingen metrikkeksportør.
+    readers = []
+    # La miljøvariabelen velge om telemetrien skal sendes til Azure.
+    connection = os.getenv(&quot;APPLICATIONINSIGHTS_CONNECTION_STRING&quot;)
+    # Bruk Azure Monitor når en connection string er konfigurert.
+    if connection:
+        # Hent eksportørene for både målinger og spans.
+        from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter, AzureMonitorTraceExporter
+        # Send spans i bakgrunnen i samlinger.
+        provider.add_span_processor(BatchSpanProcessor(AzureMonitorTraceExporter(connection_string=connection)))
+        # Koble en periodisk leser til måleeksportøren.
+        readers.append(PeriodicExportingMetricReader(
+            # Bruk samme Azure-ressurs og eksporter målinger hvert tiende sekund.
+            AzureMonitorMetricExporter(connection_string=connection), export_interval_millis=10000))
+    # Bruk konsollen når Azure-tilkoblingen mangler.
+    else:
+        # Skriv hver avsluttet span til konsollen for lokal inspeksjon.
+        provider.add_span_processor(SimpleSpanProcessor(ConsoleSpanExporter()))
+    # Gjør dette sporingsoppsettet aktivt i prosessen.
+    trace.set_tracer_provider(provider)
+    # La målingene bruke samme tjenestenavn som sporingen.
+    meter_provider = MeterProvider(resource=resource, metric_readers=readers)
+    # Gjør måleoppsettet aktivt i prosessen.
+    metrics.set_meter_provider(meter_provider)
+    # Behold leverandørene slik at de kan flushes ved avslutning.
+    return provider, meter_provider
+
+
+# Start én av tjenestene fra kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Velg hvilken tjeneste denne prosessen skal være.
+    parser.add_argument(&quot;role&quot;, choices=[&quot;frontend&quot;, &quot;backend&quot;])
+    # La observasjonsøvelsen velge samme sampler i begge prosesser.
+    parser.add_argument(&quot;--sampler&quot;, choices=[&quot;all&quot;, &quot;ratio&quot;, &quot;parent-ratio&quot;], default=&quot;all&quot;)
+    # Tillat en annen lokal port, blant annet i testene.
+    parser.add_argument(&quot;--port&quot;, type=int)
+    # La frontend vite hvilken backend-adresse den skal kalle.
+    parser.add_argument(&quot;--backend-url&quot;, default=&quot;http://127.0.0.1:8092/lookup&quot;)
+    # Les rolle og nettverksvalg.
+    args = parser.parse_args()
+    # Vis INFO-meldinger som inneholder sporingsbevis.
+    logging.basicConfig(level=logging.INFO)
+    # Klargjør eksport før serveren tar imot kall.
+    provider, meter_provider = setup(args.role, args.sampler)
+    # Opprett traceren som lager labens spans.
+    tracer = trace.get_tracer(&quot;ai200.network&quot;)
+    # Opprett instrumentene for labens målinger.
+    meter = metrics.get_meter(&quot;ai200.network&quot;)
+    # Tell forespørsler per status.
+    requests = meter.create_counter(&quot;workshop.requests&quot;)
+    # Samle svartid i millisekunder.
+    duration = meter.create_histogram(&quot;workshop.duration&quot;, unit=&quot;ms&quot;)
+
+    # Definer hvordan denne tjenesten håndterer HTTP-kall.
+    class Handler(BaseHTTPRequestHandler):
+        # Behandle én GET-forespørsel.
+        def do_GET(self):
+            # Start målingen av hele forespørselen.
+            started = time.perf_counter()
+            # Skill URL-sti fra spørringsparametere.
+            parsed = urlsplit(self.path)
+            # Les parameterne som styrer forsinkelse og kontrollert feil.
+            query = parse_qs(parsed.query)
+            # Anta et vellykket kall frem til en feil oppstår.
+            status = 200
+            # Start en serverspan for den innkommende forespørselen.
+            with tracer.start_as_current_span(args.role, kind=SpanKind.SERVER,
+                                             # Les sporingskontekst fra HTTP-headerne så backend kan fortsette samme trace.
+                                             context=propagate.extract({key.lower(): value for key, value in self.headers.items()})) as span:
+                # La kontrollerte nettverks- og backend-feil gi HTTP 500.
+                try:
+                    # Frontend videresender arbeidet til en annen prosess.
+                    if args.role == &quot;frontend&quot;:
+                        # Legg en klientspan under frontendens serverspan.
+                        with tracer.start_as_current_span(&quot;call-backend&quot;, kind=SpanKind.CLIENT):
+                            # Lag headerne som skal følge det utgående kallet.
+                            headers = {}
+                            # Legg aktiv trace-kontekst i headerne før HTTP-kallet.
+                            propagate.inject(headers)
+                            # Send de samme delay-/fail-parameterne videre.
+                            url = args.backend_url + &quot;?&quot; + parsed.query
+                            # Gjør et ekte nettverkskall med sporingsheaderne.
+                            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=10) as response:
+                                # Les svaret ferdig før klientspannen avsluttes.
+                                response.read()
+                    # Backend utfører det simulerte oppslaget.
+                    else:
+                        # Avgrens den valgte forsinkelsen til mellom null og ett sekund.
+                        time.sleep(min(max(float(query.get(&quot;delay&quot;, [&quot;0.02&quot;])[0]), 0), 1))
+                        # Bruk fail=1 til å slå på en kjent feil.
+                        if query.get(&quot;fail&quot;, [&quot;0&quot;])[0] == &quot;1&quot;:
+                            # La feilen bli synlig både i backend og i klientkallet fra frontend.
+                            raise RuntimeError(&quot;Controlled backend failure&quot;)
+                # Fang feilen for å sende et kontrollert HTTP-svar.
+                except Exception as error:
+                    # Merk HTTP-svaret som en serverfeil.
+                    status = 500
+                    # Legg unntaket inn som en hendelse på spannen.
+                    span.record_exception(error)
+                    # Merk spannen som mislykket.
+                    span.set_status(Status(StatusCode.ERROR, str(error)))
+                # Ta med HTTP-statusen som span-attributt.
+                span.set_attribute(&quot;http.response.status_code&quot;, status)
+                # Gjør tjenestens rolle synlig på spannen.
+                span.set_attribute(&quot;workshop.role&quot;, args.role)
+                # Formater trace-ID slik at du kan sammenligne den mellom prosessene.
+                trace_id = format(span.get_span_context().trace_id, &quot;032x&quot;)
+                # Send rolle, trace-ID og resultat til klienten.
+                body = json.dumps({&quot;role&quot;: args.role, &quot;trace_id&quot;: trace_id, &quot;status&quot;: status}).encode()
+                # Start HTTP-svaret med resultatstatusen.
+                self.send_response(status)
+                # Oppgi at innholdet er JSON.
+                self.send_header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+                # Oppgi svarlengden i byte.
+                self.send_header(&quot;Content-Length&quot;, str(len(body)))
+                # Avslutt headerne før body sendes.
+                self.end_headers()
+                # Skriv svarinnholdet til klienten.
+                self.wfile.write(body)
+                # Vis samme trace-ID i begge tjenestenes logger.
+                logging.info(&quot;role=%s trace_id=%s status=%s&quot;, args.role, trace_id, status)
+            # Skill målingene etter HTTP-status.
+            attributes = {&quot;status&quot;: str(status)}
+            # Tell denne forespørselen.
+            requests.add(1, attributes)
+            # Registrer hele forespørselens varighet i millisekunder.
+            duration.record((time.perf_counter() - started) * 1000, attributes)
+
+    # Bruk forskjellige standardporter for de to prosessene.
+    port = args.port or (8091 if args.role == &quot;frontend&quot; else 8092)
+    # Lytt bare lokalt på maskinen.
+    server = ThreadingHTTPServer((&quot;127.0.0.1&quot;, port), Handler)
+    # La tjenesten kjøre frem til den stoppes.
+    try:
+        # Ta imot og behandle HTTP-kall.
+        server.serve_forever()
+    # Håndter Ctrl+C som en vanlig avslutning.
+    except KeyboardInterrupt:
+        # Fortsett til oppryddingen under.
+        pass
+    # Lukk serveren og tøm eksportkøene også ved avbrudd.
+    finally:
+        # Frigi lytteporten.
+        server.server_close()
+        # Forsøk å sende gjenværende spans før prosessen avsluttes.
+        provider.force_flush()
+        # Forsøk å sende gjenværende målinger.
+        meter_provider.force_flush()
+        # Stopp sporingsleverandøren.
+        provider.shutdown()
+        # Stopp måleleverandøren.
+        meter_provider.shutdown()
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør tjenesten med valgt rolle.
+    main()
+</code></pre></details><details class="expected"><summary>Forventet resultat og forklaring</summary><p>En normal og en feilende trace med relaterte spans, samt en demonstrert brutt kjede når headeren ikke sendes.</p></details><label class="note-label">Mine observasjoner og begrunnelse<textarea rows="4" data-note="otel-trace" placeholder="Forventning → observasjon → forklaring. Ikke skriv hemmeligheter her."></textarea></label><label class="task-check"><input type="checkbox" data-progress="otel-trace" data-kind="task">Jeg har dokumentert resultatet og kan forklare valget.</label><details class="questions"><summary>Kontrollspørsmål (9) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p><details class="recall" id="card-m-64-1-1"><summary>What does an OpenTelemetry TracerProvider own?</summary><p>TracerProvider - makes tracers, owns config (sampler, resource, processors). No configured provider/export pipeline -&gt; spans do not reach Azure Monitor.</p><p class="small"><code>m-64-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-64-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-64-2-1"><summary>What sends OpenTelemetry spans to Azure Monitor?</summary><p>Exporter - the destination. AzureMonitorTraceExporter plus a connection string.</p><p class="small"><code>m-64-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-64-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-64-3-1"><summary>How do BatchSpanProcessor and SimpleSpanProcessor export spans?</summary><p>Span processor - connects provider to exporter and decides when export happens. BatchSpanProcessor = asynchronous batches on a background thread; SimpleSpanProcessor = synchronous per span.</p><p class="small"><code>m-64-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-64-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-64-4-1"><summary>Which Python OpenTelemetry call starts an active span?</summary><p>Spans - created in code with tracer.start_as_current_span().</p><p class="small"><code>m-64-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-64-4-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-65-1-1"><summary>What changes must be deployed before OpenTelemetry tracing becomes visible?</summary><p>Needed - configure a trace exporter and instrument the code with the OpenTelemetry SDK (either order), then redeploy the services.</p><p class="small"><code>m-65-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-65-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-65-5-1"><summary>How do OpenTelemetry span kinds map to Application Insights request and dependency telemetry?</summary><p>SpanKind - SERVER / CONSUMER -&gt; requests table. CLIENT / INTERNAL / PRODUCER -&gt; dependencies table.</p><p class="small"><code>m-65-5-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-65-5-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-68-1-1"><summary>Which W3C header carries trace context between HTTP services?</summary><p>W3C traceparent header: 00-&lt;32-hex trace id&gt;-&lt;16-hex span id&gt;-&lt;flags&gt;</p><p class="small"><code>m-68-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-68-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-68-2-1"><summary>Does creating a span automatically propagate context to another process?</summary><p>No. The current context is process-local; outbound injection and inbound extraction, often supplied by instrumentation, are required to continue the same trace.</p><p class="small"><code>m-68-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-68-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-68-3-1"><summary>How is OpenTelemetry context propagated through an outbound Python HTTP call?</summary><p>You need an instrumentation library - RequestsInstrumentor().instrument() for the requests library, or a framework instrumentation to extract on the receiving side - or a manual propagate.inject(headers).</p><p class="small"><code>m-68-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-68-3-1">Åpne dette flashcardet</a></p></details></details></section><section class="panel activity" id="otel-sampling"><div class="activity-meta"><span class="badge practical">Praktisk oppgave</span><span>6 tilknyttede kort</span></div><h3>Sammenlign alle traces med en samplingsandel</h3><ol><li>Start begge prosessene på nytt med --sampler parent-ratio, send 100 kall og sammenlign antall eksporterte traces med --sampler all. Én liten måling skal ikke gi nøyaktig 10 prosent hver gang.</li><li>Finn sampleren på TracerProvider, og kontroller at barn i en valgt trace følger upstream-beslutningen. Skill antall spans fra antall traces.</li><li>Se på counter/histogram-koden: trace-sampling fjerner ikke de uavhengige metrikkmålingene. Sammenlign bare det som faktisk er eksportert i valgt lokal/Azure-modus.</li></ol><details class="expected"><summary>Forventet resultat og forklaring</summary><p>Målt forskjell mellom traces og en begrunnet sammenligning med målinger. ParentBased og valg av root-sampler er synlig i konfigurasjonen.</p></details><label class="note-label">Mine observasjoner og begrunnelse<textarea rows="4" data-note="otel-sampling" placeholder="Forventning → observasjon → forklaring. Ikke skriv hemmeligheter her."></textarea></label><label class="task-check"><input type="checkbox" data-progress="otel-sampling" data-kind="task">Jeg har dokumentert resultatet og kan forklare valget.</label><details class="questions"><summary>Kontrollspørsmål (6) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p><details class="recall" id="card-m-66-5-1"><summary>Which OpenTelemetry sampler honors a parent&#x27;s sampling decision?</summary><p>ParentBased. Configure its root sampler for traces without a parent.</p><p class="small"><code>m-66-5-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-66-5-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-66-5-2"><summary>How does TraceIdRatioBased choose which traces to retain?</summary><p>It makes a deterministic decision from the trace ID and the configured ratio.</p><p class="small"><code>m-66-5-2</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-66-5-2">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-67-1-1"><summary>Which Python OpenTelemetry sampler records all spans during local testing?</summary><p>ALWAYS_ON, the Python instance corresponding to the AlwaysOn sampler.</p><p class="small"><code>m-67-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-67-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-67-2-1"><summary>Which OpenTelemetry sampler keeps approximately 10% of traces?</summary><p>TraceIdRatioBased(0.1). For distributed traces, use a parent-based sampler when child spans should honor an upstream decision.</p><p class="small"><code>m-67-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-67-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-67-3-1"><summary>Where is an OpenTelemetry sampler configured?</summary><p>NOT samplers - the span processor (BatchSpanProcessor) and the exporter. The sampler goes on the TracerProvider: TracerProvider(sampler=...).</p><p class="small"><code>m-67-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-67-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-67-5-1"><summary>Are metrics reduced by trace sampling?</summary><p>Metrics are never sampled. Ingestion sampling is not recommended.</p><p class="small"><code>m-67-5-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-67-5-1">Åpne dette flashcardet</a></p></details></details></section><section class="panel activity" id="otel-options"><div class="activity-meta"><span class="badge analysis">Analyseoppgave</span><span>8 tilknyttede kort</span></div><h3>Velg manuell SDK eller distro og riktig signal</h3><ol><li>Tegn det manuelle oppsettet og sammenlign med configure_azure_monitor. Marker risikoen ved dobbel instrumentering.</li><li>Lag en tabell for Python-klassenavn, standard OTEL_TRACES_SAMPLER-verdier og Azure Monitor-spesifikke alternativer. Skill TraceIdRatioBased, ParentBased, fixed percentage og rate limit.</li><li>Plasser View, TrackEvent, span kinds, tracing og metrics i riktig signal. Oppgi SDK-/distroversjon når et standardvalg brukes; den manuelle laben bruker eksplisitt valgt sampler.</li></ol><details class="expected"><summary>Forventet resultat og forklaring</summary><p>Et pipeline-kart og en signaltabell. Azure-distroens standarder er ikke det samme som denne labens manuelle konfigurasjon.</p></details><label class="note-label">Mine observasjoner og begrunnelse<textarea rows="4" data-note="otel-options" placeholder="Forventning → observasjon → forklaring. Ikke skriv hemmeligheter her."></textarea></label><label class="task-check"><input type="checkbox" data-progress="otel-options" data-kind="task">Jeg har dokumentert resultatet og kan forklare valget.</label><details class="questions"><summary>Kontrollspørsmål (8) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p><details class="recall" id="card-m-65-2-1"><summary>What does configure_azure_monitor configure automatically?</summary><p>The Azure Monitor OpenTelemetry distro configures telemetry providers, Azure export and supported library instrumentation. Avoid instrumenting the same library twice.</p><p class="small"><code>m-65-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-65-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-65-3-1"><summary>Does an OpenTelemetry View create trace spans?</summary><p>OpenTelemetry View - customizes metrics, such as histogram buckets. Creates no spans.</p><p class="small"><code>m-65-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-65-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-65-4-1"><summary>Does TelemetryClient.TrackEvent create an OpenTelemetry span?</summary><p>TelemetryClient.TrackEvent() - classic Application Insights API. Writes a custom event (customEvents table), not an OpenTelemetry span.</p><p class="small"><code>m-65-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-65-4-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-66-2-1"><summary>What are the Python names of common OpenTelemetry samplers?</summary><p>ALWAYS_ON, ALWAYS_OFF, TraceIdRatioBased(rate), and ParentBased(root=...). Python symbols differ from the sampler specification names and environment-variable values.</p><p class="small"><code>m-66-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-66-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-66-3-1"><summary>Which standard OTEL_TRACES_SAMPLER values select ratio sampling?</summary><p>traceidratio and parentbased_traceidratio. These environment-variable values differ from Python class names.</p><p class="small"><code>m-66-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-66-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-66-4-1"><summary>Which Azure Monitor-specific sampler environment settings are available?</summary><p>Azure Monitor values - use microsoft.fixed_percentage or microsoft.rate_limited; ARG = ratio or max traces/sec.</p><p class="small"><code>m-66-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-66-4-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-66-6-1"><summary>What rate-limited sampling default is used by recent Azure Monitor Python distros?</summary><p>configure_azure_monitor defaults to a RateLimitedSampler at 5 traces/second since 1.8.6.</p><p class="small"><code>m-66-6-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-66-6-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-67-4-1"><summary>How does ApplicationInsightsSampler coordinate trace selection across services?</summary><p>Application Insights sampler - ApplicationInsightsSampler(0.1) or sampling_ratio=0.1 keeps about 10 percent; traces_per_second caps volume. It does NOT honor upstream decisions - it hashes the trace ID, so give every service the same sampler and rate.</p><p class="small"><code>m-67-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=opentelemetry&amp;card=m-67-4-1">Åpne dette flashcardet</a></p></details></details></section><section class="panel review-section" id="review-opentelemetry"><h3>Repetisjon og gjenstående øvingshull</h3><p>0 kort i denne kategorien har ingen egen oppgave. De er tilgjengelige til repetisjon, men er ikke merket som dekket av en praktisk eller analytisk oppgave.</p></section></section><section class="category" id="category-kql"><h2>KQL</h2><p>Skriv spørringer med riktig tabell, enhet og radscope.</p><p><a href="https://learn.microsoft.com/en-us/kusto/query/tutorials/learn-common-operators">Offisiell dokumentasjon</a> · <a href="../flashcards.html?domain=4&amp;category=kql">Øv på kategoriens kort</a></p><section class="panel activity" id="kql-investigate"><div class="activity-meta"><span class="badge practical">Praktisk oppgave</span><span>15 tilknyttede kort</span></div><h3>Finn feilrate, treghet og relaterte kall</h3><ol><li>Åpne queries.kql og kjør én spørring om gangen i Logs. Start med datatable-øvelsen, som ikke avhenger av at telemetri har kommet inn.</li><li>Forutsi resultatene av where, extend, project, distinct, summarize, join og render før du kjører dem. Sammenlign inner og standard innerunique når venstre side har flere rader med samme nøkkel.</li><li>Start begge tjenestene med Azure-tilkobling, generer nye kall og bruk spørringen for AppRequests/AppDependencies i workspace-kontekst. Ved Application Insights-kontekst bruker du den alternative requests/dependencies-varianten. Oppgi varighetsenhet og bruk riktig rolle-/operation-felt.</li><li>Lag tidsbøtter med bin, avgrens med ago og finn ett feilende end-to-end-kall. Skriv hvorfor tidsfilter og riktig kildetabell hører tidlig i spørringen.</li></ol><details class="source"><summary>Vis kildefil: observability/queries.kql</summary><p><a href="./labs/observability/queries.kql" download>Last ned filen</a>. Rediger bare kopien under <code>workshops/labs/</code>.</p><pre data-source="labs/observability/queries.kql"><code>// SPØRRING 1: Syntetiske data gjør fasiten uavhengig av ventetid på Azure-telemetri.
+let observations = datatable(OperationId:string, Role:string, DurationMs:real, Success:bool, AgeMinutes:int)
+// Fire forespørsler, hvor to feiler.
+[
+// Første rad er et vellykket kall.
+&quot;a&quot;, &quot;frontend&quot;, 20.0, true, 1,
+// Andre rad er et mislykket kall med samme operasjons-ID.
+&quot;a&quot;, &quot;frontend&quot;, 30.0, false, 2,
+// Tredje rad viser en treg og feilende backend.
+&quot;b&quot;, &quot;backend&quot;, 2500.0, false, 3,
+// Fjerde rad er et nytt vellykket kall.
+&quot;c&quot;, &quot;frontend&quot;, 10.0, true, 4
+];
+// Bruk datasettet som kildetabell.
+observations
+// Lag en aktuell tidskolonne fra den relative alderen.
+| extend TimeGenerated = now() - AgeMinutes * 1m
+// Avgrens tid før aggregeringen.
+| where TimeGenerated &gt; ago(30m)
+// Velg de kolonnene resten av spørringen trenger.
+| project OperationId, Role, DurationMs, Success
+// Tell alle og feilende rader og beregn en percentil.
+| summarize Requests = count(), Failures = countif(Success == false), P95Ms = percentile(DurationMs, 95)
+// To av fire gir 50 prosent i denne syntetiske testen.
+| extend FailureRate = 100.0 * Failures / Requests
+
+// SPØRRING 2: En standard inner-join beholder begge a-radene på venstre side.
+let incoming = datatable(OperationId:string, Attempt:int)[&quot;a&quot;,1,&quot;a&quot;,2,&quot;b&quot;,1];
+// Høyre side har én komponent per operasjon.
+let components = datatable(OperationId:string, Component:string)[&quot;a&quot;,&quot;frontend&quot;,&quot;b&quot;,&quot;backend&quot;];
+// Start på venstre side med tre rader.
+incoming
+// Fjern kind=inner og sammenlign med standard innerunique: to rader i stedet for tre.
+| join kind=inner components on OperationId
+// Vis bare nøkkel, forsøk og komponent.
+| project OperationId, Attempt, Component
+
+// SPØRRING 3: Grupper tidsstempler og be om en visualisering.
+let observations = datatable(AgeMinutes:int, Role:string)[1,&quot;frontend&quot;,2,&quot;frontend&quot;,3,&quot;backend&quot;];
+// Start med de tre relative tidspunktene.
+observations
+// Lag faktiske tidsstempler ved kjøring.
+| extend TimeGenerated = now() - AgeMinutes * 1m
+// Tell rader per femminuttersbøtte og rolle.
+| summarize Requests = count() by bin(TimeGenerated, 5m), Role
+// Be klienten vise resultatet som tidsdiagram.
+| render timechart
+
+// SPØRRING 4: Skill unike verdier fra alle inngående rader.
+datatable(Role:string)[&quot;frontend&quot;,&quot;frontend&quot;,&quot;backend&quot;]
+// Resultatet skal ha to roller.
+| distinct Role
+
+// SPØRRING 5: Kjør i Log Analytics-workspace etter at egen telemetri er ingestert.
+AppRequests
+// Bruk riktig tidskolonne for workspace-skjemaet.
+| where TimeGenerated &gt; ago(30m)
+// Avgrens til de to tjenestenavnene fra services.py.
+| where AppRoleName startswith &quot;ai200-&quot;
+// Mål per komponent, med varighet i millisekunder.
+| summarize Requests=count(), Failures=countif(Success == false), P95Ms=percentile(DurationMs,95) by AppRoleName
+
+// SPØRRING 6: Alternativet brukes i Application Insights sin spørringskontekst.
+requests
+// Samme tidsfilter har et annet kolonnenavn her.
+| where timestamp &gt; ago(30m)
+// Filtrer på rollen i Application Insights-skjemaet.
+| where cloud_RoleName startswith &quot;ai200-&quot;
+// Samme signal har andre kolonnenavn, men samme varighetsenhet.
+| summarize Requests=count(), Failures=countif(success == false), P95Ms=percentile(duration,95) by cloud_RoleName
+
+// SPØRRING 7: Finn relaterte requests og dependencies i workspace-skjemaet.
+AppRequests
+// Avgrens venstre tabell tidlig.
+| where TimeGenerated &gt; ago(30m) and AppRoleName startswith &quot;ai200-&quot;
+// Koble på dependencies med samme OperationId.
+| join kind=leftouter (
+    // Velg den tilsvarende workspace-tabellen.
+    AppDependencies
+    // Avgrens også høyre tabell før join.
+    | where TimeGenerated &gt; ago(30m)
+    // Gi avhengighetsfeltene tydelige resultatnavn.
+    | project OperationId, DependencyName=Name, DependencyMs=DurationMs
+// Avslutt høyre uttrykk og angi nøkkelen.
+) on OperationId
+// Velg bare felter som hjelper å forklare det distribuerte kallet.
+| project TimeGenerated, OperationId, AppRoleName, Success, DurationMs, DependencyName, DependencyMs
+</code></pre></details><details class="expected"><summary>Forventet resultat og forklaring</summary><p>Kjørte spørringer, resultattabeller og forklaring på endret radantall. Datatable gir to av fire feil = 50 prosent; egne traces kan gi en annen rate.</p></details><label class="note-label">Mine observasjoner og begrunnelse<textarea rows="4" data-note="kql-investigate" placeholder="Forventning → observasjon → forklaring. Ikke skriv hemmeligheter her."></textarea></label><label class="task-check"><input type="checkbox" data-progress="kql-investigate" data-kind="task">Jeg har dokumentert resultatet og kan forklare valget.</label><details class="questions"><summary>Kontrollspørsmål (15) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p><details class="recall" id="card-m-60-1-1"><summary>What does KQL where do to its input rows?</summary><p>where (equivalent to filter) - keeps only the ROWS that match a predicate.</p><p class="small"><code>m-60-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-2-1"><summary>What rows does KQL summarize return?</summary><p>One row per distinct combination of the by expressions, containing only group keys and aggregates. Without by, it returns one aggregate row; the original individual records are not retained.</p><p class="small"><code>m-60-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-3-1"><summary>What does KQL project do to columns?</summary><p>project - selects, renames and can compute; drops everything unlisted.</p><p class="small"><code>m-60-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-4-1"><summary>What does KQL extend do to columns?</summary><p>extend - appends a computed column. No by clause, cannot aggregate.</p><p class="small"><code>m-60-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-4-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-5-1"><summary>What does KQL distinct return?</summary><p>Unique combinations of the selected column values.</p><p class="small"><code>m-60-5-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-5-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-5-2"><summary>What does KQL join do?</summary><p>Matches rows from two tabular expressions on a key such as OperationId.</p><p class="small"><code>m-60-5-2</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-5-2">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-5-3"><summary>What does KQL render do?</summary><p>Requests a visualization of the tabular result, such as a timechart.</p><p class="small"><code>m-60-5-3</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-5-3">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-60-6-1"><summary>In what order should time filters, joins and aggregation usually run in a KQL query?</summary><p>Order: table -&gt; time filter -&gt; other filters -&gt; join -&gt; summarize. Time filters skip whole storage extents.</p><p class="small"><code>m-60-6-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-60-6-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-61-1-1"><summary>Which table and column names are used in the Application Insights query schema?</summary><p>Application Insights: requests, dependencies, traces, exceptions. Columns timestamp (lowercase - KQL is case-sensitive), duration, success, operation_Id, operation_Name, cloud_RoleName.</p><p class="small"><code>m-61-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-61-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-61-2-1"><summary>Which table and column names are used in the workspace-based query schema?</summary><p>Log Analytics workspace: AppRequests, AppDependencies, AppTraces. Columns TimeGenerated, DurationMs, Success, OperationId, OperationName, AppRoleName.</p><p class="small"><code>m-61-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-61-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-61-3-1"><summary>What unit is used for request duration in Application Insights queries?</summary><p>duration is in MILLISECONDS - &quot;greater than two seconds&quot; is duration &gt; 2000.</p><p class="small"><code>m-61-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-61-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-61-4-1"><summary>Which telemetry field identifies the emitting service?</summary><p>cloud_RoleName / AppRoleName = which component emitted the telemetry.</p><p class="small"><code>m-61-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-61-4-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-62-1-1"><summary>How does KQL express the last 30 minutes?</summary><p>ago(30m) - current UTC time minus a timespan: where timestamp &gt; ago(30m). Literals: 30m, 1h, 2d, 10s, 100ms. No weeks.</p><p class="small"><code>m-62-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-62-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-62-3-1"><summary>How does KQL bin group timestamps for a time chart?</summary><p>bin(timestamp, 5m) - rounds down into fixed buckets: summarize count() by bin(timestamp, 5m) | render timechart (first column must be datetime).</p><p class="small"><code>m-62-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-62-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-62-4-1"><summary>Which KQL join kind is used when no kind is specified?</summary><p>join - default kind is innerunique (dedupes the left side). Write kind=inner for a standard inner join. Put the smaller table on the left.</p><p class="small"><code>m-62-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=kql&amp;card=m-62-4-1">Åpne dette flashcardet</a></p></details></details></section><section class="panel review-section" id="review-kql"><h3>Repetisjon og gjenstående øvingshull</h3><p>0 kort i denne kategorien har ingen egen oppgave. De er tilgjengelige til repetisjon, men er ikke merket som dekket av en praktisk eller analytisk oppgave.</p></section></section><section class="category" id="category-monitor"><h2>Azure Monitor og Application Insights</h2><p>Velg riktig observasjon og lag et begrunnet varsel.</p><p><a href="https://learn.microsoft.com/en-us/azure/azure-monitor/overview">Offisiell dokumentasjon</a> · <a href="../flashcards.html?domain=4&amp;category=monitor">Øv på kategoriens kort</a></p><section class="panel activity" id="monitor-alert"><div class="activity-meta"><span class="badge practical">Praktisk oppgave</span><span>4 tilknyttede kort</span></div><h3>Koble et feilsignal til en konkret varslingsregel</h3><ol><li>Finn den mislykkede operasjonen i Application Insights, og sammenlign transaksjonssøk/Application Map med KQL-resultatet. Custom spans og service.name må faktisk være ingestert før kartet vurderes.</li><li>Opprett en log search alert i den nye gruppen: tell mislykkede AppRequests i et femminutters vindu og bruk terskel større enn null. Velg ingen varsling til andre personer; en regel uten action group er nok til øvelsen.</li><li>Utløs en ny kontrollert feil, vent på evaluering og se fired/resolved i Alerts. Skill regler, evalueringsvindu, ingesteringstid og når handlinger ville blitt sendt.</li></ol><details class="expected"><summary>Forventet resultat og forklaring</summary><p>En konkret loggspørring, en lagret alert-regel og et notat om hva som faktisk ble evaluert. Ett mislykket HTTP-kall er ikke nødvendigvis ett umiddelbart varsel.</p></details><label class="note-label">Mine observasjoner og begrunnelse<textarea rows="4" data-note="monitor-alert" placeholder="Forventning → observasjon → forklaring. Ikke skriv hemmeligheter her."></textarea></label><label class="task-check"><input type="checkbox" data-progress="monitor-alert" data-kind="task">Jeg har dokumentert resultatet og kan forklare valget.</label><details class="questions"><summary>Kontrollspørsmål (4) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p><details class="recall" id="card-m-63-1-1"><summary>Which tool supports an ad hoc investigation of Azure application logs?</summary><p>KQL in Log Analytics - write and run log queries interactively over the workspace. The direct route for an ad hoc investigation.</p><p class="small"><code>m-63-1-1</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=m-63-1-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-mon-003"><summary>How do Azure Monitor metrics differ from logs?</summary><p>Metrics are numeric time series. Logs are records queried through a log store such as Log Analytics; application telemetry can produce both kinds of signal.</p><p class="small"><code>prep-mon-003</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-mon-003">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-005"><summary>Which Azure Monitor alert type evaluates a scheduled KQL query?</summary><p>A log search alert, also called a scheduled query alert rule.</p><p class="small"><code>prep-p-mon-005</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-005">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-mon-028"><summary>What does Application Insights Application Map visualize?</summary><p>Instrumented components and dependencies, with available call, latency and failure information.</p><p class="small"><code>prep-mon-028</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-mon-028">Åpne dette flashcardet</a></p></details></details></section><section class="panel activity" id="monitor-design"><div class="activity-meta"><span class="badge analysis">Analyseoppgave</span><span>15 tilknyttede kort</span></div><h3>Lag en driftsvisning som ikke skjuler datatap</h3><ol><li>Tegn en workbook med feilrate, svartid, avhengigheter og endringer i infrastrukturen. Skill numeriske metrics, applikasjonslogger og AzureActivity.</li><li>Velg metric alert mot log search alert, action group, availability test, Live Metrics og alert processing rule for fire konkrete driftsbehov. Forklar hva som endres av planlagt vedlikehold.</li><li>Marker diagnostic settings, Azure Monitor workspace/Prometheus, Log Analytics workspace, kryss-workspace-spørring og customMetrics/AppMetrics på datakartet. Beskriv hvorfor daily cap og manglende ingestering kan gjøre visningen misvisende.</li></ol><details class="expected"><summary>Forventet resultat og forklaring</summary><p>En begrunnet workbook-skisse og en matrise for signal → datalager → spørring → varsel/handling. En metrikk og en loggspørring har ulike evalueringsmekanismer.</p></details><label class="note-label">Mine observasjoner og begrunnelse<textarea rows="4" data-note="monitor-design" placeholder="Forventning → observasjon → forklaring. Ikke skriv hemmeligheter her."></textarea></label><label class="task-check"><input type="checkbox" data-progress="monitor-design" data-kind="task">Jeg har dokumentert resultatet og kan forklare valget.</label><details class="questions"><summary>Kontrollspørsmål (15) – svar før du åpner fasiten</summary><p>Skriv et kort svar og pek på en observasjon eller et begrunnet valg. Les så fasiten; en avkryssing alene dokumenterer ikke forståelse.</p><details class="recall" id="card-m-63-2-1"><summary>What type of operations does the Azure Activity Log record?</summary><p>Activity log - control-plane operations: create a VM, change a key vault access policy, deployment errors. NOT application telemetry.</p><p class="small"><code>m-63-2-1</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=m-63-2-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-63-3-1"><summary>What is an Azure Monitor workbook used for?</summary><p>Workbooks - combine text, log queries, metrics and parameters into rich interactive reports. Built for reuse; more work than one query.</p><p class="small"><code>m-63-3-1</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=m-63-3-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-63-4-1"><summary>Why start a KQL query with the relevant table?</summary><p>It selects the data source and limits the scope before further operations.</p><p class="small"><code>m-63-4-1</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=m-63-4-1">Åpne dette flashcardet</a></p></details><details class="recall" id="card-m-63-4-2"><summary>How do KQL == and =~ differ?</summary><p>== is case-sensitive equality; =~ is case-insensitive string equality.</p><p class="small"><code>m-63-4-2</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=m-63-4-2">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-mon-004"><summary>Which Azure Monitor alert type evaluates a numeric metric against a threshold?</summary><p>A metric alert, using supported static or dynamic threshold conditions.</p><p class="small"><code>prep-mon-004</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-mon-004">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-004"><summary>Which Azure Monitor object defines notification and automation actions for alert rules?</summary><p>An action group.</p><p class="small"><code>prep-p-mon-004</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-004">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-mon-006"><summary>What does an Application Insights standard availability test check?</summary><p>A configured endpoint from external test locations, including supported availability and response checks.</p><p class="small"><code>prep-mon-006</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-mon-006">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-007"><summary>Which Application Insights feature shows near-real-time telemetry during an incident or deployment?</summary><p>Live Metrics, for supported instrumentation and configuration.</p><p class="small"><code>prep-p-mon-007</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-007">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-009"><summary>What routes supported Azure resource platform logs to Log Analytics, Storage or Event Hubs?</summary><p>A diagnostic setting on the resource, selecting the categories and destinations.</p><p class="small"><code>prep-p-mon-009</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-009">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-012"><summary>Which Azure Monitor mechanism can suppress configured alert actions during a planned period?</summary><p>An alert processing rule with the appropriate scope and suppression schedule.</p><p class="small"><code>prep-p-mon-012</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-012">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-014"><summary>Where does Azure&#x27;s managed Prometheus service store AKS metric data?</summary><p>In an Azure Monitor workspace, queried using supported Prometheus/PromQL interfaces. This is distinct from a Log Analytics workspace.</p><p class="small"><code>prep-p-mon-014</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-014">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-mon-019"><summary>Which Log Analytics table contains Azure Activity Log records when collected?</summary><p>AzureActivity.</p><p class="small"><code>prep-mon-019</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-mon-019">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-017"><summary>Why can a telemetry ingestion daily cap hide later incidents?</summary><p>Eligible ingestion can stop after the cap is reached, leaving gaps until collection resumes under the cap&#x27;s rules.</p><p class="small"><code>prep-p-mon-017</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-017">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-mon-021"><summary>Which KQL function references another Log Analytics workspace?</summary><p>workspace(...), with the required access and supported cross-resource query limits.</p><p class="small"><code>prep-mon-021</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-mon-021">Åpne dette flashcardet</a></p></details><details class="recall" id="card-prep-p-mon-013"><summary>Which Application Insights query table contains custom measurements?</summary><p>customMetrics in the Application Insights schema; AppMetrics is the corresponding workspace-based table.</p><p class="small"><code>prep-p-mon-013</code> · <a href="../flashcards.html?domain=4&amp;category=monitor&amp;card=prep-p-mon-013">Åpne dette flashcardet</a></p></details></details></section><section class="panel review-section" id="review-monitor"><h3>Repetisjon og gjenstående øvingshull</h3><p>0 kort i denne kategorien har ingen egen oppgave. De er tilgjengelige til repetisjon, men er ikke merket som dekket av en praktisk eller analytisk oppgave.</p></section></section><section class="panel" id="avslutning"><h2>Avslutt og rydd opp</h2><p>Stopp begge lokale prosesser med Ctrl+C slik at eksportørene flushes. Slett alert-regelen og deretter de nye ressursene i ai200-v2-d4b. Eksporter notater og spørringer før Log Analytics slettes.</p><p>Forklar dataflyten og ett feilsøkingstilfelle uten oppskriften. Gå deretter til <a href="../flashcards.html?domain=4&amp;workshop=d4b">workshopens kort</a> og vurder dem selv.</p><p><a href="./d4a.html">Den andre workshopen i domene 4: Identitet, hemmeligheter og dynamisk konfigurasjon</a> · <a href="./coverage.html?domain=4">Se oppgavedekning for domenet</a></p></section></div></main>
+<footer><div class="wrap"><p>AI-200 studiegruppe · Nytt løp · <a href="./glossary.html">Forkortelser og begreper</a> · <a href="../index.html">Hele studiesiden</a></p></div></footer></body></html>

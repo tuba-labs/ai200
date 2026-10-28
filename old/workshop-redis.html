@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Koble Python til Managed Redis og øv på cache hit, miss, utløp og eksplisitt invalidering.">
+  <title>Workshop 12: Caching og invalidering med Managed Redis | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 12 / Domene 2 / AI-data</p>
+    <h1>Caching og invalidering med Managed Redis</h1>
+    <p class="lead">Koble Python til Managed Redis og øv på cache hit, miss, utløp og eksplisitt invalidering.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-change-feed.html">← 11. Behandle endringer fra Cosmos DB</a><a href="./workshop-redis.html" aria-current="page">12. Denne workshopen</a><a href="./workshop-redis-vectors.html">13. Vektorindeks i Managed Redis →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Klargjør før økten</a>
+      <a href="#tilkobling">1. Koble til sikkert</a>
+      <a href="#cache">2. Hit, miss og utløp</a>
+      <a href="#moenster">3. Knytt operasjonene til applikasjonen</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-redis" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Managed Redis</span></label></th><td>Azure-driftet Redis, en datatjeneste som holder arbeidsdata i minnet. Her bruker vi den som cache foran et tenkt databaseoppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om Azure Managed Redis</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-aside" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache-aside</span></label></th><td>Appen leser cachen først. Ved manglende verdi henter den fra datakilden og lagrer resultatet i cachen for senere bruk.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Cache-aside</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-hit-miss" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache hit og miss</span></label></th><td>Hit betyr at nøkkelen har en verdi i cachen; miss betyr at den mangler. Vi følger begge situasjoner i terminalen.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Cache hit og miss</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-ttl" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TTL</span></label></th><td>Time to Live: hvor lenge en cacheoppføring får leve. Vi setter utløp ved lagring; et vanlig oppslag forlenger ikke denne levetiden.</td><td><a href="https://redis.io/docs/latest/commands/expire/">Les mer<span class="sr-only"> om TTL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-invalidate" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Invalidering</span></label></th><td>Fjerning av cacheoppføringer som er blitt gamle når kildedata endres. Dette utfyller automatisk utløp og krever riktige nøkler.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Invalidering</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-tls" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TLS</span></label></th><td>Transport Layer Security: kryptert forbindelse til Redis. Klienten bruker ssl=True og labens nøkkel fra miljøet.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om TLS</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-clustering" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Enterprise og OSS clustering</span></label></th><td>OSS betyr Open Source Software. Enterprise-modellen gir ett logisk endepunkt til vanlig klient; OSS-modellen krever en klient som håndterer klyngens fordeling.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om Enterprise og OSS clustering</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Opprett én Azure Managed Redis-labinstans i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> med Enterprise clustering, TLS og en labnøkkel. Bruk samme instans i workshop 12–13. Velg RediSearch ved opprettelsen, med en tier som støtter modulen og NoEviction. Modulen kan ikke legges til senere. En arrangør kan klargjøre en delt labinstans.</p>
+
+<details class="source-file" id="fil-labs-redis-requirements-txt" data-source-file="labs/redis/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/redis/requirements.txt"><code># Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
+redis&gt;=5,&lt;7
+</code></pre></details>
+</section>
+      <section class="panel" id="tilkobling"><h2>1. Koble til sikkert</h2>
+<pre data-language="PowerShell"><code># Sett vertsnavnet til den eksisterende Managed Redis-instansen.
+$env:REDIS_HOST = "DITT-REDIS-ENDPOINT"
+# Velg port 10000 for Redis-tilkoblingen.
+$env:REDIS_PORT = "10000"
+# Sett Redis-labnøkkelen i denne terminalen.
+$env:REDIS_KEY = "DIN-LAB-NOKKEL"</code></pre><p>Les tilkoblingen i <code>demo.py</code>. Den bruker TLS og en gjenbrukt klient. Enterprise clustering gir ett logisk endepunkt til den vanlige Redis-klienten; OSS clustering krever en cluster-klient.</p><label class="check-item"><input type="checkbox" data-check="w12-tilkobling"><span>Jeg har valgt en klient som passer til Redis-konfigurasjonen.</span></label>
+
+<details class="source-file" id="fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
+# Velg cache-, indeks-, søke- eller oppryddingsoperasjon.
+import argparse
+# Les Redis-endpoint og labnøkkel fra terminalens miljø.
+import os
+# Vent på en kort TTL for å demonstrere utløp.
+import time
+# Konverter spørsmåls- og dokumentvektorer til float32-byteverdier.
+from array import array
+
+# Bruk Redis-klienten til cache- og søkekommandoer.
+import redis
+# Beskriv metadata, tekst og vektorer i søkeindeksen.
+from redis.commands.search.field import TagField, TextField, VectorField
+# Avgrens hvilke Redis-hasher indeksen leser.
+from redis.commands.search.index_definition import IndexDefinition, IndexType
+# Bygg et søk med filter, KNN og resultatvalg.
+from redis.commands.search.query import Query
+# Gjenkjenn feilsvaret når indeksen allerede finnes.
+from redis.exceptions import ResponseError
+
+
+# Kjør én Redis-operasjon.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til labens fire valg.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;cache&quot;, &quot;index&quot;, &quot;search&quot;, &quot;cleanup&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Bruk endpoint og port for labinstansen.
+    with redis.Redis(host=os.environ[&quot;REDIS_HOST&quot;], port=int(os.getenv(&quot;REDIS_PORT&quot;, &quot;10000&quot;)),
+                     # Bruk TLS, miljøbasert labnøkkel og en avgrenset nettverkstimeout.
+                     password=os.environ[&quot;REDIS_KEY&quot;], ssl=True, socket_timeout=10) as client:
+        # Demonstrer hit, invalidering og TTL-utløp.
+        if args.mode == &quot;cache&quot;:
+            # Bruk en avgrenset nøkkel for labens cacheoppføring.
+            key = &quot;ai200:cache:containers:v1&quot;
+            # Kontroller om oppføringen finnes fra før.
+            print(&quot;Initial:&quot;, client.get(key))
+            # Cache resultatet med ti sekunders TTL.
+            client.set(key, &quot;note-1,note-2&quot;, ex=10)
+            # Les den nye oppføringen og gjenværende levetid.
+            print(&quot;Hit:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+            # Invalider oppføringen eksplisitt.
+            client.delete(key)
+            # Bekreft at oppslaget ikke lenger gir en cacheverdi.
+            print(&quot;Invalidated:&quot;, client.get(key))
+            # Legg inn en oppdatert verdi med kort TTL.
+            client.set(key, &quot;updated-note-1&quot;, ex=2)
+            # Vent lenger enn levetiden.
+            time.sleep(3)
+            # Vis at Redis har latt oppføringen utløpe.
+            print(&quot;Expired:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+        # Opprett en vektorindeks og tre dokumenter.
+        elif args.mode == &quot;index&quot;:
+            # Indekser topic som filter, text som tekst og embedding med HNSW.
+            fields = [TagField(&quot;topic&quot;), TextField(&quot;text&quot;), VectorField(&quot;embedding&quot;, &quot;HNSW&quot;, {
+                # Bruk float32, tre dimensjoner og cosinusavstand.
+                &quot;TYPE&quot;: &quot;FLOAT32&quot;, &quot;DIM&quot;: 3, &quot;DISTANCE_METRIC&quot;: &quot;COSINE&quot;,
+            })]
+            # Tillat at oppsettet kjøres flere ganger.
+            try:
+                # Opprett søkeindeksen med det valgte skjemaet.
+                client.ft(&quot;ai200-index&quot;).create_index(fields, definition=IndexDefinition(
+                    # Les bare Redis-hasher med labens vektorprefiks.
+                    prefix=[&quot;ai200:vector:&quot;], index_type=IndexType.HASH))
+            # Undersøk hvorfor indeksopprettelsen ble avvist.
+            except ResponseError as error:
+                # Ignorer bare den forventede feilen om en eksisterende indeks.
+                if &quot;index already exists&quot; not in str(error).lower():
+                    # La andre feil gå videre til terminalen.
+                    raise
+            # Første dokument ligger langs første vektordimensjon.
+            for number, topic, vector in [(1, &quot;containers&quot;, [1, 0, 0]),
+                                           # Legg til et lignende dokument og et dokument i et annet emne.
+                                           (2, &quot;containers&quot;, [0.9, 0.1, 0]), (3, &quot;data&quot;, [0, 1, 0])]:
+                # Lagre hvert dokument i en Redis-hash som indeksen overvåker.
+                client.hset(f&quot;ai200:vector:{number}&quot;, mapping={
+                    # Lagre metadata og tekst sammen med vektoren.
+                    &quot;topic&quot;: topic, &quot;text&quot;: f&quot;Teaching document {number}&quot;,
+                    # Send embedding som binære float32-verdier.
+                    &quot;embedding&quot;: array(&quot;f&quot;, vector).tobytes(),
+                })
+            # Minn om at søkeindeksen må ha rukket å behandle dataene.
+            print(&quot;Index and three documents ready; wait for indexing before search&quot;)
+        # Kombiner metadatafilter med vektorrangering.
+        elif args.mode == &quot;search&quot;:
+            # Finn to nærmeste treff innen topic=containers, med avstanden kalt score.
+            query = Query(&quot;(@topic:{containers})=&gt;[KNN 2 @embedding $vec AS score]&quot;)
+            # Sorter etter avstand og bruk søkedialekten som støtter denne syntaksen.
+            query = query.sort_by(&quot;score&quot;).return_fields(&quot;topic&quot;, &quot;text&quot;, &quot;score&quot;).dialect(2)
+            # Send spørsmålsvektoren i samme binære format som dokumentvektorene.
+            result = client.ft(&quot;ai200-index&quot;).search(query, query_params={&quot;vec&quot;: array(&quot;f&quot;, [0, 1, 0]).tobytes()})
+            # Behandle de returnerte treffene.
+            for document in result.docs:
+                # Vis ID, emne og avstand for sammenligning.
+                print(document.id, document.topic, document.score)
+        # Rydd bare labens indeks og tilknyttede dokumenter.
+        else:
+            # Slett indeksen og dokumentene som hører til den.
+            client.ft(&quot;ai200-index&quot;).dropindex(delete_documents=True)
+            # Bekreft oppryddingen.
+            print(&quot;Removed lab index and its documents&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Redis-operasjon.
+    main()
+</code></pre></details>
+</section>
+      <section class="panel" id="cache"><h2>2. Hit, miss og utløp</h2>
+<pre data-language="PowerShell"><code># Demonstrer cache miss, hit, eksplisitt invalidering og TTL-utløp.
+python labs/redis/demo.py cache</code></pre><p>Forventet: først en miss, så en hit med positiv TTL, deretter miss etter invalidation og miss etter utløp. Skriptet sletter bare sin egen nøkkel. Kjør på nytt og sammenlign. Finn GET, SET med EX, DELETE og TTL i koden.</p><label class="check-item"><input type="checkbox" data-check="w12-cache"><span>Jeg har observert miss, hit, invalidering og utløp.</span></label>
+</section>
+      <section class="panel" id="moenster"><h2>3. Knytt operasjonene til applikasjonen</h2>
+<p>Tegn rekkefølgen for cache-aside: GET, databaseoppslag ved miss, SET med TTL. Beskriv deretter hva en dokumentoppdatering skal invalidere. La nøkkelen inneholde søkeområde og dataversjon. Sammenlign kort TTL med eksplisitt invalidation; de løser ulike deler av problemet.</p><label class="check-item"><input type="checkbox" data-check="w12-moenster"><span>Jeg kan forklare hvordan applikasjonen unngår å servere gamle data.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Behold instansen og terminalvariablene til vektorøvelsen i del 13. Redis-instansen slettes etter den delen.</p><details><summary>Hvis du avslutter her</summary><p>Slett den dedikerte labinstansen og fjern nøkkelen fra terminalen:</p>
+<pre data-language="PowerShell"><code># Fjern REDIS_KEY fra denne terminalen.
+Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre></details>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-data.html">Se pensummål og videre studier for domene 2</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 2 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/redis/choose-clustering-policy">Managed Redis og klienter</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-change-feed.html">← Workshop 11</a><a href="./workshop-redis-vectors.html">Workshop 13 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 12</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Velg syntaksversjonen for ACR Tasks-filen.
+version: v1.1.0
+# Kjør stegene i den angitte rekkefølgen.
+steps:
+  # Bygg Dockerfile fra denne byggkonteksten.
+  # Registry settes av ACR, og Run.ID gir hver kjøring en egen tagg.
+  - build: -t {{.Run.Registry}}/ai200-api:{{.Run.ID}} -f Dockerfile .
+  # Last opp det ferdige imaget til registryet.
+  - push:
+      # Bruk nøyaktig samme image-navn og tagg som i byggesteget.
+      - '{{.Run.Registry}}/ai200-api:{{.Run.ID}}'
+  # Kjør imaget og skriv Python-versjonen i task-loggen.
+  - cmd: '{{.Run.Registry}}/ai200-api:{{.Run.ID}} python --version'

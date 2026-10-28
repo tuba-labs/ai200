@@ -1,0 +1,2 @@
+# Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
+redis>=5,<7

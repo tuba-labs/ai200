@@ -1,0 +1,8 @@
+# Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions>=1.20,<2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity>=1.19,<2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus>=7.12,<8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid>=4.20,<5

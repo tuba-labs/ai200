@@ -1,0 +1,6 @@
+# API-er for spans, kontekstpropagering og målinger.
+opentelemetry-api>=1.28,<2
+# Leverandører, prosessorer og konsolleksport for telemetrien.
+opentelemetry-sdk>=1.28,<2
+# Eksport av spans og målinger til Azure Monitor.
+azure-monitor-opentelemetry-exporter>=1.0.0b30,<2

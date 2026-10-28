@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Send og motta meldinger med Service Bus SDK, og flytt en kontrollert feil til dead-letter queue.">
+  <title>Workshop 15: Behandle kømeldinger og DLQ i kode | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 15 / Domene 3 / Integrasjoner</p>
+    <h1>Behandle kømeldinger og DLQ i kode</h1>
+    <p class="lead">Send og motta meldinger med Service Bus SDK, og flytt en kontrollert feil til dead-letter queue.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-integrations.html">← 14. Bygg og publiser en HTTP Function</a><a href="./workshop-service-bus.html" aria-current="page">15. Denne workshopen</a><a href="./workshop-topics.html">16. Service Bus: topics og subscriptions →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#send">1. Send fra Python</a>
+      <a href="#laas">2. Lås, frigjør og lever igjen</a>
+      <a href="#dlq">3. Håndter DLQ i kode</a>
+      <a href="#opprydding">Rydd opp</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-integrations.html">14. Bygg og publiser en HTTP Function</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-namespace" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Service Bus og namespace</span></label></th><td>Service Bus er en meldingsmegler som lagrer og leverer meldinger. Et namespace er tjenesteområdet som inneholder køene og topic-ene våre.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Service Bus og namespace</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-queue" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Kø, Peek og PeekLock</span></label></th><td>En kø holder arbeid til en mottaker kan behandle det. Peek inspiserer uten å låse; PeekLock mottar med en midlertidig lås før fullføring.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement">Les mer<span class="sr-only"> om Kø, Peek og PeekLock</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-settlement" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Complete og Abandon</span></label></th><td>Complete bekrefter behandling og fjerner meldingen. Abandon frigir den for ny levering; vi sammenligner DeliveryCount etterpå.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement">Les mer<span class="sr-only"> om Complete og Abandon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-receive-delete" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ReceiveAndDelete</span></label></th><td>Mottaksmodus der meldingen regnes som ferdig når den sendes til klienten. Et senere klientkrasj kan derfor miste arbeidet.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement">Les mer<span class="sr-only"> om ReceiveAndDelete</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-dlq" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DLQ</span></label></th><td>Dead-Letter Queue: egen underkø for meldinger som må undersøkes. Vi ser på feilårsak og hvordan meldingen leses og fullføres derfra.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Les mer<span class="sr-only"> om DLQ</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-sdk" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-entra" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Microsoft Entra ID</span></label></th><td>Azures identitetstjeneste. DefaultAzureCredential bruker vår innlogging, og rollen Azure Service Bus Data Owner gir labbrukeren datatilgang.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/overview">Les mer<span class="sr-only"> om Microsoft Entra ID</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w15-begrep-metadata" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Body og meldingsegenskaper</span></label></th><td>Body er innholdet; subject og application properties er metadata. Message ID er meldingsidentifikatoren, som må skilles fra antall leveringsforsøk.</td><td><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Les mer<span class="sr-only"> om Body og meldingsegenskaper</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Opprett ett Service Bus-namespace med <strong>Standard</strong> i <a href="./workshop-integrations.html#ressursgruppe">ressursgruppen fra del 14</a>, og opprett køen <code>documents</code>. Samme namespace og kø brukes i del 15–17. Gi din innloggede bruker Azure Service Bus Data Owner på labnamespace-et. SDK-pakkene og Azure-innloggingen er klare fra fellesoppsettet.</p><pre data-language="PowerShell"><code># Sett det fulle vertsnavnet til Service Bus-namespace-et.
+$env:SERVICEBUS_NAMESPACE = "DITT-NAMESPACE.servicebus.windows.net"</code></pre>
+
+<details class="source-file" id="fil-labs-integrations-requirements-txt" data-source-file="labs/integrations/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/integrations/requirements.txt"><code># Functions-typer og dekoratorer for HTTP-triggerne.
+azure-functions&gt;=1.20,&lt;2
+# Entra-autentisering gjennom DefaultAzureCredential.
+azure-identity&gt;=1.19,&lt;2
+# SDK for køer, topics, subscriptions og meldingsbekreftelse.
+azure-servicebus&gt;=7.12,&lt;8
+# SDK for publisering av egne Event Grid-hendelser.
+azure-eventgrid&gt;=4.20,&lt;5
+</code></pre></details>
+</section>
+      <section class="panel" id="send"><h2>1. Send fra Python</h2>
+<pre data-language="PowerShell"><code># Send labmeldingen til documents-køen med Service Bus-SDK-et.
+python labs/integrations/message_bus.py send</code></pre><p>Åpne Service Bus Explorer og bruk Peek for å se meldingen uten å fjerne den. Finn body, subject, message ID og application properties. Les senderen i <code>message_bus.py</code>.</p><label class="check-item"><input type="checkbox" data-check="w15-send"><span>Jeg har sendt og inspisert en melding fra SDK-et.</span></label>
+
+<details class="source-file" id="fil-labs-integrations-message-bus-py" data-source-file="labs/integrations/message_bus.py"><summary><code>message_bus.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/integrations/message_bus.py</code></p><pre data-language="Python" data-source="labs/integrations/message_bus.py"><code>&quot;&quot;&quot;Service Bus data-plane operations using the signed-in user&#x27;s identity.&quot;&quot;&quot;
+# Velg kø-, topic-, subscription- eller DLQ-operasjon.
+import argparse
+# Les Service Bus-navnet fra miljøet.
+import os
+
+# Bruk Entra-identitet, for eksempel den innloggede Azure CLI-brukeren.
+from azure.identity import DefaultAzureCredential
+# Hent klienten, meldingstypen og valget for dead-letter-køen.
+from azure.servicebus import ServiceBusClient, ServiceBusMessage, ServiceBusSubQueue
+
+
+# Kjør én operasjon mot labnamespace-et.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til dem som brukes i øvelsene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;send&quot;, &quot;receive&quot;, &quot;dlq&quot;, &quot;topic&quot;, &quot;subscription&quot;])
+    # Velg mottakende subscription; indexer er standard.
+    parser.add_argument(&quot;--subscription&quot;, default=&quot;indexer&quot;)
+    # Les valgene fra terminalen.
+    args = parser.parse_args()
+    # Opprett identitet og klient, og lukk dem etter operasjonen.
+    with DefaultAzureCredential() as credential, ServiceBusClient(
+            # Bruk namespace-adressen uten å lagre en tilkoblingsnøkkel i filen.
+            fully_qualified_namespace=os.environ[&quot;SERVICEBUS_NAMESPACE&quot;], credential=credential) as client:
+        # Disse operasjonene sender én ny melding.
+        if args.mode in {&quot;send&quot;, &quot;topic&quot;}:
+            # Send til topic-et når topic-operasjonen er valgt.
+            sender = (client.get_topic_sender(&quot;document-events&quot;) if args.mode == &quot;topic&quot;
+                      # Ellers sendes meldingen til documents-køen.
+                      else client.get_queue_sender(&quot;documents&quot;))
+            # Åpne senderen for denne sendingen.
+            with sender:
+                # Bruk en liten JSON-body som nyttelast.
+                sender.send_messages(ServiceBusMessage(&#x27;{&quot;id&quot;:&quot;doc-001&quot;}&#x27;,
+                                                       # Legg til subject og en egenskap som subscription-filtre kan bruke.
+                                                       subject=&quot;document&quot;, application_properties={&quot;kind&quot;: &quot;note&quot;}))
+            # Bekreft at SDK-sendingen er fullført.
+            print(&quot;Sent&quot;)
+        # De øvrige operasjonene mottar meldinger.
+        else:
+            # En topic-mottaker leser fra en bestemt subscription.
+            if args.mode == &quot;subscription&quot;:
+                # Velg indexer eller audit på document-events-topic-et.
+                receiver = client.get_subscription_receiver(&quot;document-events&quot;, args.subscription)
+            # Køøvelsen leser enten vanlig kø eller dens DLQ.
+            else:
+                # Opprett mottakeren for documents-køen.
+                receiver = client.get_queue_receiver(&quot;documents&quot;, sub_queue=(
+                    # Velg dead-letter-underkøen bare i dlq-modus.
+                    ServiceBusSubQueue.DEAD_LETTER if args.mode == &quot;dlq&quot; else None))
+            # Åpne mottakeren og lukk den etter bruk.
+            with receiver:
+                # Hent høyst ti meldinger og begrens ventingen til fem sekunder.
+                messages = receiver.receive_messages(max_message_count=10, max_wait_time=5)
+                # Vis hvor mange meldinger som ble hentet.
+                print(&quot;Received:&quot;, len(messages))
+                # Behandle hver mottatt melding.
+                for message in messages:
+                    # Vis body og antall leveringsforsøk.
+                    print(str(message), &quot;Delivery:&quot;, message.delivery_count)
+                    # Fremprovoser DLQ-flyten i den vanlige køøvelsen.
+                    if args.mode == &quot;receive&quot;:
+                        # Flytt meldingen til DLQ med en årsak du kan inspisere.
+                        receiver.dead_letter_message(message, reason=&quot;Workshop&quot;, error_description=&quot;Controlled demo&quot;)
+                    # Fullfør meldinger i DLQ- og subscription-øvelsene.
+                    else:
+                        # Bekreft behandling og fjern meldingen fra denne mottakerkøen.
+                        receiver.complete_message(message)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Service Bus-operasjon.
+    main()
+</code></pre></details>
+</section>
+      <section class="panel" id="laas"><h2>2. Lås, frigjør og lever igjen</h2>
+<p>I Explorer: Receive med PeekLock, velg Abandon, og motta på nytt. Sammenlign DeliveryCount. Forklar forskjellen mellom Peek, ReceiveAndDelete, Complete og Abandon. Ikke bruk andre køer enn labkøen.</p><label class="check-item"><input type="checkbox" data-check="w15-laas"><span>Jeg kan forklare hva en lås og ny levering betyr for mottakeren.</span></label>
+</section>
+      <section class="panel" id="dlq"><h2>3. Håndter DLQ i kode</h2>
+<pre data-language="PowerShell"><code># Motta labmeldinger og flytt dem til DLQ med en kontrollert feilårsak.
+python labs/integrations/message_bus.py receive
+# Les meldingene i DLQ, vis innholdet og fullfør dem.
+python labs/integrations/message_bus.py dlq</code></pre><p>Receive-steget flytter mottatte meldinger til DLQ med en kontrollert feilårsak. DLQ-steget leser, skriver dem ut og fullfører dem. Inspiser reason i portalen mellom kjøringene. Diskuter hvilke feil som kan prøves på nytt og hvilke som trenger rettet innhold.</p><label class="check-item"><input type="checkbox" data-check="w15-dlq"><span>Jeg har dead-letter-et og fullført en melding med SDK-et.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp</h2>
+<p>Kontroller at hovedkø og DLQ er tomme. Behold namespace-et bare til workshop 16–17 hvis du fortsetter. Slett det når du er ferdig.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-integrasjoner.html">Se pensummål og videre studier for domene 3</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 3 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-python-how-to-use-queues">Python og Service Bus-køer</a></li><li><a href="https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues">Dead-letter queue</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-integrations.html">← Workshop 14</a><a href="./workshop-topics.html">Workshop 16 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 15</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Samlet workshop i Datatjenester for AI, som én økt eller to samlinger. Samme øvelser og fremdrift som de korte workshopene.">
+  <title>Samlet workshop: Datatjenester for AI | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <link rel="stylesheet" href="./workshop-formats.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner"><a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html#domener">Pensum</a><a href="./index.html?format=domain#workshops-domene-2">Workshopformat</a><a href="./studiedekning.html">Studiedekning</a></nav></div></header>
+  <div class="hero"><div class="wrap"><p class="eyebrow">Samlet workshop / Domene 2</p><h1>Datatjenester for AI</h1><p class="lead">Gjennomfør del 7–13 som én sammenhengende workshop eller to samlinger. Du bruker de samme oppgavene som i de korte øktene.</p><div class="meta"><span class="tag">7 deler</span><span class="tag">Én eller to samlinger</span></div></div></div>
+  <nav class="workshop-nav" aria-label="Samlede workshops"><div class="wrap"><a href="./workshop-domene-containere.html">1. Containere på Azure</a><a href="./workshop-domene-data.html" aria-current="page">2. Datatjenester for AI</a><a href="./workshop-domene-integrasjoner.html">3. Integrasjoner og Functions</a><a href="./workshop-domene-sikkerhet.html">4. Sikkerhet, sporing og KQL</a></div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold"><a href="#agenda">Velg gjennomføring</a><a href="#forberedelser">Klargjøring</a><a href="#ressurser">Ressursplan</a><a href="#gjennomforing">Øvelsene</a><a href="#avslutning">Avslutt og studer videre</a></nav></aside>
+    <article class="content" data-domain-workshop>
+      <section class="panel" id="agenda"><h2>Én økt eller to samlinger</h2><p>Én samlet økt omfatter hele domenet. Delingen i to samlinger er tematisk. Gjennomføringstiden er ikke målt; den avhenger av forkunnskaper, egne forsøk, diskusjon og klargjøring.</p><fieldset class="format-options session-options" data-domain-session-options hidden><legend>Vis øvelser for</legend><label><input type="radio" name="domain-session" value="all" checked><span>Én samlet økt<small>Alle 7 deler</small></span></label><label><input type="radio" name="domain-session" value="1"><span>Samling 1<small>Del 7–9</small></span></label><label><input type="radio" name="domain-session" value="2"><span>Samling 2<small>Del 10–13</small></span></label></fieldset><p data-progress aria-live="polite"></p><p class="small">Fremdrift deles mellom formatene på samme nettsted i denne nettleseren. Ved lokal bruk åpner du nettstedet via en lokal HTTP-server. Bytte av format gir samme oppgavedekning. <a href="./index.html?format=short#workshops-domene-2">Velg korte økter i stedet →</a></p><div class="table-wrap"><table><caption>Forslag til deling</caption><thead><tr><th scope="col">Samling</th><th scope="col">Deler</th></tr></thead><tbody><tr><th scope="row">Samling 1: PostgreSQL og Cosmos SDK</th><td><a href="#module-7" aria-label="Del 7: PostgreSQL: vektorsøk og indekser">Del 7</a> · <a href="#module-8" aria-label="Del 8: PostgreSQL i Azure: SDK og forbindelser">Del 8</a> · <a href="#module-9" aria-label="Del 9: Cosmos DB: SDK, indekser og RU">Del 9</a></td></tr><tr><th scope="row">Samling 2: Vektorer, endringsflyt og Redis</th><td><a href="#module-10" aria-label="Del 10: Vektorsøk i Cosmos DB">Del 10</a> · <a href="#module-11" aria-label="Del 11: Behandle endringer fra Cosmos DB">Del 11</a> · <a href="#module-12" aria-label="Del 12: Caching og invalidering med Managed Redis">Del 12</a> · <a href="#module-13" aria-label="Del 13: Vektorindeks i Managed Redis">Del 13</a></td></tr></tbody></table></div></section>
+      <section class="panel" id="forberedelser"><h2>Felles oppsett</h2><p><a href="./getting-started.html#for-du-starter">Kom i gang</a> gjøres én gang. Ved ny terminal bruker du <a href="./getting-started.html#terminal">terminaloppsettet</a>. Ressursene opprettes i den delen som bruker dem først; følg delene i rekkefølge.</p></section>
+      <section class="panel" id="ressurser"><h2>Behold ressursene til de er ferdig brukt</h2><p>Tabellen viser hva som brukes videre mellom deler og samlinger. Oppryddingen i hver del er den samme i begge workshopformater.</p><div class="table-wrap"><table><caption>Overganger mellom deler og samlinger</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Brukes i</th><th scope="col">Rydding</th></tr></thead><tbody><tr><th scope="row">Lokal PostgreSQL-container</th><td>Del 7</td><td>Etter del 7</td></tr><tr><th scope="row">Azure PostgreSQL</th><td>Del 8</td><td>Etter del 8</td></tr><tr><th scope="row">Cosmos DB, notes og leases</th><td>Del 9–11</td><td>Etter del 11; behold kontoen og notes mellom samlingene</td></tr><tr><th scope="row">Storage for change feed</th><td>Del 11</td><td>Etter del 11</td></tr><tr><th scope="row">Managed Redis</th><td>Del 12–13</td><td>Etter del 13</td></tr></tbody></table></div><p><a href="./getting-started.html#kostnader">Kostnadsveiledning (valgfritt)</a>. Avslutter du løpet før siste avhengige del, sletter du også ressursene som ellers skulle vært brukt videre.</p></section>
+      <section id="gjennomforing" class="domain-exercises"><h2>Gjennomfør øvelsene</h2><p>Åpne eller lukk hver del etter behov. Ved valg av samling 1 eller 2 viser fremdriftstelleren bare oppgavene i den samlingen.</p><details class="panel domain-chapter" id="module-7" data-domain-chapter data-session="1" open>
+<summary><span class="chapter-number">Del 7</span><h3>PostgreSQL: vektorsøk og indekser</h3></summary>
+<p class="small"><a href="./workshop-data.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w7-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-postgres" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>PostgreSQL og pgvector</span></label></th><td>PostgreSQL er databasen. Utvidelsen pgvector gir datatypen vector og operatorene og indeksene som brukes til vektorsøk.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om PostgreSQL og pgvector</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-sql" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL, schema og primærnøkkel</span></label></th><td>SQL betyr Structured Query Language. Schema beskriver datastrukturen; primærnøkkelen identifiserer hver rad entydig.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om SQL, schema og primærnøkkel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-embedding" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Embedding og dimensjon</span></label></th><td>En embedding er en tallvektor som representerer innhold. vector(3) krever tre komponenter; her bruker vi håndskrevne undervisningsvektorer.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Embedding og dimensjon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-cosine" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosinusavstand og &lt;=&gt;</span></label></th><td>Operatoren &lt;=&gt; beregner cosinusavstand mellom vektorer. Lavere avstand gir høyere plassering når vi sorterer stigende.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Cosinusavstand og &lt;=&gt;</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-rag" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metadatafilter og RAG</span></label></th><td>RAG betyr Retrieval-Augmented Generation, generering med gjenfunnet kontekst. Metadatafilteret avgrenser hvilke dokumenter som kan bli med i gjenfinningen.</td><td><a href="https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview">Les mer<span class="sr-only"> om Metadatafilter og RAG</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-hnsw" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HNSW</span></label></th><td>Hierarchical Navigable Small World: grafbasert indeks for tilnærmet søk etter nærmeste vektorer. Recall, minnebruk og svartid må veies mot hverandre.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om HNSW</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-explain" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>EXPLAIN ANALYZE og Seq Scan</span></label></th><td>Viser hvordan spørringen kjøres og målt tidsbruk. Seq Scan er sekvensiell gjennomlesing; et lite datasett kan gjøre den billigere enn indeksoppslag.</td><td><a href="https://www.postgresql.org/docs/17/using-explain.html">Les mer<span class="sr-only"> om EXPLAIN ANALYZE og Seq Scan</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w7-begrep-recall" data-progress-source="./workshop-data.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Recall og latency</span></label></th><td>Recall er andelen relevante nærmeste naboer søket finner sammenlignet med et eksakt søk. Latency er svartid; høyere recall kan kreve mer arbeid.</td><td><a href="https://github.com/pgvector/pgvector">Les mer<span class="sr-only"> om Recall og latency</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w7-forberedelser"><h4>Oppsett for denne delen</h4><p>Docker må kjøre. Bruk <code>labs/data/setup.sql</code> som ferdig datasett, og lagre egne spørringer i <code>artifacts/queries.sql</code>. Vektorene er små undervisningstall; øvelsen undersøker lagring, avstand og gjenfinning.</p>
+
+<details class="source-file" id="w7-fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Opprett labtabellen hvis den ikke finnes fra før.
+CREATE TABLE IF NOT EXISTS workshop_notes (
+    -- Gi hver rad en entydig identifikator.
+    id integer PRIMARY KEY,
+    -- Bruk topic som metadatafilter i søkene.
+    topic text NOT NULL,
+    -- Lagre teksten som et senere RAG-steg kan hente frem.
+    content text NOT NULL,
+    -- Lagre nøyaktig tre komponenter per undervisningsvektor.
+    embedding vector(3) NOT NULL
+);
+
+-- Hand-written teaching vectors, not output from an embedding model.
+-- Sett inn fire eksempler. Vektorene er skrevet for hånd, ikke generert av en modell.
+INSERT INTO workshop_notes (id, topic, content, embedding) VALUES
+    -- Første containerdokument peker langs første vektordimensjon.
+    (1, &#x27;containers&#x27;, &#x27;A container packages an application and its dependencies.&#x27;, &#x27;[1,0,0]&#x27;),
+    -- Andre containerdokument ligger nær det første i vektorrommet.
+    (2, &#x27;containers&#x27;, &#x27;Read container logs when an application fails to start.&#x27;, &#x27;[0.9,0.1,0]&#x27;),
+    -- Datadokumentet ligger nær spørsmålsvektoren, men kan filtreres bort av topic.
+    (3, &#x27;data&#x27;, &#x27;A database stores and retrieves application data.&#x27;, &#x27;[0,1,0]&#x27;),
+    -- Sikkerhetsdokumentet gir oss et eksempel i et annet emne.
+    (4, &#x27;security&#x27;, &#x27;Managed identity removes the need to store a credential.&#x27;, &#x27;[0,0,1]&#x27;)
+-- Oppdater eksisterende rader når skriptet kjøres på nytt.
+ON CONFLICT (id) DO UPDATE SET
+    -- Bruk emnet fra raden vi forsøkte å sette inn.
+    topic = EXCLUDED.topic,
+    -- Oppdater teksten til verdien i eksempeldatasettet.
+    content = EXCLUDED.content,
+    -- Oppdater også vektoren, og avslutt SQL-setningen.
+    embedding = EXCLUDED.embedding;
+</code></pre></details>
+</section><section class="chapter-step" id="w7-postgres"><h4>1. Start database og schema</h4><pre data-language="PowerShell"><code># Start en lokal PostgreSQL 17-container med pgvector og databasen workshop.
+docker run --detach --name ai200-pg --env POSTGRES_PASSWORD=local-workshop-only --env POSTGRES_DB=workshop pgvector/pgvector:pg17
+# Kontroller at PostgreSQL-containeren er klar til å motta forbindelser.
+docker exec ai200-pg pg_isready -U postgres -d workshop
+# Send SQL-filen til psql i containeren for å opprette schema og eksempeldata.
+Get-Content labs/data/setup.sql -Raw | docker exec -i ai200-pg psql -U postgres -d workshop
+# Åpne en interaktiv psql-terminal mot databasen workshop.
+docker exec -it ai200-pg psql -U postgres -d workshop</code></pre><p>Vent på accepting connections før setup. Tabellen har id, topic, textinnhold og vector(3). Forklar valg av primærnøkkel og dimensjoner.</p><label class="check-item"><input type="checkbox" data-check="w7-postgres" data-progress-source="./workshop-data.html"><span>Jeg har opprettet en tabell og lagret vektorer.</span></label>
+</section><section class="chapter-step" id="w7-vektorsok"><h4>2. Søk og filtrer</h4><pre data-language="SQL"><code>-- Hent dokumentfeltene og beregn cosinusavstand til spørsmålsvektoren.
+SELECT id, topic, content, embedding &lt;=&gt; '[0,1,0]'::vector AS distance
+-- Les radene fra labtabellen workshop_notes.
+FROM workshop_notes
+-- Ta bare med dokumenter som har emnet containers.
+WHERE topic = 'containers'
+-- Sorter dokumentene etter økende cosinusavstand.
+ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector
+-- Returner bare de to nærmeste dokumentene.
+LIMIT 2;</code></pre><p>Forventet: dokument 2 før 1. Uten filter er dokument 3 nærmest. Forklar hvordan et metadatafilter avgrenser RAG-konteksten før en språkmodell eventuelt bruker treffene.</p><label class="check-item"><input type="checkbox" data-check="w7-vektorsok" data-progress-source="./workshop-data.html"><span>Jeg har brukt både vektoravstand og metadatafilter.</span></label>
+</section><section class="chapter-step" id="w7-indeks"><h4>3. Les planen og bygg indeks</h4><pre data-language="SQL"><code>-- Opprett den navngitte indeksen hvis den ikke finnes fra før.
+CREATE INDEX IF NOT EXISTS notes_embedding_hnsw
+-- Bygg en HNSW-indeks på embedding med operatorer for cosinusavstand.
+ON workshop_notes USING hnsw (embedding vector_cosine_ops);
+-- Kjør neste spørring og vis planen, målt tidsbruk og bufferaktivitet.
+EXPLAIN (ANALYZE, BUFFERS)
+-- Hent dokumentenes ID-er fra labtabellen.
+SELECT id FROM workshop_notes
+-- Sorter etter cosinusavstand og begrens resultatet til to dokumenter.
+ORDER BY embedding &lt;=&gt; '[0,1,0]'::vector LIMIT 2;</code></pre><p>Fire rader er ofte for lite til at indeksen lønner seg; Seq Scan er normalt. Sammenlign operator og operator class. Beskriv avveiningen mellom recall, minne og svartid for en større vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w7-indeks" data-progress-source="./workshop-data.html"><span>Jeg tolker planen og vet hvorfor en indeks kan bli valgt bort.</span></label>
+</section><section class="chapter-step" id="w7-opprydding"><h4>Rydding og overgang til neste del</h4><p>Avslutt psql med <code>\q</code>. Ta vare på SQL-endringene dine og fjern labcontainerens data.</p><pre data-language="PowerShell"><code># Stopp labdatabasen før containeren fjernes.
+docker stop ai200-pg
+# Fjern den stoppede PostgreSQL-containeren og dens anonyme datavolumer.
+docker rm --volumes ai200-pg</code></pre>
+</section>
+</details><details class="panel domain-chapter" id="module-8" data-domain-chapter data-session="1" open>
+<summary><span class="chapter-number">Del 8</span><h3>PostgreSQL i Azure: SDK og forbindelser</h3></summary>
+<p class="small"><a href="./workshop-postgresql.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w8-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-postgres" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Database for PostgreSQL</span></label></th><td>En Azure-driftet PostgreSQL-server. Vi skiller serverkapasitet og nettverk fra databasen og tabellene appen spør mot.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om Azure Database for PostgreSQL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-sdk" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-sql" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SQL-parametere</span></label></th><td>SQL betyr Structured Query Language. Verdiene sendes separat fra SQL-teksten til execute, slik at brukerdata ikke tolkes som SQL-kode.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om SQL-parametere</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-tls" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TLS</span></label></th><td>Transport Layer Security: beskytter data under overføring. Vi krever kryptert forbindelse med sslmode=require.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om TLS</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-pool" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Connection pool</span></label></th><td>En forbindelsespool gjenbruker åpne databaseforbindelser. Min/max-størrelse styrer kapasiteten; hver prosess har sin egen klientpool.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer">Les mer<span class="sr-only"> om Connection pool</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-pgbouncer" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>PgBouncer</span></label></th><td>En separat pooler foran PostgreSQL. Innebygd PgBouncer i Azure bruker port 6432 og er forskjellig fra klientpoolen i Python.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer">Les mer<span class="sr-only"> om PgBouncer</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-resources" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>CPU, minne og I/O</span></label></th><td>CPU er Central Processing Unit, prosessoren. I/O er Input/Output, inn- og utlesing; vi sammenligner prosessor, minne, forbindelser og lagringsaktivitet som mulige flaskehalser.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/">Les mer<span class="sr-only"> om CPU, minne og I/O</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w8-begrep-latency" data-progress-source="./workshop-postgresql.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Tilkoblingslatens</span></label></th><td>Tiden det tar å opprette en forbindelse før spørringen kan starte. Vi sammenligner nye forbindelser med gjenbruk, og gjentar målingen for å se variasjon.</td><td><a href="https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer">Les mer<span class="sr-only"> om Tilkoblingslatens</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w8-forberedelser"><h4>Oppsett for denne delen</h4><h5 id="w8-ressursgruppe">Ressursgruppen for domene 2</h5><p>Dette er første Azure-øvelse i domenet. Opprett gruppen bare hvis den mangler; bruk ditt eksisterende gruppenavn hvis du har valgt et annet.</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d2"
+# Velg Norway East som region for nye ressurser.
+$location = "norwayeast"
+# Kjør opprettelsen bare hvis ressursgruppen ikke finnes i abonnementet.
+if ((az group exists --name $rg -o tsv) -eq "false") {
+    # Opprett den manglende ressursgruppen i valgt region.
+    az group create --name $rg --location $location -o none
+}</code></pre>
+<p>Opprett en liten Azure Database for PostgreSQL Flexible Server i den eksisterende ressursgruppen <code>ai200-d2</code>, med TLS og nettverkstilgang fra din maskin. Denne serveren er ny i del 8; den lokale databasen fra del 7 brukes ikke videre. Opprett databasen <code>workshop</code>. Tillat utvidelsen <code>vector</code> i serverparameteren <code>azure.extensions</code>. Bruk en databasebruker med rett til å opprette labtabellen.</p>
+
+<details class="source-file" id="w8-fil-labs-data-setup-sql" data-source-file="labs/data/setup.sql"><summary><code>setup.sql</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/setup.sql</code></p><pre data-language="SQL" data-source="labs/data/setup.sql"><code>-- Aktiver pgvector-utvidelsen i den valgte databasen.
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Opprett labtabellen hvis den ikke finnes fra før.
+CREATE TABLE IF NOT EXISTS workshop_notes (
+    -- Gi hver rad en entydig identifikator.
+    id integer PRIMARY KEY,
+    -- Bruk topic som metadatafilter i søkene.
+    topic text NOT NULL,
+    -- Lagre teksten som et senere RAG-steg kan hente frem.
+    content text NOT NULL,
+    -- Lagre nøyaktig tre komponenter per undervisningsvektor.
+    embedding vector(3) NOT NULL
+);
+
+-- Hand-written teaching vectors, not output from an embedding model.
+-- Sett inn fire eksempler. Vektorene er skrevet for hånd, ikke generert av en modell.
+INSERT INTO workshop_notes (id, topic, content, embedding) VALUES
+    -- Første containerdokument peker langs første vektordimensjon.
+    (1, &#x27;containers&#x27;, &#x27;A container packages an application and its dependencies.&#x27;, &#x27;[1,0,0]&#x27;),
+    -- Andre containerdokument ligger nær det første i vektorrommet.
+    (2, &#x27;containers&#x27;, &#x27;Read container logs when an application fails to start.&#x27;, &#x27;[0.9,0.1,0]&#x27;),
+    -- Datadokumentet ligger nær spørsmålsvektoren, men kan filtreres bort av topic.
+    (3, &#x27;data&#x27;, &#x27;A database stores and retrieves application data.&#x27;, &#x27;[0,1,0]&#x27;),
+    -- Sikkerhetsdokumentet gir oss et eksempel i et annet emne.
+    (4, &#x27;security&#x27;, &#x27;Managed identity removes the need to store a credential.&#x27;, &#x27;[0,0,1]&#x27;)
+-- Oppdater eksisterende rader når skriptet kjøres på nytt.
+ON CONFLICT (id) DO UPDATE SET
+    -- Bruk emnet fra raden vi forsøkte å sette inn.
+    topic = EXCLUDED.topic,
+    -- Oppdater teksten til verdien i eksempeldatasettet.
+    content = EXCLUDED.content,
+    -- Oppdater også vektoren, og avslutt SQL-setningen.
+    embedding = EXCLUDED.embedding;
+</code></pre></details>
+
+<details class="source-file" id="w8-fil-labs-data-requirements-txt" data-source-file="labs/data/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/data/requirements.txt"><code># PostgreSQL-driver med ferdige binærfiler og støtte for forbindelsespool.
+psycopg[binary,pool]&gt;=3.2,&lt;4
+# Tilpasning mellom PostgreSQLs vector-type og Python.
+pgvector&gt;=0.3,&lt;1
+</code></pre></details>
+</section><section class="chapter-step" id="w8-sdk"><h4>1. Koble til med Python</h4><p>Start i prosjektroten. Hent tilkoblingsinformasjonen fra Connect i portalen. <code>PGCONNINFO</code> er en lokal miljøvariabel; behold <code>sslmode=require</code> og legg ikke passordet i filene.</p><pre data-language="PowerShell"><code># Sett PostgreSQL-tilkoblingen med database, bruker, passord og påkrevd TLS.
+$env:PGCONNINFO = "host=DIN-SERVER.postgres.database.azure.com port=5432 dbname=workshop user=DIN-BRUKER password=DITT-PASSORD sslmode=require"
+# Opprett labtabellen, aktiver vector og last inn de fire eksempelradene i Azure-databasen.
+python labs/data/postgres_client.py setup
+# Kjør den parameteriserte PostgreSQL-spørringen og vis de nærmeste dokumentene.
+python labs/data/postgres_client.py query</code></pre><p>Forventet: dokument 2 og 1. Finn de parameteriserte verdiene i <code>postgres_client.py</code> og forklar hvorfor SQL og data sendes separat.</p><label class="check-item"><input type="checkbox" data-check="w8-sdk" data-progress-source="./workshop-postgresql.html"><span>Jeg har kjørt en parameterisert vektorspørring mot Azure PostgreSQL.</span></label>
+
+<details class="source-file" id="w8-fil-labs-data-postgres-client-py" data-source-file="labs/data/postgres_client.py"><summary><code>postgres_client.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/data/postgres_client.py</code></p><pre data-language="Python" data-source="labs/data/postgres_client.py"><code>&quot;&quot;&quot;Run the same parameterized vector query with a direct connection and a pool.&quot;&quot;&quot;
+# Velg setup, query eller compare fra kommandolinjen.
+import argparse
+# Les tilkoblingen fra miljøet fremfor å lagre passord i filen.
+import os
+# Mål tiden brukt på direkte forbindelser og forbindelsespool.
+import time
+# Finn SQL-filen ved siden av dette skriptet.
+from pathlib import Path
+
+# Bruk PostgreSQL-driveren til å kjøre SQL.
+import psycopg
+# Registrer hvordan pgvector-verdier konverteres i forbindelsen.
+from pgvector.psycopg import register_vector
+# Gjenbruk et lite antall databaseforbindelser.
+from psycopg_pool import ConnectionPool
+
+
+# Kjør dette oppsettet på hver nye forbindelse i poolen.
+def configure(connection):
+    # Lær forbindelsen å håndtere databasens vector-type.
+    register_vector(connection)
+    # Avslutt transaksjonen fra typeoppsettet før forbindelsen brukes av poolen.
+    connection.commit()
+
+
+# Bruk samme spørring i begge målingene.
+def query(connection):
+    # Kjør parameterisert SQL og hent de to nærmeste radene.
+    return connection.execute(
+        # Hent dokumentets ID, metadata og tekst.
+        &quot;SELECT id, topic, content FROM workshop_notes &quot;
+        # Filtrer på emne og sorter etter cosinusavstand med pgvector.
+        &quot;WHERE topic = %s ORDER BY embedding &lt;=&gt; %s::vector LIMIT 2&quot;,
+        # Send verdiene separat fra SQL-teksten.
+        (&quot;containers&quot;, &quot;[0,1,0]&quot;),
+    ).fetchall()
+
+
+# Samle oppsett, spørring og sammenligning i ett kjørbart eksempel.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Tillat bare de tre laboperasjonene.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;compare&quot;])
+    # Les operasjonen deltakeren valgte.
+    args = parser.parse_args()
+    # Bruk tilkoblingsstrengen satt i terminalen.
+    connection_string = os.environ[&quot;PGCONNINFO&quot;]
+    # Disable prepared statements so the example also works through transaction pooling.
+    # Deaktiver automatisk server-side prepare for å støtte transaction pooling.
+    options = {&quot;prepare_threshold&quot;: None}
+    # Opprett skjema og eksempeldata.
+    if args.mode == &quot;setup&quot;:
+        # Åpne og lukk en direkte forbindelse for denne operasjonen.
+        with psycopg.connect(connection_string, **options) as connection:
+            # Les setup.sql fra samme mappe og kjør innholdet på serveren.
+            connection.execute(Path(__file__).with_name(&quot;setup.sql&quot;).read_text(encoding=&quot;utf-8&quot;))
+        # Bekreft at oppsettet er fullført.
+        print(&quot;Schema and four example rows ready&quot;)
+    # Kjør ett vanlig oppslag.
+    elif args.mode == &quot;query&quot;:
+        # Åpne og lukk en direkte forbindelse for denne operasjonen.
+        with psycopg.connect(connection_string, **options) as connection:
+            # Behandle radene fra den parameteriserte spørringen.
+            for row in query(connection):
+                # Vis resultatet i terminalen.
+                print(row)
+    # Sammenlign tidsbruk med og uten forbindelsespool.
+    else:
+        # Bruk samme antall operasjoner i begge målingene.
+        count = 10
+        # Start tidsmålingen for direkte forbindelser.
+        started = time.perf_counter()
+        # Åpne en ny forbindelse for hver repetisjon.
+        for _ in range(count):
+            # Inkluder forbindelsesopprettelsen i målingen.
+            with psycopg.connect(connection_string, **options) as connection:
+                # Kjør samme arbeid som i pool-varianten.
+                query(connection)
+        # Vis samlet tid for nye forbindelser.
+        print(f&quot;{count} new connections: {time.perf_counter() - started:.3f}s&quot;)
+        # Opprett en pool med mellom én og tre forbindelser.
+        with ConnectionPool(connection_string, min_size=1, max_size=3,
+                            # Bruk samme tilkoblingsvalg og registrer pgvector for hver forbindelse.
+                            kwargs=options, configure=configure) as pool:
+            # Vent til poolen er klar før målingen starter.
+            pool.wait()
+            # Start målingen etter klargjøringen av poolen.
+            started = time.perf_counter()
+            # Gjenta samme antall spørringer.
+            for _ in range(count):
+                # Lån en forbindelse og lever den tilbake etter bruk.
+                with pool.connection() as connection:
+                    # Kjør den samme spørringen på en gjenbrukt forbindelse.
+                    query(connection)
+            # Vis tiden for spørringene gjennom poolen.
+            print(f&quot;{count} pooled queries: {time.perf_counter() - started:.3f}s&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør den valgte laboperasjonen.
+    main()
+</code></pre></details>
+</section><section class="chapter-step" id="w8-pool"><h4>2. Mål og gjenbruk forbindelser</h4><pre data-language="PowerShell"><code># Mål ti nye forbindelser og sammenlign med ti oppslag gjennom en klientpool.
+python labs/data/postgres_client.py compare</code></pre><p>Skriptet sammenligner ti nye forbindelser med ti spørringer via en liten klientpool. Gjenta og noter variasjonen. Tilkoblingslatens, nettverk og oppvarming påvirker resultatene. Undersøk min_size/max_size og hvorfor hver prosess trenger sin egen pool.</p><label class="check-item"><input type="checkbox" data-check="w8-pool" data-progress-source="./workshop-postgresql.html"><span>Jeg har målt forskjellen mellom nye og gjenbrukte forbindelser.</span></label>
+</section><section class="chapter-step" id="w8-ressurser"><h4>3. Undersøk Azure-flaskehalser</h4><ol><li>Åpne Metrics for CPU, minne, aktive forbindelser og lagrings-I/O. Kjør compare igjen og noter hva en så liten last faktisk kan vise.</li><li>Undersøk Compute + storage og PgBouncer. Velg et foreslått alternativ for mange samtidige oppslag og begrunn CPU/minne/lagring. Gjennomfør en endring bare på din labserver hvis øvelsen trenger den.</li><li>På en tier med innebygd PgBouncer: aktiver den, bruk port 6432 i PGCONNINFO og kjør query/compare på nytt. Hvis tier-en ikke støtter det, bruker du klientpoolen og forklarer skillet.</li></ol><p>Kombiner målingene med EXPLAIN-planen fra workshop 7. En liten datasamling er ikke en representativ kapasitetsmåling.</p><label class="check-item"><input type="checkbox" data-check="w8-ressurser" data-progress-source="./workshop-postgresql.html"><span>Jeg kan knytte en observerbar flaskehals til forbindelser eller databasekapasitet.</span></label>
+</section><section class="chapter-step" id="w8-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code># Fjern PGCONNINFO fra denne terminalen.
+Remove-Item Env:PGCONNINFO -ErrorAction SilentlyContinue</code></pre><p>Slett labserveren og tilknyttede ressurser når du er ferdig. Ingen andre workshops trenger denne serveren.</p>
+</section>
+</details><details class="panel domain-chapter" id="module-9" data-domain-chapter data-session="1" open>
+<summary><span class="chapter-number">Del 9</span><h3>Cosmos DB: SDK, indekser og RU</h3></summary>
+<p class="small"><a href="./workshop-cosmos.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w9-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-cosmos" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosmos DB for NoSQL</span></label></th><td>Azure-database for dokumenter. DB betyr database; NoSQL omtales ofte som Not only SQL. Vi bruker dokumenter som JSON (JavaScript Object Notation).</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Cosmos DB for NoSQL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-sdk" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-partition" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Partisjonsnøkkel</span></label></th><td>Verdien som plasserer dokumentet i en logisk partisjon. Vi bruker /topic og sender partisjonsverdien ved målrettede oppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Partisjonsnøkkel</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-point" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Point read</span></label></th><td>Direkte lesing med både dokumentets identifikator og partisjonsnøkkel. Vi sammenligner dette med å kjøre en SQL-spørring, Structured Query Language.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Point read</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-ru" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RU og RU/s</span></label></th><td>Request Unit måler kostnaden for en databaseoperasjon. RU/s er tilgjengelige request units per sekund; vi leser request charge for hvert oppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om RU og RU/s</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-index" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Indekseringspolicy</span></label></th><td>Bestemmer hvilke dokumentstier som indekseres. Vi utelater vektorarrayet fra vanlig indeksering og undersøker en endring i text-feltet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Indekseringspolicy</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-consistency" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Consistency og Session</span></label></th><td>Konsistensnivået beskriver hvilke skriveverdier en lesing kan se. Session bevarer garantier innen en klientsesjon; vi sammenligner med Strong og Eventual.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels">Les mer<span class="sr-only"> om Consistency og Session</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w9-begrep-throughput" data-progress-source="./workshop-cosmos.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Dedikert og delt throughput</span></label></th><td>Throughput er tilgjengelig behandlingskapasitet. Laben gir hver container egen kapasitet; shared throughput deler en databasekapasitet mellom containere.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om Dedikert og delt throughput</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w9-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett en Cosmos DB for NoSQL-labkonto i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> og databasen <code>workshop</code> uten delt throughput. Skriptet oppretter hver labcontainer med 400 RU/s. Vektorsøket i neste økt støtter ikke shared throughput. Bruk en egen labkonto. Ha endpoint og en lokal labnøkkel klar. Kontoen brukes også i workshop 10–11.</p><h5 id="w9-tilkobling">Tilkobling i terminalen</h5><p>Bruk disse variablene gjennom del 9–11. Åpner du en ny terminal, setter du bare verdiene nedenfor for den eksisterende kontoen:</p><pre data-language="PowerShell"><code># Sett endepunktet til den eksisterende Cosmos-kontoen.
+$env:COSMOS_ENDPOINT = "https://DIN-KONTO.documents.azure.com:443/"
+# Sett labnøkkelen til Cosmos-kontoen i denne terminalen.
+$env:COSMOS_KEY = "DIN-LAB-NOKKEL"
+# Velg databasen workshop i Cosmos-kontoen.
+$env:COSMOS_DATABASE = "workshop"</code></pre>
+
+<details class="source-file" id="w9-fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+azure-cosmos&gt;=4.9,&lt;5
+# Functions-typer og dekoratorer for change feed-triggeren.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+</section><section class="chapter-step" id="w9-sdk"><h4>1. Opprett og hent dokumenter</h4><pre data-language="PowerShell"><code># Opprett notes-containeren og lagre labens eksempeldokumenter.
+python labs/cosmos/demo.py setup
+# Kjør en parameterisert spørring og vis dokumentene og RU-kostnaden.
+python labs/cosmos/demo.py query
+# Hent note-1 direkte med ID og partisjonsnøkkel, og vis RU-kostnaden.
+python labs/cosmos/demo.py point</code></pre><p><code>demo.py</code> bruker /topic som partisjonsnøkkel og skriver request charge. Sammenlign spørringen med point read. Forventet: note-1 og note-2 fra query, note-1 fra point. Noter RU; tallene varierer.</p><label class="check-item"><input type="checkbox" data-check="w9-sdk" data-progress-source="./workshop-cosmos.html"><span>Jeg har brukt SDK, partisjonsnøkkel og point read.</span></label>
+
+<details class="source-file" id="w9-fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+# Velg hvilken Cosmos-operasjon eksemplet skal utføre.
+import argparse
+# Les endpoint, nøkkel og databasenavn fra terminalens miljø.
+import os
+
+# Bruk Cosmos SDK-et og en eksplisitt partisjonsnøkkel.
+from azure.cosmos import CosmosClient, PartitionKey
+
+# Bruk små undervisningsdokumenter med håndskrevne vektorer.
+DOCUMENTS = [
+    # Første dokument ligger i partisjonen containers.
+    {&quot;id&quot;: &quot;note-1&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Package an application&quot;, &quot;embedding&quot;: [1.0, 0.0, 0.0]},
+    # Andre dokument ligger i samme partisjon, med en lignende vektor.
+    {&quot;id&quot;: &quot;note-2&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Inspect container logs&quot;, &quot;embedding&quot;: [0.9, 0.1, 0.0]},
+    # Tredje dokument viser hvordan metadatafilter kan utelate et nært vektortreff.
+    {&quot;id&quot;: &quot;note-3&quot;, &quot;topic&quot;: &quot;data&quot;, &quot;text&quot;: &quot;Retrieve stored data&quot;, &quot;embedding&quot;: [0.0, 1.0, 0.0]},
+]
+
+
+# La SDK-et sende responsheaderne til denne callbacken.
+def report(headers, _body):
+    # Hent kostnaden i request units fra responsheaderen.
+    charge = headers.get(&quot;x-ms-request-charge&quot;)
+    # Skriv bare RU når headeren finnes.
+    if charge:
+        # Vis grunnlaget for sammenligning av oppslag.
+        print(&quot;Request charge:&quot;, charge, &quot;RU&quot;)
+
+
+# Kjør operasjonen som ble valgt på kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens valgene til operasjonene workshopene bruker.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;point&quot;, &quot;vector-setup&quot;, &quot;vector&quot;, &quot;update&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Åpne klienten med labkontoens endpoint og nøkkel, og lukk den etter bruk.
+    with CosmosClient(os.environ[&quot;COSMOS_ENDPOINT&quot;], credential=os.environ[&quot;COSMOS_KEY&quot;]) as client:
+        # Use a database without shared throughput so vector search is supported.
+        # Velg databasen; dette oppretter ikke databasen.
+        database = client.get_database_client(os.getenv(&quot;COSMOS_DATABASE&quot;, &quot;workshop&quot;))
+        # Hold vektorpolicyen i en egen container.
+        name = &quot;vectors&quot; if args.mode.startswith(&quot;vector&quot;) else &quot;notes&quot;
+        # Hent en klient for den valgte containeren.
+        container = database.get_container_client(name)
+        # Opprett labcontainer og eksempeldata ved setup.
+        if args.mode in {&quot;setup&quot;, &quot;vector-setup&quot;}:
+            # Beskriv den vanlige indekseringspolicyen.
+            policy = {
+                # Oppdater indeksene automatisk når dokumentene endres.
+                &quot;indexingMode&quot;: &quot;consistent&quot;, &quot;automatic&quot;: True,
+                # Indekser dokumentfeltene som standard.
+                &quot;includedPaths&quot;: [{&quot;path&quot;: &quot;/*&quot;}],
+                # Unnta vektorarrayet fra vanlig feltindeksering.
+                &quot;excludedPaths&quot;: [{&quot;path&quot;: &quot;/embedding/*&quot;}],
+            }
+            # Legg bare til vektorinnstillinger for vektorcontaineren.
+            extra = {}
+            # Konfigurer en egen indeks for VectorDistance-søk.
+            if args.mode == &quot;vector-setup&quot;:
+                # Bruk en flat vektorindeks på embedding-feltet.
+                policy[&quot;vectorIndexes&quot;] = [{&quot;path&quot;: &quot;/embedding&quot;, &quot;type&quot;: &quot;flat&quot;}]
+                # Beskriv hvilke vektorer embedding-feltet inneholder.
+                extra[&quot;vector_embedding_policy&quot;] = {&quot;vectorEmbeddings&quot;: [{
+                    # Lagre vektorene i embedding og behandle verdiene som float32.
+                    &quot;path&quot;: &quot;/embedding&quot;, &quot;dataType&quot;: &quot;float32&quot;,
+                    # Krev tre dimensjoner og sammenlign med cosinusavstand.
+                    &quot;dimensions&quot;: 3, &quot;distanceFunction&quot;: &quot;cosine&quot;,
+                }]}
+            # Opprett containeren hvis den mangler; eksisterende policy erstattes ikke her.
+            container = database.create_container_if_not_exists(
+                # Bruk topic som partisjonsnøkkel.
+                id=name, partition_key=PartitionKey(path=&quot;/topic&quot;),
+                # Bruk policyen over og 400 RU/s dedikert throughput.
+                indexing_policy=policy, offer_throughput=400, **extra,
+            )
+            # Skriv inn undervisningsdokumentene.
+            for document in DOCUMENTS:
+                # Opprett eller erstatt dokumentet, og vis operasjonens RU.
+                container.upsert_item(document, response_hook=report)
+            # Vis hvilken container som er klargjort.
+            print(&quot;Ready:&quot;, name)
+        # Utfør et direkte oppslag uten SQL-spørring.
+        elif args.mode == &quot;point&quot;:
+            # ID og partisjonsnøkkel identifiserer dokumentet sammen.
+            result = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;, response_hook=report)
+            # Vis dokumentets ID og tekst.
+            print(result[&quot;id&quot;], result[&quot;text&quot;])
+        # Lag en endring som change feed-triggeren kan observere.
+        elif args.mode == &quot;update&quot;:
+            # Les dokumentet før oppdateringen.
+            document = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;)
+            # Øk et synlig revisjonsnummer.
+            document[&quot;revision&quot;] = document.get(&quot;revision&quot;, 0) + 1
+            # Lagre den nye versjonen og vis skrivekostnaden.
+            container.upsert_item(document, response_hook=report)
+            # Bruk revisjonen til å kjenne igjen endringen i triggerloggen.
+            print(&quot;Updated note-1, revision&quot;, document[&quot;revision&quot;])
+        # Kjør vanlig SQL-søk eller vektorsøk.
+        else:
+            # Start med et metadatafilter.
+            sql = &quot;SELECT c.id, c.topic FROM c WHERE c.topic = @topic&quot;
+            # Send filterverdien som en parameter.
+            parameters = [{&quot;name&quot;: &quot;@topic&quot;, &quot;value&quot;: &quot;containers&quot;}]
+            # Bytt til rangering etter vektoravstand.
+            if args.mode == &quot;vector&quot;:
+                # Returner de to nærmeste treffene og deres avstand.
+                sql = (&quot;SELECT TOP 2 c.id, VectorDistance(c.embedding, @vector) AS distance &quot;
+                       # Behold emnefilteret og sorter de gjenværende dokumentene etter avstand.
+                       &quot;FROM c WHERE c.topic = @topic ORDER BY VectorDistance(c.embedding, @vector)&quot;)
+                # Bruk samme tredimensjonale spørsmålsvektor som i PostgreSQL-øvelsen.
+                parameters.append({&quot;name&quot;: &quot;@vector&quot;, &quot;value&quot;: [0.0, 1.0, 0.0]})
+            # Kjør den parameteriserte spørringen.
+            results = container.query_items(sql, parameters=parameters,
+                                            # Avgrens lesingen til containers-partisjonen og vis RU.
+                                            partition_key=&quot;containers&quot;, response_hook=report)
+            # Iterer resultatene fra SDK-et.
+            for result in results:
+                # Vis hvert treff i terminalen.
+                print(result)
+
+
+# Kjør bare når filen startes direkte.
+if __name__ == &quot;__main__&quot;:
+    # Start den valgte laboperasjonen.
+    main()
+</code></pre></details>
+</section><section class="chapter-step" id="w9-indekser"><h4>2. Endre en indekseringspolicy</h4><p>Før indeksforsøket: lagre den opprinnelige policyen fra prosjektroten. Bruk ressursgruppen <code>ai200-d2</code> og sett <code>$cosmosAccount</code> til Cosmos-kontonavnet ditt. Tilpass <code>$cosmosGroup</code> hvis du brukte et annet gruppenavn:</p><pre data-language="PowerShell"><code># Sett ressursgruppen til den eksisterende Cosmos-kontoen.
+$cosmosGroup = "ai200-d2"
+# Sett navnet på Cosmos-kontoen som allerede finnes.
+$cosmosAccount = "DITT-COSMOS-KONTONAVN"
+# Hent notes-containerens indekseringspolicy og lagre den som en UTF-8-fil.
+az cosmosdb sql container show --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --query resource.indexingPolicy -o json | Set-Content -LiteralPath artifacts/notes-indexing-policy.original.json -Encoding utf8</code></pre><p>Kontroller at filen inneholder policyen før du fortsetter.</p><p>Undersøk policyen for notes: embedding-feltet er utelatt fra vanlig indeksering. Kjør SQL i Data Explorer med query metrics på. På den lille labcontaineren: ekskluder <code>/text/?</code> fra policyen og vent på fullført transformasjon. Kjør en spørring på topic og sammenlign med søk på text.</p><p>Etter sammenligningen: gjenopprett den lagrede policyen og vent på fullført indekstransformasjon:</p><pre data-language="PowerShell"><code># Gjenopprett indekseringspolicyen fra den lagrede JSON-filen.
+az cosmosdb sql container update --resource-group $cosmosGroup --account-name $cosmosAccount --database-name $env:COSMOS_DATABASE --name notes --idx "@artifacts/notes-indexing-policy.original.json" -o none</code></pre><p>Bekreft i Data Explorer at policyen er tilbake og testunntaket <code>/text/?</code> er fjernet. <a href="https://learn.microsoft.com/en-us/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-update">Azure CLI: oppdatere en containerpolicy</a>.</p><p>Målet er å se hvilke felter som støttes effektivt av en indeks. Tre dokumenter gir ikke grunnlag for store ytelseskonklusjoner.</p><label class="check-item"><input type="checkbox" data-check="w9-indekser" data-progress-source="./workshop-cosmos.html"><span>Jeg kan forklare hvordan en indeksendring påvirker en spørring.</span></label>
+</section><section class="chapter-step" id="w9-consistency"><h4>3. Velg consistency bevisst</h4><p>Undersøk kontoens consistency og klientens session-håndtering. Sammenlign Session, Eventual og Strong i portalen og den offisielle beskrivelsen. Noter hvilke konsistenskrav en chat-historikk og en statistikkvisning kan ha. Hvis du vil endre labkontoens standard, lagre først gjeldende verdi i samme terminal:</p><pre data-language="PowerShell"><code># Lagre kontoens consistency-verdi slik at den kan gjenopprettes etter forsøket.
+$originalConsistency = az cosmosdb show --resource-group $cosmosGroup --name $cosmosAccount --query consistencyPolicy.defaultConsistencyLevel -o tsv</code></pre><p>Gjør forsøket, kjør oppslagene igjen og noter RU. Gjenopprett deretter den lagrede verdien:</p><pre data-language="PowerShell"><code># Gjenopprett consistency-verdien som du lagret før forsøket.
+az cosmosdb update --resource-group $cosmosGroup --name $cosmosAccount --default-consistency-level $originalConsistency -o none</code></pre><p>Et vellykket enkeltoppslag demonstrerer ikke alle garantiene. <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-manage-consistency">Microsoft Learn: administrere konsistens</a>.</p><label class="check-item"><input type="checkbox" data-check="w9-consistency" data-progress-source="./workshop-cosmos.html"><span>Jeg kan begrunne et consistency-valg og lese RU for oppslaget.</span></label>
+</section><section class="chapter-step" id="w9-opprydding"><h4>Rydding og overgang til neste del</h4><p>Behold kontoen, databasen, <code>notes</code> og terminalvariablene til del 10–11. Kontoen slettes etter change feed-øvelsen i del 11.</p><details><summary>Hvis du avslutter her</summary><p>Slett den dedikerte labkontoen og fjern nøkkelen fra terminalen:</p>
+<pre data-language="PowerShell"><code># Fjern COSMOS_KEY fra denne terminalen.
+Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre></details>
+</section>
+</details><details class="panel domain-chapter" id="module-10" data-domain-chapter data-session="2" open>
+<summary><span class="chapter-number">Del 10</span><h3>Vektorsøk i Cosmos DB</h3></summary>
+<p class="small"><a href="./workshop-cosmos-vectors.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w10-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-cosmos" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cosmos DB og RU</span></label></th><td>DB betyr database, og RU betyr Request Unit, målet på operasjonskostnad. Vi undersøker vektorsøk i Cosmos DB for NoSQL, ofte kalt Not only SQL.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Cosmos DB og RU</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-policy" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Vector embedding policy</span></label></th><td>Beskriver feltsti, talltype, antall dimensjoner og avstandsmål. Dokument- og spørsmålsvektorer må følge samme representasjon.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Vector embedding policy</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-index" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>flat og quantizedFlat</span></label></th><td>flat sammenligner vektorer uten kvantisering. quantizedFlat komprimerer tallrepresentasjonen for å spare arbeid og plass, med en avveining mot treffnøyaktighet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om flat og quantizedFlat</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-diskann" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>DiskANN</span></label></th><td>Disk-based Approximate Nearest Neighbor: indeks for tilnærmet søk blant store vektormengder. Vi sammenligner den med de flate indeksvalgene.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om DiskANN</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-distance" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>VectorDistance og TOP</span></label></th><td>SQL, Structured Query Language, bruker VectorDistance til avstand og TOP til å begrense antall treff. ORDER BY sorterer slik at de nærmeste kommer først.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om VectorDistance og TOP</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-partition" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Metadatafilter og cross-partition</span></label></th><td>Filteret avgrenser dokumentutvalget. Et søk på tvers av partisjoner må ha spørring og partisjonsvalg som passer til det nye søkeområdet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Metadatafilter og cross-partition</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-embedding" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Embedding-modell og recall</span></label></th><td>Modellen lager tallvektorer for dokumenter og spørsmål. Recall beskriver hvor mange av de nærmeste treffene vi finner; håndskrevne labvektorer måler ikke virkelig treffkvalitet.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search">Les mer<span class="sr-only"> om Embedding-modell og recall</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w10-begrep-sdk" data-progress-source="./workshop-cosmos-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w10-forberedelser"><h4>Oppsett for denne delen</h4><p>Fortsett med kontoen og terminalvariablene fra <a href="./workshop-cosmos.html">workshop 9</a>. Ved ny terminal bruker du <a href="./workshop-cosmos.html#tilkobling">tilkoblingsverdiene for den eksisterende kontoen</a>. Aktiver vector search under kontoens Features og vent på at funksjonen er klar; det kan ta omtrent 15 minutter. Vi oppretter en ny container fordi vektorpolicyen fastsettes ved opprettelsen.</p><p>Databasen skal ha separat throughput per container.</p>
+
+<details class="source-file" id="w10-fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+# Velg hvilken Cosmos-operasjon eksemplet skal utføre.
+import argparse
+# Les endpoint, nøkkel og databasenavn fra terminalens miljø.
+import os
+
+# Bruk Cosmos SDK-et og en eksplisitt partisjonsnøkkel.
+from azure.cosmos import CosmosClient, PartitionKey
+
+# Bruk små undervisningsdokumenter med håndskrevne vektorer.
+DOCUMENTS = [
+    # Første dokument ligger i partisjonen containers.
+    {&quot;id&quot;: &quot;note-1&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Package an application&quot;, &quot;embedding&quot;: [1.0, 0.0, 0.0]},
+    # Andre dokument ligger i samme partisjon, med en lignende vektor.
+    {&quot;id&quot;: &quot;note-2&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Inspect container logs&quot;, &quot;embedding&quot;: [0.9, 0.1, 0.0]},
+    # Tredje dokument viser hvordan metadatafilter kan utelate et nært vektortreff.
+    {&quot;id&quot;: &quot;note-3&quot;, &quot;topic&quot;: &quot;data&quot;, &quot;text&quot;: &quot;Retrieve stored data&quot;, &quot;embedding&quot;: [0.0, 1.0, 0.0]},
+]
+
+
+# La SDK-et sende responsheaderne til denne callbacken.
+def report(headers, _body):
+    # Hent kostnaden i request units fra responsheaderen.
+    charge = headers.get(&quot;x-ms-request-charge&quot;)
+    # Skriv bare RU når headeren finnes.
+    if charge:
+        # Vis grunnlaget for sammenligning av oppslag.
+        print(&quot;Request charge:&quot;, charge, &quot;RU&quot;)
+
+
+# Kjør operasjonen som ble valgt på kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens valgene til operasjonene workshopene bruker.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;point&quot;, &quot;vector-setup&quot;, &quot;vector&quot;, &quot;update&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Åpne klienten med labkontoens endpoint og nøkkel, og lukk den etter bruk.
+    with CosmosClient(os.environ[&quot;COSMOS_ENDPOINT&quot;], credential=os.environ[&quot;COSMOS_KEY&quot;]) as client:
+        # Use a database without shared throughput so vector search is supported.
+        # Velg databasen; dette oppretter ikke databasen.
+        database = client.get_database_client(os.getenv(&quot;COSMOS_DATABASE&quot;, &quot;workshop&quot;))
+        # Hold vektorpolicyen i en egen container.
+        name = &quot;vectors&quot; if args.mode.startswith(&quot;vector&quot;) else &quot;notes&quot;
+        # Hent en klient for den valgte containeren.
+        container = database.get_container_client(name)
+        # Opprett labcontainer og eksempeldata ved setup.
+        if args.mode in {&quot;setup&quot;, &quot;vector-setup&quot;}:
+            # Beskriv den vanlige indekseringspolicyen.
+            policy = {
+                # Oppdater indeksene automatisk når dokumentene endres.
+                &quot;indexingMode&quot;: &quot;consistent&quot;, &quot;automatic&quot;: True,
+                # Indekser dokumentfeltene som standard.
+                &quot;includedPaths&quot;: [{&quot;path&quot;: &quot;/*&quot;}],
+                # Unnta vektorarrayet fra vanlig feltindeksering.
+                &quot;excludedPaths&quot;: [{&quot;path&quot;: &quot;/embedding/*&quot;}],
+            }
+            # Legg bare til vektorinnstillinger for vektorcontaineren.
+            extra = {}
+            # Konfigurer en egen indeks for VectorDistance-søk.
+            if args.mode == &quot;vector-setup&quot;:
+                # Bruk en flat vektorindeks på embedding-feltet.
+                policy[&quot;vectorIndexes&quot;] = [{&quot;path&quot;: &quot;/embedding&quot;, &quot;type&quot;: &quot;flat&quot;}]
+                # Beskriv hvilke vektorer embedding-feltet inneholder.
+                extra[&quot;vector_embedding_policy&quot;] = {&quot;vectorEmbeddings&quot;: [{
+                    # Lagre vektorene i embedding og behandle verdiene som float32.
+                    &quot;path&quot;: &quot;/embedding&quot;, &quot;dataType&quot;: &quot;float32&quot;,
+                    # Krev tre dimensjoner og sammenlign med cosinusavstand.
+                    &quot;dimensions&quot;: 3, &quot;distanceFunction&quot;: &quot;cosine&quot;,
+                }]}
+            # Opprett containeren hvis den mangler; eksisterende policy erstattes ikke her.
+            container = database.create_container_if_not_exists(
+                # Bruk topic som partisjonsnøkkel.
+                id=name, partition_key=PartitionKey(path=&quot;/topic&quot;),
+                # Bruk policyen over og 400 RU/s dedikert throughput.
+                indexing_policy=policy, offer_throughput=400, **extra,
+            )
+            # Skriv inn undervisningsdokumentene.
+            for document in DOCUMENTS:
+                # Opprett eller erstatt dokumentet, og vis operasjonens RU.
+                container.upsert_item(document, response_hook=report)
+            # Vis hvilken container som er klargjort.
+            print(&quot;Ready:&quot;, name)
+        # Utfør et direkte oppslag uten SQL-spørring.
+        elif args.mode == &quot;point&quot;:
+            # ID og partisjonsnøkkel identifiserer dokumentet sammen.
+            result = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;, response_hook=report)
+            # Vis dokumentets ID og tekst.
+            print(result[&quot;id&quot;], result[&quot;text&quot;])
+        # Lag en endring som change feed-triggeren kan observere.
+        elif args.mode == &quot;update&quot;:
+            # Les dokumentet før oppdateringen.
+            document = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;)
+            # Øk et synlig revisjonsnummer.
+            document[&quot;revision&quot;] = document.get(&quot;revision&quot;, 0) + 1
+            # Lagre den nye versjonen og vis skrivekostnaden.
+            container.upsert_item(document, response_hook=report)
+            # Bruk revisjonen til å kjenne igjen endringen i triggerloggen.
+            print(&quot;Updated note-1, revision&quot;, document[&quot;revision&quot;])
+        # Kjør vanlig SQL-søk eller vektorsøk.
+        else:
+            # Start med et metadatafilter.
+            sql = &quot;SELECT c.id, c.topic FROM c WHERE c.topic = @topic&quot;
+            # Send filterverdien som en parameter.
+            parameters = [{&quot;name&quot;: &quot;@topic&quot;, &quot;value&quot;: &quot;containers&quot;}]
+            # Bytt til rangering etter vektoravstand.
+            if args.mode == &quot;vector&quot;:
+                # Returner de to nærmeste treffene og deres avstand.
+                sql = (&quot;SELECT TOP 2 c.id, VectorDistance(c.embedding, @vector) AS distance &quot;
+                       # Behold emnefilteret og sorter de gjenværende dokumentene etter avstand.
+                       &quot;FROM c WHERE c.topic = @topic ORDER BY VectorDistance(c.embedding, @vector)&quot;)
+                # Bruk samme tredimensjonale spørsmålsvektor som i PostgreSQL-øvelsen.
+                parameters.append({&quot;name&quot;: &quot;@vector&quot;, &quot;value&quot;: [0.0, 1.0, 0.0]})
+            # Kjør den parameteriserte spørringen.
+            results = container.query_items(sql, parameters=parameters,
+                                            # Avgrens lesingen til containers-partisjonen og vis RU.
+                                            partition_key=&quot;containers&quot;, response_hook=report)
+            # Iterer resultatene fra SDK-et.
+            for result in results:
+                # Vis hvert treff i terminalen.
+                print(result)
+
+
+# Kjør bare når filen startes direkte.
+if __name__ == &quot;__main__&quot;:
+    # Start den valgte laboperasjonen.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="w10-fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+azure-cosmos&gt;=4.9,&lt;5
+# Functions-typer og dekoratorer for change feed-triggeren.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+</section><section class="chapter-step" id="w10-policy"><h4>1. Opprett policy og indeks</h4><pre data-language="PowerShell"><code># Opprett vektorcontaineren med vektorpolicy, indeks og eksempeldata.
+python labs/cosmos/demo.py vector-setup</code></pre><p>Les <code>vector-setup</code> i demo.py: vectorEmbeddingPolicy angir sti, tre dimensjoner, float32 og cosinus. vectorIndexes velger flat-indeks. Den vanlige array-indeksen er ekskludert. Finn policyene i portalen og forklar hvorfor en dedikert vektorindeks trengs.</p><label class="check-item"><input type="checkbox" data-check="w10-policy" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg har opprettet en container med vektorpolicy og indeks.</span></label>
+</section><section class="chapter-step" id="w10-sok"><h4>2. Utfør filtrert vektorsøk</h4><pre data-language="PowerShell"><code># Kjør det filtrerte VectorDistance-søket mot vektorcontaineren.
+python labs/cosmos/demo.py vector</code></pre><p>Forventet: note-2 før note-1 innen topic=containers. Fjern metadatafilteret i kildefilen av spørringen og kjør igjen med cross-partition query aktivert; note-3 blir nærmest. Pass både SQL-filter og partition_key til det nye søkeområdet. Endre søkevektoren og forklar rangeringen.</p><label class="check-item"><input type="checkbox" data-check="w10-sok" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg har lagret og hentet vektorer med VectorDistance og metadatafilter.</span></label>
+</section><section class="chapter-step" id="w10-valg"><h4>3. Velg indeks for arbeidsmengden</h4><p>Sammenlign flat, quantizedFlat og diskANN i dokumentasjonen. Knytt valget til dimensjoner, mengde, recall og latency. Vi bruker små undervisningsvektorer for å verifisere spørringen; en virkelig løsning bruker dokument- og spørsmålsvektorer fra samme embedding-modell. Selve modellkallet er ikke del av økten.</p><label class="check-item"><input type="checkbox" data-check="w10-valg" data-progress-source="./workshop-cosmos-vectors.html"><span>Jeg kan begrunne et vektorindeksvalg og identifisere krav til embedding-data.</span></label>
+</section><section class="chapter-step" id="w10-opprydding"><h4>Rydding og overgang til neste del</h4><p>Slett labcontaineren vectors hvis du er ferdig med den. Behold notes og databasen dersom workshop 11 er neste økt. Slett hele labkontoen når ingen øvelser trenger den.</p>
+<pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
+git restore --source=HEAD -- labs/cosmos/demo.py</code></pre>
+</section>
+</details><details class="panel domain-chapter" id="module-11" data-domain-chapter data-session="2" open>
+<summary><span class="chapter-number">Del 11</span><h3>Behandle endringer fra Cosmos DB</h3></summary>
+<p class="small"><a href="./workshop-change-feed.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w11-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-feed" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Change feed</span></label></th><td>En strøm av dokumentendringer fra Cosmos DB, der DB betyr database. Vi reagerer på endringer i stedet for å lese hele datasettet på nytt.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Change feed</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-processor" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Change feed-prosessor</span></label></th><td>Leser endringer, kaller behandlingskoden og holder rede på fremdrift. Azure Functions-triggeren bruker denne mekanismen for oss.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Change feed-prosessor</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-lease" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Lease-container</span></label></th><td>Lagrer checkpoints og koordinerer hvem som behandler hvilken partisjon. Flere prosessorinstanser kan fordele arbeidet gjennom samme lease-oppsett.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Lease-container</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-checkpoint" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Checkpoint</span></label></th><td>Lagret posisjon i endringsstrømmen som lar behandlingen fortsette etter restart. Sletting av leases kan endre hvor den starter.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Checkpoint</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-latest" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Latest-version feed</span></label></th><td>Standardmodusen viser nye og oppdaterte dokumentversjoner. Den er ikke en komplett hendelseshistorikk over alle mellomtilstander og slettinger.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor">Les mer<span class="sr-only"> om Latest-version feed</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-idempotent" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Idempotens</span></label></th><td>Samme operasjon kan gjentas uten ekstra sideeffekter. En varig behandlingsnøkkel må overleve restart hvis gjentatt levering skal håndteres sikkert.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent">Les mer<span class="sr-only"> om Idempotens</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-etag" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ETag</span></label></th><td>Entity Tag: versjonsmarkør for dokumentet. Vi undersøker _etag som del av grunnlaget for å gjenkjenne en bestemt endring.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger">Les mer<span class="sr-only"> om ETag</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-host" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Functions-host og trigger</span></label></th><td>Host-en kjører funksjonene; triggeren bestemmer når koden starter. Her er en endring i den overvåkede Cosmos-containeren startsignalet.</td><td><a href="https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger">Les mer<span class="sr-only"> om Functions-host og trigger</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-sdk" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>SDK</span></label></th><td>Software Development Kit: biblioteker som lar programmet bruke en tjeneste. Vi leser klientoppsettet og kallene i Python-koden.</td><td><a href="https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview">Les mer<span class="sr-only"> om SDK</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w11-begrep-ru" data-progress-source="./workshop-change-feed.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>RU</span></label></th><td>Request Unit: målet på kostnaden for en Cosmos DB-operasjon. DB betyr database; skriptet viser RU når dokumentet oppdateres.</td><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy">Les mer<span class="sr-only"> om RU</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w11-forberedelser"><h4>Oppsett for denne delen</h4><p>Bruk <code>notes</code>-containeren fra <a href="./workshop-cosmos.html">workshop 9</a> og Core Tools fra fellesoppsettet. Opprett en lab-Storage-konto i den eksisterende ressursgruppen <code>ai200-d2</code> til change feed-hosten. Opprett den lokale innstillingsfilen fra prosjektroten:</p><pre data-language="PowerShell"><code># Kjør kopieringen bare hvis den lokale innstillingsfilen mangler.
+if (-not (Test-Path labs/cosmos/local.settings.json)) {
+    # Opprett appens lokale innstillingsfil fra eksempelfilen.
+    Copy-Item labs/cosmos/local.settings.example.json labs/cosmos/local.settings.json
+}</code></pre><p>Åpne <code>labs/cosmos/local.settings.json</code>. Sett <code>AzureWebJobsStorage</code> til Storage-kontoens tilkoblingsstreng og <code>CosmosConnection</code> til Cosmos-kontoens tilkoblingsstreng. Kontroller at <code>COSMOS_DATABASE</code> er <code>workshop</code>. Eksempelfilen <code>local.settings.example.json</code> skal beholde plassholderne. Start deretter host-en:</p>
+<pre data-language="PowerShell"><code># Gå til den lokale Functions-appen for Cosmos change feed.
+Set-Location labs/cosmos
+# Start den lokale Functions-hosten på standardport 7071.
+func start</code></pre>
+
+<details class="source-file" id="w11-fil-labs-cosmos-demo-py" data-source-file="labs/cosmos/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/demo.py</code></p><pre data-language="Python" data-source="labs/cosmos/demo.py"><code>&quot;&quot;&quot;Small isolated Cosmos DB lab; credentials are read from the environment.&quot;&quot;&quot;
+# Velg hvilken Cosmos-operasjon eksemplet skal utføre.
+import argparse
+# Les endpoint, nøkkel og databasenavn fra terminalens miljø.
+import os
+
+# Bruk Cosmos SDK-et og en eksplisitt partisjonsnøkkel.
+from azure.cosmos import CosmosClient, PartitionKey
+
+# Bruk små undervisningsdokumenter med håndskrevne vektorer.
+DOCUMENTS = [
+    # Første dokument ligger i partisjonen containers.
+    {&quot;id&quot;: &quot;note-1&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Package an application&quot;, &quot;embedding&quot;: [1.0, 0.0, 0.0]},
+    # Andre dokument ligger i samme partisjon, med en lignende vektor.
+    {&quot;id&quot;: &quot;note-2&quot;, &quot;topic&quot;: &quot;containers&quot;, &quot;text&quot;: &quot;Inspect container logs&quot;, &quot;embedding&quot;: [0.9, 0.1, 0.0]},
+    # Tredje dokument viser hvordan metadatafilter kan utelate et nært vektortreff.
+    {&quot;id&quot;: &quot;note-3&quot;, &quot;topic&quot;: &quot;data&quot;, &quot;text&quot;: &quot;Retrieve stored data&quot;, &quot;embedding&quot;: [0.0, 1.0, 0.0]},
+]
+
+
+# La SDK-et sende responsheaderne til denne callbacken.
+def report(headers, _body):
+    # Hent kostnaden i request units fra responsheaderen.
+    charge = headers.get(&quot;x-ms-request-charge&quot;)
+    # Skriv bare RU når headeren finnes.
+    if charge:
+        # Vis grunnlaget for sammenligning av oppslag.
+        print(&quot;Request charge:&quot;, charge, &quot;RU&quot;)
+
+
+# Kjør operasjonen som ble valgt på kommandolinjen.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens valgene til operasjonene workshopene bruker.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;setup&quot;, &quot;query&quot;, &quot;point&quot;, &quot;vector-setup&quot;, &quot;vector&quot;, &quot;update&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Åpne klienten med labkontoens endpoint og nøkkel, og lukk den etter bruk.
+    with CosmosClient(os.environ[&quot;COSMOS_ENDPOINT&quot;], credential=os.environ[&quot;COSMOS_KEY&quot;]) as client:
+        # Use a database without shared throughput so vector search is supported.
+        # Velg databasen; dette oppretter ikke databasen.
+        database = client.get_database_client(os.getenv(&quot;COSMOS_DATABASE&quot;, &quot;workshop&quot;))
+        # Hold vektorpolicyen i en egen container.
+        name = &quot;vectors&quot; if args.mode.startswith(&quot;vector&quot;) else &quot;notes&quot;
+        # Hent en klient for den valgte containeren.
+        container = database.get_container_client(name)
+        # Opprett labcontainer og eksempeldata ved setup.
+        if args.mode in {&quot;setup&quot;, &quot;vector-setup&quot;}:
+            # Beskriv den vanlige indekseringspolicyen.
+            policy = {
+                # Oppdater indeksene automatisk når dokumentene endres.
+                &quot;indexingMode&quot;: &quot;consistent&quot;, &quot;automatic&quot;: True,
+                # Indekser dokumentfeltene som standard.
+                &quot;includedPaths&quot;: [{&quot;path&quot;: &quot;/*&quot;}],
+                # Unnta vektorarrayet fra vanlig feltindeksering.
+                &quot;excludedPaths&quot;: [{&quot;path&quot;: &quot;/embedding/*&quot;}],
+            }
+            # Legg bare til vektorinnstillinger for vektorcontaineren.
+            extra = {}
+            # Konfigurer en egen indeks for VectorDistance-søk.
+            if args.mode == &quot;vector-setup&quot;:
+                # Bruk en flat vektorindeks på embedding-feltet.
+                policy[&quot;vectorIndexes&quot;] = [{&quot;path&quot;: &quot;/embedding&quot;, &quot;type&quot;: &quot;flat&quot;}]
+                # Beskriv hvilke vektorer embedding-feltet inneholder.
+                extra[&quot;vector_embedding_policy&quot;] = {&quot;vectorEmbeddings&quot;: [{
+                    # Lagre vektorene i embedding og behandle verdiene som float32.
+                    &quot;path&quot;: &quot;/embedding&quot;, &quot;dataType&quot;: &quot;float32&quot;,
+                    # Krev tre dimensjoner og sammenlign med cosinusavstand.
+                    &quot;dimensions&quot;: 3, &quot;distanceFunction&quot;: &quot;cosine&quot;,
+                }]}
+            # Opprett containeren hvis den mangler; eksisterende policy erstattes ikke her.
+            container = database.create_container_if_not_exists(
+                # Bruk topic som partisjonsnøkkel.
+                id=name, partition_key=PartitionKey(path=&quot;/topic&quot;),
+                # Bruk policyen over og 400 RU/s dedikert throughput.
+                indexing_policy=policy, offer_throughput=400, **extra,
+            )
+            # Skriv inn undervisningsdokumentene.
+            for document in DOCUMENTS:
+                # Opprett eller erstatt dokumentet, og vis operasjonens RU.
+                container.upsert_item(document, response_hook=report)
+            # Vis hvilken container som er klargjort.
+            print(&quot;Ready:&quot;, name)
+        # Utfør et direkte oppslag uten SQL-spørring.
+        elif args.mode == &quot;point&quot;:
+            # ID og partisjonsnøkkel identifiserer dokumentet sammen.
+            result = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;, response_hook=report)
+            # Vis dokumentets ID og tekst.
+            print(result[&quot;id&quot;], result[&quot;text&quot;])
+        # Lag en endring som change feed-triggeren kan observere.
+        elif args.mode == &quot;update&quot;:
+            # Les dokumentet før oppdateringen.
+            document = container.read_item(&quot;note-1&quot;, partition_key=&quot;containers&quot;)
+            # Øk et synlig revisjonsnummer.
+            document[&quot;revision&quot;] = document.get(&quot;revision&quot;, 0) + 1
+            # Lagre den nye versjonen og vis skrivekostnaden.
+            container.upsert_item(document, response_hook=report)
+            # Bruk revisjonen til å kjenne igjen endringen i triggerloggen.
+            print(&quot;Updated note-1, revision&quot;, document[&quot;revision&quot;])
+        # Kjør vanlig SQL-søk eller vektorsøk.
+        else:
+            # Start med et metadatafilter.
+            sql = &quot;SELECT c.id, c.topic FROM c WHERE c.topic = @topic&quot;
+            # Send filterverdien som en parameter.
+            parameters = [{&quot;name&quot;: &quot;@topic&quot;, &quot;value&quot;: &quot;containers&quot;}]
+            # Bytt til rangering etter vektoravstand.
+            if args.mode == &quot;vector&quot;:
+                # Returner de to nærmeste treffene og deres avstand.
+                sql = (&quot;SELECT TOP 2 c.id, VectorDistance(c.embedding, @vector) AS distance &quot;
+                       # Behold emnefilteret og sorter de gjenværende dokumentene etter avstand.
+                       &quot;FROM c WHERE c.topic = @topic ORDER BY VectorDistance(c.embedding, @vector)&quot;)
+                # Bruk samme tredimensjonale spørsmålsvektor som i PostgreSQL-øvelsen.
+                parameters.append({&quot;name&quot;: &quot;@vector&quot;, &quot;value&quot;: [0.0, 1.0, 0.0]})
+            # Kjør den parameteriserte spørringen.
+            results = container.query_items(sql, parameters=parameters,
+                                            # Avgrens lesingen til containers-partisjonen og vis RU.
+                                            partition_key=&quot;containers&quot;, response_hook=report)
+            # Iterer resultatene fra SDK-et.
+            for result in results:
+                # Vis hvert treff i terminalen.
+                print(result)
+
+
+# Kjør bare når filen startes direkte.
+if __name__ == &quot;__main__&quot;:
+    # Start den valgte laboperasjonen.
+    main()
+</code></pre></details>
+
+<details class="source-file" id="w11-fil-labs-cosmos-host-json" data-source-file="labs/cosmos/host.json"><summary><code>host.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/host.json</code></p><pre data-language="JSON" data-source="labs/cosmos/host.json" class="code-with-notes"><code>{
+  &quot;version&quot;: &quot;2.0&quot;,
+  &quot;extensionBundle&quot;: {&quot;id&quot;: &quot;Microsoft.Azure.Functions.ExtensionBundle&quot;, &quot;version&quot;: &quot;[4.*, 5.0.0)&quot;}
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# Versjon 2.0 av Functions-hostens konfigurasjonsskjema; dette er ikke runtime-versjonen.
+# Last Functions-bindinger fra Microsofts utvidelsespakke, versjon 4.x.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="w11-fil-labs-cosmos-local-settings-example-json" data-source-file="labs/cosmos/local.settings.example.json"><summary><code>local.settings.example.json</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/local.settings.example.json</code></p><pre data-language="JSON" data-source="labs/cosmos/local.settings.example.json" class="code-with-notes"><code>{
+  &quot;IsEncrypted&quot;: false,
+  &quot;Values&quot;: {
+    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;python&quot;,
+    &quot;AzureWebJobsStorage&quot;: &quot;REPLACE_WITH_LAB_STORAGE_CONNECTION_STRING&quot;,
+    &quot;CosmosConnection&quot;: &quot;REPLACE_WITH_LAB_COSMOS_CONNECTION_STRING&quot;,
+    &quot;COSMOS_DATABASE&quot;: &quot;workshop&quot;
+  }
+}
+</code><span class="code-line-notes" aria-label="Forklaring av hver JSON-linje"># Start JSON-objektet.
+# false betyr at de lokale innstillingene er lagret som vanlig tekst.
+# Start appens lokale miljøvariabler.
+# Velg Python som worker for denne Function App-en.
+# Tilkobling til labens Storage-konto for Functions-hosten.
+# Tilkoblingsstrengen som Cosmos-triggeren bruker.
+# Databasenavnet som erstatter %COSMOS_DATABASE% i triggeren.
+# Avslutt miljøvariablene.
+# Avslutt JSON-objektet.</span></pre></details>
+
+<details class="source-file" id="w11-fil-labs-cosmos-requirements-txt" data-source-file="labs/cosmos/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/cosmos/requirements.txt"><code># Cosmos DB-klienten for dokumenter, spørringer og vektorpolicyer.
+azure-cosmos&gt;=4.9,&lt;5
+# Functions-typer og dekoratorer for change feed-triggeren.
+azure-functions&gt;=1.20,&lt;2
+</code></pre></details>
+
+<details class="source-file" id="w11-fil-labs-cosmos-funcignore" data-source-file="labs/cosmos/.funcignore"><summary><code>.funcignore</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/.funcignore</code></p><pre data-language="Tekst" data-source="labs/cosmos/.funcignore"><code># Lokale tilkoblinger og nøkler skal ikke publiseres som filer.
+local.settings.json
+# Eksempelinnstillingene trengs bare ved lokal klargjøring.
+local.settings.example.json
+# Hold generert Python-bytecode utenfor publiseringen.
+__pycache__/
+# Hold det lokale Python-miljøet utenfor publiseringen.
+.venv/
+# Klientskriptet kjøres lokalt og er ikke en serverfunksjon.
+demo.py
+</code></pre></details>
+</section><section class="chapter-step" id="w11-endring"><h4>1. Observer nye endringer</h4><p>Bruk en annen Python-terminal med <a href="./workshop-cosmos.html#tilkobling">Cosmos-tilkoblingen fra del 9</a>. Kjør fra prosjektroten:</p><pre data-language="PowerShell"><code># Oppdater note-1 slik at Cosmos change feed får en ny endring å behandle.
+python labs/cosmos/demo.py update</code></pre><p>Forventet: Function-loggen viser <code>changed id=note-1</code> med ny revision. Finn <code>cosmos_db_trigger</code>. Dette er en change feed-prosessor med checkpoint i lease-containeren; den erstatter polling du ellers måtte håndtert selv.</p><label class="check-item"><input type="checkbox" data-check="w11-endring" data-progress-source="./workshop-change-feed.html"><span>Jeg har behandlet en endring fra en ekte Cosmos change feed.</span></label>
+
+<details class="source-file" id="w11-fil-labs-cosmos-function-app-py" data-source-file="labs/cosmos/function_app.py"><summary><code>function_app.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/cosmos/function_app.py</code></p><pre data-language="Python" data-source="labs/cosmos/function_app.py"><code>&quot;&quot;&quot;The Cosmos DB trigger uses the change feed processor and checkpoints in leases.&quot;&quot;&quot;
+# Send meldinger til Functions-hostens logg.
+import logging
+# Hent FunctionApp og dokumenttypene for Python-bindingene.
+import azure.functions as func
+
+# Opprett appen som Functions-hosten oppdager.
+app = func.FunctionApp()
+
+
+# Send endrede dokumenter til documents-argumentet.
+# Databasenavnet hentes fra appinnstillingen COSMOS_DATABASE.
+@app.cosmos_db_trigger(arg_name=&quot;documents&quot;, database_name=&quot;%COSMOS_DATABASE%&quot;,
+                      # Overvåk notes med tilkoblingen fra CosmosConnection-innstillingen.
+                      container_name=&quot;notes&quot;, connection=&quot;CosmosConnection&quot;,
+                      # Lagre fremdrift i leases; opprett lease-containeren hvis den mangler.
+                      lease_container_name=&quot;leases&quot;, create_lease_container_if_not_exists=True)
+# En triggerkjøring kan inneholde en samling endrede dokumenter.
+def changed(documents: func.DocumentList):
+    # Behandle hvert dokument i leveransen.
+    for document in documents:
+        # Logg ID og revisjon slik at du kan sammenligne med oppdateringsskriptet.
+        logging.info(&quot;changed id=%s revision=%s&quot;, document[&quot;id&quot;], document.get(&quot;revision&quot;, 0))
+</code></pre></details>
+</section><section class="chapter-step" id="w11-checkpoint"><h4>2. Restart og undersøk leases</h4><p>Finn leases i databasen. Stopp Functions-host, oppdater note-1 to ganger, og start host-en igjen. Observer at behandlingen fortsetter fra checkpoint. Sammenlign siste endringsversjon med applikasjonens behov: standard latest-version feed er ikke en komplett historikk over alle mellomliggende tilstander eller slettinger.</p><label class="check-item"><input type="checkbox" data-check="w11-checkpoint" data-progress-source="./workshop-change-feed.html"><span>Jeg har undersøkt checkpoints og forklart hvorfor en restart ikke krever full omlasting.</span></label>
+</section><section class="chapter-step" id="w11-behandling"><h4>3. Gjør behandlingen robust</h4><p>Forklar hvorfor sideeffekter må tåle gjentatt levering. Utvid logglinjen med dokumentets _etag og diskuter en varig nøkkel for en indeksoppdatering. I denne laben er sideeffekten bare logging; en applikasjon må registrere ferdig behandling før den kan stole på deduplisering.</p><label class="check-item"><input type="checkbox" data-check="w11-behandling" data-progress-source="./workshop-change-feed.html"><span>Jeg kan forklare leases og behovet for idempotent behandling.</span></label>
+</section><section class="chapter-step" id="w11-opprydding"><h4>Rydding og overgang til neste del</h4><p>Stopp host-en. Slett local.settings.json med labnøklene og slett den dedikerte Cosmos-kontoen/Storage-kontoen når du er ferdig. Slett ikke leases for en prosessor som skal fortsette; det kan endre hvor behandlingen starter.</p>
+<pre data-language="PowerShell"><code># Stopp host-en med Ctrl+C. Kjør deretter fra prosjektroten.
+# Forkaster kodeendringene og fjerner den lokale filen med labnøkler.
+git restore --source=HEAD -- labs/cosmos/function_app.py
+# Slett den lokale filen labs/cosmos/local.settings.json hvis den finnes.
+Remove-Item -LiteralPath labs/cosmos/local.settings.json -ErrorAction SilentlyContinue
+# Fjern COSMOS_KEY fra denne terminalen.
+Remove-Item Env:COSMOS_KEY -ErrorAction SilentlyContinue</code></pre>
+</section>
+</details><details class="panel domain-chapter" id="module-12" data-domain-chapter data-session="2" open>
+<summary><span class="chapter-number">Del 12</span><h3>Caching og invalidering med Managed Redis</h3></summary>
+<p class="small"><a href="./workshop-redis.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w12-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-redis" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Azure Managed Redis</span></label></th><td>Azure-driftet Redis, en datatjeneste som holder arbeidsdata i minnet. Her bruker vi den som cache foran et tenkt databaseoppslag.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om Azure Managed Redis</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-aside" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache-aside</span></label></th><td>Appen leser cachen først. Ved manglende verdi henter den fra datakilden og lagrer resultatet i cachen for senere bruk.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Cache-aside</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-hit-miss" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Cache hit og miss</span></label></th><td>Hit betyr at nøkkelen har en verdi i cachen; miss betyr at den mangler. Vi følger begge situasjoner i terminalen.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Cache hit og miss</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-ttl" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TTL</span></label></th><td>Time to Live: hvor lenge en cacheoppføring får leve. Vi setter utløp ved lagring; et vanlig oppslag forlenger ikke denne levetiden.</td><td><a href="https://redis.io/docs/latest/commands/expire/">Les mer<span class="sr-only"> om TTL</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-invalidate" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Invalidering</span></label></th><td>Fjerning av cacheoppføringer som er blitt gamle når kildedata endres. Dette utfyller automatisk utløp og krever riktige nøkler.</td><td><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">Les mer<span class="sr-only"> om Invalidering</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-tls" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>TLS</span></label></th><td>Transport Layer Security: kryptert forbindelse til Redis. Klienten bruker ssl=True og labens nøkkel fra miljøet.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om TLS</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w12-begrep-clustering" data-progress-source="./workshop-redis.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Enterprise og OSS clustering</span></label></th><td>OSS betyr Open Source Software. Enterprise-modellen gir ett logisk endepunkt til vanlig klient; OSS-modellen krever en klient som håndterer klyngens fordeling.</td><td><a href="https://learn.microsoft.com/en-us/azure/redis/overview">Les mer<span class="sr-only"> om Enterprise og OSS clustering</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w12-forberedelser"><h4>Oppsett for denne delen</h4><p>Opprett én Azure Managed Redis-labinstans i <a href="./workshop-postgresql.html#ressursgruppe">ressursgruppen fra del 8</a> med Enterprise clustering, TLS og en labnøkkel. Bruk samme instans i workshop 12–13. Velg RediSearch ved opprettelsen, med en tier som støtter modulen og NoEviction. Modulen kan ikke legges til senere. En arrangør kan klargjøre en delt labinstans.</p>
+
+<details class="source-file" id="w12-fil-labs-redis-requirements-txt" data-source-file="labs/redis/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/redis/requirements.txt"><code># Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
+redis&gt;=5,&lt;7
+</code></pre></details>
+</section><section class="chapter-step" id="w12-tilkobling"><h4>1. Koble til sikkert</h4><pre data-language="PowerShell"><code># Sett vertsnavnet til den eksisterende Managed Redis-instansen.
+$env:REDIS_HOST = "DITT-REDIS-ENDPOINT"
+# Velg port 10000 for Redis-tilkoblingen.
+$env:REDIS_PORT = "10000"
+# Sett Redis-labnøkkelen i denne terminalen.
+$env:REDIS_KEY = "DIN-LAB-NOKKEL"</code></pre><p>Les tilkoblingen i <code>demo.py</code>. Den bruker TLS og en gjenbrukt klient. Enterprise clustering gir ett logisk endepunkt til den vanlige Redis-klienten; OSS clustering krever en cluster-klient.</p><label class="check-item"><input type="checkbox" data-check="w12-tilkobling" data-progress-source="./workshop-redis.html"><span>Jeg har valgt en klient som passer til Redis-konfigurasjonen.</span></label>
+
+<details class="source-file" id="w12-fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
+# Velg cache-, indeks-, søke- eller oppryddingsoperasjon.
+import argparse
+# Les Redis-endpoint og labnøkkel fra terminalens miljø.
+import os
+# Vent på en kort TTL for å demonstrere utløp.
+import time
+# Konverter spørsmåls- og dokumentvektorer til float32-byteverdier.
+from array import array
+
+# Bruk Redis-klienten til cache- og søkekommandoer.
+import redis
+# Beskriv metadata, tekst og vektorer i søkeindeksen.
+from redis.commands.search.field import TagField, TextField, VectorField
+# Avgrens hvilke Redis-hasher indeksen leser.
+from redis.commands.search.index_definition import IndexDefinition, IndexType
+# Bygg et søk med filter, KNN og resultatvalg.
+from redis.commands.search.query import Query
+# Gjenkjenn feilsvaret når indeksen allerede finnes.
+from redis.exceptions import ResponseError
+
+
+# Kjør én Redis-operasjon.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til labens fire valg.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;cache&quot;, &quot;index&quot;, &quot;search&quot;, &quot;cleanup&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Bruk endpoint og port for labinstansen.
+    with redis.Redis(host=os.environ[&quot;REDIS_HOST&quot;], port=int(os.getenv(&quot;REDIS_PORT&quot;, &quot;10000&quot;)),
+                     # Bruk TLS, miljøbasert labnøkkel og en avgrenset nettverkstimeout.
+                     password=os.environ[&quot;REDIS_KEY&quot;], ssl=True, socket_timeout=10) as client:
+        # Demonstrer hit, invalidering og TTL-utløp.
+        if args.mode == &quot;cache&quot;:
+            # Bruk en avgrenset nøkkel for labens cacheoppføring.
+            key = &quot;ai200:cache:containers:v1&quot;
+            # Kontroller om oppføringen finnes fra før.
+            print(&quot;Initial:&quot;, client.get(key))
+            # Cache resultatet med ti sekunders TTL.
+            client.set(key, &quot;note-1,note-2&quot;, ex=10)
+            # Les den nye oppføringen og gjenværende levetid.
+            print(&quot;Hit:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+            # Invalider oppføringen eksplisitt.
+            client.delete(key)
+            # Bekreft at oppslaget ikke lenger gir en cacheverdi.
+            print(&quot;Invalidated:&quot;, client.get(key))
+            # Legg inn en oppdatert verdi med kort TTL.
+            client.set(key, &quot;updated-note-1&quot;, ex=2)
+            # Vent lenger enn levetiden.
+            time.sleep(3)
+            # Vis at Redis har latt oppføringen utløpe.
+            print(&quot;Expired:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+        # Opprett en vektorindeks og tre dokumenter.
+        elif args.mode == &quot;index&quot;:
+            # Indekser topic som filter, text som tekst og embedding med HNSW.
+            fields = [TagField(&quot;topic&quot;), TextField(&quot;text&quot;), VectorField(&quot;embedding&quot;, &quot;HNSW&quot;, {
+                # Bruk float32, tre dimensjoner og cosinusavstand.
+                &quot;TYPE&quot;: &quot;FLOAT32&quot;, &quot;DIM&quot;: 3, &quot;DISTANCE_METRIC&quot;: &quot;COSINE&quot;,
+            })]
+            # Tillat at oppsettet kjøres flere ganger.
+            try:
+                # Opprett søkeindeksen med det valgte skjemaet.
+                client.ft(&quot;ai200-index&quot;).create_index(fields, definition=IndexDefinition(
+                    # Les bare Redis-hasher med labens vektorprefiks.
+                    prefix=[&quot;ai200:vector:&quot;], index_type=IndexType.HASH))
+            # Undersøk hvorfor indeksopprettelsen ble avvist.
+            except ResponseError as error:
+                # Ignorer bare den forventede feilen om en eksisterende indeks.
+                if &quot;index already exists&quot; not in str(error).lower():
+                    # La andre feil gå videre til terminalen.
+                    raise
+            # Første dokument ligger langs første vektordimensjon.
+            for number, topic, vector in [(1, &quot;containers&quot;, [1, 0, 0]),
+                                           # Legg til et lignende dokument og et dokument i et annet emne.
+                                           (2, &quot;containers&quot;, [0.9, 0.1, 0]), (3, &quot;data&quot;, [0, 1, 0])]:
+                # Lagre hvert dokument i en Redis-hash som indeksen overvåker.
+                client.hset(f&quot;ai200:vector:{number}&quot;, mapping={
+                    # Lagre metadata og tekst sammen med vektoren.
+                    &quot;topic&quot;: topic, &quot;text&quot;: f&quot;Teaching document {number}&quot;,
+                    # Send embedding som binære float32-verdier.
+                    &quot;embedding&quot;: array(&quot;f&quot;, vector).tobytes(),
+                })
+            # Minn om at søkeindeksen må ha rukket å behandle dataene.
+            print(&quot;Index and three documents ready; wait for indexing before search&quot;)
+        # Kombiner metadatafilter med vektorrangering.
+        elif args.mode == &quot;search&quot;:
+            # Finn to nærmeste treff innen topic=containers, med avstanden kalt score.
+            query = Query(&quot;(@topic:{containers})=&gt;[KNN 2 @embedding $vec AS score]&quot;)
+            # Sorter etter avstand og bruk søkedialekten som støtter denne syntaksen.
+            query = query.sort_by(&quot;score&quot;).return_fields(&quot;topic&quot;, &quot;text&quot;, &quot;score&quot;).dialect(2)
+            # Send spørsmålsvektoren i samme binære format som dokumentvektorene.
+            result = client.ft(&quot;ai200-index&quot;).search(query, query_params={&quot;vec&quot;: array(&quot;f&quot;, [0, 1, 0]).tobytes()})
+            # Behandle de returnerte treffene.
+            for document in result.docs:
+                # Vis ID, emne og avstand for sammenligning.
+                print(document.id, document.topic, document.score)
+        # Rydd bare labens indeks og tilknyttede dokumenter.
+        else:
+            # Slett indeksen og dokumentene som hører til den.
+            client.ft(&quot;ai200-index&quot;).dropindex(delete_documents=True)
+            # Bekreft oppryddingen.
+            print(&quot;Removed lab index and its documents&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Redis-operasjon.
+    main()
+</code></pre></details>
+</section><section class="chapter-step" id="w12-cache"><h4>2. Hit, miss og utløp</h4><pre data-language="PowerShell"><code># Demonstrer cache miss, hit, eksplisitt invalidering og TTL-utløp.
+python labs/redis/demo.py cache</code></pre><p>Forventet: først en miss, så en hit med positiv TTL, deretter miss etter invalidation og miss etter utløp. Skriptet sletter bare sin egen nøkkel. Kjør på nytt og sammenlign. Finn GET, SET med EX, DELETE og TTL i koden.</p><label class="check-item"><input type="checkbox" data-check="w12-cache" data-progress-source="./workshop-redis.html"><span>Jeg har observert miss, hit, invalidering og utløp.</span></label>
+</section><section class="chapter-step" id="w12-moenster"><h4>3. Knytt operasjonene til applikasjonen</h4><p>Tegn rekkefølgen for cache-aside: GET, databaseoppslag ved miss, SET med TTL. Beskriv deretter hva en dokumentoppdatering skal invalidere. La nøkkelen inneholde søkeområde og dataversjon. Sammenlign kort TTL med eksplisitt invalidation; de løser ulike deler av problemet.</p><label class="check-item"><input type="checkbox" data-check="w12-moenster" data-progress-source="./workshop-redis.html"><span>Jeg kan forklare hvordan applikasjonen unngår å servere gamle data.</span></label>
+</section><section class="chapter-step" id="w12-opprydding"><h4>Rydding og overgang til neste del</h4><p>Behold instansen og terminalvariablene til vektorøvelsen i del 13. Redis-instansen slettes etter den delen.</p><details><summary>Hvis du avslutter her</summary><p>Slett den dedikerte labinstansen og fjern nøkkelen fra terminalen:</p>
+<pre data-language="PowerShell"><code># Fjern REDIS_KEY fra denne terminalen.
+Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre></details>
+</section>
+</details><details class="panel domain-chapter" id="module-13" data-domain-chapter data-session="2" open>
+<summary><span class="chapter-number">Del 13</span><h3>Vektorindeks i Managed Redis</h3></summary>
+<p class="small"><a href="./workshop-redis-vectors.html">Åpne som kort workshop →</a></p>
+<section class="chapter-step" id="w13-begreper"><h4>Dette lærer vi om nå</h4><p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-redis" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Redis og RediSearch</span></label></th><td>Redis lagrer dokumentene; søkefunksjonen RediSearch indekserer dem. Vektorverdier alene oppretter ikke en søkbar vektorindeks.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om Redis og RediSearch</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-hnsw" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HNSW</span></label></th><td>Hierarchical Navigable Small World: grafbasert indeks for tilnærmet vektorsøk. Vi oppretter den med VectorField i søkeskjemaet.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om HNSW</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-knn" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>KNN</span></label></th><td>K-Nearest Neighbors: søk etter de k nærmeste vektorene. KNN 2 betyr at vi ber om de to nærmeste innenfor metadatafilteret.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om KNN</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-format" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>FLOAT32 og DIM</span></label></th><td>FLOAT32 er 32-bits flyttall; DIM betyr dimension, antall komponenter. Dokumenter og spørsmålsvektor må ha samme talltype og dimensjon.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om FLOAT32 og DIM</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-hash" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>HASH og TAG</span></label></th><td>En hash lagrer dokumentets felter. TAG-feltet indekserer en kategoriverdi som topic, slik at vi kan filtrere før vektorrangeringen.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om HASH og TAG</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-binary" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Binær vektor</span></label></th><td>Tallrekken sendes som byteverdier til Redis. Tekst som ser ut som en liste, er ikke den samme representasjonen.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om Binær vektor</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w13-begrep-index" data-progress-source="./workshop-redis-vectors.html" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Indeksoppdatering og rangering</span></label></th><td>Når en lagret vektor endres, må søkeindeksen ta endringen med før resultatene oppdateres. Vi skiller dette fra invalidering av ferdige søkeresultater.</td><td><a href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">Les mer<span class="sr-only"> om Indeksoppdatering og rangering</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section><section class="chapter-step" id="w13-forberedelser"><h4>Oppsett for denne delen</h4><p>Fortsett med RediSearch-instansen og terminalvariablene fra <a href="./workshop-redis.html">workshop 12</a>. Ved ny terminal bruker du <a href="./workshop-redis.html#tilkobling">tilkoblingsverdiene for den eksisterende instansen</a>. En standard Redis-instans uten søkemodulen kan ikke kjøre FT.CREATE.</p>
+
+<details class="source-file" id="w13-fil-labs-redis-requirements-txt" data-source-file="labs/redis/requirements.txt"><summary><code>requirements.txt</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/requirements.txt</code></p><pre data-language="Tekst" data-source="labs/redis/requirements.txt"><code># Redis-klienten med cachekommandoer og søke-/vektorindeks-API.
+redis&gt;=5,&lt;7
+</code></pre></details>
+</section><section class="chapter-step" id="w13-indeks"><h4>1. Opprett en vektorindeks</h4><pre data-language="PowerShell"><code># Opprett vektorindeksen i Redis og lagre eksempeldokumentene.
+python labs/redis/demo.py index</code></pre><p>Finn VectorField, HNSW, FLOAT32 og DIM=3 i <code>demo.py</code>. De lagrede byteverdiene og spørsmålsvektoren må bruke samme dtype og dimensjon. Undersøk også TAG-feltet topic og prefikset som avgrenser labens dokumenter.</p><label class="check-item"><input type="checkbox" data-check="w13-indeks" data-progress-source="./workshop-redis-vectors.html"><span>Jeg har opprettet en HNSW-vektorindeks og lagret vektorer.</span></label>
+
+<details class="source-file" id="w13-fil-labs-redis-demo-py" data-source-file="labs/redis/demo.py"><summary><code>demo.py</code><span class="small"> — vis fil og forklaring</span></summary><p class="small">Kildefil: <code>labs/redis/demo.py</code></p><pre data-language="Python" data-source="labs/redis/demo.py"><code>&quot;&quot;&quot;Managed Redis, Enterprise clustering policy, TLS and a lab access key.&quot;&quot;&quot;
+# Velg cache-, indeks-, søke- eller oppryddingsoperasjon.
+import argparse
+# Les Redis-endpoint og labnøkkel fra terminalens miljø.
+import os
+# Vent på en kort TTL for å demonstrere utløp.
+import time
+# Konverter spørsmåls- og dokumentvektorer til float32-byteverdier.
+from array import array
+
+# Bruk Redis-klienten til cache- og søkekommandoer.
+import redis
+# Beskriv metadata, tekst og vektorer i søkeindeksen.
+from redis.commands.search.field import TagField, TextField, VectorField
+# Avgrens hvilke Redis-hasher indeksen leser.
+from redis.commands.search.index_definition import IndexDefinition, IndexType
+# Bygg et søk med filter, KNN og resultatvalg.
+from redis.commands.search.query import Query
+# Gjenkjenn feilsvaret når indeksen allerede finnes.
+from redis.exceptions import ResponseError
+
+
+# Kjør én Redis-operasjon.
+def main():
+    # Opprett kommandolinjeparseren.
+    parser = argparse.ArgumentParser()
+    # Begrens operasjonene til labens fire valg.
+    parser.add_argument(&quot;mode&quot;, choices=[&quot;cache&quot;, &quot;index&quot;, &quot;search&quot;, &quot;cleanup&quot;])
+    # Les valgt operasjon.
+    args = parser.parse_args()
+    # Bruk endpoint og port for labinstansen.
+    with redis.Redis(host=os.environ[&quot;REDIS_HOST&quot;], port=int(os.getenv(&quot;REDIS_PORT&quot;, &quot;10000&quot;)),
+                     # Bruk TLS, miljøbasert labnøkkel og en avgrenset nettverkstimeout.
+                     password=os.environ[&quot;REDIS_KEY&quot;], ssl=True, socket_timeout=10) as client:
+        # Demonstrer hit, invalidering og TTL-utløp.
+        if args.mode == &quot;cache&quot;:
+            # Bruk en avgrenset nøkkel for labens cacheoppføring.
+            key = &quot;ai200:cache:containers:v1&quot;
+            # Kontroller om oppføringen finnes fra før.
+            print(&quot;Initial:&quot;, client.get(key))
+            # Cache resultatet med ti sekunders TTL.
+            client.set(key, &quot;note-1,note-2&quot;, ex=10)
+            # Les den nye oppføringen og gjenværende levetid.
+            print(&quot;Hit:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+            # Invalider oppføringen eksplisitt.
+            client.delete(key)
+            # Bekreft at oppslaget ikke lenger gir en cacheverdi.
+            print(&quot;Invalidated:&quot;, client.get(key))
+            # Legg inn en oppdatert verdi med kort TTL.
+            client.set(key, &quot;updated-note-1&quot;, ex=2)
+            # Vent lenger enn levetiden.
+            time.sleep(3)
+            # Vis at Redis har latt oppføringen utløpe.
+            print(&quot;Expired:&quot;, client.get(key), &quot;TTL:&quot;, client.ttl(key))
+        # Opprett en vektorindeks og tre dokumenter.
+        elif args.mode == &quot;index&quot;:
+            # Indekser topic som filter, text som tekst og embedding med HNSW.
+            fields = [TagField(&quot;topic&quot;), TextField(&quot;text&quot;), VectorField(&quot;embedding&quot;, &quot;HNSW&quot;, {
+                # Bruk float32, tre dimensjoner og cosinusavstand.
+                &quot;TYPE&quot;: &quot;FLOAT32&quot;, &quot;DIM&quot;: 3, &quot;DISTANCE_METRIC&quot;: &quot;COSINE&quot;,
+            })]
+            # Tillat at oppsettet kjøres flere ganger.
+            try:
+                # Opprett søkeindeksen med det valgte skjemaet.
+                client.ft(&quot;ai200-index&quot;).create_index(fields, definition=IndexDefinition(
+                    # Les bare Redis-hasher med labens vektorprefiks.
+                    prefix=[&quot;ai200:vector:&quot;], index_type=IndexType.HASH))
+            # Undersøk hvorfor indeksopprettelsen ble avvist.
+            except ResponseError as error:
+                # Ignorer bare den forventede feilen om en eksisterende indeks.
+                if &quot;index already exists&quot; not in str(error).lower():
+                    # La andre feil gå videre til terminalen.
+                    raise
+            # Første dokument ligger langs første vektordimensjon.
+            for number, topic, vector in [(1, &quot;containers&quot;, [1, 0, 0]),
+                                           # Legg til et lignende dokument og et dokument i et annet emne.
+                                           (2, &quot;containers&quot;, [0.9, 0.1, 0]), (3, &quot;data&quot;, [0, 1, 0])]:
+                # Lagre hvert dokument i en Redis-hash som indeksen overvåker.
+                client.hset(f&quot;ai200:vector:{number}&quot;, mapping={
+                    # Lagre metadata og tekst sammen med vektoren.
+                    &quot;topic&quot;: topic, &quot;text&quot;: f&quot;Teaching document {number}&quot;,
+                    # Send embedding som binære float32-verdier.
+                    &quot;embedding&quot;: array(&quot;f&quot;, vector).tobytes(),
+                })
+            # Minn om at søkeindeksen må ha rukket å behandle dataene.
+            print(&quot;Index and three documents ready; wait for indexing before search&quot;)
+        # Kombiner metadatafilter med vektorrangering.
+        elif args.mode == &quot;search&quot;:
+            # Finn to nærmeste treff innen topic=containers, med avstanden kalt score.
+            query = Query(&quot;(@topic:{containers})=&gt;[KNN 2 @embedding $vec AS score]&quot;)
+            # Sorter etter avstand og bruk søkedialekten som støtter denne syntaksen.
+            query = query.sort_by(&quot;score&quot;).return_fields(&quot;topic&quot;, &quot;text&quot;, &quot;score&quot;).dialect(2)
+            # Send spørsmålsvektoren i samme binære format som dokumentvektorene.
+            result = client.ft(&quot;ai200-index&quot;).search(query, query_params={&quot;vec&quot;: array(&quot;f&quot;, [0, 1, 0]).tobytes()})
+            # Behandle de returnerte treffene.
+            for document in result.docs:
+                # Vis ID, emne og avstand for sammenligning.
+                print(document.id, document.topic, document.score)
+        # Rydd bare labens indeks og tilknyttede dokumenter.
+        else:
+            # Slett indeksen og dokumentene som hører til den.
+            client.ft(&quot;ai200-index&quot;).dropindex(delete_documents=True)
+            # Bekreft oppryddingen.
+            print(&quot;Removed lab index and its documents&quot;)
+
+
+# Start bare når filen kjøres direkte.
+if __name__ == &quot;__main__&quot;:
+    # Kjør valgt Redis-operasjon.
+    main()
+</code></pre></details>
+</section><section class="chapter-step" id="w13-sok"><h4>2. Søk og avgrens</h4><pre data-language="PowerShell"><code># Kjør et KNN-søk med metadatafilter mot Redis-indeksen.
+python labs/redis/demo.py search</code></pre><p>Vent på indeksering hvis første søk er tomt. Forventet: dokument 2 før 1, mens dokument 3 utelates av topic-filteret. Prøv en annen søkevektor i kildefilen og forklar både metadatafilter og KNN-rangering.</p><label class="check-item"><input type="checkbox" data-check="w13-sok" data-progress-source="./workshop-redis-vectors.html"><span>Jeg har brukt en binær spørsmålsvektor og metadatafilter i et KNN-søk.</span></label>
+</section><section class="chapter-step" id="w13-oppdater"><h4>3. Undersøk endringer</h4><p>Endre vektoren for dokument 2 i index-steget, kjør index og search igjen, og observer rangeringen etter at indeksen er oppdatert. Forklar forskjellen mellom en cache som inneholder ferdige søkeresultater og Redis som lagrer en søkbar vektorindeks.</p><label class="check-item"><input type="checkbox" data-check="w13-oppdater" data-progress-source="./workshop-redis-vectors.html"><span>Jeg skiller cache-invalidering fra oppdatering av en søkeindeks.</span></label>
+</section><section class="chapter-step" id="w13-opprydding"><h4>Rydding og overgang til neste del</h4><pre data-language="PowerShell"><code># Fra prosjektroten. Forkaster lokale endringer i denne kildefilen.
+git restore --source=HEAD -- labs/redis/demo.py</code></pre>
+<pre data-language="PowerShell"><code># Fjern bare labens Redis-indeks og dokumenter.
+python labs/redis/demo.py cleanup
+# Fjern REDIS_KEY fra denne terminalen.
+Remove-Item Env:REDIS_KEY -ErrorAction SilentlyContinue</code></pre><p>Cleanup fjerner bare ai200-indeksen og dens dokumenter. Slett den dedikerte Azure-instansen når økten er ferdig.</p>
+</section>
+</details></section>
+      <section class="panel" id="avslutning"><h2>Avslutt og studer videre</h2><p>Kontroller at ressursene som er ferdig brukt er ryddet. Forklar de viktigste valgene uten å lese oppskriften, og bruk <a href="./pensum-data.html">pensumsiden for domenet</a> til å se kompetansemål og videre studier. <a href="./studiedekning.html">Studiedekning og begrensninger</a> er den samme for begge formater.</p></section>
+      <nav class="page-nav" aria-label="Andre formater"><a href="./index.html?format=short#workshops-domene-2">Korte workshops →</a><a href="./index.html?format=domain#workshops-domene-2">Samlede workshops →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 · Samlet domene 2</span><a href="./pensum-data.html">Pensum og videre studier</a></div></footer>
+</body>
+</html>

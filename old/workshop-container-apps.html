@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Opprett et Container Apps-miljø og test to revisjoner med trafikkfordeling og tilbakerulling.">
+  <title>Workshop 4: Miljøer og revisjoner i Container Apps | AI-200</title>
+  <link rel="stylesheet" href="./workshops.css">
+  <script src="./workshops.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a></nav>
+  </div></header>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Workshop 04 / Domene 1 / Containere</p>
+    <h1>Miljøer og revisjoner i Container Apps</h1>
+    <p class="lead">Opprett et Container Apps-miljø og test to revisjoner med trafikkfordeling og tilbakerulling.</p>
+    <div class="meta"><span class="tag">Kort workshop</span><span class="tag">Én av 22 workshops</span><span class="tag">AI-200</span></div>
+  </div></div>
+  <nav class="workshop-nav" aria-label="Workshopløp"><div class="wrap">
+    <a href="./getting-started.html">Kom i gang</a><a href="./index.html#workshops">Alle 22 workshops</a><a href="./workshop-app-service.html">← 3. Kjør en container i App Service</a><a href="./workshop-container-apps.html" aria-current="page">4. Denne workshopen</a><a href="./workshop-keda.html">5. Hendelsesstyrt skalering med KEDA →</a>
+  </div></nav>
+  <main id="innhold" class="wrap workshop-layout">
+    <aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold i workshopen">
+      <a href="#begreper">Dette lærer vi om nå</a>
+      <a href="#forberedelser">Før du starter</a>
+      <a href="#miljo">1. Undersøk miljø og ingress</a>
+      <a href="#revisjoner">2. Opprett en ny revisjon</a>
+      <a href="#trafikk">3. Fordel trafikk og rull tilbake</a>
+      <a href="#opprydding">Rydd opp og forklar</a>
+      <a href="#kilder">Pensum og kilder</a>
+    </nav></aside>
+    <article class="content">
+      <div class="notice"><p><a href="./getting-started.html#for-du-starter">Felles oppsett</a> · <a href="./getting-started.html#terminal">Ny terminal</a></p><p><strong>Bygger på:</strong> <a href="./workshop-acr.html">2. Lagre images og bygg med ACR Tasks</a>.</p></div>
+      <section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2>
+        <p>Bruk begrepene som en oversikt før du starter. Kryss av når du kan forklare begrepet med egne ord og knytte det til øvelsen. Du kan komme tilbake og krysse av underveis.</p>
+        <div class="table-wrap keyword-table" role="region" aria-label="Begreper i denne workshopen" tabindex="0"><table>
+          <caption>Begreper og egenvurdering</caption>
+          <thead><tr><th scope="col">Begrep jeg kan forklare</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-aca" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ACA</span></label></th><td>Azure Container Apps: driftet plattform for containerapper. En app hører til et miljø og kan ha flere revisjoner.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/revisions">Les mer<span class="sr-only"> om ACA</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-environment" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Container Apps-miljø</span></label></th><td>Felles grense for blant annet nettverk og konfigurasjon som flere containerapper kan dele. Miljøet er en egen ressurs.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/revisions">Les mer<span class="sr-only"> om Container Apps-miljø</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-ingress" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Ingress og FQDN</span></label></th><td>Ingress er appens inngang for trafikk. FQDN betyr Fully Qualified Domain Name, hele vertsnavnet; target port er porten inne i containeren.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview">Les mer<span class="sr-only"> om Ingress og FQDN</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-revision" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Revisjon</span></label></th><td>En versjon av appens revisjonsbundne konfigurasjon. Her lager en endret miljøvariabel en ny revisjon selv om imaget er uendret.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/revisions">Les mer<span class="sr-only"> om Revisjon</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-multiple" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Multiple revisions</span></label></th><td>Modus som lar flere revisjoner være aktive samtidig. Vi kan sammenligne den gamle og den nye versjonen før all trafikk flyttes.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/revisions">Les mer<span class="sr-only"> om Multiple revisions</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-traffic" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Traffic splitting og rollback</span></label></th><td>Trafikkvekter fordeler forespørsler mellom revisjoner. Rollback betyr tilbakerulling; her sender vi all trafikk tilbake til v1-revisjonen.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/revisions">Les mer<span class="sr-only"> om Traffic splitting og rollback</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-replica" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>Replika</span></label></th><td>En kjørende kopi av en revisjon. Minste og største antall replikaer setter grensene for appens skalering.</td><td><a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Les mer<span class="sr-only"> om Replika</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-pull" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>ACR og managed identity</span></label></th><td>Azure Container Registry (ACR) lagrer imaget. En Azure-administrert appidentitet får AcrPull og brukes til å hente det ved oppstart.</td><td><a href="https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview">Les mer<span class="sr-only"> om ACR og managed identity</span></a></td></tr>
+            <tr><th scope="row"><label class="keyword-check"><input type="checkbox" data-check="w4-begrep-json" data-check-kind="keyword"><span><span class="sr-only">Jeg kan forklare </span>JSON</span></label></th><td>JavaScript Object Notation: tekstformat for strukturerte data med objekter, felter og lister. Vi sender eller leser dette formatet i øvelsen.</td><td><a href="https://www.rfc-editor.org/rfc/rfc8259.html">Les mer<span class="sr-only"> om JSON</span></a></td></tr>
+          </tbody>
+        </table></div>
+        <p class="small" data-keyword-progress aria-live="polite"></p>
+      </section>
+      <section class="panel" id="forberedelser"><h2>Oppsett for denne delen</h2>
+<p>Bruk ACR-registryet, <code>ai200-api:v1</code> og terminalvariablene fra <a href="./workshop-acr.html">del 2</a>. Ved ny terminal bruker du <a href="./workshop-acr.html#fortsett">tilkoblingsblokken for registryet</a>. Opprett Container Apps-ressursene nedenfor én gang. App Service-ressursene fra del 3 brukes ikke her.</p><pre data-language="PowerShell"><code># Sett navnet på Container App-en.
+$ca = "ai200-api"
+# Sett navnet på Container Apps-miljøet.
+$caEnv = "ai200-env"
+# Sett navnet på identiteten som skal hente Container App-ens image.
+$caPullIdentityName = "ai200-ca-pull"</code></pre><h3>Gi appidentiteten lesetilgang til ACR</h3><pre data-language="PowerShell"><code># Opprett en separat managed identity som appen kan bruke til image-pull.
+az identity create --resource-group $rg --name $caPullIdentityName --location $location -o none
+# Hent ressurs-ID-en til Container App-ens pull-identitet.
+$caPullIdentityId = az identity show --resource-group $rg --name $caPullIdentityName --query id -o tsv
+# Hent identitetens principal-ID for rolletildelingen i ACR.
+$caPullPrincipalId = az identity show --resource-group $rg --name $caPullIdentityName --query principalId -o tsv
+# Gi appidentiteten AcrPull på dette registryet.
+az role assignment create --assignee-object-id $caPullPrincipalId --assignee-principal-type ServicePrincipal --role AcrPull --scope $acrId -o none</code></pre><h3>Opprett miljø og app</h3><p>Bruk Consumption-profilen med minimum 0 og maksimum 2 replikaer. Oppsettet bruker live Log stream; det oppretter ikke et Log Analytics-workspace for historiske logger.</p><pre data-language="PowerShell"><code># Opprett et miljø med workload profiles, uten et workspace for historiske logger.
+az containerapp env create --resource-group $rg --name $caEnv --location $location --enable-workload-profiles true --logs-destination none -o none
+# Opprett appen med managed identity, ekstern ingress på port 8080 og 0–2 replikaer.
+az containerapp create --resource-group $rg --name $ca --environment $caEnv --workload-profile-name Consumption --image "$login/ai200-api:v1" --user-assigned $caPullIdentityId --registry-identity $caPullIdentityId --registry-server $login --ingress external --target-port 8080 --cpu 0.25 --memory 0.5Gi --min-replicas 0 --max-replicas 2 --revisions-mode single -o none
+# Hent Container App-ens eksterne vertsnavn.
+$caFqdn = az containerapp show --resource-group $rg --name $ca --query properties.configuration.ingress.fqdn -o tsv
+# Vis appens navn, opprettelsesstatus og eksterne vertsnavn.
+az containerapp show --resource-group $rg --name $ca --query "{Name:name, State:properties.provisioningState, Host:properties.configuration.ingress.fqdn}" -o table</code></pre><p><strong>Kontrollpunkt:</strong> tilstanden er <code>Succeeded</code>. Helsesjekken gjøres i steg 1. Noter gruppe, appnavn, miljø, identitetsnavn og FQDN til del 5. Ved image-pull-feil kontrollerer du at identiteten har <code>AcrPull</code> på labregistryet; vent på at en ny rolle slår gjennom før du prøver opprettelsen igjen. Har du allerede disse ressursene, bruk navnene deres og hopp over opprettelsen.</p><details id="fortsett"><summary>Ny terminal: hent den eksisterende Container App-en</summary><p>Bruk appnavnet fra denne delen før du fortsetter med del 5:</p><pre data-language="PowerShell"><code># Sett navnet på ressursgruppen som kommandoene skal bruke.
+$rg = "ai200-d1"
+# Sett navnet på Container App-en.
+$ca = "ai200-api"
+# Hent regionen til den eksisterende Container App-en.
+$location = az containerapp show --resource-group $rg --name $ca --query location -o tsv</code></pre></details><p class="small">Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/container-apps/managed-identity-image-pull">image-pull med managed identity</a>, <a href="https://learn.microsoft.com/en-us/cli/azure/containerapp/env#az-containerapp-env-create">opprette miljø</a> og <a href="https://learn.microsoft.com/en-us/cli/azure/containerapp#az-containerapp-create">opprette Container App</a>.</p>
+</section>
+      <section class="panel" id="miljo"><h2>1. Undersøk miljø og ingress</h2>
+<p>Åpne appens Overview, Environment og Log stream, og kall helsesjekken:</p><pre data-language="PowerShell"><code># Kall Container App-ens helsesjekk og vis JSON-svaret.
+Invoke-RestMethod "https://$caFqdn/health"</code></pre><p>Forventet: JSON fra testappen. Noter miljøets nettverksvalg og forskjellen mellom appens inngangsadresse og containerens target port. Behold min 0 / maks 2 replikaer.</p><label class="check-item"><input type="checkbox" data-check="w4-miljo"><span>Jeg finner miljø, ingress og aktive logger.</span></label>
+</section>
+      <section class="panel" id="revisjoner"><h2>2. Opprett en ny revisjon</h2>
+<p>Aktiver Multiple revisions. Velg <strong>Edit and deploy</strong> og lag en revisjon med miljøvariabelen <code>APP_VERSION=v2</code>. Behold samme image slik at bare revisjonskonfigurasjonen endres. Finn begge revisjonsnavnene og vent til den nye er healthy.</p><label class="check-item"><input type="checkbox" data-check="w4-revisjoner"><span>Jeg har opprettet og identifisert to revisjoner.</span></label>
+</section>
+      <section class="panel" id="trafikk"><h2>3. Fordel trafikk og rull tilbake</h2>
+<p>Sett trafikk til 50 % på hver revisjon. Kall /health gjentatte ganger med <code>curl.exe</code> uten å gjenbruke cookies. Observer begge versjonene; få kall garanterer ikke en nøyaktig halvdeling. Rull deretter tilbake ved å sende all apptrafikk til v1-revisjonen. Bruk revisjonsnavnet du fant i forrige steg:</p><pre data-language="PowerShell"><code># Sett navnet på v1-revisjonen som skal få all trafikk.
+$v1Revision = "DITT-V1-REVISJONSNAVN"
+# Send 100 prosent av apptrafikken til v1-revisjonen.
+az containerapp ingress traffic set --resource-group $rg --name $ca --revision-weight "$v1Revision=100" -o none
+# Vis trafikkfordelingen mellom revisjonene.
+az containerapp ingress traffic show --resource-group $rg --name $ca -o table</code></pre><p>Bekreft at v2 ikke lenger får appens trafikk. Undersøk logger per revisjon. <a href="https://learn.microsoft.com/en-us/azure/container-apps/traffic-splitting">Microsoft Learn: fordele trafikk mellom revisjoner</a>.</p><label class="check-item"><input type="checkbox" data-check="w4-trafikk"><span>Jeg har fordelt trafikk og rullet tilbake til en tidligere revisjon.</span></label>
+</section>
+      <section class="panel" id="opprydding"><h2>Rydd opp og forklar</h2>
+<p>I <strong>Revision management</strong>: velg den ubrukte revisjonen og <strong>Deactivate</strong>. Behold appen, miljøet og identiteten <code>ai200-ca-pull</code> til del 5. Hvis du avslutter her, slett disse tre ressursene fra ressursgruppens ressursliste. Behold ACR hvis del 6 skal bruke det. Forklar forskjellen mellom miljø, app, revisjon og replika.</p>
+</section>
+      <section class="panel sources" id="kilder"><h2>Pensum og kilder</h2><p><a href="./pensum-containere.html">Se pensummål og videre studier for domene 1</a> · <a href="./studiedekning.html">Samlet studiedekning</a>.</p><p>Økten trener mål i domene 1 i <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts AI-200-studieveiledning</a>. Hele workshopløpet gir flere øvelser per domene; bruk også studieveiledningen og kontrollspørsmålene.</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/container-apps/revisions">Revisjoner i Container Apps</a></li></ul></section>
+      <nav class="page-nav" aria-label="Forrige og neste workshop"><a href="./workshop-app-service.html">← Workshop 3</a><a href="./workshop-keda.html">Workshop 5 →</a></nav>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>AI-200 Studiegruppe · Workshop 4</span><a href="./index.html#workshops">Velg neste økt</a></div></footer>
+</body>
+</html>
