@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import shlex
 import subprocess
+import sys
 import tempfile
 import unittest
 from urllib.parse import unquote, urlsplit
@@ -14,6 +15,8 @@ import json
 
 
 ROOT = Path(__file__).resolve().parents[1]
+# Match direct script execution when importing the builder by its file path.
+sys.path.insert(0, str(ROOT / "scripts"))
 spec = importlib.util.spec_from_file_location("domain_workshops", ROOT / "scripts/build_domain_workshops.py")
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
