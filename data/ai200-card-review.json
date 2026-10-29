@@ -1225,11 +1225,6 @@
       "level": "objective",
       "fingerprint": "1e6a90274c2e7a2eca1652d9fcaebe12dbeb2b354bd910585c816c481bac333c"
     },
-    "m-22-3-1": {
-      "objective": "d2-cosmos-performance",
-      "level": "objective",
-      "fingerprint": "e59324cebb5ea01f59cea217ebf2b9650cb1aadbde7242f1aa0c8218bad76d65"
-    },
     "m-22-4-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
@@ -4174,6 +4169,20 @@
       "legacyIds": [],
       "group": "Monitoring configuration extensions",
       "reason": "Dashboard authoring, alert configuration, availability tests, managed Prometheus storage or metric-View configuration extends beyond the stated OpenTelemetry tracing and KQL-query tasks."
+    },
+    {
+      "id": "m-22-3-1",
+      "previousNumber": 245,
+      "numberAtRemoval": 223,
+      "removedOn": "2026-10-29",
+      "question": "Which system-property path is excluded by the default Cosmos DB indexing policy?",
+      "category": "cosmos",
+      "domain": 2,
+      "legacyIds": [
+        22
+      ],
+      "group": "User-requested removals",
+      "reason": "Removed at the user's request: the default Cosmos DB _etag indexing-path recall question."
     }
   ]
 }

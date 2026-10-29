@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "deckSha256": "4baf1ac85f1a2015dbd319fecfa530d42a5a1eab4169e1855ef2edcb2b91c17e",
+  "deckSha256": "92bbbda866d635524209f8d42b02602963d314980f9a1e3bbe3fe431fa8a28f1",
   "kinds": {
     "practical": "Praktisk oppgave",
     "analysis": "Analyseoppgave",
@@ -2148,16 +2148,6 @@
       "url": "workshops/d2b.html#cosmos-design"
     },
     "m-22-2-1": {
-      "workshop": "d2b",
-      "workshopTitle": "Cosmos DB fra partisjon til endringsflyt",
-      "domain": 2,
-      "category": "cosmos",
-      "kind": "analysis",
-      "activity": "cosmos-design",
-      "activityTitle": "Velg konsistens, indekser og kapasitet fra krav",
-      "url": "workshops/d2b.html#cosmos-design"
-    },
-    "m-22-3-1": {
       "workshop": "d2b",
       "workshopTitle": "Cosmos DB fra partisjon til endringsflyt",
       "domain": 2,

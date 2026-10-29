@@ -8517,44 +8517,6 @@ window.AI200_FLASHCARDS = {
       }
     },
     {
-      "id": "m-22-3-1",
-      "domain": 2,
-      "category": "cosmos",
-      "title": "Cosmos indexing policy",
-      "question": "Which system-property path is excluded by the default Cosmos DB indexing policy?",
-      "answers": [
-        "/_etag/?. _etag is the version token used for conditional updates. Excluding it from indexing affects query indexing, while conditional writes can still use the token."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        22
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 22",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Microsoft Learn · Indexing policies",
-          "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
       "id": "m-22-4-1",
       "domain": 2,
       "category": "cosmos",

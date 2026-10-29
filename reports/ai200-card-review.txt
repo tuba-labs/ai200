@@ -1,7 +1,7 @@
 AI-200 FLASHCARD SCOPE REVIEW — 29 OCTOBER 2026
 Study guide: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200
 Skills version: 7 October 2026.
-Reviewed 691 cards. Retained 578. Removed 113.
+Reviewed 691 cards. Retained 577. Removed 114.
 Remaining card IDs are unchanged. Display numbers follow the reduced deck.
 The guide names Python. A resource link alone is not a measured objective.
 General Docker, Kubernetes, SQL, networking and identity prerequisites remain.
@@ -164,6 +164,11 @@ Finite Container Apps job triggers and billing-unit trivia extend beyond the nam
   Previous #174 | prep-ca-010 | Which Container Apps resource runs finite work on a cron schedule?
   Previous #175 | prep-p-ca-022 | Which Container Apps job trigger runs finite work on demand?
   Previous #184 | prep-ca-027 | Which resource-time units are used for Container Apps Consumption compute usage?
+
+User-requested removals (1)
+Removed at the user's request: the default Cosmos DB _etag indexing-path recall question.
+  Previous #245 | m-22-3-1 | Which system-property path is excluded by the default Cosmos DB indexing policy?
+  Number at removal: #223. Removed 29 October 2026.
 
 RETAINED OBJECTIVE MAPPINGS
 The JSON review records an objective, prerequisite/skill distinction and content fingerprint for every remaining card.
