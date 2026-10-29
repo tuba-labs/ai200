@@ -1,0 +1,731 @@
+TWO FUTURE AI-200 WORKSHOP PROJECTS — PROPOSAL, 29 OCTOBER 2026
+
+RECOMMENDATION
+Build one understandable system in two connected workshop projects: a repair desk and its searchable solution library. Residents report a broken streetlight or leaking pipe; staff track the job and find a useful previous fix. Each new component must improve that user flow.
+These are two substantial workshop tracks with several checkpoints, not two short sessions. The main path uses Container Apps. App Service and AKS reuse the same images as optional hosting branches. Covering AKS practically requires doing that branch; a comparison paragraph does not teach manifest deployment and troubleshooting.
+Use Python and supplied/precomputed embeddings. The learners do not need a model account, prompt-engineering framework, model training or a separate generative-AI service to practice the measured data skills.
+
+WHAT THIS FILE CLAIMS
+All 559 current cards are assigned once: 171 implementation candidates, 84 controlled experiments, 137 design/reference checks and 167 vocabulary introductions.
+Implementation plus experiments: 255 cards (45.6% of the whole deck; 65.1% of subject cards). Of these, 207 fit the main path and 48 need an explicitly optional branch.
+These numbers count proposed learning opportunities, not completed coverage. Vocabulary and a discussion are not substitutes for demonstrating a skill. The card-by-card appendix identifies the distinction.
+The mapping is a dated planning snapshot. It does not alter the current site’s workshop tags or claim that any new workshop exists.
+
+THE APP AND ITS DATA
+Cosmos DB owns repair jobs and their changing status. PostgreSQL owns curated repair articles and embeddings. Redis caches derived results and can be cleared without deleting authoritative data. Blob Storage owns uploaded photos. This gives each store a distinct job rather than keeping three synchronized authoritative copies.
+Service Bus holds work that must be completed. Event Grid reports things that happened, such as a photo upload. The API returns quickly; a worker does slow work. Functions provide a small event adapter and the change-feed consumer.
+Managed identities, Key Vault, App Configuration and tracing are shared foundations across both projects, not four unrelated security demos.
+
+WORKSHOP 1: REPORT A PROBLEM AND TRACK THE REPAIR
+
+Resident -> API -> Cosmos repair record
+              -> Service Bus -> worker -> updated job status
+Photo -> Blob Storage -> Event Grid -> Function -> existing work flow
+All components -> OpenTelemetry/Application Insights -> KQL investigation
+
+Observable end state: a resident submits a report with a photo, receives an ID, and sees processing status. A worker restart does not duplicate the business action. A broken permission or a bad image release can be located and recovered.
+
+1.1 Build and publish the repair API
+Outcome: The same versioned image can run locally and be pulled from a private registry.
+Start with a tiny Python API and one worker from the same repository. Build an image locally or with an ACR quick task, inspect its tag and digest, then push/pull it. Add one source-triggered build after the manual path works. Use one simple build path first; multi-step tasks, timers, signatures, ABAC and private networking are short extensions or design checks.
+Card candidates: 11 implement, 4 experiment, 12 design/reference, 25 vocabulary.
+
+1.2 Release the API without breaking the report form
+Outcome: A user submits a repair report through a working HTTPS endpoint; a bad release can be rolled back.
+Use Container Apps as the main host. Compare single and multiple revision behavior, route a small traffic share to a test revision and move a stable label URL. Set the listening port and environment values explicitly. An App Service slot deployment is an alternative-host exercise using the same image, not another required production component. Deployment-labels mode is a preview reference or optional demo.
+Card candidates: 12 implement, 4 experiment, 9 design/reference, 10 vocabulary.
+
+1.3 Save a report and show its current status
+Outcome: The form returns a report ID and the status page reads the right repair record.
+Store repair jobs in Cosmos DB. Use Python SDK clients, a deliberate partition key and point reads. Compare one partition-targeted query with a cross-partition query, inspect RU charges and change an unnecessary index. A short consistency exercise explains what a user may read after an update. Discuss multi-region guarantees from a supplied scenario rather than deploying several regions solely for the exercise.
+Card candidates: 6 implement, 9 experiment, 10 design/reference, 6 vocabulary.
+
+1.4 Process repair work reliably in the background
+Outcome: The API acknowledges quickly; workers complete jobs without applying the same repair twice.
+Send work to Service Bus and return HTTP 202 plus a status location. Let worker replicas compete on one queue. Crash a worker before completion, observe redelivery and make the operation idempotent. Add a dead-letter recovery path, one topic with independent subscribers and one property filter. Scale the worker from the queue backlog with KEDA. Sessions, scheduled work, deferral, broker transactions, request/reply and an outbox are focused variants of this flow, not all mandatory features of the repair app.
+Card candidates: 19 implement, 4 experiment, 18 design/reference, 13 vocabulary.
+
+1.5 React when a resident uploads a photo
+Outcome: A photo upload is associated with its report and produces a visible processing status.
+A BlobCreated event reaches a Python Function through Event Grid. The handler accepts the event quickly and hands slow work to the existing worker. Add event-type/subject filtering, retry-safe processing and dead-letter storage. Inspect a failed delivery. Use a small Timer or Storage Queue function as a binding comparison only; do not introduce extra queues into the main flow just to demonstrate every trigger.
+Card candidates: 23 implement, 8 experiment, 22 design/reference, 17 vocabulary.
+
+1.6 Give each component only the settings and access it needs
+Outcome: The API and worker read configuration securely; a deliberate permission error is diagnosable.
+Use managed identities, narrow data-plane roles, Key Vault for a real demonstration credential and App Configuration for ordinary settings. Compare a fresh SDK read with a cached or version-pinned value. Rotate the demonstration credential in both the target and vault, then refresh its consumers. Load a key/label pair and refresh a watched setting. Use a feature flag to expose the new search page. Private endpoints and federation are optional infrastructure extensions, not prerequisites for the first successful request.
+Card candidates: 26 implement, 14 experiment, 14 design/reference, 25 vocabulary.
+
+1.7 Follow a slow or failed report through the system
+Outcome: A learner can explain where a request failed using traces and a small set of log queries.
+Instrument API and worker with OpenTelemetry, give them distinct service names and propagate trace context. Observe request and dependency spans, a log and a metric. Write KQL that filters failures, groups requests, calculates durations, joins related telemetry and plots time buckets. Break one permission or dependency and find it again. Sampling and ingestion-cap exercises use controlled test traffic and configuration comparisons rather than silently dropping evidence during the main debugging exercise.
+Card candidates: 26 implement, 9 experiment, 11 design/reference, 16 vocabulary.
+
+1.8 Optional hosting branch: run the same API and worker on AKS
+Outcome: The existing images run behind Kubernetes Services and can be investigated with kubectl.
+Reuse the API/worker; write Deployment and Service manifests, probes and requests/limits. Roll out and undo an image change, test a selector or target-port error, inspect previous logs and compare pod scaling with node capacity. Add workload identity and a mounted secret in a later step. Namespace permissions, quota/LimitRange, NetworkPolicy and shared volumes are optional variants. DaemonSets, GPU placement, CNI choices and every Service type are discussion or isolated examples unless a real requirement emerges. This branch is needed for practical AKS coverage; it is not needed to finish the main repair app.
+Card candidates: 14 implement, 9 experiment, 8 design/reference, 26 vocabulary.
+
+WORKSHOP 2: FIND A PREVIOUS FIX QUICKLY AND KEEP IT CURRENT
+
+Staff search -> existing API -> Redis cache
+                            -> PostgreSQL article/vector search on a miss
+Solved repair -> Cosmos change feed -> derived suggestion/cache invalidation
+
+Optional comparisons: Cosmos vector retrieval for solved cases; Redis semantic caching of prior suggestions. Use one small shared fixture with known relevant matches. Do not force all three vector engines into the essential request path.
+Observable end state: a paraphrased problem finds a relevant article, a repeat request is faster, an update invalidates stale derived data, and the learner can explain a measured latency or recall change.
+
+2.1 Create a searchable library of previous fixes
+Outcome: Staff can retrieve a known repair article, filtered by a useful category such as electrical or plumbing.
+Reuse the running API and authentication from workshop 1. Store curated knowledge articles and supplied embeddings in PostgreSQL. Load rows in bulk, parameterize reads and use an ordinary index for metadata. Use a bounded Python connection pool and secure database access. The source of truth is the article library; Cosmos DB remains the source of truth for live repair jobs.
+Card candidates: 5 implement, 5 vocabulary.
+
+2.2 Find similar problems and compare search quality
+Outcome: “The street lamp is dark” can find an article titled “Outdoor light does not turn on.”
+Use supplied embeddings so no model API is needed. Establish exact nearest-neighbor results, then compare HNSW and IVFFlat on the same question set. Explain cosine, L2 and dot product with tiny numeric examples. Apply metadata filters and compare recall/latency. An optional Cosmos vector branch searches solved repair records or the same copied test fixture to compare indexing policies; it is an alternative retrieval experiment, not a second compulsory copy of the article database.
+Card candidates: 14 implement, 5 experiment, 7 design/reference, 13 vocabulary.
+
+2.3 Serve repeated searches quickly without showing stale answers
+Outcome: A repeated search becomes a cache hit, and an edited article does not remain wrong indefinitely.
+Add Redis cache-aside for article/search results, explicit TTLs and invalidation after updates. Measure hit rate, misses and evictions; simulate a popular key expiring. Start with ordinary caching. An optional semantic-cache branch uses compatible Redis vector search and a clear similarity threshold to reuse stored suggestions for paraphrases. FLAT/HNSW and hash encodings belong to that branch; they are not required merely to cache an article by ID.
+Card candidates: 8 implement, 10 experiment, 5 design/reference, 8 vocabulary.
+
+2.4 Keep suggestions synchronized when repair records change
+Outcome: A solved repair becomes searchable and its cached status is invalidated without the API publishing a second event for every write.
+Consume Cosmos change feed with a Python Function or Python pull client. Maintain progress, tolerate repeated batches and update a derived search entry or invalidate a cached repair status. Run independent consumers for indexing and cache invalidation; use a separate named consumer/checkpoint group for each job. Do not model these as one shared worker group if each needs every change. Explain latest-version omissions and explicit deletion/tombstone handling. Native Change Feed Processor names/APIs are conceptual comparisons because the native processor libraries in the linked material are .NET/Java, not a Python client to implement in this lab.
+Card candidates: 4 implement, 1 experiment, 7 design/reference, 1 vocabulary.
+
+2.5 Measure and fix a slow search under realistic concurrency
+Outcome: A learner can separate slow connection setup from slow SQL and demonstrate whether a chosen change helped.
+Run repeatable searches with fixed data and concurrency. Record P95 latency, recall, pool waits, memory pressure and disk reads. Use EXPLAIN ANALYZE, tune one index search parameter and compare before/after. Test client pooling against repeated new connections; optionally compare built-in PgBouncer. Resource-tier changes are estimates or a controlled extension after finding a bottleneck. Exact SKU ratios, ports, dimension ceilings and defaults remain short reference checks rather than separate app features. Reuse workshop 1 tracing/KQL to explain the measurements.
+Card candidates: 3 implement, 7 experiment, 14 design/reference, 2 vocabulary.
+
+KEEP THE BUILD SMALL
+Start from two container entry points (API and worker), one small Function project and seed data. Add search routes to the API rather than creating a microservice for each database. Keep jobs and articles as the two understandable business objects.
+The first checkpoint in each project must work before adding reliability or performance variants. Provide independent starting snapshots at the main checkpoints so one earlier Azure configuration problem does not block the entire course.
+The core flow should use one straightforward build path, one primary host, one queue and one primary vector store. Add the topic/subscription, alternative hosts and alternative vector engines as focused extensions after that path works.
+Keep authorization and tracing in the code from the first deployed checkpoint, then deliberately break and diagnose them later. This makes the security and KQL work part of the app rather than a final slide deck.
+
+AWKWARD FITS AND HONEST LIMITS
+AKS and App Service are alternative deployment experiences. They cannot both be taught practically merely by mentioning them while running Container Apps.
+Multi-region Cosmos consistency, geo-replicated/private ACR, private networking, GPU placement and dedicated workload sizing need design scenarios or optional environments. They are not required by a repair desk’s basic user flow.
+The native Cosmos Change Feed Processor API is documented for .NET/Java. Use Python pull/Functions for implementation and teach processor/group versus instance names as the language-neutral coordination model.
+Exact retry schedules, status-code sets, ports, minimum staleness values, retention windows, index limits and distro defaults are small reference checks when they affect a decision. Do not add infrastructure solely to make learners memorize a number.
+Preview capabilities and uncommon trigger/binding combinations should be labeled optional. A working Timer demo does not prove understanding of every Functions plan, timeout and scaling variant.
+OpenTelemetry sampler APIs and environment settings can be compared with a tiny instrumented test. A learner still needs to explain the difference between instrumentation, sampling, propagation, export and query scope.
+Some cards are implementation prerequisites rather than explicitly named exam tasks. Introducing their vocabulary in context supports the workshop but does not establish exam completeness.
+If the requirement is two brief workshops, reduce the practical claim. Two coherent projects can organize the whole deck, but all 559 cards cannot honestly become distinct core hands-on tasks in that time.
+
+HOW TO JUDGE A FUTURE WORKSHOP
+For implementation candidates, require an observable result: the API reads data, a message is settled, a secret resolves or the query returns the expected rows.
+For experiments, require before/after evidence: a failed delivery recovers, an old cache value disappears, a new index changes the plan or a resource change improves a repeatable measurement.
+For design/reference checks, require a short explanation of the relevant trade-off or failure mode. Record this separately from practical completion.
+For vocabulary, show the concrete object first, then ask the learner to identify and explain it. Knowing an acronym is useful but does not prove the operational skill.
+
+CARD-BY-CARD GROUPING
+Numbers refer to the current 559-card deck. IDs remain stable if display numbers change.
+Implement = proposed code/configuration task. Experiment = proposed failure or comparison.
+Design/reference = discussion or lookup, not a claim of hands-on coverage. Vocabulary = introduced in context.
+Every entry below has status PROPOSED.
+
+1.1 Build and publish the repair API
+
+001 | term-d1-provisioning | D1 / terms-1 | Vocabulary | What does provision mean in Azure?
+002 | term-d1-resource | D1 / terms-1 | Vocabulary | What is an Azure resource?
+003 | term-d1-resource-group | D1 / terms-1 | Vocabulary | What is an Azure resource group?
+004 | term-d1-subscription | D1 / terms-1 | Vocabulary | What is an Azure subscription?
+005 | term-d1-region | D1 / terms-1 | Vocabulary | What is an Azure region?
+006 | term-d1-availability-zone | D1 / terms-1 | Vocabulary | What is an Azure availability zone?
+007 | term-d1-sku | D1 / terms-1 | Vocabulary | What does SKU mean for an Azure service?
+008 | term-d1-vm | D1 / terms-1 | Vocabulary | What is a virtual machine in Azure?
+009 | term-d1-cli | D1 / terms-1 | Vocabulary | What does CLI stand for?
+010 | term-d1-sdk | D1 / terms-1 | Vocabulary | What does SDK stand for?
+011 | term-d1-iac | D1 / terms-1 | Vocabulary | What does Infrastructure as Code mean?
+012 | term-d1-bicep | D1 / terms-1 | Vocabulary | What is Bicep in Azure?
+013 | term-d1-cicd | D1 / terms-1 | Vocabulary | What does CI/CD stand for?
+014 | term-d1-docker | D1 / terms-1 | Vocabulary | What is Docker?
+015 | term-d1-image | D1 / terms-1 | Vocabulary | What is a container image?
+016 | term-d1-container | D1 / terms-1 | Vocabulary | What is an application container?
+017 | term-d1-dockerfile | D1 / terms-1 | Vocabulary | What is a Dockerfile?
+018 | term-d1-registry | D1 / terms-1 | Vocabulary | What is a container registry?
+019 | term-d1-acr | D1 / terms-1 | Vocabulary | What does ACR stand for?
+020 | term-d1-repository | D1 / terms-1 | Vocabulary | What is a repository inside a container registry?
+021 | term-d1-image-tag | D1 / terms-1 | Vocabulary | What is a container image tag?
+022 | term-d1-digest | D1 / terms-1 | Vocabulary | What is a container image digest?
+023 | term-d1-build-context | D1 / terms-1 | Vocabulary | What is a Docker build context?
+024 | term-d1-image-push | D1 / terms-1 | Vocabulary | What does pushing a container image mean?
+025 | term-d1-image-pull | D1 / terms-1 | Vocabulary | What does pulling a container image mean?
+063 | m-01-1-1 | D1 / acr | Implement | Which source-code events can trigger an ACR Task?
+064 | m-01-2-1 | D1 / acr | Experiment | How does an ACR Task know when to rebuild after its base image changes?
+065 | m-01-3-1 | D1 / acr | Design/reference | What schedule format does an ACR Tasks timer use?
+066 | m-01-4-1 | D1 / acr | Design/reference | Do ACR webhooks or Artifact Cache rules start source builds?
+067 | m-02-1-1 | D1 / acr | Implement | Which pull and push roles apply to an ACR registry using RBAC Registry Permissions?
+068 | m-02-2-1 | D1 / acr | Design/reference | Which ACR roles grant repository pull or push access when ABAC is enabled?
+069 | m-02-3-1 | D1 / acr | Design/reference | Are legacy AcrPull, AcrPush and AcrDelete roles honored on an ABAC-enabled registry?
+070 | m-03-1-1 | D1 / acr | Implement | What does an ACR quick task do?
+071 | m-03-2-1 | D1 / acr | Implement | How is a Git repository configured as an ACR Task's build context?
+072 | m-03-3-1 | D1 / acr | Design/reference | What defines an ACR multi-step task?
+073 | m-03-4-1 | D1 / acr | Implement | What sequence connects a Git commit to a new ACR image?
+074 | m-03-5-1 | D1 / acr | Experiment | optional: Build/pipeline extension | How can a GitHub Actions workflow run an existing ACR Task?
+075 | m-04-1-1 | D1 / acr | Experiment | Why can pulling myapp:latest return a different image after another push?
+076 | m-04-2-1 | D1 / acr | Implement | Why use a different image tag for each build?
+077 | m-04-3-1 | D1 / acr | Implement | Which image reference pins exact content even if a tag moves?
+078 | m-04-4-1 | D1 / acr | Implement | How do you push a local container image to Azure Container Registry?
+079 | m-04-5-1 | D1 / acr | Design/reference | Which image tag is assumed when none is specified?
+080 | m-04-5-2 | D1 / acr | Experiment | How can an ACR tag be protected from later overwrites?
+138 | prep-acr-001 | D1 / acr | Design/reference | Which ACR service tier supports geo-replication?
+139 | prep-acr-010 | D1 / acr | Design/reference | Which ACR service tier supports private endpoints?
+140 | prep-acr-003 | D1 / acr | Implement | Which Azure CLI command imports an existing image into ACR without local Docker?
+141 | prep-acr-004 | D1 / acr | Implement | How do you find the login-server hostname to use for an ACR image?
+142 | prep-p-acr-m01 | D1 / acr | Design/reference | What does image signature verification add beyond digest pinning?
+143 | prep-p-acr-008 | D1 / acr | Design/reference | What can an ACR repository-scoped token restrict?
+144 | prep-acr-012 | D1 / acr | Design/reference | What must accompany an ACR private endpoint when public registry access is disabled?
+145 | prep-acr-014 | D1 / acr | Design/reference | Which ACR capability can recover accidentally deleted artifacts when enabled beforehand?
+146 | prep-acr-017 | D1 / acr | Implement | Which Azure CLI command lists a repository's tags in ACR?
+
+1.2 Release the API without breaking the report form
+
+026 | term-d1-app-service | D1 / terms-1 | Vocabulary | optional: App Service alternative host | What is Azure App Service?
+027 | term-d1-deployment-slot | D1 / terms-1 | Vocabulary | optional: App Service alternative host | What is a deployment slot in Azure App Service?
+028 | term-d1-container-apps | D1 / terms-1 | Vocabulary | What is Azure Container Apps?
+047 | term-d1-dns | D1 / terms-1 | Vocabulary | What does DNS stand for?
+048 | term-d1-yaml | D1 / terms-1 | Vocabulary | What is YAML?
+049 | term-d1-json | D1 / terms-1 | Vocabulary | What is JSON?
+054 | term-d1-url | D1 / terms-1 | Vocabulary | What does URL stand for?
+055 | term-d1-uri | D1 / terms-1 | Vocabulary | What does URI stand for?
+061 | prep-ca-001 | D1 / terms-1 | Vocabulary | What is a Container Apps environment?
+062 | prep-ca-002 | D1 / terms-1 | Vocabulary | What does a Container Apps revision represent?
+081 | m-05-1-1 | D1 / app-service | Implement | optional: App Service alternative host | How can App Service pull from ACR without storing registry credentials?
+082 | m-05-3-1 | D1 / app-service | Design/reference | optional: App Service alternative host | Why is the ACR administrator account unsuitable for a production app identity?
+083 | m-05-4-1 | D1 / app-service | Experiment | optional: App Service alternative host | Does pushing to the same tag automatically refresh an App Service container?
+084 | m-06-1-1 | D1 / app-service | Implement | optional: App Service alternative host | How do App Service and Functions expose app settings to application code?
+085 | m-06-3-1 | D1 / app-service | Design/reference | optional: App Service alternative host | How do App Service connection strings differ from ordinary app settings?
+086 | m-06-4-1 | D1 / app-service | Implement | optional: App Service alternative host | What happens to a slot setting during an App Service slot swap?
+087 | m-06-5-1 | D1 / app-service | Design/reference | Why should runtime credentials be kept out of a Dockerfile?
+108 | m-12-1-1 | D1 / container-apps | Implement | How does single-revision mode route Container Apps traffic?
+109 | m-12-2-1 | D1 / container-apps | Implement | What does multiple-revision mode allow in Container Apps?
+110 | m-12-3-1 | D1 / container-apps | Design/reference | How does Deployment labels mode route traffic in Azure Container Apps?
+111 | m-12-4-1 | D1 / container-apps | Implement | What must the traffic percentages for a Container Apps endpoint add up to?
+112 | m-12-5-1 | D1 / container-apps | Implement | How can one Container Apps revision have a stable test URL?
+115 | m-13-3-1 | D1 / container-apps | Implement | What is the trade-off of setting Container Apps minReplicas to zero?
+116 | m-13-4-1 | D1 / container-apps | Implement | Why keep at least one Container Apps replica running?
+117 | m-13-5-1 | D1 / container-apps | Implement | What does a Container Apps HTTP scale rule measure?
+119 | m-13-6-2 | D1 / container-apps | Experiment | Does changing a Container Apps scale rule create a revision?
+155 | prep-ca-003 | D1 / container-apps | Implement | How do internal and external Container Apps ingress differ?
+156 | prep-ca-011 | D1 / container-apps | Design/reference | Which Container Apps workload profile uses allocated compute instances?
+157 | prep-ca-012 | D1 / container-apps | Design/reference | What is required to serve a Container App through a custom HTTPS hostname?
+158 | prep-p-ca-010 | D1 / container-apps | Implement | How can Container Apps require Microsoft Entra sign-in without implementing the sign-in flow in app code?
+159 | prep-p-ca-011 | D1 / container-apps | Design/reference | How is Azure Files mounted in a Container App?
+160 | prep-p-ca-012 | D1 / container-apps | Experiment | Where should a failing Container Apps revision's provisioning errors be investigated?
+161 | prep-p-ca-017 | D1 / container-apps | Design/reference | Where do you allow or block client IP ranges for a Container App?
+162 | prep-ca-025 | D1 / container-apps | Design/reference | Which Container Apps HTTP ingress transport supports end-to-end HTTP/2 such as gRPC?
+163 | prep-p-ca-007 | D1 / container-apps | Experiment | Why should a Container Apps container handle termination gracefully during a revision change?
+
+1.3 Save a report and show its current status
+
+180 | term-d2-cosmos | D2 / terms-2 | Vocabulary | What is Azure Cosmos DB?
+181 | term-d2-cosmos-container | D2 / terms-2 | Vocabulary | What is a container in Cosmos DB?
+182 | term-d2-partition-key | D2 / terms-2 | Vocabulary | What is a partition key in Cosmos DB?
+183 | term-d2-ru | D2 / terms-2 | Vocabulary | What is a request unit in Cosmos DB?
+184 | term-d2-rus | D2 / terms-2 | Vocabulary | What does RU/s measure in Cosmos DB?
+185 | term-d2-consistency | D2 / terms-2 | Vocabulary | What does consistency mean for a distributed database read?
+199 | m-18-1-1 | D2 / cosmos | Design/reference | What read guarantee does Cosmos DB Strong consistency provide?
+200 | m-18-2-1 | D2 / cosmos | Design/reference | How far behind can Cosmos DB reads be with Bounded staleness consistency?
+201 | m-18-3-1 | D2 / cosmos | Experiment | Which Cosmos DB consistency level provides session read-your-own-writes?
+202 | m-18-4-1 | D2 / cosmos | Design/reference | What does Cosmos DB Consistent prefix guarantee for transactional batch writes?
+203 | m-18-5-1 | D2 / cosmos | Design/reference | What does Cosmos DB Eventual consistency guarantee?
+204 | m-18-6-1 | D2 / cosmos | Design/reference | What are the minimum Bounded staleness settings for single-region and multi-region Cosmos DB accounts?
+205 | m-18-7-1 | D2 / cosmos | Design/reference | Which Cosmos DB consistency levels bound cross-region staleness?
+212 | m-20-1-1 | D2 / cosmos | Experiment | How many request units does a typical 1-KB Cosmos DB point read cost?
+213 | m-20-2-1 | D2 / cosmos | Design/reference | Within what range does Cosmos DB autoscale adjust provisioned RU/s?
+214 | m-20-3-1 | D2 / cosmos | Experiment | How does the Cosmos DB SDK handle throughput throttling?
+215 | m-20-4-1 | D2 / cosmos | Design/reference | Where is Cosmos DB shared throughput configured?
+220 | m-22-1-1 | D2 / cosmos | Experiment | Which Cosmos DB indexing modes are available in the policy?
+221 | m-22-2-1 | D2 / cosmos | Experiment | What does the default Cosmos DB included path /* mean?
+222 | m-22-4-1 | D2 / cosmos | Experiment | Which Cosmos DB indexing path wins when inclusion and exclusion overlap?
+223 | m-22-5-1 | D2 / cosmos | Experiment | How can indexing fewer Cosmos DB properties reduce write RU cost?
+224 | m-23-1-1 | D2 / cosmos | Implement | How do you create a Cosmos DB client in Python?
+225 | m-23-3-1 | D2 / cosmos | Implement | Which Cosmos DB SDK object performs item CRUD and queries?
+226 | m-23-4-1 | D2 / cosmos | Implement | What is the Python SDK sequence for querying an existing Cosmos DB container?
+227 | m-23-5-1 | D2 / cosmos | Implement | Should Python Cosmos DB code construct DatabaseProxy and ContainerProxy directly?
+285 | prep-cosmos-002 | D2 / cosmos | Design/reference | Which Cosmos DB capability allows an account to accept writes in several regions?
+286 | prep-cosmos-004 | D2 / cosmos | Design/reference | How do Cosmos DB provisioned throughput and serverless differ?
+287 | prep-cosmos-006 | D2 / cosmos | Implement | What two goals should a Cosmos DB partition key balance?
+288 | prep-cosmos-008 | D2 / cosmos | Experiment | What happens when a Cosmos DB query cannot be routed to one partition?
+289 | prep-cosmos-013 | D2 / cosmos | Implement | Which Cosmos DB feature automatically expires items after a configured lifetime?
+290 | prep-p-cos-010 | D2 / cosmos | Experiment | Which Cosmos DB index supports ORDER BY across more than one property?
+
+1.4 Process repair work reliably in the background
+
+050 | term-d1-keda | D1 / terms-1 | Vocabulary | What does KEDA stand for?
+092 | m-08-1-1 | D1 / keda | Implement | Which KEDA settings select a Service Bus queue and its scaling target?
+093 | m-08-2-1 | D1 / keda | Design/reference | Which KEDA settings select a Storage queue and its scaling target?
+094 | m-08-3-1 | D1 / keda | Design/reference | What is the default polling interval for Container Apps event-driven scaling?
+095 | m-08-3-2 | D1 / keda | Design/reference | When does the default 300-second Container Apps cooldown apply?
+096 | m-08-4-1 | D1 / keda | Design/reference | How is the target replica count estimated from a queue-length metric?
+097 | m-08-5-1 | D1 / keda | Implement | What are the Container Apps min/max replica settings used for?
+113 | m-13-1-1 | D1 / container-apps | Implement | What information does a custom scaling rule need in Azure Container Apps?
+114 | m-13-2-1 | D1 / container-apps | Implement | How can Azure CLI configure queue-based scaling for an existing Container App?
+118 | m-13-6-1 | D1 / container-apps | Experiment | Can CPU- or memory-only Container Apps rules scale an app from zero?
+321 | term-d3-service-bus | D3 / terms-3 | Vocabulary | What is Azure Service Bus?
+323 | term-d3-message-broker | D3 / terms-3 | Vocabulary | What is a message broker?
+324 | term-d3-queue | D3 / terms-3 | Vocabulary | What is a message queue?
+325 | term-d3-topic | D3 / terms-3 | Vocabulary | What is a topic in Azure Service Bus?
+326 | term-d3-subscription | D3 / terms-3 | Vocabulary | What is a subscription to a Service Bus topic?
+330 | term-d3-idempotency | D3 / terms-3 | Vocabulary | What does idempotent processing mean?
+331 | term-d3-at-least-once | D3 / terms-3 | Vocabulary | What does at-least-once delivery mean?
+332 | term-d3-settlement | D3 / terms-3 | Vocabulary | What is message settlement in Service Bus?
+333 | term-d3-dlq | D3 / terms-3 | Vocabulary | What is a dead-letter queue?
+334 | term-d3-session | D3 / terms-3 | Vocabulary | What is a session in Azure Service Bus?
+335 | term-d3-amqp | D3 / terms-3 | Vocabulary | What does AMQP stand for?
+336 | m-44-5-1 | D3 / terms-3 | Vocabulary | What does Service Bus auto-forwarding do?
+353 | m-41-1-1 | D3 / service-bus | Implement | What does completing a Service Bus message do?
+354 | m-41-2-1 | D3 / service-bus | Implement | What does abandoning a Service Bus message do?
+355 | m-41-3-1 | D3 / service-bus | Design/reference | How does Service Bus message deferral work?
+356 | m-41-4-1 | D3 / service-bus | Implement | What does dead-lettering a Service Bus message do?
+357 | m-41-5-1 | D3 / service-bus | Design/reference | When does a failed Service Bus PeekLock attempt increase DeliveryCount?
+358 | m-42-1-1 | D3 / service-bus | Design/reference | What are Service Bus PeekLock's default and maximum lock durations?
+359 | m-42-2-1 | D3 / service-bus | Experiment | When does Service Bus automatically dead-letter a repeatedly delivered message?
+360 | m-42-3-1 | D3 / service-bus | Experiment | How does Service Bus duplicate detection identify a duplicate message?
+361 | m-42-4-1 | D3 / service-bus | Design/reference | How can Service Bus group related messages for ordered processing?
+366 | m-44-1-1 | D3 / service-bus | Implement | How are messages shared among consumers of a Service Bus queue?
+367 | m-44-2-1 | D3 / service-bus | Implement | Which Service Bus entities give independent consumers their own copies?
+368 | m-44-3-1 | D3 / service-bus | Implement | What do Service Bus subscription rules filter?
+369 | m-44-4-1 | D3 / service-bus | Implement | Where are Service Bus dead-letter queues created?
+383 | m-48-5-1 | D3 / functions | Implement | How should slow HTTP-request work be moved into background processing?
+393 | prep-sb-002 | D3 / service-bus | Implement | How does Service Bus PeekLock differ from ReceiveAndDelete?
+394 | prep-sb-007 | D3 / service-bus | Design/reference | How is a Service Bus message scheduled for future availability?
+395 | prep-p-sb-005 | D3 / service-bus | Design/reference | Which Service Bus tiers support topics and subscriptions?
+396 | prep-p-sb-006 | D3 / service-bus | Design/reference | How does a transactional outbox coordinate a database update with message publication?
+397 | prep-sb-010 | D3 / service-bus | Experiment | Which Service Bus operation inspects a message without receiving and settling it?
+398 | prep-p-sb-009 | D3 / service-bus | Implement | Which Service Bus data role permits receiving and settling but not sending?
+399 | prep-p-rbac-024 | D3 / service-bus | Implement | Which Service Bus data role permits sending without receiving?
+400 | prep-sb-017 | D3 / service-bus | Implement | Where is a binary Service Bus payload stored?
+401 | prep-sb-018 | D3 / service-bus | Design/reference | What happens when a Service Bus message expires with dead-lettering on expiration enabled?
+402 | prep-p-sb-014 | D3 / service-bus | Design/reference | How can a Service Bus handler keep a PeekLock during long processing?
+403 | prep-p-sb-017 | D3 / service-bus | Implement | How can a Service Bus Functions binding connect without a shared-access connection string?
+404 | prep-p-sb-018 | D3 / service-bus | Design/reference | What does the claim-check messaging pattern put in the broker message?
+405 | prep-p-sb-019 | D3 / service-bus | Implement | Which Service Bus metric helps identify a growing backlog of unprocessed work?
+406 | prep-p-sb-020 | D3 / service-bus | Implement | How does a Service Bus correlation filter differ from a SQL subscription filter?
+407 | prep-p-sb-021 | D3 / service-bus | Design/reference | What does Service Bus AutoDeleteOnIdle configure?
+408 | prep-sb-030 | D3 / service-bus | Design/reference | What can a Service Bus subscription rule action modify?
+409 | prep-sb-028 | D3 / service-bus | Design/reference | Which Service Bus properties coordinate a request/reply exchange?
+410 | prep-p-sb-025 | D3 / service-bus | Design/reference | What can a Service Bus broker transaction combine?
+
+1.5 React when a resident uploads a photo
+
+311 | term-d3-api | D3 / terms-3 | Vocabulary | What does API stand for?
+312 | term-d3-endpoint | D3 / terms-3 | Vocabulary | What is a service endpoint?
+313 | term-d3-http | D3 / terms-3 | Vocabulary | What does HTTP stand for?
+314 | term-d3-https | D3 / terms-3 | Vocabulary | What is HTTPS?
+315 | term-d3-function | D3 / terms-3 | Vocabulary | What is an Azure Function?
+316 | term-d3-function-app | D3 / terms-3 | Vocabulary | What is an Azure function app?
+317 | term-d3-serverless | D3 / terms-3 | Vocabulary | What does serverless mean?
+318 | term-d3-cold-start | D3 / terms-3 | Vocabulary | What is a cold start in serverless hosting?
+319 | term-d3-trigger | D3 / terms-3 | Vocabulary | What is a trigger in Azure Functions?
+320 | term-d3-input-binding | D3 / terms-3 | Vocabulary | What is an input binding in Azure Functions?
+322 | term-d3-blob | D3 / terms-3 | Vocabulary | What is a blob in Azure Storage?
+327 | term-d3-event | D3 / terms-3 | Vocabulary | What is an event notification?
+328 | term-d3-webhook | D3 / terms-3 | Vocabulary | What is a webhook?
+329 | term-d3-event-grid | D3 / terms-3 | Vocabulary | What is Azure Event Grid?
+337 | m-49-3-1 | D3 / terms-3 | Vocabulary | What does an Azure Functions output binding do?
+338 | m-50-2-1 | D3 / terms-3 | Vocabulary | What is local.settings.json used for?
+339 | prep-func-010 | D3 / terms-3 | Vocabulary | What is host.json used for in Azure Functions?
+340 | m-38-1-1 | D3 / event-grid | Design/reference | How does Event Grid space out push-delivery retries?
+341 | m-38-3-1 | D3 / event-grid | Experiment | How long does Event Grid wait for a push endpoint response?
+342 | m-38-4-1 | D3 / event-grid | Implement | Which HTTP success codes acknowledge Event Grid push delivery?
+343 | m-39-1-1 | D3 / event-grid | Design/reference | Which Azure-resource endpoint failures are not retried by Event Grid push delivery?
+344 | m-39-2-1 | D3 / event-grid | Design/reference | Which webhook failures are not retried by Event Grid push delivery?
+345 | m-39-3-1 | D3 / event-grid | Design/reference | Is an HTTP 404 response retried by Event Grid push delivery?
+346 | m-39-4-1 | D3 / event-grid | Design/reference | Which limits bound Event Grid delivery retries?
+347 | m-39-5-1 | D3 / event-grid | Experiment | What happens to failed Event Grid events when dead-lettering is disabled?
+348 | m-40-1-1 | D3 / event-grid | Implement | How does Event Grid filter by event type?
+349 | m-40-2-1 | D3 / event-grid | Implement | What can an Event Grid subject filter match?
+350 | m-40-3-1 | D3 / event-grid | Implement | Which Event Grid filter can inspect fields inside event data?
+351 | m-40-4-1 | D3 / event-grid | Implement | How do you choose an Event Grid advanced-filter operator?
+352 | m-40-5-1 | D3 / event-grid | Design/reference | What must be enabled to use Event Grid advanced filters on arrays?
+362 | m-43-1-1 | D3 / event-grid | Implement | Which Azure CLI commands create a custom Event Grid topic and its event subscription?
+363 | m-43-2-1 | D3 / event-grid | Design/reference | How do Event Grid custom, system and partner topics differ?
+364 | m-43-4-1 | D3 / event-grid | Implement | What does Event Grid webhook subscription validation prove?
+365 | m-43-5-1 | D3 / event-grid | Experiment | How do Event Grid delivery retries and dead-lettering differ?
+370 | m-46-1-1 | D3 / functions | Experiment | What happens after Queue Storage-triggered processing repeatedly fails?
+371 | m-46-2-1 | D3 / functions | Design/reference | What schedule format does an Azure Functions Timer trigger use?
+372 | m-46-3-1 | D3 / functions | Design/reference | How do polling and Event Grid-based Blob triggers differ?
+374 | m-47-1-1 | D3 / functions | Implement | How do Anonymous, Function and Admin HTTP authorization levels differ?
+375 | m-47-3-1 | D3 / functions | Experiment | Are Function keys enforced by the local Functions host?
+376 | m-47-4-1 | D3 / functions | Implement | How does an HTTP trigger's methods list restrict accepted requests?
+377 | m-48-1-1 | D3 / functions | Implement | Which Functions trigger supports a synchronous client response?
+378 | m-48-2-1 | D3 / functions | Design/reference | Which Functions trigger handles background Storage queue messages?
+379 | m-48-2-2 | D3 / functions | Design/reference | Which Functions trigger runs on a fixed schedule?
+381 | m-48-3-1 | D3 / functions | Implement | Which Functions trigger reacts to pushed BlobCreated events without polling?
+382 | m-48-4-1 | D3 / functions | Design/reference | What limits the synchronous response time of an HTTP-triggered function?
+384 | m-49-1-1 | D3 / functions | Implement | How many triggers can an Azure Function have?
+385 | m-49-2-1 | D3 / functions | Design/reference | Which Azure Functions binding reads a blob into the handler without Storage SDK code?
+386 | m-49-4-1 | D3 / functions | Design/reference | Can an Azure Function have multiple optional bindings?
+387 | m-49-5-1 | D3 / functions | Design/reference | Which trigger/input/output binding combinations are supported by common Functions services?
+388 | m-51-1-1 | D3 / functions | Implement | In what order can you deploy a Function App that uses Key Vault references?
+389 | m-51-2-1 | D3 / functions | Implement | What role does AzureWebJobsStorage play in a Function App?
+390 | m-51-3-1 | D3 / functions | Implement | Why must identity permissions be configured before Key Vault references can resolve?
+391 | m-51-4-1 | D3 / functions | Implement | How can GitHub Actions deploy both Bicep infrastructure and Function code?
+392 | m-51-5-1 | D3 / functions | Implement | Why does Core Tools publishing not replace infrastructure-as-code deployment?
+411 | prep-eg-001 | D3 / event-grid | Design/reference | What distinguishes Event Grid's event-routing role from a work queue?
+412 | prep-p-eg-004 | D3 / event-grid | Experiment | Why must Event Grid push handlers tolerate duplicate deliveries?
+413 | prep-eg-006 | D3 / event-grid | Implement | What is needed to preserve undeliverable Event Grid push events in Blob Storage?
+414 | prep-eg-010 | D3 / event-grid | Implement | Which interoperable event schema is supported by Event Grid?
+415 | prep-eg-011 | D3 / event-grid | Implement | Which identity-based role allows an application to publish Event Grid events?
+416 | prep-eg-013 | D3 / event-grid | Implement | Which Azure Storage event type represents creation of a blob?
+417 | prep-p-eg-014 | D3 / event-grid | Implement | Which Event Grid event field is commonly used as a deduplication identifier?
+418 | prep-p-eg-016 | D3 / event-grid | Design/reference | What changes when batched Event Grid push delivery is enabled?
+419 | prep-p-eg-024 | D3 / event-grid | Experiment | Does Event Grid push delivery guarantee event order?
+420 | prep-func-001 | D3 / functions | Design/reference | How is classic Azure Functions Consumption compute charged for an idle application?
+421 | prep-p-fn-002 | D3 / functions | Design/reference | What does Functions Elastic Premium provide for cold-start-sensitive workloads?
+422 | prep-func-003 | D3 / functions | Design/reference | What is the default and maximum functionTimeout on classic Functions Consumption?
+424 | prep-p-fn-011 | D3 / functions | Experiment | Where is Service Bus trigger callback concurrency configured for a Functions host?
+425 | prep-p-fn-021 | D3 / functions | Design/reference | How does a scaled-out Functions app coordinate a Timer trigger so only one instance runs a scheduled occurrence?
+426 | prep-p-fn-022 | D3 / functions | Implement | How does run-from-package deployment keep a Function App release consistent?
+427 | prep-p-fn-025 | D3 / functions | Design/reference | What does Flex Consumption add while retaining a consumption-based scaling model?
+
+1.6 Give each component only the settings and access it needs
+
+088 | m-07-1-1 | D1 / app-service | Implement | optional: App Service alternative host | What is the syntax of an App Service or Functions Key Vault reference?
+089 | m-07-2-1 | D1 / app-service | Implement | optional: App Service alternative host | Which identity permission is needed to resolve an App Service Key Vault reference?
+090 | m-07-3-1 | D1 / app-service | Implement | optional: App Service alternative host | Does using a Key Vault reference require secret-reading code in the app?
+091 | m-07-4-1 | D1 / app-service | Experiment | optional: App Service alternative host | When does App Service refresh a versionless Key Vault reference?
+120 | m-14-1-1 | D1 / container-apps | Design/reference | Are Container Apps secrets scoped to an app or a revision?
+121 | m-14-2-1 | D1 / container-apps | Implement | How is a Container Apps secret linked to Key Vault?
+122 | m-14-3-1 | D1 / container-apps | Implement | Which identity can be pre-authorized for Key Vault before a Container App is created?
+123 | m-14-4-1 | D1 / container-apps | Experiment | When are versionless Container Apps Key Vault references refreshed?
+124 | m-14-5-1 | D1 / container-apps | Implement | How does a Container Apps container consume an app secret?
+428 | term-d4-entra | D4 / terms-4 | Vocabulary | What is Microsoft Entra ID?
+429 | term-d4-tenant | D4 / terms-4 | Vocabulary | What is a Microsoft Entra tenant?
+430 | term-d4-identity | D4 / terms-4 | Vocabulary | What is an identity in Azure security?
+431 | term-d4-authentication | D4 / terms-4 | Vocabulary | What does authentication mean?
+432 | term-d4-authorization | D4 / terms-4 | Vocabulary | What does authorization mean?
+433 | term-d4-managed-identity | D4 / terms-4 | Vocabulary | What is a managed identity in Azure?
+434 | term-d4-rbac | D4 / terms-4 | Vocabulary | What does RBAC stand for?
+435 | term-d4-abac | D4 / terms-4 | Vocabulary | What does ABAC stand for?
+436 | term-d4-scope | D4 / terms-4 | Vocabulary | What is the scope of an Azure role assignment?
+437 | term-d4-role-assignment | D4 / terms-4 | Vocabulary | What is an Azure role assignment?
+438 | term-d4-oidc | D4 / terms-4 | Vocabulary | What does OIDC stand for?
+439 | term-d4-key-vault | D4 / terms-4 | Vocabulary | What is Azure Key Vault?
+440 | term-d4-secret | D4 / terms-4 | Vocabulary | What is a secret in Key Vault?
+441 | term-d4-certificate | D4 / terms-4 | Vocabulary | What is a digital certificate?
+442 | term-d4-tls | D4 / terms-4 | Vocabulary | What does TLS stand for?
+443 | term-d4-key-vault-reference | D4 / terms-4 | Vocabulary | What is a Key Vault reference?
+444 | term-d4-rotation | D4 / terms-4 | Vocabulary | What does rotating a credential mean?
+445 | term-d4-app-configuration | D4 / terms-4 | Vocabulary | What is Azure App Configuration?
+446 | term-d4-feature-flag | D4 / terms-4 | Vocabulary | What is a feature flag?
+447 | term-d4-vnet | D4 / terms-4 | Vocabulary | What does VNet stand for in Azure?
+448 | term-d4-private-endpoint | D4 / terms-4 | Vocabulary | What is a private endpoint in Azure?
+452 | term-d4-csi | D4 / terms-4 | Vocabulary | What does CSI stand for in Kubernetes storage?
+465 | m-55-3-1 | D4 / terms-4 | Vocabulary | What is an App Configuration sentinel key used for?
+467 | prep-rbac-015 | D4 / terms-4 | Vocabulary | What is a service principal in an Entra tenant?
+468 | prep-rbac-028 | D4 / terms-4 | Vocabulary | What does an Azure Network Security Group filter?
+469 | m-05-2-1 | D4 / identity-rbac | Implement | How do system-assigned and user-assigned identities differ in lifecycle?
+470 | m-07-5-1 | D4 / key-vault | Implement | Where should non-secret configuration and credentials be stored?
+471 | m-14-6-1 | D4 / key-vault | Implement | Which Key Vault object type should hold an API credential?
+472 | m-52-1-1 | D4 / key-vault | Experiment | Can Key Vault Reader read secret values?
+473 | m-52-2-1 | D4 / key-vault | Implement | Which Key Vault RBAC role reads secret values?
+474 | m-52-3-1 | D4 / key-vault | Design/reference | Which Key Vault RBAC role manages secret versions and deletion?
+475 | m-52-4-1 | D4 / key-vault | Design/reference | What data-plane permissions does Key Vault Administrator grant?
+476 | m-52-6-1 | D4 / key-vault | Experiment | Does Key Vault Contributor grant access to secret contents?
+477 | m-52-7-1 | D4 / key-vault | Implement | Which vault permission model makes Key Vault data-plane role assignments effective?
+478 | m-53-1-1 | D4 / key-vault | Experiment | How does a versionless Key Vault SDK read behave after rotation?
+479 | m-53-2-1 | D4 / key-vault | Experiment | How does a version-pinned Key Vault SDK read behave after rotation?
+480 | m-53-3-1 | D4 / key-vault | Experiment | How can Event Grid and Functions automate rotation of a Key Vault secret?
+481 | m-53-4-1 | D4 / key-vault | Design/reference | Do Key Vault secrets have the same built-in rotation policies as cryptographic keys?
+482 | m-54-1-1 | D4 / identity-rbac | Design/reference | In what order does Python DefaultAzureCredential try credential types?
+483 | m-54-2-1 | D4 / identity-rbac | Implement | How can the same DefaultAzureCredential code run locally and on Azure?
+484 | m-54-3-1 | D4 / identity-rbac | Design/reference | What does AZURE_TOKEN_CREDENTIALS control in Python DefaultAzureCredential?
+485 | m-54-4-1 | D4 / identity-rbac | Design/reference | Why is ManagedIdentityCredential normally unavailable on a developer laptop?
+486 | m-55-1-1 | D4 / app-configuration | Implement | What uniquely identifies an App Configuration key-value?
+487 | m-55-4-1 | D4 / app-configuration | Implement | How do App Configuration Data Reader and Data Owner differ?
+488 | m-56-1-1 | D4 / key-vault | Implement | What is the setup order for reading Key Vault with an app identity?
+489 | m-56-3-1 | D4 / key-vault | Design/reference | What scope should be preferred for an application's Key Vault permissions?
+490 | m-56-4-1 | D4 / key-vault | Design/reference | What happens to access policies when a vault switches to Azure RBAC?
+491 | m-56-6-1 | D4 / key-vault | Experiment | Why does copying a secret into app settings at deployment not implement rotation?
+492 | m-57-2-1 | D4 / key-vault | Design/reference | Which secret lifecycle features does Key Vault provide?
+493 | m-57-3-1 | D4 / key-vault | Implement | Who resolves a Key Vault reference stored in App Configuration?
+494 | m-57-4-1 | D4 / key-vault | Implement | How can AKS mount Key Vault secrets as files without creating Kubernetes Secret objects?
+495 | m-58-1-1 | D4 / app-configuration | Implement | How is a Python AzureAppConfigurationClient authenticated?
+496 | m-58-2-1 | D4 / app-configuration | Implement | Which Python App Configuration call reads a single key and label?
+497 | m-58-3-1 | D4 / app-configuration | Implement | Which Python App Configuration calls enumerate settings or labels?
+498 | m-59-1-1 | D4 / app-configuration | Implement | How can a long-lived app refresh configuration without a remote call per request?
+499 | m-59-2-1 | D4 / app-configuration | Implement | How does Python App Configuration refresh use a watch key and interval?
+500 | m-59-4-1 | D4 / app-configuration | Experiment | What should an app do when a configuration refresh fails?
+501 | m-59-5-1 | D4 / app-configuration | Experiment | Why are environment variables unsuitable for in-process dynamic refresh?
+541 | prep-kv-002 | D4 / key-vault | Experiment | Which Key Vault capability retains deleted objects for possible recovery?
+542 | prep-kv-009 | D4 / key-vault | Design/reference | What does Key Vault purge protection prevent?
+543 | prep-kv-013 | D4 / key-vault | Implement | Which Key Vault diagnostic category records data-plane access such as secret reads?
+544 | prep-p-kv-023 | D4 / key-vault | Implement | optional: Build/pipeline extension | How should a private package-feed token be supplied during a container build?
+545 | prep-c-tw-003 | D4 / key-vault | Experiment | How can a credential rotation avoid immediately breaking clients that still hold the old value?
+546 | prep-rbac-001 | D4 / identity-rbac | Design/reference | How do Azure Owner and Contributor differ in access management?
+547 | prep-rbac-003 | D4 / identity-rbac | Design/reference | What is the Azure RBAC scope hierarchy from broadest to narrowest?
+548 | prep-p-rbac-003 | D4 / identity-rbac | Experiment | How do Azure RBAC allow assignments combine across scopes?
+549 | prep-p-rbac-007 | D4 / identity-rbac | Implement | Which Azure data-plane role permits an app identity to read Blob content?
+550 | prep-p-rbac-023 | D4 / identity-rbac | Implement | optional: Build/pipeline extension | How can a CI pipeline authenticate to Azure without storing a long-lived client secret?
+551 | prep-p-rbac-020 | D4 / identity-rbac | Design/reference | What can an Azure ABAC condition add to a supported role assignment?
+552 | prep-rbac-027 | D4 / identity-rbac | Experiment | What does an Entra sign-in log reveal about an authentication attempt?
+
+1.7 Follow a slow or failed report through the system
+
+449 | term-d4-azure-monitor | D4 / terms-4 | Vocabulary | What is Azure Monitor?
+450 | term-d4-application-insights | D4 / terms-4 | Vocabulary | What is Application Insights?
+451 | term-d4-log-analytics | D4 / terms-4 | Vocabulary | What is Log Analytics in Azure Monitor?
+453 | term-d4-telemetry | D4 / terms-4 | Vocabulary | What is application telemetry?
+454 | term-d4-log | D4 / terms-4 | Vocabulary | What is a log record?
+455 | term-d4-metric | D4 / terms-4 | Vocabulary | What is a metric in observability?
+456 | term-d4-trace | D4 / terms-4 | Vocabulary | What is a distributed trace?
+457 | term-d4-span | D4 / terms-4 | Vocabulary | What is a span in distributed tracing?
+458 | term-d4-otel | D4 / terms-4 | Vocabulary | What is OpenTelemetry?
+459 | term-d4-instrumentation | D4 / terms-4 | Vocabulary | What does instrumentation mean for an application?
+460 | term-d4-exporter | D4 / terms-4 | Vocabulary | What is an exporter in OpenTelemetry?
+461 | term-d4-sampling | D4 / terms-4 | Vocabulary | What is trace sampling?
+462 | term-d4-kql | D4 / terms-4 | Vocabulary | What does KQL stand for?
+463 | term-d4-latency | D4 / terms-4 | Vocabulary | What does request latency mean?
+464 | term-d4-p95 | D4 / terms-4 | Vocabulary | What does P95 latency mean?
+466 | m-64-1-1 | D4 / terms-4 | Vocabulary | What does an OpenTelemetry TracerProvider own?
+502 | m-60-1-1 | D4 / kql | Implement | What does KQL where do to its input rows?
+503 | m-60-2-1 | D4 / kql | Implement | What rows does KQL summarize return?
+504 | m-60-3-1 | D4 / kql | Implement | What does KQL project do to columns?
+505 | m-60-4-1 | D4 / kql | Implement | What does KQL extend do to columns?
+506 | m-60-5-1 | D4 / kql | Implement | What does KQL distinct return?
+507 | m-60-5-2 | D4 / kql | Implement | What does KQL join do?
+508 | m-60-5-3 | D4 / kql | Implement | What does KQL render do?
+509 | m-60-6-1 | D4 / kql | Design/reference | In what order should time filters, joins and aggregation usually run in a KQL query?
+510 | m-61-1-1 | D4 / kql | Implement | Which table and column names are used in the Application Insights query schema?
+511 | m-61-2-1 | D4 / kql | Implement | Which table and column names are used in the workspace-based query schema?
+512 | m-61-3-1 | D4 / kql | Implement | What unit is used for request duration in Application Insights queries?
+513 | m-61-4-1 | D4 / kql | Implement | Which telemetry field identifies the emitting service?
+514 | m-62-1-1 | D4 / kql | Implement | How does KQL express the last 30 minutes?
+515 | m-62-3-1 | D4 / kql | Implement | How does KQL bin assign timestamps to time buckets?
+516 | m-62-4-1 | D4 / kql | Design/reference | Which KQL join kind is used when no kind is specified?
+517 | m-63-1-1 | D4 / monitor | Implement | Which tool supports an ad hoc investigation of Azure application logs?
+518 | m-63-2-1 | D4 / monitor | Design/reference | What type of operations does the Azure Activity Log record?
+519 | m-63-4-1 | D4 / monitor | Implement | Why start a KQL query with the relevant table?
+520 | m-63-4-2 | D4 / monitor | Implement | How do KQL == and =~ differ?
+521 | m-64-2-1 | D4 / opentelemetry | Implement | What sends OpenTelemetry spans to Azure Monitor?
+522 | m-64-3-1 | D4 / opentelemetry | Experiment | How do BatchSpanProcessor and SimpleSpanProcessor export spans?
+523 | m-64-4-1 | D4 / opentelemetry | Implement | Which Python OpenTelemetry call starts an active span?
+524 | m-65-1-1 | D4 / opentelemetry | Implement | What must an application do to produce visible OpenTelemetry traces?
+525 | m-65-2-1 | D4 / opentelemetry | Implement | What does configure_azure_monitor configure automatically?
+526 | m-65-5-1 | D4 / opentelemetry | Experiment | How does the Azure Monitor Python exporter map span kinds to telemetry tables?
+527 | m-66-2-1 | D4 / opentelemetry | Design/reference | What are the Python names of common OpenTelemetry samplers?
+528 | m-66-3-1 | D4 / opentelemetry | Experiment | Which standard OTEL_TRACES_SAMPLER values select ratio sampling?
+529 | m-66-4-1 | D4 / opentelemetry | Experiment | Which Azure Monitor-specific sampler environment settings are available?
+530 | m-66-5-1 | D4 / opentelemetry | Design/reference | Which OpenTelemetry sampler honors a parent's sampling decision?
+531 | m-66-5-2 | D4 / opentelemetry | Design/reference | How does TraceIdRatioBased choose which traces to retain?
+532 | m-66-6-1 | D4 / opentelemetry | Design/reference | What default sampling behavior should you check in the Azure Monitor Python distro?
+533 | m-67-1-1 | D4 / opentelemetry | Experiment | Which Python OpenTelemetry sampler records all spans during local testing?
+534 | m-67-2-1 | D4 / opentelemetry | Experiment | Which OpenTelemetry sampler keeps approximately 10% of traces?
+535 | m-67-3-1 | D4 / opentelemetry | Implement | Where is an OpenTelemetry sampler configured?
+536 | m-67-4-1 | D4 / opentelemetry | Experiment | How does Azure Monitor fixed-percentage sampling help coordinate trace selection across services?
+537 | m-67-5-1 | D4 / opentelemetry | Experiment | Are metrics reduced by trace sampling?
+538 | m-68-1-1 | D4 / opentelemetry | Implement | Which W3C header carries trace context between HTTP services?
+539 | m-68-2-1 | D4 / opentelemetry | Experiment | Does creating a span automatically propagate context to another process?
+540 | m-68-3-1 | D4 / opentelemetry | Implement | How is OpenTelemetry context propagated through an outbound Python HTTP call?
+553 | prep-mon-003 | D4 / monitor | Design/reference | How do Azure Monitor metrics differ from logs?
+554 | prep-p-mon-009 | D4 / monitor | Implement | What routes supported Azure resource platform logs to Log Analytics, Storage or Event Hubs?
+555 | prep-mon-019 | D4 / monitor | Implement | Which Log Analytics table contains Azure Activity Log records when collected?
+556 | prep-p-mon-017 | D4 / monitor | Design/reference | Why can a telemetry ingestion daily cap hide later incidents?
+557 | prep-mon-021 | D4 / monitor | Design/reference | Which KQL function references another Log Analytics workspace?
+558 | prep-mon-028 | D4 / monitor | Implement | What does Application Insights Application Map visualize?
+559 | prep-p-mon-013 | D4 / monitor | Design/reference | Which Application Insights query table stores custom metric telemetry?
+
+1.8 Optional hosting branch: run the same API and worker on AKS
+
+029 | term-d1-kubernetes | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is Kubernetes?
+030 | term-d1-aks | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does AKS stand for?
+031 | term-d1-cluster | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a Kubernetes cluster?
+032 | term-d1-control-plane | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is the Kubernetes control plane?
+033 | term-d1-node | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a node in Kubernetes?
+034 | term-d1-node-pool | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a node pool in AKS?
+035 | term-d1-pod | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a pod in Kubernetes?
+036 | term-d1-replica | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a replica of an application?
+037 | term-d1-deployment | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a Deployment in Kubernetes?
+038 | term-d1-daemonset | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a DaemonSet in Kubernetes?
+039 | term-d1-service | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a Service in Kubernetes?
+040 | term-d1-ingress | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is Ingress in Kubernetes?
+041 | term-d1-namespace | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a namespace in Kubernetes?
+042 | term-d1-manifest | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a Kubernetes manifest?
+043 | term-d1-label | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a label in Kubernetes?
+044 | term-d1-selector | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a selector in Kubernetes?
+045 | term-d1-request | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a resource request in Kubernetes?
+046 | term-d1-limit | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a resource limit in Kubernetes?
+051 | term-d1-cpu | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does CPU stand for?
+052 | term-d1-gpu | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does GPU stand for?
+053 | term-d1-cni | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does CNI stand for in Kubernetes networking?
+056 | m-11-3-1 | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is the purpose of a Kubernetes startup probe?
+057 | m-16-1-1 | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does the Kubernetes Horizontal Pod Autoscaler scale?
+058 | m-16-3-1 | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does the Kubernetes Vertical Pod Autoscaler adjust?
+059 | prep-aks-015 | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What does a Kubernetes PodDisruptionBudget limit during node maintenance?
+060 | prep-aks-023 | D1 / terms-1 | Vocabulary | optional: AKS alternative host | What is a Kubernetes StatefulSet used for?
+098 | m-09-1-1 | D1 / aks | Implement | optional: AKS alternative host | Which Kubernetes Service type is the default?
+099 | m-09-2-1 | D1 / aks | Design/reference | optional: AKS alternative host | What does a Kubernetes NodePort Service expose?
+100 | m-09-3-1 | D1 / aks | Implement | optional: AKS alternative host | What does a Kubernetes LoadBalancer Service provision?
+101 | m-09-4-1 | D1 / aks | Design/reference | optional: AKS alternative host | What does a Kubernetes ExternalName Service return?
+102 | m-09-5-1 | D1 / aks | Implement | optional: AKS alternative host | Is Kubernetes Ingress a Service type?
+103 | m-10-1-1 | D1 / aks | Experiment | optional: AKS alternative host | How do maxSurge and maxUnavailable control a Kubernetes Deployment rollout?
+104 | m-10-2-1 | D1 / aks | Design/reference | optional: AKS alternative host | How does a DaemonSet rolling update limit disruption to node agents?
+105 | m-11-1-1 | D1 / aks | Experiment | optional: AKS alternative host | What happens when a Kubernetes liveness probe fails repeatedly?
+106 | m-11-2-1 | D1 / aks | Experiment | optional: AKS alternative host | What happens when a Kubernetes readiness probe fails?
+107 | m-11-4-1 | D1 / aks | Experiment | optional: AKS alternative host | What should you check when running pods receive no traffic through their Kubernetes Service?
+125 | m-15-1-1 | D1 / aks | Implement | optional: AKS alternative host | What does a Kubernetes Deployment manifest describe?
+126 | m-15-2-1 | D1 / aks | Implement | optional: AKS alternative host | Which kubectl command creates or updates resources from a manifest file?
+127 | m-15-3-1 | D1 / aks | Implement | optional: AKS alternative host | What is the sequence for a rolling image update in Kubernetes?
+128 | m-15-4-1 | D1 / aks | Implement | optional: AKS alternative host | Which command rolls a Kubernetes Deployment back?
+129 | m-15-5-1 | D1 / aks | Implement | optional: AKS alternative host | How can a pod consume a Kubernetes Secret without embedding its value in the pod manifest?
+130 | m-16-2-1 | D1 / aks | Implement | optional: AKS alternative host | What resource setting is needed for CPU-utilization-based HPA scaling?
+131 | m-16-5-1 | D1 / aks | Design/reference | optional: AKS alternative host | Why can KEDA wake a workload from zero replicas when CPU-only scaling cannot?
+132 | m-16-6-1 | D1 / aks | Implement | optional: AKS alternative host | Which command changes a Deployment's replica count manually?
+133 | m-17-1-1 | D1 / aks | Experiment | optional: AKS alternative host | Which two kubectl commands are a useful starting point for investigating an unhealthy pod?
+134 | m-17-2-1 | D1 / aks | Experiment | optional: AKS alternative host | How do you inspect logs from a container's previous crashed instance?
+135 | m-17-3-1 | D1 / aks | Experiment | optional: AKS alternative host | What does ImagePullBackOff indicate?
+136 | m-17-4-1 | D1 / aks | Experiment | optional: AKS alternative host | How do you find why a Pending Kubernetes pod cannot be scheduled?
+137 | m-17-6-1 | D1 / aks | Experiment | optional: AKS alternative host | Which kubectl commands show current pod or node CPU and memory usage?
+147 | prep-aks-009 | D1 / aks | Implement | optional: AKS alternative host | How does Microsoft Entra Workload ID authenticate an AKS workload?
+148 | prep-aks-025 | D1 / aks | Implement | optional: AKS alternative host | Which AKS issuer feature is required for service-account federation with Entra Workload ID?
+149 | prep-p-aks-008 | D1 / aks | Implement | optional: AKS alternative host | Which Kubernetes resource controls network traffic into or out of pods?
+150 | prep-p-aks-006 | D1 / aks | Implement | optional: AKS alternative host | How is native Kubernetes read-only access limited to one namespace?
+151 | prep-p-aks-011 | D1 / aks | Design/reference | optional: AKS alternative host | Which Azure storage service commonly backs a Kubernetes ReadWriteMany file volume?
+152 | prep-aks-040 | D1 / aks | Design/reference | optional: AKS alternative host | How do ResourceQuota and LimitRange differ in Kubernetes?
+153 | prep-aks-037 | D1 / aks | Design/reference | optional: AKS alternative host | What does Kubernetes imagePullPolicy: Always check at container startup?
+154 | prep-p-aks-010 | D1 / aks | Design/reference | optional: AKS alternative host | Why is a toleration alone insufficient to require GPU placement?
+
+2.1 Create a searchable library of previous fixes
+
+164 | term-d2-database | D2 / terms-2 | Vocabulary | What is a database?
+165 | term-d2-postgresql | D2 / terms-2 | Vocabulary | What is PostgreSQL?
+166 | term-d2-sql | D2 / terms-2 | Vocabulary | What does SQL stand for?
+167 | term-d2-transaction | D2 / terms-2 | Vocabulary | What is a database transaction?
+196 | term-d2-gin | D2 / terms-2 | Vocabulary | What does GIN stand for in PostgreSQL?
+251 | m-28-1-1 | D2 / postgresql | Implement | How can an application authenticate to Azure PostgreSQL with managed identity?
+254 | m-28-4-1 | D2 / postgresql | Implement | How should user input be passed to a PostgreSQL query?
+256 | m-29-1-1 | D2 / postgresql | Implement | Which PostgreSQL type stores an embedding with a fixed dimension count?
+300 | prep-p-pg-016 | D2 / postgresql | Implement | Which PostgreSQL index supports JSONB containment queries such as @>?
+305 | prep-p-pg-025 | D2 / postgresql | Implement | Which PostgreSQL operation efficiently loads large batches of embedding rows?
+
+2.2 Find similar problems and compare search quality
+
+168 | term-d2-index | D2 / terms-2 | Vocabulary | What is a database index?
+169 | term-d2-embedding | D2 / terms-2 | Vocabulary | What is an embedding?
+170 | term-d2-vector | D2 / terms-2 | Vocabulary | What is a vector in similarity search?
+171 | term-d2-dimensions | D2 / terms-2 | Vocabulary | What does the dimension count of a vector mean?
+172 | term-d2-knn | D2 / terms-2 | Vocabulary | What does KNN mean in vector search?
+173 | term-d2-ann | D2 / terms-2 | Vocabulary | What does ANN stand for in vector search?
+174 | term-d2-hnsw | D2 / terms-2 | Vocabulary | What does HNSW stand for?
+175 | term-d2-ivfflat | D2 / terms-2 | Vocabulary | What is an IVFFlat vector index?
+176 | term-d2-recall | D2 / terms-2 | Vocabulary | What does recall mean in approximate vector search?
+177 | term-d2-pgvector | D2 / terms-2 | Vocabulary | What is pgvector?
+195 | term-d2-rag | D2 / terms-2 | Vocabulary | What does RAG stand for?
+197 | term-d2-diskann | D2 / terms-2 | Vocabulary | What is DiskANN?
+198 | term-d2-nosql | D2 / terms-2 | Vocabulary | What does NoSQL describe?
+206 | m-19-1-1 | D2 / cosmos | Experiment | optional: Cosmos vector comparison | What distinguishes a Cosmos DB flat vector index?
+207 | m-19-2-1 | D2 / cosmos | Experiment | optional: Cosmos vector comparison | What distinguishes a Cosmos DB quantizedFlat vector index?
+208 | m-19-3-1 | D2 / cosmos | Experiment | optional: Cosmos vector comparison | What distinguishes a Cosmos DB DiskANN vector index?
+209 | m-19-4-1 | D2 / cosmos | Experiment | optional: Cosmos vector comparison | What happens to Cosmos DB quantizedFlat or DiskANN searches with fewer than 1,000 vectors?
+210 | m-19-5-1 | D2 / cosmos | Design/reference | optional: Cosmos vector comparison | Which distance functions can a Cosmos DB vector embedding policy use?
+211 | m-19-6-1 | D2 / cosmos | Design/reference | optional: Cosmos vector comparison | Can an existing Cosmos DB vector embedding policy be edited in place?
+228 | m-24-1-1 | D2 / cosmos | Implement | optional: Cosmos vector comparison | How should a Cosmos DB document represent an embedding?
+229 | m-24-2-1 | D2 / cosmos | Design/reference | optional: Cosmos vector comparison | Does a Cosmos DB composite index accelerate VectorDistance queries?
+230 | m-24-3-1 | D2 / cosmos | Implement | optional: Cosmos vector comparison | Why exclude an embedding array from ordinary Cosmos DB property indexing?
+231 | m-24-4-1 | D2 / cosmos | Design/reference | optional: Cosmos vector comparison | What is the storage trade-off of float16 rather than float32 embeddings in Cosmos DB?
+232 | m-24-5-1 | D2 / cosmos | Implement | optional: Cosmos vector comparison | What Cosmos DB SQL pattern returns the nearest five embeddings?
+233 | m-24-6-1 | D2 / cosmos | Implement | optional: Cosmos vector comparison | Where is a Cosmos DB vector embedding policy defined?
+239 | m-26-1-1 | D2 / postgresql | Implement | Which pgvector operator and index operator class implement Euclidean distance?
+240 | m-26-2-1 | D2 / postgresql | Implement | Which pgvector operator and index operator class implement cosine distance?
+241 | m-26-3-1 | D2 / postgresql | Implement | Which pgvector operator and index operator class implement negative inner product?
+242 | m-26-4-1 | D2 / postgresql | Implement | Why must a pgvector query operator match its index operator class?
+243 | m-26-5-1 | D2 / postgresql | Design/reference | What is the indexed-dimension limit for pgvector's vector type in HNSW and IVFFlat?
+244 | m-26-6-1 | D2 / postgresql | Implement | What extension name must be allow-listed for pgvector on Azure PostgreSQL?
+245 | m-26-7-1 | D2 / postgresql | Implement | How do index choices differ for embeddings and ordinary filter columns in PostgreSQL?
+257 | m-29-2-1 | D2 / postgresql | Implement | In what order should you load data and build indexes for PostgreSQL vector search?
+258 | m-29-3-1 | D2 / postgresql | Implement | What SQL retrieves the five closest Finance documents by cosine distance?
+259 | m-29-4-1 | D2 / postgresql | Experiment | How can a B-tree index help a metadata-filtered PostgreSQL vector query?
+260 | m-29-5-1 | D2 / postgresql | Implement | Which index belongs on a PostgreSQL embedding column?
+297 | prep-pg-010 | D2 / postgresql | Design/reference | How can PostgreSQL combine keyword search with vector similarity search?
+302 | prep-pg-029 | D2 / postgresql | Design/reference | What does pgvector halfvec change compared with vector?
+304 | prep-p-pg-023 | D2 / postgresql | Implement | Which Azure PostgreSQL server setting requires secure client transport?
+
+2.3 Serve repeated searches quickly without showing stale answers
+
+187 | term-d2-redis | D2 / terms-2 | Vocabulary | What is Redis?
+188 | term-d2-cache | D2 / terms-2 | Vocabulary | What is a cache?
+189 | term-d2-cache-hit | D2 / terms-2 | Vocabulary | What is a cache hit?
+190 | term-d2-cache-miss | D2 / terms-2 | Vocabulary | What is a cache miss?
+191 | term-d2-ttl | D2 / terms-2 | Vocabulary | What does TTL stand for?
+192 | term-d2-eviction | D2 / terms-2 | Vocabulary | What is eviction in a Redis cache?
+193 | term-d2-lru | D2 / terms-2 | Vocabulary | What does LRU stand for?
+194 | term-d2-lfu | D2 / terms-2 | Vocabulary | What does LFU stand for?
+267 | m-31-1-1 | D2 / redis | Experiment | How do Redis volatile-* and allkeys-* eviction policies differ?
+268 | m-31-3-1 | D2 / redis | Experiment | What does Redis noeviction do when memory is exhausted?
+269 | m-31-6-1 | D2 / redis | Experiment | How do Redis LRU and LFU rank keys for eviction?
+270 | m-32-1-1 | D2 / redis | Experiment | How does Redis expiration differ from eviction?
+271 | m-34-2-1 | D2 / redis | Experiment | optional: Redis semantic cache | How do Redis FLAT and HNSW vector indexes differ?
+272 | m-34-3-1 | D2 / redis | Design/reference | optional: Redis semantic cache | Which vector distance metrics does RediSearch support?
+273 | m-34-4-1 | D2 / redis | Design/reference | optional: Redis semantic cache | What must be configured before using vector search in Azure Managed Redis?
+274 | m-34-6-1 | D2 / redis | Experiment | optional: Redis semantic cache | When you create a Redis search index with FT.CREATE, does it include data already stored in Redis?
+275 | m-35-1-1 | D2 / redis | Implement | How does the cache-aside pattern work?
+276 | m-35-2-1 | D2 / redis | Implement | How can a Redis cache entry be given a fixed lifetime?
+277 | m-35-3-1 | D2 / redis | Implement | How should cached data be invalidated after its source changes?
+278 | m-36-1-1 | D2 / redis | Design/reference | How can a Redis string’s expiry be refreshed whenever it is read?
+279 | m-36-5-1 | D2 / redis | Design/reference | What does Redis PERSIST do?
+280 | m-36-6-1 | D2 / redis | Experiment | What do Redis TTL return values -1 and -2 mean?
+281 | m-37-1-1 | D2 / redis | Implement | optional: Redis semantic cache | How can an embedding and its metadata be stored in one Redis hash?
+282 | m-37-2-1 | D2 / redis | Implement | optional: Redis semantic cache | How do you create a Redis vector index for embeddings stored in hashes?
+283 | m-37-4-1 | D2 / redis | Implement | optional: Redis semantic cache | How do you query Redis for the five closest embedding vectors?
+284 | m-37-5-1 | D2 / redis | Implement | How is TLS enabled when connecting redis-py to Azure Managed Redis?
+306 | prep-p-red-003 | D2 / redis | Experiment | optional: Redis semantic cache | How does a semantic cache reuse an answer for a paraphrased prompt?
+307 | prep-p-red-010 | D2 / redis | Design/reference | Which Redis SET options create an expiring key only when it does not exist?
+308 | prep-redis-016 | D2 / redis | Implement | How can an app reduce network round trips when reading several cached values?
+309 | prep-p-red-016 | D2 / redis | Experiment | What combination suggests a Redis cache may be undersized?
+310 | prep-p-red-011 | D2 / redis | Experiment | How can an application reduce a cache stampede when a popular key expires?
+
+2.4 Keep suggestions synchronized when repair records change
+
+186 | term-d2-change-feed | D2 / terms-2 | Vocabulary | What is a change feed in Cosmos DB?
+216 | m-21-1-1 | D2 / cosmos | Design/reference | What does Cosmos DB latest-version change feed omit?
+217 | m-21-2-1 | D2 / cosmos | Design/reference | What does Cosmos DB all-versions-and-deletes change feed require?
+218 | m-21-3-1 | D2 / cosmos | Design/reference | What state does a Cosmos DB lease container store?
+219 | m-21-4-1 | D2 / cosmos | Design/reference | Which partition key is used for a partitioned Cosmos DB lease container?
+234 | m-25-1-1 | D2 / cosmos | Design/reference | What are the four parts of a Cosmos DB change feed processor?
+235 | m-25-3-1 | D2 / cosmos | Design/reference | How do Cosmos DB change feed processor and instance names control shared versus independent consumption?
+236 | m-25-4-1 | D2 / cosmos | Design/reference | Which Cosmos DB change-feed model invokes your handler with batches of changes?
+237 | m-25-5-1 | D2 / cosmos | Implement | How can Python consume Cosmos DB change feed without a native change feed processor client?
+238 | m-25-6-1 | D2 / cosmos | Experiment | Why must a Cosmos DB change-feed handler tolerate duplicate processing?
+373 | m-46-4-1 | D3 / functions | Implement | What does an Azure Functions Cosmos DB trigger use to track progress?
+380 | m-48-2-3 | D3 / functions | Implement | Which Functions trigger reacts to Cosmos DB document changes?
+423 | prep-func-007 | D3 / functions | Implement | Does a Cosmos DB-triggered function normally run once per document or once per delivered batch?
+
+2.5 Measure and fix a slow search under realistic concurrency
+
+178 | term-d2-connection-pool | D2 / terms-2 | Vocabulary | What is a database connection pool?
+179 | term-d2-pgbouncer | D2 / terms-2 | Vocabulary | What is PgBouncer?
+246 | m-27-1-1 | D2 / postgresql | Design/reference | Which port connects through built-in PgBouncer on Azure PostgreSQL?
+247 | m-27-2-1 | D2 / postgresql | Design/reference | How is built-in PgBouncer enabled on Azure PostgreSQL?
+248 | m-27-3-1 | D2 / postgresql | Design/reference | What is the default pool mode of Azure's built-in PgBouncer?
+249 | m-27-5-1 | D2 / postgresql | Design/reference | Which Azure PostgreSQL compute tiers support built-in PgBouncer?
+250 | m-27-6-1 | D2 / postgresql | Design/reference | Why is increasing max_connections different from adding a connection pool?
+252 | m-28-2-1 | D2 / postgresql | Implement | How does a client-side PostgreSQL connection pool reduce overhead?
+253 | m-28-3-1 | D2 / postgresql | Implement | How should a PostgreSQL connection pool be bounded across app instances?
+255 | m-28-5-1 | D2 / postgresql | Implement | How can Psycopg return a borrowed PostgreSQL connection to its pool automatically?
+261 | m-30-1-1 | D2 / postgresql | Experiment | Why might adding PostgreSQL vCores fail to speed up one slow vector query?
+262 | m-30-2-1 | D2 / postgresql | Experiment | Which resource can help when a vector-index working set no longer fits in memory?
+263 | m-30-3-1 | D2 / postgresql | Design/reference | How do typical Azure PostgreSQL tiers differ in memory per vCore?
+264 | m-30-4-1 | D2 / postgresql | Design/reference | Which Azure PostgreSQL feature handles growing storage needs?
+265 | m-30-5-1 | D2 / postgresql | Experiment | How should a PostgreSQL memory scale-up be validated?
+266 | m-30-6-1 | D2 / postgresql | Experiment | How can you distinguish PostgreSQL connection-setup overhead from slow SQL execution?
+291 | prep-pg-003 | D2 / postgresql | Design/reference | How does HNSW generally trade index build cost for query quality compared with IVFFlat?
+292 | prep-p-pg-003 | D2 / postgresql | Design/reference | Which pgvector HNSW parameters control graph construction?
+293 | prep-p-pg-004 | D2 / postgresql | Experiment | Which pgvector setting adjusts HNSW candidate search effort at query time?
+294 | prep-pg-016 | D2 / postgresql | Design/reference | What does pgvector's IVFFlat lists parameter configure?
+295 | prep-pg-034 | D2 / postgresql | Experiment | Which pgvector setting selects how many IVFFlat lists are searched?
+296 | prep-p-pg-005 | D2 / postgresql | Design/reference | Why should an IVFFlat index be built with representative data already present?
+298 | prep-p-pg-012 | D2 / postgresql | Experiment | What does EXPLAIN ANALYZE measure that EXPLAIN alone does not?
+299 | prep-p-pg-013 | D2 / postgresql | Design/reference | What does ordinary PostgreSQL VACUUM do with dead row versions?
+301 | prep-p-pg-017 | D2 / postgresql | Design/reference | Which PostgreSQL setting provides memory for maintenance work such as an HNSW index build?
+303 | prep-p-pg-020 | D2 / postgresql | Design/reference | What does Azure PostgreSQL Query Store retain for performance analysis?
+
+PRIMARY SCOPE REFERENCE
+https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200
+Skills effective 7 October 2026. The question-specific primary material is in flashcards-data.js and reports/flashcard-answer-review.txt.
+Machine-readable companion: data/future-workshop-card-map.json.

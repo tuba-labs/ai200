@@ -1,7 +1,7 @@
 AI-200 FLASHCARD SCOPE REVIEW — 29 OCTOBER 2026
 Study guide: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200
 Skills version: 7 October 2026.
-Reviewed 691 cards. Retained 577. Removed 114.
+Reviewed 691 cards. Retained 559. Removed 132.
 Remaining card IDs are unchanged. Display numbers follow the reduced deck.
 The guide names Python. A resource link alone is not a measured objective.
 General Docker, Kubernetes, SQL, networking and identity prerequisites remain.
@@ -169,6 +169,70 @@ User-requested removals (1)
 Removed at the user's request: the default Cosmos DB _etag indexing-path recall question.
   Previous #245 | m-22-3-1 | Which system-property path is excluded by the default Cosmos DB indexing policy?
   Number at removal: #223. Removed 29 October 2026.
+
+Memorization of service defaults (1)
+Removed from the focused deck: memorizes a list of configurable, version-dependent defaults rather than testing how to use, size or diagnose connection pooling.
+  Previous #273 | m-27-4-1 | What are common built-in PgBouncer pool and timeout defaults?
+  Number at removal: #250. Removed 29 October 2026.
+
+Redis port and tier recall (1)
+Removed at the user's request to focus the deck on Redis caching and vector operations rather than service/tier-to-port memorization.
+  Previous #300 | m-33-1-1 | Which Azure Redis services use port 10000?
+  Number at removal: #276. Removed 29 October 2026.
+
+Redis focused-deck cleanup (15)
+Reviewed 37 Redis practice cards and 9 related definitions. Kept 23 practice cards and 8 definitions.
+Consolidated 8 overlapping cards and removed 7 peripheral cards. These are study-priority decisions, not a claim that related topics can never appear on the exam.
+  Previous #221 | prep-redis-004 | Which Redis data type maintains members ordered by a score?
+  The sorted-set/leaderboard definition mainly supports the removed rate-counter examples. It remains in the wider glossary.
+  Number at removal: #199.
+  Previous #293 | m-31-2-1 | Which Redis eviction-policy family can select keys with or without an expiry?
+  Overlapping learning point consolidated into m-31-1-1.
+  Number at removal: #269.
+  Previous #295 | m-31-4-1 | What happens to a volatile Redis policy when no keys have an expiry?
+  Overlapping learning point consolidated into m-31-1-1.
+  Number at removal: #271.
+  Previous #296 | m-31-5-1 | Which Redis setting selects the eviction policy?
+  Overlapping learning point consolidated into m-31-1-1.
+  Number at removal: #272.
+  Previous #299 | m-32-2-1 | What triggers Redis key eviction?
+  Overlapping learning point consolidated into m-32-1-1.
+  Number at removal: #275.
+  Previous #302 | m-34-1-1 | Which RediSearch schema field type supports KNN vector search?
+  Overlapping learning point consolidated into m-37-2-1.
+  Number at removal: #276.
+  Previous #306 | m-34-5-1 | Which clustering and eviction policies does RediSearch require on Azure Managed Redis?
+  Overlapping learning point consolidated into m-34-4-1.
+  Number at removal: #280.
+  Previous #311 | m-35-5-1 | Why can a Redis cache stay stale even when persistence is enabled?
+  Overlapping learning point consolidated into m-35-3-1.
+  Number at removal: #285.
+  Previous #313 | m-36-4-1 | How does Redis volatile-ttl choose an eviction candidate?
+  A specialized volatile-ttl ranking detail; the retained cards cover policy eligibility, LRU/LFU, NoEviction and expiration.
+  Number at removal: #287.
+  Previous #347 | prep-redis-002 | How do Redis RDB and AOF persistence differ?
+  Persistence-format comparison is operational background; source-data freshness and invalidation remain covered.
+  Number at removal: #316.
+  Previous #349 | prep-p-red-004 | How can Redis count requests in a fixed one-minute rate-limit window?
+  A separate rate-limiting application pattern, beyond the focused caching and vector-search practice.
+  Number at removal: #318.
+  Previous #350 | prep-redis-022 | How can a Redis sorted set implement a sliding-window rate counter?
+  A separate sliding-window rate-limiting pattern, beyond the focused caching and vector-search practice.
+  Number at removal: #319.
+  Previous #352 | prep-redis-008 | What does Redis clustering distribute across shards?
+  Cluster keyspace internals are lower-priority background for this focused deck.
+  Number at removal: #321.
+  Previous #355 | prep-p-red-018 | What does Redis pipelining reduce?
+  Overlapping learning point consolidated into prep-redis-016.
+  Number at removal: #323.
+  Previous #356 | prep-p-red-020 | How can related Redis Cluster keys be placed in the same hash slot?
+  Specialized cluster hash-tag placement is lower-priority background; client restrictions are still noted where needed.
+  Number at removal: #324.
+
+PostgreSQL TLS parameter recall (1)
+Removed from the focused deck: server-parameter name recall for a minimum TLS version is lower priority than secure application connections and connection optimization.
+  Previous #340 | prep-pg-023 | Which Azure PostgreSQL server parameter sets the minimum TLS protocol version?
+  Number at removal: #301.
 
 RETAINED OBJECTIVE MAPPINGS
 The JSON review records an objective, prerequisite/skill distinction and content fingerprint for every remaining card.

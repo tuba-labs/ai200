@@ -30,7 +30,7 @@ window.AI200_JARGON = {
         "Attribute-Based Access Control",
         "attributtbasert tilgangskontroll"
       ],
-      "definition": "Access can be restricted using attributes of the caller, resource or request. In supported Azure role assignments, a condition narrows the permission already granted by the role and scope, such as allowing access only to matching tagged blobs.",
+      "definition": "ABAC means Attribute-Based Access Control. On supported Azure role assignments, a condition can restrict access using attributes such as a blob’s tags. The role and scope grant the initial permission; the condition narrows when it applies.",
       "domains": [
         4
       ],
@@ -61,7 +61,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Azure Container Registry"
       ],
-      "definition": "It is Azure’s service for storing and distributing container images and related artifacts. For example, your app’s image can be stored in ACR and pulled by Azure Kubernetes Service when the app starts.",
+      "definition": "ACR stands for Azure Container Registry. It stores and distributes container images and other supported artifacts. Your build can upload an image to ACR, and your Azure hosting service can download it for deployment.",
       "domains": [
         1
       ],
@@ -201,7 +201,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Azure Kubernetes Service"
       ],
-      "definition": "It is Azure’s managed service for running Kubernetes clusters. Azure operates the control plane that coordinates the cluster, while your applications run in pods on worker nodes.",
+      "definition": "AKS stands for Azure Kubernetes Service. It is Azure’s managed Kubernetes service: Azure runs the control plane, and your application pods run on worker nodes.",
       "domains": [
         1
       ],
@@ -241,7 +241,7 @@ window.AI200_JARGON = {
         "arbeidernode",
         "arbeidernoder"
       ],
-      "definition": "A worker machine that runs pods. It supplies CPU, memory and the container runtime needed by those pods. In Azure Kubernetes Service (AKS), a worker node is typically an Azure virtual machine in a node pool. One node can run many pods; a pod is not the machine itself.",
+      "definition": "A node is a worker machine on which Kubernetes runs pods. In AKS, nodes are usually Azure virtual machines grouped into node pools. One node can run many pods.",
       "domains": [
         1
       ],
@@ -262,7 +262,7 @@ window.AI200_JARGON = {
         "node-pool",
         "node-pools"
       ],
-      "definition": "A group of worker nodes with a common configuration, such as virtual-machine size and operating system. You can use separate pools for ordinary apps, system workloads or GPU workloads. Scaling a pool changes the number of worker machines, not directly the number of application pods.",
+      "definition": "An AKS node pool groups worker nodes with a shared configuration, such as operating system and virtual-machine size. Different pools can support different workload requirements. Scaling the pool changes the number of worker machines.",
       "domains": [
         1
       ],
@@ -463,7 +463,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Advanced Message Queuing Protocol"
       ],
-      "definition": "It defines how clients and message brokers exchange messages and delivery outcomes over a network. Azure Service Bus uses it in its current supported SDKs.",
+      "definition": "AMQP stands for Advanced Message Queuing Protocol. It defines messaging communication between clients and brokers, including delivery outcomes. Current Service Bus SDKs use AMQP 1.0.",
       "domains": [
         3
       ],
@@ -499,7 +499,7 @@ window.AI200_JARGON = {
         "approximate nearest-neighbor",
         "approximate nearest-neighbour"
       ],
-      "definition": "Approximate nearest neighbor. It finds close vectors quickly without guaranteeing the exact closest results. For example, a search can examine promising candidates instead of comparing the query against every stored vector.",
+      "definition": "ANN means approximate nearest neighbor. An approximate search examines promising candidates to find close vectors efficiently, rather than guaranteeing that it found the exact nearest results. Recall measures the quality of that approximation.",
       "domains": [
         2
       ],
@@ -620,7 +620,7 @@ window.AI200_JARGON = {
         "API-er",
         "grensesnitt"
       ],
-      "definition": "Application Programming Interface: a defined way for one program to use another component. For example, an orders web API can let a client submit an order or retrieve its status using HTTP requests.",
+      "definition": "API stands for Application Programming Interface: a defined way for software components to interact. An orders HTTP API, for example, can accept a new order and return its status through documented requests and responses.",
       "domains": [
         3
       ],
@@ -637,7 +637,7 @@ window.AI200_JARGON = {
         "Azure App Configuration",
         "AppConfig"
       ],
-      "definition": "A managed store for application settings and feature flags. Applications load values such as service URLs or feature choices without rebuilding the code. Sensitive credentials normally belong in Key Vault and can be connected through references rather than stored as ordinary setting values.",
+      "definition": "Azure App Configuration centrally stores ordinary application settings and feature flags. Applications can load values such as service URLs and refresh them without rebuilding their code. Store sensitive credentials in Key Vault and connect them through references when appropriate.",
       "domains": [
         4
       ],
@@ -671,7 +671,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Azure App Service"
       ],
-      "definition": "A managed platform for hosting web applications and HTTP APIs. Azure runs the hosting infrastructure, while you deploy code or a supported container and configure the app. You choose a hosting plan rather than directly managing every server.",
+      "definition": "Azure App Service is a managed platform for hosting web applications and HTTP APIs. You deploy application code or a supported container and configure the app; Azure manages the hosting infrastructure.",
       "domains": [
         1
       ],
@@ -743,7 +743,7 @@ window.AI200_JARGON = {
         "App Insights",
         "AppInsights"
       ],
-      "definition": "An Azure Monitor capability for observing application performance and behavior. It links request timings, dependency calls, failures and other telemetry so you can investigate problems. Application instrumentation supplies the data it analyzes.",
+      "definition": "Application Insights is an Azure Monitor capability for observing applications. It connects requests, dependency calls, failures and other collected telemetry so you can investigate performance and errors. Instrumentation in the application supplies much of that data.",
       "domains": [
         4
       ],
@@ -799,7 +799,7 @@ window.AI200_JARGON = {
         "at-least-once",
         "minst én gang"
       ],
-      "definition": "Messages can be delivered more than once. For example, a handler may finish its work but lose the acknowledgment, causing delivery to be retried. Consumers must tolerate duplicates. The service's retry and retention limits still apply; delivery does not guarantee that the business operation eventually succeeds.",
+      "definition": "At-least-once delivery permits duplicate deliveries. A handler may finish its work but lose the acknowledgment, so the service tries again. Consumers must tolerate that repetition, and recovery still needs to account for retry and retention limits.",
       "domains": [
         3
       ],
@@ -835,7 +835,7 @@ window.AI200_JARGON = {
         "authenticated",
         "authenticate"
       ],
-      "definition": "Verifying who or what is making a request, such as validating a user’s sign-in or an application’s token. It establishes identity. It does not by itself grant permission to read a secret, send a message or change a resource.",
+      "definition": "Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token. Authorization is the next question: whether that caller may perform the requested action.",
       "domains": [
         4
       ],
@@ -855,7 +855,7 @@ window.AI200_JARGON = {
         "authorized",
         "authorize"
       ],
-      "definition": "Deciding whether an identified caller may perform the requested action on a resource. For example, a managed identity can authenticate successfully but be denied a secret read because it lacks Secrets User permission. Authentication establishes identity; authorization checks allowed actions.",
+      "definition": "Authorization checks whether a caller may perform an action on a resource. An application can authenticate successfully yet be denied a Key Vault secret because its identity lacks the required secret-read permission.",
       "domains": [
         4
       ],
@@ -892,7 +892,7 @@ window.AI200_JARGON = {
         "tilgjengelighetssone",
         "tilgjengelighetssoner"
       ],
-      "definition": "A physically separate group of datacenters within one Azure region, with independent power, cooling and networking. Deploying across supported zones can protect against a single-zone failure. Multiple zones in one region are different from deploying in multiple regions.",
+      "definition": "An availability zone is a physically separate datacenter location within an Azure region, with independent power, cooling and networking. A service configured across multiple supported zones can continue operating through a failure in one zone.",
       "domains": [
         1
       ],
@@ -1020,7 +1020,7 @@ window.AI200_JARGON = {
         "Azure-funksjon",
         "Azure-funksjoner"
       ],
-      "definition": "A piece of application code invoked by a configured trigger, such as an HTTP request or a queue message. Azure Functions runs it on a supported hosting plan. One function has one trigger; a function app can host several functions.",
+      "definition": "An Azure Function is application code invoked by one configured trigger, such as an HTTP request or queue message. Azure Functions runs the code on its hosting platform. A Function App can contain several such functions.",
       "domains": [
         3
       ],
@@ -1082,7 +1082,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Azure Monitor-platformen"
       ],
-      "definition": "Azure's platform for collecting, analyzing and acting on monitoring data, including metrics and logs. Use it to investigate application behavior, visualize performance and trigger alerts when configured conditions are met.",
+      "definition": "Azure Monitor collects and analyzes monitoring data, including metrics and logs. It provides tools to investigate application behavior, display trends and alert when configured conditions are met.",
       "domains": [
         4
       ],
@@ -1176,7 +1176,7 @@ window.AI200_JARGON = {
         "Azure-regioner",
         "regioner"
       ],
-      "definition": "A geographic area containing Azure datacenters, such as Norway East. You select a region when creating many resources to control where they run or store data. Service availability and supported configurations can differ between regions.",
+      "definition": "An Azure region is a geographic area containing Azure datacenters, such as Norway East. Choosing a region determines where a regional resource runs or stores its data. Available services and features can vary by region.",
       "domains": [
         1
       ],
@@ -1196,7 +1196,7 @@ window.AI200_JARGON = {
         "ressurs",
         "ressurser"
       ],
-      "definition": "An individual service instance or managed object in Azure, such as a storage account, web app or virtual machine. It has an identity and settings that Azure can create, update or delete. A resource group organizes related resources.",
+      "definition": "An Azure resource is an individual service instance or managed object, such as a web app, storage account or virtual machine. Each resource has its own identifier and configuration.",
       "domains": [
         1
       ],
@@ -1214,7 +1214,7 @@ window.AI200_JARGON = {
         "Azure-abonnement",
         "Azure-abonnementer"
       ],
-      "definition": "A boundary used to organize Azure resources, billing, quotas and access. Resource groups belong to a subscription. Selecting the correct subscription before creating resources determines where they are managed and charged; it is different from a messaging-topic subscription.",
+      "definition": "An Azure subscription is a resource-management and billing boundary. Resource groups belong to a subscription, and their usage is charged through it. Selecting the correct subscription determines where new resources are created and which quotas apply.",
       "domains": [
         1
       ],
@@ -1340,7 +1340,7 @@ window.AI200_JARGON = {
         "Bicep-filer",
         "Bicep-fil"
       ],
-      "definition": "A language for describing which Azure resources should exist and how they should be configured. Azure Resource Manager reads the description and creates or updates the resources. For example, one Bicep file can declare a storage account and function app.",
+      "definition": "Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by a workshop.",
       "domains": [
         1
       ],
@@ -1391,7 +1391,7 @@ window.AI200_JARGON = {
         "blobben",
         "blobene"
       ],
-      "definition": "An individually stored object, such as an image, PDF or data file. Each blob has its own name and address and belongs to a Blob Storage container in a storage account. Here a container is a group of stored objects.",
+      "definition": "A blob is an object stored in Azure Blob Storage, such as a photo or PDF. It has a name inside a storage container, which belongs to a storage account.",
       "domains": [
         3
       ],
@@ -1408,7 +1408,7 @@ window.AI200_JARGON = {
         "build contexts",
         "byggkontekst"
       ],
-      "definition": "The files made available to the image builder. In docker build -t myapp:v1 ., the final dot selects the current directory as the context. Dockerfile instructions such as COPY can use files from that context, subject to exclusions such as .dockerignore.",
+      "definition": "The build context is the set of files available to an image builder. In docker build -t orders:v1 ., the final dot selects the current directory. Dockerfile instructions such as COPY can use files in that context, except files excluded by rules such as .dockerignore.",
       "domains": [
         1
       ],
@@ -1445,7 +1445,7 @@ window.AI200_JARGON = {
         "hurtigbufferen",
         "mellomlager"
       ],
-      "definition": "A store of reusable data kept where it can be retrieved quickly. For example, an app can keep a database result in Redis to avoid repeating the same query. The cached copy can become outdated, so its lifetime and refresh/invalidation rules matter.",
+      "definition": "A cache keeps reusable data where an application can retrieve it quickly. For example, Redis can hold a database query result to avoid repeating the query. The application needs a policy for freshness, expiration and invalidation.",
       "domains": [
         2
       ],
@@ -1464,7 +1464,7 @@ window.AI200_JARGON = {
         "utkasting",
         "utkastingspolicy"
       ],
-      "definition": "Removing keys to free memory when the configured memory limit is reached. The eviction policy decides which keys are eligible and how to choose among them. It can remove data before its expiry time; noeviction instead rejects operations that need more memory.",
+      "definition": "Eviction removes eligible cached data to make room when Redis reaches its memory limit. The configured policy selects the keys that may be discarded. NoEviction instead retains the keys and can reject writes that need more memory.",
       "domains": [
         2
       ],
@@ -1482,7 +1482,7 @@ window.AI200_JARGON = {
         "cache-hit",
         "cachetreff"
       ],
-      "definition": "The requested value is found in the cache and can be used. The application can return it without reading the original database again. Whether that cached value is still fresh depends on the application's expiration and refresh rules.",
+      "definition": "A cache hit means the requested value is available in the cache. The application can use it without loading the source again, provided the cached value satisfies its freshness and access requirements.",
       "domains": [
         2
       ],
@@ -1500,7 +1500,7 @@ window.AI200_JARGON = {
         "cache-miss",
         "cache-misses"
       ],
-      "definition": "The requested value is absent or unusable in the cache. In a cache-aside design, the application then reads the original database and may cache the result for later requests.",
+      "definition": "A cache miss means the requested value is missing or unusable. In cache-aside, the application loads the value from the source database, returns it and usually saves a copy in the cache.",
       "domains": [
         2
       ],
@@ -1562,7 +1562,7 @@ window.AI200_JARGON = {
         "endringsfeeden",
         "endringsstrøm"
       ],
-      "definition": "An incremental stream of item changes that another component can process, such as updating a search index after a document changes. It avoids repeatedly scanning all items. What versions and deletes are available depends on the configured feed mode.",
+      "definition": "Cosmos DB change feed is a built-in change data capture, or CDC, mechanism. It lets consumers process item changes asynchronously without the application explicitly publishing an event for each database write.\n\nFor example, a consumer can update a search index when a document changes. The feed mode determines whether intermediate versions and deletes are available.",
       "domains": [
         2
       ],
@@ -1625,7 +1625,7 @@ window.AI200_JARGON = {
         "CI / CD",
         "Continuous Integration / Continuous Delivery or Deployment"
       ],
-      "definition": "Continuous Integration and Continuous Delivery or Deployment. CI automatically builds and checks code changes. Delivery prepares a release for deployment, often with approval; deployment automatically releases successful changes. A pipeline connects those steps so releasing an application is repeatable.",
+      "definition": "CI/CD means Continuous Integration and Continuous Delivery or Deployment. CI builds and checks code changes automatically. Continuous delivery prepares a releasable version; continuous deployment also releases successful changes automatically.",
       "domains": [
         1
       ],
@@ -1656,7 +1656,7 @@ window.AI200_JARGON = {
         "command-line interface",
         "kommandolinjegrensesnitt"
       ],
-      "definition": "Command-line interface: controlling software by typing commands. Azure CLI uses commands starting with az. For example, az group list lists the resource groups you can access.",
+      "definition": "CLI stands for command-line interface: a way to control software by typing commands. Azure CLI commands start with az; for example, az group list shows the resource groups you can access.",
       "domains": [
         1
       ],
@@ -1708,7 +1708,7 @@ window.AI200_JARGON = {
         "Container Network Interface",
         "Azure CNI"
       ],
-      "definition": "It defines how networking plugins connect containers to a network. Azure CNI is an AKS implementation; its selected mode affects pod addresses and how pod traffic reaches other networks.",
+      "definition": "CNI stands for Container Network Interface. It is a specification used by networking plugins to connect containers to a network. Azure CNI provides such networking for AKS.",
       "domains": [
         1
       ],
@@ -1727,7 +1727,7 @@ window.AI200_JARGON = {
         "kaldstart",
         "kaldstarter"
       ],
-      "definition": "The startup delay when the platform must initialize a new application instance before handling work. It can include starting the host, loading the language runtime and importing code. Keeping supported capacity warm can reduce this delay, usually with a capacity cost.",
+      "definition": "A cold start is the delay while a new application instance initializes before handling work. Starting the host, loading its runtime and importing code all take time. Supported warm-capacity options can reduce that delay at an additional capacity cost.",
       "domains": [
         3
       ],
@@ -1774,7 +1774,7 @@ window.AI200_JARGON = {
         "tilkoblingspool",
         "klientpool"
       ],
-      "definition": "A reusable set of established database connections that requests borrow and return. It avoids opening a fresh network/database connection for every query. Pool size limits how many connections that pool can use; multiple application instances can each have a separate pool.",
+      "definition": "A connection pool keeps established database connections available for requests to borrow and return. Reusing connections avoids repeating connection setup for every query. Size the combined pools across all application instances to fit the database’s connection capacity.",
       "domains": [
         2
       ],
@@ -1859,7 +1859,7 @@ window.AI200_JARGON = {
         "Container App",
         "Azure Container App"
       ],
-      "definition": "A managed platform that runs containerized applications and jobs without requiring you to manage a Kubernetes cluster directly. You supply container images and settings such as ingress and scaling rules. Azure manages the underlying container-hosting infrastructure.",
+      "definition": "Azure Container Apps runs containerized applications on managed infrastructure. You provide an image and configure networking, revisions and scaling, while Azure operates the underlying platform.",
       "domains": [
         1
       ],
@@ -1899,7 +1899,7 @@ window.AI200_JARGON = {
         "Container Apps environments",
         "Container App environment"
       ],
-      "definition": "A shared hosting boundary for Container Apps, with common networking and logging configuration. It can contain several apps. Each app has its own revisions, while the environment supplies their shared infrastructure.",
+      "definition": "A Container Apps environment is a shared hosting boundary for applications, networking and observability settings. It can contain multiple apps, each with its own revisions.",
       "domains": [
         1
       ],
@@ -1916,7 +1916,7 @@ window.AI200_JARGON = {
         "Container Apps revisions",
         "Container App revision"
       ],
-      "definition": "A saved version of the app’s deployment configuration, such as its container image and environment variables. That configuration is immutable: changing it creates another revision. App-level settings, such as secret definitions, are managed separately.",
+      "definition": "A revision is an immutable snapshot of a Container App’s revision-scoped configuration, such as its image and environment variables. Changing those settings creates another revision. App-scoped settings, including secret definitions, have a separate lifecycle.",
       "domains": [
         1
       ],
@@ -1936,7 +1936,7 @@ window.AI200_JARGON = {
         "Docker image",
         "Docker images"
       ],
-      "definition": "A packaged template containing an application, its dependencies and startup configuration. You build and store the image, then start containers from it. One image can create many separate containers, just as one installer can be used to set up multiple running copies.",
+      "definition": "A container image is a packaged template containing an application, its dependencies and startup configuration. A container runtime uses that template to start a running container. The same image can be used to start many separate containers.",
       "domains": [
         1
       ],
@@ -1954,7 +1954,7 @@ window.AI200_JARGON = {
         "containerregister",
         "containerregistre"
       ],
-      "definition": "A service that stores container images and makes them available for upload and download. A build pipeline pushes an image there, and a hosting platform pulls it to start containers. Azure Container Registry and Docker Hub are examples.",
+      "definition": "A container registry stores container images and makes them available to upload or download. A build pipeline pushes an image to the registry; a hosting service pulls it when deploying the application.",
       "domains": [
         1
       ],
@@ -2033,7 +2033,7 @@ window.AI200_JARGON = {
         "Cosmos DB for NoSQL",
         "Azure Cosmos DB for NoSQL"
       ],
-      "definition": "A managed database service designed to distribute data across regions and scale access to it. With its NoSQL API, applications store JSON-like records called items in containers.",
+      "definition": "Azure Cosmos DB is a managed database service designed for scalable, distributed data access. Its NoSQL API stores JSON-like items in containers and supports querying, partitioning and configurable read consistency.",
       "domains": [
         2
       ],
@@ -2069,7 +2069,7 @@ window.AI200_JARGON = {
         "Cosmos-container",
         "Cosmos-containeren"
       ],
-      "definition": "A collection of items with shared settings such as partitioning and indexing. A database contains containers, and containers contain items. This is a data-storage concept, not an application container running from a Docker image.",
+      "definition": "A Cosmos DB container holds items and shares settings such as partitioning and indexing. A database contains containers, and each container contains its items. This container is a data collection, unlike a running application container.",
       "domains": [
         2
       ],
@@ -2088,7 +2088,7 @@ window.AI200_JARGON = {
         "partisjonsnøkkel",
         "partisjonsnøkler"
       ],
-      "definition": "The item property used to group related data into logical partitions. If customerId is the partition key, items with the same customerId belong together logically. This affects data distribution and which requests can target one partition instead of searching across many.",
+      "definition": "A partition key selects the property used to group items into logical partitions. With customerId as the key, items for one customer share a logical partition. The choice affects how evenly data is distributed and whether common requests can target one partition.",
       "domains": [
         2
       ],
@@ -2118,7 +2118,7 @@ window.AI200_JARGON = {
         "prosessor",
         "prosessoren"
       ],
-      "definition": "Central Processing Unit, the general-purpose processor that executes instructions. Kubernetes CPU requests and limits describe how much processor capacity a container needs or can use. One CPU unit corresponds to one logical core; 500 millicores is half of that capacity.",
+      "definition": "CPU stands for Central Processing Unit, the processor that executes general-purpose instructions. In Kubernetes, one CPU unit represents one logical core; 500 millicores represents half a CPU unit.",
       "domains": [
         1
       ],
@@ -2155,7 +2155,7 @@ window.AI200_JARGON = {
         "roterer",
         "rotere"
       ],
-      "definition": "Replacing a password, token or key with a new usable credential and updating its consumers. The target service and clients must agree on the replacement. Creating a new value only in Key Vault does not change the external service’s password or refresh values already cached by running clients.",
+      "definition": "Credential rotation replaces a password, token or key and moves clients to the replacement. The target service must accept the new credential, and clients must refresh what they use. Creating a Key Vault version alone does not update the external service or credentials already cached in memory.",
       "domains": [
         4
       ],
@@ -2203,7 +2203,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Container Storage Interface"
       ],
-      "definition": "A standard interface that lets Kubernetes use different storage providers through drivers. For example, the Secrets Store CSI Driver can mount Key Vault objects into a pod as files, using an identity authorized to retrieve them.",
+      "definition": "CSI means Container Storage Interface, a standard that connects Kubernetes to storage providers through drivers. The Secrets Store CSI Driver can, for example, mount Key Vault objects into a pod as files using an identity authorized to read them.",
       "domains": [
         4
       ],
@@ -2222,7 +2222,7 @@ window.AI200_JARGON = {
         "Daemon Sets",
         "Deaemonset"
       ],
-      "definition": "It keeps a copy of a pod running on every eligible node. For example, a DaemonSet can place a log-collection agent on each worker machine. When another eligible node joins, Kubernetes creates the agent pod there too.",
+      "definition": "A DaemonSet runs a copy of a pod on every eligible node. It is useful for node-level services such as log collectors. When another eligible node joins, the DaemonSet creates a pod there too.",
       "domains": [
         1
       ],
@@ -2283,7 +2283,7 @@ window.AI200_JARGON = {
         "databaser",
         "databasen"
       ],
-      "definition": "An organized store of data that an application can read and change. For example, an orders database keeps customer orders so the application can retrieve them later. A database system, such as PostgreSQL, manages that data.",
+      "definition": "A database is an organized store of data an application can retrieve and change. A database system manages that storage and access; an order-tracking app might use it to keep orders and their status.",
       "domains": [
         2
       ],
@@ -2303,7 +2303,7 @@ window.AI200_JARGON = {
         "databaseindeks",
         "databaseindekser"
       ],
-      "definition": "An extra data structure that helps the database find records without examining every record. Like a book index, it helps locate information quickly. It takes storage and must be updated when the indexed data changes.",
+      "definition": "An index is an additional data structure that helps a database locate matching records efficiently. Like a book’s index, it can avoid searching the whole collection. It uses storage and adds maintenance work when indexed data changes.",
       "domains": [
         2
       ],
@@ -2322,7 +2322,7 @@ window.AI200_JARGON = {
         "databasetransaksjon",
         "databasetransaksjoner"
       ],
-      "definition": "A group of database operations treated as one unit. Committing makes the changes permanent; rolling back cancels them. For example, a money transfer should subtract from one account and add to the other together, or do neither.",
+      "definition": "A transaction groups database operations into one unit of work. A successful commit makes its changes permanent; a rollback discards them. A money transfer, for example, should debit one account and credit the other together.",
       "domains": [
         2
       ],
@@ -2342,7 +2342,7 @@ window.AI200_JARGON = {
         "dead-letter-kø",
         "dead-letter-køen"
       ],
-      "definition": "A place for messages that could not be delivered or processed under the service’s rules. DLQ stands for dead-letter queue. In Service Bus it is a subqueue of a queue or subscription. Inspecting or replaying its messages requires an explicit recovery process.",
+      "definition": "DLQ stands for dead-letter queue. It holds messages that could not be delivered or processed under the service’s rules. In Service Bus it is a subqueue of a queue or subscription; recovery requires inspecting and deliberately reprocessing or discarding its messages.",
       "domains": [
         3
       ],
@@ -2465,7 +2465,7 @@ window.AI200_JARGON = {
         "slots",
         "utrullingsspor"
       ],
-      "definition": "A separate live version of an App Service app, with its own hostname and configuration. For example, deploy a new release to staging, test it, then swap it into production. The slots share the App Service plan’s compute capacity.",
+      "definition": "A deployment slot is a separate live deployment of an App Service app, with its own hostname and configuration. You can test a release in a staging slot before swapping it into production. Slots share the compute resources of their App Service plan.",
       "domains": [
         1
       ],
@@ -2500,7 +2500,7 @@ window.AI200_JARGON = {
         "sertifikater",
         "sertifikatet"
       ],
-      "definition": "A signed record connecting a public key to an identity, such as a server hostname. During HTTPS, the client checks that the certificate is valid for the server and comes from a trusted issuer. This helps it verify which server it reached.",
+      "definition": "A digital certificate is a signed record linking a public key to an identity, such as a server’s hostname. During HTTPS, the client validates the certificate and its issuer to help establish that it reached the intended server.",
       "domains": [
         4
       ],
@@ -2517,7 +2517,7 @@ window.AI200_JARGON = {
         "disk ANN",
         "Disk-based Approximate Nearest Neighbor"
       ],
-      "definition": "A family of graph-based algorithms for approximate nearest-neighbor search, designed to search large vector collections efficiently, including collections stored on disk. Cosmos DB offers a diskANN vector-index option.",
+      "definition": "DiskANN is a family of graph-based approximate nearest-neighbor algorithms designed for efficient search over large vector collections. Cosmos DB exposes a diskANN vector index that trades some exactness for more efficient retrieval.",
       "domains": [
         2
       ],
@@ -2536,7 +2536,7 @@ window.AI200_JARGON = {
         "distribuerte spor",
         "distribuert sporing"
       ],
-      "definition": "A linked record of an operation as it travels through components, such as an API calling another service and then a database. The trace groups timed spans through shared context so you can see where time and failures occurred.",
+      "definition": "A distributed trace connects the work involved in one operation across components. For example, it can link an incoming API request to the database call it made. Each timed step is a span, and propagated trace context links those spans.",
       "domains": [
         4
       ],
@@ -2555,7 +2555,7 @@ window.AI200_JARGON = {
         "DNS-oppslag",
         "navneoppslag"
       ],
-      "definition": "It translates names such as myregistry.azurecr.io into network addresses. That lets a client find the service using a readable hostname instead of having to know its current IP address.",
+      "definition": "DNS stands for Domain Name System. It resolves names such as myregistry.azurecr.io to network addresses so clients can locate a service by its hostname.",
       "domains": [
         1
       ],
@@ -2571,7 +2571,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Docker Engine"
       ],
-      "definition": "A set of tools for building container images and running containers. For example, docker build creates an image from a Dockerfile, and docker run starts a container from that image. Docker is a product name; an image is the packaged template and a container is its running instance.",
+      "definition": "Docker provides tools for building container images and running containers. docker build creates an image from a Dockerfile, while docker run starts a container from an image.",
       "domains": [
         1
       ],
@@ -2590,7 +2590,7 @@ window.AI200_JARGON = {
         "application container",
         "application containers"
       ],
-      "definition": "An isolated environment running an application from a container image. It packages the application’s files and dependencies while sharing the host’s operating-system kernel. The image is the reusable template; containers are the running copies.",
+      "definition": "A container is an isolated running instance of an application and its dependencies. It starts from a container image and shares the host operating system’s kernel. Several containers can run on the same host.",
       "domains": [
         1
       ],
@@ -2606,7 +2606,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Dockerfiles"
       ],
-      "definition": "A text file of instructions for building a container image. For example, it can select a base image, copy application files, install dependencies and set the startup command. docker build reads those instructions to create the image.",
+      "definition": "A Dockerfile is a text file containing instructions for building a container image. It can select a base image, install dependencies, copy application files and specify the startup command.",
       "domains": [
         1
       ],
@@ -2721,7 +2721,7 @@ window.AI200_JARGON = {
         "innbyggingsvektor",
         "innbyggingsvektorer"
       ],
-      "definition": "A numeric representation of content, often produced by a machine-learning model. For example, a sentence can become a list of numbers whose relationships help represent its meaning. Similarity search compares compatible embeddings; it does not compare the original sentences directly.",
+      "definition": "An embedding is a numeric representation of content, usually produced by a machine-learning model. A sentence can be represented as a vector so an application can search for related meaning. Stored and query embeddings must come from compatible models and configurations.",
       "domains": [
         2
       ],
@@ -2741,7 +2741,7 @@ window.AI200_JARGON = {
         "endepunkter",
         "endepunktet"
       ],
-      "definition": "An address where a service can be contacted, often including a hostname, port or URL path. For example, https://example.com/orders can be an HTTP endpoint. Knowing the address tells a client where to connect; authentication and authorization still determine whether its request is allowed.",
+      "definition": "An endpoint is an address where a service accepts requests, such as a hostname, port or URL path. https://example.com/orders identifies an HTTP endpoint. A client also needs whatever authentication and permissions that endpoint requires.",
       "domains": [
         3
       ],
@@ -2859,7 +2859,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Azure Event Grid"
       ],
-      "definition": "An Azure service that routes event notifications from sources to interested subscribers. For example, it can notify a function when a Storage blob is created. Its namespace features also support pull delivery and MQTT messaging.",
+      "definition": "Azure Event Grid routes event notifications from publishers to interested subscribers. An event subscription can filter which events reach a destination, such as a Function responding to a new Storage blob.",
       "domains": [
         3
       ],
@@ -2980,7 +2980,7 @@ window.AI200_JARGON = {
         "hendelsesvarsel",
         "hendelsesvarsler"
       ],
-      "definition": "A message describing something that happened, such as a blob being created or an order being accepted. Subscribers decide what to do with that information. It often contains identifiers and metadata rather than the complete underlying file or business object.",
+      "definition": "An event notification describes something that happened, such as a blob being created. It usually includes identifiers and metadata so interested applications can react and retrieve any underlying data they need.",
       "domains": [
         3
       ],
@@ -3136,7 +3136,7 @@ window.AI200_JARGON = {
         "feature-flags",
         "funksjonsflagg"
       ],
-      "definition": "A setting the application checks to decide whether a feature is enabled for a request, user or environment. For example, enable a new checkout for a small group before a wider rollout. The same deployed code can behave differently according to the flag.",
+      "definition": "A feature flag is a setting the application checks to decide whether to expose a feature. For example, enable a new search interface for a small test group before a wider rollout. The same deployed code can behave differently for different flag evaluations.",
       "domains": [
         4
       ],
@@ -3214,7 +3214,7 @@ window.AI200_JARGON = {
         "funksjonsapp",
         "funksjonsapper"
       ],
-      "definition": "The Azure resource that hosts one or more functions. It provides their shared app-level settings and hosting configuration. You deploy function code into a function app; each individual function has its own handler and trigger.",
+      "definition": "A Function App is the Azure resource hosting one or more functions. Its functions share app-level configuration and hosting settings, while each function has its own trigger and handler.",
       "domains": [
         3
       ],
@@ -3233,7 +3233,7 @@ window.AI200_JARGON = {
         "Functions trigger",
         "Functions triggers"
       ],
-      "definition": "The configured event source that starts a function invocation. For example, an HTTP trigger starts it for a request, a queue trigger for a message, and a Timer trigger on a schedule. Each function has exactly one trigger.",
+      "definition": "A trigger is the event source that starts a function invocation. An HTTP request, queue message or timer schedule can be a trigger. Each individual function has exactly one trigger.",
       "domains": [
         3
       ],
@@ -3274,7 +3274,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Generalized Inverted Index"
       ],
-      "definition": "A PostgreSQL index that helps find rows containing particular values within documents or arrays. For example, it can speed up supported searches inside JSONB data.",
+      "definition": "GIN stands for Generalized Inverted Index. It maps values found inside composite data, such as arrays or JSONB documents, to the rows containing them. This helps supported membership and containment queries.",
       "domains": [
         2
       ],
@@ -3417,7 +3417,7 @@ window.AI200_JARGON = {
         "Graphics Processing Unit",
         "grafikkprosessor"
       ],
-      "definition": "It is a processor suited to many parallel calculations, including machine-learning workloads. Using a GPU in Kubernetes needs suitable GPU-enabled nodes and resource configuration; adding ordinary CPU replicas does not automatically provide GPU capacity.",
+      "definition": "GPU stands for Graphics Processing Unit. It is designed for many calculations in parallel, which is useful for machine-learning workloads. A Kubernetes workload needs suitable GPU-enabled nodes and resource settings to use one.",
       "domains": [
         1
       ],
@@ -3460,7 +3460,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Hierarchical Navigable Small World"
       ],
-      "definition": "It is a graph-based method for approximate nearest-neighbor search: connected vectors help the search navigate toward likely matches. It can make large searches efficient, but uses index memory and can miss some exact neighbors.",
+      "definition": "HNSW stands for Hierarchical Navigable Small World. It builds a graph of connected vectors so a search can navigate toward likely neighbors. It can speed up approximate search over large collections, at the cost of index memory and some possible loss of exact recall.",
       "domains": [
         2
       ],
@@ -3507,7 +3507,7 @@ window.AI200_JARGON = {
       "aliases": [
         "host settings"
       ],
-      "definition": "It contains configuration for the Functions host across the function app, such as logging, functionTimeout and extension-specific trigger/concurrency settings. It is deployed with the code. Per-environment secrets and connection values normally belong in app settings, not in host.json.",
+      "definition": "host.json configures the Functions host across a Function App, including logging, timeouts and extension-specific trigger behavior. It is deployed with the code. Keep environment-specific secrets and connection values in the appropriate app settings.",
       "domains": [
         3
       ],
@@ -3571,7 +3571,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Hypertext Transfer Protocol"
       ],
-      "definition": "It defines how a client sends requests and a server returns responses on the web. Requests use methods such as GET and POST; responses include status codes such as 200 for success or 404 for not found.",
+      "definition": "HTTP stands for Hypertext Transfer Protocol. It defines web requests and responses, including methods such as GET and POST and response status codes such as 200 and 404.",
       "domains": [
         3
       ],
@@ -3647,7 +3647,7 @@ window.AI200_JARGON = {
       "aliases": [
         "HTTP over TLS"
       ],
-      "definition": "HTTP carried over Transport Layer Security (TLS). It encrypts the connection and, with normal certificate validation, verifies the server hostname. HTTPS protects transport; the application still needs appropriate user authentication and authorization.",
+      "definition": "HTTPS is HTTP carried over Transport Layer Security, or TLS. It encrypts the connection and uses certificate validation to verify the server. Application authentication and authorization separately control who may use the service.",
       "domains": [
         3
       ],
@@ -3666,7 +3666,7 @@ window.AI200_JARGON = {
         "idempotent processing",
         "idempotens"
       ],
-      "definition": "Processing the same operation again has the same intended effect as processing it once. For example, receiving the same payment message twice should not charge the customer twice. Stable operation IDs and coordinated duplicate checks can help make retries safe.",
+      "definition": "Idempotent processing makes a repeated operation have the same intended effect as one successful attempt. For example, delivering a payment message twice should not charge the customer twice. Use a stable operation ID and coordinated state changes to prevent duplicate effects.",
       "domains": [
         3
       ],
@@ -3702,7 +3702,7 @@ window.AI200_JARGON = {
         "image-digests",
         "SHA-256 digest"
       ],
-      "definition": "A content-derived identifier, commonly written sha256: followed by a long hexadecimal value. It identifies the image manifest’s contents. Unlike a movable tag, referencing the digest selects that specific content, making the deployed version unambiguous.",
+      "definition": "An image digest is an identifier calculated from the image manifest’s content, commonly shown as sha256 followed by a hexadecimal value. Referencing the digest selects that exact content even if a tag is later moved.",
       "domains": [
         1
       ],
@@ -3720,7 +3720,7 @@ window.AI200_JARGON = {
         "pull images",
         "image-pull"
       ],
-      "definition": "Downloading an image from a registry so it can be used locally. A container host pulls the required image content before starting the application when it is not already available in its cache. Pulling an image does not itself start a container.",
+      "definition": "Pulling an image downloads its required content from a registry. A container host does this before starting a container when the image content is not already cached locally.",
       "domains": [
         1
       ],
@@ -3739,7 +3739,7 @@ window.AI200_JARGON = {
         "push images",
         "image-push"
       ],
-      "definition": "Uploading an image from the local builder/client to a registry. For example, docker push myregistry.azurecr.io/myapp:v1 uploads that named image to myregistry. Giving an image a registry-qualified tag prepares its destination name; pushing performs the transfer.",
+      "definition": "Pushing an image uploads it to a registry. For example, docker push myregistry.azurecr.io/orders:v1 uploads the locally available image under that registry, repository and tag.",
       "domains": [
         1
       ],
@@ -3773,7 +3773,7 @@ window.AI200_JARGON = {
         "container repositories",
         "imagelager"
       ],
-      "definition": "A named collection of related image versions, such as myapp. In myregistry.azurecr.io/myapp:v1, myregistry.azurecr.io is the registry hostname, myapp is the repository and v1 is the tag. An image repository stores built images; a Git repository stores source files and history.",
+      "definition": "An image repository is a named collection of image versions inside a registry. In myregistry.azurecr.io/orders:v1, myregistry.azurecr.io identifies the registry, orders is the repository and v1 is the tag.",
       "domains": [
         1
       ],
@@ -3793,7 +3793,7 @@ window.AI200_JARGON = {
         "image-tags",
         "Docker tag"
       ],
-      "definition": "A human-readable name attached to an image version, such as v1 or latest. In myapp:v1, v1 is the tag. Tags can be moved to different image content unless protected, so the word latest does not automatically mean the newest build.",
+      "definition": "An image tag is a readable name for an image version, such as v1. Tags can be moved to different image content unless protected. To identify immutable content, use its digest.",
       "domains": [
         1
       ],
@@ -3811,7 +3811,7 @@ window.AI200_JARGON = {
         "infrastructure-as-code",
         "infrastruktur som kode"
       ],
-      "definition": "Describing resources and their configuration in versioned files instead of relying only on manual portal steps. IaC stands for Infrastructure as Code. A deployment tool reads the files to create or update the environment, making it easier to review and reproduce.",
+      "definition": "Infrastructure as Code, or IaC, means describing infrastructure in files that a deployment tool can apply. Keeping those files in version control lets you review changes and recreate an environment consistently.",
       "domains": [
         1
       ],
@@ -3902,7 +3902,7 @@ window.AI200_JARGON = {
         "input-bindinger",
         "inndatabinding"
       ],
-      "definition": "A declarative connection that supplies data from a supported service to a function. For example, a Blob input binding can supply a blob’s contents without the handler creating its own Storage client. It still needs the correct path, connection and access permissions.",
+      "definition": "An input binding supplies data from a configured service to a function handler. A Blob input binding, for example, can provide file contents without the handler creating a Storage SDK client. The binding still needs correct addressing and access permissions.",
       "domains": [
         3
       ],
@@ -3920,7 +3920,7 @@ window.AI200_JARGON = {
         "instrumented",
         "instrumenterer"
       ],
-      "definition": "Adding the code or library hooks that produce telemetry about what the application does. For example, HTTP instrumentation can create a span for each request. An exporter can send existing telemetry, but cannot describe uninstrumented application work by itself.",
+      "definition": "Instrumentation adds the hooks that produce telemetry for application operations. For example, HTTP instrumentation can create spans around outgoing requests. An exporter can send the spans that exist; it cannot explain work that was never instrumented.",
       "domains": [
         4
       ],
@@ -3981,7 +3981,7 @@ window.AI200_JARGON = {
         "IVF Flat",
         "Inverted File Flat"
       ],
-      "definition": "An inverted-file index with flat vector comparisons inside selected lists. It groups representative vectors into lists, then searches a chosen subset of those lists for each query. Searching more lists usually improves recall but performs more work.",
+      "definition": "IVFFlat divides vectors into lists and compares the query with vectors in selected lists. It is an approximate index: searching more lists usually improves recall but increases work. Building useful lists requires representative data.",
       "domains": [
         2
       ],
@@ -4020,7 +4020,7 @@ window.AI200_JARGON = {
       "aliases": [
         "JavaScript Object Notation"
       ],
-      "definition": "JavaScript Object Notation, a text format for structured data using objects, arrays and values. For example, {\"enabled\": true} is an object with a boolean setting. APIs and Azure configuration files often exchange JSON; the format is not limited to JavaScript programs.",
+      "definition": "JSON stands for JavaScript Object Notation. It represents structured data using objects, arrays and values. For example, {\"enabled\": true} contains a boolean setting; many APIs and configuration files use this format.",
       "domains": [
         1
       ],
@@ -4077,7 +4077,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Kubernetes Event-driven Autoscaling"
       ],
-      "definition": "It connects workload scaling to external signals such as queue length, so new work can start replicas even when none is running. Container Apps uses KEDA-based event scaling without requiring you to manage the underlying Kubernetes objects directly.",
+      "definition": "KEDA stands for Kubernetes Event-driven Autoscaling. It connects workload scaling to signals such as queue length. Container Apps uses KEDA-based scaling so incoming work can start replicas even when an app has scaled to zero.",
       "domains": [
         1
       ],
@@ -4107,7 +4107,7 @@ window.AI200_JARGON = {
         "Azure Key Vault",
         "KeyVault"
       ],
-      "definition": "A managed service for storing and controlling access to secrets, cryptographic keys and certificates. For example, an application can read its API credential from Key Vault instead of including it in source code or a container image.",
+      "definition": "Azure Key Vault stores and controls access to secrets, cryptographic keys and certificates. An application can retrieve an API credential from it using an authorized identity, keeping the credential out of source code and container images.",
       "domains": [
         4
       ],
@@ -4204,7 +4204,7 @@ window.AI200_JARGON = {
         "Key Vault-referanse",
         "Key Vault-referanser"
       ],
-      "definition": "A pointer identifying a secret in Key Vault instead of copying its sensitive value into ordinary configuration. A supported platform or application provider resolves it using an authorized identity. Different reference mechanisms have different syntax and refresh behavior.",
+      "definition": "A Key Vault reference identifies a secret rather than storing its value in ordinary configuration. A supported platform feature or application provider retrieves the value using an authorized identity. The reference syntax and refresh behavior depend on which mechanism resolves it.",
       "domains": [
         4
       ],
@@ -4227,7 +4227,7 @@ window.AI200_JARGON = {
         "hemmelighet",
         "hemmeligheter"
       ],
-      "definition": "A sensitive value, such as a password, API token or connection credential, stored for authorized applications to retrieve. Key Vault keeps versions of the value. An API key is usually stored as a secret; a Key Vault key is for cryptographic operations.",
+      "definition": "A Key Vault secret stores a sensitive value such as a password, API token or connection credential, with versions and access controls. Despite its name, an API “key” normally belongs in a secret. A Key Vault key is a different object used for cryptographic operations.",
       "domains": [
         4
       ],
@@ -4286,7 +4286,7 @@ window.AI200_JARGON = {
         "K-nearest neighbors",
         "K-nearest neighbours"
       ],
-      "definition": "K-nearest neighbors: finding the k closest stored vectors to a query vector according to a chosen distance measure. For example, k=5 requests the five nearest matches.",
+      "definition": "KNN means k-nearest neighbors. A search requests the k stored vectors closest to a query vector under its chosen metric. For example, k=5 asks for five neighbors.",
       "domains": [
         2
       ],
@@ -4303,7 +4303,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Kusto Query Language"
       ],
-      "definition": "A language for searching, filtering, joining and summarizing tabular data in services such as Azure Monitor Logs. Its pipe character passes one operation's result into the next operation.",
+      "definition": "KQL means Kusto Query Language. It searches, filters, joins and summarizes tables in services such as Azure Monitor Logs. A pipe (|) passes one operation’s result to the next, so a query can filter requests before counting them.",
       "domains": [
         4
       ],
@@ -4353,7 +4353,7 @@ window.AI200_JARGON = {
       "aliases": [
         "K8s"
       ],
-      "definition": "A platform that coordinates containers across a group of machines. It schedules workloads, replaces failed instances and manages features such as service discovery and scaling. You describe the desired application state, and its controllers work to maintain it.",
+      "definition": "Kubernetes coordinates containerized workloads across a cluster of machines. You declare the desired state, and its controllers schedule workloads, replace failed copies and manage application networking and updates.",
       "domains": [
         1
       ],
@@ -4399,7 +4399,7 @@ window.AI200_JARGON = {
         "Kubernetes-klynge",
         "Kubernetes-klynger"
       ],
-      "definition": "A group of worker machines coordinated by a Kubernetes control plane. The worker machines run application pods, and the control plane manages where they run and how the desired workload is maintained. One cluster can host many applications.",
+      "definition": "A Kubernetes cluster consists of a control plane and worker nodes. The control plane coordinates scheduling and desired state; the nodes run the application pods.",
       "domains": [
         1
       ],
@@ -4415,7 +4415,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Kubernetes-kontrollplan"
       ],
-      "definition": "The cluster’s management components. They expose its API, decide where pods should run and coordinate changes needed to maintain the desired setup. Worker nodes run the application pods. In AKS, Azure operates the managed control plane.",
+      "definition": "The Kubernetes control plane manages the cluster’s desired state. Its components expose the API, schedule pods and run controllers that reconcile declared settings with what is actually running.",
       "domains": [
         1
       ],
@@ -4433,7 +4433,7 @@ window.AI200_JARGON = {
         "Deployment-objekt",
         "Deployment-objekter"
       ],
-      "definition": "A workload controller that maintains a desired number of application pod replicas and manages updates to their pod template. For example, it can keep three web-server pods running while replacing them during an image update. Deployment is the controller object; the pods are the running copies.",
+      "definition": "A Kubernetes Deployment manages a desired number of pod replicas and updates their configuration. For example, it can maintain three web-server pods while gradually replacing them with a new image version.",
       "domains": [
         1
       ],
@@ -4457,7 +4457,7 @@ window.AI200_JARGON = {
         "Kubernetes Ingress resource",
         "Ingress-objekt"
       ],
-      "definition": "A set of HTTP/HTTPS routing rules for reaching Services, often based on hostname or URL path. For example, /orders can route to the orders Service. An ingress controller implements the rules; creating an Ingress object alone does not create the working traffic handler.",
+      "definition": "A Kubernetes Ingress defines HTTP or HTTPS routing rules, such as sending /orders requests to an orders Service. An ingress controller must be running to implement those rules.",
       "domains": [
         1
       ],
@@ -4477,7 +4477,7 @@ window.AI200_JARGON = {
         "pod-label",
         "pod-labels"
       ],
-      "definition": "A key/value marker attached to an object, such as app=orders on a pod. Other objects use selectors to find matching labels. For example, a Service can route to pods labeled app=orders.",
+      "definition": "A label is a key/value marker attached to a Kubernetes object, such as app=orders on a pod. Selectors use labels to find objects; a Service might select all pods labeled app=orders.",
       "domains": [
         1
       ],
@@ -4497,7 +4497,7 @@ window.AI200_JARGON = {
         "manifestfil",
         "manifestfiler"
       ],
-      "definition": "A YAML or JSON file describing a Kubernetes resource and its desired settings. For example, a Deployment manifest specifies the image and number of replicas. Applying the file asks Kubernetes to create or update the actual resource to match.",
+      "definition": "A Kubernetes manifest is a YAML or JSON description of a resource and its desired settings. For example, a Deployment manifest specifies an image and replica count. Applying it asks Kubernetes to create or update that resource.",
       "domains": [
         1
       ],
@@ -4521,7 +4521,7 @@ window.AI200_JARGON = {
         "Kubernetes namespaces",
         "Kubernetes-navnerom"
       ],
-      "definition": "A logical scope for grouping namespaced resources within a cluster. For example, staging and production can have separate namespaces containing Services with the same name. A namespace organizes resources and access policies; it does not automatically provide complete network or security isolation.",
+      "definition": "A namespace groups and scopes many Kubernetes objects inside a cluster. Separate namespaces can contain resources with the same name. Permissions and network policies provide the additional controls needed to isolate workloads.",
       "domains": [
         1
       ],
@@ -4541,7 +4541,7 @@ window.AI200_JARGON = {
         "poden",
         "poddene"
       ],
-      "definition": "The smallest deployable unit Kubernetes schedules. It contains one or more closely related containers that share networking and can share storage. A common application pod has one main container. Kubernetes places the pod on a node and can replace it when it fails.",
+      "definition": "A pod is the smallest workload unit Kubernetes schedules. It contains one or more closely related containers that share networking and can share storage. Kubernetes schedules the pod onto a node.",
       "domains": [
         1
       ],
@@ -4587,7 +4587,7 @@ window.AI200_JARGON = {
         "label selector",
         "label selectors"
       ],
-      "definition": "A rule that chooses objects by their labels. For example, a Service selector app=orders chooses matching pods as its backends. If the labels do not match, the Service cannot find those pods even though they are running.",
+      "definition": "A selector is a rule for finding Kubernetes objects by their labels. A Service with selector app=orders uses matching pods as its backends. The pod labels and selector must agree for that routing to work.",
       "domains": [
         1
       ],
@@ -4606,7 +4606,7 @@ window.AI200_JARGON = {
         "Service-objekt",
         "Service-objekter"
       ],
-      "definition": "A stable network destination for a set of pods. Pod addresses can change when pods are replaced, so clients use the Service name/address instead. The Service selects the relevant pods, usually through labels, and directs traffic to their available endpoints.",
+      "definition": "A Kubernetes Service provides a stable network address for a set of backends, usually pods selected by labels. Clients can use the Service name while individual pods are replaced and their addresses change.",
       "domains": [
         1
       ],
@@ -4723,7 +4723,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Least Frequently Used"
       ],
-      "definition": "An eviction policy based on LFU favors removing data that is accessed least often. Redis estimates access frequency and lets older access history lose influence over time.",
+      "definition": "LFU stands for Least Frequently Used. An LFU eviction policy favors removing keys used less often. Redis estimates usage frequency and reduces the influence of older access history over time.",
       "domains": [
         2
       ],
@@ -4767,7 +4767,7 @@ window.AI200_JARGON = {
       "aliases": [
         "local settings"
       ],
-      "definition": "It stores local Functions settings, including values used as environment variables while running locally. Deployed Azure apps use their configured app settings instead of reading this file. The standard .gitignore excludes it because it may contain secrets, but verify your repository rules; naming a file local.settings.json does not automatically keep it out of Git.",
+      "definition": "local.settings.json supplies settings used when running Functions locally, including environment-variable values. Azure deployments use app settings instead.\n\nBecause local settings can contain secrets, verify that the repository ignores this file before adding real values.",
       "domains": [
         3
       ],
@@ -4781,7 +4781,7 @@ window.AI200_JARGON = {
       "primary": "Log Analytics",
       "fullName": "",
       "aliases": [],
-      "definition": "The interactive tool for exploring and querying Azure Monitor Logs, commonly using Kusto Query Language (KQL). A Log Analytics workspace is the resource that stores the logs. The query tool and workspace are related, but are not the same object.",
+      "definition": "Log Analytics is the Azure portal’s interactive tool for querying Azure Monitor Logs with Kusto Query Language (KQL). A Log Analytics workspace is the resource containing the collected logs. The tool queries data in the selected resource or workspace scope.",
       "domains": [
         4
       ],
@@ -4816,7 +4816,7 @@ window.AI200_JARGON = {
         "logg",
         "logger"
       ],
-      "definition": "A timestamped record of something that happened, often including severity and contextual fields. For example, a log entry might say that order 42 failed validation and record the reason.",
+      "definition": "A log record describes something that happened at a particular time, with fields such as severity, message and operation identifier. For example, a worker can log why repair job 42 failed validation.",
       "domains": [
         4
       ],
@@ -4833,7 +4833,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Least Recently Used"
       ],
-      "definition": "An eviction policy based on LRU favors removing data that has not been accessed recently. Redis approximates this choice rather than tracking a perfect ordering of every access.",
+      "definition": "LRU stands for Least Recently Used. An LRU eviction policy favors removing keys that have not been accessed recently. Redis uses an approximation rather than maintaining an exact ordering of every access.",
       "domains": [
         2
       ],
@@ -4851,7 +4851,7 @@ window.AI200_JARGON = {
         "administrert identitet",
         "administrerte identiteter"
       ],
-      "definition": "An application identity with credentials managed by Azure. A supported app uses it to obtain Microsoft Entra tokens without keeping a client password in its code or settings. Give the identity the permissions required by the services it calls.",
+      "definition": "A managed identity lets an Azure application authenticate without storing its own client password. Azure manages the identity’s credentials, and the app requests Microsoft Entra tokens through its supported host. You must still grant that identity access to the services it calls.",
       "domains": [
         4
       ],
@@ -4974,7 +4974,7 @@ window.AI200_JARGON = {
         "meldingsmegler",
         "meldingsmeglere"
       ],
-      "definition": "A service that accepts messages from senders and makes them available to receivers, decoupling the two applications. A broker can hold messages while a consumer is unavailable and provide features such as routing or acknowledgments. Azure Service Bus is an example.",
+      "definition": "A message broker accepts messages from producers and makes them available to consumers. It separates sending from processing and can provide durable storage, routing and acknowledgments. Azure Service Bus is one example.",
       "domains": [
         3
       ],
@@ -5048,7 +5048,7 @@ window.AI200_JARGON = {
         "meldingskø",
         "meldingskøer"
       ],
-      "definition": "A store of messages waiting for consumers to process them. Competing consumers share the work: a queue message is not automatically copied to every consumer. Queues let the sender hand off background work without keeping a synchronous request open until it finishes.",
+      "definition": "A message queue holds work until consumers process it. Competing consumers share the work rather than each receiving a separate copy. This lets a sender hand off a slow operation without keeping the original HTTP request open.",
       "domains": [
         3
       ],
@@ -5091,7 +5091,7 @@ window.AI200_JARGON = {
         "settlement",
         "meldingsoppgjør"
       ],
-      "definition": "Telling the broker the outcome of receiving/processing a message. Complete removes successfully processed work; abandon releases it for another attempt; defer sets it aside; dead-letter moves it out of normal delivery. Receiving a PeekLock message alone does not report successful completion.",
+      "definition": "Settlement tells Service Bus what happened to a received message. Complete removes successful work, abandon releases it for another attempt, defer postpones handling and dead-letter moves it to the dead-letter subqueue. Merely receiving a PeekLock message does not complete it.",
       "domains": [
         3
       ],
@@ -5150,7 +5150,7 @@ window.AI200_JARGON = {
         "metrikk",
         "metrikker"
       ],
-      "definition": "A numeric measurement recorded over time, such as request count, CPU use or a latency distribution. Metrics help show trends and drive alerts. They summarize behavior; detailed log or trace records may be needed to explain a particular slow request.",
+      "definition": "A metric is a numeric measurement tracked over time, such as CPU usage, request count or a latency distribution. Metrics reveal trends and support alerts. Logs and traces provide more detail when you need to explain a particular failure or slow request.",
       "domains": [
         4
       ],
@@ -5199,7 +5199,7 @@ window.AI200_JARGON = {
         "AAD",
         "Microsoft Entra"
       ],
-      "definition": "Microsoft's cloud identity service. It manages users and application identities, authenticates sign-ins and issues access tokens for protected services. It was formerly called Azure Active Directory. The signed-in identity still needs permission to use the target resource.",
+      "definition": "Microsoft Entra ID is Microsoft’s cloud identity service, formerly called Azure Active Directory. It manages users and application identities, authenticates them and issues tokens for protected services. The receiving service still checks what the identified caller is allowed to do.",
       "domains": [
         4
       ],
@@ -5326,7 +5326,7 @@ window.AI200_JARGON = {
         "NoSQL-database",
         "NoSQL-databaser"
       ],
-      "definition": "Database models that do not require the traditional relational-table model, such as document or key-value stores. The name does not mean SQL-like queries are impossible. Cosmos DB for NoSQL stores items in containers while still supporting its own SQL-style query language.",
+      "definition": "NoSQL describes database approaches such as document and key-value storage that differ from the traditional relational-table model. Some still offer SQL-style query languages. Cosmos DB for NoSQL, for example, stores items in containers and supports SQL-style queries.",
       "domains": [
         2
       ],
@@ -5345,7 +5345,7 @@ window.AI200_JARGON = {
         "Network Security Groups",
         "nettverkssikkerhetsgruppe"
       ],
-      "definition": "A Network Security Group (NSG) allows or denies network flows using rules based on source/destination addresses, ports and protocol. It can protect supported subnets or network interfaces. Passing an NSG rule only establishes network reachability; the application/service must still authenticate and authorize the caller.",
+      "definition": "A Network Security Group (NSG) allows or denies network flows using rules for addresses, ports and protocols. It can apply to supported subnets or network interfaces.\n\nAn allowed connection still needs application or service authorization. An NSG rule does not grant permission to read a secret or database record.",
       "domains": [
         4
       ],
@@ -5413,7 +5413,7 @@ window.AI200_JARGON = {
       "aliases": [
         "OpenID Connect"
       ],
-      "definition": "An identity layer built on OAuth 2.0 that lets an application use sign-in information from a trusted identity provider. For example, a web app can sign users in through Microsoft Entra ID instead of managing its own user passwords.",
+      "definition": "OIDC means OpenID Connect, an identity layer built on OAuth 2.0. It lets an application rely on a trusted identity provider for sign-in information. For example, a web app can sign users in through Microsoft Entra ID instead of managing their passwords itself.",
       "domains": [
         4
       ],
@@ -5431,7 +5431,7 @@ window.AI200_JARGON = {
         "OTel",
         "Open Telemetry"
       ],
-      "definition": "An open set of APIs, libraries and conventions for producing and moving telemetry such as traces, metrics and logs. OTel is its common abbreviation. It instruments and exports data; a backend such as Azure Monitor stores and analyzes it.",
+      "definition": "OpenTelemetry, often abbreviated OTel, provides open APIs, libraries and conventions for creating and exporting traces, metrics and logs. A separate backend, such as Azure Monitor, stores and analyzes the exported data.",
       "domains": [
         4
       ],
@@ -5467,7 +5467,7 @@ window.AI200_JARGON = {
         "output-bindinger",
         "utdatabinding"
       ],
-      "definition": "It sends or writes a function's output to a configured service. For example, the handler can provide an output value that the binding writes as a queue message or blob. The binding needs the destination settings and permission to write there.",
+      "definition": "An output binding sends or writes a handler’s output to a configured service. For example, it can write a queue message supplied by the function. The binding needs the destination configuration and permission to write there.",
       "domains": [
         3
       ],
@@ -5608,7 +5608,7 @@ window.AI200_JARGON = {
       "aliases": [
         "built-in PgBouncer"
       ],
-      "definition": "A connection-pooling proxy for PostgreSQL. Applications connect to PgBouncer, which reuses a smaller set of connections to the database server. This reduces the overhead of opening and closing database connections.",
+      "definition": "PgBouncer is a PostgreSQL connection-pooling proxy. Applications connect to it, and it reuses database-server connections. This can reduce connection setup overhead and the number of server connections needed by many application clients.",
       "domains": [
         2
       ],
@@ -5624,7 +5624,7 @@ window.AI200_JARGON = {
       "aliases": [
         "pgvector-utvidelsen"
       ],
-      "definition": "A PostgreSQL extension for storing vectors and finding similar vectors. It adds vector types, distance operators and index options such as HNSW and IVFFlat. The project is named pgvector, but the SQL extension is enabled as vector.",
+      "definition": "pgvector is a PostgreSQL extension that adds vector data types, similarity operators and vector indexes, including HNSW and IVFFlat. Enable the SQL extension using CREATE EXTENSION vector; the extension name is vector.",
       "domains": [
         2
       ],
@@ -5684,7 +5684,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Postgres"
       ],
-      "definition": "An open-source relational database system. It stores data in tables and supports SQL queries and transactions. Azure Database for PostgreSQL provides it as a managed service, so Azure handles infrastructure tasks such as server maintenance.",
+      "definition": "PostgreSQL is an open-source relational database system. It stores data in tables and supports SQL queries, transactions and extensions. Azure Database for PostgreSQL provides a managed hosting service for it.",
       "domains": [
         2
       ],
@@ -5723,7 +5723,7 @@ window.AI200_JARGON = {
         "privat endepunkt",
         "private endepunkter"
       ],
-      "definition": "A network interface with a private IP address in your virtual network that connects to a supported service, such as Key Vault. Clients use private networking and correctly configured DNS to reach the service through it. Service permissions still apply.",
+      "definition": "A private endpoint gives a supported service a private IP address inside your virtual network. With the required routing and DNS, clients reach the service through that private connection. They still need the service’s normal authentication and permissions.",
       "domains": [
         4
       ],
@@ -5811,7 +5811,7 @@ window.AI200_JARGON = {
         "provisjonering",
         "klargjøring"
       ],
-      "definition": "To create and configure the resources an application needs. For example, provisioning a virtual machine allocates its compute, disks and network settings. Deploying your application code is a separate step, even when one deployment workflow does both.",
+      "definition": "Provisioning means creating and configuring the infrastructure an application needs. Provisioning a virtual machine, for example, allocates its processor capacity, memory, disks and network connection. You can then deploy the application onto that infrastructure.",
       "domains": [
         1
       ],
@@ -6003,7 +6003,7 @@ window.AI200_JARGON = {
         "Retrieval-Augmented Generation",
         "retrieval augmented generation"
       ],
-      "definition": "Before generating an answer, the application retrieves relevant material and supplies it as context to the language model. For example, it can retrieve company documents through vector search. Retrieval provides context; it does not guarantee that every generated statement is correct.",
+      "definition": "RAG stands for Retrieval-Augmented Generation. Before generating an answer, an application retrieves relevant material and supplies it to the language model as context. For example, vector search can find help articles relevant to a customer’s question. Retrieved material still needs appropriate access checks and answer validation.",
       "domains": [
         2
       ],
@@ -6021,7 +6021,7 @@ window.AI200_JARGON = {
         "role based access control",
         "rollebasert tilgangskontroll"
       ],
-      "definition": "Permissions are grouped into roles, and a role is assigned to an identity at a scope. For example, assigning Key Vault Secrets User on one vault allows the supported secret reads there without granting the same access across the subscription.",
+      "definition": "RBAC means Role-Based Access Control. A role defines allowed operations, and a role assignment gives those permissions to an identity within a scope. For example, Key Vault Secrets User on one vault allows secret reads there without granting access to every vault in the subscription.",
       "domains": [
         4
       ],
@@ -6062,7 +6062,7 @@ window.AI200_JARGON = {
         "role assignment scope",
         "tilgangsomfang"
       ],
-      "definition": "The boundary where the assigned permissions apply, such as one resource, a resource group or a subscription. Broader scopes can cover child resources. Giving an app access to one vault is narrower than granting the same role across the whole subscription.",
+      "definition": "Scope is where a role assignment applies: for example, one vault, a resource group or a subscription. Assignments at a parent scope normally apply to child resources. Choosing the individual vault limits access more tightly than granting the same role across the subscription.",
       "domains": [
         4
       ],
@@ -6096,7 +6096,7 @@ window.AI200_JARGON = {
         "konsistensnivå",
         "lesekonsistens"
       ],
-      "definition": "The rules determining how up to date a read must be after data changes. Strong consistency returns the latest committed value; weaker models can permit an older value under specified rules. This matters when different replicas may have received updates at different times.",
+      "definition": "Read consistency defines which versions of data a read may return after writes occur. Strong consistency provides the latest committed value; weaker levels permit specified forms of lag or ordering behavior. The choice trades guarantees against factors such as latency and throughput.",
       "domains": [
         2
       ],
@@ -6151,7 +6151,7 @@ window.AI200_JARGON = {
       "primary": "Redis",
       "fullName": "",
       "aliases": [],
-      "definition": "A data store designed for fast access to in-memory data structures such as strings, hashes and sorted sets. It is often used as a cache in front of another database, but also supports other workloads. Persistence and replication depend on configuration.",
+      "definition": "Redis is a data store designed for fast access to in-memory data structures. An application can use it to cache database results or store data for other supported workloads. Persistence, replication and supported features depend on the service configuration.",
       "domains": [
         2
       ],
@@ -6186,7 +6186,7 @@ window.AI200_JARGON = {
         "replikaer",
         "replikaene"
       ],
-      "definition": "One running copy of the application workload. Three pod replicas means three copies serving the same application, often to handle more requests or survive one copy failing. A replica is not necessarily on its own node; several replicas can be placed on one machine unless scheduling rules prevent it.",
+      "definition": "A replica is one running copy of an application workload. Three pod replicas means three copies of the application, which can share traffic and improve availability. Scheduling rules determine which nodes run them.",
       "domains": [
         1
       ],
@@ -6204,7 +6204,7 @@ window.AI200_JARGON = {
         "RUs",
         "request units"
       ],
-      "definition": "A request unit (RU) measures how much database work an operation consumes, including processor, memory and input/output work. Reading a small item usually costs fewer RUs than running an expensive query. One RU does not mean one request.",
+      "definition": "RU means request unit, a measure of the resources consumed by a Cosmos DB operation. A small point read usually uses less work than a complex query. Different operations can therefore consume different numbers of RUs.",
       "domains": [
         2
       ],
@@ -6237,7 +6237,7 @@ window.AI200_JARGON = {
         "ressursgruppe",
         "ressursgrupper"
       ],
-      "definition": "A named group of related Azure resources managed together. For example, a workshop can put its app, registry and storage account in one resource group, making permissions and cleanup easier to manage.",
+      "definition": "A resource group is a named collection of related Azure resources. Putting a workshop app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together.",
       "domains": [
         1
       ],
@@ -6297,7 +6297,7 @@ window.AI200_JARGON = {
         "ressursgrense",
         "ressursgrenser"
       ],
-      "definition": "An upper bound configured for a container resource. CPU use can be throttled at its limit; exceeding a memory limit can cause the container to be killed. Requests guide scheduling, while limits constrain use. The two settings serve different purposes.",
+      "definition": "A resource limit constrains a container’s CPU or memory use. CPU can be throttled at its limit; a container exceeding its memory limit can be terminated. Requests are used separately when scheduling the pod.",
       "domains": [
         1
       ],
@@ -6319,7 +6319,7 @@ window.AI200_JARGON = {
         "ressursforespørsel",
         "ressursforespørsler"
       ],
-      "definition": "The amount of a resource, such as CPU or memory, declared for scheduling a container. The scheduler uses requests to decide whether a node has capacity for the pod. A request is not the same as the maximum the container may consume; that is governed separately by limits and resource behavior.",
+      "definition": "A resource request declares the CPU or memory a container needs for scheduling. Kubernetes uses requests to decide which node can accommodate a pod. Limits separately control how resource use is constrained while it runs.",
       "domains": [
         1
       ],
@@ -6406,7 +6406,7 @@ window.AI200_JARGON = {
         "rolletildeling",
         "rolletildelinger"
       ],
-      "definition": "A link giving an identity a role at a particular scope. For example, assign the orders app identity the Key Vault Secrets User role on the production vault. The assignment connects who gets access, what they can do and where it applies.",
+      "definition": "A role assignment connects an identity, a role and a scope: who gets access, which actions they may perform and where. For example, assign the repair-api identity Key Vault Secrets User on the repair app’s production vault.",
       "domains": [
         4
       ],
@@ -6438,7 +6438,7 @@ window.AI200_JARGON = {
         "request units per second",
         "RU per second"
       ],
-      "definition": "Request units per second: the rate of database work available as throughput. For example, 1,000 RU/s can support different request counts depending on how many request units each operation uses. It measures capacity over time; RU measures the work consumed by an operation.",
+      "definition": "RU/s means request units per second, a rate of database throughput. A 1,000 RU/s budget can serve different numbers of requests depending on each request’s cost. RU measures work; RU/s measures the available rate of work.",
       "domains": [
         2
       ],
@@ -6489,7 +6489,7 @@ window.AI200_JARGON = {
         "Software Development Kit",
         "Software Development Kits"
       ],
-      "definition": "Software development kit: libraries and tools your application uses to work with a platform or service. For example, the Azure Python SDK includes a SecretClient for reading Key Vault secrets. An SDK call runs from your code; a CLI command runs from a command-line tool.",
+      "definition": "SDK stands for software development kit. It provides libraries and tools that applications use to interact with a platform. For example, Azure SDK for Python includes clients for reading Key Vault secrets and querying Cosmos DB from Python code.",
       "domains": [
         1
       ],
@@ -6507,7 +6507,7 @@ window.AI200_JARGON = {
         "recall",
         "recall at k"
       ],
-      "definition": "The proportion of the exact nearest results that an approximate search finds. For example, if it returns eight of the exact ten nearest vectors, recall at ten is 80%. It helps measure the search-quality cost of using a faster approximate index.",
+      "definition": "Recall measures how many of the exact nearest results an approximate search finds. If it finds eight of the exact ten nearest vectors, recall at ten is 80%. Compare this quality measure alongside query latency.",
       "domains": [
         2
       ],
@@ -6563,7 +6563,7 @@ window.AI200_JARGON = {
         "identitet",
         "identiteter"
       ],
-      "definition": "An object representing who gets access, such as a user, group or application. For example, a function app can use its managed identity when requesting a Key Vault secret. Roles and policies determine what that identity is allowed to do.",
+      "definition": "An identity represents a caller, such as a user or application. Groups can collect identities for access management. For example, a Function App presents its managed identity when requesting a Key Vault secret, and the vault checks that identity’s permissions.",
       "domains": [
         4
       ],
@@ -6582,7 +6582,7 @@ window.AI200_JARGON = {
         "sentinel keys",
         "sentinel-nøkkel"
       ],
-      "definition": "It is a key you update after finishing a related set of configuration edits. Register it for refresh with refreshAll: true; when the provider detects its change, it reloads the selected configuration. This reduces clients seeing an update halfway through multiple edits. It is a reload signal, not a transaction that makes all store writes atomic.",
+      "definition": "A sentinel is a setting you change after completing a related set of configuration edits. Configure the application’s provider to watch it and reload the selected settings when it changes.\n\nThis signals when the update is ready to load. It does not turn the separate store writes into one atomic transaction.",
       "domains": [
         4
       ],
@@ -6599,7 +6599,7 @@ window.AI200_JARGON = {
         "serverløs",
         "serverless hosting"
       ],
-      "definition": "A hosting model where you deploy application code while the platform manages the underlying servers. Servers still run the code, but you do not maintain them yourself. Automatic scaling, idle costs and execution limits depend on the chosen service and plan.",
+      "definition": "Serverless hosting lets you deploy application code while the platform manages the underlying servers. Scaling behavior, execution limits and idle costs depend on the selected service and hosting plan.",
       "domains": [
         3
       ],
@@ -6615,7 +6615,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Azure Service Bus"
       ],
-      "definition": "A managed message broker with queues and topic subscriptions. One application sends a message; another receives and processes it, even if they are not running at the same time. Service Bus offers controls such as locks, completion, retries and dead-lettering.",
+      "definition": "Azure Service Bus is a managed broker for queue and topic-based messaging. A sender can hand off work for another application to process later. Locks, settlement and dead-letter queues help control how messages are processed and recovered.",
       "domains": [
         3
       ],
@@ -6676,7 +6676,7 @@ window.AI200_JARGON = {
         "auto forwarding",
         "automatisk videresending"
       ],
-      "definition": "It transfers messages from one queue or subscription into one configured queue/topic in the same namespace. Messages are removed from the source as they are forwarded, rather than copied to multiple destinations. Use topic subscriptions for fan-out; auto-forwarding is a routing chain.",
+      "definition": "Auto-forwarding transfers messages from a queue or subscription into a configured queue or topic in the same namespace. Successful transfer removes them from the source. Use subscriptions when independent consumers need their own copies; forwarding creates a delivery chain.",
       "domains": [
         3
       ],
@@ -6694,7 +6694,7 @@ window.AI200_JARGON = {
         "message session",
         "message sessions"
       ],
-      "definition": "A group of related messages with the same SessionId. One receiver holds the session lock at a time, so it can process that group in order while other receivers handle other sessions.",
+      "definition": "A Service Bus session groups messages with the same SessionId. One receiver owns the session lock at a time and can process that group in order. Other receivers can process different sessions concurrently.",
       "domains": [
         3
       ],
@@ -6710,7 +6710,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Service Bus topics"
       ],
-      "definition": "A publishing destination whose subscriptions can each receive matching messages. For example, one order event can reach billing and shipping through their separate subscriptions. The topic provides fan-out through subscriptions; consumers receive from the subscriptions rather than directly from the topic.",
+      "definition": "A Service Bus topic accepts published messages and routes matching copies into its subscriptions. Billing and shipping can each have a subscription to the same order event and process it independently.",
       "domains": [
         3
       ],
@@ -6753,7 +6753,7 @@ window.AI200_JARGON = {
         "service principals",
         "tjenestekontohaver"
       ],
-      "definition": "It is an application identity’s local representation in a particular Microsoft Entra tenant. The application registration describes the application; the service principal is the tenant object to which permissions and access policies apply. A multitenant application can therefore have a service principal in each tenant that uses it.",
+      "definition": "A service principal is an application’s local identity in a Microsoft Entra tenant. Permissions in that tenant are assigned to this identity. The application registration describes the application; a multitenant application can have a separate service principal in each tenant that uses it.",
       "domains": [
         4
       ],
@@ -6835,7 +6835,7 @@ window.AI200_JARGON = {
         "SKUs",
         "Stock Keeping Unit"
       ],
-      "definition": "Stock Keeping Unit. For an Azure service, it identifies the tier or size you purchase, such as ACR Premium or a virtual-machine size. That choice determines available features, capacity and pricing.",
+      "definition": "SKU stands for Stock Keeping Unit. In Azure it identifies a service offering or size, such as ACR Premium or a particular virtual-machine size. The SKU determines which features and capacity you receive and how usage is priced.",
       "domains": [
         1
       ],
@@ -6886,10 +6886,7 @@ window.AI200_JARGON = {
         "sorterte sett"
       ],
       "definition": "A sorted set, also called a ZSET. Each unique member has a numeric score, and Redis orders members by that score. For example, ZADD leaderboard 100 alice stores Alice’s score; ZRANGE leaderboard 0 -1 WITHSCORES lists members from lowest to highest score.",
-      "domains": [
-        2
-      ],
-      "sourceCard": "prep-redis-004",
+      "domains": [],
       "sources": [
         "https://redis.io/docs/latest/develop/data-types/sorted-sets/"
       ],
@@ -6901,7 +6898,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Structured Query Language"
       ],
-      "definition": "It is a language for querying and changing data, especially in relational databases. For example, SELECT name FROM customers retrieves the names stored in a customers table.",
+      "definition": "SQL stands for Structured Query Language. It is used to define, read and change data in databases. For example, SELECT name FROM customers retrieves the name column from the customers table.",
       "domains": [
         2
       ],
@@ -6940,7 +6937,7 @@ window.AI200_JARGON = {
         "oppstartsprobe",
         "oppstartsprober"
       ],
-      "definition": "It gives a slow-starting container time to initialize. While the startup probe has not succeeded, liveness and readiness probes are held back. Once it succeeds, those probes take over. Repeated startup failures beyond its threshold can still cause the container to restart.",
+      "definition": "A startup probe gives a slow-starting container time to initialize. Liveness and readiness probes wait until it succeeds. If startup keeps failing beyond its configured threshold, Kubernetes restarts the container.",
       "domains": [
         1
       ],
@@ -6957,7 +6954,7 @@ window.AI200_JARGON = {
         "StatefulSets",
         "Stateful Set"
       ],
-      "definition": "Workloads needing stable pod identities and usually separate persistent storage per pod, such as database members. A StatefulSet gives pods predictable names and supports ordered rollout behavior. The application must still manage its own data replication and recovery.",
+      "definition": "A StatefulSet manages pods that need stable identities and usually separate persistent storage, such as database members. Pods receive predictable names, and the controller supports ordered creation and updates. The application remains responsible for data replication and recovery.",
       "domains": [
         1
       ],
@@ -7018,7 +7015,7 @@ window.AI200_JARGON = {
       "aliases": [
         "telemetri"
       ],
-      "definition": "Data an application emits about its behavior, such as request timings, errors, log messages and measurements. Monitoring tools collect and analyze it to help explain health and performance.",
+      "definition": "Telemetry is data an application emits about its behavior, such as log records, request traces and numeric measurements. Collecting it lets you investigate what the app did and how it performed.",
       "domains": [
         4
       ],
@@ -7038,7 +7035,7 @@ window.AI200_JARGON = {
         "eksportør",
         "eksportører"
       ],
-      "definition": "A component that sends telemetry to a destination such as Azure Monitor. For example, a trace exporter sends completed spans. Instrumentation creates the telemetry; the exporter delivers it to the system that stores or analyzes it.",
+      "definition": "An OpenTelemetry exporter sends collected telemetry to a destination. For example, a trace exporter sends completed spans to Azure Monitor. Instrumentation produces the data, and the exporter delivers it.",
       "domains": [
         4
       ],
@@ -7073,7 +7070,7 @@ window.AI200_JARGON = {
         "leier",
         "leiere"
       ],
-      "definition": "An organization’s identity directory and administrative boundary in Microsoft Entra ID. It contains users, groups and application identities. One tenant can be associated with multiple Azure subscriptions; a tenant is not the same as a billing subscription or resource group.",
+      "definition": "A tenant is an organization’s directory and identity boundary in Microsoft Entra ID. It contains users, groups and application identities. Several Azure subscriptions can trust the same tenant; the tenant itself is not a billing subscription.",
       "domains": [
         4
       ],
@@ -7169,7 +7166,7 @@ window.AI200_JARGON = {
       "aliases": [
         "Transport Layer Security"
       ],
-      "definition": "It encrypts network communication and checks that data has not been altered in transit. Certificate validation can also verify the server's identity. HTTPS is HTTP protected by TLS.",
+      "definition": "TLS means Transport Layer Security. It protects network communication against eavesdropping and undetected alteration. Certificate validation can also authenticate the server. HTTPS is HTTP carried over TLS.",
       "domains": [
         4
       ],
@@ -7288,7 +7285,7 @@ window.AI200_JARGON = {
         "Service Bus subscription",
         "Service Bus subscriptions"
       ],
-      "definition": "A queue-like endpoint under a topic that keeps its own copy of matching messages. Billing and shipping can each have a subscription and process the same order independently. This is different from an Azure billing subscription.",
+      "definition": "A Service Bus topic subscription is a queue-like endpoint holding its own copy of matching publications. Consumers receive from that subscription. Separate subscriptions let different applications process the same event independently.",
       "domains": [
         3
       ],
@@ -7324,7 +7321,7 @@ window.AI200_JARGON = {
         "samplet",
         "samplere"
       ],
-      "definition": "Selecting which traces or spans to record/export so telemetry volume stays manageable. For example, a sampler may retain roughly 10% of trace IDs. Dropped traces reduce diagnostic detail, so configure a suitable strategy and do not assume every failed request will be retained.",
+      "definition": "Trace sampling selects which traces or spans to retain so telemetry volume stays manageable. A 10% ratio can keep roughly one in ten trace IDs over time. That reduces diagnostic detail: ordinary percentage sampling does not guarantee that every failed request is retained.",
       "domains": [
         4
       ],
@@ -7343,7 +7340,7 @@ window.AI200_JARGON = {
         "trace spans",
         "spenn"
       ],
-      "definition": "One timed unit of work within a trace, such as handling an HTTP request or making a database call. It has a start, an end and contextual attributes, and can have parent/child relationships. A complete distributed operation normally contains several spans.",
+      "definition": "A span records one timed operation, such as an HTTP request or database call. It includes a start, end and contextual attributes, and may have a parent span. Related spans together describe a distributed trace.",
       "domains": [
         4
       ],
@@ -7436,7 +7433,7 @@ window.AI200_JARGON = {
         "time-to-live",
         "levetid"
       ],
-      "definition": "Time to Live: a configured lifetime before a stored item or key expires. For example, a Redis value with a 600-second TTL normally expires after ten minutes unless the lifetime is changed. Expiration is driven by time, while eviction removes eligible data because of memory pressure.",
+      "definition": "TTL stands for Time to Live: a lifetime after which stored data expires. A Redis value with a 600-second TTL expires after about ten minutes unless its expiry is changed. The expiry clock is separate from memory-pressure eviction.",
       "domains": [
         2
       ],
@@ -7453,7 +7450,7 @@ window.AI200_JARGON = {
         "URIs",
         "Uniform Resource Identifier"
       ],
-      "definition": "It identifies a resource; a URL is one kind of URI that also gives its location. A Key Vault secret URI, for example, identifies the vault, secret name and optionally its version.",
+      "definition": "URI stands for Uniform Resource Identifier. It identifies a resource; a URL is a kind of URI that also describes its location. A Key Vault secret URI identifies a particular secret and optionally a version.",
       "domains": [
         1
       ],
@@ -7479,7 +7476,7 @@ window.AI200_JARGON = {
         "nettadresse",
         "nettadresser"
       ],
-      "definition": "Uniform Resource Locator: an address showing how and where to access a resource. For example, https://example.com/orders specifies HTTPS as the scheme, example.com as the hostname and /orders as the path.",
+      "definition": "URL stands for Uniform Resource Locator: an address for locating a resource. In https://example.com/orders, https is the scheme, example.com is the hostname and /orders is the path.",
       "domains": [
         1
       ],
@@ -7550,7 +7547,7 @@ window.AI200_JARGON = {
         "vektorer",
         "vektorene"
       ],
-      "definition": "An ordered list of numbers, such as [0.2, -0.4, 0.7]. Each position is a dimension. A model-generated embedding is commonly stored as a vector, and search compares it with other vectors using a distance or similarity measure.",
+      "definition": "A vector is an ordered list of numbers, such as [0.2, -0.4, 0.7]. Each position is a dimension. Vector search compares a query vector with stored vectors using a chosen distance or similarity measure.",
       "domains": [
         2
       ],
@@ -7569,7 +7566,7 @@ window.AI200_JARGON = {
         "dimensjoner",
         "dimensjonalitet"
       ],
-      "definition": "The number of numeric components in the vector. A 1,536-dimensional embedding contains 1,536 numbers. Stored vectors, the query vector and the index configuration must use compatible dimensions.",
+      "definition": "The dimension count is the number of components in a vector. A 1,536-dimensional embedding contains 1,536 numbers. Stored embeddings, query vectors and index settings must use compatible dimensions.",
       "domains": [
         2
       ],
@@ -7633,7 +7630,7 @@ window.AI200_JARGON = {
         "virtuell maskin",
         "virtuelle maskiner"
       ],
-      "definition": "A computer provided through software, with allocated processor capacity, memory, disks and its own operating system. VM stands for virtual machine. You install and run applications on it much like on a physical server.",
+      "definition": "A virtual machine, or VM, is a software-defined computer with its own operating system and allocated processor capacity, memory and disks. You can install applications on it much as you would on a physical computer.",
       "domains": [
         1
       ],
@@ -7678,7 +7675,7 @@ window.AI200_JARGON = {
         "virtuelt nettverk",
         "virtuelle nettverk"
       ],
-      "definition": "An Azure network where resources use configured private addresses, subnets and routes to communicate. You control how its resources connect to each other, other networks and the internet. Adding a VNet alone does not disable a service's public access.",
+      "definition": "VNet means Virtual Network: an Azure network containing private address ranges, subnets and routing rules. It controls how connected resources communicate with other networks and services. Creating a VNet does not by itself turn off a service’s public endpoint.",
       "domains": [
         4
       ],
@@ -7754,7 +7751,7 @@ window.AI200_JARGON = {
         "webhooks",
         "webhooken"
       ],
-      "definition": "An HTTP endpoint that another service calls to notify your application when something happens. For example, Event Grid can send a POST request to your webhook when a blob is created.",
+      "definition": "A webhook is an HTTP endpoint another service calls to notify your application about an event. Event Grid can POST a blob-created event to a webhook, for example.",
       "domains": [
         3
       ],
@@ -7787,7 +7784,7 @@ window.AI200_JARGON = {
       "aliases": [
         "YAML Ain't Markup Language"
       ],
-      "definition": "A text format for structured data, commonly used for Kubernetes manifests and pipeline definitions. Its name expands to YAML Ain’t Markup Language. Indentation defines the structure, so changing a line’s indentation can change the meaning.",
+      "definition": "YAML is a text format for structured data, often used for Kubernetes manifests and pipelines. Its name expands to YAML Ain’t Markup Language. Indentation is part of the structure, so changing it can change the meaning.",
       "domains": [
         1
       ],

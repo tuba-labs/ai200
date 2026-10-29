@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "deckSha256": "92bbbda866d635524209f8d42b02602963d314980f9a1e3bbe3fe431fa8a28f1",
+  "deckSha256": "b749bb61c3fe5d78cbc39c04bfd9868b9563930a5a480c09d54f296c92030116",
   "kinds": {
     "practical": "Praktisk oppgave",
     "analysis": "Analyseoppgave",
@@ -1187,16 +1187,6 @@
       "activityTitle": "Velg indeks, kapasitet og tilgjengelighet fra symptomet",
       "url": "workshops/d2a.html#pg-design"
     },
-    "m-27-4-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "postgresql",
-      "kind": "review",
-      "activity": null,
-      "activityTitle": "Kontrollspørsmål uten egen øvingsoppgave",
-      "url": "workshops/d2a.html#review-postgresql"
-    },
     "m-27-5-1": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
@@ -1477,16 +1467,6 @@
       "activityTitle": "Velg indeks, kapasitet og tilgjengelighet fra symptomet",
       "url": "workshops/d2a.html#pg-design"
     },
-    "prep-pg-023": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "postgresql",
-      "kind": "analysis",
-      "activity": "pg-design",
-      "activityTitle": "Velg indeks, kapasitet og tilgjengelighet fra symptomet",
-      "url": "workshops/d2a.html#pg-design"
-    },
     "prep-p-pg-017": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
@@ -1537,16 +1517,6 @@
       "activityTitle": "Velg indeks, kapasitet og tilgjengelighet fra symptomet",
       "url": "workshops/d2a.html#pg-design"
     },
-    "prep-redis-004": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
     "m-31-1-1": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
@@ -1557,37 +1527,7 @@
       "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
       "url": "workshops/d2a.html#redis-operations"
     },
-    "m-31-2-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
     "m-31-3-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "m-31-4-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "m-31-5-1": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
       "domain": 2,
@@ -1616,36 +1556,6 @@
       "activity": "redis-cache",
       "activityTitle": "Koble cache-aside til den faktiske datakilden",
       "url": "workshops/d2a.html#redis-cache"
-    },
-    "m-32-2-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "m-33-1-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "m-34-1-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "practical",
-      "activity": "redis-vector",
-      "activityTitle": "Bevis at data og søkeindeks er ulike ting",
-      "url": "workshops/d2a.html#redis-vector"
     },
     "m-34-2-1": {
       "workshop": "d2a",
@@ -1676,16 +1586,6 @@
       "activity": "redis-operations",
       "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
       "url": "workshops/d2a.html#redis-operations"
-    },
-    "m-34-5-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "practical",
-      "activity": "redis-vector",
-      "activityTitle": "Bevis at data og søkeindeks er ulike ting",
-      "url": "workshops/d2a.html#redis-vector"
     },
     "m-34-6-1": {
       "workshop": "d2a",
@@ -1727,16 +1627,6 @@
       "activityTitle": "Koble cache-aside til den faktiske datakilden",
       "url": "workshops/d2a.html#redis-cache"
     },
-    "m-35-5-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "practical",
-      "activity": "redis-cache",
-      "activityTitle": "Koble cache-aside til den faktiske datakilden",
-      "url": "workshops/d2a.html#redis-cache"
-    },
     "m-36-1-1": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
@@ -1746,16 +1636,6 @@
       "activity": "redis-cache",
       "activityTitle": "Koble cache-aside til den faktiske datakilden",
       "url": "workshops/d2a.html#redis-cache"
-    },
-    "m-36-4-1": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "review",
-      "activity": null,
-      "activityTitle": "Kontrollspørsmål uten egen øvingsoppgave",
-      "url": "workshops/d2a.html#review-redis"
     },
     "m-36-5-1": {
       "workshop": "d2a",
@@ -1817,37 +1697,7 @@
       "activityTitle": "Bevis at data og søkeindeks er ulike ting",
       "url": "workshops/d2a.html#redis-vector"
     },
-    "prep-redis-002": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
     "prep-p-red-003": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "prep-p-red-004": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "prep-redis-022": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
       "domain": 2,
@@ -1867,37 +1717,7 @@
       "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
       "url": "workshops/d2a.html#redis-operations"
     },
-    "prep-redis-008": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
     "prep-redis-016": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "prep-p-red-018": {
-      "workshop": "d2a",
-      "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
-      "domain": 2,
-      "category": "redis",
-      "kind": "analysis",
-      "activity": "redis-operations",
-      "activityTitle": "Velg minnepolicy, datastruktur og feilhåndtering",
-      "url": "workshops/d2a.html#redis-operations"
-    },
-    "prep-p-red-020": {
       "workshop": "d2a",
       "workshopTitle": "Hent riktige dokumenter med PostgreSQL og Redis",
       "domain": 2,

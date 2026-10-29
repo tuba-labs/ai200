@@ -128,7 +128,7 @@ window.AI200_FLASHCARDS = {
       "title": "Provisioning",
       "question": "What does provision mean in Azure?",
       "answers": [
-        "To create and configure the resources an application needs. For example, provisioning a virtual machine allocates its compute, disks and network settings. Deploying your application code is a separate step, even when one deployment workflow does both."
+        "Provisioning means creating and configuring the infrastructure an application needs. Provisioning a virtual machine, for example, allocates its processor capacity, memory, disks and network connection. You can then deploy the application onto that infrastructure."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -140,17 +140,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -162,7 +162,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure resource",
       "question": "What is an Azure resource?",
       "answers": [
-        "An individual service instance or managed object in Azure, such as a storage account, web app or virtual machine. It has an identity and settings that Azure can create, update or delete. A resource group organizes related resources."
+        "An Azure resource is an individual service instance or managed object, such as a web app, storage account or virtual machine. Each resource has its own identifier and configuration."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -174,17 +174,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -196,7 +196,7 @@ window.AI200_FLASHCARDS = {
       "title": "Resource group",
       "question": "What is an Azure resource group?",
       "answers": [
-        "A named group of related Azure resources managed together. For example, a workshop can put its app, registry and storage account in one resource group, making permissions and cleanup easier to manage."
+        "A resource group is a named collection of related Azure resources. Putting a workshop app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -208,17 +208,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -230,7 +230,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure subscription",
       "question": "What is an Azure subscription?",
       "answers": [
-        "A boundary used to organize Azure resources, billing, quotas and access. Resource groups belong to a subscription. Selecting the correct subscription before creating resources determines where they are managed and charged; it is different from a messaging-topic subscription."
+        "An Azure subscription is a resource-management and billing boundary. Resource groups belong to a subscription, and their usage is charged through it. Selecting the correct subscription determines where new resources are created and which quotas apply."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -247,18 +247,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview",
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -270,7 +270,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure region",
       "question": "What is an Azure region?",
       "answers": [
-        "A geographic area containing Azure datacenters, such as Norway East. You select a region when creating many resources to control where they run or store data. Service availability and supported configurations can differ between regions."
+        "An Azure region is a geographic area containing Azure datacenters, such as Norway East. Choosing a region determines where a regional resource runs or stores its data. Available services and features can vary by region."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -282,17 +282,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/reliability/regions-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -304,7 +304,7 @@ window.AI200_FLASHCARDS = {
       "title": "Availability zone",
       "question": "What is an Azure availability zone?",
       "answers": [
-        "A physically separate group of datacenters within one Azure region, with independent power, cooling and networking. Deploying across supported zones can protect against a single-zone failure. Multiple zones in one region are different from deploying in multiple regions."
+        "An availability zone is a physically separate datacenter location within an Azure region, with independent power, cooling and networking. A service configured across multiple supported zones can continue operating through a failure in one zone."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -316,17 +316,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/reliability/regions-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -338,7 +338,7 @@ window.AI200_FLASHCARDS = {
       "title": "SKU",
       "question": "What does SKU mean for an Azure service?",
       "answers": [
-        "Stock Keeping Unit. For an Azure service, it identifies the tier or size you purchase, such as ACR Premium or a virtual-machine size. That choice determines available features, capacity and pricing."
+        "SKU stands for Stock Keeping Unit. In Azure it identifies a service offering or size, such as ACR Premium or a particular virtual-machine size. The SKU determines which features and capacity you receive and how usage is priced."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -355,18 +355,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus",
           "https://learn.microsoft.com/en-us/azure/virtual-machines/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -378,7 +378,7 @@ window.AI200_FLASHCARDS = {
       "title": "Virtual machine (VM)",
       "question": "What is a virtual machine in Azure?",
       "answers": [
-        "A computer provided through software, with allocated processor capacity, memory, disks and its own operating system. VM stands for virtual machine. You install and run applications on it much like on a physical server."
+        "A virtual machine, or VM, is a software-defined computer with its own operating system and allocated processor capacity, memory and disks. You can install applications on it much as you would on a physical computer."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -395,18 +395,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/virtual-machines/overview",
           "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -418,7 +418,7 @@ window.AI200_FLASHCARDS = {
       "title": "CLI",
       "question": "What does CLI stand for?",
       "answers": [
-        "Command-line interface: controlling software by typing commands. Azure CLI uses commands starting with az. For example, az group list lists the resource groups you can access."
+        "CLI stands for command-line interface: a way to control software by typing commands. Azure CLI commands start with az; for example, az group list shows the resource groups you can access."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -430,17 +430,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -452,7 +452,7 @@ window.AI200_FLASHCARDS = {
       "title": "SDK",
       "question": "What does SDK stand for?",
       "answers": [
-        "Software development kit: libraries and tools your application uses to work with a platform or service. For example, the Azure Python SDK includes a SecretClient for reading Key Vault secrets. An SDK call runs from your code; a CLI command runs from a command-line tool."
+        "SDK stands for software development kit. It provides libraries and tools that applications use to interact with a platform. For example, Azure SDK for Python includes clients for reading Key Vault secrets and querying Cosmos DB from Python code."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -469,18 +469,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python",
           "https://learn.microsoft.com/en-us/azure/developer/intro/azure-developer-create-resources"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -492,7 +492,7 @@ window.AI200_FLASHCARDS = {
       "title": "Infrastructure as Code (IaC)",
       "question": "What does Infrastructure as Code mean?",
       "answers": [
-        "Describing resources and their configuration in versioned files instead of relying only on manual portal steps. IaC stands for Infrastructure as Code. A deployment tool reads the files to create or update the environment, making it easier to review and reproduce."
+        "Infrastructure as Code, or IaC, means describing infrastructure in files that a deployment tool can apply. Keeping those files in version control lets you review changes and recreate an environment consistently."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -504,17 +504,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -526,7 +526,7 @@ window.AI200_FLASHCARDS = {
       "title": "Bicep",
       "question": "What is Bicep in Azure?",
       "answers": [
-        "A language for describing which Azure resources should exist and how they should be configured. Azure Resource Manager reads the description and creates or updates the resources. For example, one Bicep file can declare a storage account and function app."
+        "Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by a workshop."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -538,17 +538,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -560,7 +560,7 @@ window.AI200_FLASHCARDS = {
       "title": "CI/CD",
       "question": "What does CI/CD stand for?",
       "answers": [
-        "Continuous Integration and Continuous Delivery or Deployment. CI automatically builds and checks code changes. Delivery prepares a release for deployment, often with approval; deployment automatically releases successful changes. A pipeline connects those steps so releasing an application is repeatable."
+        "CI/CD means Continuous Integration and Continuous Delivery or Deployment. CI builds and checks code changes automatically. Continuous delivery prepares a releasable version; continuous deployment also releases successful changes automatically."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -572,17 +572,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/devops/deliver/what-is-continuous-delivery"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -594,7 +594,7 @@ window.AI200_FLASHCARDS = {
       "title": "Docker",
       "question": "What is Docker?",
       "answers": [
-        "A set of tools for building container images and running containers. For example, docker build creates an image from a Dockerfile, and docker run starts a container from that image. Docker is a product name; an image is the packaged template and a container is its running instance."
+        "Docker provides tools for building container images and running containers. docker build creates an image from a Dockerfile, while docker run starts a container from an image."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -611,18 +611,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/",
           "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -634,7 +634,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container image",
       "question": "What is a container image?",
       "answers": [
-        "A packaged template containing an application, its dependencies and startup configuration. You build and store the image, then start containers from it. One image can create many separate containers, just as one installer can be used to set up multiple running copies."
+        "A container image is a packaged template containing an application, its dependencies and startup configuration. A container runtime uses that template to start a running container. The same image can be used to start many separate containers."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -646,17 +646,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -668,7 +668,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container",
       "question": "What is an application container?",
       "answers": [
-        "An isolated environment running an application from a container image. It packages the application’s files and dependencies while sharing the host’s operating-system kernel. The image is the reusable template; containers are the running copies."
+        "A container is an isolated running instance of an application and its dependencies. It starts from a container image and shares the host operating system’s kernel. Several containers can run on the same host."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -680,17 +680,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -702,7 +702,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dockerfile",
       "question": "What is a Dockerfile?",
       "answers": [
-        "A text file of instructions for building a container image. For example, it can select a base image, copy application files, install dependencies and set the startup command. docker build reads those instructions to create the image."
+        "A Dockerfile is a text file containing instructions for building a container image. It can select a base image, install dependencies, copy application files and specify the startup command."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -714,17 +714,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://docs.docker.com/reference/dockerfile/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -736,7 +736,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container registry",
       "question": "What is a container registry?",
       "answers": [
-        "A service that stores container images and makes them available for upload and download. A build pipeline pushes an image there, and a hosting platform pulls it to start containers. Azure Container Registry and Docker Hub are examples."
+        "A container registry stores container images and makes them available to upload or download. A build pipeline pushes an image to the registry; a hosting service pulls it when deploying the application."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -748,17 +748,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -770,7 +770,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR",
       "question": "What does ACR stand for?",
       "answers": [
-        "Azure Container Registry. It is Azure’s service for storing and distributing container images and related artifacts. For example, your app’s image can be stored in ACR and pulled by Azure Kubernetes Service when the app starts."
+        "ACR stands for Azure Container Registry. It stores and distributes container images and other supported artifacts. Your build can upload an image to ACR, and your Azure hosting service can download it for deployment."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -782,17 +782,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -804,7 +804,7 @@ window.AI200_FLASHCARDS = {
       "title": "Image repository",
       "question": "What is a repository inside a container registry?",
       "answers": [
-        "A named collection of related image versions, such as myapp. In myregistry.azurecr.io/myapp:v1, myregistry.azurecr.io is the registry hostname, myapp is the repository and v1 is the tag. An image repository stores built images; a Git repository stores source files and history."
+        "An image repository is a named collection of image versions inside a registry. In myregistry.azurecr.io/orders:v1, myregistry.azurecr.io identifies the registry, orders is the repository and v1 is the tag."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -821,18 +821,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -844,7 +844,7 @@ window.AI200_FLASHCARDS = {
       "title": "Image tag",
       "question": "What is a container image tag?",
       "answers": [
-        "A human-readable name attached to an image version, such as v1 or latest. In myapp:v1, v1 is the tag. Tags can be moved to different image content unless protected, so the word latest does not automatically mean the newest build."
+        "An image tag is a readable name for an image version, such as v1. Tags can be moved to different image content unless protected. To identify immutable content, use its digest."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -856,17 +856,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -878,7 +878,7 @@ window.AI200_FLASHCARDS = {
       "title": "Image digest",
       "question": "What is a container image digest?",
       "answers": [
-        "A content-derived identifier, commonly written sha256: followed by a long hexadecimal value. It identifies the image manifest’s contents. Unlike a movable tag, referencing the digest selects that specific content, making the deployed version unambiguous."
+        "An image digest is an identifier calculated from the image manifest’s content, commonly shown as sha256 followed by a hexadecimal value. Referencing the digest selects that exact content even if a tag is later moved."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -890,17 +890,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -912,7 +912,7 @@ window.AI200_FLASHCARDS = {
       "title": "Build context",
       "question": "What is a Docker build context?",
       "answers": [
-        "The files made available to the image builder. In docker build -t myapp:v1 ., the final dot selects the current directory as the context. Dockerfile instructions such as COPY can use files from that context, subject to exclusions such as .dockerignore."
+        "The build context is the set of files available to an image builder. In docker build -t orders:v1 ., the final dot selects the current directory. Dockerfile instructions such as COPY can use files in that context, except files excluded by rules such as .dockerignore."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -924,17 +924,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://docs.docker.com/build/concepts/context/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -946,7 +946,7 @@ window.AI200_FLASHCARDS = {
       "title": "Image push",
       "question": "What does pushing a container image mean?",
       "answers": [
-        "Uploading an image from the local builder/client to a registry. For example, docker push myregistry.azurecr.io/myapp:v1 uploads that named image to myregistry. Giving an image a registry-qualified tag prepares its destination name; pushing performs the transfer."
+        "Pushing an image uploads it to a registry. For example, docker push myregistry.azurecr.io/orders:v1 uploads the locally available image under that registry, repository and tag."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -958,17 +958,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -980,7 +980,7 @@ window.AI200_FLASHCARDS = {
       "title": "Image pull",
       "question": "What does pulling a container image mean?",
       "answers": [
-        "Downloading an image from a registry so it can be used locally. A container host pulls the required image content before starting the application when it is not already available in its cache. Pulling an image does not itself start a container."
+        "Pulling an image downloads its required content from a registry. A container host does this before starting a container when the image content is not already cached locally."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -997,18 +997,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli",
           "https://kubernetes.io/docs/concepts/containers/images/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1020,7 +1020,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service",
       "question": "What is Azure App Service?",
       "answers": [
-        "A managed platform for hosting web applications and HTTP APIs. Azure runs the hosting infrastructure, while you deploy code or a supported container and configure the app. You choose a hosting plan rather than directly managing every server."
+        "Azure App Service is a managed platform for hosting web applications and HTTP APIs. You deploy application code or a supported container and configure the app; Azure manages the hosting infrastructure."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1032,17 +1032,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1054,7 +1054,7 @@ window.AI200_FLASHCARDS = {
       "title": "Deployment slot",
       "question": "What is a deployment slot in Azure App Service?",
       "answers": [
-        "A separate live version of an App Service app, with its own hostname and configuration. For example, deploy a new release to staging, test it, then swap it into production. The slots share the App Service plan’s compute capacity."
+        "A deployment slot is a separate live deployment of an App Service app, with its own hostname and configuration. You can test a release in a staging slot before swapping it into production. Slots share the compute resources of their App Service plan."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1066,17 +1066,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1088,7 +1088,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps",
       "question": "What is Azure Container Apps?",
       "answers": [
-        "A managed platform that runs containerized applications and jobs without requiring you to manage a Kubernetes cluster directly. You supply container images and settings such as ingress and scaling rules. Azure manages the underlying container-hosting infrastructure."
+        "Azure Container Apps runs containerized applications on managed infrastructure. You provide an image and configure networking, revisions and scaling, while Azure operates the underlying platform."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1100,17 +1100,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1122,7 +1122,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes",
       "question": "What is Kubernetes?",
       "answers": [
-        "A platform that coordinates containers across a group of machines. It schedules workloads, replaces failed instances and manages features such as service discovery and scaling. You describe the desired application state, and its controllers work to maintain it."
+        "Kubernetes coordinates containerized workloads across a cluster of machines. You declare the desired state, and its controllers schedule workloads, replace failed copies and manage application networking and updates."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1134,17 +1134,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1156,7 +1156,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS",
       "question": "What does AKS stand for?",
       "answers": [
-        "Azure Kubernetes Service. It is Azure’s managed service for running Kubernetes clusters. Azure operates the control plane that coordinates the cluster, while your applications run in pods on worker nodes."
+        "AKS stands for Azure Kubernetes Service. It is Azure’s managed Kubernetes service: Azure runs the control plane, and your application pods run on worker nodes."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1168,17 +1168,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1190,7 +1190,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes cluster",
       "question": "What is a Kubernetes cluster?",
       "answers": [
-        "A group of worker machines coordinated by a Kubernetes control plane. The worker machines run application pods, and the control plane manages where they run and how the desired workload is maintained. One cluster can host many applications."
+        "A Kubernetes cluster consists of a control plane and worker nodes. The control plane coordinates scheduling and desired state; the nodes run the application pods."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1202,17 +1202,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1224,7 +1224,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes control plane",
       "question": "What is the Kubernetes control plane?",
       "answers": [
-        "The cluster’s management components. They expose its API, decide where pods should run and coordinate changes needed to maintain the desired setup. Worker nodes run the application pods. In AKS, Azure operates the managed control plane."
+        "The Kubernetes control plane manages the cluster’s desired state. Its components expose the API, schedule pods and run controllers that reconcile declared settings with what is actually running."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1236,17 +1236,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1258,7 +1258,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes / AKS node",
       "question": "What is a node in Kubernetes?",
       "answers": [
-        "A worker machine that runs pods. It supplies CPU, memory and the container runtime needed by those pods. In Azure Kubernetes Service (AKS), a worker node is typically an Azure virtual machine in a node pool. One node can run many pods; a pod is not the machine itself."
+        "A node is a worker machine on which Kubernetes runs pods. In AKS, nodes are usually Azure virtual machines grouped into node pools. One node can run many pods."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1270,17 +1270,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1292,7 +1292,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS node pool",
       "question": "What is a node pool in AKS?",
       "answers": [
-        "A group of worker nodes with a common configuration, such as virtual-machine size and operating system. You can use separate pools for ordinary apps, system workloads or GPU workloads. Scaling a pool changes the number of worker machines, not directly the number of application pods."
+        "An AKS node pool groups worker nodes with a shared configuration, such as operating system and virtual-machine size. Different pools can support different workload requirements. Scaling the pool changes the number of worker machines."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1309,18 +1309,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts",
           "https://learn.microsoft.com/en-us/azure/aks/use-system-pools"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1332,7 +1332,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes pod",
       "question": "What is a pod in Kubernetes?",
       "answers": [
-        "The smallest deployable unit Kubernetes schedules. It contains one or more closely related containers that share networking and can share storage. A common application pod has one main container. Kubernetes places the pod on a node and can replace it when it fails."
+        "A pod is the smallest workload unit Kubernetes schedules. It contains one or more closely related containers that share networking and can share storage. Kubernetes schedules the pod onto a node."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1344,17 +1344,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1366,7 +1366,7 @@ window.AI200_FLASHCARDS = {
       "title": "Replica",
       "question": "What is a replica of an application?",
       "answers": [
-        "One running copy of the application workload. Three pod replicas means three copies serving the same application, often to handle more requests or survive one copy failing. A replica is not necessarily on its own node; several replicas can be placed on one machine unless scheduling rules prevent it."
+        "A replica is one running copy of an application workload. Three pod replicas means three copies of the application, which can share traffic and improve availability. Scheduling rules determine which nodes run them."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1378,17 +1378,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1400,7 +1400,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Deployment",
       "question": "What is a Deployment in Kubernetes?",
       "answers": [
-        "A workload controller that maintains a desired number of application pod replicas and manages updates to their pod template. For example, it can keep three web-server pods running while replacing them during an image update. Deployment is the controller object; the pods are the running copies."
+        "A Kubernetes Deployment manages a desired number of pod replicas and updates their configuration. For example, it can maintain three web-server pods while gradually replacing them with a new image version."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1412,17 +1412,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1434,7 +1434,7 @@ window.AI200_FLASHCARDS = {
       "title": "DaemonSet",
       "question": "What is a DaemonSet in Kubernetes?",
       "answers": [
-        "It keeps a copy of a pod running on every eligible node. For example, a DaemonSet can place a log-collection agent on each worker machine. When another eligible node joins, Kubernetes creates the agent pod there too."
+        "A DaemonSet runs a copy of a pod on every eligible node. It is useful for node-level services such as log collectors. When another eligible node joins, the DaemonSet creates a pod there too."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1446,17 +1446,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1468,7 +1468,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Service",
       "question": "What is a Service in Kubernetes?",
       "answers": [
-        "A stable network destination for a set of pods. Pod addresses can change when pods are replaced, so clients use the Service name/address instead. The Service selects the relevant pods, usually through labels, and directs traffic to their available endpoints."
+        "A Kubernetes Service provides a stable network address for a set of backends, usually pods selected by labels. Clients can use the Service name while individual pods are replaced and their addresses change."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1480,17 +1480,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/service/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1502,7 +1502,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Ingress",
       "question": "What is Ingress in Kubernetes?",
       "answers": [
-        "A set of HTTP/HTTPS routing rules for reaching Services, often based on hostname or URL path. For example, /orders can route to the orders Service. An ingress controller implements the rules; creating an Ingress object alone does not create the working traffic handler."
+        "A Kubernetes Ingress defines HTTP or HTTPS routing rules, such as sending /orders requests to an orders Service. An ingress controller must be running to implement those rules."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1514,17 +1514,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/ingress/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1536,7 +1536,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes namespace",
       "question": "What is a namespace in Kubernetes?",
       "answers": [
-        "A logical scope for grouping namespaced resources within a cluster. For example, staging and production can have separate namespaces containing Services with the same name. A namespace organizes resources and access policies; it does not automatically provide complete network or security isolation."
+        "A namespace groups and scopes many Kubernetes objects inside a cluster. Separate namespaces can contain resources with the same name. Permissions and network policies provide the additional controls needed to isolate workloads."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1548,17 +1548,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1570,7 +1570,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes manifest",
       "question": "What is a Kubernetes manifest?",
       "answers": [
-        "A YAML or JSON file describing a Kubernetes resource and its desired settings. For example, a Deployment manifest specifies the image and number of replicas. Applying the file asks Kubernetes to create or update the actual resource to match."
+        "A Kubernetes manifest is a YAML or JSON description of a resource and its desired settings. For example, a Deployment manifest specifies an image and replica count. Applying it asks Kubernetes to create or update that resource."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1582,17 +1582,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/overview/working-with-objects/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1604,7 +1604,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes label",
       "question": "What is a label in Kubernetes?",
       "answers": [
-        "A key/value marker attached to an object, such as app=orders on a pod. Other objects use selectors to find matching labels. For example, a Service can route to pods labeled app=orders."
+        "A label is a key/value marker attached to a Kubernetes object, such as app=orders on a pod. Selectors use labels to find objects; a Service might select all pods labeled app=orders."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1616,17 +1616,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1638,7 +1638,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes selector",
       "question": "What is a selector in Kubernetes?",
       "answers": [
-        "A rule that chooses objects by their labels. For example, a Service selector app=orders chooses matching pods as its backends. If the labels do not match, the Service cannot find those pods even though they are running."
+        "A selector is a rule for finding Kubernetes objects by their labels. A Service with selector app=orders uses matching pods as its backends. The pod labels and selector must agree for that routing to work."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1655,18 +1655,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/",
           "https://kubernetes.io/docs/concepts/services-networking/service/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1678,7 +1678,7 @@ window.AI200_FLASHCARDS = {
       "title": "Resource request",
       "question": "What is a resource request in Kubernetes?",
       "answers": [
-        "The amount of a resource, such as CPU or memory, declared for scheduling a container. The scheduler uses requests to decide whether a node has capacity for the pod. A request is not the same as the maximum the container may consume; that is governed separately by limits and resource behavior."
+        "A resource request declares the CPU or memory a container needs for scheduling. Kubernetes uses requests to decide which node can accommodate a pod. Limits separately control how resource use is constrained while it runs."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1690,17 +1690,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1712,7 +1712,7 @@ window.AI200_FLASHCARDS = {
       "title": "Resource limit",
       "question": "What is a resource limit in Kubernetes?",
       "answers": [
-        "An upper bound configured for a container resource. CPU use can be throttled at its limit; exceeding a memory limit can cause the container to be killed. Requests guide scheduling, while limits constrain use. The two settings serve different purposes."
+        "A resource limit constrains a container’s CPU or memory use. CPU can be throttled at its limit; a container exceeding its memory limit can be terminated. Requests are used separately when scheduling the pod."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1724,17 +1724,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1746,7 +1746,7 @@ window.AI200_FLASHCARDS = {
       "title": "DNS",
       "question": "What does DNS stand for?",
       "answers": [
-        "Domain Name System. It translates names such as myregistry.azurecr.io into network addresses. That lets a client find the service using a readable hostname instead of having to know its current IP address."
+        "DNS stands for Domain Name System. It resolves names such as myregistry.azurecr.io to network addresses so clients can locate a service by its hostname."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1758,17 +1758,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/dns/dns-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1780,7 +1780,7 @@ window.AI200_FLASHCARDS = {
       "title": "YAML",
       "question": "What is YAML?",
       "answers": [
-        "A text format for structured data, commonly used for Kubernetes manifests and pipeline definitions. Its name expands to YAML Ain’t Markup Language. Indentation defines the structure, so changing a line’s indentation can change the meaning."
+        "YAML is a text format for structured data, often used for Kubernetes manifests and pipelines. Its name expands to YAML Ain’t Markup Language. Indentation is part of the structure, so changing it can change the meaning."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1792,17 +1792,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/overview/working-with-objects/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1814,7 +1814,7 @@ window.AI200_FLASHCARDS = {
       "title": "JSON",
       "question": "What is JSON?",
       "answers": [
-        "JavaScript Object Notation, a text format for structured data using objects, arrays and values. For example, {\"enabled\": true} is an object with a boolean setting. APIs and Azure configuration files often exchange JSON; the format is not limited to JavaScript programs."
+        "JSON stands for JavaScript Object Notation. It represents structured data using objects, arrays and values. For example, {\"enabled\": true} contains a boolean setting; many APIs and configuration files use this format."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1826,17 +1826,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1848,7 +1848,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA",
       "question": "What does KEDA stand for?",
       "answers": [
-        "Kubernetes Event-driven Autoscaling. It connects workload scaling to external signals such as queue length, so new work can start replicas even when none is running. Container Apps uses KEDA-based event scaling without requiring you to manage the underlying Kubernetes objects directly."
+        "KEDA stands for Kubernetes Event-driven Autoscaling. It connects workload scaling to signals such as queue length. Container Apps uses KEDA-based scaling so incoming work can start replicas even when an app has scaled to zero."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1860,17 +1860,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1882,7 +1882,7 @@ window.AI200_FLASHCARDS = {
       "title": "CPU",
       "question": "What does CPU stand for?",
       "answers": [
-        "Central Processing Unit, the general-purpose processor that executes instructions. Kubernetes CPU requests and limits describe how much processor capacity a container needs or can use. One CPU unit corresponds to one logical core; 500 millicores is half of that capacity."
+        "CPU stands for Central Processing Unit, the processor that executes general-purpose instructions. In Kubernetes, one CPU unit represents one logical core; 500 millicores represents half a CPU unit."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1894,17 +1894,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1916,7 +1916,7 @@ window.AI200_FLASHCARDS = {
       "title": "GPU",
       "question": "What does GPU stand for?",
       "answers": [
-        "Graphics Processing Unit. It is a processor suited to many parallel calculations, including machine-learning workloads. Using a GPU in Kubernetes needs suitable GPU-enabled nodes and resource configuration; adding ordinary CPU replicas does not automatically provide GPU capacity."
+        "GPU stands for Graphics Processing Unit. It is designed for many calculations in parallel, which is useful for machine-learning workloads. A Kubernetes workload needs suitable GPU-enabled nodes and resource settings to use one."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1928,17 +1928,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/gpu-cluster"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1950,7 +1950,7 @@ window.AI200_FLASHCARDS = {
       "title": "CNI",
       "question": "What does CNI stand for in Kubernetes networking?",
       "answers": [
-        "Container Network Interface. It defines how networking plugins connect containers to a network. Azure CNI is an AKS implementation; its selected mode affects pod addresses and how pod traffic reaches other networks."
+        "CNI stands for Container Network Interface. It is a specification used by networking plugins to connect containers to a network. Azure CNI provides such networking for AKS."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1962,17 +1962,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -1984,7 +1984,7 @@ window.AI200_FLASHCARDS = {
       "title": "URL",
       "question": "What does URL stand for?",
       "answers": [
-        "Uniform Resource Locator: an address showing how and where to access a resource. For example, https://example.com/orders specifies HTTPS as the scheme, example.com as the hostname and /orders as the path."
+        "URL stands for Uniform Resource Locator: an address for locating a resource. In https://example.com/orders, https is the scheme, example.com is the hostname and /orders is the path."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -1996,17 +1996,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2018,7 +2018,7 @@ window.AI200_FLASHCARDS = {
       "title": "URI",
       "question": "What does URI stand for?",
       "answers": [
-        "Uniform Resource Identifier. It identifies a resource; a URL is one kind of URI that also gives its location. A Key Vault secret URI, for example, identifies the vault, secret name and optionally its version."
+        "URI stands for Uniform Resource Identifier. It identifies a resource; a URL is a kind of URI that also describes its location. A Key Vault secret URI identifies a particular secret and optionally a version."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -2030,17 +2030,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2050,7 +2050,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes probes",
       "question": "What is the purpose of a Kubernetes startup probe?",
       "answers": [
-        "It gives a slow-starting container time to initialize. While the startup probe has not succeeded, liveness and readiness probes are held back. Once it succeeds, those probes take over. Repeated startup failures beyond its threshold can still cause the container to restart."
+        "A startup probe gives a slow-starting container time to initialize. Liveness and readiness probes wait until it succeeds. If startup keeps failing beyond its configured threshold, Kubernetes restarts the container."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2068,9 +2068,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/pods/probes/"
         ]
@@ -2079,9 +2079,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Startup probe",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2091,7 +2091,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS autoscalers",
       "question": "What does the Kubernetes Horizontal Pod Autoscaler scale?",
       "answers": [
-        "The number of pod replicas. The Horizontal Pod Autoscaler (HPA) adds or removes replicas according to configured metrics, within its minimum and maximum counts. For example, it can add web-server pods when CPU utilization rises."
+        "The Horizontal Pod Autoscaler, or HPA, changes the number of pod replicas in a workload. It compares configured metrics with their targets and adjusts replicas within the minimum and maximum counts."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2109,9 +2109,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
         ]
@@ -2120,9 +2120,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "HPA · Horizontal Pod Autoscaler",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2132,7 +2132,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS autoscalers",
       "question": "What does the Kubernetes Vertical Pod Autoscaler adjust?",
       "answers": [
-        "The CPU and memory resources requested for containers. The Vertical Pod Autoscaler (VPA) recommends or applies new sizes based on usage. Applying them can require replacing pods, depending on the configured update policy."
+        "The Vertical Pod Autoscaler, or VPA, recommends or changes container resource requests, such as CPU and memory. Depending on its update policy and cluster capabilities, applying a recommendation can involve restarting or replacing pods."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2150,9 +2150,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/use-vertical-pod-autoscaler"
         ]
@@ -2161,9 +2161,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "VPA · Vertical Pod Autoscaler",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2173,7 +2173,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-1",
       "question": "What does a Kubernetes PodDisruptionBudget limit during node maintenance?",
       "answers": [
-        "How many matching application pods may be evicted during voluntary disruption, such as draining a node. A PodDisruptionBudget (PDB) helps maintenance keep enough replicas available. It cannot prevent an unexpected node failure."
+        "A PodDisruptionBudget limits how many matching pods can be unavailable during voluntary disruptions that use the eviction API, such as a node drain. It helps preserve application availability during maintenance; unexpected node failures still require other resilience measures."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -2197,9 +2197,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
         ]
@@ -2208,9 +2208,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "PDB · PodDisruptionBudget",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2220,7 +2220,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-1",
       "question": "What is a Kubernetes StatefulSet used for?",
       "answers": [
-        "Workloads needing stable pod identities and usually separate persistent storage per pod, such as database members. A StatefulSet gives pods predictable names and supports ordered rollout behavior. The application must still manage its own data replication and recovery."
+        "A StatefulSet manages pods that need stable identities and usually separate persistent storage, such as database members. Pods receive predictable names, and the controller supports ordered creation and updates. The application remains responsible for data replication and recovery."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -2236,9 +2236,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
         ]
@@ -2247,9 +2247,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "StatefulSet",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2259,7 +2259,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-1",
       "question": "What is a Container Apps environment?",
       "answers": [
-        "A shared hosting boundary for Container Apps, with common networking and logging configuration. It can contain several apps. Each app has its own revisions, while the environment supplies their shared infrastructure."
+        "A Container Apps environment is a shared hosting boundary for applications, networking and observability settings. It can contain multiple apps, each with its own revisions."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -2283,9 +2283,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/environment"
         ]
@@ -2294,9 +2294,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Container Apps environment",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2306,7 +2306,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-1",
       "question": "What does a Container Apps revision represent?",
       "answers": [
-        "A saved version of the app’s deployment configuration, such as its container image and environment variables. That configuration is immutable: changing it creates another revision. App-level settings, such as secret definitions, are managed separately."
+        "A revision is an immutable snapshot of a Container App’s revision-scoped configuration, such as its image and environment variables. Changing those settings creates another revision. App-scoped settings, including secret definitions, have a separate lifecycle."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -2322,9 +2322,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container deployment vocabulary, resource boundaries and the practical role of each component.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
@@ -2333,9 +2333,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Container Apps revision",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2345,7 +2345,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks triggers",
       "question": "Which source-code events can trigger an ACR Task?",
       "answers": [
-        "A commit to the configured Git branch, or creation/update of a pull request. Commit triggers are enabled by default; pull-request triggers must be enabled. The task needs access to a supported repository so ACR can register its event webhook."
+        "An ACR Task can start when a commit reaches its configured branch, or when a pull request is created or updated. Commit triggers are enabled by default; pull-request triggers are opt-in. The repository and access token must support the webhook ACR registers."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2363,17 +2363,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Checked supported Git events, default trigger settings and repository integration requirements.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2383,7 +2383,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks triggers",
       "question": "How does an ACR Task know when to rebuild after its base image changes?",
       "answers": [
-        "During the first build, the task records the base images it depends on. With base-image triggering enabled, later updates can start a rebuild. ACR-hosted image updates trigger dependent tasks; public Docker Hub and Microsoft Container Registry images are checked at intervals of 10–60 minutes."
+        "The first build records which base images the task uses. With base-image triggering enabled, an update to a tracked base image can start another build.\n\nUpdates in an Azure container registry can trigger dependent tasks. Public Docker Hub and Microsoft Container Registry images are checked periodically, so rebuilding is not necessarily immediate."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2401,17 +2401,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-base-images"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2421,7 +2421,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks triggers",
       "question": "What schedule format does an ACR Tasks timer use?",
       "answers": [
-        "A five-field cron expression: minute, hour, day of month, month and day of week. Times are in UTC. For example, 0 9 * * 1-5 runs at 09:00 UTC on weekdays. The shortest supported interval is one minute."
+        "Use a five-field cron expression for minute, hour, day of month, month and day of week. ACR interprets the schedule in UTC.\n\nFor example, 0 9 * * 1-5 runs at 09:00 UTC on weekdays. ACR Tasks supports schedules as frequent as once per minute."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2439,17 +2439,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-scheduled"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2459,7 +2459,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks triggers",
       "question": "Do ACR webhooks or Artifact Cache rules start source builds?",
       "answers": [
-        "No. A registry webhook notifies another service about registry activity. An Artifact Cache rule caches images from an upstream registry. Neither is an ACR Tasks trigger that builds application source code; task triggers are configured separately."
+        "No. A registry webhook sends notifications about registry events, while an Artifact Cache rule retrieves and caches upstream images. To build source code automatically, configure an ACR Task with an appropriate source, base-image or timer trigger."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2477,17 +2477,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2497,7 +2497,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR pull and push roles",
       "question": "Which pull and push roles apply to an ACR registry using RBAC Registry Permissions?",
       "answers": [
-        "AcrPull allows downloading images. AcrPush allows uploading and downloading images. Use these roles when the registry’s permission mode is RBAC Registry Permissions."
+        "AcrPull grants image download access. AcrPush grants upload and download access. These roles apply when the registry uses RBAC Registry Permissions; check the permission mode before choosing a role."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2515,17 +2515,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2535,7 +2535,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR pull and push roles",
       "question": "Which ACR roles grant repository pull or push access when ABAC is enabled?",
       "answers": [
-        "Container Registry Repository Reader allows pulls. Container Registry Repository Writer allows pushes and pulls. On an ABAC-enabled registry, conditions on these role assignments can limit access to particular repositories."
+        "Use Container Registry Repository Reader for pulls, or Container Registry Repository Writer for pushes and pulls. In RBAC Registry + ABAC Repository Permissions mode, a condition on the assignment can restrict it to selected repositories."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2553,17 +2553,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2573,7 +2573,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR pull and push roles",
       "question": "Are legacy AcrPull, AcrPush and AcrDelete roles honored on an ABAC-enabled registry?",
       "answers": [
-        "No. In RBAC Registry + ABAC Repository Permissions mode, AcrPull, AcrPush and AcrDelete do not grant repository access. Assign the appropriate Container Registry Repository Reader, Writer or Contributor role instead."
+        "No. An ABAC-enabled registry does not honor AcrPull, AcrPush or AcrDelete for repository access. Use the applicable Container Registry Repository Reader, Writer or Contributor role, with repository conditions where needed."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2591,17 +2591,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2611,7 +2611,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks build types",
       "question": "What does an ACR quick task do?",
       "answers": [
-        "A quick task builds a container image on demand in Azure Container Registry (ACR). For example:\naz acr build --registry myregistry --image myapp:v1 .\nThis builds from the current directory, marked by the final dot, using its Dockerfile and source files. By default it uploads the resulting image to myregistry as repository myapp with tag v1. You need Azure CLI and the source files, but no local Docker Engine, because Azure runs the build."
+        "An ACR quick task builds an image on demand using Azure’s build infrastructure. For example:\naz acr build --registry myregistry --image orders:v1 .\n\nThe final dot supplies the current directory as the build context. Azure builds the Dockerfile and, by default, stores the result as orders:v1 in myregistry. Your machine needs the source files and Azure CLI; Azure performs the Docker build."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2629,17 +2629,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-quickstart-task-cli"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2649,7 +2649,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks build types",
       "question": "How is a Git repository configured as an ACR Task's build context?",
       "answers": [
-        "Create a task whose build context is the Git repository, for example in PowerShell:\naz acr task create --registry myregistry --name build-app --image \"myapp:{{.Run.ID}}\" --context \"https://github.com/example/myapp.git#main\" --file Dockerfile --git-access-token $env:GIT_TOKEN\nReplace the registry/repository names and URL. Store the authorized repository token securely in GIT_TOKEN first. --context selects the repository’s main branch; --file selects its Dockerfile. The image tag includes the run ID. Configure supported Git triggers and token permissions so ACR can register the repository webhook."
+        "Set the task’s build context to the Git repository and branch. For example, in PowerShell, with an authorized token already stored in GIT_TOKEN:\naz acr task create --registry myregistry --name build-orders --image \"orders:{{.Run.ID}}\" --context \"https://github.com/example/orders.git#main\" --file Dockerfile --git-access-token $env:GIT_TOKEN\n\nReplace the example registry and repository. --context selects the source and branch, --file selects the Dockerfile, and the run ID gives each build its own image tag. The token needs the permissions required for the supported repository integration."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2667,17 +2667,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2687,7 +2687,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks build types",
       "question": "What defines an ACR multi-step task?",
       "answers": [
-        "A task YAML file containing the steps and their dependencies. For example, it can build an image, run tests and push the image only after the tests pass. To run an existing file from the current directory:\naz acr run --registry myregistry --file task.yaml ."
+        "A task YAML file defines the steps, such as building an image, running tests and pushing it. Dependencies determine when each step may run, so a failed test can prevent a later push.\n\nTo run an existing task file from the current directory:\naz acr run --registry myregistry --file task.yaml ."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2705,17 +2705,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-multi-step"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2725,7 +2725,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks build types",
       "question": "What sequence connects a Git commit to a new ACR image?",
       "answers": [
-        "A commit reaches the watched branch, the repository webhook starts the ACR task, and the task builds and pushes an image. A tag containing the run ID, such as myapp:{{.Run.ID}}, gives that build its own identifiable version."
+        "A commit reaches the watched branch, its webhook starts the ACR Task, and the task builds and pushes the image. Giving the image a unique build tag, such as orders:{{.Run.ID}}, lets you identify the result of that particular run."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2748,18 +2748,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2769,7 +2769,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR Tasks build types",
       "question": "How can a GitHub Actions workflow run an existing ACR Task?",
       "answers": [
-        "Add a workflow step that calls ACR Tasks through Azure CLI. For example, with an existing task and an authenticated Azure CLI session:\naz acr task run --registry myregistry --name build-app\nGitHub Actions starts the run, while ACR performs the configured build steps."
+        "After the workflow has authenticated to Azure, run the existing task with:\naz acr task run --registry myregistry --name build-orders\n\nGitHub Actions requests the run; ACR executes the task’s build steps. The task and workflow identity need the appropriate registry permissions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2787,17 +2787,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Replaced a vague “does this automatically count as that” question with the concrete relationship between the two services."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2807,7 +2807,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR tags and digests",
       "question": "Why can pulling myapp:latest return a different image after another push?",
       "answers": [
-        "Because latest is a movable tag. Someone can push a new image under the same name, so a later pull retrieves different content. Use a protected release tag or a digest when you need a fixed version."
+        "latest is a tag that can be reassigned to another image. A later pull can therefore download different content under the same name. Use an unchanged release tag or, for an exact content reference, the image digest."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2825,17 +2825,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2845,7 +2845,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR tags and digests",
       "question": "Why use a different image tag for each build?",
       "answers": [
-        "To identify the build you intend to deploy. For example, myapp:build-1042 distinguishes that release from build-1043, so a restart does not accidentally select a newer build under a reused name. Keep each release tag unchanged or protect it from overwrites."
+        "A unique tag makes each build identifiable. For example, orders:build-1042 distinguishes one release from orders:build-1043, helping you deploy or roll back deliberately. Protect release tags from overwriting when they must remain fixed."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2863,17 +2863,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2883,7 +2883,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR tags and digests",
       "question": "Which image reference pins exact content even if a tag moves?",
       "answers": [
-        "Use the manifest digest, for example myregistry.azurecr.io/myapp@sha256:<digest>. The digest identifies the manifest content, so moving a tag such as latest does not change what this reference selects."
+        "Reference the image by its manifest digest, such as myregistry.azurecr.io/orders@sha256:<digest>. The digest identifies the manifest’s content, so moving a tag does not change the image selected by this reference."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2901,17 +2901,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -2944,18 +2944,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Verified the sign-in, local tagging and push sequence. Numbered steps are retained because each command depends on the previous step.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Kept the complete worked commands and replaced the abstract “authenticated push sequence” wording."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -2965,7 +2965,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR tags and digests",
       "question": "Which image tag is assumed when none is specified?",
       "answers": [
-        "Docker assumes the tag latest. For example, docker pull myregistry.azurecr.io/myapp requests myapp:latest. The name latest does not guarantee that it is the most recently built image; it is simply a tag someone must publish."
+        "Docker assumes the tag latest. For example, docker pull myregistry.azurecr.io/orders requests orders:latest. latest is simply a published tag name; Docker does not search the repository for the newest build."
       ],
       "origin": "original",
       "legacyIds": [
@@ -2988,18 +2988,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3009,7 +3009,7 @@ window.AI200_FLASHCARDS = {
       "title": "ACR tags and digests",
       "question": "How can an ACR tag be protected from later overwrites?",
       "answers": [
-        "Set the tag attribute write-enabled to false. For example:\naz acr repository update --name myregistry --image myapp:v1 --write-enabled false\nThis prevents overwriting that tag. Set delete-enabled to false as well if the image must also be protected from deletion."
+        "Disable writes to that tag. For example:\naz acr repository update --name myregistry --image orders:v1 --write-enabled false\n\nThis protects orders:v1 from being overwritten. Also set delete-enabled to false when deletion must be blocked."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3027,17 +3027,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-lock"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3047,7 +3047,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service pull from ACR",
       "question": "How can App Service pull from ACR without storing registry credentials?",
       "answers": [
-        "Enable a managed identity on the App Service app and grant it image-read access to ACR. Configure the app to use that identity for image pulls. Use AcrPull with RBAC Registry Permissions, or the appropriate repository-reader role with an ABAC-enabled registry. The app then authenticates without a stored registry password."
+        "Give the App Service app a managed identity, grant that identity image-read access to ACR, and configure App Service to use it for pulls.\n\nThe role depends on ACR’s permission mode: use AcrPull for RBAC Registry Permissions, or the appropriate repository-reader role for an ABAC-enabled registry. App Service can then authenticate without storing a registry password."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3070,18 +3070,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3091,7 +3091,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service pull from ACR",
       "question": "Why is the ACR administrator account unsuitable for a production app identity?",
       "answers": [
-        "The registry administrator account uses shared, powerful credentials with push and pull access. Sharing them across applications makes access harder to limit and audit. Prefer a separate managed identity for each application, with only the registry permissions it needs."
+        "The administrator account uses shared credentials with broad registry access. A separate managed identity gives each app its own identity and allows narrower permissions and clearer auditing. Use that identity for production image pulls."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3114,18 +3114,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3135,7 +3135,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service pull from ACR",
       "question": "Does pushing to the same tag automatically refresh an App Service container?",
       "answers": [
-        "No. The running container continues using its current image until the app pulls again. Restart/update the app to trigger a new pull, or configure App Service’s continuous-deployment webhook."
+        "No. Pushing a new image under the same tag does not replace the already-running container. Restart or update the app to trigger another pull, or configure the App Service continuous-deployment webhook to request that update."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3153,17 +3153,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3173,7 +3173,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service app settings",
       "question": "How do App Service and Functions expose app settings to application code?",
       "answers": [
-        "As environment variables. For example, an app setting WORKSHOP_MODE=production can be read in Python as os.environ[\"WORKSHOP_MODE\"]. This lets you configure an application without baking each environment’s values into its image."
+        "They expose app settings as environment variables. For example, setting WORKSHOP_MODE to production lets Python read it through os.environ[\"WORKSHOP_MODE\"]. This supplies environment-specific configuration without rebuilding the image."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3196,17 +3196,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/configure-common"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3216,7 +3216,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service app settings",
       "question": "How do App Service connection strings differ from ordinary app settings?",
       "answers": [
-        "Connection strings are exposed with a type-specific prefix, such as CUSTOMCONNSTR_ for a custom connection string. Ordinary app settings use their configured names directly. Application code must read the resulting environment-variable name, including any connection-string prefix."
+        "App Service exposes a connection string with a prefix determined by its configured type, such as CUSTOMCONNSTR_ for a custom connection string. Ordinary app settings use their configured names directly. Your code must read the resulting environment-variable name."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3234,17 +3234,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed the blanket claim that non-.NET applications should not use connection-string settings.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/configure-common"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3254,7 +3254,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service app settings",
       "question": "What happens to a slot setting during an App Service slot swap?",
       "answers": [
-        "A setting marked as a deployment-slot setting stays with its slot during a swap. For example, staging keeps its staging database address while the application code is swapped. Use this for configuration that belongs to the environment rather than to the deployed version."
+        "A setting marked as a deployment-slot setting stays with its slot during a swap. For example, staging can keep its own database address while the application version moves to production. Use slot settings for values that belong to the environment."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3272,17 +3272,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3292,7 +3292,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service app settings",
       "question": "Why should runtime credentials be kept out of a Dockerfile?",
       "answers": [
-        "A value placed in a Dockerfile or image can be recovered by someone who can inspect that image or its history. Supply credentials at runtime through an authorized secret mechanism, such as a Key Vault reference, instead of distributing them with every copy of the image."
+        "Credentials included in a Dockerfile or image can be exposed to anyone able to inspect the image or its history. Supply runtime credentials through an authorized secret mechanism, such as a Key Vault reference, so they can be controlled and rotated separately from the image."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3310,17 +3310,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3330,7 +3330,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service Key Vault refs",
       "question": "What is the syntax of an App Service or Functions Key Vault reference?",
       "answers": [
-        "Set the app-setting value to a Key Vault reference. For example:\n@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret)\nAn alternative is @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret). Include a secret version to pin that version; omit it to let the platform retrieve newer versions."
+        "Use a Key Vault reference as the app-setting value, for example:\n@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret)\n\nThe platform resolves that reference to the secret value. Include a version in the URI to pin it, or omit the version to allow newer secret versions to be retrieved."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3353,17 +3353,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3373,7 +3373,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service Key Vault refs",
       "question": "Which identity permission is needed to resolve an App Service Key Vault reference?",
       "answers": [
-        "Permission to read the secret value. Use Key Vault Secrets User on an RBAC-enabled vault, or the secrets Get permission under access policies. App Service normally uses its system-assigned identity, and the app also needs network access to the vault."
+        "The identity resolving the reference needs permission to read the secret, plus network access to the vault. For an RBAC-enabled vault, Key Vault Secrets User grants secret-value reads; under access policies, use secrets Get.\n\nApp Service normally uses its system-assigned identity unless another supported reference identity is configured."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3396,17 +3396,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3416,7 +3416,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service Key Vault refs",
       "question": "Does using a Key Vault reference require secret-reading code in the app?",
       "answers": [
-        "No. App Service resolves the reference and supplies the secret as the app setting or connection-string value. Application code reads that value in the normal way; it does not need to call the Key Vault SDK just to resolve the platform reference."
+        "No. App Service resolves the Key Vault reference and supplies the resulting app-setting or connection-string value. Your application reads that value in the usual way, such as through an environment variable."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3434,17 +3434,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3454,7 +3454,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service Key Vault refs",
       "question": "When does App Service refresh a versionless Key Vault reference?",
       "answers": [
-        "Normally within 24 hours after a new secret version is available. An app configuration change causes a restart and immediate refetch. You can also request a refresh through the authenticated Key Vault-reference refresh endpoint."
+        "App Service caches the value and normally refetches it within 24 hours. A configuration change restarts the app and triggers an immediate refetch. You can also explicitly request a refresh through the authenticated Key Vault-reference refresh API."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3477,17 +3477,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3497,7 +3497,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA scale rule",
       "question": "Which KEDA settings select a Service Bus queue and its scaling target?",
       "answers": [
-        "For an azure-servicebus rule, namespace and queueName identify the queue; messageCount sets the target backlog per replica. For example, namespace=orders-bus queueName=jobs messageCount=5 watches jobs and targets about five queued messages per replica. Configure an identity or secret that can read the queue."
+        "For an azure-servicebus rule, namespace and queueName select the queue, while messageCount sets the target messages per replica.\n\nFor example, queueName=jobs and messageCount=5 target about five queued messages per replica. The rule also needs an authorized identity or secret to inspect the queue."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3515,17 +3515,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Event-source metrics, replica activation and the difference between pod and node scaling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3535,7 +3535,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA scale rule",
       "question": "Which KEDA settings select a Storage queue and its scaling target?",
       "answers": [
-        "For an azure-queue rule, accountName and queueName identify the queue; queueLength sets the target backlog per replica. For example, accountName=mystorage queueName=jobs queueLength=5 selects jobs and targets about five messages per replica. The rule also needs queue access."
+        "For an azure-queue rule, accountName and queueName select the Storage queue, while queueLength sets the target backlog per replica.\n\nFor example, accountName=mystorage, queueName=jobs and queueLength=5 watch jobs and target about five messages per replica. Configure queue access for the scaler too."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3553,17 +3553,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Event-source metrics, replica activation and the difference between pod and node scaling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3573,7 +3573,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA scale rule",
       "question": "What is the default polling interval for Container Apps event-driven scaling?",
       "answers": [
-        "30 seconds for custom KEDA event-source rules by default. This is how often the scaler checks the source for work, such as messages waiting in a queue."
+        "The documented default is 30 seconds for custom KEDA event-source rules. That is how frequently the scaler checks for work, such as a queue backlog. HTTP and TCP scaling use different mechanisms."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3591,17 +3591,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Event-source metrics, replica activation and the difference between pod and node scaling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3611,7 +3611,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA scale rule",
       "question": "When does the default 300-second Container Apps cooldown apply?",
       "answers": [
-        "When an inactive app scales from its last replica to zero. The cooldown waits after the source stops reporting activity before removing that final replica. It is not a 300-second delay on every decrease between nonzero replica counts."
+        "It applies when scaling the final replica down to zero after the event source becomes inactive. The documented default cooldown is 300 seconds. Scaling between nonzero replica counts has separate stabilization behavior."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3629,17 +3629,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Event-source metrics, replica activation and the difference between pod and node scaling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3649,7 +3649,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA scale rule",
       "question": "How is the target replica count estimated from a queue-length metric?",
       "answers": [
-        "Divide the queue length by the target messages per replica and round up. For 12 messages and a target of 5, 12 ÷ 5 rounds up to 3 replicas. The configured minimum and maximum then bound that target."
+        "A simple estimate is the backlog divided by the target messages per replica, rounded up. With 12 messages and a target of 5, the estimate is 3 replicas.\n\nThe minimum and maximum replica settings bound the result. Polling, activation and stabilization rules also affect when the running replica count changes."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3667,17 +3667,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Event-source metrics, replica activation and the difference between pod and node scaling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3687,7 +3687,7 @@ window.AI200_FLASHCARDS = {
       "title": "KEDA scale rule",
       "question": "What are the Container Apps min/max replica settings used for?",
       "answers": [
-        "minReplicas sets the scaling floor; maxReplicas sets the ceiling. For example, values of 1 and 5 let the scaler request between one and five replicas. A minimum of 0 permits the app to stop all replicas while idle."
+        "minReplicas sets the lower bound and maxReplicas the upper bound for scaling. Values of 1 and 5 keep the app between one and five replicas. A minimum of zero permits scaling to zero when the configured trigger supports it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3705,17 +3705,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Event-source metrics, replica activation and the difference between pod and node scaling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3725,7 +3725,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Service types",
       "question": "Which Kubernetes Service type is the default?",
       "answers": [
-        "ClusterIP. It gives the Service an address reachable inside the cluster, so clients can use that stable address to reach the selected pods."
+        "ClusterIP is the default Service type. It provides a stable address inside the cluster that clients use to reach the Service’s selected backends."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3743,17 +3743,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/service/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3763,7 +3763,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Service types",
       "question": "What does a Kubernetes NodePort Service expose?",
       "answers": [
-        "A port on the cluster’s nodes. Traffic sent to a reachable node IP and that port is forwarded to the Service’s pods. The client still needs network/firewall access to the node."
+        "NodePort exposes a port on the cluster’s nodes and forwards connections through the Service to its backends. The node address and port must be reachable through the network and firewall configuration."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3781,17 +3781,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/service/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3801,7 +3801,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Service types",
       "question": "What does a Kubernetes LoadBalancer Service provision?",
       "answers": [
-        "A cloud load balancer that forwards traffic to the Service, when the cluster’s cloud integration supports it. Its frontend can be public or private, depending on configuration."
+        "With a supporting cloud integration, a LoadBalancer Service provisions an external load-balancing frontend for the Service. Configuration determines whether that frontend has a public or private address."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3819,17 +3819,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/service/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3839,7 +3839,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Service types",
       "question": "What does a Kubernetes ExternalName Service return?",
       "answers": [
-        "A DNS alias, called a CNAME, pointing to the hostname configured in externalName. Clients resolve that name and connect to the destination. The Service does not proxy the connection."
+        "It returns a DNS CNAME alias for the hostname in externalName. Clients resolve that hostname and connect to the destination themselves; the Service provides the name mapping."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3857,17 +3857,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/service/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3877,7 +3877,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes Service types",
       "question": "Is Kubernetes Ingress a Service type?",
       "answers": [
-        "No. Ingress is a separate Kubernetes resource for routing HTTP/HTTPS requests to Services by hostname or URL path. An ingress controller must implement those routing rules; merely creating an Ingress object does not provide a working controller."
+        "No. Ingress is a separate resource containing HTTP/HTTPS routing rules, such as routing a hostname or path to a Service. A running ingress controller must implement those rules."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3895,17 +3895,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/ingress/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3913,9 +3913,9 @@ window.AI200_FLASHCARDS = {
       "domain": 1,
       "category": "aks",
       "title": "Rolling update defaults",
-      "question": "What are the default Deployment rolling-update maxSurge and maxUnavailable values?",
+      "question": "How do maxSurge and maxUnavailable control a Kubernetes Deployment rollout?",
       "answers": [
-        "Both default to 25% for RollingUpdate. maxSurge allows extra pods and rounds up; maxUnavailable allows unavailable pods and rounds down. With three desired replicas, that permits one extra pod and zero unavailable pods during the update."
+        "maxSurge controls how many extra pods may be created above the desired replica count. maxUnavailable controls how many desired pods may be unavailable during the rollout.\n\nFor RollingUpdate, both default to 25%. Surge percentages round up; unavailable percentages round down. With three replicas, those defaults permit one extra pod and require all three desired replicas to remain available."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3933,17 +3933,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Checked rolling-update controls, default percentages and opposite rounding directions.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3951,9 +3951,9 @@ window.AI200_FLASHCARDS = {
       "domain": 1,
       "category": "aks",
       "title": "Rolling update defaults",
-      "question": "What are the default DaemonSet rolling-update surge and unavailability settings?",
+      "question": "How does a DaemonSet rolling update limit disruption to node agents?",
       "answers": [
-        "maxUnavailable defaults to 1 and maxSurge to 0. The DaemonSet normally replaces pods gradually, allowing one unavailable pod without creating extra surge pods."
+        "Its rolling-update strategy replaces pods gradually rather than stopping all node agents together. The defaults allow one unavailable pod, through maxUnavailable=1, and no extra surge pods, through maxSurge=0.\n\nChoose values appropriate for the agent’s availability and resource requirements."
       ],
       "origin": "original",
       "legacyIds": [
@@ -3971,17 +3971,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -3991,7 +3991,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes probes",
       "question": "What happens when a Kubernetes liveness probe fails repeatedly?",
       "answers": [
-        "The node’s kubelet agent stops the container once the failure threshold is reached. It then follows the pod’s restart policy; a normal Deployment container is restarted. Use liveness to detect a process that needs restarting."
+        "After the configured failure threshold, the kubelet stops the unhealthy container and applies the pod’s restart policy. Containers managed by a normal Deployment are restarted. Use liveness checks for failures that restarting the process can resolve."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4009,17 +4009,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/pods/probes/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4029,7 +4029,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes probes",
       "question": "What happens when a Kubernetes readiness probe fails?",
       "answers": [
-        "The pod is marked not ready and stops receiving normal Service traffic. The container keeps running; readiness failure alone does not restart it. This lets an application temporarily withdraw from traffic while it initializes or recovers."
+        "The pod becomes not ready and is normally removed from the Service’s ready traffic endpoints. Its container can keep running while it recovers. Readiness failure alone does not request a restart."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4047,17 +4047,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/pods/probes/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4067,7 +4067,7 @@ window.AI200_FLASHCARDS = {
       "title": "Kubernetes probes",
       "question": "What should you check when running pods receive no traffic through their Kubernetes Service?",
       "answers": [
-        "Check that the Service selector matches the pod labels, the pods are Ready and the Service has matching endpoints. Then compare the Service’s targetPort with the port the app actually listens on. These checks distinguish “the process is running” from “the Service can route to it.”"
+        "First check that the Service selector matches the pod labels, the pods are Ready and the Service has endpoints. Then check that targetPort matches the application’s listening port.\n\nA running process is only one part of a working route: the Service also needs matching, reachable and ready backends."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4095,18 +4095,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/service/",
           "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4116,7 +4116,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps revisions",
       "question": "How does single-revision mode route Container Apps traffic?",
       "answers": [
-        "The old revision serves requests until the new revision is ready. Container Apps then sends the app’s traffic to the new revision and deactivates the old one. This is the default mode; it keeps the switch between versions automatic."
+        "The current revision keeps serving while the replacement starts. Once the new revision is ready, Container Apps moves traffic to it and deactivates the old revision. This makes single-revision mode useful when you want one active application version at a time."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4134,17 +4134,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4154,7 +4154,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps revisions",
       "question": "What does multiple-revision mode allow in Container Apps?",
       "answers": [
-        "It lets several revisions run at once. You can split traffic between them, such as 90% to the current version and 10% to a new version, and choose when to deactivate old revisions."
+        "Several revisions can remain active together. You can test a release by sending a small percentage of traffic to it, such as 10%, while the rest goes to the current version. You control traffic assignments and when old revisions are deactivated."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4172,17 +4172,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4192,7 +4192,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps revisions",
       "question": "How does Deployment labels mode route traffic in Azure Container Apps?",
       "answers": [
-        "It lets you route traffic through labels such as staging or production that point to revisions. To switch versions, move the label to another revision; the label’s URL stays the same. For example, production can point to v1 today and v2 after a release."
+        "The documented Deployment labels mode is a preview capability for assigning meaningful names, such as staging or production, to revisions. Requests sent to a label’s URL reach the revision that label selects.\n\nMoving the label to a different revision changes the target while keeping the label URL stable. For example, production can be moved from v1 to v2 during release and back during rollback."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4215,18 +4215,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "The current revision-mode table marks Deployment labels as preview; verified label URLs and label reassignment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/deployment-labels",
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Replaced “routes deployments” with request routing and explained the label-to-revision relationship using a concrete example."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4236,7 +4236,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps revisions",
       "question": "What must the traffic percentages for a Container Apps endpoint add up to?",
       "answers": [
-        "100%. For example, 90% to v1 and 10% to v2 accounts for all traffic sent to the app’s main endpoint."
+        "They must total 100% for the app endpoint’s percentage-based traffic allocation. For example, 90% to v1 and 10% to v2 assigns the whole request share between those two revisions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4259,18 +4259,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed the claim that traffic splitting is exclusively available in multiple-revision mode; deployment labels also support it.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions",
           "https://learn.microsoft.com/en-us/azure/container-apps/deployment-labels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4280,7 +4280,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps revisions",
       "question": "How can one Container Apps revision have a stable test URL?",
       "answers": [
-        "Give the revision a label, such as test, and use that label’s URL. It sends requests to that specific revision even if the revision has no share of the main endpoint’s traffic. You can later move test to another revision without changing the test URL."
+        "Assign the revision a label, such as test, and use the label’s URL. It routes directly to that revision even if the revision has no percentage of the main endpoint’s traffic. You can later move the label while keeping its URL."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4298,17 +4298,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4318,7 +4318,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps scale setup",
       "question": "What information does a custom scaling rule need in Azure Container Apps?",
       "answers": [
-        "A name, a scaler type, the scaler’s settings and any required authentication. For a Service Bus queue, the settings identify the queue and the target number of messages per replica. The scaler uses that target to decide how many app replicas are needed."
+        "A custom rule needs its name, scaler type, source-specific settings and any required authentication. A Service Bus rule, for example, identifies a queue and sets a target backlog per replica. The scaler uses that metric and target to decide the desired replica count."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4336,17 +4336,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4374,17 +4374,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "The existing command names the queue, target backlog and authorized identity, followed by an explanation. Retained the complete runnable example.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Replaced a long list of flags followed by the same flags again with one complete command and its effect."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -4394,7 +4394,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps scale setup",
       "question": "What is the trade-off of setting Container Apps minReplicas to zero?",
       "answers": [
-        "It can stop all replicas while idle, reducing Consumption-plan compute costs. The trade-off is startup delay: the next request or event may need to wait for a new replica to start. Other resources can still incur costs."
+        "A minimum of zero allows an idle app to stop all replicas, reducing usage-based compute costs where applicable. Starting a new replica can add delay to the next request or event. Other resources can still incur charges."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4417,18 +4417,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/billing",
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4438,7 +4438,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps scale setup",
       "question": "Why keep at least one Container Apps replica running?",
       "answers": [
-        "To reduce cold-start delay. With minReplicas set to 1 or more, the app keeps capacity ready instead of starting from zero for the next request. Keeping that capacity available can cost money while the app is idle."
+        "Keeping at least one replica available reduces startup delay for the next request. Set minReplicas to 1 or more when that latency matters, while accounting for the cost of keeping capacity running."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4461,18 +4461,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Replaced the absolute “one replica always running” claim and universal production recommendation with the actual minimum-capacity trade-off.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "https://learn.microsoft.com/en-us/azure/container-apps/billing"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4482,7 +4482,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps scale setup",
       "question": "What does a Container Apps HTTP scale rule measure?",
       "answers": [
-        "Concurrent HTTP requests: requests being handled at the same time. The target is the desired concurrency per replica, with a default of 10. As concurrency grows, Container Apps can add replicas within the configured minimum and maximum."
+        "It measures concurrent HTTP requests: requests being handled at the same time. The target expresses desired concurrency per replica; the documented default is 10. Growing demand can add replicas within the app’s configured bounds."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4500,17 +4500,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4520,7 +4520,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps scale setup",
       "question": "Can CPU- or memory-only Container Apps rules scale an app from zero?",
       "answers": [
-        "No. CPU and memory metrics need a running replica to be measured. Use a trigger that can detect work independently of a running container, such as an HTTP or queue rule, if the app must start from zero."
+        "No. CPU and memory measurements require a running replica. To start from zero, configure a source that can detect demand independently, such as incoming HTTP traffic or messages waiting in a queue."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4538,17 +4538,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4558,7 +4558,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps scale setup",
       "question": "Does changing a Container Apps scale rule create a revision?",
       "answers": [
-        "Yes. Scaling rules belong to the revision’s configuration, so changing one creates a new revision."
+        "Yes. Scaling rules are part of revision-scoped configuration, so changing a rule creates a new revision. Check which revision is active after making the change."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4581,18 +4581,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4602,7 +4602,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps secrets",
       "question": "Are Container Apps secrets scoped to an app or a revision?",
       "answers": [
-        "The app. Several revisions can reference the same app secret, and changing the secret alone does not create a revision. After changing an ordinary secret value, restart the revisions that need to receive it."
+        "Secret definitions belong to the app and can be referenced by multiple revisions. Changing an ordinary app secret does not create a revision. Restart the revisions that need to receive an updated value, or deploy a revision that references it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4620,17 +4620,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4640,7 +4640,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps secrets",
       "question": "How is a Container Apps secret linked to Key Vault?",
       "answers": [
-        "Create an app secret whose keyVaultUrl identifies the Key Vault secret and whose identity selects the managed identity used to read it. Give that identity permission to read the secret and network access to the vault. Containers then reference the app secret."
+        "Define an app secret with the Key Vault secret URL and the managed identity that should retrieve it. Grant that identity secret-read permission and network access to the vault. A container can then consume the app secret through an environment-variable or supported volume reference."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4658,17 +4658,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4678,7 +4678,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps secrets",
       "question": "Which identity can be pre-authorized for Key Vault before a Container App is created?",
       "answers": [
-        "A user-assigned managed identity. It exists independently, so you can create it, grant it Key Vault access and then attach it while creating the container app. A system-assigned identity is created with the app and therefore cannot be granted access before the app exists."
+        "A user-assigned managed identity exists independently of the app. You can create it, grant Key Vault access and then attach it during app creation. A system-assigned identity is created with its app, so it cannot be granted access before that app exists."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4696,17 +4696,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4716,7 +4716,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps secrets",
       "question": "When are versionless Container Apps Key Vault references refreshed?",
       "answers": [
-        "When the Key Vault URI omits a version, Container Apps retrieves a newer secret version within 30 minutes. Active revisions that use that secret through an environment variable are automatically restarted to receive it. A version-pinned URI keeps selecting its specified version."
+        "For a versionless Key Vault URL, Container Apps retrieves newer secret versions within the documented 30-minute refresh window. Active revisions using the secret through environment variables are restarted automatically to receive the change.\n\nA URL containing a version keeps selecting that version."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4734,17 +4734,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4754,7 +4754,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps secrets",
       "question": "How does a Container Apps container consume an app secret?",
       "answers": [
-        "A common approach is to expose the secret as an environment variable. If the app already defines a secret named api-key:\naz containerapp update --name myapp --resource-group mygroup --set-env-vars API_KEY=secretref:api-key\nThe running code reads API_KEY as a normal environment variable. The setting contains the secret’s reference, while the platform supplies its value."
+        "Reference the app secret from an environment variable. For an existing secret named api-key:\naz containerapp update --name myapp --resource-group mygroup --set-env-vars API_KEY=secretref:api-key\n\nThe application reads API_KEY as an ordinary environment variable. Container Apps retrieves and supplies the secret value."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4777,18 +4777,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets",
           "https://learn.microsoft.com/en-us/azure/container-apps/storage-mounts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4798,7 +4798,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS manifests and rollouts",
       "question": "What does a Kubernetes Deployment manifest describe?",
       "answers": [
-        "The desired application setup: replica count, pod-template labels, container image and settings. Its selector must match the pod-template labels so the Deployment knows which pods it manages. Kubernetes uses this desired state to create and update the actual workload."
+        "It declares the desired pod template, including image, labels and container settings, together with the desired replica count. The Deployment selector must match its pod-template labels. Controllers use that declaration to create and update the actual pods."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4816,17 +4816,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Kubernetes manifests support JSON as well as YAML; replaced the misleading YAML-only description.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4836,7 +4836,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS manifests and rollouts",
       "question": "Which kubectl command creates or updates resources from a manifest file?",
       "answers": [
-        "Run:\nkubectl apply -f deployment.yaml\nThis creates missing resources or updates existing ones to match the manifest’s declared configuration. The controllers then carry out the required changes."
+        "Use kubectl apply -f followed by the manifest path:\nkubectl apply -f deployment.yaml\n\nKubernetes creates missing declared resources or updates existing ones. Their controllers then work to make the running state match the declaration."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4859,18 +4859,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4880,7 +4880,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS manifests and rollouts",
       "question": "What is the sequence for a rolling image update in Kubernetes?",
       "answers": [
-        "Change the container image reference in the Deployment manifest, then run:\nkubectl apply -f deployment.yaml\nkubectl rollout status deployment/myapp\nReplace myapp with the Deployment name. With RollingUpdate, pods are replaced gradually. Readiness checks, available capacity and the update strategy determine whether requests continue to succeed throughout the rollout."
+        "Update the Deployment’s image reference and apply the manifest, then watch the rollout:\nkubectl apply -f deployment.yaml\nkubectl rollout status deployment/myapp\n\nReplace myapp with the Deployment name. With RollingUpdate, old pods are gradually replaced as new ones become ready. Probe settings, rollout limits and available capacity affect whether requests keep succeeding."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4898,17 +4898,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4918,7 +4918,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS manifests and rollouts",
       "question": "Which command rolls a Kubernetes Deployment back?",
       "answers": [
-        "Run kubectl rollout undo deployment/myapp, replacing myapp with the Deployment name. It restores the previous retained pod-template revision. To choose a particular retained revision, add --to-revision=<number>. Monitor the result with kubectl rollout status deployment/myapp."
+        "Use kubectl rollout undo deployment/myapp to restore the previous retained pod-template revision. To select a specific retained revision, add --to-revision=<number>.\n\nCheck the result with kubectl rollout status deployment/myapp. Application data and external configuration require their own recovery plan."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4941,18 +4941,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
           "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -4962,7 +4962,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS manifests and rollouts",
       "question": "How can a pod consume a Kubernetes Secret without embedding its value in the pod manifest?",
       "answers": [
-        "Reference a separately created Secret in the pod specification. Use env.valueFrom.secretKeyRef to populate an environment variable, or mount the Secret as a volume. The pod manifest contains the Secret name and key, rather than the credential value. Protect access to the Secret itself; base64 encoding is not encryption."
+        "Reference a separately created Secret by name. secretKeyRef can populate an environment variable, or a Secret volume can expose values as files.\n\nThe manifest holds the reference rather than the credential. Restrict access to the Secret and protect its storage; base64 encoding alone does not provide encryption."
       ],
       "origin": "original",
       "legacyIds": [
@@ -4980,17 +4980,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/configuration/secret/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5000,7 +5000,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS autoscalers",
       "question": "What resource setting is needed for CPU-utilization-based HPA scaling?",
       "answers": [
-        "CPU requests on the relevant containers. The HPA expresses CPU utilization as a percentage of the requested CPU, so it needs that baseline. Resource metrics, normally supplied by metrics-server, must also be available."
+        "Set CPU requests for the relevant containers. The HPA calculates CPU utilization relative to those requests, so it needs that baseline.\n\nA working resource-metrics provider, normally metrics-server, must also supply the measurements."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5018,17 +5018,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5038,7 +5038,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS autoscalers",
       "question": "Why can KEDA wake a workload from zero replicas when CPU-only scaling cannot?",
       "answers": [
-        "KEDA can scale from external work signals such as messages waiting in a queue. It can therefore detect demand while no app replica is running. CPU-only scaling needs a running pod to produce CPU measurements."
+        "KEDA can detect external demand, such as a queue backlog, even when no application replica is running. It can therefore request the first replica. CPU-only scaling needs a running container to produce its metric."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5061,18 +5061,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5082,7 +5082,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS autoscalers",
       "question": "Which command changes a Deployment's replica count manually?",
       "answers": [
-        "Run kubectl scale deployment/myapp --replicas=5. Replace myapp with the Deployment name. This changes the desired pod count to five; the controller then tries to create or remove pods to match it. An active autoscaler may subsequently change that count again."
+        "Use kubectl scale, for example:\nkubectl scale deployment/myapp --replicas=5\n\nThis sets the desired count to five; Kubernetes then reconciles the running pods. An active autoscaler can later change that count again."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5100,17 +5100,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5120,7 +5120,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS pod troubleshooting",
       "question": "Which two kubectl commands are a useful starting point for investigating an unhealthy pod?",
       "answers": [
-        "Start with kubectl describe pod <pod-name> for status and events, then kubectl logs <pod-name> for application output. Determine whether the failure concerns scheduling, startup, probes or the application before changing configuration."
+        "Use kubectl describe pod <pod-name> to inspect status and events, then kubectl logs <pod-name> to read application output. Establish whether the failure is scheduling, image startup, probe configuration or application behavior before changing settings."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5143,18 +5143,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
           "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5164,7 +5164,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS pod troubleshooting",
       "question": "How do you inspect logs from a container's previous crashed instance?",
       "answers": [
-        "Run kubectl logs <pod-name> --previous. For a multi-container pod, add -c <container-name>. This requests logs from that container’s previous terminated instance in the pod, when those logs are still available. Without --previous, you normally read the current instance’s logs."
+        "Use kubectl logs <pod-name> --previous. Add -c <container-name> for a multi-container pod.\n\nIt retrieves logs from the previous terminated instance of that container in the pod, when available. This is useful when the current instance has already restarted."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5187,18 +5187,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
           "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5208,7 +5208,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS pod troubleshooting",
       "question": "What does ImagePullBackOff indicate?",
       "answers": [
-        "Kubernetes failed to download the container image and is waiting before retrying. Inspect pod events for the cause, such as a wrong tag, missing registry permission or a network/DNS error."
+        "The image pull failed, and Kubernetes is waiting before trying again. Inspect the pod events for the actual cause: common examples include an incorrect image name, missing registry permission or failed network/DNS access."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5231,18 +5231,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/containers/images/",
           "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5252,7 +5252,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS pod troubleshooting",
       "question": "How do you find why a Pending Kubernetes pod cannot be scheduled?",
       "answers": [
-        "Read the scheduler’s events with:\nkubectl describe pod <pod-name>\nLook for FailedScheduling. It can identify insufficient CPU/memory, placement-rule conflicts, taints or storage claims that are not ready. Fix the reported constraint."
+        "Run kubectl describe pod <pod-name> and read the FailedScheduling events. They identify constraints such as insufficient resources, placement rules, taints or storage that is not ready. Fix the reported constraint rather than repeatedly restarting the pod."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5270,17 +5270,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Expanded the overly narrow CPU/memory explanation to cover other scheduler constraints.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5290,7 +5290,7 @@ window.AI200_FLASHCARDS = {
       "title": "AKS pod troubleshooting",
       "question": "Which kubectl commands show current pod or node CPU and memory usage?",
       "answers": [
-        "Use kubectl top pods, or kubectl top nodes for node-level usage. These commands need a working resource-metrics provider, normally metrics-server. They show current CPU and memory measurements, helping distinguish measured usage from the requests/limits in the manifest."
+        "Use kubectl top pods for pod usage or kubectl top nodes for node usage. These commands require a working metrics provider. Compare the measurements with declared requests and limits when investigating resource pressure."
       ],
       "origin": "original",
       "legacyIds": [
@@ -5308,17 +5308,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "The old card mixed events, logs, port forwarding and metrics. The other diagnostics already have dedicated cards; this one now focuses on usage measurements."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5328,7 +5328,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "Which ACR service tier supports geo-replication?",
       "answers": [
-        "The Premium tier. Geo-replication makes the registry available through replicas in multiple Azure regions."
+        "Premium supports geo-replication. It gives one registry replicas in multiple Azure regions, helping deployments pull images from a nearby replica."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5344,17 +5344,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5364,7 +5364,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "Which ACR service tier supports private endpoints?",
       "answers": [
-        "Premium. Its private-endpoint feature lets clients access the registry through a private address in a virtual network."
+        "Premium supports private endpoints. A private endpoint exposes the registry through a private network address; clients also need the appropriate network path, DNS resolution and registry permissions."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5385,18 +5385,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-skus",
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5406,7 +5406,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "Which Azure CLI command imports an existing image into ACR without local Docker?",
       "answers": [
-        "Use az acr import. For example, az acr import --name myregistry --source mcr.microsoft.com/hello-world:latest --image hello-world:v1 copies an existing image into your registry. It transfers image content; it does not build source code."
+        "Use az acr import to copy an existing image into your registry:\naz acr import --name myregistry --source mcr.microsoft.com/hello-world:latest --image hello-world:v1\n\nAzure transfers the image between registries, so the command does not require a local Docker pull and push."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5422,17 +5422,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-import-images"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5442,7 +5442,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "How do you find the login-server hostname to use for an ACR image?",
       "answers": [
-        "Read the registry’s Login server value in Azure, or run:\naz acr show --name myregistry --query loginServer -o tsv\nIt is often myregistry.azurecr.io, but some registries include an additional hash in the hostname. Use the returned value for Docker image names."
+        "Use the registry’s actual Login server value. You can retrieve it with:\naz acr show --name myregistry --query loginServer -o tsv\n\nUse the returned hostname in image names. It is often myregistry.azurecr.io, but some registry naming configurations add a hash."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5458,17 +5458,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Added the hashed login-server format used by domain-name-label-protected registries.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5478,7 +5478,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "What does image signature verification add beyond digest pinning?",
       "answers": [
-        "It verifies that a trusted identity signed the artifact and that its signed content has not changed. A digest identifies content; the signature adds a verifiable signer. Trust depends on the verification policy, and signing alone does not prove that the image has no vulnerabilities."
+        "Signature verification checks that an artifact was signed by an identity your verification policy trusts, and that the signed content is intact. A digest identifies content; the signature also provides evidence about its signer. Vulnerability assessment is a separate check."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5494,17 +5494,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Separated signer authentication and integrity from the broader claim of verified provenance.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tutorial-sign-build-push"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5514,7 +5514,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "What can an ACR repository-scoped token restrict?",
       "answers": [
-        "A token’s scope map specifies which repositories it can access and which operations it may perform, such as reading or writing image content. This can give a client access to one repository without granting access to every repository in the registry."
+        "Its scope map can restrict the repositories and operations the token may use, such as reading images from one repository. This is useful for a client that needs limited registry access without broad permissions to every repository."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5534,17 +5534,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-token-based-repository-permissions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5554,7 +5554,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "What must accompany an ACR private endpoint when public registry access is disabled?",
       "answers": [
-        "Working private connectivity and DNS resolution. The client must be able to reach the private network, and the registry hostname must resolve to the private endpoint’s addresses. Image pull/push permission is still required."
+        "The client needs private network connectivity and DNS that resolves the registry’s endpoints to their private addresses. It also needs permission to pull or push images. A private endpoint changes the network path, while authorization still controls access."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5578,17 +5578,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5598,7 +5598,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "Which ACR capability can recover accidentally deleted artifacts when enabled beforehand?",
       "answers": [
-        "The soft delete policy. Enable it before deletion so artifacts can be recovered during its configured retention period. It is currently a preview feature with restrictions, including unsupported combinations with geo-replication and Artifact Cache."
+        "An enabled soft delete policy can retain deleted artifacts for recovery during its retention period. It must be enabled before the deletion.\n\nThe documented feature is in preview and has restrictions, including unsupported combinations with geo-replication and Artifact Cache. Check those restrictions before relying on it."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5618,17 +5618,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-soft-delete-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5638,7 +5638,7 @@ window.AI200_FLASHCARDS = {
       "category": "acr",
       "question": "Which Azure CLI command lists a repository's tags in ACR?",
       "answers": [
-        "Run az acr repository show-tags --name myregistry --repository myapp. Replace myregistry with the registry name and myapp with the repository name. This lists tag names such as v1 and latest; it does not download the images."
+        "Use az acr repository show-tags:\naz acr repository show-tags --name myregistry --repository orders\n\nThis lists tags in the orders repository, such as v1 and latest. It queries registry metadata rather than downloading the images."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5654,17 +5654,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "ACR tasks and triggers, repository/image permissions, image addressing and private registry access.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5674,7 +5674,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "How does Microsoft Entra Workload ID authenticate an AKS workload?",
       "answers": [
-        "The pod receives a Kubernetes service-account token. Microsoft Entra validates the configured trust for that token and exchanges it for an access token representing the associated Azure identity. The identity’s roles then determine which Azure services it may access."
+        "The pod receives a Kubernetes service-account token. Microsoft Entra validates the configured federation trust and exchanges the token for access as the associated Azure identity. That identity’s Azure permissions determine which services the workload can use."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5706,17 +5706,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5726,7 +5726,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "Which AKS issuer feature is required for service-account federation with Entra Workload ID?",
       "answers": [
-        "The AKS OpenID Connect (OIDC) issuer, together with workload-identity support. The issuer identifies the authority signing the service-account tokens that Microsoft Entra is configured to trust."
+        "Enable the AKS OpenID Connect, or OIDC, issuer and workload-identity support. Microsoft Entra uses the configured issuer, subject and audience trust to validate the pod’s service-account token."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5742,17 +5742,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5762,7 +5762,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "Which Kubernetes resource controls network traffic into or out of pods?",
       "answers": [
-        "A NetworkPolicy. It selects pods and defines allowed incoming and/or outgoing network connections. The cluster’s network implementation must enforce NetworkPolicy for those rules to take effect."
+        "Use a NetworkPolicy to select pods and define allowed incoming or outgoing connections. The cluster’s network implementation must support and enforce NetworkPolicy for those rules to affect traffic."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5778,17 +5778,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/services-networking/network-policies/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5798,7 +5798,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "How is native Kubernetes read-only access limited to one namespace?",
       "answers": [
-        "Create a Role containing the needed read verbs, such as get, list and watch, and bind it to the user or service account with a RoleBinding in that namespace. This grants the specified namespaced access without automatically granting the same permissions across the whole cluster."
+        "Create a Role with the necessary read verbs, such as get, list and watch, then grant it through a RoleBinding in that namespace. Limit the listed resources and verbs to what the user or service account actually needs."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5814,17 +5814,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/reference/access-authn-authz/rbac/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5834,7 +5834,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "Which Azure storage service commonly backs a Kubernetes ReadWriteMany file volume?",
       "answers": [
-        "Azure Files, typically mounted with its CSI driver. ReadWriteMany means multiple pods, including pods on different nodes, can mount and write the shared file volume."
+        "Azure Files commonly supplies a shared file volume through its CSI driver. A ReadWriteMany volume can be mounted for writing by multiple pods, including pods on different nodes, subject to the storage implementation’s capabilities."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5850,17 +5850,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/azure-csi-files-storage-provision"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5870,7 +5870,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "How do ResourceQuota and LimitRange differ in Kubernetes?",
       "answers": [
-        "ResourceQuota limits aggregate use in a namespace, such as total requested CPU or the number of certain objects. LimitRange sets defaults and/or allowed ranges for individual objects, such as container CPU and memory requests and limits. A quota is a namespace budget; a limit range constrains each applicable object."
+        "ResourceQuota limits total resource consumption or object counts within a namespace. LimitRange sets defaults and allowed ranges for individual objects, such as a container’s CPU request.\n\nThink of a quota as the namespace’s overall budget and a limit range as rules for each applicable item."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5895,18 +5895,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
           "https://kubernetes.io/docs/concepts/policy/limit-range/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5916,7 +5916,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "What does Kubernetes imagePullPolicy: Always check at container startup?",
       "answers": [
-        "At startup, the kubelet resolves the image reference through the registry to obtain its digest. If content with that digest is already cached, it can reuse the local layers. Always therefore checks the registry, but does not mean every image layer is downloaded again on every start."
+        "The kubelet checks the registry to resolve the image reference to a digest at container startup. If content for that digest is already cached locally, it can reuse those layers. Always requires a registry check, not necessarily another download of every layer."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5932,17 +5932,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/containers/images/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5952,7 +5952,7 @@ window.AI200_FLASHCARDS = {
       "category": "aks",
       "question": "Why is a toleration alone insufficient to require GPU placement?",
       "answers": [
-        "A toleration permits a pod to run on a node with a matching taint; it does not require that node. Use a node selector or node affinity to require the intended GPU node pool. A workload that actually uses a GPU must also request the appropriate GPU resource, such as nvidia.com/gpu."
+        "A toleration allows placement on a matching tainted node; it does not require placement there. Use a node selector or affinity to require the intended GPU nodes. A workload using a GPU must also request the appropriate GPU resource."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -5972,17 +5972,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Service routing, rollout limits, probes, workload manifests, scheduling and namespace controls.",
         "sources": [
           "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -5992,7 +5992,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "How do internal and external Container Apps ingress differ?",
       "answers": [
-        "Internal ingress accepts direct app traffic only from within the same Container Apps environment. External ingress allows traffic from outside that environment. External does not necessarily mean public internet access: an internal/private environment and network restrictions can still limit who can reach the app."
+        "Internal ingress accepts direct app traffic from within the same Container Apps environment. External ingress accepts traffic from outside that environment.\n\nThe environment’s own networking still matters: external app ingress in a private environment can remain privately reachable."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6012,17 +6012,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6032,7 +6032,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "Which Container Apps workload profile uses allocated compute instances?",
       "answers": [
-        "A Dedicated workload profile. It allocates compute instances with selected CPU and memory sizes for apps to use. You pay for the allocated profile capacity, which can suit sustained workloads."
+        "A Dedicated workload profile allocates compute instances with a selected CPU and memory configuration. Apps share that profile’s capacity, and billing reflects the allocated capacity. It can suit sustained workloads that need predictable resources."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6057,18 +6057,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview",
           "https://learn.microsoft.com/en-us/azure/container-apps/billing"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6078,7 +6078,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "What is required to serve a Container App through a custom HTTPS hostname?",
       "answers": [
-        "Configure DNS for the hostname, bind that hostname to the app and associate a valid TLS certificate. For example, api.example.com must resolve to the app and have a certificate valid for api.example.com."
+        "Configure the hostname’s DNS records, bind the hostname to the app and associate a valid TLS certificate. For api.example.com, clients must resolve the name to the app and receive a certificate valid for that name."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6094,17 +6094,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/custom-domains-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6114,7 +6114,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "How can Container Apps require Microsoft Entra sign-in without implementing the sign-in flow in app code?",
       "answers": [
-        "Enable Container Apps built-in authentication and select Microsoft Entra ID as the provider. The platform handles sign-in and checks authentication before forwarding requests to your code. The app still decides which authenticated users may perform particular actions."
+        "Enable built-in authentication and configure Microsoft Entra ID as the identity provider. The platform handles sign-in and authentication checks before forwarding requests. Your application still needs authorization rules for what each authenticated user may do."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6130,17 +6130,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/authentication"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6150,7 +6150,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "How is Azure Files mounted in a Container App?",
       "answers": [
-        "Register the Azure Files share on the Container Apps environment, add an app volume referring to that registration, and mount the volume at a container path. The application then accesses the share as files at that path."
+        "Register the Azure Files share with the Container Apps environment, reference it in an app volume, and mount that volume at a container path. The application can then read and write the share through that filesystem path."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6170,17 +6170,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/storage-mounts"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6190,7 +6190,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "Where should a failing Container Apps revision's provisioning errors be investigated?",
       "answers": [
-        "Start with the revision’s provisioning status and system logs. They show platform problems such as image-pull or startup failures. If the container started, also read its console logs for errors reported by the application."
+        "Inspect the revision’s provisioning status and system logs for platform failures such as image-pull problems. If the container started, inspect console logs for application errors. The two log sources help distinguish platform setup from code failures."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6211,18 +6211,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/log-monitoring",
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6232,7 +6232,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "Where do you allow or block client IP ranges for a Container App?",
       "answers": [
-        "In the app’s ingress IP restrictions. Add allow or deny rules for the required client address ranges. These rules control which client networks may reach the app."
+        "Configure IP restrictions on the app’s ingress. Allow or deny rules select client address ranges permitted to reach the endpoint. Test from the intended client network after changing the rules."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6248,17 +6248,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6268,7 +6268,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "Which Container Apps HTTP ingress transport supports end-to-end HTTP/2 such as gRPC?",
       "answers": [
-        "HTTP ingress with transport set to http2. The application must also serve HTTP/2 on its target port for end-to-end HTTP/2, including gRPC."
+        "Use HTTP ingress with transport set to http2. The application must also serve HTTP/2 on its configured target port for an end-to-end HTTP/2 connection, including gRPC."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6284,17 +6284,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6304,7 +6304,7 @@ window.AI200_FLASHCARDS = {
       "category": "container-apps",
       "question": "Why should a Container Apps container handle termination gracefully during a revision change?",
       "answers": [
-        "To finish or safely stop work before the platform forcibly terminates the process. Handle the termination signal, stop accepting new work and save any progress needed for a retry. The shutdown grace period is limited."
+        "A container should stop accepting new work, finish or safely interrupt active work, and save progress when it receives the termination signal. The platform allows only a limited grace period before forcing shutdown, so interrupted work must be safe to retry."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -6320,17 +6320,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Container Apps ingress, revision/app scope, scaling configuration, secret resolution and preview label mode.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-apps/containers"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6342,7 +6342,7 @@ window.AI200_FLASHCARDS = {
       "title": "Database",
       "question": "What is a database?",
       "answers": [
-        "An organized store of data that an application can read and change. For example, an orders database keeps customer orders so the application can retrieve them later. A database system, such as PostgreSQL, manages that data."
+        "A database is an organized store of data an application can retrieve and change. A database system manages that storage and access; an order-tracking app might use it to keep orders and their status."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6359,18 +6359,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://www.postgresql.org/docs/current/tutorial-sql.html",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/resource-model"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6382,7 +6382,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL",
       "question": "What is PostgreSQL?",
       "answers": [
-        "An open-source relational database system. It stores data in tables and supports SQL queries and transactions. Azure Database for PostgreSQL provides it as a managed service, so Azure handles infrastructure tasks such as server maintenance."
+        "PostgreSQL is an open-source relational database system. It stores data in tables and supports SQL queries, transactions and extensions. Azure Database for PostgreSQL provides a managed hosting service for it."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6399,18 +6399,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://www.postgresql.org/docs/current/tutorial-sql.html",
           "https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6422,7 +6422,7 @@ window.AI200_FLASHCARDS = {
       "title": "SQL",
       "question": "What does SQL stand for?",
       "answers": [
-        "Structured Query Language. It is a language for querying and changing data, especially in relational databases. For example, SELECT name FROM customers retrieves the names stored in a customers table."
+        "SQL stands for Structured Query Language. It is used to define, read and change data in databases. For example, SELECT name FROM customers retrieves the name column from the customers table."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6439,18 +6439,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://www.postgresql.org/docs/current/tutorial-sql.html",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/resource-model"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6462,7 +6462,7 @@ window.AI200_FLASHCARDS = {
       "title": "Database transaction",
       "question": "What is a database transaction?",
       "answers": [
-        "A group of database operations treated as one unit. Committing makes the changes permanent; rolling back cancels them. For example, a money transfer should subtract from one account and add to the other together, or do neither."
+        "A transaction groups database operations into one unit of work. A successful commit makes its changes permanent; a rollback discards them. A money transfer, for example, should debit one account and credit the other together."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6474,17 +6474,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/databases/guide/transactional-out-box-cosmos"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6496,7 +6496,7 @@ window.AI200_FLASHCARDS = {
       "title": "Database index",
       "question": "What is a database index?",
       "answers": [
-        "An extra data structure that helps the database find records without examining every record. Like a book index, it helps locate information quickly. It takes storage and must be updated when the indexed data changes."
+        "An index is an additional data structure that helps a database locate matching records efficiently. Like a book’s index, it can avoid searching the whole collection. It uses storage and adds maintenance work when indexed data changes."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6513,18 +6513,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6536,7 +6536,7 @@ window.AI200_FLASHCARDS = {
       "title": "Embedding",
       "question": "What is an embedding?",
       "answers": [
-        "A numeric representation of content, often produced by a machine-learning model. For example, a sentence can become a list of numbers whose relationships help represent its meaning. Similarity search compares compatible embeddings; it does not compare the original sentences directly."
+        "An embedding is a numeric representation of content, usually produced by a machine-learning model. A sentence can be represented as a vector so an application can search for related meaning. Stored and query embeddings must come from compatible models and configurations."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6553,18 +6553,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6576,7 +6576,7 @@ window.AI200_FLASHCARDS = {
       "title": "Vector",
       "question": "What is a vector in similarity search?",
       "answers": [
-        "An ordered list of numbers, such as [0.2, -0.4, 0.7]. Each position is a dimension. A model-generated embedding is commonly stored as a vector, and search compares it with other vectors using a distance or similarity measure."
+        "A vector is an ordered list of numbers, such as [0.2, -0.4, 0.7]. Each position is a dimension. Vector search compares a query vector with stored vectors using a chosen distance or similarity measure."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6588,17 +6588,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6610,7 +6610,7 @@ window.AI200_FLASHCARDS = {
       "title": "Vector dimensions",
       "question": "What does the dimension count of a vector mean?",
       "answers": [
-        "The number of numeric components in the vector. A 1,536-dimensional embedding contains 1,536 numbers. Stored vectors, the query vector and the index configuration must use compatible dimensions."
+        "The dimension count is the number of components in a vector. A 1,536-dimensional embedding contains 1,536 numbers. Stored embeddings, query vectors and index settings must use compatible dimensions."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6627,18 +6627,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6650,7 +6650,7 @@ window.AI200_FLASHCARDS = {
       "title": "KNN",
       "question": "What does KNN mean in vector search?",
       "answers": [
-        "K-nearest neighbors: finding the k closest stored vectors to a query vector according to a chosen distance measure. For example, k=5 requests the five nearest matches."
+        "KNN means k-nearest neighbors. A search requests the k stored vectors closest to a query vector under its chosen metric. For example, k=5 asks for five neighbors."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6667,18 +6667,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6690,7 +6690,7 @@ window.AI200_FLASHCARDS = {
       "title": "ANN",
       "question": "What does ANN stand for in vector search?",
       "answers": [
-        "Approximate nearest neighbor. It finds close vectors quickly without guaranteeing the exact closest results. For example, a search can examine promising candidates instead of comparing the query against every stored vector."
+        "ANN means approximate nearest neighbor. An approximate search examines promising candidates to find close vectors efficiently, rather than guaranteeing that it found the exact nearest results. Recall measures the quality of that approximation."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6707,18 +6707,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://github.com/pgvector/pgvector",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6730,7 +6730,7 @@ window.AI200_FLASHCARDS = {
       "title": "HNSW",
       "question": "What does HNSW stand for?",
       "answers": [
-        "Hierarchical Navigable Small World. It is a graph-based method for approximate nearest-neighbor search: connected vectors help the search navigate toward likely matches. It can make large searches efficient, but uses index memory and can miss some exact neighbors."
+        "HNSW stands for Hierarchical Navigable Small World. It builds a graph of connected vectors so a search can navigate toward likely neighbors. It can speed up approximate search over large collections, at the cost of index memory and some possible loss of exact recall."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6742,17 +6742,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6764,7 +6764,7 @@ window.AI200_FLASHCARDS = {
       "title": "IVFFlat",
       "question": "What is an IVFFlat vector index?",
       "answers": [
-        "An inverted-file index with flat vector comparisons inside selected lists. It groups representative vectors into lists, then searches a chosen subset of those lists for each query. Searching more lists usually improves recall but performs more work."
+        "IVFFlat divides vectors into lists and compares the query with vectors in selected lists. It is an approximate index: searching more lists usually improves recall but increases work. Building useful lists requires representative data."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6776,17 +6776,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6798,7 +6798,7 @@ window.AI200_FLASHCARDS = {
       "title": "Search recall",
       "question": "What does recall mean in approximate vector search?",
       "answers": [
-        "The proportion of the exact nearest results that an approximate search finds. For example, if it returns eight of the exact ten nearest vectors, recall at ten is 80%. It helps measure the search-quality cost of using a faster approximate index."
+        "Recall measures how many of the exact nearest results an approximate search finds. If it finds eight of the exact ten nearest vectors, recall at ten is 80%. Compare this quality measure alongside query latency."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6810,17 +6810,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6832,7 +6832,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector",
       "question": "What is pgvector?",
       "answers": [
-        "A PostgreSQL extension for storing vectors and finding similar vectors. It adds vector types, distance operators and index options such as HNSW and IVFFlat. The project is named pgvector, but the SQL extension is enabled as vector."
+        "pgvector is a PostgreSQL extension that adds vector data types, similarity operators and vector indexes, including HNSW and IVFFlat. Enable the SQL extension using CREATE EXTENSION vector; the extension name is vector."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6849,18 +6849,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://github.com/pgvector/pgvector",
           "https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6872,7 +6872,7 @@ window.AI200_FLASHCARDS = {
       "title": "Connection pool",
       "question": "What is a database connection pool?",
       "answers": [
-        "A reusable set of established database connections that requests borrow and return. It avoids opening a fresh network/database connection for every query. Pool size limits how many connections that pool can use; multiple application instances can each have a separate pool."
+        "A connection pool keeps established database connections available for requests to borrow and return. Reusing connections avoids repeating connection setup for every query. Size the combined pools across all application instances to fit the database’s connection capacity."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6884,17 +6884,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://www.psycopg.org/psycopg3/docs/advanced/pool.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6906,7 +6906,7 @@ window.AI200_FLASHCARDS = {
       "title": "PgBouncer",
       "question": "What is PgBouncer?",
       "answers": [
-        "A connection-pooling proxy for PostgreSQL. Applications connect to PgBouncer, which reuses a smaller set of connections to the database server. This reduces the overhead of opening and closing database connections."
+        "PgBouncer is a PostgreSQL connection-pooling proxy. Applications connect to it, and it reuses database-server connections. This can reduce connection setup overhead and the number of server connections needed by many application clients."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6918,17 +6918,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6940,7 +6940,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos DB",
       "question": "What is Azure Cosmos DB?",
       "answers": [
-        "A managed database service designed to distribute data across regions and scale access to it. With its NoSQL API, applications store JSON-like records called items in containers."
+        "Azure Cosmos DB is a managed database service designed for scalable, distributed data access. Its NoSQL API stores JSON-like items in containers and supports querying, partitioning and configurable read consistency."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6952,17 +6952,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/resource-model"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -6974,7 +6974,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos DB container",
       "question": "What is a container in Cosmos DB?",
       "answers": [
-        "A collection of items with shared settings such as partitioning and indexing. A database contains containers, and containers contain items. This is a data-storage concept, not an application container running from a Docker image."
+        "A Cosmos DB container holds items and shares settings such as partitioning and indexing. A database contains containers, and each container contains its items. This container is a data collection, unlike a running application container."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -6986,17 +6986,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/resource-model"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7008,7 +7008,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos DB partition key",
       "question": "What is a partition key in Cosmos DB?",
       "answers": [
-        "The item property used to group related data into logical partitions. If customerId is the partition key, items with the same customerId belong together logically. This affects data distribution and which requests can target one partition instead of searching across many."
+        "A partition key selects the property used to group items into logical partitions. With customerId as the key, items for one customer share a logical partition. The choice affects how evenly data is distributed and whether common requests can target one partition."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7020,17 +7020,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/partitioning-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7042,7 +7042,7 @@ window.AI200_FLASHCARDS = {
       "title": "Request unit (RU)",
       "question": "What is a request unit in Cosmos DB?",
       "answers": [
-        "A request unit (RU) measures how much database work an operation consumes, including processor, memory and input/output work. Reading a small item usually costs fewer RUs than running an expensive query. One RU does not mean one request."
+        "RU means request unit, a measure of the resources consumed by a Cosmos DB operation. A small point read usually uses less work than a complex query. Different operations can therefore consume different numbers of RUs."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7054,17 +7054,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7076,7 +7076,7 @@ window.AI200_FLASHCARDS = {
       "title": "RU/s",
       "question": "What does RU/s measure in Cosmos DB?",
       "answers": [
-        "Request units per second: the rate of database work available as throughput. For example, 1,000 RU/s can support different request counts depending on how many request units each operation uses. It measures capacity over time; RU measures the work consumed by an operation."
+        "RU/s means request units per second, a rate of database throughput. A 1,000 RU/s budget can serve different numbers of requests depending on each request’s cost. RU measures work; RU/s measures the available rate of work."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7093,18 +7093,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/autoscale-faq",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7116,7 +7116,7 @@ window.AI200_FLASHCARDS = {
       "title": "Read consistency",
       "question": "What does consistency mean for a distributed database read?",
       "answers": [
-        "The rules determining how up to date a read must be after data changes. Strong consistency returns the latest committed value; weaker models can permit an older value under specified rules. This matters when different replicas may have received updates at different times."
+        "Read consistency defines which versions of data a read may return after writes occur. Strong consistency provides the latest committed value; weaker levels permit specified forms of lag or ordering behavior. The choice trades guarantees against factors such as latency and throughput."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7128,17 +7128,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7150,7 +7150,7 @@ window.AI200_FLASHCARDS = {
       "title": "Change feed",
       "question": "What is a change feed in Cosmos DB?",
       "answers": [
-        "An incremental stream of item changes that another component can process, such as updating a search index after a document changes. It avoids repeatedly scanning all items. What versions and deletes are available depends on the configured feed mode."
+        "Cosmos DB change feed is a built-in change data capture, or CDC, mechanism. It lets consumers process item changes asynchronously without the application explicitly publishing an event for each database write.\n\nFor example, a consumer can update a search index when a document changes. The feed mode determines whether intermediate versions and deletes are available."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7162,17 +7162,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7184,7 +7184,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis",
       "question": "What is Redis?",
       "answers": [
-        "A data store designed for fast access to in-memory data structures such as strings, hashes and sorted sets. It is often used as a cache in front of another database, but also supports other workloads. Persistence and replication depend on configuration."
+        "Redis is a data store designed for fast access to in-memory data structures. An application can use it to cache database results or store data for other supported workloads. Persistence, replication and supported features depend on the service configuration."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7201,18 +7201,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
           "https://redis.io/docs/latest/develop/data-types/sorted-sets/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7224,7 +7224,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cache",
       "question": "What is a cache?",
       "answers": [
-        "A store of reusable data kept where it can be retrieved quickly. For example, an app can keep a database result in Redis to avoid repeating the same query. The cached copy can become outdated, so its lifetime and refresh/invalidation rules matter."
+        "A cache keeps reusable data where an application can retrieve it quickly. For example, Redis can hold a database query result to avoid repeating the query. The application needs a policy for freshness, expiration and invalidation."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7236,17 +7236,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7258,7 +7258,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cache hit",
       "question": "What is a cache hit?",
       "answers": [
-        "The requested value is found in the cache and can be used. The application can return it without reading the original database again. Whether that cached value is still fresh depends on the application's expiration and refresh rules."
+        "A cache hit means the requested value is available in the cache. The application can use it without loading the source again, provided the cached value satisfies its freshness and access requirements."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7270,17 +7270,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7292,7 +7292,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cache miss",
       "question": "What is a cache miss?",
       "answers": [
-        "The requested value is absent or unusable in the cache. In a cache-aside design, the application then reads the original database and may cache the result for later requests."
+        "A cache miss means the requested value is missing or unusable. In cache-aside, the application loads the value from the source database, returns it and usually saves a copy in the cache."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7304,17 +7304,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7326,7 +7326,7 @@ window.AI200_FLASHCARDS = {
       "title": "TTL",
       "question": "What does TTL stand for?",
       "answers": [
-        "Time to Live: a configured lifetime before a stored item or key expires. For example, a Redis value with a 600-second TTL normally expires after ten minutes unless the lifetime is changed. Expiration is driven by time, while eviction removes eligible data because of memory pressure."
+        "TTL stands for Time to Live: a lifetime after which stored data expires. A Redis value with a 600-second TTL expires after about ten minutes unless its expiry is changed. The expiry clock is separate from memory-pressure eviction."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7338,17 +7338,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://redis.io/docs/latest/commands/expire/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7360,7 +7360,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cache eviction",
       "question": "What is eviction in a Redis cache?",
       "answers": [
-        "Removing keys to free memory when the configured memory limit is reached. The eviction policy decides which keys are eligible and how to choose among them. It can remove data before its expiry time; noeviction instead rejects operations that need more memory."
+        "Eviction removes eligible cached data to make room when Redis reaches its memory limit. The configured policy selects the keys that may be discarded. NoEviction instead retains the keys and can reject writes that need more memory."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7372,17 +7372,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://redis.io/docs/latest/develop/reference/eviction/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7394,7 +7394,7 @@ window.AI200_FLASHCARDS = {
       "title": "LRU",
       "question": "What does LRU stand for?",
       "answers": [
-        "Least Recently Used. An eviction policy based on LRU favors removing data that has not been accessed recently. Redis approximates this choice rather than tracking a perfect ordering of every access."
+        "LRU stands for Least Recently Used. An LRU eviction policy favors removing keys that have not been accessed recently. Redis uses an approximation rather than maintaining an exact ordering of every access."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7406,17 +7406,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://redis.io/docs/latest/develop/reference/eviction/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7428,7 +7428,7 @@ window.AI200_FLASHCARDS = {
       "title": "LFU",
       "question": "What does LFU stand for?",
       "answers": [
-        "Least Frequently Used. An eviction policy based on LFU favors removing data that is accessed least often. Redis estimates access frequency and lets older access history lose influence over time."
+        "LFU stands for Least Frequently Used. An LFU eviction policy favors removing keys used less often. Redis estimates usage frequency and reduces the influence of older access history over time."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7440,17 +7440,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://redis.io/docs/latest/develop/reference/eviction/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7462,7 +7462,7 @@ window.AI200_FLASHCARDS = {
       "title": "RAG",
       "question": "What does RAG stand for?",
       "answers": [
-        "Retrieval-Augmented Generation. Before generating an answer, the application retrieves relevant material and supplies it as context to the language model. For example, it can retrieve company documents through vector search. Retrieval provides context; it does not guarantee that every generated statement is correct."
+        "RAG stands for Retrieval-Augmented Generation. Before generating an answer, an application retrieves relevant material and supplies it to the language model as context. For example, vector search can find help articles relevant to a customer’s question. Retrieved material still needs appropriate access checks and answer validation."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7474,17 +7474,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7496,7 +7496,7 @@ window.AI200_FLASHCARDS = {
       "title": "GIN",
       "question": "What does GIN stand for in PostgreSQL?",
       "answers": [
-        "Generalized Inverted Index. A PostgreSQL index that helps find rows containing particular values within documents or arrays. For example, it can speed up supported searches inside JSONB data."
+        "GIN stands for Generalized Inverted Index. It maps values found inside composite data, such as arrays or JSONB documents, to the rows containing them. This helps supported membership and containment queries."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7508,17 +7508,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://www.postgresql.org/docs/current/datatype-json.html#JSON-INDEXING"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7530,7 +7530,7 @@ window.AI200_FLASHCARDS = {
       "title": "DiskANN",
       "question": "What is DiskANN?",
       "answers": [
-        "A family of graph-based algorithms for approximate nearest-neighbor search, designed to search large vector collections efficiently, including collections stored on disk. Cosmos DB offers a diskANN vector-index option."
+        "DiskANN is a family of graph-based approximate nearest-neighbor algorithms designed for efficient search over large vector collections. Cosmos DB exposes a diskANN vector index that trades some exactness for more efficient retrieval."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7542,17 +7542,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7564,7 +7564,7 @@ window.AI200_FLASHCARDS = {
       "title": "NoSQL",
       "question": "What does NoSQL describe?",
       "answers": [
-        "Database models that do not require the traditional relational-table model, such as document or key-value stores. The name does not mean SQL-like queries are impossible. Cosmos DB for NoSQL stores items in containers while still supporting its own SQL-style query language."
+        "NoSQL describes database approaches such as document and key-value storage that differ from the traditional relational-table model. Some still offer SQL-style query languages. Cosmos DB for NoSQL, for example, stores items in containers and supports SQL-style queries."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -7576,60 +7576,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Database, vector retrieval and caching vocabulary, with storage/index and similarity/distance distinctions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/resource-model"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "prep-redis-004",
-      "domain": 2,
-      "title": "Sorted leaderboard",
-      "category": "terms-2",
-      "question": "Which Redis data type maintains members ordered by a score?",
-      "answers": [
-        "A sorted set, also called a ZSET. Each unique member has a numeric score, and Redis orders members by that score. For example, ZADD leaderboard 100 alice stores Alice’s score; ZRANGE leaderboard 0 -1 WITHSCORES lists members from lowest to highest score."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · redis-004",
-          "url": "https://ai200prep.com/questions/redis-004/"
-        },
-        {
-          "label": "AI-200 Prep · p-red-008",
-          "url": "https://ai200prep.com/questions/p-red-008/"
-        },
-        {
-          "label": "Redis · Sorted sets",
-          "url": "https://redis.io/docs/latest/develop/data-types/sorted-sets/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/develop/data-types/sorted-sets/"
-        ]
-      },
-      "coverageCategory": "redis",
-      "kind": "term",
-      "term": "Sorted set (ZSET)",
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7639,7 +7596,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos consistency levels",
       "question": "What read guarantee does Cosmos DB Strong consistency provide?",
       "answers": [
-        "The read returns the latest committed version of the item. This guarantee applies across the account’s regions. Strong consistency is unavailable when multiple write regions are enabled."
+        "Strong consistency returns the latest committed item version. It provides a stronger freshness guarantee across the account’s regions, with corresponding latency and availability trade-offs. Cosmos DB does not support this level with multiple write regions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7657,17 +7614,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7677,7 +7634,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos consistency levels",
       "question": "How far behind can Cosmos DB reads be with Bounded staleness consistency?",
       "answers": [
-        "At most the configured number of item versions, K, or time interval, T, whichever bound is reached first. Reads can be stale within those limits, but the service prevents replication lag from growing beyond them."
+        "Lag is bounded by the configured version count K or time interval T, whichever limit is reached first. The service constrains cross-region replication lag; exceeding the bound can cause writes for an affected partition to be throttled until replication catches up."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7695,17 +7652,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7715,7 +7672,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos consistency levels",
       "question": "Which Cosmos DB consistency level provides session read-your-own-writes?",
       "answers": [
-        "Session consistency, the default. Reads using the same session token can see that session’s successful writes. Other client sessions do not automatically receive the same guarantee about those writes."
+        "Session consistency provides read-your-own-writes when reads carry the relevant session token. The SDK tracks these tokens for a reused client. If work moves to another client, preserve the session context when that guarantee is required."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7733,17 +7690,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7751,9 +7708,9 @@ window.AI200_FLASHCARDS = {
       "domain": 2,
       "category": "cosmos",
       "title": "Cosmos consistency levels",
-      "question": "What ordering guarantee does Cosmos DB Consistent prefix provide?",
+      "question": "What does Cosmos DB Consistent prefix guarantee for transactional batch writes?",
       "answers": [
-        "A reader sees writes in order, without gaps in the visible sequence. If writes happen as A, then B, then C, the reader might see only A or A and B, but not C followed by A. There is no configured maximum age for the data returned."
+        "The current documentation describes consistent visibility for writes made together in a transactional batch: a reader sees the committed changes together rather than a mixture of versions from that transaction.\n\nIt describes separate single-document writes at this level as eventually consistent. Avoid treating the level as a global ordering guarantee for arbitrary independent writes."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7771,17 +7728,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "corrected",
+        "note": "The previous A/B/C example implied a general ordering guarantee. Current primary documentation distinguishes transactional batches from independent single-document writes.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7791,7 +7748,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos consistency levels",
       "question": "What does Cosmos DB Eventual consistency guarantee?",
       "answers": [
-        "If writes stop, replicas eventually converge on the same value. Until then, a read may return older data, with no configured maximum lag or guaranteed write ordering."
+        "Replicas converge if writes stop, but reads may return older data while replication catches up. Eventual consistency does not set a maximum lag or guarantee that successive reads will observe monotonically newer versions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7809,17 +7766,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7829,7 +7786,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos consistency levels",
       "question": "What are the minimum Bounded staleness settings for single-region and multi-region Cosmos DB accounts?",
       "answers": [
-        "Single-region accounts: 10 item versions or 5 seconds. Multi-region accounts: 100,000 versions or 300 seconds. These are the lowest permitted staleness-bound settings, not the normal lag every read will experience."
+        "The documented minimum settings are 10 versions or 5 seconds for a single-region account, and 100,000 versions or 300 seconds for a multi-region account.\n\nThese are configuration limits for the allowed staleness bound. They do not mean that every read normally lags by that amount."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7847,17 +7804,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7867,7 +7824,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos consistency levels",
       "question": "Which Cosmos DB consistency levels bound cross-region staleness?",
       "answers": [
-        "Strong and Bounded staleness. Strong returns the latest committed data; Bounded staleness permits lag only within configured version/time limits."
+        "Strong consistency requires the latest committed data. Bounded staleness allows cross-region lag only within the configured version/time bounds. Session, Consistent prefix and Eventual consistency do not provide the same account-wide staleness bound."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7885,17 +7842,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7905,7 +7862,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector indexes",
       "question": "What distinguishes a Cosmos DB flat vector index?",
       "answers": [
-        "It compares all candidate vectors at their configured precision to find exact nearest matches, giving 100% recall. It supports up to 505 dimensions. It is exhaustive rather than an approximate graph search."
+        "A flat index performs exhaustive comparisons to find the exact nearest vectors under the selected metric. It offers full recall but supports at most 505 dimensions in Cosmos DB. Larger datasets can make exhaustive search more expensive."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7923,17 +7880,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7943,7 +7900,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector indexes",
       "question": "What distinguishes a Cosmos DB quantizedFlat vector index?",
       "answers": [
-        "It compresses vectors to lower-precision values, then searches those values exhaustively. This can reduce index size and query cost, with a possible loss of accuracy. It supports up to 4,096 dimensions."
+        "quantizedFlat compresses vectors to lower precision, then searches the compressed representation exhaustively. Compression can reduce index size and query cost, with some loss of precision or recall. The documented dimension limit is 4,096."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7961,17 +7918,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -7981,7 +7938,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector indexes",
       "question": "What distinguishes a Cosmos DB DiskANN vector index?",
       "answers": [
-        "It uses a graph-based approximate search instead of comparing every candidate vector. This can make large searches more efficient, with a trade-off in exactness. It supports up to 4,096 dimensions."
+        "diskANN uses a graph to search promising vector candidates approximately. It can make large collections more efficient to search, while potentially missing some exact nearest neighbors. Cosmos DB supports up to 4,096 dimensions for this index type."
       ],
       "origin": "original",
       "legacyIds": [
@@ -7999,17 +7956,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8019,7 +7976,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector indexes",
       "question": "What happens to Cosmos DB quantizedFlat or DiskANN searches with fewer than 1,000 vectors?",
       "answers": [
-        "quantizedFlat and DiskANN searches fall back to a full scan. Those index types need at least 1,000 vectors for the intended quantized indexing behavior. Results are still possible, but the scan can cost more request units."
+        "The documented threshold is at least 1,000 vectors for the quantization used by these indexes. With fewer vectors, the query falls back to a full scan. It can still return results, but may use more request units."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8037,17 +7994,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8057,7 +8014,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector indexes",
       "question": "Which distance functions can a Cosmos DB vector embedding policy use?",
       "answers": [
-        "cosine, dotproduct and euclidean. Cosine is the default and compares direction; dot product incorporates direction and magnitude; Euclidean distance measures straight-line distance. Choose the function expected by the embedding model, and use it consistently for indexing and search."
+        "The policy supports cosine, dotproduct and euclidean. Cosine compares direction; dot product also depends on magnitude; Euclidean distance measures straight-line separation. Use a metric compatible with the embedding model and keep stored vectors, queries and index settings consistent."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8075,17 +8032,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8095,7 +8052,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector indexes",
       "question": "Can an existing Cosmos DB vector embedding policy be edited in place?",
       "answers": [
-        "No. Create another container with the desired vector embedding policy and migrate the items. Settings such as dimensions and distance function belong to that creation-time policy."
+        "No. The vector embedding policy is defined when the container is created. To change that policy, create a container with the required configuration and migrate the items. Treat this separately from other supported indexing-policy updates."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8113,17 +8070,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8133,7 +8090,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos RU and throttling",
       "question": "How many request units does a typical 1-KB Cosmos DB point read cost?",
       "answers": [
-        "About 1 RU for a direct read by id and partition key under Session, Consistent prefix or Eventual consistency. Strong and Bounded staleness reads cost twice as much, about 2 RU for that item size."
+        "A typical 1-KB point read by id and partition key costs about 1 RU with Session, Consistent prefix or Eventual consistency. Strong and Bounded staleness reads cost about twice as much. A query is a different operation and can have a different cost."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8151,17 +8108,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Qualified the 1-RU claim: strong and bounded-staleness reads have double the RU cost. Removed the unrelated, indexing-dependent write estimate.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Changed “throughput consumed” to an operation’s RU cost; throughput is a rate, while this question asks about one read."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8171,7 +8128,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos RU and throttling",
       "question": "Within what range does Cosmos DB autoscale adjust provisioned RU/s?",
       "answers": [
-        "From 10% to 100% of the configured maximum RU/s. For example, a maximum of 10,000 RU/s gives an autoscale range of 1,000–10,000 RU/s."
+        "Autoscale adjusts between 10% and 100% of the configured maximum throughput. A maximum of 10,000 RU/s therefore permits a range of 1,000 to 10,000 RU/s. Set the maximum to accommodate expected demand and cost."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8189,17 +8146,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/autoscale-faq"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8209,7 +8166,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos RU and throttling",
       "question": "How does the Cosmos DB SDK handle throughput throttling?",
       "answers": [
-        "It receives HTTP 429 and normally waits for the delay in x-ms-retry-after-ms before retrying. The header is measured in milliseconds. Automatic retries have configured limits, so an exhausted retry policy can still return the error to your application."
+        "When Cosmos DB returns HTTP 429, its retry-after header tells the SDK how long to wait before retrying. x-ms-retry-after-ms is measured in milliseconds.\n\nSDK retry limits still apply. If throttling persists beyond them, the application must handle the failure and investigate capacity, hot partitions or excessive query cost."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8227,17 +8184,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/troubleshoot-request-rate-too-large"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8247,7 +8204,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos RU and throttling",
       "question": "Where is Cosmos DB shared throughput configured?",
       "answers": [
-        "At database level. Participating containers share that database’s RU/s budget, so a busy container can consume capacity the others also need. Dedicated throughput gives a container its own budget."
+        "Configure shared throughput on the database. Participating containers use the same RU/s budget, so a busy container can affect the others. A container with dedicated throughput has its own capacity budget."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8270,17 +8227,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/set-throughput"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8290,7 +8247,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos change feed",
       "question": "What does Cosmos DB latest-version change feed omit?",
       "answers": [
-        "Deletes and potentially intermediate updates. If an item changes several times before the reader catches up, it may receive only the latest version. The latest-version feed is therefore useful for reacting to current changes, but not as a complete audit log."
+        "It omits deletes and can omit intermediate versions when an item changes repeatedly before the reader catches up. It is useful for reacting to the latest item state, rather than reconstructing a complete audit history."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8308,17 +8265,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Clarified that latest-version retention does not provide an unlimited history: intermediate versions and deleted items are not retained as change events.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8328,7 +8285,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos change feed",
       "question": "What does Cosmos DB all-versions-and-deletes change feed require?",
       "answers": [
-        "Continuous backup on an Azure Cosmos DB for NoSQL account. The mode exposes intermediate versions and delete records within the continuous-backup retention window."
+        "It requires continuous backup on a Cosmos DB for NoSQL account. Changes are readable only within that backup retention window. This mode includes intermediate versions and delete records; check its current preview and SDK support when choosing a reader."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8346,17 +8303,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8366,7 +8323,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos change feed",
       "question": "What state does a Cosmos DB lease container store?",
       "answers": [
-        "Ownership of feed ranges and checkpoints recording processing progress. Worker instances use these leases to divide work and resume after scaling or failure."
+        "It stores leases identifying which worker owns each feed range, together with checkpoints recording how far processing has reached. This lets workers share work and resume after a restart or ownership change."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8389,17 +8346,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8409,7 +8366,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos change feed",
       "question": "Which partition key is used for a partitioned Cosmos DB lease container?",
       "answers": [
-        "Use /id. Each lease document’s id is also its partition-key value. This is a requirement for a partitioned lease container used by the change feed processor; the monitored data container can use a different partition key."
+        "Use /id for a partitioned lease container used by the change feed processor. Each lease document’s id supplies that partition-key value. The monitored data container has its own independently chosen partition key."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8427,17 +8384,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8447,7 +8404,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos indexing policy",
       "question": "Which Cosmos DB indexing modes are available in the policy?",
       "answers": [
-        "consistent and none. consistent updates the index with each write and is the default. none disables indexing. These names describe index maintenance, which is separate from the read-consistency level."
+        "Use consistent for synchronous index maintenance, or none to disable indexing. Consistent is the normal default for new containers.\n\nThese settings control index maintenance. They are separate from the account’s read-consistency level; legacy lazy indexing is not a normal choice for a new container."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8465,17 +8422,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8485,7 +8442,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos indexing policy",
       "question": "What does the default Cosmos DB included path /* mean?",
       "answers": [
-        "Index every property path, including nested properties, unless a more specific exclusion applies. The default policy separately excludes _etag."
+        "/* includes property paths throughout each item, including nested properties. More-specific exclusions can remove selected paths from indexing. The default policy also handles system properties according to the documented rules."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8503,17 +8460,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8523,7 +8480,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos indexing policy",
       "question": "Which Cosmos DB indexing path wins when inclusion and exclusion overlap?",
       "answers": [
-        "The more specific path. For example, including /* but excluding /largeText/? indexes other properties while omitting largeText. A deeper property path is more specific, and /? is more specific than /* at the same path. Avoid contradictory entries for an identical path."
+        "The more-specific path takes precedence. For example, including /* and excluding /largeText/? keeps other properties indexed while omitting largeText.\n\nDeeper paths are more specific, and a property path ending in /? is more specific than a subtree /* at that path. Avoid conflicting rules for an identical path."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8541,17 +8498,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8561,7 +8518,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos indexing policy",
       "question": "How can indexing fewer Cosmos DB properties reduce write RU cost?",
       "answers": [
-        "Each write updates fewer index entries, reducing the indexing work it consumes. Exclude fields the app does not need for indexed filters or sorting. For example, excluding /largeText/? avoids indexing that text while /* can keep other fields indexed."
+        "A write has less index-maintenance work when fewer unnecessary paths are indexed, which can lower its RU cost. Exclude properties not needed for indexed predicates or sorting, while retaining the indexes required by actual queries."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8579,17 +8536,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8599,7 +8556,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos SDK object model",
       "question": "How do you create a Cosmos DB client in Python?",
       "answers": [
-        "Use the account endpoint and a credential:\nfrom azure.cosmos import CosmosClient\nfrom azure.identity import DefaultAzureCredential\nclient = CosmosClient(endpoint, credential=DefaultAzureCredential())\nHere endpoint is the Cosmos DB account URL. Grant the identity the required Cosmos DB data role and reuse the client across requests."
+        "Create one reusable CosmosClient with the account URL and an authorized credential:\nfrom azure.cosmos import CosmosClient\nfrom azure.identity import DefaultAzureCredential\nclient = CosmosClient(endpoint, credential=DefaultAzureCredential())\n\nHere endpoint is the account URL. The identity needs a Cosmos DB data-plane role; permission to manage the Azure resource alone is insufficient."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8617,17 +8574,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed the false SDK-wide lazy-connection guarantee; the Python client can fetch account information during initialization.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Specified the SDK and showed working construction instead of mixing credential options, lifecycle advice and lazy-connection exceptions."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8637,7 +8594,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos SDK object model",
       "question": "Which Cosmos DB SDK object performs item CRUD and queries?",
       "answers": [
-        "The container client, called ContainerProxy in Python. For example, database.get_container_client(\"items\") returns the client used for create_item, read_item, upsert_item, delete_item and query_items. These are item-level operations: create, read, update, delete and query."
+        "Use the container client, called ContainerProxy in Python. For example, database.get_container_client(\"items\") returns the object used for create_item, read_item, upsert_item, delete_item and query_items."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8660,18 +8617,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8681,7 +8638,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos SDK object model",
       "question": "What is the Python SDK sequence for querying an existing Cosmos DB container?",
       "answers": [
-        "Assuming the database and container already exist, and endpoint is the account URL:\nfrom azure.cosmos import CosmosClient\nfrom azure.identity import DefaultAzureCredential\nclient = CosmosClient(endpoint, credential=DefaultAzureCredential())\ndatabase = client.get_database_client(\"catalog\")\ncontainer = database.get_container_client(\"items\")\nfor item in container.query_items(query=\"SELECT * FROM c\", enable_cross_partition_query=True):\n    print(item)\nReplace catalog and items with your names. The signed-in identity needs a Cosmos DB data-plane role. Getting these clients selects existing resources; it does not create a database or container."
+        "Create or reuse the account client, select the existing database and container, then run the query:\ndatabase = client.get_database_client(\"catalog\")\ncontainer = database.get_container_client(\"items\")\nfor item in container.query_items(query=\"SELECT * FROM c\", enable_cross_partition_query=True):\n    print(item)\n\nHere client is an authenticated CosmosClient. Replace the names with your existing resources. Selecting these clients does not create the database or container."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8704,18 +8661,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8725,7 +8682,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos SDK object model",
       "question": "Should Python Cosmos DB code construct DatabaseProxy and ContainerProxy directly?",
       "answers": [
-        "No. Obtain them from their parent clients:\ndatabase = client.get_database_client(\"catalog\")\ncontainer = database.get_container_client(\"items\")\nThe parent supplies the connection and configuration those proxy objects need."
+        "No. Ask the parent clients for them:\ndatabase = client.get_database_client(\"catalog\")\ncontainer = database.get_container_client(\"items\")\n\nThe parent supplies the connection and configuration. Reuse these clients rather than manually constructing internal proxy objects."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8748,18 +8705,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8769,7 +8726,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector search",
       "question": "How should a Cosmos DB document represent an embedding?",
       "answers": [
-        "As a JSON array of numbers, for example \"embedding\": [0.12, -0.34, 0.56]. The container’s vector embedding policy identifies that property path and sets the numeric data type, dimension count and distance function. Each stored embedding and query vector must match that configuration."
+        "Store it as an array of numbers, for example \"embedding\": [0.12, -0.34, 0.56]. Configure that property in the container’s vector embedding policy. The array, query vector and policy must agree on dimensions, numeric representation and distance metric."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8787,17 +8744,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8807,7 +8764,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector search",
       "question": "Does a Cosmos DB composite index accelerate VectorDistance queries?",
       "answers": [
-        "No. Use a vector index, such as flat, quantizedFlat or DiskANN, for vector-distance search. A composite index combines ordinary property paths for filters/sorting; it does not perform nearest-neighbor vector search."
+        "A composite index does not replace a vector index for nearest-neighbor search. Configure an appropriate flat, quantizedFlat or diskANN vector index for VectorDistance queries.\n\nOrdinary indexes can still help relevant scalar filters and sorting; their purpose differs from the vector index."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8830,18 +8787,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8851,7 +8808,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector search",
       "question": "Why exclude an embedding array from ordinary Cosmos DB property indexing?",
       "answers": [
-        "An embedding array can contain thousands of values. Indexing each value as an ordinary property adds write work and index storage without providing vector similarity search. Exclude /embedding/* from ordinary indexing and configure the separate vector index on /embedding."
+        "Ordinary property indexing can index thousands of array elements without supplying vector similarity search. Excluding /embedding/* avoids that extra property-index work. Configure the separate vector index on /embedding for vector retrieval."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8874,18 +8831,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8895,7 +8852,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector search",
       "question": "What is the storage trade-off of float16 rather than float32 embeddings in Cosmos DB?",
       "answers": [
-        "Each float16 component uses 16 bits instead of float32’s 32 bits, reducing raw vector size at the cost of numerical precision. Total document/index storage is not necessarily halved because it also includes other data and overhead."
+        "A float16 component uses 16 bits instead of float32’s 32 bits, reducing the raw vector’s size while losing numeric precision. The whole item or index also contains other data and overhead, so its total storage is not necessarily halved."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8913,17 +8870,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Restricted the 50% claim to raw float components; total document storage and billing are not guaranteed to fall by 50%.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8933,7 +8890,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector search",
       "question": "What Cosmos DB SQL pattern returns the nearest five embeddings?",
       "answers": [
-        "Use a query like:\nSELECT TOP 5 c.id, VectorDistance(c.embedding, @q) AS score\nFROM c\nORDER BY VectorDistance(c.embedding, @q)\nBind @q to the query’s numeric embedding array using the SDK’s query parameters. TOP 5 limits the result count; ORDER BY places the nearest distances first. The container needs the matching vector policy and an appropriate vector index."
+        "Use TOP to limit the result count and order by VectorDistance:\nSELECT TOP 5 c.id, VectorDistance(c.embedding, @q) AS score\nFROM c\nORDER BY VectorDistance(c.embedding, @q)\n\nBind @q to the query embedding through SDK query parameters. Stored vectors and the container’s vector policy must be compatible, with an appropriate vector index for efficient retrieval."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8956,18 +8913,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -8977,7 +8934,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cosmos vector search",
       "question": "Where is a Cosmos DB vector embedding policy defined?",
       "answers": [
-        "In the container configuration at creation time. It specifies the vector property path, data type, dimensions and distance function. Queries then provide a query vector and call VectorDistance to search that configured data."
+        "Declare it in the container configuration at creation time. It identifies the vector property path, data type, dimension count and distance function. Later queries provide a compatible query vector to VectorDistance."
       ],
       "origin": "original",
       "legacyIds": [
@@ -8995,17 +8952,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9015,7 +8972,7 @@ window.AI200_FLASHCARDS = {
       "title": "Change feed scale-out",
       "question": "What are the four parts of a Cosmos DB change feed processor?",
       "answers": [
-        "The monitored container holds changing items; the lease container stores ownership and progress; a compute instance runs the processor; and your callback handles each delivered batch."
+        "The monitored container holds the changing items. The lease container stores ownership and progress. Compute instances run the processor, and your callback handles each delivered batch. Together these components support distributed, resumable processing."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9033,27 +8990,27 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
       "id": "m-25-3-1",
       "domain": 2,
       "category": "cosmos",
-      "title": "Change feed scale-out",
-      "question": "How do several Cosmos DB change feed processor instances divide work?",
+      "title": "Change feed processing groups",
+      "question": "How do Cosmos DB change feed processor and instance names control shared versus independent consumption?",
       "answers": [
-        "They share the same processor name and lease container, with a unique name for each instance. The processor assigns feed-range leases among instances and reassigns them as workers join or leave."
+        "The processor name identifies a processing group; an instance name identifies one worker in that group.\n\nShared work: use the same source container, lease container and processor name, but unique instance names (worker-1, worker-2). Workers split the feed-range leases, so each handles a subset.\n\nIndependent full feeds: use different processor names (search-index, audit), or separate lease containers. Each group has its own leases and saved reading positions. To give every worker an independent full feed, put each worker in a separate group. Different instance names alone still divide the work.\n\nEach group reads from its saved or configured starting position, within the selected feed mode. At-least-once delivery means changes can be processed again."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9071,27 +9028,27 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked independent groups, shared leases, unique instance names and starting positions. Retained the recently clarified comparison.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
       "id": "m-25-4-1",
       "domain": 2,
       "category": "cosmos",
-      "title": "Change feed scale-out",
+      "title": "Change feed delivery",
       "question": "Which Cosmos DB change-feed model invokes your handler with batches of changes?",
       "answers": [
-        "The push model, through the change feed processor or a Functions Cosmos DB trigger. It reads incremental changes and calls your handler with batches. Your application does not repeatedly query every item in the container."
+        "The push model. The change feed processor polls Cosmos DB in the background, then automatically invokes your callback (the function you provide) with batches of changes. Push describes how the processor delivers batches to your code; it still polls Cosmos DB to retrieve them.\n\nThe processor manages polling, work distribution and checkpoints (saved reading positions). In the pull model, your code explicitly requests batches and saves its own reading position."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9111,21 +9068,27 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Cosmos DB Functions trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn ? Change feed pull model",
+          "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-pull-model",
+          "kind": "primary"
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked that the processor polls in the background and delivers callbacks automatically. Retained the recently clarified push-versus-pull explanation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
-          "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger"
+          "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
+          "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-pull-model"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -9135,7 +9098,7 @@ window.AI200_FLASHCARDS = {
       "title": "Change feed scale-out",
       "question": "How can Python consume Cosmos DB change feed without a native change feed processor client?",
       "answers": [
-        "Use query_items_change_feed and save its continuation token to resume later. Alternatively, use a Python Azure Functions Cosmos DB trigger, letting the Functions host manage progress and invoke the Python handler. The native change feed processor clients are for .NET and Java."
+        "Use Python’s query_items_change_feed and save its continuation token for later reads. Your code manages polling and progress.\n\nAlternatively, use a Python Azure Functions Cosmos DB trigger, which invokes your handler while the host manages change-feed processing. The native processor libraries documented here are for .NET and Java."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9163,9 +9126,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
           "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python",
@@ -9173,9 +9136,9 @@ window.AI200_FLASHCARDS = {
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9185,7 +9148,7 @@ window.AI200_FLASHCARDS = {
       "title": "Change feed retries",
       "question": "Why must a Cosmos DB change-feed handler tolerate duplicate processing?",
       "answers": [
-        "Because processing is at least once. A worker can finish its business action and fail before saving the checkpoint, causing that batch to be read again. Make the handler safe to repeat, for example by checking a stable operation ID before applying the same change twice."
+        "A batch can be delivered again after a failure. For example, a worker may finish its business operation but crash before checkpointing, so another worker reads that batch again.\n\nMake processing idempotent: use a stable operation identifier or another mechanism that prevents repeated delivery from repeating the business effect."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9208,18 +9171,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Replaced an artificial comparison with stronger consistency by a practical failure scenario that explains why checkpointed processing needs idempotency."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9229,7 +9192,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector operators and indexes",
       "question": "Which pgvector operator and index operator class implement Euclidean distance?",
       "answers": [
-        "Use the <-> operator for Euclidean, also called L2, distance. A pgvector index for this operator uses vector_l2_ops. For example, ORDER BY embedding <-> query_vector LIMIT 5 asks for the five smallest L2 distances."
+        "Use <-> for Euclidean, or L2, distance and vector_l2_ops for the matching index. L2 is straight-line distance: between [1,2] and [4,6], it is 5.\n\nORDER BY embedding <-> query_vector LIMIT 5 selects the five smallest distances."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9247,17 +9210,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9267,7 +9230,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector operators and indexes",
       "question": "Which pgvector operator and index operator class implement cosine distance?",
       "answers": [
-        "Use <=> for cosine distance and vector_cosine_ops for the matching pgvector index. Cosine distance compares vector direction; smaller distance means more similar directions. A nearest-neighbor query orders this distance ascending and applies LIMIT."
+        "Use <=> with vector_cosine_ops. Cosine distance is 1 minus cosine similarity, so lower values mean more similar directions. For nonzero vectors, zero means the same direction.\n\nOrder the operator result ascending and apply LIMIT for nearest-neighbor retrieval."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9285,27 +9248,27 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
       "id": "m-26-3-1",
       "domain": 2,
       "category": "postgresql",
-      "title": "pgvector operators and indexes",
+      "title": "Negative inner product",
       "question": "Which pgvector operator and index operator class implement negative inner product?",
       "answers": [
-        "Use <#> for negative inner product and vector_ip_ops for the matching index. PostgreSQL’s index ordering uses ascending distance, so pgvector negates the inner product: the largest original inner products become the smallest returned values."
+        "Use <#> with vector_ip_ops for the matching index.\n\nAn inner product (dot product) multiplies matching vector components and adds them:\n[1,2] · [3,4] = 1×3 + 2×4 = 11.\nNegative inner product means negating that sum, so <#> returns -11. If the dot product were -2, it would return +2.\n\nInner-product search ranks larger dot products first. Negating them makes this work with ascending index ordering: -11 sorts before -5, so a dot product of 11 ranks above 5.\nExample: ORDER BY embedding <#> '[1,2]' LIMIT 5.\n\nThe dot product depends on both vector direction and length. For vectors normalized to length 1, it equals cosine similarity."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9323,17 +9286,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked the operator, index class, numerical dot product, negation and normalization caveat. The recently added example is retained.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -9343,7 +9306,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector operators and indexes",
       "question": "Why must a pgvector query operator match its index operator class?",
       "answers": [
-        "The index only supports the distance measure it was built for. For example, a cosine index using vector_cosine_ops cannot provide the L2 ordering requested by <->. Matching them lets PostgreSQL consider that index; EXPLAIN shows whether it actually uses it."
+        "The operator class determines which distance ordering an index supports. An index built with vector_cosine_ops supports cosine distance through <=>; it does not supply the L2 ordering requested by <->.\n\nMatching them makes the index eligible. Use EXPLAIN to see whether the planner actually chooses it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9361,17 +9324,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Matching the operator class is necessary but does not guarantee that the query planner will choose the index.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9381,7 +9344,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector operators and indexes",
       "question": "What is the indexed-dimension limit for pgvector's vector type in HNSW and IVFFlat?",
       "answers": [
-        "2,000 dimensions when indexing the vector type. Other types have different limits, such as 4,000 indexed dimensions for halfvec. Distinguish the type’s storage limit from the lower limit supported by its vector indexes."
+        "The documented limit is 2,000 dimensions for HNSW and IVFFlat indexes on vector values. The vector type can store larger values, so storage and index limits are different.\n\nFor a larger embedding, consider a supported alternative such as halfvec, which permits up to 4,000 indexed dimensions, while checking its precision trade-off."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9399,17 +9362,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9419,7 +9382,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector operators and indexes",
       "question": "What extension name must be allow-listed for pgvector on Azure PostgreSQL?",
       "answers": [
-        "Use vector in the azure.extensions allowlist. Then enable it in the target database with CREATE EXTENSION vector;. The project is called pgvector, but its PostgreSQL extension name is vector."
+        "Allow-list vector in azure.extensions, then enable it in the target database with:\nCREATE EXTENSION vector;\n\npgvector is the project’s name; vector is the extension name used by PostgreSQL."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9437,17 +9400,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9457,7 +9420,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector operators and indexes",
       "question": "How do index choices differ for embeddings and ordinary filter columns in PostgreSQL?",
       "answers": [
-        "The embedding column needs a suitable vector index, such as HNSW or IVFFlat, for similarity search. Ordinary filter columns, such as department or created_at, may use B-tree indexes for equality/range conditions. Choose each index from the queries using that column."
+        "Use a vector index, such as HNSW or IVFFlat, for embedding similarity search. Use suitable ordinary indexes, such as B-tree, for metadata predicates like a department or date range.\n\nChoose indexes from the actual query pattern and check the execution plan rather than assuming that every index will be used together."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9475,17 +9438,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9495,7 +9458,7 @@ window.AI200_FLASHCARDS = {
       "title": "PgBouncer on Azure PostgreSQL",
       "question": "Which port connects through built-in PgBouncer on Azure PostgreSQL?",
       "answers": [
-        "6432, using the server’s usual hostname. Built-in PgBouncer must be enabled. Port 5432 connects directly to PostgreSQL instead of going through that pooler."
+        "Connect to port 6432 on the server’s normal hostname to use its built-in PgBouncer, after ensuring the feature is enabled. Port 5432 connects directly to PostgreSQL. The port choice determines whether the connection passes through the pooler."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9513,17 +9476,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9533,7 +9496,7 @@ window.AI200_FLASHCARDS = {
       "title": "PgBouncer on Azure PostgreSQL",
       "question": "How is built-in PgBouncer enabled on Azure PostgreSQL?",
       "answers": [
-        "Set pgbouncer.enabled to true under the server’s Server parameters and save it. Then connect through port 6432. Enabling this setting does not require a PostgreSQL server restart."
+        "Set pgbouncer.enabled to true in the server’s parameters and save the change. The documented setting does not require a server restart. Applications then connect to the pooler through port 6432."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9551,17 +9514,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9571,7 +9534,7 @@ window.AI200_FLASHCARDS = {
       "title": "PgBouncer on Azure PostgreSQL",
       "question": "What is the default pool mode of Azure's built-in PgBouncer?",
       "answers": [
-        "Transaction pooling. A client borrows a server connection for a transaction, and PgBouncer can return that connection to the pool when the transaction ends. The next transaction can use a different server connection."
+        "The default is transaction pooling. A client uses a server connection for one transaction, after which PgBouncer can return it to the pool. A later transaction may use another server connection, so check features that rely on persistent session state."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9589,55 +9552,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "m-27-4-1",
-      "domain": 2,
-      "category": "postgresql",
-      "title": "PgBouncer on Azure PostgreSQL",
-      "question": "What are common built-in PgBouncer pool and timeout defaults?",
-      "answers": [
-        "The documented Azure built-in defaults include:\n• default_pool_size=50: up to 50 server connections per user/database pair.\n• max_client_conn=5000: up to 5,000 client connections to the pooler.\n• server_idle_timeout=600: close an unused server connection after 600 seconds.\nThese are different limits, and the running server’s configured values may differ."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        27
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 27",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Microsoft Learn · Built-in PgBouncer",
-          "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9647,7 +9572,7 @@ window.AI200_FLASHCARDS = {
       "title": "PgBouncer on Azure PostgreSQL",
       "question": "Which Azure PostgreSQL compute tiers support built-in PgBouncer?",
       "answers": [
-        "General Purpose and Memory Optimized. The Burstable tier does not support Azure’s built-in PgBouncer feature."
+        "Azure’s built-in PgBouncer is supported on General Purpose and Memory Optimized servers. Burstable does not support it. Check the selected server tier before planning to use this built-in feature."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9665,17 +9590,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9685,7 +9610,7 @@ window.AI200_FLASHCARDS = {
       "title": "PgBouncer on Azure PostgreSQL",
       "question": "Why is increasing max_connections different from adding a connection pool?",
       "answers": [
-        "max_connections raises the number of database connections that may exist. A connection pool reuses established connections, reducing repeated setup and authentication work. A higher connection limit alone does not provide that reuse."
+        "Increasing max_connections permits more server connections to exist. A pool instead reuses established connections, reducing repeated setup work and potentially using fewer server connections for many clients.\n\nRaising the limit alone does not create connection reuse, and more simultaneous connections can consume more resources."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9708,18 +9633,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
           "https://www.psycopg.org/psycopg3/docs/advanced/pool.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9729,7 +9654,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL app connections",
       "question": "How can an application authenticate to Azure PostgreSQL with managed identity?",
       "answers": [
-        "Enable Microsoft Entra authentication, create the managed identity’s database principal and grant the needed database privileges. The app then obtains an Azure PostgreSQL access token and supplies it as the connection password. New connections need a valid token."
+        "Enable Microsoft Entra authentication, create the managed identity’s database principal and grant its required database privileges. The app obtains an Azure PostgreSQL access token and supplies it as the connection password.\n\nA newly opened connection needs a valid token. Arrange token renewal when creating connections rather than treating the token as a permanent password."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9747,17 +9672,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/security/security-connect-with-managed-identity"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9767,7 +9692,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL app connections",
       "question": "How does a client-side PostgreSQL connection pool reduce overhead?",
       "answers": [
-        "It lends requests already-open database connections. That avoids repeating network setup, TLS negotiation and authentication for every query. Return the connection to the pool after use so another request can reuse it."
+        "The pool lends a request an already-established connection, avoiding repeated network setup, TLS negotiation and authentication. Return the connection after use so another request can borrow it. A bounded pool also controls concurrent connection usage."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9785,17 +9710,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed an unsupported universal 50–200 ms connection-setup estimate.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.psycopg.org/psycopg3/docs/advanced/pool.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9805,7 +9730,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL app connections",
       "question": "How should a PostgreSQL connection pool be bounded across app instances?",
       "answers": [
-        "Budget connections across the maximum number of app instances, including scale-out, and reserve capacity for administration and other clients. For example, an app budget of 500 connections across 10 instances allows at most 50 per instance. A per-instance pool size of 500 would instead permit 5,000 combined connections."
+        "Plan the total across the maximum application instance count, leaving room for other clients and administration. A 500-connection app budget across ten instances permits at most 50 connections per instance.\n\nSetting each instance’s pool to 500 would instead permit 5,000 combined connections."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9823,17 +9748,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.psycopg.org/psycopg3/docs/advanced/pool.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9843,7 +9768,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL app connections",
       "question": "How should user input be passed to a PostgreSQL query?",
       "answers": [
-        "Pass data values separately from SQL. With Psycopg:\ncur.execute(\"SELECT content FROM documents WHERE id = %s\", (document_id,))\nThe driver binds document_id as a value; it is not concatenated into the SQL syntax. Do not put quotes around %s or use Python string interpolation to insert user values."
+        "Pass values as driver parameters, separately from the SQL text. With Psycopg:\ncur.execute(\"SELECT content FROM documents WHERE id = %s\", (document_id,))\n\nThe driver binds document_id as data. Keep %s unquoted, and do not use Python string formatting to insert the value into the SQL."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9861,17 +9786,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.psycopg.org/psycopg3/docs/basic/params.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9881,7 +9806,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL app connections",
       "question": "How can Psycopg return a borrowed PostgreSQL connection to its pool automatically?",
       "answers": [
-        "Use the pool’s connection context manager:\nwith pool.connection() as conn:\n    with conn.cursor() as cur:\n        cur.execute(\"SELECT 1\")\nHere pool is an existing Psycopg ConnectionPool. Leaving the block returns the connection to the pool, allowing another request to reuse it."
+        "Borrow the connection through the pool’s context manager:\nwith pool.connection() as conn:\n    with conn.cursor() as cur:\n        cur.execute(\"SELECT 1\")\n\nHere pool is an existing Psycopg ConnectionPool. Leaving the connection block returns it to the pool, including when an exception leaves the block."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9904,18 +9829,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
           "https://www.psycopg.org/psycopg3/docs/advanced/pool.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Replaced a negative list of unrelated tuning changes with the concrete connection-reuse action the learner should perform."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9925,7 +9850,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector filtered retrieval",
       "question": "Which PostgreSQL type stores an embedding with a fixed dimension count?",
       "answers": [
-        "vector(n), provided by pgvector, where n is the number of components. For example, vector(1536) stores a 1,536-dimensional embedding. Stored embeddings and query vectors must use compatible dimensions."
+        "Use pgvector’s vector(n), where n is the component count. For example, vector(1536) stores a 1,536-dimensional embedding. Query vectors and the chosen index must be compatible with that dimension count and representation."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9948,18 +9873,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Distinguished calendar dates from timestamps with time zone; timestamptz is not the only suitable date/time type.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector",
           "https://www.postgresql.org/docs/current/datatype-datetime.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "The previous question combined embedding storage with unrelated calendar/timestamp choices. It now asks one storage-type question."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -9969,7 +9894,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector filtered retrieval",
       "question": "In what order should you load data and build indexes for PostgreSQL vector search?",
       "answers": [
-        "Create the table, load representative data, build the indexes, run ANALYZE, then test the queries. Loading first avoids updating indexes for each inserted row. It also gives IVFFlat representative vectors for training its clusters."
+        "Create the table, load representative data, build the indexes and run ANALYZE before benchmarking queries. Loading first avoids maintaining each secondary index during every insert.\n\nRepresentative data is particularly important for IVFFlat because it trains its lists from the existing vectors."
       ],
       "origin": "original",
       "legacyIds": [
@@ -9987,17 +9912,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10007,7 +9932,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector filtered retrieval",
       "question": "What SQL retrieves the five closest Finance documents by cosine distance?",
       "answers": [
-        "Assuming documents has id, department and embedding columns:\nSELECT id FROM documents WHERE department = 'Finance' ORDER BY embedding <=> $1::vector LIMIT 5;\nBind $1 to the query embedding through the database client. The equality condition selects Finance documents; <=> orders by cosine distance, and LIMIT 5 returns at most five results. Some drivers use a different parameter placeholder, such as %s in Psycopg."
+        "Filter the metadata, order by cosine distance and limit the results:\nSELECT id FROM documents\nWHERE department = 'Finance'\nORDER BY embedding <=> $1::vector\nLIMIT 5;\n\nBind $1 to the query embedding using the database client; Psycopg uses its own %s placeholder convention. With an approximate index, filtering may leave fewer matches, so inspect the plan and tune search effort or supported iterative scans when needed."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10030,18 +9955,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector",
           "https://www.psycopg.org/psycopg3/docs/basic/params.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10051,7 +9976,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector filtered retrieval",
       "question": "How can a B-tree index help a metadata-filtered PostgreSQL vector query?",
       "answers": [
-        "It can find rows matching the ordinary filter, such as department = 'Finance', before calculating vector distances for those candidates. It does not calculate similarity itself. The planner may choose a different order, so inspect EXPLAIN to see whether filtering or vector retrieval happens first."
+        "A B-tree index can make an ordinary predicate, such as department = 'Finance', cheaper to evaluate. It does not calculate vector similarity.\n\nThe planner decides whether to filter candidates first or use a vector-index path. Inspect EXPLAIN; approximate vector scans may apply filters after selecting candidates."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10069,17 +9994,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10089,7 +10014,7 @@ window.AI200_FLASHCARDS = {
       "title": "pgvector filtered retrieval",
       "question": "Which index belongs on a PostgreSQL embedding column?",
       "answers": [
-        "For pgvector, HNSW or IVFFlat with the operator class matching the query’s distance measure. For cosine distance, that is vector_cosine_ops. Choose and benchmark the algorithm against the dataset size, required recall and latency target."
+        "Choose HNSW or IVFFlat with the operator class matching the query metric. A cosine query using <=> needs vector_cosine_ops.\n\nBenchmark index memory, build time, query latency and recall on representative data before choosing an algorithm and settings."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10112,18 +10037,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Separated pgvector indexes from the separate pg_diskann extension and removed the unconditional latency-improvement claim.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector",
           "https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10133,7 +10058,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL vector resources",
       "question": "Why might adding PostgreSQL vCores fail to speed up one slow vector query?",
       "answers": [
-        "The query may not be able to use the extra cores, or may still calculate distances for too many rows. Inspect its plan and index usage first. More vCores help only when additional CPU capacity or parallel work addresses the measured bottleneck."
+        "The query may still examine too many vectors or may not be able to use the added cores effectively. Inspect its execution plan and index usage first. More CPU helps when CPU capacity or usable parallelism is the measured bottleneck."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10156,18 +10081,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed the arbitrary 70% threshold and the implication that adding vCores necessarily speeds up one query.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/troubleshoot/how-to-high-cpu-utilization",
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10177,7 +10102,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL vector resources",
       "question": "Which resource can help when a vector-index working set no longer fits in memory?",
       "answers": [
-        "More memory. It can keep frequently used table and index pages cached, reducing disk reads. Check memory pressure and disk I/O, then compare the same workload before and after scaling."
+        "More memory can keep frequently used table and index pages cached and reduce disk reads. Check the working-set size, memory pressure and I/O before scaling, then repeat the same workload to measure the effect."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10200,18 +10125,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed a universal 99% cache-hit threshold; memory sizing depends on measured workload behavior.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/compute-storage/concepts-compute",
           "https://learn.microsoft.com/en-us/azure/postgresql/troubleshoot/how-to-high-cpu-utilization"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10221,7 +10146,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL vector resources",
       "question": "How do typical Azure PostgreSQL tiers differ in memory per vCore?",
       "answers": [
-        "Memory Optimized provides more memory per vCore than General Purpose. General Purpose commonly provides 4 GiB per vCore; Memory Optimized ratios depend on VM series, currently about 6.75–9.5 GiB. Burstable ratios also vary by size, so use the chosen SKU’s table for exact sizing."
+        "Memory Optimized sizes generally provide more RAM per vCore than General Purpose sizes. Exact ratios vary with the selected VM series and size, so use that SKU’s specifications when sizing a vector workload.\n\nChoose from the measured working set and memory pressure rather than memorizing one ratio for an entire tier."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10239,17 +10164,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Corrected fixed memory ratios: Burstable is variable and Memory Optimized is not universally 8 GB per vCore.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/compute-storage/concepts-compute"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10259,7 +10184,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL vector resources",
       "question": "Which Azure PostgreSQL feature handles growing storage needs?",
       "answers": [
-        "Storage autogrow. In supported storage configurations, it expands allocated storage when free space runs low. This helps avoid filling the database disk; check the chosen storage type’s size and growth limits."
+        "Storage autogrow can increase allocated storage when free space runs low, where supported by the selected configuration. Check its growth and size limits. It addresses storage capacity; it does not replace query or index optimization."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10277,17 +10202,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-auto-grow-storage"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10297,7 +10222,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL vector resources",
       "question": "How should a PostgreSQL memory scale-up be validated?",
       "answers": [
-        "Run the same representative workload before and after the change. Compare query latency, especially slower requests such as P95, together with memory pressure and disk reads. Keep the dataset and concurrency consistent so the comparison shows the effect of the memory change."
+        "Benchmark the same representative workload before and after the change. Compare latency, including slower requests such as P95, with memory pressure and disk reads. Keep data and concurrency comparable so you can attribute the result to the resource change."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10320,18 +10245,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.postgresql.org/docs/current/using-explain.html",
           "https://learn.microsoft.com/en-us/azure/postgresql/compute-storage/concepts-compute"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10341,7 +10266,7 @@ window.AI200_FLASHCARDS = {
       "title": "PostgreSQL vector resources",
       "question": "How can you distinguish PostgreSQL connection-setup overhead from slow SQL execution?",
       "answers": [
-        "Time opening a connection and executing the SQL separately. If opening connections is slow but the query is fast, connection reuse through a pool can help. If SQL execution is slow, inspect its plan and CPU or disk activity before choosing an index or compute change."
+        "Measure connection opening separately from executing the query. Slow connection setup with fast SQL suggests a connection-reuse problem. Slow SQL execution calls for examining the plan, indexes and CPU/I/O activity before changing capacity."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10364,18 +10289,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Qualified the blanket dismissal of read replicas: they can relieve contention, although they do not reduce a query’s intrinsic CPU work.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/troubleshoot/how-to-high-cpu-utilization",
           "https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-read-replicas"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Replaced an artificial comparison with unrelated backup settings by a concrete way to distinguish connection overhead from query work."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10383,9 +10308,9 @@ window.AI200_FLASHCARDS = {
       "domain": 2,
       "category": "redis",
       "title": "Redis eviction policies",
-      "question": "Which Redis eviction-policy family considers only keys with an expiry?",
+      "question": "How do Redis volatile-* and allkeys-* eviction policies differ?",
       "answers": [
-        "The volatile-* family, such as volatile-lru, volatile-lfu, volatile-random and volatile-ttl. Only keys with an expiry are eligible; keys without a TTL are excluded from these policies."
+        "volatile-* policies can evict only keys that have an expiry. allkeys-* policies can evict keys with or without an expiry. For example, volatile-lru chooses among expiring keys, while allkeys-lru considers all keys.\n\nIf no keys have an expiry, a volatile policy has no eviction candidates and writes needing more memory can fail. Redis calls the setting maxmemory-policy; Azure exposes an Eviction Policy setting. Choose a policy based on which cached data may be discarded."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10400,58 +10325,26 @@ window.AI200_FLASHCARDS = {
           "label": "Redis · Memory eviction policies",
           "url": "https://redis.io/docs/latest/develop/reference/eviction/",
           "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/develop/reference/eviction/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "m-31-2-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Redis eviction policies",
-      "question": "Which Redis eviction-policy family can select keys with or without an expiry?",
-      "answers": [
-        "The allkeys-* family, such as allkeys-lru, allkeys-lfu and allkeys-random. These policies can choose keys regardless of whether they have an expiry."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        31
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 31",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
         },
         {
-          "label": "Redis · Memory eviction policies",
-          "url": "https://redis.io/docs/latest/develop/reference/eviction/",
+          "label": "Microsoft Learn · Managed Redis module requirements",
+          "url": "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules",
           "kind": "primary"
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked eligible-key families, no-expiry behavior and the configuration name. Retained the recent consolidated explanation.",
         "sources": [
-          "https://redis.io/docs/latest/develop/reference/eviction/"
+          "https://redis.io/docs/latest/develop/reference/eviction/",
+          "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -10461,7 +10354,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis eviction policies",
       "question": "What does Redis noeviction do when memory is exhausted?",
       "answers": [
-        "It keeps existing keys instead of evicting them to make room. Operations that need more memory can fail with an out-of-memory error. Reads and operations that free memory can still work; ordinary time-based expiry still applies."
+        "NoEviction keeps existing keys instead of discarding them to make room. Writes needing additional memory can fail when the memory limit is reached. Reads and operations that release memory can continue, and normal time-based expiration still applies."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10484,100 +10377,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Qualified the blanket “writes fail” statement: memory-increasing commands can fail, while reads and memory-releasing operations remain possible.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/reference/eviction/",
           "https://redis.io/docs/latest/commands/expire/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "m-31-4-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Redis eviction policies",
-      "question": "What happens to a volatile Redis policy when no keys have an expiry?",
-      "answers": [
-        "No keys are eligible for eviction. Under memory pressure, operations needing more memory can fail, as with noeviction. A volatile policy needs expiring keys to have candidates it can remove."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        31
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 31",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Redis · Memory eviction policies",
-          "url": "https://redis.io/docs/latest/develop/reference/eviction/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/develop/reference/eviction/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "m-31-5-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Redis eviction policies",
-      "question": "Which Redis setting selects the eviction policy?",
-      "answers": [
-        "maxmemory-policy. It selects whether Redis evicts keys and which strategy it uses. For an Azure-managed instance, inspect the configured Eviction Policy in the resource settings instead of assuming a default from another tier or service."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        31
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 31",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Microsoft Learn · Managed Redis module requirements",
-          "url": "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules",
-          "kind": "primary"
-        },
-        {
-          "label": "Redis · Memory eviction policies",
-          "url": "https://redis.io/docs/latest/develop/reference/eviction/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules",
-          "https://redis.io/docs/latest/develop/reference/eviction/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Replaced a circular question about which policy to check with the actual setting name and where to inspect it."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10587,7 +10398,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis eviction policies",
       "question": "How do Redis LRU and LFU rank keys for eviction?",
       "answers": [
-        "LRU, least recently used, favors removing keys that have not been accessed recently. LFU, least frequently used, favors keys accessed infrequently. Redis approximates these rankings, and LFU’s frequency counter decays over time."
+        "LRU, Least Recently Used, favors keys that have not been accessed recently. LFU, Least Frequently Used, favors keys used less often. Redis approximates these choices, and LFU reduces the influence of older frequency history over time."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10605,17 +10416,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/reference/eviction/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10623,9 +10434,9 @@ window.AI200_FLASHCARDS = {
       "domain": 2,
       "category": "redis",
       "title": "Expiration vs eviction",
-      "question": "What triggers Redis key expiration?",
+      "question": "How does Redis expiration differ from eviction?",
       "answers": [
-        "A key’s expiry deadline. For example, SET greeting hello EX 60 stores hello under greeting for 60 seconds. Redis removes expired data through its expiration mechanisms without needing memory pressure. The lifetime starts when the expiry is set, unless you explicitly change it later."
+        "Expiration makes a key unavailable after its configured expiry deadline, even when Redis has plenty of free memory. For example, SET greeting hello EX 60 gives the value a 60-second lifetime.\n\nEviction removes eligible keys to free memory when the configured memory limit is reached. It can remove a key before its expiry, or remove a key with no expiry if the policy allows it. The eviction policy determines which keys can be discarded."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10645,45 +10456,6 @@ window.AI200_FLASHCARDS = {
           "label": "Redis · EXPIRE",
           "url": "https://redis.io/docs/latest/commands/expire/",
           "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/commands/set/",
-          "https://redis.io/docs/latest/commands/expire/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "m-32-2-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Expiration vs eviction",
-      "question": "What triggers Redis key eviction?",
-      "answers": [
-        "Redis needs to free memory when its configured maxmemory limit is exceeded. maxmemory-policy decides whether keys may be removed and which ones are eligible. This is separate from expiration: a key can be evicted before its expiry, or never have an expiry under an allkeys policy."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        32,
-        36
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 32",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 36",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
         },
         {
           "label": "Redis · Memory eviction policies",
@@ -10692,105 +10464,19 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked the separate time-based expiry and memory-pressure eviction mechanisms. Retained the recent comparison.",
         "sources": [
+          "https://redis.io/docs/latest/commands/set/",
+          "https://redis.io/docs/latest/commands/expire/",
           "https://redis.io/docs/latest/develop/reference/eviction/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "m-33-1-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Redis ports by tier",
-      "question": "Which Azure Redis services use port 10000?",
-      "answers": [
-        "Azure Managed Redis and the legacy Azure Cache for Redis Enterprise/Enterprise Flash endpoints. Configure TLS explicitly in the client: port 10000 can be used with either TLS or permitted non-TLS access."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        33
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 33",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Microsoft Learn · Managed Redis TLS and ports",
-          "url": "https://learn.microsoft.com/en-us/azure/redis/tls-configuration",
-          "kind": "primary"
-        },
-        {
-          "label": "Microsoft Learn · Legacy Azure Redis configuration",
-          "url": "https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-configure",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/redis/tls-configuration",
-          "https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-configure"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "m-34-1-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "RediSearch vector search",
-      "question": "Which RediSearch schema field type supports KNN vector search?",
-      "answers": [
-        "VECTOR. It describes the embedding field’s numeric type, dimension count and distance metric so the index can perform nearest-neighbor search."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        34
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 34",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Redis · Create a search index",
-          "url": "https://redis.io/docs/latest/commands/ft.create/",
-          "kind": "primary"
-        },
-        {
-          "label": "Redis · Vector search",
-          "url": "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/commands/ft.create/",
-          "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -10800,7 +10486,7 @@ window.AI200_FLASHCARDS = {
       "title": "RediSearch vector search",
       "question": "How do Redis FLAT and HNSW vector indexes differ?",
       "answers": [
-        "FLAT compares every candidate vector and returns exact nearest neighbors. HNSW uses a graph to search promising candidates approximately, often making large searches faster but requiring more index memory and potentially missing some exact matches."
+        "FLAT compares the candidate vectors exhaustively to find exact neighbors. HNSW navigates a graph approximately, which can improve large-search performance while using index memory and potentially missing some exact neighbors. Compare recall and latency for the actual dataset."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10818,17 +10504,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10838,7 +10524,7 @@ window.AI200_FLASHCARDS = {
       "title": "RediSearch vector search",
       "question": "Which vector distance metrics does RediSearch support?",
       "answers": [
-        "COSINE, L2 and IP. They compare vector direction, Euclidean distance and inner product respectively. Set DISTANCE_METRIC when creating the index, then rank the returned distance scores with smaller values first."
+        "The supported choices are COSINE, L2 and IP: cosine, Euclidean and inner-product distance. Set DISTANCE_METRIC when creating the vector field’s index. Redis search returns distance scores, so smaller scores rank closer matches."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10856,17 +10542,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -10874,9 +10560,9 @@ window.AI200_FLASHCARDS = {
       "domain": 2,
       "category": "redis",
       "title": "RediSearch vector search",
-      "question": "When must RediSearch be enabled on an Azure Managed Redis instance?",
+      "question": "What must be configured before using vector search in Azure Managed Redis?",
       "answers": [
-        "Enable RediSearch when creating the Azure Managed Redis instance. You cannot add modules to an existing instance; adding one requires a new instance and migration. RediSearch is supported on Memory Optimized, Balanced and Compute Optimized tiers, but not Flash Optimized."
+        "Choose a tier that supports RediSearch and enable the module when creating the instance. Module selection is fixed at creation; adding a module later requires a new instance and data migration.\n\nRediSearch requires the Enterprise clustering policy and NoEviction. Allocate enough memory for both stored data and search indexes: with NoEviction, writes that need more memory can fail instead of removing existing keys."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10894,55 +10580,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked module-at-creation, supported-tier, Enterprise clustering and NoEviction prerequisites. Retained the recent consolidated setup answer.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "m-34-5-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "RediSearch vector search",
-      "question": "Which clustering and eviction policies does RediSearch require on Azure Managed Redis?",
-      "answers": [
-        "Enterprise clustering and NoEviction. These are the required policies for RediSearch on Azure Managed Redis. Plan memory for both stored data and search indexes, since keys will not be automatically evicted to free space."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        34
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 34",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Microsoft Learn · Managed Redis module requirements",
-          "url": "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -10950,9 +10598,9 @@ window.AI200_FLASHCARDS = {
       "domain": 2,
       "category": "redis",
       "title": "RediSearch vector search",
-      "question": "Does FT.CREATE index existing matching Redis keys?",
+      "question": "When you create a Redis search index with FT.CREATE, does it include data already stored in Redis?",
       "answers": [
-        "Yes. By default, creating the search index scans existing keys and indexes those matching its prefix and schema. SKIPINITIALSCAN skips that initial backfill. Indexing is not necessarily finished when FT.CREATE returns; check FT.INFO before assuming all pre-existing documents are searchable."
+        "Yes, by default. When you create the index, Redis scans data already stored in the database and indexes documents that meet the index's rules. For example, PREFIX 1 doc: limits it to keys whose names start with doc:, such as doc:123.\n\nSKIPINITIALSCAN tells Redis to skip that scan of existing data. The scan can still be running after FT.CREATE returns, so use FT.INFO to check its progress."
       ],
       "origin": "original",
       "legacyIds": [
@@ -10967,20 +10615,26 @@ window.AI200_FLASHCARDS = {
           "label": "Redis · Create a search index",
           "url": "https://redis.io/docs/latest/commands/ft.create/",
           "kind": "primary"
+        },
+        {
+          "label": "Redis ? Index information and progress",
+          "url": "https://redis.io/docs/latest/commands/ft.info/",
+          "kind": "primary"
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked FT.CREATE initial scanning, PREFIX eligibility, SKIPINITIALSCAN and FT.INFO progress. Retained the recently rewritten explanation.",
         "sources": [
-          "https://redis.io/docs/latest/commands/ft.create/"
+          "https://redis.io/docs/latest/commands/ft.create/",
+          "https://redis.io/docs/latest/commands/ft.info/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -10990,7 +10644,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis cache freshness",
       "question": "How does the cache-aside pattern work?",
       "answers": [
-        "Read the cache first. On a miss, read the source database, cache the result with an appropriate lifetime and return it. Later hits can use the cached copy. When the source changes, invalidate or update that cached copy so it does not stay stale."
+        "Read the cache first. On a miss, read the source database, save a cached copy with an appropriate lifetime and return the result. Later hits can reuse it.\n\nAfter a successful source update, invalidate or refresh the related cached value so future requests can obtain fresh data."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11008,17 +10662,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11028,7 +10682,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis cache freshness",
       "question": "How can a Redis cache entry be given a fixed lifetime?",
       "answers": [
-        "For a string, SET greeting hello EX 600 stores hello for 600 seconds, or ten minutes. For an existing hash, EXPIRE doc:1 600 gives the whole hash a ten-minute lifetime. TTL means time to live. Set the expiry again only when you intend to reset that lifetime."
+        "Give a string a lifetime when writing it, for example SET greeting hello EX 600 for ten minutes. For an existing hash, EXPIRE doc:1 600 sets the whole hash’s lifetime.\n\nThe clock starts when expiry is set. Setting it again resets that lifetime, so do this only when the application intends to extend or change it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11051,18 +10705,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/commands/set/",
           "https://redis.io/docs/latest/commands/expire/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11072,7 +10726,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis cache freshness",
       "question": "How should cached data be invalidated after its source changes?",
       "answers": [
-        "After updating the source successfully, delete or replace its related cache entry. For example, DEL customer:42 causes the next request to reload that customer. Prefer known cache keys; if discovery is necessary, SCAN iterates keys incrementally without a blocking KEYS scan."
+        "In a cache-aside application, update the source database successfully, then delete or replace the corresponding cached value. For example, DEL customer:42 makes the next cache miss reload that customer from the database.\n\nIf other applications can change the source, arrange change notifications or use an expiry policy to limit how long old data can remain. Saving Redis data to disk preserves cached values for recovery; it does not refresh them from the source.\n\nUse known cache keys where possible. SCAN can discover keys incrementally without the blocking whole-keyspace scan performed by KEYS."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11092,45 +10746,6 @@ window.AI200_FLASHCARDS = {
           "label": "Redis · Iterate keys",
           "url": "https://redis.io/docs/latest/commands/scan/",
           "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside",
-          "https://redis.io/docs/latest/commands/scan/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "m-35-5-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Redis cache freshness",
-      "question": "Why can a Redis cache stay stale even when persistence is enabled?",
-      "answers": [
-        "Persistence saves Redis data for recovery; it does not detect changes in the external source database. The application must update/invalidate the cached value, use an expiry policy, or process source-change events."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        35
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 35",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Microsoft Learn · Cache-aside pattern",
-          "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside",
-          "kind": "primary"
         },
         {
           "label": "Redis · Memory eviction policies",
@@ -11144,19 +10759,20 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked update-then-invalidate ordering, freshness after external writes, persistence limits and SCAN. Retained the recent consolidated answer.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside",
+          "https://redis.io/docs/latest/commands/scan/",
           "https://redis.io/docs/latest/develop/reference/eviction/",
           "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -11166,7 +10782,7 @@ window.AI200_FLASHCARDS = {
       "title": "Keeping hot keys in Redis",
       "question": "How can a Redis string’s expiry be refreshed whenever it is read?",
       "answers": [
-        "For a string key, GETEX can read the value and reset its expiry in one operation:\nGETEX session:42 EX 600\nEach successful read gives the key another ten minutes. If it is not read again, it expires. This is sliding expiration."
+        "GETEX reads a string value and can reset its expiry in the same operation:\nGETEX session:42 EX 600\n\nA successful read gives that key another ten minutes. If it is not read again, it expires. This implements sliding expiration for that string key."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11189,56 +10805,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Verified the atomic GETEX read-and-expiry operation against the Redis command reference.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/commands/expire/",
           "https://redis.io/docs/latest/commands/getex/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Used a single atomic read-and-refresh command rather than a two-command recipe with a separate race-condition warning."
-      }
-    },
-    {
-      "id": "m-36-4-1",
-      "domain": 2,
-      "category": "redis",
-      "title": "Keeping hot keys in Redis",
-      "question": "How does Redis volatile-ttl choose an eviction candidate?",
-      "answers": [
-        "It favors expiring keys with the shortest remaining TTL. The policy uses that lifetime to choose a key to remove under memory pressure; it does not refresh or extend the lifetime."
-      ],
-      "origin": "original",
-      "legacyIds": [
-        36
-      ],
-      "references": [
-        {
-          "label": "MightyBS · originalkort 36",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "Redis · Memory eviction policies",
-          "url": "https://redis.io/docs/latest/develop/reference/eviction/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/develop/reference/eviction/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11248,7 +10826,7 @@ window.AI200_FLASHCARDS = {
       "title": "Keeping hot keys in Redis",
       "question": "What does Redis PERSIST do?",
       "answers": [
-        "PERSIST key removes that key’s expiry. The key remains stored until explicitly deleted or removed through another mechanism such as an eligible allkeys eviction policy. It does not make the key durable on disk; Redis persistence is a separate feature."
+        "PERSIST key removes the key’s expiry time. The value can remain until explicitly deleted or otherwise removed, such as by an applicable eviction policy. This command changes expiry; disk durability is configured separately."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11271,18 +10849,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/commands/persist/",
           "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11292,7 +10870,7 @@ window.AI200_FLASHCARDS = {
       "title": "Keeping hot keys in Redis",
       "question": "What do Redis TTL return values -1 and -2 mean?",
       "answers": [
-        "TTL returns the remaining lifetime in seconds. -1 means the key exists but has no expiry; -2 means the key does not exist. For example, TTL session:42 returning 120 means it is scheduled to expire in about two minutes."
+        "TTL reports the remaining lifetime in seconds. A result of -1 means the key exists without an expiry; -2 means it does not exist.\n\nFor example, 120 means about two minutes remain. These values are useful when diagnosing unexpectedly persistent or missing cache entries."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11310,17 +10888,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/commands/ttl/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11330,7 +10908,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis vector storage basics",
       "question": "How can an embedding and its metadata be stored in one Redis hash?",
       "answers": [
-        "For a FLOAT32 hash vector field, serialize the embedding as 32-bit floating-point bytes:\nimport numpy as np\nblob = np.asarray(embedding, dtype=np.float32).tobytes()\nr.hset(\"doc:1\", mapping={\"embedding\": blob, \"title\": \"Example\"})\nHere r is a connected redis-py client and embedding is the numeric vector. The embedding field and title metadata are stored in the same hash. Its vector length and encoding must match the search index."
+        "For a hash vector field configured as FLOAT32, encode the embedding as 32-bit floating-point bytes and store it alongside metadata:\nblob = np.asarray(embedding, dtype=np.float32).tobytes()\nr.hset(\"doc:1\", mapping={\"embedding\": blob, \"title\": \"Example\"})\n\nHere np is imported NumPy, r is a connected redis-py client, and embedding contains the numeric vector. Its encoding and dimensions must match the search index."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11348,17 +10926,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11368,7 +10946,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis vector storage basics",
       "question": "How do you create a Redis vector index for embeddings stored in hashes?",
       "answers": [
-        "Create a search index with a VECTOR field matching the stored data. For 1,536-component FLOAT32 embeddings in hashes named doc:...:\nFT.CREATE documents ON HASH PREFIX 1 doc: SCHEMA embedding VECTOR HNSW 6 TYPE FLOAT32 DIM 1536 DISTANCE_METRIC COSINE\nRun this through redis-cli or a Redis command interface. documents is the index name; doc: selects matching keys; embedding is the hash field. The six following arguments describe the vector type, dimension count and distance metric. HSET alone does not create this index."
+        "Create a search index with a VECTOR field matching the stored embedding. For hashes named doc:... containing 1,536 FLOAT32 components:\nFT.CREATE documents ON HASH PREFIX 1 doc: SCHEMA embedding VECTOR HNSW 6 TYPE FLOAT32 DIM 1536 DISTANCE_METRIC COSINE\n\nRun this through a Redis command interface. documents names the index, doc: selects keys and embedding names the hash field. The six following HNSW arguments define its numeric type, dimension count and metric."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11391,18 +10969,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/commands/ft.create/",
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "The answer is a complete index-creation example, so the question now asks directly for that operation."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11412,7 +10990,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis vector storage basics",
       "question": "How do you query Redis for the five closest embedding vectors?",
       "answers": [
-        "With an existing index named documents, a connected redis-py client r and correctly encoded query_blob:\nfrom redis.commands.search.query import Query\nq = Query(\"*=>[KNN 5 @embedding $query_vec AS score]\").sort_by(\"score\").return_fields(\"score\").dialect(2)\nresults = r.ft(\"documents\").search(q, query_params={\"query_vec\": query_blob})\nKNN 5 requests five neighbors, @embedding names the vector field, and query_vec supplies the query bytes. Sort by score to place the nearest distances first. The bytes must match the index’s numeric type and dimension count."
+        "With index documents, a connected redis-py client r and a correctly encoded query_blob:\nfrom redis.commands.search.query import Query\nq = Query(\"*=>[KNN 5 @embedding $query_vec AS score]\").sort_by(\"score\").return_fields(\"score\").dialect(2)\nresults = r.ft(\"documents\").search(q, query_params={\"query_vec\": query_blob})\n\nKNN 5 requests five neighbors. @embedding selects the vector field, and query_vec supplies the query bytes. Ordering score ascending puts the closest distance scores first; query bytes must match the field’s type and dimensions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11430,17 +11008,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Replaced the vague phrase “query shape” with the concrete operation demonstrated by the answer."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11450,7 +11028,7 @@ window.AI200_FLASHCARDS = {
       "title": "Redis vector storage basics",
       "question": "How is TLS enabled when connecting redis-py to Azure Managed Redis?",
       "answers": [
-        "Set ssl=True on the redis-py client:\nimport redis\nr = redis.Redis(host=host, port=10000, password=access_key, ssl=True)\nr.ping()\nHere host is the instance’s hostname and access_key is obtained securely. ssl=True enables TLS and normal certificate validation; port 10000 alone does not enable encryption."
+        "Enable TLS explicitly in the client configuration:\nimport redis\nr = redis.Redis(host=host, port=10000, password=access_key, ssl=True)\nr.ping()\n\nHere host identifies the instance, and access_key is retrieved securely. ssl=True enables TLS and normal certificate validation. The port number alone does not turn on encryption."
       ],
       "origin": "original",
       "legacyIds": [
@@ -11473,18 +11051,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/clients/redis-py/connect/",
           "https://learn.microsoft.com/en-us/azure/redis/tls-configuration"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11494,7 +11072,7 @@ window.AI200_FLASHCARDS = {
       "category": "cosmos",
       "question": "Which Cosmos DB capability allows an account to accept writes in several regions?",
       "answers": [
-        "Multi-region writes. It lets clients write in several Azure regions. Configure conflict resolution for concurrent changes to the same item; this account configuration cannot use Strong consistency."
+        "Enable multi-region writes to accept writes in more than one Azure region. Plan conflict resolution for concurrent changes to the same item. This account configuration does not support Strong consistency."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11510,17 +11088,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11530,7 +11108,7 @@ window.AI200_FLASHCARDS = {
       "category": "cosmos",
       "question": "How do Cosmos DB provisioned throughput and serverless differ?",
       "answers": [
-        "Provisioned throughput reserves a capacity budget in RU/s, either fixed or autoscaled. Serverless charges for the request units actually consumed rather than continuously reserving that capacity. Both also charge for storage."
+        "Provisioned throughput reserves an RU/s capacity budget, either fixed or autoscaled. Serverless bills for the RUs actually consumed without continuously reserving that budget. Storage charges and feature limits also matter when choosing between them."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11551,18 +11129,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/set-throughput",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/serverless"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11572,7 +11150,7 @@ window.AI200_FLASHCARDS = {
       "category": "cosmos",
       "question": "What two goals should a Cosmos DB partition key balance?",
       "answers": [
-        "Even distribution and efficient access. A good key spreads writes/storage across many values while letting common reads target a known partition. For example, customerId can work well when traffic is spread across customers; a single popular value can create a hot partition."
+        "Balance distribution with access patterns. A useful key spreads data and writes across many values, while allowing common requests to target a known logical partition.\n\nFor example, customerId can work when traffic is spread across customers. A single extremely busy customer can still create a hot partition."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11596,17 +11174,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/partitioning-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11616,7 +11194,7 @@ window.AI200_FLASHCARDS = {
       "category": "cosmos",
       "question": "What happens when a Cosmos DB query cannot be routed to one partition?",
       "answers": [
-        "The query can fan out to multiple physical partitions and combine their results. That adds coordination and often consumes more request units than a query routed to one partition. Filtering on a known partition-key value helps routing; the exact cost still depends on indexes, data and the query."
+        "The query can fan out across physical partitions and combine the results. That usually adds coordination and can increase RU consumption. Supplying a known partition key can narrow routing, but actual cost still depends on the query, indexes and data."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11637,18 +11215,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/partitioning-overview",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11658,7 +11236,7 @@ window.AI200_FLASHCARDS = {
       "category": "cosmos",
       "question": "Which Cosmos DB feature automatically expires items after a configured lifetime?",
       "answers": [
-        "Time to Live (TTL). Enable it on the container and set a default lifetime or an item-level ttl value. The lifetime runs from the item’s last modification, so an update restarts its clock."
+        "Use Time to Live, or TTL. Enable it on the container and configure a default lifetime or an item-level ttl value. The lifetime is measured from the item’s last modification, so updating the item restarts that clock."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11678,17 +11256,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/time-to-live"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11698,7 +11276,7 @@ window.AI200_FLASHCARDS = {
       "category": "cosmos",
       "question": "Which Cosmos DB index supports ORDER BY across more than one property?",
       "answers": [
-        "A composite index covering the ORDER BY property sequence and compatible sort directions. For example, ORDER BY c.lastName ASC, c.firstName ASC needs a composite index for those paths together. Separate single-property indexes do not replace the required composite index for this ordering."
+        "Use a composite index covering the property sequence and compatible sort directions. For example, ORDER BY c.lastName ASC, c.firstName ASC needs an appropriate composite index for those paths together. Separate single-property indexes do not provide that multi-property ordering."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11714,17 +11292,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Cosmos consistency scope, partition routing, RU use, separate vector policies/indexes and resumable change processing.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11734,7 +11312,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "How does HNSW generally trade index build cost for query quality compared with IVFFlat?",
       "answers": [
-        "HNSW generally takes more memory and time to build, but can give a better query-speed/recall trade-off. IVFFlat usually builds more cheaply and needs representative data to train its clusters. Benchmark both against the required accuracy and query latency."
+        "HNSW generally uses more memory and build work but can offer a strong speed/recall trade-off. IVFFlat usually builds more cheaply and needs representative data to train its lists. The better choice depends on the workload, so measure both against the required latency and recall."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11750,17 +11328,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11770,7 +11348,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which pgvector HNSW parameters control graph construction?",
       "answers": [
-        "m controls the maximum graph connections per layer, and ef_construction controls how many candidates are considered while building the graph. Increasing them can improve the index’s search quality, but uses more memory and/or build work. Query-time search effort is configured separately."
+        "m controls graph connectivity, and ef_construction controls the candidate list used during construction. Larger values can improve search quality but increase build work and memory usage. Query-time effort is controlled separately."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11786,17 +11364,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11806,7 +11384,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which pgvector setting adjusts HNSW candidate search effort at query time?",
       "answers": [
-        "hnsw.ef_search. For example, SET hnsw.ef_search = 100; makes a query consider a larger candidate set than the usual default of 40. More search effort generally improves recall but can increase latency. Measure the trade-off rather than always choosing the largest value."
+        "Use hnsw.ef_search to adjust query-time search effort. For example:\nSET hnsw.ef_search = 100;\n\nA larger candidate list generally improves recall but can increase latency. Benchmark the trade-off instead of assuming the largest value is best."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11826,17 +11404,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11846,7 +11424,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "What does pgvector's IVFFlat lists parameter configure?",
       "answers": [
-        "It sets the number of clusters, called inverted lists, created when the IVFFlat index is built. Vectors are grouped into these lists. At query time, probes determines how many lists to search; lists is not itself the per-query search count."
+        "lists sets how many inverted lists the index builds to group vectors. It is chosen at index-creation time. The separate query-time probes setting controls how many of those lists a search visits."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11862,17 +11440,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11882,7 +11460,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which pgvector setting selects how many IVFFlat lists are searched?",
       "answers": [
-        "ivfflat.probes. For example, SET ivfflat.probes = 10; searches ten inverted lists for the query. Searching more lists generally improves recall but performs more work. The right value depends on how many lists the index has and the desired speed/recall trade-off."
+        "Use ivfflat.probes. For example, SET ivfflat.probes = 10 searches ten lists. Visiting more lists usually improves recall while increasing work; choose the value relative to the index’s list count and measured latency."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11902,17 +11480,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11922,7 +11500,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Why should an IVFFlat index be built with representative data already present?",
       "answers": [
-        "IVFFlat chooses cluster centers from vectors already in the table. If those vectors are absent or unrepresentative, the resulting clusters may be poor for later data. Load a representative dataset before building this index; HNSW does not require this clustering training step."
+        "IVFFlat learns its list centers from existing vectors. Missing or unrepresentative training data can create poor groups for later searches. Load representative data before building it; HNSW does not require this list-training step."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11938,17 +11516,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11958,7 +11536,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "How can PostgreSQL combine keyword search with vector similarity search?",
       "answers": [
-        "Run full-text search for keyword matches and pgvector search for semantic matches, then merge their ranked results. Reciprocal rank fusion is one method: it rewards documents ranked highly in either list without assuming the two search scores use the same numeric scale."
+        "Retrieve keyword matches with full-text search and semantic matches with pgvector, then combine their ranked lists. Reciprocal rank fusion is one approach that combines rank positions without assuming the two score scales are directly comparable."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -11978,17 +11556,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -11998,7 +11576,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "What does EXPLAIN ANALYZE measure that EXPLAIN alone does not?",
       "answers": [
-        "EXPLAIN estimates an execution plan without running the statement. EXPLAIN ANALYZE actually executes it and reports observed times and row counts. For a statement that modifies data, those modifications really occur unless you deliberately contain them in a transaction that is rolled back."
+        "EXPLAIN shows the planner’s estimates. EXPLAIN ANALYZE executes the statement and reports observed timing and row counts.\n\nA modifying statement really changes data when executed. Use an appropriate test environment or a deliberately rolled-back transaction when analyzing such a statement."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12014,17 +11592,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.postgresql.org/docs/current/using-explain.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12034,7 +11612,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "What does ordinary PostgreSQL VACUUM do with dead row versions?",
       "answers": [
-        "It makes space from obsolete row versions available for reuse, such as versions left by updates or deletes. It normally does not shrink the table file on disk. VACUUM FULL is a separate operation that rewrites the table and can reclaim disk space."
+        "Ordinary VACUUM makes space occupied by obsolete row versions available for reuse. It generally does not return that space to the operating system. VACUUM FULL rewrites the table to reclaim disk space, with different locking and operational costs."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12054,17 +11632,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.postgresql.org/docs/current/sql-vacuum.html"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12074,7 +11652,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which PostgreSQL index supports JSONB containment queries such as @>?",
       "answers": [
-        "A GIN index with a suitable JSONB operator class. It indexes values inside the document so supported containment conditions such as @> can find matching rows efficiently."
+        "Use a GIN index with an operator class supporting the JSONB predicates you need. It indexes values inside the documents so containment expressions such as @> can find matching rows efficiently."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12090,53 +11668,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.postgresql.org/docs/current/datatype-json.html#JSON-INDEXING"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "prep-pg-023",
-      "domain": 2,
-      "title": "Minimum TLS version",
-      "category": "postgresql",
-      "question": "Which Azure PostgreSQL server parameter sets the minimum TLS protocol version?",
-      "answers": [
-        "ssl_min_protocol_version. It sets the oldest TLS protocol version the server will accept, for example TLSv1.3 where configured and supported. This is separate from require_secure_transport, which controls whether encrypted transport is required at all."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · pg-023",
-          "url": "https://ai200prep.com/questions/pg-023/"
-        },
-        {
-          "label": "Microsoft Learn · PostgreSQL TLS",
-          "url": "https://learn.microsoft.com/en-us/azure/postgresql/security/security-tls",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://learn.microsoft.com/en-us/azure/postgresql/security/security-tls"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12146,7 +11688,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which PostgreSQL setting provides memory for maintenance work such as an HNSW index build?",
       "answers": [
-        "maintenance_work_mem sets the memory budget for maintenance operations such as an HNSW index build. More build memory can help when the graph no longer fits, but the total budget must account for server RAM and concurrent maintenance work."
+        "maintenance_work_mem supplies a memory budget for operations such as index creation. An HNSW graph that fits in this budget can build faster. Size it within available server RAM, accounting for concurrent maintenance work."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12167,18 +11709,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.postgresql.org/docs/current/runtime-config-resource.html",
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12188,7 +11730,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "What does pgvector halfvec change compared with vector?",
       "answers": [
-        "halfvec stores each vector component as a 16-bit floating-point value instead of vector’s 32-bit value. That reduces component storage and memory use, at the cost of numerical precision. The overall size is not exactly halved because types and indexes also have overhead."
+        "halfvec uses 16-bit floating-point components, while vector uses 32-bit components. This reduces raw component storage and memory use while losing some numeric precision. Account for index and type overhead when estimating the total saving."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12208,17 +11750,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12228,7 +11770,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "What does Azure PostgreSQL Query Store retain for performance analysis?",
       "answers": [
-        "Query history and aggregated execution statistics. They help you investigate recurring slow queries or performance regressions after the original execution has finished. Capture must be enabled before the period you want to analyze."
+        "Query Store retains query history and aggregated execution statistics. This helps investigate slow queries and regressions after execution has finished. Collection must be enabled before the period you want to analyze."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12244,17 +11786,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/monitor/concepts-query-store"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12264,7 +11806,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which Azure PostgreSQL server setting requires secure client transport?",
       "answers": [
-        "Set require_secure_transport to on. The server then rejects connections that do not use the required secure transport. Configure the client to use TLS and verify the server certificate and hostname as well; transport encryption and server-identity verification are separate checks."
+        "Set require_secure_transport to on to require secure client transport. Also configure the client to use TLS and verify the server’s certificate and hostname. Requiring encryption on the server and validating the server’s identity in the client are complementary controls."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12280,17 +11822,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/postgresql/security/security-tls"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12300,7 +11842,7 @@ window.AI200_FLASHCARDS = {
       "category": "postgresql",
       "question": "Which PostgreSQL operation efficiently loads large batches of embedding rows?",
       "answers": [
-        "Use PostgreSQL COPY for a bulk load, with a supported text, CSV or binary format. It avoids much of the overhead of issuing a separate INSERT for every row. Where the ingestion plan allows it, load first, build secondary indexes afterward and run ANALYZE."
+        "Use COPY to load rows in bulk with a supported text, CSV or binary format. It avoids much of the per-statement overhead of many individual INSERT calls. Where the ingestion workflow allows it, load first, build secondary indexes afterward and run ANALYZE."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12321,62 +11863,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "PostgreSQL SDK/SQL behavior, pgvector operators/indexes, connection reuse and measured resource tuning.",
         "sources": [
           "https://www.postgresql.org/docs/current/sql-copy.html",
           "https://github.com/pgvector/pgvector"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "prep-redis-002",
-      "domain": 2,
-      "title": "Redis persistence",
-      "category": "redis",
-      "question": "How do Redis RDB and AOF persistence differ?",
-      "answers": [
-        "RDB saves point-in-time snapshots. AOF, append-only file, records writes that can be replayed during recovery. RDB can lose changes since the last snapshot; AOF’s loss window depends on how frequently its writes are flushed to disk."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · redis-002",
-          "url": "https://ai200prep.com/questions/redis-002/"
-        },
-        {
-          "label": "AI-200 Prep · p-red-014",
-          "url": "https://ai200prep.com/questions/p-red-014/"
-        },
-        {
-          "label": "AI-200 Prep · redis-015",
-          "url": "https://ai200prep.com/questions/redis-015/"
-        },
-        {
-          "label": "Redis · Persistence",
-          "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12386,7 +11884,7 @@ window.AI200_FLASHCARDS = {
       "category": "redis",
       "question": "How does a semantic cache reuse an answer for a paraphrased prompt?",
       "answers": [
-        "Convert the new prompt into an embedding and search stored prompt embeddings for a sufficiently close match. Reuse the saved answer only if a tested similarity threshold and required context checks pass, such as the same user permissions and relevant model/data version. Similar wording alone does not guarantee the cached answer is suitable."
+        "Embed the new prompt and search cached prompt embeddings for a sufficiently similar match. Reuse its answer only when similarity and context checks pass, including access permissions and relevant model/data versions. A semantic match helps find a candidate; it does not by itself prove the answer is valid."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12411,96 +11909,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "prep-p-red-004",
-      "domain": 2,
-      "title": "Fixed-window limiting",
-      "category": "redis",
-      "question": "How can Redis count requests in a fixed one-minute rate-limit window?",
-      "answers": [
-        "Use one counter key per caller and minute, then increment it with INCR. Compare the count with the request limit. Set a cleanup expiry when creating the counter, coordinated atomically so a crash cannot leave a permanent key. A script can combine incrementing and first-use expiry."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · p-red-004",
-          "url": "https://ai200prep.com/questions/p-red-004/"
-        },
-        {
-          "label": "Redis · Atomic counters",
-          "url": "https://redis.io/docs/latest/commands/incr/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/commands/incr/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "prep-redis-022",
-      "domain": 2,
-      "title": "Sliding-window limiting",
-      "category": "redis",
-      "question": "How can a Redis sorted set implement a sliding-window rate counter?",
-      "answers": [
-        "Store each request as a unique sorted-set member with its timestamp as the score. Atomically remove entries older than the time window, count the remaining entries, and add the new request only if the limit allows it. Use a script or equivalent coordination so concurrent requests cannot all pass a separate count check."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · redis-022",
-          "url": "https://ai200prep.com/questions/redis-022/"
-        },
-        {
-          "label": "Redis · Sorted sets",
-          "url": "https://redis.io/docs/latest/develop/data-types/sorted-sets/",
-          "kind": "primary"
-        },
-        {
-          "label": "Redis · Atomic counters",
-          "url": "https://redis.io/docs/latest/commands/incr/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/develop/data-types/sorted-sets/",
-          "https://redis.io/docs/latest/commands/incr/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12510,7 +11930,7 @@ window.AI200_FLASHCARDS = {
       "category": "redis",
       "question": "Which Redis SET options create an expiring key only when it does not exist?",
       "answers": [
-        "NX and EX, or NX and PX for a lifetime in milliseconds. For example:\nSET greeting hello NX EX 30\nThis stores hello only if greeting does not exist and expires it after 30 seconds. An existing key is left unchanged."
+        "Use NX with an expiry option such as EX for seconds or PX for milliseconds:\nSET greeting hello NX EX 30\n\nThis writes the value only if the key does not already exist, and gives the new value a 30-second lifetime. An existing value is left unchanged."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12530,53 +11950,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/commands/set/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "prep-redis-008",
-      "domain": 2,
-      "title": "Redis sharding",
-      "category": "redis",
-      "question": "What does Redis clustering distribute across shards?",
-      "answers": [
-        "The keyspace. Each key maps to a hash slot, and different shards own different slot ranges. This distributes data and work across servers. Multi-key operations may require their keys to share a slot."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · redis-008",
-          "url": "https://ai200prep.com/questions/redis-008/"
-        },
-        {
-          "label": "Redis · Cluster hash slots",
-          "url": "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12584,9 +11968,9 @@ window.AI200_FLASHCARDS = {
       "domain": 2,
       "title": "Read multiple keys",
       "category": "redis",
-      "question": "Which redis-py operation retrieves several keys in one command?",
+      "question": "How can an app reduce network round trips when reading several cached values?",
       "answers": [
-        "r.mget([\"key1\", \"key2\"]) on a connected redis-py client r retrieves multiple string values in one command. Missing keys return None in their positions. In Redis Cluster, check multi-key restrictions: keys may need the same hash slot, or the client/service may split supported cross-slot operations."
+        "With a connected redis-py client r, use r.mget(['key1', 'key2']) to fetch several string values in one command. Missing keys appear as None in the matching positions.\n\nFor a batch of different commands, use a pipeline to send them without waiting for each reply before sending the next. This reduces network waiting; batching alone does not guarantee that the commands run as one atomic operation.\n\nOn clustered services, check which multi-key operations your service and client support."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12604,35 +11988,7 @@ window.AI200_FLASHCARDS = {
           "label": "Redis · Cluster hash slots",
           "url": "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/",
           "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/commands/mget/",
-          "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
-      }
-    },
-    {
-      "id": "prep-p-red-018",
-      "domain": 2,
-      "title": "Command pipelining",
-      "category": "redis",
-      "question": "What does Redis pipelining reduce?",
-      "answers": [
-        "It sends several commands without waiting for each reply before sending the next. This reduces network round trips and waiting, improving throughput for batches. Pipelining by itself does not make the commands an atomic transaction."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
+        },
         {
           "label": "AI-200 Prep · p-red-018",
           "url": "https://ai200prep.com/questions/p-red-018/"
@@ -12644,53 +12000,19 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Rechecked batch MGET, missing results, network pipelining and cluster restrictions. Retained the recent consolidated answer.",
         "sources": [
+          "https://redis.io/docs/latest/commands/mget/",
+          "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/",
           "https://redis.io/docs/latest/develop/using-commands/pipelining/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
-      }
-    },
-    {
-      "id": "prep-p-red-020",
-      "domain": 2,
-      "title": "Cluster hash tags",
-      "category": "redis",
-      "question": "How can related Redis Cluster keys be placed in the same hash slot?",
-      "answers": [
-        "Put the same non-empty substring inside braces in each key, for example order:{42}:items and order:{42}:status. Redis hashes 42 rather than each full key, placing both in the same slot. This permits supported multi-key operations while retaining descriptive key names."
-      ],
-      "origin": "prep",
-      "legacyIds": [],
-      "references": [
-        {
-          "label": "AI-200 Prep · p-red-020",
-          "url": "https://ai200prep.com/questions/p-red-020/"
-        },
-        {
-          "label": "Redis · Cluster hash slots",
-          "url": "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/",
-          "kind": "primary"
-        }
-      ],
-      "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
-        "sources": [
-          "https://redis.io/docs/latest/operate/oss_and_stack/reference/cluster-spec/"
-        ]
-      },
-      "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -12700,7 +12022,7 @@ window.AI200_FLASHCARDS = {
       "category": "redis",
       "question": "What combination suggests a Redis cache may be undersized?",
       "answers": [
-        "Frequent evictions together with a falling hit ratio and sustained memory pressure can suggest insufficient capacity. Also check key sizes, expiry choices and whether the access pattern has changed. A high miss rate alone does not prove undersizing; the application may be caching data that is rarely reused."
+        "Look for sustained memory pressure, frequent evictions and a worsening cache hit ratio together. Inspect key sizes, expiry rules and workload changes before increasing capacity. A poor hit ratio alone can reflect ineffective caching rather than insufficient memory."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12721,18 +12043,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://redis.io/docs/latest/develop/reference/eviction/",
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12742,7 +12064,7 @@ window.AI200_FLASHCARDS = {
       "category": "redis",
       "question": "How can an application reduce a cache stampede when a popular key expires?",
       "answers": [
-        "Let one worker rebuild the missing value while other callers wait or use an acceptable stale copy. A short-lived lock can coordinate that work. Also randomize expiry times slightly so many popular keys do not expire together."
+        "Coordinate refresh so one worker rebuilds a missing popular value while others wait or use an acceptable stale copy. A short-lived lock can support that coordination. Adding a little variation to expiry times also helps prevent many keys from expiring together."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -12771,18 +12093,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Redis data encodings, cache lifecycle, eviction behavior and vector index/query compatibility.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside",
           "https://redis.io/docs/latest/commands/set/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12794,7 +12116,7 @@ window.AI200_FLASHCARDS = {
       "title": "API",
       "question": "What does API stand for?",
       "answers": [
-        "Application Programming Interface: a defined way for one program to use another component. For example, an orders web API can let a client submit an order or retrieve its status using HTTP requests."
+        "API stands for Application Programming Interface: a defined way for software components to interact. An orders HTTP API, for example, can accept a new order and return its status through documented requests and responses."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -12806,17 +12128,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12828,7 +12150,7 @@ window.AI200_FLASHCARDS = {
       "title": "Endpoint",
       "question": "What is a service endpoint?",
       "answers": [
-        "An address where a service can be contacted, often including a hostname, port or URL path. For example, https://example.com/orders can be an HTTP endpoint. Knowing the address tells a client where to connect; authentication and authorization still determine whether its request is allowed."
+        "An endpoint is an address where a service accepts requests, such as a hostname, port or URL path. https://example.com/orders identifies an HTTP endpoint. A client also needs whatever authentication and permissions that endpoint requires."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -12840,17 +12162,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12862,7 +12184,7 @@ window.AI200_FLASHCARDS = {
       "title": "HTTP",
       "question": "What does HTTP stand for?",
       "answers": [
-        "Hypertext Transfer Protocol. It defines how a client sends requests and a server returns responses on the web. Requests use methods such as GET and POST; responses include status codes such as 200 for success or 404 for not found."
+        "HTTP stands for Hypertext Transfer Protocol. It defines web requests and responses, including methods such as GET and POST and response status codes such as 200 and 404."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -12879,18 +12201,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12902,7 +12224,7 @@ window.AI200_FLASHCARDS = {
       "title": "HTTPS",
       "question": "What is HTTPS?",
       "answers": [
-        "HTTP carried over Transport Layer Security (TLS). It encrypts the connection and, with normal certificate validation, verifies the server hostname. HTTPS protects transport; the application still needs appropriate user authentication and authorization."
+        "HTTPS is HTTP carried over Transport Layer Security, or TLS. It encrypts the connection and uses certificate validation to verify the server. Application authentication and authorization separately control who may use the service."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -12914,17 +12236,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12936,7 +12258,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure Function",
       "question": "What is an Azure Function?",
       "answers": [
-        "A piece of application code invoked by a configured trigger, such as an HTTP request or a queue message. Azure Functions runs it on a supported hosting plan. One function has one trigger; a function app can host several functions."
+        "An Azure Function is application code invoked by one configured trigger, such as an HTTP request or queue message. Azure Functions runs the code on its hosting platform. A Function App can contain several such functions."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -12953,18 +12275,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -12976,7 +12298,7 @@ window.AI200_FLASHCARDS = {
       "title": "Function app",
       "question": "What is an Azure function app?",
       "answers": [
-        "The Azure resource that hosts one or more functions. It provides their shared app-level settings and hosting configuration. You deploy function code into a function app; each individual function has its own handler and trigger."
+        "A Function App is the Azure resource hosting one or more functions. Its functions share app-level configuration and hosting settings, while each function has its own trigger and handler."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -12993,18 +12315,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13016,7 +12338,7 @@ window.AI200_FLASHCARDS = {
       "title": "Serverless",
       "question": "What does serverless mean?",
       "answers": [
-        "A hosting model where you deploy application code while the platform manages the underlying servers. Servers still run the code, but you do not maintain them yourself. Automatic scaling, idle costs and execution limits depend on the chosen service and plan."
+        "Serverless hosting lets you deploy application code while the platform manages the underlying servers. Scaling behavior, execution limits and idle costs depend on the selected service and hosting plan."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13028,17 +12350,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13050,7 +12372,7 @@ window.AI200_FLASHCARDS = {
       "title": "Cold start",
       "question": "What is a cold start in serverless hosting?",
       "answers": [
-        "The startup delay when the platform must initialize a new application instance before handling work. It can include starting the host, loading the language runtime and importing code. Keeping supported capacity warm can reduce this delay, usually with a capacity cost."
+        "A cold start is the delay while a new application instance initializes before handling work. Starting the host, loading its runtime and importing code all take time. Supported warm-capacity options can reduce that delay at an additional capacity cost."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13062,17 +12384,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13084,7 +12406,7 @@ window.AI200_FLASHCARDS = {
       "title": "Function trigger",
       "question": "What is a trigger in Azure Functions?",
       "answers": [
-        "The configured event source that starts a function invocation. For example, an HTTP trigger starts it for a request, a queue trigger for a message, and a Timer trigger on a schedule. Each function has exactly one trigger."
+        "A trigger is the event source that starts a function invocation. An HTTP request, queue message or timer schedule can be a trigger. Each individual function has exactly one trigger."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13096,17 +12418,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13118,7 +12440,7 @@ window.AI200_FLASHCARDS = {
       "title": "Input binding",
       "question": "What is an input binding in Azure Functions?",
       "answers": [
-        "A declarative connection that supplies data from a supported service to a function. For example, a Blob input binding can supply a blob’s contents without the handler creating its own Storage client. It still needs the correct path, connection and access permissions."
+        "An input binding supplies data from a configured service to a function handler. A Blob input binding, for example, can provide file contents without the handler creating a Storage SDK client. The binding still needs correct addressing and access permissions."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13130,17 +12452,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13152,7 +12474,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus",
       "question": "What is Azure Service Bus?",
       "answers": [
-        "A managed message broker with queues and topic subscriptions. One application sends a message; another receives and processes it, even if they are not running at the same time. Service Bus offers controls such as locks, completion, retries and dead-lettering."
+        "Azure Service Bus is a managed broker for queue and topic-based messaging. A sender can hand off work for another application to process later. Locks, settlement and dead-letter queues help control how messages are processed and recovered."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13169,18 +12491,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13192,7 +12514,7 @@ window.AI200_FLASHCARDS = {
       "title": "Blob",
       "question": "What is a blob in Azure Storage?",
       "answers": [
-        "An individually stored object, such as an image, PDF or data file. Each blob has its own name and address and belongs to a Blob Storage container in a storage account. Here a container is a group of stored objects."
+        "A blob is an object stored in Azure Blob Storage, such as a photo or PDF. It has a name inside a storage container, which belongs to a storage account."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13204,17 +12526,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13226,7 +12548,7 @@ window.AI200_FLASHCARDS = {
       "title": "Message broker",
       "question": "What is a message broker?",
       "answers": [
-        "A service that accepts messages from senders and makes them available to receivers, decoupling the two applications. A broker can hold messages while a consumer is unavailable and provide features such as routing or acknowledgments. Azure Service Bus is an example."
+        "A message broker accepts messages from producers and makes them available to consumers. It separates sending from processing and can provide durable storage, routing and acknowledgments. Azure Service Bus is one example."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13238,17 +12560,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13260,7 +12582,7 @@ window.AI200_FLASHCARDS = {
       "title": "Message queue",
       "question": "What is a message queue?",
       "answers": [
-        "A store of messages waiting for consumers to process them. Competing consumers share the work: a queue message is not automatically copied to every consumer. Queues let the sender hand off background work without keeping a synchronous request open until it finishes."
+        "A message queue holds work until consumers process it. Competing consumers share the work rather than each receiving a separate copy. This lets a sender hand off a slow operation without keeping the original HTTP request open."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13272,17 +12594,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13294,7 +12616,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus topic",
       "question": "What is a topic in Azure Service Bus?",
       "answers": [
-        "A publishing destination whose subscriptions can each receive matching messages. For example, one order event can reach billing and shipping through their separate subscriptions. The topic provides fan-out through subscriptions; consumers receive from the subscriptions rather than directly from the topic."
+        "A Service Bus topic accepts published messages and routes matching copies into its subscriptions. Billing and shipping can each have a subscription to the same order event and process it independently."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13306,17 +12628,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13328,7 +12650,7 @@ window.AI200_FLASHCARDS = {
       "title": "Topic subscription",
       "question": "What is a subscription to a Service Bus topic?",
       "answers": [
-        "A queue-like endpoint under a topic that keeps its own copy of matching messages. Billing and shipping can each have a subscription and process the same order independently. This is different from an Azure billing subscription."
+        "A Service Bus topic subscription is a queue-like endpoint holding its own copy of matching publications. Consumers receive from that subscription. Separate subscriptions let different applications process the same event independently."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13345,18 +12667,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13368,7 +12690,7 @@ window.AI200_FLASHCARDS = {
       "title": "Event notification",
       "question": "What is an event notification?",
       "answers": [
-        "A message describing something that happened, such as a blob being created or an order being accepted. Subscribers decide what to do with that information. It often contains identifiers and metadata rather than the complete underlying file or business object."
+        "An event notification describes something that happened, such as a blob being created. It usually includes identifiers and metadata so interested applications can react and retrieve any underlying data they need."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13385,18 +12707,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/overview",
           "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13408,7 +12730,7 @@ window.AI200_FLASHCARDS = {
       "title": "Webhook",
       "question": "What is a webhook?",
       "answers": [
-        "An HTTP endpoint that another service calls to notify your application when something happens. For example, Event Grid can send a POST request to your webhook when a blob is created."
+        "A webhook is an HTTP endpoint another service calls to notify your application about an event. Event Grid can POST a blob-created event to a webhook, for example."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13420,17 +12742,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-event-grid-events-schema"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13442,7 +12764,7 @@ window.AI200_FLASHCARDS = {
       "title": "Event Grid",
       "question": "What is Azure Event Grid?",
       "answers": [
-        "An Azure service that routes event notifications from sources to interested subscribers. For example, it can notify a function when a Storage blob is created. Its namespace features also support pull delivery and MQTT messaging."
+        "Azure Event Grid routes event notifications from publishers to interested subscribers. An event subscription can filter which events reach a destination, such as a Function responding to a new Storage blob."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13454,17 +12776,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13476,7 +12798,7 @@ window.AI200_FLASHCARDS = {
       "title": "Idempotency",
       "question": "What does idempotent processing mean?",
       "answers": [
-        "Processing the same operation again has the same intended effect as processing it once. For example, receiving the same payment message twice should not charge the customer twice. Stable operation IDs and coordinated duplicate checks can help make retries safe."
+        "Idempotent processing makes a repeated operation have the same intended effect as one successful attempt. For example, delivering a payment message twice should not charge the customer twice. Use a stable operation ID and coordinated state changes to prevent duplicate effects."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13493,18 +12815,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-idempotent",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13516,7 +12838,7 @@ window.AI200_FLASHCARDS = {
       "title": "At-least-once delivery",
       "question": "What does at-least-once delivery mean?",
       "answers": [
-        "Messages can be delivered more than once. For example, a handler may finish its work but lose the acknowledgment, causing delivery to be retried. Consumers must tolerate duplicates. The service's retry and retention limits still apply; delivery does not guarantee that the business operation eventually succeeds."
+        "At-least-once delivery permits duplicate deliveries. A handler may finish its work but lose the acknowledgment, so the service tries again. Consumers must tolerate that repetition, and recovery still needs to account for retry and retention limits."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13528,17 +12850,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13550,7 +12872,7 @@ window.AI200_FLASHCARDS = {
       "title": "Message settlement",
       "question": "What is message settlement in Service Bus?",
       "answers": [
-        "Telling the broker the outcome of receiving/processing a message. Complete removes successfully processed work; abandon releases it for another attempt; defer sets it aside; dead-letter moves it out of normal delivery. Receiving a PeekLock message alone does not report successful completion."
+        "Settlement tells Service Bus what happened to a received message. Complete removes successful work, abandon releases it for another attempt, defer postpones handling and dead-letter moves it to the dead-letter subqueue. Merely receiving a PeekLock message does not complete it."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13562,17 +12884,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13584,7 +12906,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dead-letter queue (DLQ)",
       "question": "What is a dead-letter queue?",
       "answers": [
-        "A place for messages that could not be delivered or processed under the service’s rules. DLQ stands for dead-letter queue. In Service Bus it is a subqueue of a queue or subscription. Inspecting or replaying its messages requires an explicit recovery process."
+        "DLQ stands for dead-letter queue. It holds messages that could not be delivered or processed under the service’s rules. In Service Bus it is a subqueue of a queue or subscription; recovery requires inspecting and deliberately reprocessing or discarding its messages."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13596,17 +12918,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13618,7 +12940,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus session",
       "question": "What is a session in Azure Service Bus?",
       "answers": [
-        "A group of related messages with the same SessionId. One receiver holds the session lock at a time, so it can process that group in order while other receivers handle other sessions."
+        "A Service Bus session groups messages with the same SessionId. One receiver owns the session lock at a time and can process that group in order. Other receivers can process different sessions concurrently."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13630,17 +12952,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13652,7 +12974,7 @@ window.AI200_FLASHCARDS = {
       "title": "AMQP",
       "question": "What does AMQP stand for?",
       "answers": [
-        "Advanced Message Queuing Protocol. It defines how clients and message brokers exchange messages and delivery outcomes over a network. Azure Service Bus uses it in its current supported SDKs."
+        "AMQP stands for Advanced Message Queuing Protocol. It defines messaging communication between clients and brokers, including delivery outcomes. Current Service Bus SDKs use AMQP 1.0."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -13664,17 +12986,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13684,7 +13006,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus queues vs topics",
       "question": "What does Service Bus auto-forwarding do?",
       "answers": [
-        "It transfers messages from one queue or subscription into one configured queue/topic in the same namespace. Messages are removed from the source as they are forwarded, rather than copied to multiple destinations. Use topic subscriptions for fan-out; auto-forwarding is a routing chain."
+        "Auto-forwarding transfers messages from a queue or subscription into a configured queue or topic in the same namespace. Successful transfer removes them from the source. Use subscriptions when independent consumers need their own copies; forwarding creates a delivery chain."
       ],
       "origin": "original",
       "legacyIds": [
@@ -13702,9 +13024,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-auto-forwarding"
         ]
@@ -13713,9 +13035,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Service Bus auto-forwarding",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13725,7 +13047,7 @@ window.AI200_FLASHCARDS = {
       "title": "Triggers and bindings",
       "question": "What does an Azure Functions output binding do?",
       "answers": [
-        "It sends or writes a function's output to a configured service. For example, the handler can provide an output value that the binding writes as a queue message or blob. The binding needs the destination settings and permission to write there."
+        "An output binding sends or writes a handler’s output to a configured service. For example, it can write a queue message supplied by the function. The binding needs the destination configuration and permission to write there."
       ],
       "origin": "original",
       "legacyIds": [
@@ -13743,9 +13065,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
@@ -13754,9 +13076,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Output binding",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13766,7 +13088,7 @@ window.AI200_FLASHCARDS = {
       "title": "Function app configuration",
       "question": "What is local.settings.json used for?",
       "answers": [
-        "It stores local Functions settings, including values used as environment variables while running locally. Deployed Azure apps use their configured app settings instead of reading this file. The standard .gitignore excludes it because it may contain secrets, but verify your repository rules; naming a file local.settings.json does not automatically keep it out of Git."
+        "local.settings.json supplies settings used when running Functions locally, including environment-variable values. Azure deployments use app settings instead.\n\nBecause local settings can contain secrets, verify that the repository ignores this file before adding real values."
       ],
       "origin": "original",
       "legacyIds": [
@@ -13784,9 +13106,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local"
         ]
@@ -13795,9 +13117,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "local.settings.json",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13807,7 +13129,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-3",
       "question": "What is host.json used for in Azure Functions?",
       "answers": [
-        "It contains configuration for the Functions host across the function app, such as logging, functionTimeout and extension-specific trigger/concurrency settings. It is deployed with the code. Per-environment secrets and connection values normally belong in app settings, not in host.json."
+        "host.json configures the Functions host across a Function App, including logging, timeouts and extension-specific trigger behavior. It is deployed with the code. Keep environment-specific secrets and connection values in the appropriate app settings."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -13823,9 +13145,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Message/event vocabulary, ownership, acknowledgments and runtime/binding boundaries.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json"
         ]
@@ -13834,9 +13156,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "host.json",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13844,9 +13166,9 @@ window.AI200_FLASHCARDS = {
       "domain": 3,
       "category": "event-grid",
       "title": "Event Grid retry schedule",
-      "question": "What is the Event Grid push-delivery retry schedule?",
+      "question": "How does Event Grid space out push-delivery retries?",
       "answers": [
-        "For classic push delivery, the documented backoff steps are 10 seconds, 30 seconds, 1 minute, 5 minutes, 10 minutes, 30 minutes, 1 hour, 3 hours and 6 hours, then every 12 hours within the retention limit. Timing includes randomization and is best effort. Endpoint errors, health and configured retry limits affect which retries actually occur."
+        "For classic push delivery, retries start after short delays and back off as failures continue. The documented schedule starts at 10 seconds, then 30 seconds and one minute, eventually reaching 12-hour intervals.\n\nThe timing is best effort and includes randomization. The event lifetime and maximum-attempt policy can stop delivery sooner."
       ],
       "origin": "original",
       "legacyIds": [
@@ -13864,17 +13186,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Checked the classic push retry schedule, randomization and policy limits. Replaced a nine-interval memorization answer with the backoff behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13884,7 +13206,7 @@ window.AI200_FLASHCARDS = {
       "title": "Event Grid retry schedule",
       "question": "How long does Event Grid wait for a push endpoint response?",
       "answers": [
-        "30 seconds. If the endpoint has not responded, Event Grid queues a retry. A late successful response does not guarantee that a retry has been canceled, so duplicate deliveries remain possible. Accept the event quickly after safely handing off any longer work."
+        "Event Grid waits 30 seconds. Without a response, it queues the event for another delivery attempt. A late success response might arrive after a retry is already queued, so the handler must tolerate duplicates.\n\nFor slow work, safely enqueue the task and acknowledge promptly, then process it in the background."
       ],
       "origin": "original",
       "legacyIds": [
@@ -13902,17 +13224,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Classic Event Grid push delivery, subscription filtering, validation and duplicate-safe handling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13922,7 +13244,7 @@ window.AI200_FLASHCARDS = {
       "title": "Event Grid retry schedule",
       "question": "Which HTTP success codes acknowledge Event Grid push delivery?",
       "answers": [
-        "HTTP 200, 201, 202, 203 and 204. Event Grid treats those responses as successful delivery; other status codes are failures handled according to the retry/dead-letter rules. Return success only after you have safely accepted the event, since Event Grid then considers its delivery complete."
+        "HTTP 200, 201, 202, 203 and 204 count as successful delivery. Return one of these only after the handler has safely accepted the event, because Event Grid then considers its delivery complete.\n\nOther responses follow the retry or dead-letter rules; a 202 response does not make Event Grid track your later background processing."
       ],
       "origin": "original",
       "legacyIds": [
@@ -13940,17 +13262,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Classic Event Grid push delivery, subscription filtering, validation and duplicate-safe handling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -13978,17 +13300,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14016,17 +13338,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14054,17 +13376,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14092,17 +13414,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14130,17 +13452,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14168,17 +13490,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked full event-type matching, subject prefix/suffix fields and advanced operator names against event-filtering.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14206,17 +13528,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked full event-type matching, subject prefix/suffix fields and advanced operator names against event-filtering.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14226,7 +13548,7 @@ window.AI200_FLASHCARDS = {
       "title": "Event Grid filtering",
       "question": "Which Event Grid filter can inspect fields inside event data?",
       "answers": [
-        "An advanced filter. Supply the field path, an operator and the comparison value(s). For example, key data.order.total with operatorType NumberGreaterThan and value 100 selects events whose order total exceeds 100. Dot notation navigates properties inside the event’s data object."
+        "Use an advanced filter with a field path, comparison operator and value. For example, data.order.total with NumberGreaterThan and value 100 selects events whose order total exceeds 100.\n\nThe dotted path means “read total inside order inside data.” The filter examines event fields, rather than fetching and inspecting an external resource."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14244,17 +13566,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Classic Event Grid push delivery, subscription filtering, validation and duplicate-safe handling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -14282,17 +13604,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked full event-type matching, subject prefix/suffix fields and advanced operator names against event-filtering.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14302,7 +13624,7 @@ window.AI200_FLASHCARDS = {
       "title": "Event Grid filtering",
       "question": "What must be enabled to use Event Grid advanced filters on arrays?",
       "answers": [
-        "Set enableAdvancedFilteringOnArrays to true on the subscription filter. Then a supported advanced filter can test values inside an array-valued event field."
+        "Set enableAdvancedFilteringOnArrays to true in the event subscription’s filter. Supported advanced-filter operators can then test values inside an array-valued field. Choose the operator according to the array elements’ data type."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14320,17 +13642,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Classic Event Grid push delivery, subscription filtering, validation and duplicate-safe handling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -14340,7 +13662,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus settlement",
       "question": "What does completing a Service Bus message do?",
       "answers": [
-        "It tells Service Bus that processing succeeded and removes the message from the queue or subscription. In PeekLock mode, receiving only locks the message; Complete removes it. Complete it after the business work succeeds, and make that work safe to repeat if the acknowledgment fails."
+        "Completing a message tells Service Bus that processing succeeded and removes it from the queue or subscription. In PeekLock mode, receiving the message only reserves it temporarily; completion is the separate acknowledgment.\n\nComplete after the business operation succeeds. Make that operation safe to repeat in case it succeeds but the acknowledgment fails."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14358,17 +13680,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -14378,7 +13700,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus settlement",
       "question": "What does abandoning a Service Bus message do?",
       "answers": [
-        "It releases the processing lock and makes the message eligible for redelivery, with its delivery count increased. Use it when this attempt cannot finish but another attempt may succeed. It does not delete the message or guarantee a retry delay; the next receiver may get it immediately."
+        "Abandoning releases the lock and makes the message available for another delivery, normally increasing DeliveryCount. Use it when the current attempt cannot finish but another attempt may succeed.\n\nIt does not delete the message or impose a retry delay. Another receiver may get it immediately."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14401,18 +13723,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -14422,7 +13744,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus settlement",
       "question": "How does Service Bus message deferral work?",
       "answers": [
-        "Deferral leaves the message in the entity but sets it aside from normal receives. Save its SequenceNumber and later retrieve it through the deferred-message API. Deferring is not the same as abandoning and does not itself increase the delivery count. Your application is responsible for remembering and revisiting deferred work."
+        "Deferral sets the message aside so ordinary receives no longer return it. Save its SequenceNumber, then use the deferred-message receive operation to retrieve it later.\n\nThe message remains in Service Bus. Deferring does not itself increase DeliveryCount, and your application must remember when and how to revisit it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14440,17 +13762,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -14478,17 +13800,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14521,18 +13843,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed the claim that every MessageLockLost exception leaves delivery count unchanged; ordinary lock expiry can produce that error and increase the count.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Clarified that normal expiry and infrastructure-related loss can both produce a lock-loss error, with different effects on the count."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14560,17 +13882,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14598,17 +13920,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14636,17 +13958,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Added partition-key participation in duplicate identity and distinguished duplicate sends from consumer redelivery.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14656,7 +13978,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus numbers",
       "question": "How can Service Bus group related messages for ordered processing?",
       "answers": [
-        "Enable sessions and put the same SessionId on related messages. One session receiver owns that group at a time and can process its messages in first-in, first-out order. Different sessions can run in parallel. The handler must preserve the order too, including during retries."
+        "Enable sessions and give related messages the same SessionId. A receiver obtains exclusive ownership of that session and can process its messages in first-in, first-out order. Different sessions can be processed in parallel.\n\nThe handler must preserve that order too: starting several operations concurrently or abandoning a message can change the order in which business work finishes."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14679,17 +14001,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Removed an absolute processing guarantee that also depends on the consumer preserving order."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -14722,18 +14044,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/custom-event-quickstart",
           "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-event-grid-events-schema"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "The commands create routing resources; the original question misleadingly implied that they also publish an event."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14761,17 +14083,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14804,18 +14126,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Distinguished the Event Grid schema validation-code flow from the CloudEvents OPTIONS handshake; the original implied one flow applied universally.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-event-grid-events-schema",
           "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-cloud-events-schema"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14848,18 +14170,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-event-grid-events-schema"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Replaced an artificial comparison between validation and recovery with a useful distinction between retrying delivery and preserving failed events."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14892,18 +14214,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Removed the unconditional FIFO claim for a plain queue with competing consumers.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14936,18 +14258,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -14957,7 +14279,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus queues vs topics",
       "question": "What do Service Bus subscription rules filter?",
       "answers": [
-        "They select which messages enter a topic subscription by inspecting supported message properties. A SQL filter evaluates an expression; a correlation filter matches property values; a true filter accepts everything. They do not execute arbitrary code over the body. Remove the default accept-all rule when adding a restrictive rule that should actually limit delivery."
+        "Subscription rules select topic messages by their supported system and application properties. SQL filters evaluate expressions; correlation filters match specified values. Neither reads arbitrary fields inside the message body.\n\nRemove the default accept-all rule when adding a restrictive filter. Otherwise that existing rule still admits every message."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14975,17 +14297,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15013,17 +14335,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -15033,7 +14355,7 @@ window.AI200_FLASHCARDS = {
       "title": "Functions triggers and retries",
       "question": "What happens after Queue Storage-triggered processing repeatedly fails?",
       "answers": [
-        "By default, Functions attempts a Queue Storage message five times in total, including the initial attempt. If processing keeps failing, it copies the message to a queue named <original-queue-name>-poison. Configure maxDequeueCount in host.json to change that limit, and monitor the poison queue so failed work is not forgotten."
+        "The default maximum is five attempts in total, including the first. If they all fail, the Functions runtime adds the message to <original-queue-name>-poison.\n\nmaxDequeueCount in host.json controls the limit. Monitor and handle the poison queue so failed work has a recovery path."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15056,18 +14378,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue-trigger",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15077,7 +14399,7 @@ window.AI200_FLASHCARDS = {
       "title": "Functions triggers and retries",
       "question": "What schedule format does an Azure Functions Timer trigger use?",
       "answers": [
-        "An NCRONTAB expression, normally with six fields: second, minute, hour, day, month and day of week. For example, 0 */5 * * * * runs at second zero every five minutes. Schedules use UTC by default; supported time-zone settings can change that."
+        "Use an NCRONTAB schedule, normally with six fields: second, minute, hour, day, month and day of week.\n\nFor example, 0 */5 * * * * runs at second zero every five minutes. UTC is the default; time-zone customization depends on the hosting configuration."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15095,17 +14417,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15115,7 +14437,7 @@ window.AI200_FLASHCARDS = {
       "title": "Functions triggers and retries",
       "question": "How do polling and Event Grid-based Blob triggers differ?",
       "answers": [
-        "The polling Blob trigger periodically checks storage for changes, so discovery can be delayed. The Event Grid-based Blob trigger is notified when a blob changes and usually starts sooner. Both can deliver work more than once, so the handler should be safe to repeat."
+        "The polling trigger checks Storage for changes, so discovery can be delayed. The Event Grid-based Blob trigger receives event notifications and normally detects new work sooner.\n\nDesign either handler to tolerate repeated delivery. Receiving a notification and successfully completing the business operation are separate steps."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15133,17 +14455,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15153,7 +14475,7 @@ window.AI200_FLASHCARDS = {
       "title": "Functions triggers and retries",
       "question": "What does an Azure Functions Cosmos DB trigger use to track progress?",
       "answers": [
-        "A lease container. It stores which worker owns each part of the change feed and how far processing has progressed. The Functions host uses those records to share the work among instances and resume after a restart."
+        "It uses a lease container to store ownership and progress for change-feed ranges. The Functions host uses that state to distribute work and resume after restarts or ownership changes."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15176,18 +14498,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15197,7 +14519,7 @@ window.AI200_FLASHCARDS = {
       "title": "HttpTrigger attribute",
       "question": "How do Anonymous, Function and Admin HTTP authorization levels differ?",
       "answers": [
-        "Anonymous requires no Functions access key. Function accepts a key for that function or a host key. Admin requires the host's master key. Supply a required key in the x-functions-key header or code query parameter. These are shared keys, so they do not identify the individual person calling the endpoint."
+        "Anonymous requires no Functions key. Function accepts a function-specific key or a host key. Admin requires the host’s master key.\n\nA required key can be supplied through x-functions-key or the code query parameter. These shared keys control access but do not establish an individual user’s identity."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15215,17 +14537,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15235,7 +14557,7 @@ window.AI200_FLASHCARDS = {
       "title": "HttpTrigger attribute",
       "question": "Are Function keys enforced by the local Functions host?",
       "answers": [
-        "Normally, no: a function run directly through local Core Tools does not enforce the trigger’s authLevel. Azure enforces it after deployment. There is an exception for running locally in a container, where keys are still required. A successful keyless local test therefore does not prove that the deployed endpoint allows anonymous access."
+        "Normally not when running directly through local Core Tools. The deployed Azure endpoint enforces its configured authorization level; local container hosting is a documented exception that still requires keys.\n\nA keyless local test therefore does not establish that the deployed endpoint allows anonymous callers."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15253,17 +14575,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Added the documented local-container exception to the blanket claim that local authorization is never enforced.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15273,7 +14595,7 @@ window.AI200_FLASHCARDS = {
       "title": "HttpTrigger attribute",
       "question": "How does an HTTP trigger's methods list restrict accepted requests?",
       "answers": [
-        "It lists the HTTP methods allowed to invoke the function. For example, methods=[\"POST\"] accepts POST requests but rejects GET requests for that route. If the list is omitted, all supported methods are allowed. Callers still need to satisfy the function's separate authorization rules."
+        "It selects which HTTP methods may invoke that function. For example, methods=[\"POST\"] permits POST for the route while excluding GET. If omitted, all supported methods are accepted. Authorization is configured separately."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15291,17 +14613,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15311,7 +14633,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "Which Functions trigger supports a synchronous client response?",
       "answers": [
-        "An HTTP trigger. It receives an HTTP request and can return the result in the response to that same request, as a normal web API does. Keep the work short enough to finish within the request and function time limits."
+        "An HTTP trigger can return a response to the request that invoked it, as a normal web API does. Keep the synchronous operation within both the HTTP request limit and the function’s execution limit."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15329,17 +14651,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15349,7 +14671,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "Which Functions trigger handles background Storage queue messages?",
       "answers": [
-        "A Queue Storage trigger. It invokes the function when a message is available in the configured Azure Storage queue and supplies the message to the handler. Successful processing removes the message; failures can cause retries. Design the handler so receiving the same message again does not duplicate business actions."
+        "Use a Queue Storage trigger. The host reads messages from the configured queue and invokes the handler. Successful processing removes a message; failures can cause retries and eventual poison-queue handling. Make repeated processing safe."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15367,17 +14689,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15387,7 +14709,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "Which Functions trigger runs on a fixed schedule?",
       "answers": [
-        "A Timer trigger. Configure its schedule, for example 0 0 * * * * to run at the start of each hour. The Functions runtime starts the handler according to that schedule; a caller does not need to send an HTTP request each time."
+        "Use a Timer trigger with a schedule. For example, 0 0 * * * * runs at the start of each hour. The runtime starts the function according to that schedule without needing an external HTTP caller."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15405,17 +14727,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15425,7 +14747,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "Which Functions trigger reacts to Cosmos DB document changes?",
       "answers": [
-        "A Cosmos DB trigger. It reads the configured container’s change feed and passes a batch of changed documents to the function. A lease container tracks progress. In the usual latest-version mode, it handles item creations and updates, without delivering delete records."
+        "Use a Cosmos DB trigger. It reads the container’s change feed and passes batches of changed documents to the handler, using leases to track progress. The usual latest-version feed reports creates and updates rather than deletes."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15448,18 +14770,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
           "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15469,7 +14791,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "Which Functions trigger reacts to pushed BlobCreated events without polling?",
       "answers": [
-        "An Event Grid trigger can receive Microsoft.Storage.BlobCreated notifications and start the function when a blob is created. The notification describes the event; use the event’s blob URL or an appropriate binding/client to read its contents. An Event Grid-based Blob trigger is another option when the handler should receive the blob itself."
+        "An Event Grid trigger can receive Microsoft.Storage.BlobCreated events. The event identifies the blob; retrieve its contents with an appropriate binding or client.\n\nAn Event Grid-based Blob trigger is another option when the handler should directly receive the blob data."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15487,17 +14809,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15507,7 +14829,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "What limits the synchronous response time of an HTTP-triggered function?",
       "answers": [
-        "Azure documents a 230-second maximum for returning an HTTP response through the platform load balancer, regardless of a longer functionTimeout. An earlier function timeout or another proxy/client timeout can stop the request sooner. Use background work or Durable Functions for operations that may take longer; increasing functionTimeout alone does not solve the HTTP limit."
+        "The documented platform maximum for an HTTP-triggered response is 230 seconds, even if functionTimeout is longer. A shorter function, proxy or client timeout can stop the request sooner.\n\nFor longer work, return promptly with a job identifier or status URL and continue processing in the background."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15525,17 +14847,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15545,7 +14867,7 @@ window.AI200_FLASHCARDS = {
       "title": "Choosing a Functions trigger",
       "question": "How should slow HTTP-request work be moved into background processing?",
       "answers": [
-        "Have the HTTP function save a job or queue message, then return HTTP 202 Accepted with a job ID or status URL. A background worker performs the slow work and records the result. The caller checks that status separately instead of keeping the original request open."
+        "Save a job or enqueue a message, then return HTTP 202 Accepted with its identifier or status URL. A background worker performs the slow operation and records the result. The caller checks status separately rather than holding the original request open."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15568,18 +14890,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15589,7 +14911,7 @@ window.AI200_FLASHCARDS = {
       "title": "Triggers and bindings",
       "question": "How many triggers can an Azure Function have?",
       "answers": [
-        "Exactly one trigger. It defines what starts that individual function, such as an HTTP request, a queue message or a timer. A function app can contain many functions, each with its own trigger. Additional input and output bindings do not count as additional triggers."
+        "Each individual function has exactly one trigger. A Function App can host several functions with different triggers, and a function may also use optional input and output bindings."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15607,17 +14929,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15627,7 +14949,7 @@ window.AI200_FLASHCARDS = {
       "title": "Triggers and bindings",
       "question": "Which Azure Functions binding reads a blob into the handler without Storage SDK code?",
       "answers": [
-        "A Blob input binding. It reads the configured blob and supplies its contents to the function handler. The handler does not need to create a Storage SDK client, but the binding still needs a blob path and a connection or identity with read permission."
+        "Use a Blob input binding. It reads the configured blob and supplies its contents to the handler. The binding still needs a path and an authorized connection or identity, even though the handler does not create a Storage SDK client."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15650,18 +14972,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15671,7 +14993,7 @@ window.AI200_FLASHCARDS = {
       "title": "Triggers and bindings",
       "question": "Can an Azure Function have multiple optional bindings?",
       "answers": [
-        "Yes. A function has exactly one trigger and may also have several input and output bindings. For example, an HTTP-triggered function could read a blob through an input binding and write a queue message through an output binding."
+        "Yes. A function has one trigger and can also have several input and output bindings. For example, an HTTP-triggered function can read a blob through an input binding and write a queue message through an output binding."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15689,17 +15011,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15709,7 +15031,7 @@ window.AI200_FLASHCARDS = {
       "title": "Triggers and bindings",
       "question": "Which trigger/input/output binding combinations are supported by common Functions services?",
       "answers": [
-        "Common combinations are:\nTimer: trigger only.\nQueue Storage: trigger and output.\nHTTP: trigger and response output.\nBlob Storage and Cosmos DB: trigger, input and output.\nThe exact types available also depend on the language and installed binding extension."
+        "Common combinations are:\nTimer: trigger.\nQueue Storage: trigger and output.\nHTTP: trigger and response output.\nBlob Storage and Cosmos DB: trigger, input and output.\n\nCheck the selected language model and installed extension for the exact supported binding types."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15727,17 +15049,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Checked the service binding matrix. A compact comparison is retained because it is clearer than embedding five combinations in one sentence.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15747,7 +15069,7 @@ window.AI200_FLASHCARDS = {
       "title": "Secure function deployment",
       "question": "In what order can you deploy a Function App that uses Key Vault references?",
       "answers": [
-        "One workable order is: create the function app and its host storage; enable its managed identity; give that identity permission to read the required Key Vault secrets; add app settings containing Key Vault references; then deploy and test the code. The identity, permissions and network access must be ready before secret resolution succeeds."
+        "Create the Function App and required host storage, enable its managed identity and grant access to the required secrets. Then configure Key Vault references and deploy the code.\n\nBefore testing, verify both secret-read permission and network access. A reference can resolve only when those prerequisites are ready."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15770,18 +15092,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations",
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15791,7 +15113,7 @@ window.AI200_FLASHCARDS = {
       "title": "Secure function deployment",
       "question": "What role does AzureWebJobsStorage play in a Function App?",
       "answers": [
-        "It tells the Functions host how to access its own Azure Storage account. The runtime uses that storage for coordination, including locks and checkpoints. It can be configured with a connection string or supported identity-based settings. It is separate from the business database your function code may use."
+        "AzureWebJobsStorage normally configures access to the Functions host’s Storage account. The runtime uses that storage for coordination features such as locks and checkpoints.\n\nUse a connection string or supported identity-based configuration as appropriate for the plan. This host storage is separate from the application’s business database."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15809,17 +15131,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15829,7 +15151,7 @@ window.AI200_FLASHCARDS = {
       "title": "Secure function deployment",
       "question": "Why must identity permissions be configured before Key Vault references can resolve?",
       "answers": [
-        "A Key Vault reference tells the platform which secret to retrieve; it does not grant permission to retrieve it. The selected managed identity must already have secret-read access, and the vault must be reachable. Without those, the setting cannot resolve to the secret value even if the reference syntax is correct."
+        "A reference identifies which secret to read; it does not grant access. The configured identity must have secret-read permission, and the vault must be reachable. Correct reference syntax alone cannot overcome missing authorization or blocked networking."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15847,17 +15169,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15867,7 +15189,7 @@ window.AI200_FLASHCARDS = {
       "title": "Secure function deployment",
       "question": "How can GitHub Actions deploy both Bicep infrastructure and Function code?",
       "answers": [
-        "Put both deployment steps in a workflow under .github/workflows/. First use azure/login with OpenID Connect to authenticate to Azure. Run Azure/bicep-deploy to create or update the infrastructure, then Azure/functions-action to deploy the built function package to the resulting app. Only run the code deployment after the infrastructure step succeeds."
+        "Use separate workflow steps for infrastructure and application code. Authenticate with azure/login and OpenID Connect, deploy the Bicep resources, then deploy the Function package with Azure/functions-action.\n\nRun the code deployment only after its required infrastructure and configuration are ready."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15890,18 +15212,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-github-actions",
           "https://github.com/Azure/bicep-deploy"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15911,7 +15233,7 @@ window.AI200_FLASHCARDS = {
       "title": "Secure function deployment",
       "question": "Why does Core Tools publishing not replace infrastructure-as-code deployment?",
       "answers": [
-        "Core Tools publishing deploys code to a function app. Infrastructure as code, such as Bicep, also describes the resources the app needs: storage, identities, permissions, networking and app settings. Use infrastructure deployment to prepare a consistent environment, then publish the code into it."
+        "Publishing with Core Tools deploys application code into a Function App. Infrastructure as Code also declares the supporting resources, identities, permissions and settings. Prepare that environment first, then publish and test the code."
       ],
       "origin": "original",
       "legacyIds": [
@@ -15934,18 +15256,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-github-actions",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -15975,17 +15297,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -15995,7 +15317,7 @@ window.AI200_FLASHCARDS = {
       "category": "service-bus",
       "question": "How is a Service Bus message scheduled for future availability?",
       "answers": [
-        "Ask the Service Bus SDK to schedule the message for a future UTC time. The broker keeps it unavailable until that time, then makes it available to consumers. Scheduling does not guarantee that processing begins at that exact moment."
+        "Use the SDK’s scheduling operation with a future UTC time. Service Bus keeps the message unavailable until that time, then makes it available for consumers.\n\nThis schedules availability, rather than an exact execution time: a busy or offline consumer can process it later."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -16017,15 +15339,15 @@ window.AI200_FLASHCARDS = {
       "review": {
         "date": "2026-10-29",
         "status": "clarified",
-        "note": "Kept the relevant messaging concept and removed unnecessary .NET-only names from the explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sequencing"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -16051,17 +15373,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16091,17 +15413,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/databases/guide/transactional-out-box-cosmos"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16127,17 +15449,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16167,17 +15489,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-authentication-and-authorization"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16203,17 +15525,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-authentication-and-authorization"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16223,7 +15545,7 @@ window.AI200_FLASHCARDS = {
       "category": "service-bus",
       "question": "Where is a binary Service Bus payload stored?",
       "answers": [
-        "In the message body. Serialize the payload into a format both sender and receiver understand, such as JSON encoded as bytes. Keep routing and other metadata in application properties. Service Bus does not interpret your application’s body format."
+        "The payload is in the message body. For example, serialize an order as JSON, encode it as bytes and send those bytes as the body. The receiver decodes them using the agreed format.\n\nUse application properties for supported routing metadata. Service Bus does not interpret the business meaning of the body."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -16241,15 +15563,15 @@ window.AI200_FLASHCARDS = {
       "review": {
         "date": "2026-10-29",
         "status": "clarified",
-        "note": "Kept the relevant messaging concept and removed unnecessary .NET-only names from the explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -16283,17 +15605,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16324,18 +15646,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusprocessor?view=azure-dotnet"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16345,7 +15667,7 @@ window.AI200_FLASHCARDS = {
       "category": "service-bus",
       "question": "How can a Service Bus Functions binding connect without a shared-access connection string?",
       "answers": [
-        "Use the binding’s identity-based connection settings, including <connectionName>__fullyQualifiedNamespace with a value such as mynamespace.servicebus.windows.net. Give the function app’s managed identity the required Service Bus data role, commonly Data Receiver for a trigger. The binding obtains tokens instead of reading a shared-access connection string."
+        "Configure an identity-based binding connection, for example Orders__fullyQualifiedNamespace=mynamespace.servicebus.windows.net, and set the binding’s connection name to Orders.\n\nGive the Function App’s managed identity the required data role, commonly Azure Service Bus Data Receiver for a trigger. The binding then obtains tokens for that identity instead of using a shared-access connection string."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -16366,18 +15688,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-authentication-and-authorization"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -16403,17 +15725,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/architecture/patterns/claim-check"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16423,7 +15745,7 @@ window.AI200_FLASHCARDS = {
       "category": "service-bus",
       "question": "Which Service Bus metric helps identify a growing backlog of unprocessed work?",
       "answers": [
-        "ActiveMessages, often called active queue depth. If it keeps rising, pending work is accumulating faster than consumers clear it. Compare it with message rates, processing time and errors to understand why."
+        "ActiveMessages measures active queue depth: messages available for consumers to process. A sustained rise means pending work is accumulating faster than consumers remove it.\n\nCompare it with send/receive rates, processing duration and failures. Queue depth shows the symptom; these other measurements help distinguish slow workers, errors and a traffic surge."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -16443,17 +15765,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/monitor-service-bus-reference"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -16483,17 +15805,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16519,17 +15841,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.administration.createqueueoptions.autodeleteonidle?view=azure-dotnet"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16555,17 +15877,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16575,7 +15897,7 @@ window.AI200_FLASHCARDS = {
       "category": "service-bus",
       "question": "Which Service Bus properties coordinate a request/reply exchange?",
       "answers": [
-        "ReplyTo tells the recipient which queue/topic should receive the reply. CorrelationId lets the requester associate the response with its original request, commonly by copying the request’s MessageId into the reply’s CorrelationId. These properties are conventions the applications must honor; setting them does not automatically generate or route an application reply."
+        "ReplyTo identifies the queue or topic to which the receiver should send a response. CorrelationId links that response to the original request, often by copying the request’s MessageId.\n\nThe applications must implement this convention. Setting ReplyTo does not cause Service Bus to generate a reply or send one automatically."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -16600,18 +15922,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads",
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -16637,17 +15959,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked transactional outbox versus broker transactions, least-privilege data roles, claim-check storage references, property-only filters/actions and AutoDeleteOnIdle. Clear existing explanations are retained.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-transactions"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16677,17 +15999,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16717,17 +16039,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16757,17 +16079,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16802,18 +16124,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/cloud-event-schema",
           "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-cloud-events-schema"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16843,17 +16165,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/authenticate-with-microsoft-entra-id"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16879,17 +16201,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked topic types and CLI setup, schema-specific validation, CloudEvents 1.0, EventGrid Data Sender and BlobCreated payload behavior against the linked Event Grid primary material. Existing complete examples and explanations remain clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16899,7 +16221,7 @@ window.AI200_FLASHCARDS = {
       "category": "event-grid",
       "question": "Which Event Grid event field is commonly used as a deduplication identifier?",
       "answers": [
-        "The event's id, scoped to its source or topic. Store processed IDs durably, and coordinate recording the ID with the business action so concurrent retries cannot both apply it. A stable business-operation ID can be better if several events represent the same action."
+        "Use the event’s id together with its source or topic. Record completed IDs durably and coordinate that record with the business update, so concurrent copies cannot both apply the change.\n\nIf several different events represent one business operation, use that operation’s stable identifier instead."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -16920,18 +16242,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Classic Event Grid push delivery, subscription filtering, validation and duplicate-safe handling.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/cloud-event-schema",
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -16957,17 +16279,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -16993,17 +16315,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked classic push non-retryable status codes, 404 handling, lifetime/attempt limits, dead-letter storage, batch acknowledgments and at-least-once unordered delivery against delivery-and-retry.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -17013,7 +16335,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "How is classic Azure Functions Consumption compute charged for an idle application?",
       "answers": [
-        "Classic Consumption can scale to zero instances when idle, so there is no continuously reserved app-compute charge. Compute is billed for executions and resource use under the plan's rules. Supporting resources, such as storage, can still cost money while no function is running."
+        "Classic Consumption can scale the app’s compute to zero while idle. Its compute charges depend on executions and resource usage rather than continuously reserved app instances. Storage and other supporting resources can still incur charges."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17033,17 +16355,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17053,7 +16375,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "What does Functions Elastic Premium provide for cold-start-sensitive workloads?",
       "answers": [
-        "Always-ready and prewarmed instances, so requests are less likely to wait for a new instance to start. Elastic Premium also supports virtual network integration. You pay for a minimum amount of provisioned capacity, even during idle periods."
+        "Elastic Premium provides always-ready and prewarmed capacity to reduce cold-start delays, together with capabilities such as virtual network integration. Its minimum provisioned capacity is billable even during idle periods."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17073,17 +16395,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17093,7 +16415,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "What is the default and maximum functionTimeout on classic Functions Consumption?",
       "answers": [
-        "On classic Consumption, functionTimeout defaults to five minutes and can be increased to ten minutes. Set it in host.json. These are execution limits for that plan; HTTP responses also face the separate 230-second platform limit. Flex Consumption, Premium and Dedicated have different timeout rules."
+        "On classic Consumption, the default execution timeout is five minutes and the maximum is ten minutes. Configure functionTimeout in host.json.\n\nThese limits are plan-specific. The separate HTTP response limit still applies, and other plans have different execution-timeout rules."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17118,18 +16440,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale",
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17139,7 +16461,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "Does a Cosmos DB-triggered function normally run once per document or once per delivered batch?",
       "answers": [
-        "Once per batch delivered by the trigger, which may contain one or many changed documents. The handler must iterate through the documents or otherwise process the whole batch. Batch size and retry/checkpoint behavior depend on the extension configuration; do not assume one invocation corresponds to exactly one source write."
+        "The handler receives a batch, which can contain one or many changed documents. Process the whole batch rather than assuming each invocation represents one database write.\n\nBatch sizing, retries and checkpoint behavior depend on the extension and retry configuration."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17155,17 +16477,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17175,7 +16497,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "Where is Service Bus trigger callback concurrency configured for a Functions host?",
       "answers": [
-        "In host.json, under extensions.serviceBus. For example, maxConcurrentCalls controls concurrent single-message callbacks when fixed concurrency is used for a non-session trigger. Choose the setting for your extension and trigger type: sessions, batches and dynamic concurrency use different rules. Extra cores and scaled-out host instances can increase the total concurrency."
+        "Configure Service Bus trigger behavior in host.json under extensions.serviceBus. With fixed concurrency for a non-session single-message trigger, maxConcurrentCalls controls callback concurrency.\n\nSessions, batch handlers and dynamic concurrency have different settings. CPU cores and additional host instances can also increase total application concurrency."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17191,17 +16513,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17211,7 +16533,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "How does a scaled-out Functions app coordinate a Timer trigger so only one instance runs a scheduled occurrence?",
       "answers": [
-        "It uses a lock in the app's host storage. Only the instance holding that lock runs the timer occurrence, even when the function app has several instances. The app therefore needs working host-storage configuration. Another scheduled occurrence normally waits if the previous timer invocation is still running."
+        "The Timer trigger uses host-storage locking so one instance owns the scheduled execution for a given app. Host-storage access is therefore required for coordination. A new occurrence normally waits while the previous timer invocation is still running."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17232,18 +16554,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer",
           "https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17253,7 +16575,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "How does run-from-package deployment keep a Function App release consistent?",
       "answers": [
-        "It makes the app execute one deployed package containing the release. The app therefore does not see a mixture of old and new files while a deployment updates them individually. The mounted wwwroot directory is normally read-only, so write runtime data elsewhere."
+        "Run-from-package executes one deployed release package rather than exposing a mixture of files during individual updates. The mounted application directory is normally read-only, so store generated runtime data elsewhere."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17269,17 +16591,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17289,7 +16611,7 @@ window.AI200_FLASHCARDS = {
       "category": "functions",
       "question": "What does Flex Consumption add while retaining a consumption-based scaling model?",
       "answers": [
-        "Virtual network integration, a choice of instance memory sizes, improved event-driven scaling and optional always-ready instances. The app still scales with demand. Choosing always-ready capacity adds an idle baseline cost in exchange for reduced startup delay."
+        "Flex Consumption adds options such as virtual network integration, selectable instance memory, event-driven scaling and optional always-ready instances. Demand-driven scaling remains central; always-ready capacity adds a billable baseline in exchange for reduced startup delay."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -17305,17 +16627,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Functions trigger/binding behavior, authorization, plan-specific limits, storage coordination and deployment.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17327,7 +16649,7 @@ window.AI200_FLASHCARDS = {
       "title": "Microsoft Entra ID",
       "question": "What is Microsoft Entra ID?",
       "answers": [
-        "Microsoft's cloud identity service. It manages users and application identities, authenticates sign-ins and issues access tokens for protected services. It was formerly called Azure Active Directory. The signed-in identity still needs permission to use the target resource."
+        "Microsoft Entra ID is Microsoft’s cloud identity service, formerly called Azure Active Directory. It manages users and application identities, authenticates them and issues tokens for protected services. The receiving service still checks what the identified caller is allowed to do."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17339,17 +16661,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/fundamentals/whatis"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17361,7 +16683,7 @@ window.AI200_FLASHCARDS = {
       "title": "Tenant",
       "question": "What is a Microsoft Entra tenant?",
       "answers": [
-        "An organization’s identity directory and administrative boundary in Microsoft Entra ID. It contains users, groups and application identities. One tenant can be associated with multiple Azure subscriptions; a tenant is not the same as a billing subscription or resource group."
+        "A tenant is an organization’s directory and identity boundary in Microsoft Entra ID. It contains users, groups and application identities. Several Azure subscriptions can trust the same tenant; the tenant itself is not a billing subscription."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17373,17 +16695,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/fundamentals/whatis"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17395,7 +16717,7 @@ window.AI200_FLASHCARDS = {
       "title": "Security identity",
       "question": "What is an identity in Azure security?",
       "answers": [
-        "An object representing who gets access, such as a user, group or application. For example, a function app can use its managed identity when requesting a Key Vault secret. Roles and policies determine what that identity is allowed to do."
+        "An identity represents a caller, such as a user or application. Groups can collect identities for access management. For example, a Function App presents its managed identity when requesting a Key Vault secret, and the vault checks that identity’s permissions."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17412,18 +16734,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
           "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17435,7 +16757,7 @@ window.AI200_FLASHCARDS = {
       "title": "Authentication",
       "question": "What does authentication mean?",
       "answers": [
-        "Verifying who or what is making a request, such as validating a user’s sign-in or an application’s token. It establishes identity. It does not by itself grant permission to read a secret, send a message or change a resource."
+        "Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token. Authorization is the next question: whether that caller may perform the requested action."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17447,17 +16769,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17469,7 +16791,7 @@ window.AI200_FLASHCARDS = {
       "title": "Authorization",
       "question": "What does authorization mean?",
       "answers": [
-        "Deciding whether an identified caller may perform the requested action on a resource. For example, a managed identity can authenticate successfully but be denied a secret read because it lacks Secrets User permission. Authentication establishes identity; authorization checks allowed actions."
+        "Authorization checks whether a caller may perform an action on a resource. An application can authenticate successfully yet be denied a Key Vault secret because its identity lacks the required secret-read permission."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17486,18 +16808,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization",
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17509,7 +16831,7 @@ window.AI200_FLASHCARDS = {
       "title": "Managed identity",
       "question": "What is a managed identity in Azure?",
       "answers": [
-        "An application identity with credentials managed by Azure. A supported app uses it to obtain Microsoft Entra tokens without keeping a client password in its code or settings. Give the identity the permissions required by the services it calls."
+        "A managed identity lets an Azure application authenticate without storing its own client password. Azure manages the identity’s credentials, and the app requests Microsoft Entra tokens through its supported host. You must still grant that identity access to the services it calls."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17521,17 +16843,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17543,7 +16865,7 @@ window.AI200_FLASHCARDS = {
       "title": "RBAC",
       "question": "What does RBAC stand for?",
       "answers": [
-        "Role-Based Access Control. Permissions are grouped into roles, and a role is assigned to an identity at a scope. For example, assigning Key Vault Secrets User on one vault allows the supported secret reads there without granting the same access across the subscription."
+        "RBAC means Role-Based Access Control. A role defines allowed operations, and a role assignment gives those permissions to an identity within a scope. For example, Key Vault Secrets User on one vault allows secret reads there without granting access to every vault in the subscription."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17560,18 +16882,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17583,7 +16905,7 @@ window.AI200_FLASHCARDS = {
       "title": "ABAC",
       "question": "What does ABAC stand for?",
       "answers": [
-        "Attribute-Based Access Control. Access can be restricted using attributes of the caller, resource or request. In supported Azure role assignments, a condition narrows the permission already granted by the role and scope, such as allowing access only to matching tagged blobs."
+        "ABAC means Attribute-Based Access Control. On supported Azure role assignments, a condition can restrict access using attributes such as a blob’s tags. The role and scope grant the initial permission; the condition narrows when it applies."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17595,17 +16917,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17617,7 +16939,7 @@ window.AI200_FLASHCARDS = {
       "title": "RBAC scope",
       "question": "What is the scope of an Azure role assignment?",
       "answers": [
-        "The boundary where the assigned permissions apply, such as one resource, a resource group or a subscription. Broader scopes can cover child resources. Giving an app access to one vault is narrower than granting the same role across the whole subscription."
+        "Scope is where a role assignment applies: for example, one vault, a resource group or a subscription. Assignments at a parent scope normally apply to child resources. Choosing the individual vault limits access more tightly than granting the same role across the subscription."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17629,17 +16951,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17651,7 +16973,7 @@ window.AI200_FLASHCARDS = {
       "title": "Role assignment",
       "question": "What is an Azure role assignment?",
       "answers": [
-        "A link giving an identity a role at a particular scope. For example, assign the orders app identity the Key Vault Secrets User role on the production vault. The assignment connects who gets access, what they can do and where it applies."
+        "A role assignment connects an identity, a role and a scope: who gets access, which actions they may perform and where. For example, assign the repair-api identity Key Vault Secrets User on the repair app’s production vault."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17663,17 +16985,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17685,7 +17007,7 @@ window.AI200_FLASHCARDS = {
       "title": "OIDC",
       "question": "What does OIDC stand for?",
       "answers": [
-        "OpenID Connect. An identity layer built on OAuth 2.0 that lets an application use sign-in information from a trusted identity provider. For example, a web app can sign users in through Microsoft Entra ID instead of managing its own user passwords."
+        "OIDC means OpenID Connect, an identity layer built on OAuth 2.0. It lets an application rely on a trusted identity provider for sign-in information. For example, a web app can sign users in through Microsoft Entra ID instead of managing their passwords itself."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17702,18 +17024,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation",
           "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17725,7 +17047,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault",
       "question": "What is Azure Key Vault?",
       "answers": [
-        "A managed service for storing and controlling access to secrets, cryptographic keys and certificates. For example, an application can read its API credential from Key Vault instead of including it in source code or a container image."
+        "Azure Key Vault stores and controls access to secrets, cryptographic keys and certificates. An application can retrieve an API credential from it using an authorized identity, keeping the credential out of source code and container images."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17737,17 +17059,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17759,7 +17081,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault secret",
       "question": "What is a secret in Key Vault?",
       "answers": [
-        "A sensitive value, such as a password, API token or connection credential, stored for authorized applications to retrieve. Key Vault keeps versions of the value. An API key is usually stored as a secret; a Key Vault key is for cryptographic operations."
+        "A Key Vault secret stores a sensitive value such as a password, API token or connection credential, with versions and access controls. Despite its name, an API “key” normally belongs in a secret. A Key Vault key is a different object used for cryptographic operations."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17771,17 +17093,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17793,7 +17115,7 @@ window.AI200_FLASHCARDS = {
       "title": "Digital certificate",
       "question": "What is a digital certificate?",
       "answers": [
-        "A signed record connecting a public key to an identity, such as a server hostname. During HTTPS, the client checks that the certificate is valid for the server and comes from a trusted issuer. This helps it verify which server it reached."
+        "A digital certificate is a signed record linking a public key to an identity, such as a server’s hostname. During HTTPS, the client validates the certificate and its issuer to help establish that it reached the intended server."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17805,17 +17127,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/certificates/about-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17827,7 +17149,7 @@ window.AI200_FLASHCARDS = {
       "title": "TLS",
       "question": "What does TLS stand for?",
       "answers": [
-        "Transport Layer Security. It encrypts network communication and checks that data has not been altered in transit. Certificate validation can also verify the server's identity. HTTPS is HTTP protected by TLS."
+        "TLS means Transport Layer Security. It protects network communication against eavesdropping and undetected alteration. Certificate validation can also authenticate the server. HTTPS is HTTP carried over TLS."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17844,18 +17166,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/redis/tls-configuration",
           "https://learn.microsoft.com/en-us/azure/postgresql/security/security-tls"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17867,7 +17189,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault reference",
       "question": "What is a Key Vault reference?",
       "answers": [
-        "A pointer identifying a secret in Key Vault instead of copying its sensitive value into ordinary configuration. A supported platform or application provider resolves it using an authorized identity. Different reference mechanisms have different syntax and refresh behavior."
+        "A Key Vault reference identifies a secret rather than storing its value in ordinary configuration. A supported platform feature or application provider retrieves the value using an authorized identity. The reference syntax and refresh behavior depend on which mechanism resolves it."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17884,18 +17206,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17907,7 +17229,7 @@ window.AI200_FLASHCARDS = {
       "title": "Credential rotation",
       "question": "What does rotating a credential mean?",
       "answers": [
-        "Replacing a password, token or key with a new usable credential and updating its consumers. The target service and clients must agree on the replacement. Creating a new value only in Key Vault does not change the external service’s password or refresh values already cached by running clients."
+        "Credential rotation replaces a password, token or key and moves clients to the replacement. The target service must accept the new credential, and clients must refresh what they use. Creating a Key Vault version alone does not update the external service or credentials already cached in memory."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17924,18 +17246,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation",
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation-dual"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17947,7 +17269,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration",
       "question": "What is Azure App Configuration?",
       "answers": [
-        "A managed store for application settings and feature flags. Applications load values such as service URLs or feature choices without rebuilding the code. Sensitive credentials normally belong in Key Vault and can be connected through references rather than stored as ordinary setting values."
+        "Azure App Configuration centrally stores ordinary application settings and feature flags. Applications can load values such as service URLs and refresh them without rebuilding their code. Store sensitive credentials in Key Vault and connect them through references when appropriate."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17964,18 +17286,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -17987,7 +17309,7 @@ window.AI200_FLASHCARDS = {
       "title": "Feature flag",
       "question": "What is a feature flag?",
       "answers": [
-        "A setting the application checks to decide whether a feature is enabled for a request, user or environment. For example, enable a new checkout for a small group before a wider rollout. The same deployed code can behave differently according to the flag."
+        "A feature flag is a setting the application checks to decide whether to expose a feature. For example, enable a new search interface for a small test group before a wider rollout. The same deployed code can behave differently for different flag evaluations."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -17999,17 +17321,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-feature-management"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18021,7 +17343,7 @@ window.AI200_FLASHCARDS = {
       "title": "VNet",
       "question": "What does VNet stand for in Azure?",
       "answers": [
-        "Virtual Network. An Azure network where resources use configured private addresses, subnets and routes to communicate. You control how its resources connect to each other, other networks and the internet. Adding a VNet alone does not disable a service's public access."
+        "VNet means Virtual Network: an Azure network containing private address ranges, subnets and routing rules. It controls how connected resources communicate with other networks and services. Creating a VNet does not by itself turn off a service’s public endpoint."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18033,17 +17355,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18055,7 +17377,7 @@ window.AI200_FLASHCARDS = {
       "title": "Private endpoint",
       "question": "What is a private endpoint in Azure?",
       "answers": [
-        "A network interface with a private IP address in your virtual network that connects to a supported service, such as Key Vault. Clients use private networking and correctly configured DNS to reach the service through it. Service permissions still apply."
+        "A private endpoint gives a supported service a private IP address inside your virtual network. With the required routing and DNS, clients reach the service through that private connection. They still need the service’s normal authentication and permissions."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18067,17 +17389,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18089,7 +17411,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure Monitor",
       "question": "What is Azure Monitor?",
       "answers": [
-        "Azure's platform for collecting, analyzing and acting on monitoring data, including metrics and logs. Use it to investigate application behavior, visualize performance and trigger alerts when configured conditions are met."
+        "Azure Monitor collects and analyzes monitoring data, including metrics and logs. It provides tools to investigate application behavior, display trends and alert when configured conditions are met."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18101,17 +17423,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/data-platform"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18123,7 +17445,7 @@ window.AI200_FLASHCARDS = {
       "title": "Application Insights",
       "question": "What is Application Insights?",
       "answers": [
-        "An Azure Monitor capability for observing application performance and behavior. It links request timings, dependency calls, failures and other telemetry so you can investigate problems. Application instrumentation supplies the data it analyzes."
+        "Application Insights is an Azure Monitor capability for observing applications. It connects requests, dependency calls, failures and other collected telemetry so you can investigate performance and errors. Instrumentation in the application supplies much of that data."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18135,17 +17457,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18157,7 +17479,7 @@ window.AI200_FLASHCARDS = {
       "title": "Log Analytics",
       "question": "What is Log Analytics in Azure Monitor?",
       "answers": [
-        "The interactive tool for exploring and querying Azure Monitor Logs, commonly using Kusto Query Language (KQL). A Log Analytics workspace is the resource that stores the logs. The query tool and workspace are related, but are not the same object."
+        "Log Analytics is the Azure portal’s interactive tool for querying Azure Monitor Logs with Kusto Query Language (KQL). A Log Analytics workspace is the resource containing the collected logs. The tool queries data in the selected resource or workspace scope."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18169,17 +17491,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18191,7 +17513,7 @@ window.AI200_FLASHCARDS = {
       "title": "CSI",
       "question": "What does CSI stand for in Kubernetes storage?",
       "answers": [
-        "Container Storage Interface. A standard interface that lets Kubernetes use different storage providers through drivers. For example, the Secrets Store CSI Driver can mount Key Vault objects into a pod as files, using an identity authorized to retrieve them."
+        "CSI means Container Storage Interface, a standard that connects Kubernetes to storage providers through drivers. The Secrets Store CSI Driver can, for example, mount Key Vault objects into a pod as files using an identity authorized to read them."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18203,17 +17525,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18225,7 +17547,7 @@ window.AI200_FLASHCARDS = {
       "title": "Telemetry",
       "question": "What is application telemetry?",
       "answers": [
-        "Data an application emits about its behavior, such as request timings, errors, log messages and measurements. Monitoring tools collect and analyze it to help explain health and performance."
+        "Telemetry is data an application emits about its behavior, such as log records, request traces and numeric measurements. Collecting it lets you investigate what the app did and how it performed."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18237,17 +17559,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/concepts/observability-primer/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18259,7 +17581,7 @@ window.AI200_FLASHCARDS = {
       "title": "Log record",
       "question": "What is a log record?",
       "answers": [
-        "A timestamped record of something that happened, often including severity and contextual fields. For example, a log entry might say that order 42 failed validation and record the reason."
+        "A log record describes something that happened at a particular time, with fields such as severity, message and operation identifier. For example, a worker can log why repair job 42 failed validation."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18276,18 +17598,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/concepts/observability-primer/",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18299,7 +17621,7 @@ window.AI200_FLASHCARDS = {
       "title": "Metric",
       "question": "What is a metric in observability?",
       "answers": [
-        "A numeric measurement recorded over time, such as request count, CPU use or a latency distribution. Metrics help show trends and drive alerts. They summarize behavior; detailed log or trace records may be needed to explain a particular slow request."
+        "A metric is a numeric measurement tracked over time, such as CPU usage, request count or a latency distribution. Metrics reveal trends and support alerts. Logs and traces provide more detail when you need to explain a particular failure or slow request."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18311,17 +17633,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/concepts/observability-primer/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18333,7 +17655,7 @@ window.AI200_FLASHCARDS = {
       "title": "Distributed trace",
       "question": "What is a distributed trace?",
       "answers": [
-        "A linked record of an operation as it travels through components, such as an API calling another service and then a database. The trace groups timed spans through shared context so you can see where time and failures occurred."
+        "A distributed trace connects the work involved in one operation across components. For example, it can link an incoming API request to the database call it made. Each timed step is a span, and propagated trace context links those spans."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18350,18 +17672,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/concepts/observability-primer/",
           "https://www.w3.org/TR/trace-context/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18373,7 +17695,7 @@ window.AI200_FLASHCARDS = {
       "title": "Trace span",
       "question": "What is a span in distributed tracing?",
       "answers": [
-        "One timed unit of work within a trace, such as handling an HTTP request or making a database call. It has a start, an end and contextual attributes, and can have parent/child relationships. A complete distributed operation normally contains several spans."
+        "A span records one timed operation, such as an HTTP request or database call. It includes a start, end and contextual attributes, and may have a parent span. Related spans together describe a distributed trace."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18390,18 +17712,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/concepts/observability-primer/",
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18413,7 +17735,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry (OTel)",
       "question": "What is OpenTelemetry?",
       "answers": [
-        "An open set of APIs, libraries and conventions for producing and moving telemetry such as traces, metrics and logs. OTel is its common abbreviation. It instruments and exports data; a backend such as Azure Monitor stores and analyzes it."
+        "OpenTelemetry, often abbreviated OTel, provides open APIs, libraries and conventions for creating and exporting traces, metrics and logs. A separate backend, such as Azure Monitor, stores and analyzes the exported data."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18430,18 +17752,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/concepts/observability-primer/",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18453,7 +17775,7 @@ window.AI200_FLASHCARDS = {
       "title": "Instrumentation",
       "question": "What does instrumentation mean for an application?",
       "answers": [
-        "Adding the code or library hooks that produce telemetry about what the application does. For example, HTTP instrumentation can create a span for each request. An exporter can send existing telemetry, but cannot describe uninstrumented application work by itself."
+        "Instrumentation adds the hooks that produce telemetry for application operations. For example, HTTP instrumentation can create spans around outgoing requests. An exporter can send the spans that exist; it cannot explain work that was never instrumented."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18465,17 +17787,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18487,7 +17809,7 @@ window.AI200_FLASHCARDS = {
       "title": "Telemetry exporter",
       "question": "What is an exporter in OpenTelemetry?",
       "answers": [
-        "A component that sends telemetry to a destination such as Azure Monitor. For example, a trace exporter sends completed spans. Instrumentation creates the telemetry; the exporter delivers it to the system that stores or analyzes it."
+        "An OpenTelemetry exporter sends collected telemetry to a destination. For example, a trace exporter sends completed spans to Azure Monitor. Instrumentation produces the data, and the exporter delivers it."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18504,18 +17826,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18527,7 +17849,7 @@ window.AI200_FLASHCARDS = {
       "title": "Trace sampling",
       "question": "What is trace sampling?",
       "answers": [
-        "Selecting which traces or spans to record/export so telemetry volume stays manageable. For example, a sampler may retain roughly 10% of trace IDs. Dropped traces reduce diagnostic detail, so configure a suitable strategy and do not assume every failed request will be retained."
+        "Trace sampling selects which traces or spans to retain so telemetry volume stays manageable. A 10% ratio can keep roughly one in ten trace IDs over time. That reduces diagnostic detail: ordinary percentage sampling does not guarantee that every failed request is retained."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18539,17 +17861,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-sampling"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18561,7 +17883,7 @@ window.AI200_FLASHCARDS = {
       "title": "KQL",
       "question": "What does KQL stand for?",
       "answers": [
-        "Kusto Query Language. A language for searching, filtering, joining and summarizing tabular data in services such as Azure Monitor Logs. Its pipe character passes one operation's result into the next operation."
+        "KQL means Kusto Query Language. It searches, filters, joins and summarizes tables in services such as Azure Monitor Logs. A pipe (|) passes one operation’s result to the next, so a query can filter requests before counting them."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18578,18 +17900,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/where-operator",
           "https://learn.microsoft.com/en-us/kusto/query/summarize-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18618,18 +17940,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "note": "Checked duration measurement boundaries and percentile interpretation against observability learning material. The existing concrete definitions already distinguish latency from success rate.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apprequests",
           "https://opentelemetry.io/docs/concepts/observability-primer/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -18653,17 +17975,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "confirmed",
-        "note": "Plain-language definition checked against the linked primary documentation.",
+        "note": "Checked duration measurement boundaries and percentile interpretation against observability learning material. The existing concrete definitions already distinguish latency from success rate.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/percentiles-aggregation-function"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -18673,7 +17995,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration",
       "question": "What is an App Configuration sentinel key used for?",
       "answers": [
-        "It is a key you update after finishing a related set of configuration edits. Register it for refresh with refreshAll: true; when the provider detects its change, it reloads the selected configuration. This reduces clients seeing an update halfway through multiple edits. It is a reload signal, not a transaction that makes all store writes atomic."
+        "A sentinel is a setting you change after completing a related set of configuration edits. Configure the application’s provider to watch it and reload the selected settings when it changes.\n\nThis signals when the update is ready to load. It does not turn the separate store writes into one atomic transaction."
       ],
       "origin": "original",
       "legacyIds": [
@@ -18691,9 +18013,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Checked provider watch-key refresh behavior. Kept the cross-language concept and removed the .NET-only refreshAll option from this vocabulary definition.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider"
         ]
@@ -18702,9 +18024,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Sentinel key",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18714,7 +18036,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry pipeline",
       "question": "What does an OpenTelemetry TracerProvider own?",
       "answers": [
-        "It creates tracers and holds their shared tracing setup: service metadata, the sampler and span processors. Tracers create spans; processors and exporters handle sending completed spans to a destination such as Azure Monitor."
+        "A TracerProvider creates tracers and holds their shared tracing configuration, including service metadata, the sampler and span processors. A tracer starts spans; processors pass finished sampled spans to exporters."
       ],
       "origin": "original",
       "legacyIds": [
@@ -18737,9 +18059,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
@@ -18749,9 +18071,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "TracerProvider",
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18761,7 +18083,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-4",
       "question": "What is a service principal in an Entra tenant?",
       "answers": [
-        "It is an application identity’s local representation in a particular Microsoft Entra tenant. The application registration describes the application; the service principal is the tenant object to which permissions and access policies apply. A multitenant application can therefore have a service principal in each tenant that uses it."
+        "A service principal is an application’s local identity in a Microsoft Entra tenant. Permissions in that tenant are assigned to this identity. The application registration describes the application; a multitenant application can have a separate service principal in each tenant that uses it."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -18777,9 +18099,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals"
         ]
@@ -18788,9 +18110,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "Service principal",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18800,7 +18122,7 @@ window.AI200_FLASHCARDS = {
       "category": "terms-4",
       "question": "What does an Azure Network Security Group filter?",
       "answers": [
-        "A Network Security Group (NSG) allows or denies network flows using rules based on source/destination addresses, ports and protocol. It can protect supported subnets or network interfaces. Passing an NSG rule only establishes network reachability; the application/service must still authenticate and authorize the caller."
+        "A Network Security Group (NSG) allows or denies network flows using rules for addresses, ports and protocols. It can apply to supported subnets or network interfaces.\n\nAn allowed connection still needs application or service authorization. An NSG rule does not grant permission to read a secret or database record."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -18816,9 +18138,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
         ]
@@ -18827,9 +18149,9 @@ window.AI200_FLASHCARDS = {
       "kind": "term",
       "term": "NSG · Network Security Group",
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18839,7 +18161,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service pull from ACR",
       "question": "How do system-assigned and user-assigned identities differ in lifecycle?",
       "answers": [
-        "A system-assigned managed identity belongs to one resource and is deleted with it. A user-assigned identity is a separate Azure resource that can outlive an app and be attached to several supported resources. You can therefore create and authorize a user-assigned identity before the app exists."
+        "A system-assigned managed identity belongs to one Azure resource and is deleted with it. A user-assigned managed identity is a separate resource that can outlive an app and be attached to several supported resources.\n\nUse a user-assigned identity when you need to authorize it before deploying the app or share its lifecycle across deployments."
       ],
       "origin": "original",
       "legacyIds": [
@@ -18862,17 +18184,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18882,7 +18204,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service Key Vault refs",
       "question": "Where should non-secret configuration and credentials be stored?",
       "answers": [
-        "Use app settings or Azure App Configuration for ordinary values such as feature options and service URLs. Store passwords, API tokens and similar credentials in Key Vault. The app retrieves secrets through an authorized SDK call or a supported Key Vault reference, keeping the actual credential out of source code and ordinary configuration files."
+        "Store ordinary settings, such as service URLs and feature choices, in app settings or Azure App Configuration. Store passwords and API credentials in Key Vault.\n\nThe app can retrieve a secret through an authorized SDK call or a supported Key Vault reference. The reference identifies the secret without copying its value into source code."
       ],
       "origin": "original",
       "legacyIds": [
@@ -18920,18 +18242,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18941,7 +18263,7 @@ window.AI200_FLASHCARDS = {
       "title": "Container Apps secrets",
       "question": "Which Key Vault object type should hold an API credential?",
       "answers": [
-        "A secret. In Key Vault terminology, an API key is an opaque credential value, like a password. A Key Vault key is a cryptographic key used for operations such as signing or encryption. The word “key” in an API credential’s name does not make it a cryptographic-key object."
+        "Use a secret. An API credential is a value that an application presents to another service, like a password.\n\nA Key Vault key is a cryptographic object used for operations such as encryption and signing. The word “key” in “API key” does not make the credential that kind of object."
       ],
       "origin": "original",
       "legacyIds": [
@@ -18959,17 +18281,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -18979,7 +18301,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault data-plane roles",
       "question": "Can Key Vault Reader read secret values?",
       "answers": [
-        "No. Key Vault Reader can read metadata, such as object names and properties, but not secret values or private key material. Reading an actual secret requires a role such as Key Vault Secrets User on a vault using the Azure RBAC permission model."
+        "No. Key Vault Reader can inspect object metadata, such as names and properties, but cannot read secret values or private key material.\n\nFor an application that needs secret values, assign Key Vault Secrets User at the appropriate scope on an RBAC-enabled vault."
       ],
       "origin": "original",
       "legacyIds": [
@@ -18997,17 +18319,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19017,7 +18339,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault data-plane roles",
       "question": "Which Key Vault RBAC role reads secret values?",
       "answers": [
-        "Key Vault Secrets User. It lets an identity read secret values without managing or deleting the secrets. The vault must use the Azure role-based access control (RBAC) permission model, and the app must also be able to reach the vault."
+        "Use Key Vault Secrets User. It allows an identity to read secret values without creating, changing or deleting them.\n\nThe vault must use the Azure RBAC permission model. Network access is also required; the role does not make an unreachable private vault reachable."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19035,17 +18357,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19055,7 +18377,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault data-plane roles",
       "question": "Which Key Vault RBAC role manages secret versions and deletion?",
       "answers": [
-        "Key Vault Secrets Officer. It can perform secret operations such as setting new versions, reading, deleting and recovering secrets, subject to vault protections. It does not grant permission to manage role assignments. Use Secrets User instead when an application only needs to read a credential."
+        "Key Vault Secrets Officer can manage secrets, including creating versions, reading, deleting and recovering them, subject to vault protections. It does not grant role-assignment management.\n\nAn application that only retrieves a credential normally needs the narrower Key Vault Secrets User role."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19073,17 +18395,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19093,7 +18415,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault data-plane roles",
       "question": "What data-plane permissions does Key Vault Administrator grant?",
       "answers": [
-        "All Key Vault data-plane operations on keys, secrets and certificates in its assigned scope. “Data plane” means working with the stored objects themselves. It does not manage the vault resource or role assignments, and it does not bypass protections such as purge protection."
+        "Key Vault Administrator grants all data-plane operations on keys, secrets and certificates within its scope. The data plane is where callers work with those stored objects.\n\nIt does not grant management of the vault resource or role assignments, and it cannot bypass protections such as purge protection."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19116,18 +18438,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19155,17 +18477,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -19175,7 +18497,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault data-plane roles",
       "question": "Which vault permission model makes Key Vault data-plane role assignments effective?",
       "answers": [
-        "The Azure role-based access control (RBAC) permission model. On a vault using legacy access policies, those policies control data access instead. Assigning Key Vault Secrets User will not grant a secret read until the vault is using the RBAC model."
+        "The vault must use the Azure role-based access control (RBAC) permission model. If it uses legacy access policies, those policies govern object access instead.\n\nAssigning Key Vault Secrets User has no secret-read effect on a vault that still uses access policies."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19193,17 +18515,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19213,7 +18535,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault versions and rotation",
       "question": "How does a versionless Key Vault SDK read behave after rotation?",
       "answers": [
-        "A fresh get_secret(\"name\") call requests the latest version, so it can retrieve the rotated value without changing the name. A value already held in memory does not update itself; the app must read again and update anything using the old credential."
+        "A new get_secret(\"name\") call requests the latest version without specifying its version ID. After rotation, a fresh call can therefore retrieve the replacement.\n\nA value already stored in memory does not change itself. The application must read again and update any client or connection that uses the old credential."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19231,17 +18553,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19251,7 +18573,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault versions and rotation",
       "question": "How does a version-pinned Key Vault SDK read behave after rotation?",
       "answers": [
-        "It keeps requesting the specified version. For example, get_secret(\"name\", version=\"version-id\") continues reading that version after rotation. Change the configured version, or use a versionless read to follow the latest version. The pinned version must still be enabled and available."
+        "A call such as get_secret(\"name\", version=\"version-id\") continues requesting that specific version, even after a newer one is created.\n\nUpdate the configured version to adopt the replacement, or use a versionless read to follow the latest version. The requested version must remain enabled and available."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19269,17 +18591,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19289,7 +18611,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault versions and rotation",
       "question": "How can Event Grid and Functions automate rotation of a Key Vault secret?",
       "answers": [
-        "Set the secret’s expiry. Key Vault emits SecretNearExpiry, normally 30 days before expiration; route that event through Event Grid to a rotation function. The function must change the credential in the actual target service and store the corresponding new secret version with a new expiry. Writing a random new value only to Key Vault would leave the service and clients disagreeing."
+        "Set the secret’s expiration and route Key Vault’s SecretNearExpiry event through Event Grid to a rotation function. The documented notification occurs 30 days before expiry.\n\nThe function must update the credential in the target service and save the matching new secret version with a new expiry. Clients must then adopt that replacement; changing only the Key Vault value is insufficient."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19307,17 +18629,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Added the essential target-service credential change; creating a new Key Vault version alone does not rotate the credential used by the service.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19350,18 +18672,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation",
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -19389,17 +18711,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked all ten documented Python credential-chain positions and platform/package exclusions. Kept an ordered list because the question explicitly asks for a sequence.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -19409,7 +18731,7 @@ window.AI200_FLASHCARDS = {
       "title": "DefaultAzureCredential chain",
       "question": "How can the same DefaultAzureCredential code run locally and on Azure?",
       "answers": [
-        "It can obtain a token using your signed-in developer tools locally and the app's managed identity in Azure. The service client uses the same credential interface in both places. Give each identity the required permissions. Not every authentication error causes fallback: a configured deployed credential that fails can stop the chain."
+        "Locally, DefaultAzureCredential can use a signed-in developer tool, such as Azure CLI. On Azure, it can use the application’s managed identity. The service client accepts the same credential interface in either environment.\n\nGive both identities the required permissions. A failing configured deployment credential can stop the chain; fallback is not guaranteed for every authentication error."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19432,18 +18754,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Replaced “every link is silently skipped” with the actual distinction between an unavailable credential and a configured deployed credential that fails authentication.",
+        "date": "2026-10-29",
+        "status": "clarified",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
           "https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19453,7 +18775,7 @@ window.AI200_FLASHCARDS = {
       "title": "DefaultAzureCredential chain",
       "question": "What does AZURE_TOKEN_CREDENTIALS control in Python DefaultAzureCredential?",
       "answers": [
-        "It restricts which credentials Python DefaultAzureCredential includes. prod keeps deployed-service credentials; dev keeps developer-tool credentials. In supported versions, a name such as AzureCliCredential selects just that mechanism. prod/dev require azure-identity 1.23.0 or later; individual names require 1.24.0 or later. It selects how to authenticate, not what resource permissions the resulting identity receives."
+        "AZURE_TOKEN_CREDENTIALS limits which mechanisms Python DefaultAzureCredential tries. prod includes deployed-service credentials; dev includes developer-tool credentials. Supported versions also accept a single credential name, such as AzureCliCredential.\n\nThe prod/dev options require azure-identity 1.23.0 or later; individual names require 1.24.0 or later. This selects authentication methods, not the permissions granted to the identity."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19471,17 +18793,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Named the language-specific credential chain so the setting is not mistaken for a universal Azure option."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19491,7 +18813,7 @@ window.AI200_FLASHCARDS = {
       "title": "DefaultAzureCredential chain",
       "question": "Why is ManagedIdentityCredential normally unavailable on a developer laptop?",
       "answers": [
-        "ManagedIdentityCredential asks the Azure host's managed-identity endpoint for a token. An ordinary developer laptop has no such endpoint. Use a developer credential locally, such as AzureCliCredential after signing in with az login."
+        "ManagedIdentityCredential requests a token from the supported Azure host’s managed-identity endpoint. An ordinary developer laptop does not have that endpoint.\n\nFor local work, use a developer credential, for example AzureCliCredential after az login, and grant that developer identity the necessary service permissions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19514,18 +18836,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
           "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19535,7 +18857,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration",
       "question": "What uniquely identifies an App Configuration key-value?",
       "answers": [
-        "The key and label together. For example, Api:Timeout with label Production can be 30, while the same key with label Development is 10. An entry with no label is a separate entry too. The application selects the key and label it wants."
+        "The key and label together identify an entry. For example, Api:Timeout with label Production can contain 30, while Api:Timeout with label Development contains 10.\n\nThe same key with no label is another entry. The application chooses which key/label combinations to load."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19558,17 +18880,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-key-value"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19578,7 +18900,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration",
       "question": "How do App Configuration Data Reader and Data Owner differ?",
       "answers": [
-        "App Configuration Data Reader can read key-values. App Configuration Data Owner can also write and delete them. Use Reader for an app that only consumes settings. These roles control store data, rather than general management of the Azure resource."
+        "App Configuration Data Reader can read stored key-values. App Configuration Data Owner can also create, update and delete them.\n\nUse Reader for an application that only consumes configuration. These are data-access roles, separate from permission to manage the Azure resource itself."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19596,17 +18918,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-enable-rbac"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19616,7 +18938,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault access for an app",
       "question": "What is the setup order for reading Key Vault with an app identity?",
       "answers": [
-        "Enable a managed identity for the app, grant it Key Vault Secrets User on the appropriate RBAC-enabled vault, and ensure network access. Then create a SecretClient with the vault URL and a token credential, and call get_secret. For local development, the signed-in developer identity needs its own access; enabling the deployed app’s identity does not grant the developer permission."
+        "Enable the application’s managed identity, grant it Key Vault Secrets User on the appropriate RBAC-enabled vault and provide network access. Then create a SecretClient with the vault URL and token credential, and call get_secret.\n\nWhen running locally, your developer identity needs its own access. The deployed app’s role assignment does not grant your signed-in account permission."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19639,18 +18961,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19678,17 +19000,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -19698,7 +19020,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault access for an app",
       "question": "What happens to access policies when a vault switches to Azure RBAC?",
       "answers": [
-        "They no longer authorize operations on keys, secrets and certificates. Equivalent Azure role assignments must be configured separately; existing policies are not converted automatically. Prepare the role assignments before the switch and verify application access afterward."
+        "The existing access policies stop authorizing operations on keys, secrets and certificates. They are not automatically converted into equivalent role assignments.\n\nPrepare the required Azure role assignments before changing the permission model, then verify that each application can still access its objects."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19716,17 +19038,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19736,7 +19058,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault access for an app",
       "question": "Why does copying a secret into app settings at deployment not implement rotation?",
       "answers": [
-        "The app setting contains a copy of the old value. A new Key Vault version does not rewrite that copy or update a running client. Use a supported Key Vault reference with refresh, or code that rereads the secret and updates the clients that use it."
+        "The app setting holds a copy of the value at deployment time. Creating a new Key Vault version does not rewrite that copy or update an already connected client.\n\nUse a supported reference with its documented refresh behavior, or reread the secret in code and update the clients that use it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19759,18 +19081,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19780,7 +19102,7 @@ window.AI200_FLASHCARDS = {
       "title": "Where secrets belong",
       "question": "Which secret lifecycle features does Key Vault provide?",
       "answers": [
-        "Secret versions, expiration metadata, access auditing, recovery through soft delete, and protection against early permanent deletion through purge protection. These help manage a secret's lifecycle. Replacing a credential in the external service still requires a rotation workflow."
+        "Key Vault provides secret versions, expiration metadata, access auditing and recovery through soft delete. Purge protection can prevent permanent deletion before the retention period ends.\n\nThese features manage the stored secret. A separate rotation workflow must replace the credential in the external service that accepts it."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19813,9 +19135,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
           "https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview",
@@ -19824,9 +19146,9 @@ window.AI200_FLASHCARDS = {
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19836,7 +19158,7 @@ window.AI200_FLASHCARDS = {
       "title": "Where secrets belong",
       "question": "Who resolves a Key Vault reference stored in App Configuration?",
       "answers": [
-        "The application's App Configuration provider or resolver. It reads the secret URI from App Configuration, then uses the app's authorized identity to retrieve the value from Key Vault. The app needs access to both services; App Configuration does not fetch the secret on its behalf."
+        "The application’s App Configuration provider or resolver reads the reference and retrieves the secret from Key Vault. It needs an authorized credential for that vault as well as access to the configuration store.\n\nApp Configuration stores the reference; it does not retrieve the secret on the application’s behalf."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19854,17 +19176,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19874,7 +19196,7 @@ window.AI200_FLASHCARDS = {
       "title": "Where secrets belong",
       "question": "How can AKS mount Key Vault secrets as files without creating Kubernetes Secret objects?",
       "answers": [
-        "Use the Azure Key Vault provider for the Secrets Store CSI Driver. CSI means Container Storage Interface. A SecretProviderClass selects the vault objects, and the driver mounts their contents as files using an authorized identity. Creating Kubernetes Secret objects is optional. If rotation updates the files, the application must reread them."
+        "Use the Azure Key Vault provider for the Secrets Store CSI Driver. A SecretProviderClass identifies the objects to retrieve, and an authorized identity lets the driver mount their contents as files in the pod.\n\nSynchronizing them into Kubernetes Secret objects is optional. If rotation changes the mounted files, the application still needs to reread them."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19892,17 +19214,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Distinguished Kubernetes Secret objects from source-control commits, and put the driver name before its expanded acronym."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19912,7 +19234,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration Python SDK",
       "question": "How is a Python AzureAppConfigurationClient authenticated?",
       "answers": [
-        "Use a token credential and the store endpoint:\nfrom azure.appconfiguration import AzureAppConfigurationClient\nfrom azure.identity import DefaultAzureCredential\nclient = AzureAppConfigurationClient(\"https://mystore.azconfig.io\", credential=DefaultAzureCredential())\nReplace mystore with the actual store name. Locally the credential can use your developer sign-in; in Azure it can use a configured managed identity. Assign that identity an appropriate App Configuration data role, such as Data Reader."
+        "Create the client with the store endpoint and a token credential:\nfrom azure.appconfiguration import AzureAppConfigurationClient\nfrom azure.identity import DefaultAzureCredential\nclient = AzureAppConfigurationClient(\"https://mystore.azconfig.io\", credential=DefaultAzureCredential())\n\nReplace mystore with your store name. The selected developer or managed identity needs an App Configuration data role, such as Data Reader."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19935,18 +19257,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-appconfiguration/azure.appconfiguration.azureappconfigurationclient?view=azure-python",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-enable-rbac"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19956,7 +19278,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration Python SDK",
       "question": "Which Python App Configuration call reads a single key and label?",
       "answers": [
-        "On an existing AzureAppConfigurationClient:\nsetting = client.get_configuration_setting(key=\"Api:Timeout\", label=\"Production\")\nvalue = setting.value\nThe first line retrieves that exact key/label pair; the second reads its stored string value."
+        "With an existing AzureAppConfigurationClient named client:\nsetting = client.get_configuration_setting(key=\"Api:Timeout\", label=\"Production\")\nvalue = setting.value\n\nThe request retrieves that exact key/label entry. Its value is a stored string; convert it if the application needs a number or another type."
       ],
       "origin": "original",
       "legacyIds": [
@@ -19974,17 +19296,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-appconfiguration/azure.appconfiguration.azureappconfigurationclient?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -19994,7 +19316,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Configuration Python SDK",
       "question": "Which Python App Configuration calls enumerate settings or labels?",
       "answers": [
-        "Use client.list_configuration_settings(key_filter=\"Api:*\", label_filter=\"Production\") to iterate matching settings and their values. Use client.list_labels() to iterate label information. These are methods on an existing AzureAppConfigurationClient."
+        "With an existing AzureAppConfigurationClient named client, list_configuration_settings returns matching settings:\nclient.list_configuration_settings(key_filter=\"Api:*\", label_filter=\"Production\")\n\nIterate the returned results to read each setting. Use client.list_labels() when you want the available label information instead of the settings themselves."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20012,17 +19334,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/azure-appconfiguration/azure.appconfiguration.azureappconfigurationclient?view=azure-python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20032,7 +19354,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dynamic configuration refresh",
       "question": "How can a long-lived app refresh configuration without a remote call per request?",
       "answers": [
-        "Keep configuration in memory through a provider that supports refresh. Requests read the cached values; middleware or application code asks the provider to refresh, and the refresh interval limits how often it checks the remote store. Configure both the watched settings and the code that triggers the check."
+        "Use a configuration provider that keeps values in memory and supports refresh. Application requests read those cached values, while refresh checks are limited by a configured interval.\n\nConfigure what to monitor and call the provider’s refresh mechanism from middleware or application code. Caching alone does not schedule updates."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20055,18 +19377,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-python-provider"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20076,7 +19398,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dynamic configuration refresh",
       "question": "How does Python App Configuration refresh use a watch key and interval?",
       "answers": [
-        "For the Python provider:\nfrom azure.appconfiguration.provider import load, WatchKey\nfrom azure.identity import DefaultAzureCredential\nconfig = load(endpoint=endpoint, credential=DefaultAzureCredential(), refresh_on=[WatchKey(\"sentinel\")], refresh_interval=10)\nconfig.refresh()\nHere endpoint is the store URL. The initial load caches settings; later refresh() calls check the watched sentinel only after the interval allows it and reload on a detected change. Call refresh from the app’s request/background flow; creating the provider alone does not schedule continuous polling."
+        "Use a watched sentinel with the Python provider:\nfrom azure.appconfiguration.provider import load, WatchKey\nfrom azure.identity import DefaultAzureCredential\nconfig = load(endpoint=endpoint, credential=DefaultAzureCredential(), refresh_on=[WatchKey(\"sentinel\")], refresh_interval=10)\nconfig.refresh()\n\nHere endpoint is the store URL. Later refresh() calls check the watched key when the interval permits and reload settings if it changed. Call refresh from application activity; this does not start an automatic polling loop."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20094,17 +19416,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-python-provider"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20114,7 +19436,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dynamic configuration refresh",
       "question": "What should an app do when a configuration refresh fails?",
       "answers": [
-        "After a successful initial load, keep using the last cached values and record the refresh failure. Try again on a later eligible refresh. Startup is different: if nothing has loaded yet, the app needs an explicit choice between failing startup and using safe local defaults."
+        "After a successful initial load, keep serving the cached configuration and record the refresh failure. A later eligible refresh can retry.\n\nStartup needs a separate policy: with no previously loaded values, either fail startup or use explicitly chosen safe defaults. There is no last successful configuration to fall back to yet."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20137,18 +19459,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-python-provider"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20158,7 +19480,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dynamic configuration refresh",
       "question": "Why are environment variables unsuitable for in-process dynamic refresh?",
       "answers": [
-        "A running process does not automatically receive externally changed environment variables. Azure App Service applies changed app settings through an app restart, while Container Apps environment-variable changes create a new revision. For settings that must update inside an existing process, use a configuration provider with refresh and make the application reread the refreshed values."
+        "An external setting change does not rewrite a running process’s environment. App Service applies changed app settings through a restart; Container Apps environment-variable changes create a new revision.\n\nFor updates inside an existing process, use a refresh-capable provider and ensure the application reads its refreshed values."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20186,9 +19508,9 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions",
@@ -20196,9 +19518,9 @@ window.AI200_FLASHCARDS = {
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20226,17 +19548,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/where-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20246,7 +19568,7 @@ window.AI200_FLASHCARDS = {
       "title": "KQL operator shapes",
       "question": "What rows does KQL summarize return?",
       "answers": [
-        "It combines input rows into one summary row per group in the by clause. For example:\nAppRequests | summarize Requests=count() by AppRoleName\nThis counts requests for each service name. Without a by clause, it produces one summary row for the entire input."
+        "summarize groups input rows and calculates aggregates for each group. For example:\nAppRequests | summarize Requests=count() by AppRoleName\n\nThis returns one request count per service. Without a by clause, it summarizes the entire input into one row."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20269,17 +19591,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "KQL operator semantics and the separate Application Insights resource and workspace query schemas.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/summarize-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20289,7 +19611,7 @@ window.AI200_FLASHCARDS = {
       "title": "KQL operator shapes",
       "question": "What does KQL project do to columns?",
       "answers": [
-        "It chooses the output columns and can rename or calculate them; unlisted columns are dropped. For example:\nAppRequests | project Service=AppRoleName, DurationSeconds=DurationMs / 1000.0\nThe result has Service and DurationSeconds only. Use extend instead when you want to retain other columns while calculating a value."
+        "project selects the output columns and can calculate or rename them. Columns you do not select are dropped. For example:\nAppRequests | project Service=AppRoleName, DurationSeconds=DurationMs / 1000.0\n\nThe output contains only Service and DurationSeconds. Use extend when you also want to retain the original columns."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20307,17 +19629,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "KQL operator semantics and the separate Application Insights resource and workspace query schemas.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/project-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20345,17 +19667,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Clarified that extend can replace an existing column as well as append a new one.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/extend-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20388,18 +19710,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/distinct-operator",
           "https://learn.microsoft.com/en-us/kusto/query/summarize-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20409,7 +19731,7 @@ window.AI200_FLASHCARDS = {
       "title": "KQL operator shapes",
       "question": "What does KQL join do?",
       "answers": [
-        "It combines rows from two tables when their key values match. For example:\nAppRequests | join kind=inner (AppDependencies) on OperationId\nThis matches requests with dependency records from the same operation. kind=inner keeps matched rows only. Several matches for one key produce several output rows, so choose the key and join kind carefully."
+        "join matches rows from two inputs using key values. For example:\nAppRequests | join kind=inner (AppDependencies) on OperationId\n\nThis pairs requests with dependencies from the same operation. Several matches for a key produce several output rows. An operation ID can group many spans, so this query does not necessarily identify only a request’s direct child calls."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20427,17 +19749,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "KQL operator semantics and the separate Application Insights resource and workspace query schemas.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/join-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20470,18 +19792,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/render-operator",
           "https://learn.microsoft.com/en-us/kusto/query/bin-function"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20509,17 +19831,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/best-practices"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20552,18 +19874,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/analytics"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20596,18 +19918,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apprequests"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20617,7 +19939,7 @@ window.AI200_FLASHCARDS = {
       "title": "The two telemetry schemas",
       "question": "What unit is used for request duration in Application Insights queries?",
       "answers": [
-        "Milliseconds. In the Application Insights query schema, requests.duration > 2000 means longer than two seconds:\nrequests | where duration > 2000\nThe workspace-schema equivalent is:\nAppRequests | where DurationMs > 2000"
+        "Request duration is measured in milliseconds in both of these query schemas. To find requests longer than two seconds in an Application Insights resource query:\nrequests | where duration > 2000\n\nIn a workspace query, use:\nAppRequests | where DurationMs > 2000\n\nUse the table and column names that belong to the selected scope."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20640,18 +19962,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "KQL operator semantics and the separate Application Insights resource and workspace query schemas.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/analytics",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apprequests"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20684,18 +20006,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apprequests"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20723,17 +20045,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/ago-function"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20766,18 +20088,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked KQL operator behavior and examples, early filtering, both telemetry query schemas, service role names, ago and bin. Existing prose followed by a short query already explains the result clearly.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/bin-function",
           "https://learn.microsoft.com/en-us/kusto/query/render-operator"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made clear that bin calculates a bucket value; summarize performs the actual grouping."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -20787,7 +20109,7 @@ window.AI200_FLASHCARDS = {
       "title": "KQL time windows and grouping",
       "question": "Which KQL join kind is used when no kind is specified?",
       "answers": [
-        "innerunique. It deduplicates the left input by the join key before matching, so repeated left-side keys do not behave like an ordinary inner join. Specify kind=inner when you need every matching pair. For performance, often put the smaller suitable input on the left, but do not swap inputs without considering how that changes the join’s meaning."
+        "The default is innerunique. It removes duplicate left-side join keys before matching, so it can discard left-side rows that an ordinary inner join would preserve.\n\nSpecify kind=inner if you need every matching pair. The smaller suitable input is often preferable on the left for performance, but swapping inputs can change the result."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20810,18 +20132,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "KQL operator semantics and the separate Application Insights resource and workspace query schemas.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/join-innerunique",
           "https://learn.microsoft.com/en-us/kusto/query/best-practices"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20831,7 +20153,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure Monitor query tools",
       "question": "Which tool supports an ad hoc investigation of Azure application logs?",
       "answers": [
-        "Log Analytics in the Azure portal. Open the relevant workspace/resource scope and run a Kusto Query Language (KQL) query, such as:\nAppRequests | where TimeGenerated > ago(30m) | take 20\nAdjust the table and time window for the logs actually collected. This provides an interactive investigation without first building a reusable dashboard or alert."
+        "Use Log Analytics in the Azure portal, selecting the resource or workspace containing the collected logs. For example:\nAppRequests | where TimeGenerated > ago(30m) | take 20\n\nThis retrieves up to 20 recent request records for an ad hoc investigation. Adjust the table and time range to match the telemetry actually collected."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20849,17 +20171,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Collected telemetry versus resource management activity, explicit log routing and investigation tools.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20869,7 +20191,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure Monitor query tools",
       "question": "What type of operations does the Azure Activity Log record?",
       "answers": [
-        "Management operations on Azure resources, such as creating a virtual machine, changing a vault's configuration or deploying infrastructure. These are control-plane events. Use application telemetry to investigate what the running app did with a user request."
+        "The Activity Log records resource-management activity, such as creating a virtual machine or changing a vault’s configuration. These are control-plane operations.\n\nTo investigate a user’s application request or a secret-read attempt, use the corresponding application telemetry or service data-plane logs."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20887,17 +20209,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Collected telemetry versus resource management activity, explicit log routing and investigation tools.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20907,7 +20229,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure Monitor query tools",
       "question": "Why start a KQL query with the relevant table?",
       "answers": [
-        "It selects the input data for the query. For example, AppRequests starts with request records, while AzureActivity starts with resource-management events. Choosing the relevant table avoids searching unrelated logs and makes later filters/aggregates meaningful. Time and other filters should normally narrow that input early."
+        "The table selects which records the query starts with. AppRequests contains application requests, while AzureActivity contains collected resource-management events.\n\nChoose the table that can answer the question, then narrow it with time and other filters before expensive joins or summaries."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20930,18 +20252,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Collected telemetry versus resource management activity, explicit log routing and investigation tools.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
           "https://learn.microsoft.com/en-us/kusto/query/best-practices"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20951,7 +20273,7 @@ window.AI200_FLASHCARDS = {
       "title": "Azure Monitor query tools",
       "question": "How do KQL == and =~ differ?",
       "answers": [
-        "For string equality, == is case-sensitive and =~ is case-insensitive. For example, \"Prod\" == \"prod\" is false, while \"Prod\" =~ \"prod\" is true. Prefer == when the intended comparison is case-sensitive; using =~ does not make table or column identifiers case-insensitive."
+        "For strings, == compares case sensitively and =~ ignores case. For example, \"Prod\" == \"prod\" is false, while \"Prod\" =~ \"prod\" is true.\n\nChoose the comparison that matches the intended meaning. Case-insensitive value comparison does not make table or column identifiers case insensitive."
       ],
       "origin": "original",
       "legacyIds": [
@@ -20969,17 +20291,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Collected telemetry versus resource management activity, explicit log routing and investigation tools.",
         "sources": [
           "https://learn.microsoft.com/en-us/kusto/query/datatypes-string-operators"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -20989,7 +20311,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry pipeline",
       "question": "What sends OpenTelemetry spans to Azure Monitor?",
       "answers": [
-        "An Azure Monitor trace exporter, such as Python AzureMonitorTraceExporter. It sends completed spans to the configured Application Insights destination. A span processor connects it to the tracer provider; a supported Azure Monitor distro can set up that pipeline for you."
+        "An Azure Monitor trace exporter sends completed spans to the configured Application Insights destination. In Python, AzureMonitorTraceExporter is one such exporter.\n\nA span processor connects the exporter to the TracerProvider. A supported Azure Monitor distribution can configure that pipeline for you."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21012,18 +20334,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable",
           "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21033,7 +20355,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry pipeline",
       "question": "How do BatchSpanProcessor and SimpleSpanProcessor export spans?",
       "answers": [
-        "SimpleSpanProcessor exports a completed sampled span synchronously, so export can delay the ending thread. BatchSpanProcessor queues sampled spans and normally exports them in background batches, reducing per-span overhead. Configure shutdown/flush for short-lived processes so queued telemetry has a chance to leave before the process exits."
+        "SimpleSpanProcessor exports each completed sampled span synchronously, which can delay the application thread. BatchSpanProcessor queues spans and normally exports them in background batches, reducing overhead.\n\nFlush or shut down the provider cleanly in short-lived processes so queued telemetry has time to leave."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21051,17 +20373,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21089,17 +20411,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked Python active-span context-manager and requests instrumentation examples, including current-span lifetime, initialized provider requirements and receiver-side extraction. Kept complete short examples.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21109,7 +20431,7 @@ window.AI200_FLASHCARDS = {
       "title": "Tracing setup traps",
       "question": "What must an application do to produce visible OpenTelemetry traces?",
       "answers": [
-        "Configure a tracing provider and exporter, then create spans through library instrumentation or tracing code. Deploy the required packages and destination settings, restart the service, and run the code you want to trace. If traces are missing, check sampling, export failures and ingestion delay."
+        "Configure a tracing provider and exporter, then create spans through instrumentation or tracing code. Install the required packages, set the destination, initialize telemetry and exercise the operation you want to observe.\n\nIf nothing appears, check that spans were created, sampled and successfully exported, and allow for ingestion delay."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21132,18 +20454,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable",
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21153,7 +20475,7 @@ window.AI200_FLASHCARDS = {
       "title": "Tracing setup traps",
       "question": "What does configure_azure_monitor configure automatically?",
       "answers": [
-        "For the Azure Monitor Python distro, configure_azure_monitor sets up supported trace, metric and logging providers, Azure exporters and supported library instrumentation. Supply the destination through the supported connection-string configuration and initialize it once. Avoid also manually instrumenting the same library, which can create duplicate spans. Available instrumentation depends on the installed distro version and packages."
+        "In the azure-monitor-opentelemetry Python package, configure_azure_monitor sets up supported trace, metric and logging providers, Azure exporters and library instrumentation. Configure its Application Insights destination and initialize it once.\n\nInstalled package versions determine which libraries are instrumented. Avoid instrumenting the same library again manually, because that can create duplicate telemetry."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21176,17 +20498,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21196,7 +20518,7 @@ window.AI200_FLASHCARDS = {
       "title": "Tracing setup traps",
       "question": "How does the Azure Monitor Python exporter map span kinds to telemetry tables?",
       "answers": [
-        "SERVER and CONSUMER spans become request telemetry: requests or AppRequests. CLIENT, PRODUCER and INTERNAL spans become dependency telemetry: dependencies or AppDependencies. The table names depend on query scope. INTERNAL usually represents work inside the process. Choose the span kind for the operation it describes."
+        "The Azure Monitor Python exporter maps SERVER and CONSUMER spans to request telemetry: requests or AppRequests. It maps CLIENT, PRODUCER and INTERNAL spans to dependency telemetry: dependencies or AppDependencies.\n\nThe table spelling depends on the query scope. Choose the span kind according to the operation’s role, rather than the table you would prefer to see."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21219,18 +20541,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/azure/monitor/opentelemetry/exporter/export/trace/_exporter.py",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-add-modify"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21240,7 +20562,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry samplers",
       "question": "What are the Python names of common OpenTelemetry samplers?",
       "answers": [
-        "Python provides ALWAYS_ON and ALWAYS_OFF instances, TraceIdRatioBased(rate), and ParentBased(root=...). For example, TraceIdRatioBased(0.1) selects roughly 10% of trace IDs. These Python identifiers differ from specification names and environment-variable values; use the spelling required by the API you configure."
+        "Common Python sampler APIs are ALWAYS_ON, ALWAYS_OFF, TraceIdRatioBased(rate) and ParentBased(root=...). For example, TraceIdRatioBased(0.1) selects roughly 10% of trace IDs.\n\nThese are Python names. Environment-variable values and vendor-specific sampler names use different spellings."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21263,18 +20585,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/instrumentation/",
           "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21284,7 +20606,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry samplers",
       "question": "Which standard OTEL_TRACES_SAMPLER values select ratio sampling?",
       "answers": [
-        "traceidratio and parentbased_traceidratio for OTEL_TRACES_SAMPLER. Set OTEL_TRACES_SAMPLER_ARG to a ratio such as 0.1 for about 10%. The parent-based form uses that ratio for root traces while respecting the configured parent rules. Vendor distros may support additional aliases, so distinguish standard names from vendor-specific options."
+        "The standard OTEL_TRACES_SAMPLER values are traceidratio and parentbased_traceidratio. Set OTEL_TRACES_SAMPLER_ARG to a fraction such as 0.1 for approximately 10%.\n\nThe parent-based form applies the ratio to new root traces and uses parent-sampling rules for child spans. Check your distribution for supported aliases or overrides."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21302,17 +20624,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21322,7 +20644,7 @@ window.AI200_FLASHCARDS = {
       "title": "OpenTelemetry samplers",
       "question": "Which Azure Monitor-specific sampler environment settings are available?",
       "answers": [
-        "Supported Azure Monitor configurations use OTEL_TRACES_SAMPLER=microsoft.fixed_percentage with OTEL_TRACES_SAMPLER_ARG set to a fraction such as 0.1, or microsoft.rate_limited with the argument set to an approximate traces-per-second target such as 5.0. Set them before initializing telemetry. The two arguments have different units: 0.1 is a ratio, while 5.0 is a rate."
+        "Supported Azure Monitor configurations accept microsoft.fixed_percentage or microsoft.rate_limited in OTEL_TRACES_SAMPLER.\n\nWith fixed percentage, OTEL_TRACES_SAMPLER_ARG=0.1 means about 10%. With rate limiting, an argument of 5.0 means an approximate target of five traces per second. Set these before initialization and check the installed distribution’s support."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21345,18 +20667,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-configuration?tabs=python",
           "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21389,18 +20711,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked parent-based decisions, deterministic trace-ID ratio selection, compatible Azure Monitor fixed-percentage selection and independent metric aggregation. Existing explanations distinguish approximate sampling from an exact per-batch quota.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21428,17 +20750,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked parent-based decisions, deterministic trace-ID ratio selection, compatible Azure Monitor fixed-percentage selection and independent metric aggregation. Existing explanations distinguish approximate sampling from an exact per-batch quota.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21446,9 +20768,9 @@ window.AI200_FLASHCARDS = {
       "domain": 4,
       "category": "opentelemetry",
       "title": "OpenTelemetry samplers",
-      "question": "What rate-limited sampling default is used by recent Azure Monitor Python distros?",
+      "question": "What default sampling behavior should you check in the Azure Monitor Python distro?",
       "answers": [
-        "For azure-monitor-opentelemetry starting at version 1.8.6, configure_azure_monitor defaults to rate-limited sampling targeting approximately five traces per second when no sampler options override it. This is a version-specific default and an approximate local rate, not five spans total across a distributed application. Check the installed distro and any environment-variable overrides."
+        "Current Azure Monitor Python distro documentation describes rate-limited sampling at approximately five traces per second when no sampler configuration overrides it.\n\nThis is a distribution-specific default, not an OpenTelemetry-wide rule or five spans across the entire application. Check the installed package and environment settings before assuming that every request produces a retained trace."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21471,18 +20793,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Checked current Azure Monitor sampling documentation and the Python distro README. Removed an unnecessary package-version memorization claim while retaining the documented approximate default and override caveat.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-configuration?tabs=python",
           "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21492,7 +20814,7 @@ window.AI200_FLASHCARDS = {
       "title": "Picking a trace sampler",
       "question": "Which Python OpenTelemetry sampler records all spans during local testing?",
       "answers": [
-        "ALWAYS_ON, from opentelemetry.sdk.trace.sampling. Assign it as the TracerProvider's sampler to record and sample each span it evaluates. This is useful when debugging locally. You still need an exporter to send those spans to a viewer; it cannot restore spans dropped in another service."
+        "Use ALWAYS_ON from opentelemetry.sdk.trace.sampling as the TracerProvider’s sampler. It records and samples every span it evaluates, which is useful when debugging locally.\n\nYou still need an exporter and destination to view the spans. It cannot recover spans already dropped in another service."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21515,18 +20837,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/instrumentation/",
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21559,18 +20881,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked parent-based decisions, deterministic trace-ID ratio selection, compatible Azure Monitor fixed-percentage selection and independent metric aggregation. Existing explanations distinguish approximate sampling from an exact per-batch quota.",
         "sources": [
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21580,7 +20902,7 @@ window.AI200_FLASHCARDS = {
       "title": "Picking a trace sampler",
       "question": "Where is an OpenTelemetry sampler configured?",
       "answers": [
-        "On the TracerProvider. For example, after importing the SDK classes:\nTracerProvider(sampler=TraceIdRatioBased(0.1))\nThe provider asks the sampler whether to record/sample each new span. Processors handle completed spans, and exporters send them to a destination."
+        "Configure it on the TracerProvider, for example:\nfrom opentelemetry.sdk.trace import TracerProvider\nfrom opentelemetry.sdk.trace.sampling import TraceIdRatioBased\nprovider = TracerProvider(sampler=TraceIdRatioBased(0.1))\n\nThe provider consults the sampler when spans start. Register this provider and configure processors/exporters as part of the tracing setup; constructing it alone does not send telemetry."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21603,18 +20925,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/instrumentation/",
           "https://opentelemetry.io/docs/specs/otel/trace/sdk/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21647,18 +20969,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "corrected",
-        "note": "Separated fixed-percentage trace selection from approximate rate-limited sampling, and removed the unqualified SDK-wide claim about ignoring upstream decisions.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked parent-based decisions, deterministic trace-ID ratio selection, compatible Azure Monitor fixed-percentage selection and independent metric aggregation. Existing explanations distinguish approximate sampling from an exact per-batch quota.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-sampling",
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-configuration?tabs=python"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21686,17 +21008,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked parent-based decisions, deterministic trace-ID ratio selection, compatible Azure Monitor fixed-percentage selection and independent metric aggregation. Existing explanations distinguish approximate sampling from an exact per-batch quota.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-sampling"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21706,7 +21028,7 @@ window.AI200_FLASHCARDS = {
       "title": "Trace context propagation",
       "question": "Which W3C header carries trace context between HTTP services?",
       "answers": [
-        "traceparent, defined by the World Wide Web Consortium (W3C) Trace Context standard. It carries the trace ID, sending span ID and trace flags so the receiving service can continue the same distributed trace. Instrumentation libraries normally inject and read this header."
+        "The W3C Trace Context header is traceparent. It carries the trace ID, the sending span’s ID and trace flags, allowing the next service to continue the same trace.\n\nW3C means World Wide Web Consortium. Supported instrumentation normally writes and reads this header for you."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21724,17 +21046,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://www.w3.org/TR/trace-context/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21744,7 +21066,7 @@ window.AI200_FLASHCARDS = {
       "title": "Trace context propagation",
       "question": "Does creating a span automatically propagate context to another process?",
       "answers": [
-        "No. The current span/context exists inside the process. A caller must inject its context into outgoing headers or message metadata, and the receiver must extract it before starting the child operation. Supported HTTP or messaging instrumentation often does this automatically. Without propagation, each service may create an unrelated trace."
+        "Creating a span only establishes tracing context inside the current process. To cross a process boundary, the caller must inject context into HTTP headers or message metadata, and the receiver must extract it.\n\nSupported instrumentation often handles this automatically. Without propagation, the next service can start an unrelated trace instead of continuing the original one."
       ],
       "origin": "original",
       "legacyIds": [
@@ -21762,17 +21084,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/propagation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21805,18 +21127,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked Python active-span context-manager and requests instrumentation examples, including current-span lifetime, initialized provider requirements and receiver-side extraction. Kept complete short examples.",
         "sources": [
           "https://opentelemetry.io/docs/languages/python/propagation/",
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Showed a complete outbound request instead of leaving the learner to infer how to attach a manually created headers dictionary."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21846,17 +21168,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21890,17 +21212,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -21910,7 +21232,7 @@ window.AI200_FLASHCARDS = {
       "category": "key-vault",
       "question": "Which Key Vault diagnostic category records data-plane access such as secret reads?",
       "answers": [
-        "AuditEvent. Enable a diagnostic setting that routes these Key Vault logs to a destination such as Log Analytics or Storage. They record operations such as secret reads and their outcomes, rather than the secret value itself. Logs are not collected in your chosen destination merely because the vault exists."
+        "The AuditEvent diagnostic category records Key Vault data-plane operations, including secret-read attempts and their outcomes. It does not contain the secret values.\n\nConfigure a diagnostic setting to send those logs to a destination such as Log Analytics. Creating a vault alone does not route its audit records to your workspace."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -21930,17 +21252,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/logging"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -21966,17 +21288,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://docs.docker.com/build/building/secrets/"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22006,17 +21328,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked separate control/data-plane permissions, external-service rotation, recommended vault scope, 7–90 day soft-delete retention, irreversible purge protection, BuildKit secret mounts and dual-credential rollover. Existing answers already explain the important limits.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation-dual"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22026,7 +21348,7 @@ window.AI200_FLASHCARDS = {
       "category": "identity-rbac",
       "question": "How do Azure Owner and Contributor differ in access management?",
       "answers": [
-        "Both can manage resources at their assigned scope. Owner can also create and remove role assignments, controlling who gets access. Contributor does not include that role-assignment permission."
+        "Both Owner and Contributor can manage resources within their assigned scope. Owner also grants the ability to create and remove Azure role assignments. Contributor does not grant that access-management permission."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -22046,17 +21368,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -22082,17 +21404,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked scope inheritance, supported ABAC conditions and sign-in log fields. The current hierarchy and authentication-versus-service-authorization examples are clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22102,7 +21424,7 @@ window.AI200_FLASHCARDS = {
       "category": "identity-rbac",
       "question": "How do Azure RBAC allow assignments combine across scopes?",
       "answers": [
-        "Allowed permissions add together across the roles and inherited scopes that apply to the identity. A narrowly scoped role does not remove permission granted by a broader role. Applicable role conditions and deny assignments can still restrict access, so evaluate the full set rather than looking only at one assignment."
+        "Permissions from applicable role assignments add together, including assignments inherited from parent scopes. A narrower role does not cancel permissions already granted by a broader one.\n\nApplicable role conditions and deny assignments can restrict the result. Evaluate the complete set of assignments when investigating access."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -22123,18 +21445,18 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -22144,7 +21466,7 @@ window.AI200_FLASHCARDS = {
       "category": "identity-rbac",
       "question": "Which Azure data-plane role permits an app identity to read Blob content?",
       "answers": [
-        "Storage Blob Data Reader. Assign it at the container, storage account or another appropriate scope to let an identity read blob data through Microsoft Entra authentication. A general resource Reader role views management information but does not itself grant Blob content access."
+        "Use Storage Blob Data Reader. It allows an identity to read blob content through Microsoft Entra authentication at the assigned container, account or parent scope.\n\nThe general Reader role only reads management information; it does not itself authorize access to blob contents."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -22160,17 +21482,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/storage/blobs/assign-azure-role-data-access"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -22180,7 +21502,7 @@ window.AI200_FLASHCARDS = {
       "category": "identity-rbac",
       "question": "How can a CI pipeline authenticate to Azure without storing a long-lived client secret?",
       "answers": [
-        "Use workload identity federation. Microsoft Entra trusts a token from the pipeline provider for a specific repository or environment, and exchanges it for an Azure access token. Assign the resulting identity the deployment roles it needs. No long-lived client secret has to be stored in the pipeline."
+        "Use workload identity federation. Microsoft Entra trusts a token issued by the pipeline provider for a configured repository, branch or environment and exchanges it for an Azure access token.\n\nGrant the federated identity the deployment roles it needs. The pipeline does not need to store a long-lived client secret."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -22200,17 +21522,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -22236,17 +21558,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked scope inheritance, supported ABAC conditions and sign-in log fields. The current hierarchy and authentication-versus-service-authorization examples are clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "date": "2026-10-29",
+        "status": "retained",
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22272,17 +21594,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked scope inheritance, supported ABAC conditions and sign-in log fields. The current hierarchy and authentication-versus-service-authorization examples are clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-sign-ins"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22292,7 +21614,7 @@ window.AI200_FLASHCARDS = {
       "category": "monitor",
       "question": "How do Azure Monitor metrics differ from logs?",
       "answers": [
-        "Metrics are numeric time series, such as CPU percentage or request counts over time, suitable for trend charts and threshold alerts. Logs are timestamped records with fields that can be searched, joined and aggregated using KQL. An application can emit both: a metric for the failure rate and log records explaining individual failures."
+        "Metrics track numeric measurements over time, such as CPU percentage or request counts, and suit trend charts and threshold alerts. Logs hold individual timestamped records that KQL can filter, join and summarize.\n\nFor example, a failure-rate metric reveals a problem; log records can explain which requests failed and why."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -22308,17 +21630,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Collected telemetry versus resource management activity, explicit log routing and investigation tools.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/data-platform"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
-        "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "date": "2026-10-29",
+        "status": "rewritten",
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -22348,17 +21670,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked diagnostic-setting destinations, explicit Activity Log routing, daily-cap gaps, workspace() access and the customMetrics/AppMetrics schemas. The current short examples and limitations are already clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/diagnostic-settings"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22384,17 +21706,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked diagnostic-setting destinations, explicit Activity Log routing, daily-cap gaps, workspace() access and the customMetrics/AppMetrics schemas. The current short examples and limitations are already clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22420,17 +21742,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked diagnostic-setting destinations, explicit Activity Log routing, daily-cap gaps, workspace() access and the customMetrics/AppMetrics schemas. The current short examples and limitations are already clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/daily-cap"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22456,17 +21778,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked diagnostic-setting destinations, explicit Activity Log routing, daily-cap gaps, workspace() access and the customMetrics/AppMetrics schemas. The current short examples and limitations are already clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/cross-workspace-query"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     },
     {
@@ -22476,7 +21798,7 @@ window.AI200_FLASHCARDS = {
       "category": "monitor",
       "question": "What does Application Insights Application Map visualize?",
       "answers": [
-        "Application components and the calls between them, with available latency and failure information. Instrumentation, service names and propagated trace context help connect the components. Uninstrumented or unsampled calls may be missing from the map."
+        "Application Map shows observed application components and calls between them, with available timing and failure information. Stable service names and propagated trace context help connect the components.\n\nIt reflects the telemetry received. Missing instrumentation or sampling can leave parts of the application absent."
       ],
       "origin": "prep",
       "legacyIds": [],
@@ -22496,17 +21818,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "note": "Collected telemetry versus resource management activity, explicit log routing and investigation tools.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Made the answer direct and removed distracting detail."
+        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       }
     },
     {
@@ -22532,17 +21854,17 @@ window.AI200_FLASHCARDS = {
         }
       ],
       "review": {
-        "date": "2026-10-28",
-        "status": "clarified",
-        "note": "Rewritten for a direct, self-contained explanation.",
+        "date": "2026-10-29",
+        "status": "confirmed",
+        "note": "Checked diagnostic-setting destinations, explicit Activity Log routing, daily-cap gaps, workspace() access and the customMetrics/AppMetrics schemas. The current short examples and limitations are already clear.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete"
         ]
       },
       "clarityReview": {
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "status": "retained",
-        "note": "Question is specific; the answer directly explains it in accessible language."
+        "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       }
     }
   ]

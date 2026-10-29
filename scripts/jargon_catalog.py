@@ -747,3 +747,13 @@ EXTRA += [('Dapr',
   'complements initial permission assignment by addressing access that is no longer needed.',
   'https://learn.microsoft.com/en-us/entra/id-governance/access-reviews-overview',
   '')]
+
+
+# Sorted sets remain available as reference vocabulary after Redis deck consolidation.
+EXTRA += [('Sorted set',
+  'ZSET|sorted sets|sortert sett|sorterte sett',
+  'A sorted set, also called a ZSET. Each unique member has a numeric score, and Redis orders members by '
+  'that score. For example, ZADD leaderboard 100 alice stores Alice’s score; ZRANGE leaderboard 0 -1 '
+  'WITHSCORES lists members from lowest to highest score.',
+  'https://redis.io/docs/latest/develop/data-types/sorted-sets/',
+  '')]
