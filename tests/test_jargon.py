@@ -91,7 +91,7 @@ class JargonTests(unittest.TestCase):
                     self.assertEqual(data['id'], identifier)
                     if jargon.inline(example):
                         self.assertEqual(data['mode'], 'inline')
-                        self.assertLessEqual(len(data['code'].splitlines()), 2)
+                        self.assertLessEqual(len(data['code'].splitlines()), 10 if example.get('inline') else 2)
                         self.assertEqual(data['code'], example['code'].rstrip())
                     else:
                         self.assertEqual(data['mode'], 'page')
@@ -168,6 +168,23 @@ class JargonTests(unittest.TestCase):
         self.assertEqual(json.loads(jargon.EXAMPLES['json']['code']), {'service': 'orders', 'replicas': 2})
         command = next(line for line in jargon.EXAMPLES['dockerfile']['code'].splitlines() if line.startswith('CMD '))
         self.assertEqual(json.loads(command[4:])[:3], ['python', '-m', 'http.server'])
+
+    def test_functions_file_examples_are_inline_and_demonstrate_distinct_scopes(self):
+        terms = {term.get('sourceCard'): term for term in self.terms if term.get('sourceCard')}
+        local = terms['m-50-2-1']['example']
+        host = terms['prep-func-010']['example']
+        self.assertEqual(local['mode'], 'inline')
+        self.assertEqual(host['mode'], 'inline')
+        settings = json.loads(local['code'])
+        self.assertFalse(settings['IsEncrypted'])
+        self.assertEqual(settings['Values']['FUNCTIONS_WORKER_RUNTIME'], 'python')
+        self.assertEqual(settings['Values']['AzureWebJobsStorage'], 'UseDevelopmentStorage=true')
+        self.assertTrue(all(isinstance(value, str) for value in settings['Values'].values()))
+        host_settings = json.loads(host['code'])
+        self.assertEqual(host_settings['version'], '2.0')
+        self.assertIn('functionTimeout', host_settings)
+        self.assertIn('logLevel', host_settings['logging'])
+        self.assertNotIn('Values', host_settings)
 
 
 if __name__ == '__main__':

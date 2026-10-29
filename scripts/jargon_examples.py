@@ -115,6 +115,35 @@ jobs:
         'summary': 'An object with a string value and a number. JSON uses quoted property names.',
         'code': '{"service": "orders", "replicas": 2}',
     },
+    'local-settings-json': {
+        'terms': ['local-settings-json'],
+        'language': 'JSON · local.settings.json',
+        'inline': True,
+        'summary': 'Values supplies local environment variables: select the Python worker, use the local Azurite storage emulator and set APP_MODE. Start Azurite before using UseDevelopmentStorage=true. IsEncrypted: false means these settings are stored unencrypted. In Azure, configure the corresponding app settings instead.',
+        'code': """{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "APP_MODE": "development"
+  }
+}""",
+    },
+    'host-json': {
+        'terms': ['host-json'],
+        'language': 'JSON · host.json',
+        'inline': True,
+        'summary': 'Sets a two-minute execution timeout and Information-level logging for the Function App. The hosting plan’s timeout limits still apply. version: 2.0 identifies the host.json schema; it does not select the deployed Functions runtime version.',
+        'code': """{
+  "version": "2.0",
+  "functionTimeout": "00:02:00",
+  "logging": {
+    "logLevel": {
+      "default": "Information"
+    }
+  }
+}""",
+    },
     'yaml': {
         'terms': ['yaml'],
         'language': 'YAML',
@@ -197,4 +226,4 @@ jobs:
 
 
 def inline(example):
-    return len(example['code'].strip().splitlines()) <= 2
+    return example.get('inline', False) or len(example['code'].strip().splitlines()) <= 2

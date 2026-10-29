@@ -2496,10 +2496,17 @@ Primary material: https://learn.microsoft.com/en-us/azure/service-bus-messaging/
 
 368 | m-44-3-1 | Domain 3 | service-bus | clarified
 Q: What do Service Bus subscription rules filter?
-A: Subscription rules select topic messages by their supported system and application properties. SQL filters evaluate expressions; correlation filters match specified values. Neither reads arbitrary fields inside the message body.
+A: Subscription rules select topic messages by supported system and application properties. SQL filters evaluate expressions; correlation filters match specified values. Neither inspects the message body.
 
-Remove the default accept-all rule when adding a restrictive filter. Otherwise that existing rule still admits every message.
-Review: Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.
+For example, publish an order with application properties region="NO" and priority=8. Give the subscription this SQL filter:
+region = 'NO' AND priority >= 5
+
+The order matches. An order with region="SE" or priority=2 does not match. A correlation filter configured only with region="NO" matches Norwegian orders regardless of priority.
+
+These must be message properties. Putting region and priority only in a JSON body does not make them filterable.
+
+Remove the default $Default accept-all rule when adding restrictive rules. Rules are alternatives: any matching rule admits a message. If $Default remains, both Norwegian and Swedish orders are admitted.
+Review: Checked property-based SQL and correlation filtering and the $Default rule against Microsoft Learn. Added matching/nonmatching orders and explained that body fields are not application properties.
 Primary material: https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples
 
 369 | m-44-4-1 | Domain 3 | service-bus | confirmed

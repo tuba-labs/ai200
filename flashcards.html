@@ -46,6 +46,8 @@
     .session-status #undo-rating{margin-left:auto}
     .flashcard{background:linear-gradient(120deg,var(--importance-surface,#fff),#fff 90%);border:1px solid var(--importance-border,#d8e4f0);border-top:5px solid var(--importance-edge,var(--domain));border-radius:18px;min-height:375px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);position:relative;cursor:text;user-select:text}
     .card-hint{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#687a90;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
+    .card-link-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;text-transform:none;letter-spacing:normal}.card-link-tools a{color:#52657c}.card-link-tools button{border:1px solid #cbd8e6;background:#fff;border-radius:7px;padding:5px 8px;min-height:32px;font-size:12px;font-weight:700;color:#245b91}
+    .card-link-status{margin:7px 2px;color:var(--muted);font-size:12px}.card-link-status:empty{margin:0}.card-link-fallback{margin:12px 0}.card-link-fallback input{display:block;width:100%;padding:10px;border:1px solid #cbd8e6;border-radius:8px;font-size:13px}.card-link-fallback label{font-size:12px;font-weight:700}
     .card-title{font-size:clamp(24px,3.6vw,33px);line-height:1.24;letter-spacing:-.8px;margin:0 0 17px}.question{font-size:clamp(18px,2.5vw,23px);line-height:1.55;max-width:860px;margin:0}
     .answer-prose{white-space:pre-wrap;line-height:1.6;color:#26364a;overflow-wrap:anywhere}.flip-tip{margin-top:34px;color:#62768d;font-size:13px}
     .card-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px;flex-wrap:wrap}
@@ -144,10 +146,10 @@
       <div class="track" role="progressbar" aria-label="Andel vurderte kort" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track"><div class="fill" id="progress-fill"></div></div>
     </section>
     <section class="study" aria-label="Flashcard">
-      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domene 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Ikke vurdert</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Kort 1 av 559</span><form id="card-jump" class="card-jump" data-no-jargon><label for="card-number">Gå til kort #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Gå</button></form></div></div>
+      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domene 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Ikke vurdert</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Plass 1 av 559 i køen</span><form id="card-jump" class="card-jump" data-no-jargon><label for="card-number">Gå til kort #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Gå</button></form></div></div>
       <p id="jump-help" class="term-help" data-no-jargon>Bruk kortets faste nummer, for eksempel 35. Hoppet viser kortet selv om det er vurdert eller skjult av et filter, og fortsetter i nummerrekkefølge.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
-        <div class="card-hint"><span id="card-face-label">Spørsmål</span><span id="card-id">Kort #01</span></div>
+        <div class="card-hint"><span id="card-face-label">Spørsmål</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direktelenke til kortet">Kort #01</a><button id="copy-card-link" type="button">Kopier lenke</button></div></div>
         <p id="importance-tag" class="importance-tag" lang="en" data-no-jargon></p>
         <h2 class="card-title" id="card-title"></h2>
         <div id="card-content"></div>
@@ -155,6 +157,8 @@
         <p class="flip-tip" id="flip-tip">Bruk «Vis svar» eller trykk mellomrom for å vise svaret.</p>
       </div>
       <p id="card-reference" class="card-reference"></p>
+      <p id="card-link-status" class="card-link-status" role="status" data-no-jargon></p>
+      <div id="card-link-fallback" class="card-link-fallback" data-no-jargon hidden><label for="card-link-value">Direktelenke – kopier den markerte teksten</label><input id="card-link-value" type="text" readonly spellcheck="false"></div>
       <div id="empty" class="empty" hidden>Ingen kort matcher filtrene. Prøv et annet domene, en annen status eller et nytt søk.</div>
       <div class="card-actions" id="card-actions">
         <div class="navigation"><button class="btn" id="previous" type="button">← Forrige</button><button class="btn primary" id="flip" type="button">Vis svar</button><button class="btn" id="next" type="button">Neste →</button></div>
@@ -266,6 +270,42 @@
       if(['practical','analysis','review'].includes(value))return entry.kind===value;
       return entry.workshop===value;
     }
+    function cardURL(card,anchor=false){
+      const url=new URL(location.href);
+      url.search='';url.hash=card&&anchor?'card':'';
+      if(card)url.searchParams.set('card',card.id);
+      return url;
+    }
+    function syncCardLink(card){
+      $('card-link-status').textContent='';
+      $('card-link-fallback').hidden=true;
+      $('copy-card-link').disabled=!card;
+      if(card){
+        $('card-id').href=cardURL(card,true).href;
+        $('card-id').setAttribute('aria-label','Direktelenke til kort #'+CARD_NUMBERS.get(card.id));
+      }else $('card-id').removeAttribute('href');
+      // Keep one history entry while browsing; sharing should identify the card,
+      // independently of any filters or shuffle order used to find it.
+      try{
+        const url=cardURL(card,location.hash==='#card');
+        if(url.href!==location.href)history.replaceState(history.state,'',url.href);
+      }catch{}
+    }
+    async function copyCardLink(){
+      const card=current();if(!card)return;
+      const url=cardURL(card,true).href;
+      try{
+        if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(url);
+        if(current()?.id===card.id)$('card-link-status').textContent='Lenken til kortet er kopiert.';
+      }catch{
+        if(current()?.id!==card.id)return;
+        $('card-link-value').value=url;
+        $('card-link-fallback').hidden=false;
+        $('card-link-value').focus();$('card-link-value').select();
+        $('card-link-status').textContent='Kopier den markerte lenken.';
+      }
+    }
     function refresh(preferId){
       list=filtered();const preferred=preferId?list.findIndex(c=>c.id===preferId):-1;position=Math.max(0,preferred);flipped=false;
       backStack=[];
@@ -274,6 +314,7 @@
     }
     function renderCard(){
       const c=current(),empty=!c;
+      syncCardLink(c);
       $('card-example').dataset.cardId=c?.id||'';
       $('card-example').dataset.answer=String(flipped&&!empty);
       window.AI200Jargon?.renderCardExample();
@@ -285,7 +326,7 @@
       const assignment=c&&WORKSHOP_COVERAGE.cards[c.id];
       $('workshop-tag').hidden=empty||!assignment;
       if(empty){
-        $('counter').textContent='0 kort';
+        $('counter').textContent='0 kort i køen';
         $('empty').textContent='Ingen kort matcher filtrene. Inkluder flere viktighetsnivåer, eller endre de andre filtrene.';
         return;
       }
@@ -294,7 +335,7 @@
       $('importance-tag').dataset.importance=importance;
       const symbol=document.createElement('span');symbol.setAttribute('aria-hidden','true');symbol.textContent=IMPORTANCE_SYMBOLS[importance];
       $('importance-tag').replaceChildren(symbol,document.createTextNode(IMPORTANCE_LEVELS[importance].label));
-      $('counter').textContent=`Kort ${position+1} av ${list.length}`;
+      $('counter').textContent=`Plass ${position+1} av ${list.length} i køen`;
       $('domain-tag').textContent=`Domene ${c.domain} · ${DOMAIN_NAMES[c.domain]}`;
       const [color,light]=DOMAIN_COLORS[c.domain];$('card').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain-light',light);
       const status=getStatus(c);$('state-tag').className='state-tag '+(status==='new'?'':status);
@@ -374,6 +415,7 @@
       refresh();
     }
     $('flip').addEventListener('click',flip);
+    $('copy-card-link').addEventListener('click',copyCardLink);
     $('previous').addEventListener('click',()=>move(-1));$('next').addEventListener('click',()=>move(1));
     $('mark-review').addEventListener('click',()=>mark('review'));
     $('mark-known').addEventListener('click',()=>mark('known'));
@@ -385,6 +427,10 @@
       $('card-number').setCustomValidity('');revealCard(CARDS[number-1]);
     });
     $('card-number').addEventListener('input',()=>$('card-number').setCustomValidity(''));
+    window.addEventListener('popstate',()=>{
+      const target=originalById.get(new URLSearchParams(location.search).get('card'));
+      if(target&&target.id!==current()?.id)revealCard(target);
+    });
     function populateCategories(){
       const domain=$('domain-filter').value,previous=$('category-filter').value;
       $('category-filter').replaceChildren(new Option('Alle kategorier','all'));
@@ -446,6 +492,7 @@
     const category=query.get('category');if([...$('category-filter').options].some(option=>option.value===category))$('category-filter').value=category;
     const coverage=query.get('coverage');if(['covered','practical','analysis','review'].includes(coverage))$('workshop-filter').value=coverage;
     refresh(query.get('card'));
+    if(linkedCard&&current()?.id===linkedCard.id&&!location.hash)$('card').scrollIntoView?.({block:'start',behavior:'instant'});
   </script>
 </body>
 </html>

@@ -3515,7 +3515,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json"
       ],
-      "id": "host-json"
+      "id": "host-json",
+      "example": {
+        "id": "host-json",
+        "language": "JSON · host.json",
+        "summary": "Sets a two-minute execution timeout and Information-level logging for the Function App. The hosting plan’s timeout limits still apply. version: 2.0 identifies the host.json schema; it does not select the deployed Functions runtime version.",
+        "mode": "inline",
+        "code": "{\n  \"version\": \"2.0\",\n  \"functionTimeout\": \"00:02:00\",\n  \"logging\": {\n    \"logLevel\": {\n      \"default\": \"Information\"\n    }\n  }\n}"
+      }
     },
     {
       "primary": "Hot partition",
@@ -4775,7 +4782,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local"
       ],
-      "id": "local-settings-json"
+      "id": "local-settings-json",
+      "example": {
+        "id": "local-settings-json",
+        "language": "JSON · local.settings.json",
+        "summary": "Values supplies local environment variables: select the Python worker, use the local Azurite storage emulator and set APP_MODE. Start Azurite before using UseDevelopmentStorage=true. IsEncrypted: false means these settings are stored unencrypted. In Azure, configure the corresponding app settings instead.",
+        "mode": "inline",
+        "code": "{\n  \"IsEncrypted\": false,\n  \"Values\": {\n    \"FUNCTIONS_WORKER_RUNTIME\": \"python\",\n    \"AzureWebJobsStorage\": \"UseDevelopmentStorage=true\",\n    \"APP_MODE\": \"development\"\n  }\n}"
+      }
     },
     {
       "primary": "Log Analytics",

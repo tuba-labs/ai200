@@ -16114,7 +16114,7 @@ window.AI200_FLASHCARDS = {
       "title": "Service Bus queues vs topics",
       "question": "What do Service Bus subscription rules filter?",
       "answers": [
-        "Subscription rules select topic messages by their supported system and application properties. SQL filters evaluate expressions; correlation filters match specified values. Neither reads arbitrary fields inside the message body.\n\nRemove the default accept-all rule when adding a restrictive filter. Otherwise that existing rule still admits every message."
+        "Subscription rules select topic messages by supported system and application properties. SQL filters evaluate expressions; correlation filters match specified values. Neither inspects the message body.\n\nFor example, publish an order with application properties region=\"NO\" and priority=8. Give the subscription this SQL filter:\nregion = 'NO' AND priority >= 5\n\nThe order matches. An order with region=\"SE\" or priority=2 does not match. A correlation filter configured only with region=\"NO\" matches Norwegian orders regardless of priority.\n\nThese must be message properties. Putting region and priority only in a JSON body does not make them filterable.\n\nRemove the default $Default accept-all rule when adding restrictive rules. Rules are alternatives: any matching rule admits a message. If $Default remains, both Norwegian and Swedish orders are admitted."
       ],
       "origin": "original",
       "legacyIds": [
@@ -16134,7 +16134,7 @@ window.AI200_FLASHCARDS = {
       "review": {
         "date": "2026-10-29",
         "status": "clarified",
-        "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
+        "note": "Checked property-based SQL and correlation filtering and the $Default rule against Microsoft Learn. Added matching/nonmatching orders and explained that body fields are not application properties.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
         ]
@@ -16142,7 +16142,7 @@ window.AI200_FLASHCARDS = {
       "clarityReview": {
         "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+        "note": "Added one concrete order-routing example, a short SQL expression and the effect of retaining the accept-all rule."
       },
       "importance": {
         "level": "critical",
