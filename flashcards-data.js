@@ -153,8 +153,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -192,8 +192,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -231,8 +231,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -276,8 +276,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -315,8 +315,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -354,8 +354,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -399,8 +399,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -444,8 +444,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -483,8 +483,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -528,8 +528,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -567,8 +567,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -606,8 +606,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -645,8 +645,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -690,8 +690,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -729,8 +729,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -768,8 +768,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -807,8 +807,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -846,8 +846,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -885,8 +885,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -930,8 +930,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -969,8 +969,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1008,8 +1008,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1047,8 +1047,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1086,8 +1086,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1131,8 +1131,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1170,8 +1170,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1209,8 +1209,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1248,8 +1248,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1287,8 +1287,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1326,8 +1326,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1365,8 +1365,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1404,8 +1404,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1443,8 +1443,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1488,8 +1488,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1527,8 +1527,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1566,8 +1566,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1605,8 +1605,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1644,8 +1644,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1683,8 +1683,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1722,8 +1722,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1761,8 +1761,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1800,8 +1800,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1839,8 +1839,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1884,8 +1884,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1923,8 +1923,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -1962,8 +1962,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2001,8 +2001,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2040,8 +2040,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2079,8 +2079,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2118,8 +2118,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2157,8 +2157,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2196,8 +2196,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "esoteric",
-        "reason": "GPU hardware terminology supports a specialized scheduling scenario; GPU-specific workloads are not a named task in the current guide.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2235,8 +2235,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "esoteric",
-        "reason": "Identifying the network-plugin interface is secondary to the guide’s application deployment and end-to-end connectivity tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2274,8 +2274,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2313,8 +2313,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2359,8 +2359,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-container-troubleshooting"
       }
     },
@@ -2405,8 +2405,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2451,8 +2451,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2503,8 +2503,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2547,8 +2547,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
       }
     },
@@ -2599,8 +2599,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-container-apps"
       }
     },
@@ -2643,8 +2643,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-container-apps"
       }
     },
@@ -7188,8 +7188,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7233,8 +7233,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7278,8 +7278,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7317,8 +7317,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7362,8 +7362,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7407,8 +7407,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7446,8 +7446,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7491,8 +7491,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7536,8 +7536,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7581,8 +7581,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7620,8 +7620,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7659,8 +7659,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7698,8 +7698,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7743,8 +7743,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -7782,8 +7782,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-connections"
       }
     },
@@ -7821,8 +7821,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "A useful specialized index or pooler term for PostgreSQL optimization; understand the main indexing and connection-reuse principles first.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-connections"
       }
     },
@@ -7860,8 +7860,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-access"
       }
     },
@@ -7899,8 +7899,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-access"
       }
     },
@@ -7938,8 +7938,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-access"
       }
     },
@@ -7977,8 +7977,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-performance"
       }
     },
@@ -8022,8 +8022,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-performance"
       }
     },
@@ -8061,8 +8061,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-performance"
       }
     },
@@ -8100,8 +8100,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-changes"
       }
     },
@@ -8145,8 +8145,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8184,8 +8184,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8223,8 +8223,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8262,8 +8262,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8301,8 +8301,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8340,8 +8340,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8379,8 +8379,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8418,8 +8418,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
       }
     },
@@ -8457,8 +8457,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -8496,8 +8496,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "A useful specialized index or pooler term for PostgreSQL optimization; understand the main indexing and connection-reuse principles first.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -8535,8 +8535,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-vectors"
       }
     },
@@ -8574,8 +8574,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
       }
     },
@@ -13691,8 +13691,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13730,8 +13730,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13775,8 +13775,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13814,8 +13814,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13859,8 +13859,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13904,8 +13904,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13943,8 +13943,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -13982,8 +13982,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -14021,8 +14021,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -14060,8 +14060,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -14105,8 +14105,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14144,8 +14144,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -14183,8 +14183,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14222,8 +14222,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14261,8 +14261,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14306,8 +14306,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14351,8 +14351,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-event-grid"
       }
     },
@@ -14390,8 +14390,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-event-grid"
       }
     },
@@ -14429,8 +14429,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-event-grid"
       }
     },
@@ -14474,8 +14474,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14513,8 +14513,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14552,8 +14552,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14591,8 +14591,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14630,8 +14630,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14669,8 +14669,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting messaging vocabulary; the core objectives focus on messages, queues, topics, subscriptions and delivery handling.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14715,8 +14715,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "Useful supporting messaging vocabulary; the core objectives focus on messages, queues, topics, subscriptions and delivery handling.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
       }
     },
@@ -14761,8 +14761,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -14807,8 +14807,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-deploy"
       }
     },
@@ -14851,8 +14851,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
       }
     },
@@ -18809,8 +18809,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -18848,8 +18848,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -18893,8 +18893,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -18932,8 +18932,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -18977,8 +18977,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19016,8 +19016,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19061,8 +19061,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19100,8 +19100,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19139,8 +19139,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19178,8 +19178,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19223,8 +19223,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19262,8 +19262,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19301,8 +19301,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19340,8 +19340,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19385,8 +19385,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19430,8 +19430,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19475,8 +19475,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19520,8 +19520,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-configuration"
       }
     },
@@ -19559,8 +19559,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-configuration"
       }
     },
@@ -19598,8 +19598,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19637,8 +19637,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19676,8 +19676,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -19715,8 +19715,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -19754,8 +19754,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -19793,8 +19793,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -19832,8 +19832,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -19877,8 +19877,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -19916,8 +19916,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -19961,8 +19961,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20006,8 +20006,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20051,8 +20051,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20090,8 +20090,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20135,8 +20135,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20174,8 +20174,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20219,8 +20219,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -20264,8 +20264,8 @@ window.AI200_FLASHCARDS = {
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -20303,8 +20303,8 @@ window.AI200_FLASHCARDS = {
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
       }
     },
@@ -20349,8 +20349,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-configuration"
       }
     },
@@ -20401,8 +20401,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
       }
     },
@@ -20445,8 +20445,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "critical",
-        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -20489,8 +20489,8 @@ window.AI200_FLASHCARDS = {
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
       },
       "importance": {
-        "level": "important",
-        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "level": "terms",
+        "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
       }
     },
@@ -24667,18 +24667,22 @@ window.AI200_FLASHCARDS = {
     "date": "2026-10-29",
     "guideEffective": "2026-10-07",
     "source": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200",
-    "method": "Editorial study priorities based on the measured tasks and their prerequisites. Rate what the question primarily tests, not merely whether its answer contains a command or a number. These are not official Microsoft weightings or predictions of individual exam questions.",
+    "method": "Vocabulary cards form the separate Terms group. Applied questions use editorial study priorities based on the measured tasks: Critical, Important or Esoteric. Rate what the question primarily tests, not merely whether its answer contains a command or a number. These are not official Microsoft weightings or predictions of individual exam questions.",
     "levels": {
+      "terms": {
+        "label": "Terms",
+        "description": "Vocabulary and definitions, selectable independently of applied exam questions."
+      },
       "critical": {
-        "label": "Critical knowledge",
-        "description": "Foundational vocabulary, central concepts and correctness/failure decisions needed across the measured tasks."
+        "label": "Critical",
+        "description": "Central concepts and correctness/failure decisions needed across the measured tasks."
       },
       "important": {
         "label": "Important",
         "description": "Practical commands, SDK/query syntax, configuration and supporting features used to implement the measured tasks."
       },
       "esoteric": {
-        "label": "Esoteric knowledge",
+        "label": "Esoteric",
         "description": "Exact incidental defaults, ports, numeric limits and narrow, preview or vendor/version-specific details to learn after the foundations."
       }
     }
