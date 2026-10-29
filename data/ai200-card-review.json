@@ -2553,7 +2553,7 @@
     "m-56-1-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "51b090c1dc6feb09adf6d5a1603a42c674b445fb09aba7a543751f59edb24f0b"
+      "fingerprint": "9701312b449d73af2540a38ce2d4d1659fb4acd235efb1e9b6275f00c09e55ed"
     },
     "m-56-3-1": {
       "objective": "d4-secrets",
@@ -2603,7 +2603,7 @@
     "m-59-1-1": {
       "objective": "d4-configuration",
       "level": "objective",
-      "fingerprint": "22aff52708138bbcaf8e6a164207e3ae45bdc4c08c5b7a6ee4275c839cc939cc"
+      "fingerprint": "a2ed1f2a740b69ea4c853320ac62e4c042f708a69f2667a2239ee448837b0f4a"
     },
     "m-59-2-1": {
       "objective": "d4-configuration",

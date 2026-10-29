@@ -2700,7 +2700,7 @@ Example: Python
     from azure.keyvault.secrets import SecretClient
     client = SecretClient(vault_url="https://study-vault.vault.azure.net", credential=DefaultAzureCredential())
     value = client.get_secret("payments-api-key").value
-After identity, permissions and networking are configured, this reads the named secret’s latest version. value contains the returned credential; the vault URL and secret name identify where it lives. The selected local or Azure identity must have access.
+This reads the named secret’s latest version using the identity selected by DefaultAzureCredential. value contains the returned credential; the vault URL and secret name identify where it lives. The caller needs permission and HTTPS reachability; a private network is optional.
 
 489 | m-56-3-1 | Domain 4 | Key Vault
 What scope should be preferred for an application's Key Vault permissions?
@@ -2758,7 +2758,7 @@ Decision: already concrete. The answer already contains a concrete example, comm
 How can a long-lived app refresh configuration without a remote call per request?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
-An API serves 1,000 requests from its in-memory configuration. Calls to refresh are interval-gated, so those requests do not each fetch remote settings. When an eligible check detects the watched change, later reads use refreshed values.
+With a 60-second interval, a successful check at 12:00:00 leaves Search:ResultLimit=5 cached. The remote value changes to 10 at 12:00:20. Calls before 12:01:00 keep using 5. The next refresh() call after the interval can detect the change and update the cache to 10.
 
 499 | m-59-2-1 | Domain 4 | App Configuration
 How does Python App Configuration refresh use a watch key and interval?

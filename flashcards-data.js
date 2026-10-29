@@ -22833,7 +22833,7 @@ window.AI200_FLASHCARDS = {
       "title": "Key Vault access for an app",
       "question": "What is the setup order for reading Key Vault with an app identity?",
       "answers": [
-        "Enable the application’s managed identity, grant it Key Vault Secrets User on the appropriate RBAC-enabled vault and provide network access. Then create a SecretClient with the vault URL and token credential, and call get_secret.\n\nWhen running locally, your developer identity needs its own access. The deployed app’s role assignment does not grant your signed-in account permission."
+        "Enable the app’s managed identity and grant it Key Vault Secrets User on an RBAC-enabled vault. Create a SecretClient with the vault URL and that identity’s token credential, then call get_secret.\n\nThe app must be able to reach the vault over HTTPS. If the public endpoint already allows the app’s traffic, no extra networking setup is needed. For a restricted vault, configure an allowed network path, such as a firewall rule or a private endpoint with working DNS and routing. A managed identity does not bypass network restrictions.\n\nFor local development, your developer identity needs its own permissions."
       ],
       "origin": "original",
       "legacyIds": [
@@ -22853,21 +22853,27 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Read secrets with Python",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · Key Vault network access",
+          "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/network-security",
+          "kind": "primary"
         }
       ],
       "review": {
         "date": "2026-10-29",
         "status": "clarified",
-        "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
+        "note": "Clarified HTTPS reachability versus optional extra network setup; public access does not require a private endpoint, and identity permissions do not bypass vault network restrictions.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
-          "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python"
+          "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python",
+          "https://learn.microsoft.com/en-us/azure/key-vault/general/network-security"
         ]
       },
       "clarityReview": {
         "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+        "note": "Explains when network configuration is necessary and separates endpoint reachability from permission to read a secret."
       },
       "importance": {
         "level": "critical",
@@ -22878,7 +22884,7 @@ window.AI200_FLASHCARDS = {
         "mode": "inline",
         "language": "Python",
         "code": "from azure.identity import DefaultAzureCredential\nfrom azure.keyvault.secrets import SecretClient\nclient = SecretClient(vault_url=\"https://study-vault.vault.azure.net\", credential=DefaultAzureCredential())\nvalue = client.get_secret(\"payments-api-key\").value",
-        "summary": "After identity, permissions and networking are configured, this reads the named secret’s latest version. value contains the returned credential; the vault URL and secret name identify where it lives. The selected local or Azure identity must have access."
+        "summary": "This reads the named secret’s latest version using the identity selected by DefaultAzureCredential. value contains the returned credential; the vault URL and secret name identify where it lives. The caller needs permission and HTTPS reachability; a private network is optional."
       }
     },
     {
@@ -23344,7 +23350,7 @@ window.AI200_FLASHCARDS = {
       "title": "Dynamic configuration refresh",
       "question": "How can a long-lived app refresh configuration without a remote call per request?",
       "answers": [
-        "Use a configuration provider that keeps values in memory and supports refresh. Application requests read those cached values, while refresh checks are limited by a configured interval.\n\nConfigure what to monitor and call the provider’s refresh mechanism from middleware or application code. Caching alone does not schedule updates."
+        "Keep settings in an in-memory cache and check for updates after a chosen interval. A cache TTL (time-to-live) can implement this if the next read reloads expired values.\n\nWith Azure App Configuration’s Python provider, enable refresh, set refresh_interval and call config.refresh() from request handling. Calls within the interval do no remote check. A call after the interval checks for changes and updates the cached settings if needed.\n\nThe interval does not start a background timer: application code must trigger the check."
       ],
       "origin": "original",
       "legacyIds": [
@@ -23369,7 +23375,7 @@ window.AI200_FLASHCARDS = {
       "review": {
         "date": "2026-10-29",
         "status": "clarified",
-        "note": "Key/label selection, Python SDK/provider calls, cached refresh and failure behavior.",
+        "note": "Clarified that TTL plus reload-on-expiry can implement caching; Python provider refresh is activity-driven and interval-gated, with no automatic background timer.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider",
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-python-provider"
@@ -23378,7 +23384,7 @@ window.AI200_FLASHCARDS = {
       "clarityReview": {
         "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+        "note": "Explains the role of TTL, the provider refresh call and the interval using a concrete 60-second timeline."
       },
       "importance": {
         "level": "critical",
@@ -23388,7 +23394,7 @@ window.AI200_FLASHCARDS = {
       "example": {
         "mode": "scenario",
         "language": "Scenario",
-        "summary": "An API serves 1,000 requests from its in-memory configuration. Calls to refresh are interval-gated, so those requests do not each fetch remote settings. When an eligible check detects the watched change, later reads use refreshed values."
+        "summary": "With a 60-second interval, a successful check at 12:00:00 leaves Search:ResultLimit=5 cached. The remote value changes to 10 at 12:00:20. Calls before 12:01:00 keep using 5. The next refresh() call after the interval can detect the change and update the cache to 10."
       }
     },
     {
