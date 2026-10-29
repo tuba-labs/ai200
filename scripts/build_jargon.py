@@ -99,6 +99,12 @@ def load_catalog():
                 assert example['filename'] and '/' not in example['filename'] and '\\' not in example['filename']
                 info.update(mode='page', url=f'jargon-examples/{identifier}.html')
             by_id[term_id]['example'] = info
+    # Explicit card examples are edited alongside the answer. Reuse them in the
+    # glossary and popovers so the same term never has competing examples.
+    by_card = {term['sourceCard']: term for term in terms if term.get('sourceCard')}
+    for card in cards:
+        if card.get('kind') == 'term' and card.get('example'):
+            by_card[card['id']]['example'] = dict(id='card-'+card['id'], **card['example'])
     return sorted(terms, key=lambda t: t['primary'].casefold())
 
 
@@ -119,9 +125,11 @@ def render_example(example, prefix):
         return ''
     if example['mode'] == 'inline':
         body = f'<pre><code>{escape(example["code"])}</code></pre>'
-    else:
+    elif example['mode'] == 'page':
         body = (f'<a href="{prefix}{escape(example["url"], quote=True)}" target="_blank" rel="noopener noreferrer">'
                 f'Se hele eksemplet i {escape(example["language"])} (ny fane) ↗</a>')
+    else:
+        body = ''
     return (f'<section class="jargon-example" data-no-jargon><h3>Eksempel · {escape(example["language"])}</h3>'
             + body + f'<p lang="en">{escape(example["summary"])}</p></section>')
 

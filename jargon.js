@@ -75,7 +75,7 @@
       const pre = make('pre', '');
       pre.append(make('code', '', example.code));
       container.append(pre);
-    } else {
+    } else if (example.mode === 'page') {
       const link = make('a', '', 'Se hele eksemplet i ' + example.language + ' (ny fane) ↗');
       link.href = new URL(example.url, glossaryURL).href;
       link.target = '_blank';
@@ -116,6 +116,9 @@
   }
   const examplesByCard = new Map([...terms.values()].filter(term => term.sourceCard && term.example)
     .map(term => [term.sourceCard, term.example]));
+  for (const card of window.AI200_FLASHCARDS?.cards || []) {
+    if (card.example) examplesByCard.set(card.id, card.example);
+  }
   function renderCardExample() {
     const container = document.getElementById('card-example');
     if (!container) return;

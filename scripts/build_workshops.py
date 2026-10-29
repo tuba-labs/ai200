@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 
 from workshop_curriculum import WORKSHOPS, GLOSSARY, CATEGORY_DOCS
-from build_jargon import attach_assets, render_page as render_jargon_page
+from build_jargon import attach_assets, render_page as render_jargon_page, render_example
 from flashcard_scope import load_review
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -174,7 +174,9 @@ def card_questions(cards, coverage, domain, category):
     for card in cards:
         flashcard_category = f'terms-{domain}' if card.get("kind") == "term" else category
         result += (f'<details class="recall" id="card-{card["id"]}"><summary>{escape(card["question"])}</summary>'
-            f'<p class="recall-answer">{escape(card["answers"][0])}</p><p class="small"><code>{card["id"]}</code> · '
+            f'<p class="recall-answer">{escape(card["answers"][0])}</p>'
+            + render_example(card.get('example'), '../')
+            + f'<p class="small"><code>{card["id"]}</code> · '
             f'<a href="../flashcards.html?domain={domain}&amp;category={flashcard_category}&amp;card={card["id"]}">Åpne dette flashcardet</a></p></details>')
     return result + '</details>'
 

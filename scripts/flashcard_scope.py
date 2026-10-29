@@ -12,6 +12,8 @@ def load_review():
 
 def fingerprint(card):
     value = {key: card[key] for key in ('question', 'answers', 'domain', 'category')}
+    if card.get('example'):
+        value['example'] = card['example']
     return sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
 
 
