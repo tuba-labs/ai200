@@ -4162,15 +4162,27 @@ window.AI200_JARGON = {
       "aliases": [
         "dot product",
         "dot-product",
+        "dotproduct",
+        "dot products",
+        "dotproducts",
+        "inner-product",
+        "innerproduct",
         "indreprodukt",
         "skalarprodukt"
       ],
-      "definition": "The sum of the products of corresponding vector components. It is used as a similarity measure; some APIs return its negative so results can still be sorted in ascending order.",
+      "definition": "For real-valued vectors, also called the dot product. Multiply components in matching positions and add the results to get one number. In dot-product search, larger scores rank first; both vector length and direction affect the score. pgvector returns the negative score through <#> so larger dot products sort first in ascending order.",
       "domains": [],
       "sources": [
         "https://github.com/pgvector/pgvector"
       ],
-      "id": "inner-product"
+      "id": "inner-product",
+      "example": {
+        "id": "dot-product",
+        "language": "Vector arithmetic",
+        "summary": "Multiply each matching pair and add: 1 × 3 + 2 × 4 = 11. For the same pair, pgvector’s <#> operator returns -11. Negating the score lets ascending ordering put the largest original dot products first.",
+        "mode": "inline",
+        "code": "[1, 2] · [3, 4] = (1 × 3) + (2 × 4) = 11\npgvector <#> result: -11"
+      }
     },
     {
       "primary": "Input binding",

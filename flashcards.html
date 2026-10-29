@@ -52,6 +52,8 @@
     .counter-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.card-jump{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--muted)}.card-jump input{width:80px;min-height:40px;padding:6px 8px;border:1px solid #cbd8e6;border-radius:8px}.card-jump button{min-height:40px}.session-status{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 0;font-size:13px;color:var(--muted)}
     .session-status #undo-rating{margin-left:auto}
     .flashcard{background:linear-gradient(120deg,var(--importance-surface,#fff),#fff 90%);border:1px solid var(--importance-border,#d8e4f0);border-top:5px solid var(--importance-edge,var(--domain));border-radius:18px;min-height:375px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);position:relative;cursor:text;user-select:text}
+    .card-rating-marker{position:absolute;right:18px;bottom:18px;display:grid;place-items:center;width:38px;height:38px;border:1px solid #c7d1dc;border-radius:50%;background:#eef2f6;color:#68788b;font:800 25px/1 system-ui,sans-serif;pointer-events:none;user-select:none}
+    .card-rating-marker[data-rating="known"]{border-color:#94d1af;background:#eaf8f0;color:#176b45}.card-rating-marker[data-rating="review"]{border-color:#e3bc58;background:#fff4cf;color:#a76e05}
     .card-hint{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#687a90;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
     .card-link-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;text-transform:none;letter-spacing:normal}.card-link-tools a{color:#52657c}.card-link-tools button{border:1px solid #cbd8e6;background:#fff;border-radius:7px;padding:5px 8px;min-height:32px;font-size:12px;font-weight:700;color:#245b91}
     .card-link-status{margin:7px 2px;color:var(--muted);font-size:12px}.card-link-status:empty{margin:0}.card-link-fallback{margin:12px 0}.card-link-fallback input{display:block;width:100%;padding:10px;border:1px solid #cbd8e6;border-radius:8px;font-size:13px}.card-link-fallback label{font-size:12px;font-weight:700}
@@ -60,7 +62,7 @@
     .share-dialog label{font-size:12px;font-weight:700;color:var(--muted)}.share-dialog input,.share-dialog textarea{display:block;width:100%;margin:6px 0 0;padding:10px;border:1px solid #cbd8e6;border-radius:8px;background:#f5f8fc;color:var(--ink);font:13px/1.5 system-ui,sans-serif;overflow-wrap:anywhere}.share-dialog textarea{resize:vertical}
     .share-copy-tools{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}.share-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.share-links a,.share-links button{text-align:center;display:block;min-height:44px;border:1px solid #c6d7e8;border-radius:9px;background:#f4f8fc;color:#254b70;padding:10px;text-decoration:none;font-size:14px;font-weight:700}.share-links a:hover,.share-links button:hover{background:#e3f0fd}.share-dialog .bar-btn{min-height:40px}.share-help,.share-status{font-size:12px;color:var(--muted);margin:12px 0 0}.share-status:empty{margin:0}.share-copy-fallback{margin-top:12px}
     .card-title{font-size:clamp(24px,3.6vw,33px);line-height:1.24;letter-spacing:-.8px;margin:0 0 17px}.question{font-size:clamp(18px,2.5vw,23px);line-height:1.55;max-width:860px;margin:0}
-    .answer-prose{white-space:pre-wrap;line-height:1.6;color:#26364a;overflow-wrap:anywhere}.flip-tip{margin-top:34px;color:#62768d;font-size:13px}
+    .answer-prose{white-space:pre-wrap;line-height:1.6;color:#26364a;overflow-wrap:anywhere}.flip-tip{margin-top:34px;padding-right:52px;min-height:38px;color:#62768d;font-size:13px}
     .card-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px;flex-wrap:wrap}
     .btn{border:1px solid #c6d7e8;border-radius:10px;background:#fff;color:#254b70;padding:11px 16px;font-weight:800;font-size:14px}.btn:hover{background:#edf5fd}
     .btn.primary{border-color:#155eae;color:#fff;background:#1265bd}.btn.primary:hover{background:#0b529d}
@@ -100,7 +102,7 @@
       <span class="eyebrow">AI-200 · Interaktiv øving</span>
       <h1 id="page-title">559 flashcards. Ett spørsmål per kort.</h1>
       <p>Start med grunnlaget, og velg hvor dypt du vil gå. Kortene er prioritert etter læringsmålene i AI-200. Filtrer på viktighet, fagdomene eller kategori, vis svaret og marker det du kan.</p>
-      <div class="hero-actions"><a href="index.html">← Til studieguiden</a><a href="https://www.mightybs.com/certifications/ai-200/flashcards/" target="_blank" rel="noopener noreferrer">Originalkort hos MightyBS ↗</a><a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Spørsmålsbank hos AI-200 Prep ↗</a></div>
+      <div class="hero-actions"><a href="index.html">← Til studieguiden</a><a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Spørsmålsbank hos AI-200 Prep ↗</a></div>
     </div>
   </section>
   <main class="wrap" id="study">
@@ -168,47 +170,48 @@
         <div class="fill new" id="progress-new-fill" style="width:100%" aria-hidden="true"></div>
       </div>
     </section>
-    <section class="study" aria-label="Flashcard">
-      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domene 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Ikke vurdert</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Plass 1 av 559 i køen</span><form id="card-jump" class="card-jump" data-no-jargon><label for="card-number">Gå til kort #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Gå</button></form></div></div>
-      <p id="jump-help" class="term-help" data-no-jargon>Bruk kortets faste nummer, for eksempel 35. Hoppet viser kortet selv om det er vurdert eller skjult av et filter, og fortsetter i nummerrekkefølge.</p>
+    <section class="study" aria-label="Flashcard" lang="en">
+      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domain 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Unrated</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Position 1 of 559 in queue</span><form id="card-jump" class="card-jump" data-no-jargon novalidate><label for="card-number">Go to card #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Go</button></form></div></div>
+      <p id="jump-help" class="term-help" data-no-jargon>Use the card’s fixed number, such as 35. Jumping reveals the card even if it is rated or hidden by a filter, then continues in number order.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
-        <div class="card-hint"><span id="card-face-label">Spørsmål</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direktelenke til kortet">Kort #01</a><button id="copy-card-link" type="button">Kopier lenke</button><button id="share-card" type="button" aria-haspopup="dialog" aria-controls="card-share-dialog">Del</button></div></div>
+        <div class="card-hint"><span id="card-face-label">Question</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direct link to this card">Card #01</a><button id="copy-card-link" type="button">Copy link</button><button id="share-card" type="button" aria-haspopup="dialog" aria-controls="card-share-dialog">Share</button></div></div>
         <p id="importance-tag" class="importance-tag" lang="en" data-no-jargon></p>
         <h2 class="card-title" id="card-title"></h2>
         <div id="card-content"></div>
         <div id="card-example" data-no-jargon hidden></div>
-        <p class="flip-tip" id="flip-tip">Bruk «Vis svar» eller trykk mellomrom for å vise svaret.</p>
+        <p class="flip-tip" id="flip-tip">Choose “Show answer” or press Space to reveal the answer.</p>
+        <span id="card-rating-marker" class="card-rating-marker" data-rating="new" role="img" aria-label="Unrated" title="Unrated" data-no-jargon>?</span>
       </div>
       <p id="card-reference" class="card-reference"></p>
       <p id="card-link-status" class="card-link-status" role="status" data-no-jargon></p>
-      <div id="card-link-fallback" class="card-link-fallback" data-no-jargon hidden><label for="card-link-value">Direktelenke – kopier den markerte teksten</label><input id="card-link-value" type="text" readonly spellcheck="false"></div>
+      <div id="card-link-fallback" class="card-link-fallback" data-no-jargon hidden><label for="card-link-value">Direct link — copy the selected text</label><input id="card-link-value" type="text" readonly spellcheck="false"></div>
       <dialog id="card-share-dialog" class="share-dialog" aria-labelledby="card-share-title" data-no-jargon>
-        <div class="share-dialog-head"><h2 id="card-share-title">Del kort</h2><button id="card-share-close" class="bar-btn" type="button" autofocus>Lukk</button></div>
+        <div class="share-dialog-head"><h2 id="card-share-title">Share card</h2><button id="card-share-close" class="bar-btn" type="button" autofocus>Close</button></div>
         <p id="card-share-question" class="share-question" lang="en"></p>
-        <label for="card-share-url">Direktelenke</label><input id="card-share-url" type="text" readonly spellcheck="false">
-        <div class="share-copy-tools"><button id="card-share-copy-link" class="bar-btn" type="button">Kopier lenke</button><button id="card-share-copy-text" class="bar-btn" type="button">Kopier spørsmål og lenke</button></div>
+        <label for="card-share-url">Direct link</label><input id="card-share-url" type="text" readonly spellcheck="false">
+        <div class="share-copy-tools"><button id="card-share-copy-link" class="bar-btn" type="button">Copy link</button><button id="card-share-copy-text" class="bar-btn" type="button">Copy question and link</button></div>
         <div class="share-links">
-          <a id="card-share-email">E-post</a>
+          <a id="card-share-email">Email</a>
           <a id="card-share-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           <a id="card-share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
           <a id="card-share-telegram" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
           <a id="card-share-x" target="_blank" rel="noopener noreferrer">X ↗</a>
-          <button id="card-share-native" type="button" hidden>Flere apper…</button>
+          <button id="card-share-native" type="button" hidden>More apps…</button>
         </div>
-        <p class="share-help">Velg mottaker og fullfør delingen i appen du åpner. «Kopier spørsmål og lenke» gir en tekst du kan lime inn i en chat.</p>
-        <div id="card-share-copy-fallback" class="share-copy-fallback" hidden><label for="card-share-copy-value">Kopier den markerte teksten</label><textarea id="card-share-copy-value" rows="4" readonly spellcheck="false"></textarea></div>
+        <p class="share-help">Choose a recipient and finish sharing in the app you open. Use “Copy question and link” to paste the card into a chat.</p>
+        <div id="card-share-copy-fallback" class="share-copy-fallback" hidden><label for="card-share-copy-value">Copy the selected text</label><textarea id="card-share-copy-value" rows="4" readonly spellcheck="false"></textarea></div>
         <p id="card-share-status" class="share-status" role="status"></p>
       </dialog>
-      <div id="empty" class="empty" hidden>Ingen kort matcher filtrene. Prøv et annet domene, en annen status eller et nytt søk.</div>
+      <div id="empty" class="empty" hidden>No cards match the filters. Try another domain, rating or search.</div>
       <div class="card-actions" id="card-actions">
-        <div class="navigation"><button class="btn" id="previous" type="button">← Forrige</button><button class="btn primary" id="flip" type="button">Vis svar</button><button class="btn" id="next" type="button">Neste →</button></div>
-        <div class="mark-tools"><button class="btn review" id="mark-review" type="button">Må repetere</button><button class="btn known" id="mark-known" type="button">Kan dette ✓</button><button class="btn" id="mark-new" type="button" hidden>Fjern vurdering</button></div>
+        <div class="navigation"><button class="btn" id="previous" type="button">← Previous</button><button class="btn primary" id="flip" type="button">Show answer</button><button class="btn" id="next" type="button">Next →</button></div>
+        <div class="mark-tools"><button class="btn review" id="mark-review" type="button">Needs repeat</button><button class="btn known" id="mark-known" type="button">Know this ✓</button><button class="btn" id="mark-new" type="button" hidden>Clear rating</button></div>
       </div>
-      <div class="session-status" data-no-jargon><span id="session-message" role="status"></span><button id="undo-rating" class="bar-btn" type="button" hidden>Angre siste vurdering</button></div>
+      <div class="session-status" data-no-jargon><span id="session-message" role="status"></span><button id="undo-rating" class="bar-btn" type="button" hidden>Undo last rating</button></div>
     </section>
     <div class="hint-box"><strong>Hurtigtaster:</strong> <span class="kbd">Mellomrom</span> snur kortet, også når en handlingsknapp har fokus · <span class="kbd">←</span>/<span class="kbd">→</span> bytt kort · <span class="kbd">1</span> må repetere · <span class="kbd">2</span> kan dette. I tekstfelt, avkrysningsbokser og begrepsforklaringer brukes vanlige tastaturkontroller. <span id="storage-note">Fremdriften lagres lokalt i nettleseren på denne enheten.</span> Markeringer fra de gamle kortene følger de oppdelte kortene.</div>
     <p class="source"><strong>Pensumkontroll:</strong> Kortene er avgrenset til oppgavene i AI-200-guiden og grunnlaget for å utføre dem. <a href="reports/ai200-card-review.txt">Se hvilke kort som ble fjernet og hvorfor</a>. Kort-ID-ene til gjenværende kort er beholdt, slik at lagrede vurderinger følger med.</p>
-    <p class="source"><strong>Kilder:</strong> 559 kort er beholdt etter pensumkontrollen 29. oktober 2026. Kortene bygger på MightyBS, AI-200 Prep og egne begrepsforklaringer, med offisielle dokumentasjonslenker for hvert svar. Spørsmål og svar er på engelsk. Like læringspunkter er slått sammen; kortene har fagdomene, kategori og stabile ID-er. Dette er uoffisielt øvingsmateriell. <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Microsofts studieguide</a> er grunnlaget for avgrensningen.</p>
+    <p class="source"><strong>Kilder:</strong> 559 kort er beholdt etter pensumkontrollen 29. oktober 2026. Kortene er gjennomgått mot læringsmålene og har offisielle dokumentasjonslenker for hvert svar. Spørsmål og svar er på engelsk. Like læringspunkter er slått sammen; kortene har fagdomene, kategori og stabile ID-er. Dette er uoffisielt øvingsmateriell. <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Microsofts studieguide</a> er grunnlaget for avgrensningen.</p>
     <p class="source"><strong>Workshopmerket:</strong> Lenken på kortet går til den konkrete praktiske oppgaven eller analyseoppgaven i <a href="./workshops/index.html">det nye workshopløpet</a>. «Repetisjon» betyr at kortet foreløpig mangler en egen øvingsoppgave. Dette beskriver opplegget, ikke din personlige fremdrift. <a href="./workshops/coverage.html">Se full dekningsoversikt →</a></p>
   </main>
   <footer><div class="wrap footer-in"><span>AI-200 · Øvingskort for studiegruppen</span><span>Statisk HTML/JavaScript · GitHub Pages-kompatibel</span></div></footer>
@@ -221,7 +224,12 @@
     const WORKSHOP_COVERAGE = window.AI200_WORKSHOP_COVERAGE || {cards:{},workshops:{}};
     const CATEGORY_BY_ID = new Map(DECK.categories.map(category=>[category.id,category]));
     const CARD_NUMBERS = new Map(CARDS.map((card,index)=>[card.id,index+1]));
-    const DOMAIN_NAMES = {1:'Containere',2:'AI-data',3:'Integrasjoner',4:'Sikkerhet'};
+    const DOMAIN_NAMES = {1:'Containers',2:'AI data',3:'Integrations',4:'Security'};
+    const CARD_CATEGORY_NAMES = {
+      'terms-1':'Terms · Containers','terms-2':'Terms · AI data','terms-3':'Terms · Integrations','terms-4':'Terms · Security',
+      keda:'KEDA and event-driven scaling',aks:'AKS and Kubernetes',postgresql:'PostgreSQL and pgvector',
+      opentelemetry:'OpenTelemetry and tracing',monitor:'Azure Monitor and Application Insights','identity-rbac':'Identity and RBAC'
+    };
     const DOMAIN_COLORS = {1:['#1265bd','#eaf3ff'],2:['#824bb1','#f2eafd'],3:['#995c16','#fff1d9'],4:['#197451','#e4f7ec']};
     const IMPORTANCE_LEVELS = DECK.importanceReview.levels;
     const IMPORTANCE_SYMBOLS = {terms:'◉',critical:'★',important:'◆',esoteric:'◇'};
@@ -350,7 +358,7 @@
       return url;
     }
     function shareData(card){return {title:'AI-200 · '+card.title,text:card.question,url:shareURL(card).href};}
-    function shareMessage(card){return `AI-200 · Kort #${CARD_NUMBERS.get(card.id)} · ${card.title}\n${card.question}\n\n${shareURL(card).href}`;}
+    function shareMessage(card){return `AI-200 · Card #${CARD_NUMBERS.get(card.id)} · ${card.title}\n${card.question}\n\n${shareURL(card).href}`;}
     function setShareLink(id,base,parameters){
       const url=new URL(base);
       for(const [key,value] of Object.entries(parameters))url.searchParams.set(key,value);
@@ -360,7 +368,7 @@
       const card=current();if(!card)return;
       const data=shareData(card),dialog=$('card-share-dialog');
       dialog.dataset.cardId=card.id;
-      $('card-share-title').textContent='Del kort #'+String(CARD_NUMBERS.get(card.id)).padStart(3,'0');
+      $('card-share-title').textContent='Share card #'+String(CARD_NUMBERS.get(card.id)).padStart(3,'0');
       $('card-share-question').textContent=card.question;
       $('card-share-url').value=data.url;
       $('card-share-status').textContent='';$('card-share-copy-fallback').hidden=true;
@@ -378,13 +386,13 @@
       try{
         if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
         await navigator.clipboard.writeText(value);
-        if(current()?.id===card.id)$('card-share-status').textContent=text?'Spørsmålet og lenken er kopiert.':'Lenken er kopiert.';
+        if(current()?.id===card.id)$('card-share-status').textContent=text?'Question and link copied.':'Link copied.';
       }catch{
         if(current()?.id!==card.id)return;
         const field=text?$('card-share-copy-value'):$('card-share-url');
         if(text)$('card-share-copy-fallback').hidden=false;
         field.value=value;field.focus();field.select();
-        $('card-share-status').textContent='Kopier den markerte teksten.';
+        $('card-share-status').textContent='Copy the selected text.';
       }
     }
     async function shareWithDevice(){
@@ -392,9 +400,9 @@
       $('card-share-native').disabled=true;
       try{
         await navigator.share(shareData(card));
-        if(current()?.id===card.id)$('card-share-status').textContent='Lenken er sendt til den valgte appen.';
+        if(current()?.id===card.id)$('card-share-status').textContent='Link passed to the selected app.';
       }catch(error){
-        if(error.name!=='AbortError'&&current()?.id===card.id)$('card-share-status').textContent='Velg en tjeneste eller kopier lenken for å dele kortet.';
+        if(error.name!=='AbortError'&&current()?.id===card.id)$('card-share-status').textContent='Choose a service or copy the link to share this card.';
       }finally{$('card-share-native').disabled=false;}
     }
     function syncCardLink(card){
@@ -405,7 +413,7 @@
       if($('card-share-dialog').open&&$('card-share-dialog').dataset.cardId!==card?.id)$('card-share-dialog').close();
       if(card){
         $('card-id').href=cardURL(card,true).href;
-        $('card-id').setAttribute('aria-label','Direktelenke til kort #'+CARD_NUMBERS.get(card.id));
+        $('card-id').setAttribute('aria-label','Direct link to card #'+CARD_NUMBERS.get(card.id));
       }else $('card-id').removeAttribute('href');
       // Keep one history entry while browsing; sharing should identify the card,
       // independently of any filters or shuffle order used to find it.
@@ -420,13 +428,13 @@
       try{
         if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
         await navigator.clipboard.writeText(url);
-        if(current()?.id===card.id)$('card-link-status').textContent='Lenken til kortet er kopiert.';
+        if(current()?.id===card.id)$('card-link-status').textContent='Card link copied.';
       }catch{
         if(current()?.id!==card.id)return;
         $('card-link-value').value=url;
         $('card-link-fallback').hidden=false;
         $('card-link-value').focus();$('card-link-value').select();
-        $('card-link-status').textContent='Kopier den markerte lenken.';
+        $('card-link-status').textContent='Copy the selected link.';
       }
     }
     function refresh(preferId){
@@ -443,13 +451,13 @@
       $('card').hidden=empty;$('empty').hidden=!empty;$('card-actions').hidden=empty;
       $('domain-tag').hidden=empty;$('category-tag').hidden=empty;$('state-tag').hidden=empty;$('card-reference').hidden=empty;
       $('undo-rating').hidden=!lastRating;
-      if(lastRating)$('undo-rating').textContent='Angre vurdering av kort #'+String(CARD_NUMBERS.get(lastRating.id)).padStart(3,'0');
-      $('session-message').textContent=list.length&&list.every(card=>getStatus(card)!=='new')?'Alle kort i dette utvalget er vurdert. Du kan fortsatt bla, gå tilbake og endre vurderinger.':'';
+      if(lastRating)$('undo-rating').textContent='Undo rating of card #'+String(CARD_NUMBERS.get(lastRating.id)).padStart(3,'0');
+      $('session-message').textContent=list.length&&list.every(card=>getStatus(card)!=='new')?'All cards in this selection are rated. You can still browse, go back and change ratings.':'';
       const assignment=c&&WORKSHOP_COVERAGE.cards[c.id];
       $('workshop-tag').hidden=empty||!assignment;
       if(empty){
-        $('counter').textContent='0 kort i køen';
-        $('empty').textContent='Ingen kort matcher filtrene. Ta med flere kortgrupper eller vurderinger, eller endre de andre filtrene.';
+        $('counter').textContent='0 cards in queue';
+        $('empty').textContent='No cards match the filters. Include more card groups or ratings, or change the other filters.';
         return;
       }
       const importance=importanceLevel(c);
@@ -457,33 +465,36 @@
       $('importance-tag').dataset.importance=importance;
       const symbol=document.createElement('span');symbol.setAttribute('aria-hidden','true');symbol.textContent=IMPORTANCE_SYMBOLS[importance];
       $('importance-tag').replaceChildren(symbol,document.createTextNode(IMPORTANCE_LEVELS[importance].label));
-      $('counter').textContent=`Plass ${position+1} av ${list.length} i køen`;
-      $('domain-tag').textContent=`Domene ${c.domain} · ${DOMAIN_NAMES[c.domain]}`;
+      $('counter').textContent=`Position ${position+1} of ${list.length} in queue`;
+      $('domain-tag').textContent=`Domain ${c.domain} · ${DOMAIN_NAMES[c.domain]}`;
       const [color,light]=DOMAIN_COLORS[c.domain];$('card').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain-light',light);
       const status=getStatus(c);$('state-tag').className='state-tag '+(status==='new'?'':status);
-      $('state-tag').textContent=status==='known'?'Kan dette':status==='review'?'Må repetere':'Ikke vurdert';
-      $('card-id').textContent='Kort #'+String(CARD_NUMBERS.get(c.id)).padStart(3,'0');
+      $('state-tag').textContent=status==='known'?'Know this':status==='review'?'Needs repeat':'Unrated';
+      const marker=$('card-rating-marker');
+      marker.dataset.rating=status;marker.textContent={known:'✓',review:'✕',new:'?'}[status];
+      marker.setAttribute('aria-label',$('state-tag').textContent);marker.title=$('state-tag').textContent;
+      $('card-id').textContent='Card #'+String(CARD_NUMBERS.get(c.id)).padStart(3,'0');
       $('card-number').value=CARD_NUMBERS.get(c.id);
-      $('category-tag').textContent=CATEGORY_BY_ID.get(c.category).label;
+      $('category-tag').textContent=CARD_CATEGORY_NAMES[c.category]||CATEGORY_BY_ID.get(c.category).label;
       if(assignment){
-        const label={practical:'Praktisk oppgave',analysis:'Analyseoppgave',review:'Kun repetisjon'}[assignment.kind];
+        const label={practical:'Practical activity',analysis:'Analysis activity',review:'Review only'}[assignment.kind];
         $('workshop-tag').className='workshop-tag '+assignment.kind;
         $('workshop-tag').href='./'+assignment.url;
         $('workshop-tag').textContent=assignment.workshop.toUpperCase()+' · '+label;
-        $('workshop-tag').title=assignment.workshopTitle+' — '+assignment.activityTitle;
-        $('workshop-tag').setAttribute('aria-label',label+' i workshop '+assignment.workshop.toUpperCase()+': '+assignment.activityTitle);
+        $('workshop-tag').title=label+' in workshop '+assignment.workshop.toUpperCase();
+        $('workshop-tag').setAttribute('aria-label',label+' in workshop '+assignment.workshop.toUpperCase());
       }
       $('card-reference').replaceChildren();
       for(const ref of new Map(c.references.map(ref=>[ref.url,ref])).values()){const link=document.createElement('a');link.href=ref.url;link.textContent=ref.label+' ↗';link.target='_blank';link.rel='noopener noreferrer';$('card-reference').append(link);}
 
-      $('card-title').textContent=c.title;$('card-face-label').textContent=flipped?'Svar':'Spørsmål';
+      $('card-title').textContent=c.title;$('card-face-label').textContent=flipped?'Answer':'Question';
       $('card-content').replaceChildren();
       if(flipped){
         const answer=document.createElement('div');answer.className='answer-prose';answer.lang='en';
         answer.textContent=c.answers.join('\n\n');$('card-content').append(answer);
       }else{const p=document.createElement('p');p.className='question';p.textContent=c.question;$('card-content').append(p);}
-      $('flip').textContent=flipped?'Vis spørsmål':'Vis svar';
-      $('flip-tip').textContent=flipped?'Marker om du kan dette, eller bruk «Vis spørsmål» for å gå tilbake.':'Bruk «Vis svar» eller trykk mellomrom for å vise svaret.';
+      $('flip').textContent=flipped?'Show question':'Show answer';
+      $('flip-tip').textContent=flipped?'Rate your understanding, or choose “Show question” to return.':'Choose “Show answer” or press Space to reveal the answer.';
       $('previous').disabled=position===0&&!backStack.some(id=>id!==c.id&&list.some(card=>card.id===id));$('next').disabled=position>=list.length-1;
       $('mark-new').hidden=status==='new';
       $('mark-review').setAttribute('aria-pressed',String(status==='review'));$('mark-known').setAttribute('aria-pressed',String(status==='known'));
@@ -549,7 +560,7 @@
     $('undo-rating').addEventListener('click',undoRating);
     $('card-jump').addEventListener('submit',event=>{
       event.preventDefault();const number=Number($('card-number').value);
-      if(!Number.isInteger(number)||number<1||number>CARDS.length){$('card-number').setCustomValidity('Velg et helt kortnummer fra 1 til '+CARDS.length+'.');$('card-number').reportValidity();return;}
+      if(!Number.isInteger(number)||number<1||number>CARDS.length){$('card-number').setCustomValidity('Enter a whole card number from 1 to '+CARDS.length+'.');$('card-number').reportValidity();return;}
       $('card-number').setCustomValidity('');revealCard(CARDS[number-1]);
     });
     $('card-number').addEventListener('input',()=>$('card-number').setCustomValidity(''));

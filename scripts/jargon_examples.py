@@ -1,6 +1,12 @@
 """Small, concrete examples shared by term cards, popovers and the glossary."""
 
 EXAMPLES = {
+    'dot-product': {
+        'terms': ['inner-product'],
+        'language': 'Vector arithmetic',
+        'summary': 'Multiply each matching pair and add: 1 × 3 + 2 × 4 = 11. For the same pair, pgvector’s <#> operator returns -11. Negating the score lets ascending ordering put the largest original dot products first.',
+        'code': '[1, 2] · [3, 4] = (1 × 3) + (2 × 4) = 11\npgvector <#> result: -11',
+    },
     'bicep': {
         'terms': ['bicep', 'infrastructure-as-code'],
         'language': 'Bicep',

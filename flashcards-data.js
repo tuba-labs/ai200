@@ -2447,10 +2447,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 11",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Health probes",
           "url": "https://kubernetes.io/docs/concepts/workloads/pods/probes/",
           "kind": "primary"
@@ -2499,10 +2495,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 16",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Horizontal autoscaling",
           "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
           "kind": "primary"
@@ -2549,10 +2541,6 @@ window.AI200_FLASHCARDS = {
         16
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 16",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vertical pod autoscaling",
           "url": "https://learn.microsoft.com/en-us/azure/aks/use-vertical-pod-autoscaler",
@@ -2815,10 +2803,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 1",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · ACR Tasks",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
           "kind": "primary"
@@ -2862,10 +2846,6 @@ window.AI200_FLASHCARDS = {
         1
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 1",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Base-image triggers",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-base-images",
@@ -2912,10 +2892,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 1",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Task schedules",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-scheduled",
           "kind": "primary"
@@ -2954,10 +2930,6 @@ window.AI200_FLASHCARDS = {
         1
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 1",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · ACR Tasks",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
@@ -3003,10 +2975,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 2",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Registry roles",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference",
           "kind": "primary"
@@ -3050,10 +3018,6 @@ window.AI200_FLASHCARDS = {
         2
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 2",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Registry roles",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference",
@@ -3099,10 +3063,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 2",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Registry roles",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-directory-reference",
           "kind": "primary"
@@ -3147,10 +3107,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 3",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Build an image in Azure",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-quickstart-task-cli",
           "kind": "primary"
@@ -3189,10 +3145,6 @@ window.AI200_FLASHCARDS = {
         3
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 3",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · ACR Tasks",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
@@ -3233,10 +3185,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 3",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Multi-step tasks",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-multi-step",
           "kind": "primary"
@@ -3275,10 +3223,6 @@ window.AI200_FLASHCARDS = {
         3
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 3",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · ACR Tasks",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
@@ -3325,10 +3269,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 3",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · ACR Tasks",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
           "kind": "primary"
@@ -3367,10 +3307,6 @@ window.AI200_FLASHCARDS = {
         4
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 4",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Image tags and versions",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version",
@@ -3416,10 +3352,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 4",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Image tags and versions",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version",
           "kind": "primary"
@@ -3459,10 +3391,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 4",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Image tags and versions",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version",
           "kind": "primary"
@@ -3501,10 +3429,6 @@ window.AI200_FLASHCARDS = {
         4
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 4",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Docker push to ACR",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli",
@@ -3551,10 +3475,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 4",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Docker push to ACR",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli",
           "kind": "primary"
@@ -3600,10 +3520,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 4",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Protect image tags",
           "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-lock",
           "kind": "primary"
@@ -3642,10 +3558,6 @@ window.AI200_FLASHCARDS = {
         5
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 5",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · App Service containers",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container",
@@ -3691,10 +3603,6 @@ window.AI200_FLASHCARDS = {
         5
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 5",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · App Service containers",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container",
@@ -3746,10 +3654,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 5",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · App Service containers",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container",
           "kind": "primary"
@@ -3795,14 +3699,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 6",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 50",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · App settings",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
           "kind": "primary"
@@ -3841,10 +3737,6 @@ window.AI200_FLASHCARDS = {
         6
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 6",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · App settings",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
@@ -3891,10 +3783,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 6",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Deployment slots",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots",
           "kind": "primary"
@@ -3933,10 +3821,6 @@ window.AI200_FLASHCARDS = {
         6
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 6",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
@@ -3978,14 +3862,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 7",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 50",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
           "kind": "primary"
@@ -4025,14 +3901,6 @@ window.AI200_FLASHCARDS = {
         50
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 7",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 50",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
@@ -4077,10 +3945,6 @@ window.AI200_FLASHCARDS = {
         7
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 7",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
@@ -4128,14 +3992,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 7",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 50",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
           "kind": "primary"
@@ -4174,10 +4030,6 @@ window.AI200_FLASHCARDS = {
         8
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 8",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
@@ -4218,10 +4070,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 8",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -4260,10 +4108,6 @@ window.AI200_FLASHCARDS = {
         8
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 8",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
@@ -4304,10 +4148,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 8",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -4346,10 +4186,6 @@ window.AI200_FLASHCARDS = {
         8
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 8",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
@@ -4390,10 +4226,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 8",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -4432,10 +4264,6 @@ window.AI200_FLASHCARDS = {
         9
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 9",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Services",
           "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -4482,10 +4310,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 9",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Services",
           "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
           "kind": "primary"
@@ -4530,10 +4354,6 @@ window.AI200_FLASHCARDS = {
         9
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 9",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Services",
           "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -4580,10 +4400,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 9",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Services",
           "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
           "kind": "primary"
@@ -4629,10 +4445,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 9",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Ingress",
           "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
           "kind": "primary"
@@ -4677,10 +4489,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 10",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Deployments",
           "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
           "kind": "primary"
@@ -4719,10 +4527,6 @@ window.AI200_FLASHCARDS = {
         10
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 10",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · DaemonSet updates",
           "url": "https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/",
@@ -4768,10 +4572,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 11",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Health probes",
           "url": "https://kubernetes.io/docs/concepts/workloads/pods/probes/",
           "kind": "primary"
@@ -4815,10 +4615,6 @@ window.AI200_FLASHCARDS = {
         11
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 11",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Health probes",
           "url": "https://kubernetes.io/docs/concepts/workloads/pods/probes/",
@@ -4864,14 +4660,6 @@ window.AI200_FLASHCARDS = {
         17
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 11",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 17",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Services",
           "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -4923,10 +4711,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 12",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Revisions",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/revisions",
           "kind": "primary"
@@ -4971,10 +4755,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 12",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Revisions",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/revisions",
           "kind": "primary"
@@ -5013,10 +4793,6 @@ window.AI200_FLASHCARDS = {
         12
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 12",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Deployment labels",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/deployment-labels",
@@ -5063,10 +4839,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 12",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Revisions",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/revisions",
           "kind": "primary"
@@ -5112,10 +4884,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 12",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Revisions",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/revisions",
           "kind": "primary"
@@ -5154,10 +4922,6 @@ window.AI200_FLASHCARDS = {
         13
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
@@ -5198,10 +4962,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -5240,10 +5000,6 @@ window.AI200_FLASHCARDS = {
         13
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps billing",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/billing",
@@ -5294,10 +5050,6 @@ window.AI200_FLASHCARDS = {
         13
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
@@ -5350,10 +5102,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -5398,10 +5146,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -5440,10 +5184,6 @@ window.AI200_FLASHCARDS = {
         13
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 13",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
@@ -5495,10 +5235,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 14",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps secrets",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets",
           "kind": "primary"
@@ -5542,10 +5278,6 @@ window.AI200_FLASHCARDS = {
         14
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 14",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps secrets",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets",
@@ -5592,10 +5324,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 14",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps secrets",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets",
           "kind": "primary"
@@ -5635,10 +5363,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 14",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps secrets",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets",
           "kind": "primary"
@@ -5677,10 +5401,6 @@ window.AI200_FLASHCARDS = {
         14
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 14",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Container Apps secrets",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets",
@@ -5727,10 +5447,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 15",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Deployments",
           "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
           "kind": "primary"
@@ -5775,10 +5491,6 @@ window.AI200_FLASHCARDS = {
         15
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 15",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · kubectl reference",
           "url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
@@ -5825,10 +5537,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 15",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Deployments",
           "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
           "kind": "primary"
@@ -5867,10 +5575,6 @@ window.AI200_FLASHCARDS = {
         15
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 15",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Deployments",
           "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
@@ -5917,10 +5621,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 15",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Secrets",
           "url": "https://kubernetes.io/docs/concepts/configuration/secret/",
           "kind": "primary"
@@ -5965,10 +5665,6 @@ window.AI200_FLASHCARDS = {
         16
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 16",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Horizontal autoscaling",
           "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
@@ -6015,10 +5711,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 16",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Container Apps scaling",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/scale-app",
           "kind": "primary"
@@ -6064,10 +5756,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 16",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · kubectl reference",
           "url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
           "kind": "primary"
@@ -6106,10 +5794,6 @@ window.AI200_FLASHCARDS = {
         17
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 17",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Debugging pods",
           "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
@@ -6156,10 +5840,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 17",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · kubectl reference",
           "url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
           "kind": "primary"
@@ -6204,10 +5884,6 @@ window.AI200_FLASHCARDS = {
         17
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 17",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · Image pull policy",
           "url": "https://kubernetes.io/docs/concepts/containers/images/",
@@ -6259,10 +5935,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 17",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Kubernetes · Debugging pods",
           "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/",
           "kind": "primary"
@@ -6306,10 +5978,6 @@ window.AI200_FLASHCARDS = {
         17
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 17",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Kubernetes · kubectl reference",
           "url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
@@ -9130,10 +8798,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "kind": "primary"
@@ -9177,10 +8841,6 @@ window.AI200_FLASHCARDS = {
         18
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
@@ -9226,10 +8886,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "kind": "primary"
@@ -9274,10 +8930,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "kind": "primary"
@@ -9316,10 +8968,6 @@ window.AI200_FLASHCARDS = {
         18
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
@@ -9365,10 +9013,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "kind": "primary"
@@ -9408,10 +9052,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 18",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "kind": "primary"
@@ -9450,10 +9090,6 @@ window.AI200_FLASHCARDS = {
         19
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 19",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
@@ -9500,10 +9136,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 19",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "kind": "primary"
@@ -9548,10 +9180,6 @@ window.AI200_FLASHCARDS = {
         19
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 19",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
@@ -9598,10 +9226,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 19",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "kind": "primary"
@@ -9640,10 +9264,6 @@ window.AI200_FLASHCARDS = {
         19
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 19",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
@@ -9690,10 +9310,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 19",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "kind": "primary"
@@ -9738,10 +9354,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 20",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Read and query costs",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries",
           "kind": "primary"
@@ -9781,10 +9393,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 20",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB autoscale",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/autoscale-faq",
           "kind": "primary"
@@ -9823,10 +9431,6 @@ window.AI200_FLASHCARDS = {
         20
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 20",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Handle Cosmos DB throttling",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/troubleshoot-request-rate-too-large",
@@ -9874,14 +9478,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 20",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 23",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Provision throughput",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/set-throughput",
           "kind": "primary"
@@ -9925,10 +9521,6 @@ window.AI200_FLASHCARDS = {
         21
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 21",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Change feed modes",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes",
@@ -9974,10 +9566,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 21",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Change feed modes",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes",
           "kind": "primary"
@@ -10017,14 +9605,6 @@ window.AI200_FLASHCARDS = {
         25
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 21",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 25",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Change feed processor",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
@@ -10069,10 +9649,6 @@ window.AI200_FLASHCARDS = {
         21
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 21",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Change feed processor",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
@@ -10119,10 +9695,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 22",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Indexing policies",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
           "kind": "primary"
@@ -10167,10 +9739,6 @@ window.AI200_FLASHCARDS = {
         22
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 22",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Indexing policies",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
@@ -10217,10 +9785,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 22",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Indexing policies",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
           "kind": "primary"
@@ -10259,10 +9823,6 @@ window.AI200_FLASHCARDS = {
         22
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 22",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Indexing policies",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
@@ -10309,10 +9869,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 23",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python CosmosClient",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
           "kind": "primary"
@@ -10351,10 +9907,6 @@ window.AI200_FLASHCARDS = {
         23
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 23",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Python CosmosClient",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
@@ -10401,10 +9953,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 23",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python CosmosClient",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
           "kind": "primary"
@@ -10449,10 +9997,6 @@ window.AI200_FLASHCARDS = {
         23
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 23",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Python CosmosClient",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python",
@@ -10499,10 +10043,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 24",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "kind": "primary"
@@ -10541,10 +10081,6 @@ window.AI200_FLASHCARDS = {
         24
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 24",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
@@ -10590,10 +10126,6 @@ window.AI200_FLASHCARDS = {
         24
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 24",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
@@ -10646,10 +10178,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 24",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "kind": "primary"
@@ -10693,10 +10221,6 @@ window.AI200_FLASHCARDS = {
         24
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 24",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
@@ -10743,10 +10267,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 24",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Vector storage and search",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
           "kind": "primary"
@@ -10792,10 +10312,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 25",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Change feed processor",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
           "kind": "primary"
@@ -10840,10 +10356,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 25",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Change feed processor",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
           "kind": "primary"
@@ -10882,10 +10394,6 @@ window.AI200_FLASHCARDS = {
         25
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 25",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Change feed processor",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
@@ -10942,10 +10450,6 @@ window.AI200_FLASHCARDS = {
         25
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 25",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Change feed processor",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor",
@@ -11004,10 +10508,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 25",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cosmos DB consistency",
           "url": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
           "kind": "primary"
@@ -11053,10 +10553,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
           "kind": "primary"
@@ -11095,10 +10591,6 @@ window.AI200_FLASHCARDS = {
         26
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
@@ -11145,10 +10637,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
           "kind": "primary"
@@ -11187,10 +10675,6 @@ window.AI200_FLASHCARDS = {
         26
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
@@ -11231,10 +10715,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
           "kind": "primary"
@@ -11274,10 +10754,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · pgvector on Azure",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector",
           "kind": "primary"
@@ -11316,10 +10792,6 @@ window.AI200_FLASHCARDS = {
         26
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 26",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
@@ -11366,10 +10838,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 27",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Built-in PgBouncer",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
           "kind": "primary"
@@ -11415,10 +10883,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 27",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Built-in PgBouncer",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
           "kind": "primary"
@@ -11457,10 +10921,6 @@ window.AI200_FLASHCARDS = {
         27
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 27",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Built-in PgBouncer",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
@@ -11506,10 +10966,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 27",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Built-in PgBouncer",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
           "kind": "primary"
@@ -11548,10 +11004,6 @@ window.AI200_FLASHCARDS = {
         27
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 27",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Built-in PgBouncer",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
@@ -11603,10 +11055,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 28",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · PostgreSQL managed identity",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/security/security-connect-with-managed-identity",
           "kind": "primary"
@@ -11652,10 +11100,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 28",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Psycopg · Connection pools",
           "url": "https://www.psycopg.org/psycopg3/docs/advanced/pool.html",
           "kind": "primary"
@@ -11700,10 +11144,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 28",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Psycopg · Connection pools",
           "url": "https://www.psycopg.org/psycopg3/docs/advanced/pool.html",
           "kind": "primary"
@@ -11743,10 +11183,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 28",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Psycopg · Query parameters",
           "url": "https://www.psycopg.org/psycopg3/docs/basic/params.html",
           "kind": "primary"
@@ -11785,10 +11221,6 @@ window.AI200_FLASHCARDS = {
         28
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 28",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Built-in PgBouncer",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer",
@@ -11835,10 +11267,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 29",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
           "kind": "primary"
@@ -11884,10 +11312,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 29",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
           "kind": "primary"
@@ -11926,10 +11350,6 @@ window.AI200_FLASHCARDS = {
         29
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 29",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
@@ -11976,10 +11396,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 29",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
           "kind": "primary"
@@ -12024,10 +11440,6 @@ window.AI200_FLASHCARDS = {
         29
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 29",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "pgvector · Operators and vector indexes",
           "url": "https://github.com/pgvector/pgvector",
@@ -12080,10 +11492,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 30",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Investigate PostgreSQL CPU",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/troubleshoot/how-to-high-cpu-utilization",
           "kind": "primary"
@@ -12133,10 +11541,6 @@ window.AI200_FLASHCARDS = {
         30
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 30",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · PostgreSQL compute tiers",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/compute-storage/concepts-compute",
@@ -12188,10 +11592,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 30",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · PostgreSQL compute tiers",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/compute-storage/concepts-compute",
           "kind": "primary"
@@ -12231,10 +11631,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 30",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Storage autogrow",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-auto-grow-storage",
           "kind": "primary"
@@ -12273,10 +11669,6 @@ window.AI200_FLASHCARDS = {
         30
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 30",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "PostgreSQL · Execution plans",
           "url": "https://www.postgresql.org/docs/current/using-explain.html",
@@ -12329,10 +11721,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 30",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Investigate PostgreSQL CPU",
           "url": "https://learn.microsoft.com/en-us/azure/postgresql/troubleshoot/how-to-high-cpu-utilization",
           "kind": "primary"
@@ -12382,10 +11770,6 @@ window.AI200_FLASHCARDS = {
         31
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 31",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · Memory eviction policies",
           "url": "https://redis.io/docs/latest/develop/reference/eviction/",
@@ -12437,10 +11821,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 31",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · Memory eviction policies",
           "url": "https://redis.io/docs/latest/develop/reference/eviction/",
           "kind": "primary"
@@ -12491,10 +11871,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 31",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · Memory eviction policies",
           "url": "https://redis.io/docs/latest/develop/reference/eviction/",
           "kind": "primary"
@@ -12538,10 +11914,6 @@ window.AI200_FLASHCARDS = {
         32
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 32",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · SET options",
           "url": "https://redis.io/docs/latest/commands/set/",
@@ -12594,10 +11966,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 34",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · Vector search",
           "url": "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
           "kind": "primary"
@@ -12642,10 +12010,6 @@ window.AI200_FLASHCARDS = {
         34
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 34",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · Vector search",
           "url": "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
@@ -12692,10 +12056,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 34",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Managed Redis module requirements",
           "url": "https://learn.microsoft.com/en-us/azure/redis/plan-redis-modules",
           "kind": "primary"
@@ -12734,10 +12094,6 @@ window.AI200_FLASHCARDS = {
         34
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 34",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · Create a search index",
           "url": "https://redis.io/docs/latest/commands/ft.create/",
@@ -12784,10 +12140,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 35",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Cache-aside pattern",
           "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside",
           "kind": "primary"
@@ -12831,10 +12183,6 @@ window.AI200_FLASHCARDS = {
         35
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 35",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · SET options",
           "url": "https://redis.io/docs/latest/commands/set/",
@@ -12880,10 +12228,6 @@ window.AI200_FLASHCARDS = {
         35
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 35",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Cache-aside pattern",
           "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside",
@@ -12942,10 +12286,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 36",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · EXPIRE",
           "url": "https://redis.io/docs/latest/commands/expire/",
           "kind": "primary"
@@ -12990,10 +12330,6 @@ window.AI200_FLASHCARDS = {
         36
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 36",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · Remove expiration",
           "url": "https://redis.io/docs/latest/commands/persist/",
@@ -13046,10 +12382,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 36",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · TTL",
           "url": "https://redis.io/docs/latest/commands/ttl/",
           "kind": "primary"
@@ -13089,10 +12421,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 37",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · Vector search",
           "url": "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
           "kind": "primary"
@@ -13131,10 +12459,6 @@ window.AI200_FLASHCARDS = {
         37
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 37",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · Create a search index",
           "url": "https://redis.io/docs/latest/commands/ft.create/",
@@ -13181,10 +12505,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 37",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Redis · Vector search",
           "url": "https://redis.io/docs/latest/develop/ai/search-and-query/vectors/",
           "kind": "primary"
@@ -13223,10 +12543,6 @@ window.AI200_FLASHCARDS = {
         37
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 37",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Redis · Python connections",
           "url": "https://redis.io/docs/latest/develop/clients/redis-py/connect/",
@@ -15622,10 +14938,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 44",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Automatic forwarding",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-auto-forwarding",
           "kind": "primary"
@@ -15674,10 +14986,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 49",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Triggers and bindings",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings",
           "kind": "primary"
@@ -15719,10 +15027,6 @@ window.AI200_FLASHCARDS = {
         50
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 50",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Local function settings",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local",
@@ -15810,10 +15114,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 38",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "kind": "primary"
@@ -15852,10 +15152,6 @@ window.AI200_FLASHCARDS = {
         38
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 38",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
@@ -15896,10 +15192,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 38",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "kind": "primary"
@@ -15938,10 +15230,6 @@ window.AI200_FLASHCARDS = {
         39
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 39",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
@@ -15982,10 +15270,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 39",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "kind": "primary"
@@ -16025,10 +15309,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 39",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "kind": "primary"
@@ -16067,10 +15347,6 @@ window.AI200_FLASHCARDS = {
         39
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 39",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
@@ -16117,10 +15393,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 39",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "kind": "primary"
@@ -16164,10 +15436,6 @@ window.AI200_FLASHCARDS = {
         40
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 40",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid filters",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
@@ -16213,10 +15481,6 @@ window.AI200_FLASHCARDS = {
         40
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 40",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid filters",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
@@ -16326,10 +15590,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 40",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid filters",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
           "kind": "primary"
@@ -16375,10 +15635,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 40",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid filters",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
           "kind": "primary"
@@ -16422,10 +15678,6 @@ window.AI200_FLASHCARDS = {
         40
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 40",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid filters",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
@@ -16471,10 +15723,6 @@ window.AI200_FLASHCARDS = {
         41
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 41",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Service Bus locks and settlement",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
@@ -16526,10 +15774,6 @@ window.AI200_FLASHCARDS = {
         41
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 41",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Service Bus locks and settlement",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
@@ -16588,10 +15832,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 41",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Defer a message",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral",
           "kind": "primary"
@@ -16642,10 +15882,6 @@ window.AI200_FLASHCARDS = {
         41
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 41",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Service Bus dead-letter queues",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
@@ -16698,10 +15934,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 41",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Service Bus locks and settlement",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "kind": "primary"
@@ -16747,10 +15979,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 42",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Service Bus locks and settlement",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "kind": "primary"
@@ -16790,10 +16018,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 42",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Service Bus dead-letter queues",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
           "kind": "primary"
@@ -16832,10 +16056,6 @@ window.AI200_FLASHCARDS = {
         42
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 42",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Duplicate detection",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection",
@@ -16882,14 +16102,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 42",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 44",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Ordered processing with sessions",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions",
           "kind": "primary"
@@ -16933,10 +16145,6 @@ window.AI200_FLASHCARDS = {
         43
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 43",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Create a custom topic",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/custom-event-quickstart",
@@ -16983,10 +16191,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 43",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid capabilities",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/overview",
           "kind": "primary"
@@ -17025,10 +16229,6 @@ window.AI200_FLASHCARDS = {
         43
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 43",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Event Grid schema validation",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-event-grid-events-schema",
@@ -17081,10 +16281,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 43",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Event Grid delivery and retries",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
           "kind": "primary"
@@ -17134,10 +16330,6 @@ window.AI200_FLASHCARDS = {
         44
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 44",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Queues, topics and subscriptions",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
@@ -17189,10 +16381,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 44",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Queues, topics and subscriptions",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
           "kind": "primary"
@@ -17238,10 +16426,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 44",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Subscription filter examples",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples",
           "kind": "primary"
@@ -17280,10 +16464,6 @@ window.AI200_FLASHCARDS = {
         44
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 44",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Service Bus dead-letter queues",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
@@ -17329,10 +16509,6 @@ window.AI200_FLASHCARDS = {
         46
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 46",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Queue Storage trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue-trigger",
@@ -17385,10 +16561,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 46",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Timer trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer",
           "kind": "primary"
@@ -17428,10 +16600,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 46",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Blob trigger modes",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger",
           "kind": "primary"
@@ -17470,10 +16638,6 @@ window.AI200_FLASHCARDS = {
         46
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 46",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Cosmos DB Functions trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
@@ -17525,10 +16689,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 47",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · HTTP trigger and authorization",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger",
           "kind": "primary"
@@ -17574,10 +16734,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 47",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · HTTP trigger and authorization",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger",
           "kind": "primary"
@@ -17622,10 +16778,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 47",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · HTTP trigger and authorization",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger",
           "kind": "primary"
@@ -17664,10 +16816,6 @@ window.AI200_FLASHCARDS = {
         48
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · HTTP trigger and authorization",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger",
@@ -17714,10 +16862,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Queue Storage trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue-trigger",
           "kind": "primary"
@@ -17763,10 +16907,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Timer trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer",
           "kind": "primary"
@@ -17805,10 +16945,6 @@ window.AI200_FLASHCARDS = {
         48
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Cosmos DB Functions trigger",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
@@ -17855,10 +16991,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Blob trigger modes",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger",
           "kind": "primary"
@@ -17898,10 +17030,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Hosting and execution limits",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale",
           "kind": "primary"
@@ -17940,10 +17068,6 @@ window.AI200_FLASHCARDS = {
         48
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 48",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · HTTP trigger and authorization",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger",
@@ -17996,10 +17120,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 49",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Triggers and bindings",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings",
           "kind": "primary"
@@ -18038,10 +17158,6 @@ window.AI200_FLASHCARDS = {
         49
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 49",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Triggers and bindings",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings",
@@ -18094,10 +17210,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 49",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Triggers and bindings",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings",
           "kind": "primary"
@@ -18137,10 +17249,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 49",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Triggers and bindings",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings",
           "kind": "primary"
@@ -18179,10 +17287,6 @@ window.AI200_FLASHCARDS = {
         51
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 51",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Function host storage",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations",
@@ -18229,10 +17333,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 51",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Function host storage",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations",
           "kind": "primary"
@@ -18278,10 +17378,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 51",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
           "kind": "primary"
@@ -18320,10 +17416,6 @@ window.AI200_FLASHCARDS = {
         51
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 51",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Deploy Functions with GitHub Actions",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-github-actions",
@@ -18369,10 +17461,6 @@ window.AI200_FLASHCARDS = {
         51
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 51",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Deploy Functions with GitHub Actions",
           "url": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-github-actions",
@@ -21770,10 +20858,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 55",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · .NET configuration provider",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider",
           "kind": "primary"
@@ -21821,10 +20905,6 @@ window.AI200_FLASHCARDS = {
         64
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 64",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "OpenTelemetry · Trace SDK",
           "url": "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
@@ -21980,14 +21060,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 5",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 56",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Managed identity lifecycle",
           "url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
           "kind": "primary"
@@ -22034,22 +21106,6 @@ window.AI200_FLASHCARDS = {
         57
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 7",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 50",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 55",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 57",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Keys, secrets and certificates",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
@@ -22102,10 +21158,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 14",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Keys, secrets and certificates",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
           "kind": "primary"
@@ -22149,10 +21201,6 @@ window.AI200_FLASHCARDS = {
         52
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 52",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
@@ -22198,10 +21246,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 52",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "kind": "primary"
@@ -22246,10 +21290,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 52",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "kind": "primary"
@@ -22293,10 +21333,6 @@ window.AI200_FLASHCARDS = {
         52
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 52",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
@@ -22348,10 +21384,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 52",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "kind": "primary"
@@ -22390,10 +21422,6 @@ window.AI200_FLASHCARDS = {
         52
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 52",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
@@ -22434,10 +21462,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 53",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Read secrets with Python",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python",
           "kind": "primary"
@@ -22477,10 +21501,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 53",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Read secrets with Python",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python",
           "kind": "primary"
@@ -22519,10 +21539,6 @@ window.AI200_FLASHCARDS = {
         53
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 53",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Automate secret rotation",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation",
@@ -22569,10 +21585,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 53",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Automate secret rotation",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation",
           "kind": "primary"
@@ -22618,10 +21630,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 54",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python credential chains",
           "url": "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
           "kind": "primary"
@@ -22660,10 +21668,6 @@ window.AI200_FLASHCARDS = {
         54
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 54",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Python credential chains",
           "url": "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
@@ -22716,10 +21720,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 54",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python credential chains",
           "url": "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
           "kind": "primary"
@@ -22758,10 +21758,6 @@ window.AI200_FLASHCARDS = {
         54
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 54",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Python credential chains",
           "url": "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
@@ -22809,14 +21805,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 55",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 58",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Keys and labels",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-key-value",
           "kind": "primary"
@@ -22855,10 +21843,6 @@ window.AI200_FLASHCARDS = {
         55
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 55",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · App Configuration data roles",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-enable-rbac",
@@ -22903,10 +21887,6 @@ window.AI200_FLASHCARDS = {
         56
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 56",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
@@ -22965,10 +21945,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 56",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "kind": "primary"
@@ -23014,10 +21990,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 56",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Key Vault roles and scopes",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
           "kind": "primary"
@@ -23061,10 +22033,6 @@ window.AI200_FLASHCARDS = {
         56
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 56",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
@@ -23115,10 +22083,6 @@ window.AI200_FLASHCARDS = {
         57
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 57",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Keys, secrets and certificates",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
@@ -23182,10 +22146,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 57",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Resolve Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core",
           "kind": "primary"
@@ -23237,10 +22197,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 57",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Mount Key Vault in AKS",
           "url": "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver",
           "kind": "primary"
@@ -23285,10 +22241,6 @@ window.AI200_FLASHCARDS = {
         58
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 58",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Python App Configuration client",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-appconfiguration/azure.appconfiguration.azureappconfigurationclient?view=azure-python",
@@ -23335,10 +22287,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 58",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python App Configuration client",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-appconfiguration/azure.appconfiguration.azureappconfigurationclient?view=azure-python",
           "kind": "primary"
@@ -23378,10 +22326,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 58",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python App Configuration client",
           "url": "https://learn.microsoft.com/en-us/python/api/azure-appconfiguration/azure.appconfiguration.azureappconfigurationclient?view=azure-python",
           "kind": "primary"
@@ -23420,10 +22364,6 @@ window.AI200_FLASHCARDS = {
         59
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 59",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · .NET configuration provider",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider",
@@ -23475,10 +22415,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 59",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Python configuration provider",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-python-provider",
           "kind": "primary"
@@ -23517,10 +22453,6 @@ window.AI200_FLASHCARDS = {
         59
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 59",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · .NET configuration provider",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider",
@@ -23571,10 +22503,6 @@ window.AI200_FLASHCARDS = {
         59
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 59",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · App settings",
           "url": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
@@ -23632,10 +22560,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Filter rows",
           "url": "https://learn.microsoft.com/en-us/kusto/query/where-operator",
           "kind": "primary"
@@ -23676,14 +22600,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 62",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Aggregate rows",
           "url": "https://learn.microsoft.com/en-us/kusto/query/summarize-operator",
           "kind": "primary"
@@ -23722,10 +22638,6 @@ window.AI200_FLASHCARDS = {
         60
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Select columns",
           "url": "https://learn.microsoft.com/en-us/kusto/query/project-operator",
@@ -23766,10 +22678,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Calculate columns",
           "url": "https://learn.microsoft.com/en-us/kusto/query/extend-operator",
           "kind": "primary"
@@ -23808,10 +22716,6 @@ window.AI200_FLASHCARDS = {
         60
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Distinct values",
           "url": "https://learn.microsoft.com/en-us/kusto/query/distinct-operator",
@@ -23858,10 +22762,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Join tables",
           "url": "https://learn.microsoft.com/en-us/kusto/query/join-operator",
           "kind": "primary"
@@ -23900,10 +22800,6 @@ window.AI200_FLASHCARDS = {
         60
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Visualize query results",
           "url": "https://learn.microsoft.com/en-us/kusto/query/render-operator",
@@ -23950,10 +22846,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 60",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Query performance",
           "url": "https://learn.microsoft.com/en-us/kusto/query/best-practices",
           "kind": "primary"
@@ -23998,10 +22890,6 @@ window.AI200_FLASHCARDS = {
         61
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 61",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Application Insights table mapping",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete",
@@ -24054,10 +22942,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 61",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Application Insights table mapping",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete",
           "kind": "primary"
@@ -24109,10 +22993,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 61",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Application Insights log queries",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/analytics",
           "kind": "primary"
@@ -24157,10 +23037,6 @@ window.AI200_FLASHCARDS = {
         61
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 61",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Application Insights table mapping",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete",
@@ -24207,10 +23083,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 62",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Relative time filters",
           "url": "https://learn.microsoft.com/en-us/kusto/query/ago-function",
           "kind": "primary"
@@ -24249,10 +23121,6 @@ window.AI200_FLASHCARDS = {
         62
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 62",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Time buckets",
           "url": "https://learn.microsoft.com/en-us/kusto/query/bin-function",
@@ -24298,10 +23166,6 @@ window.AI200_FLASHCARDS = {
         62
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 62",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Default innerunique join",
           "url": "https://learn.microsoft.com/en-us/kusto/query/join-innerunique",
@@ -24353,10 +23217,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 63",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Log Analytics investigations",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
           "kind": "primary"
@@ -24396,10 +23256,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 63",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Azure Activity Log",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log",
           "kind": "primary"
@@ -24438,10 +23294,6 @@ window.AI200_FLASHCARDS = {
         63
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 63",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Log Analytics investigations",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
@@ -24488,10 +23340,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 63",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · String comparison operators",
           "url": "https://learn.microsoft.com/en-us/kusto/query/datatypes-string-operators",
           "kind": "primary"
@@ -24530,10 +23378,6 @@ window.AI200_FLASHCARDS = {
         64
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 64",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Enable OpenTelemetry export",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable",
@@ -24592,10 +23436,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 64",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Trace SDK",
           "url": "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "kind": "primary"
@@ -24641,10 +23481,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 64",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Python instrumentation",
           "url": "https://opentelemetry.io/docs/languages/python/instrumentation/",
           "kind": "primary"
@@ -24683,10 +23519,6 @@ window.AI200_FLASHCARDS = {
         65
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 65",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Enable OpenTelemetry export",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable",
@@ -24739,14 +23571,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 65",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
-          "label": "MightyBS · originalkort 68",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Azure Monitor Python distro",
           "url": "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme",
           "kind": "primary"
@@ -24797,10 +23621,6 @@ window.AI200_FLASHCARDS = {
         65
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 65",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Azure SDK · Python span mapping",
           "url": "https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/azure/monitor/opentelemetry/exporter/export/trace/_exporter.py",
@@ -24853,10 +23673,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 66",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Python instrumentation",
           "url": "https://opentelemetry.io/docs/languages/python/instrumentation/",
           "kind": "primary"
@@ -24902,10 +23718,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 66",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Standard sampler configuration",
           "url": "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/",
           "kind": "primary"
@@ -24950,10 +23762,6 @@ window.AI200_FLASHCARDS = {
         66
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 66",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · OpenTelemetry configuration",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-configuration?tabs=python",
@@ -25006,10 +23814,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 66",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Trace SDK",
           "url": "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "kind": "primary"
@@ -25055,10 +23859,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 66",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Trace SDK",
           "url": "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "kind": "primary"
@@ -25097,10 +23897,6 @@ window.AI200_FLASHCARDS = {
         66
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 66",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · OpenTelemetry configuration",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-configuration?tabs=python",
@@ -25146,10 +23942,6 @@ window.AI200_FLASHCARDS = {
         67
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 67",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "OpenTelemetry · Python instrumentation",
           "url": "https://opentelemetry.io/docs/languages/python/instrumentation/",
@@ -25202,10 +23994,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 67",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Trace SDK",
           "url": "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
           "kind": "primary"
@@ -25251,10 +24039,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 67",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Python instrumentation",
           "url": "https://opentelemetry.io/docs/languages/python/instrumentation/",
           "kind": "primary"
@@ -25299,10 +24083,6 @@ window.AI200_FLASHCARDS = {
         67
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 67",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "Microsoft Learn · Application Insights sampling",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-sampling",
@@ -25355,10 +24135,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 67",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "Microsoft Learn · Application Insights sampling",
           "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-sampling",
           "kind": "primary"
@@ -25402,10 +24178,6 @@ window.AI200_FLASHCARDS = {
         68
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 68",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "W3C · Trace Context",
           "url": "https://www.w3.org/TR/trace-context/",
@@ -25452,10 +24224,6 @@ window.AI200_FLASHCARDS = {
       ],
       "references": [
         {
-          "label": "MightyBS · originalkort 68",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
-        {
           "label": "OpenTelemetry · Python context propagation",
           "url": "https://opentelemetry.io/docs/languages/python/propagation/",
           "kind": "primary"
@@ -25499,10 +24267,6 @@ window.AI200_FLASHCARDS = {
         68
       ],
       "references": [
-        {
-          "label": "MightyBS · originalkort 68",
-          "url": "https://www.mightybs.com/certifications/ai-200/flashcards/"
-        },
         {
           "label": "OpenTelemetry · Python context propagation",
           "url": "https://opentelemetry.io/docs/languages/python/propagation/",

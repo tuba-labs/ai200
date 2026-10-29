@@ -17,6 +17,12 @@
   const pattern = new RegExp('(?<![\\p{L}\\p{N}_])(?:' + alternatives.join('|') + ')(?![\\p{L}\\p{N}_])', 'giu');
   const skip = 'script,style,pre,code,kbd,samp,textarea,input,select,option,svg,math,[contenteditable]:not([contenteditable="false"]),[data-no-jargon],.jargon-term,.jargon-popover,.jargon-tools';
   const flashcardToggle = document.getElementById('disable-tooltips');
+  const uiText = (english, norwegian) => flashcardToggle ? english : norwegian;
+  const platformLabels = flashcardToggle ? {...platforms, other: 'Other tools'} : platforms;
+  const relationLabels = flashcardToggle ? {
+    standard: 'Same technology or standard', similar: 'Similar purpose',
+    partial: 'Partial overlap', different: 'Different mechanism'
+  } : relationKinds;
   const sitePreference = 'ai200-jargon-enabled-v1';
   const preference = flashcardToggle ? 'ai200-flashcard-jargon-enabled-v1' : sitePreference;
   let enabled = true;
@@ -42,12 +48,13 @@
   popup.setAttribute('aria-labelledby', 'jargon-explanation-title');
   popup.setAttribute('aria-describedby', 'jargon-explanation-description');
   popup.dataset.noJargon = '';
+  if (flashcardToggle) popup.lang = 'en';
   const heading = make('div', 'jargon-popover-heading');
   const title = make('h2', '');
   title.id = 'jargon-explanation-title';
   const closeButton = make('button', 'jargon-close', '×');
   closeButton.type = 'button';
-  closeButton.setAttribute('aria-label', 'Lukk forklaring');
+  closeButton.setAttribute('aria-label', uiText('Close explanation', 'Lukk forklaring'));
   heading.append(title, closeButton);
   const fullName = make('p', 'jargon-popover-full');
   fullName.id = 'jargon-explanation-full';
@@ -61,7 +68,7 @@
   const relatedArea = make('section', 'jargon-related');
   relatedArea.dataset.noJargon = '';
   relatedArea.hidden = true;
-  const entryLink = make('a', 'jargon-entry-link', 'Alle navn og kilder i begrepslisten →');
+  const entryLink = make('a', 'jargon-entry-link', uiText('All names and sources in the glossary →', 'Alle navn og kilder i begrepslisten →'));
   popup.append(heading, fullName, definition, exampleArea, relatedArea, aliases, entryLink);
   document.body.append(popup);
 
@@ -70,13 +77,13 @@
     container.hidden = !example;
     if (!example) return;
     container.classList.add('jargon-example');
-    container.append(make('h3', '', 'Eksempel · ' + example.language));
+    container.append(make('h3', '', uiText('Example · ', 'Eksempel · ') + example.language));
     if (example.mode === 'inline') {
       const pre = make('pre', '');
       pre.append(make('code', '', example.code));
       container.append(pre);
     } else if (example.mode === 'page') {
-      const link = make('a', '', 'Se hele eksemplet i ' + example.language + ' (ny fane) ↗');
+      const link = make('a', '', uiText('View the full ' + example.language + ' example (new tab) ↗', 'Se hele eksemplet i ' + example.language + ' (ny fane) ↗'));
       link.href = new URL(example.url, glossaryURL).href;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
@@ -113,12 +120,12 @@
     relatedArea.replaceChildren();
     relatedArea.hidden = !related?.length;
     if (!related?.length) return;
-    relatedArea.append(make('h3', '', 'Liknende begreper og viktige forskjeller'));
+    relatedArea.append(make('h3', '', uiText('Related concepts and key differences', 'Liknende begreper og viktige forskjeller')));
     const list = make('dl', 'jargon-relations-list');
     for (const row of related.slice(0, 3)) {
       const item = make('div', 'jargon-relation');
       const name = make('dt', '');
-      name.append(make('span', 'jargon-relation-meta', platforms[row.platform] + ' · ' + relationKinds[row.kind]));
+      name.append(make('span', 'jargon-relation-meta', platformLabels[row.platform] + ' · ' + relationLabels[row.kind]));
       const link = make('a', '', row.name);
       link.href = row.term ? glossaryURL + '#' + row.term : row.url;
       if (!row.term) { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
@@ -133,7 +140,9 @@
     relatedArea.append(list);
     if (related.length > 3) {
       const remaining = related.length - 3;
-      relatedArea.append(make('p', 'jargon-related-more', '+ ' + remaining + (remaining === 1 ? ' sammenligning' : ' sammenligninger') + ' i begrepslisten.'));
+      relatedArea.append(make('p', 'jargon-related-more', uiText(
+        '+ ' + remaining + (remaining === 1 ? ' comparison' : ' comparisons') + ' in the glossary.',
+        '+ ' + remaining + (remaining === 1 ? ' sammenligning' : ' sammenligninger') + ' i begrepslisten.')));
     }
   }
   const examplesByCard = new Map([...terms.values()].filter(term => term.sourceCard && term.example)
@@ -197,10 +206,13 @@
     renderExample(exampleArea, term.example);
     renderRelated(term.related);
     const otherNames = term.aliases.filter(name => name !== term.fullName);
-    aliases.textContent = otherNames.length ? 'Andre navn: ' + otherNames.slice(0, 5).join(', ') + (otherNames.length > 5 ? ' …' : '') : '';
-    aliases.hidden = !otherNames.length;
+    aliases.textContent = !flashcardToggle && otherNames.length ? 'Andre navn: ' + otherNames.slice(0, 5).join(', ') + (otherNames.length > 5 ? ' …' : '') : '';
+    // Full multilingual aliases are available through the glossary link.
+    aliases.hidden = !!flashcardToggle || !otherNames.length;
     entryLink.href = glossaryURL + '#' + term.id;
-    entryLink.textContent = term.related?.length ? 'Alle sammenligninger, navn og kilder →' : 'Alle navn og kilder i begrepslisten →';
+    entryLink.textContent = term.related?.length
+      ? uiText('All comparisons, names and sources →', 'Alle sammenligninger, navn og kilder →')
+      : uiText('All names and sources in the glossary →', 'Alle navn og kilder i begrepslisten →');
     if (!descriptions.has(trigger)) descriptions.set(trigger, trigger.getAttribute('aria-describedby') || '');
     const before = descriptions.get(trigger);
     trigger.setAttribute('aria-describedby', [before, term.fullName ? fullName.id : '', definition.id].filter(Boolean).join(' '));

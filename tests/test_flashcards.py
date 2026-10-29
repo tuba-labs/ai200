@@ -137,7 +137,7 @@ class FlashcardContentTests(unittest.TestCase):
                     self.assertTrue(reference["label"].strip())
                     url = urlsplit(reference["url"])
                     self.assertEqual(url.scheme, "https")
-                    self.assertIn(url.hostname, {"www.mightybs.com", "ai200prep.com", "learn.microsoft.com", "kubernetes.io", "opentelemetry.io", "github.com", "redis.io", "www.postgresql.org", "www.psycopg.org", "keda.sh", "docs.dapr.io", "www.w3.org", "docs.docker.com"})
+                    self.assertIn(url.hostname, {"ai200prep.com", "learn.microsoft.com", "kubernetes.io", "opentelemetry.io", "github.com", "redis.io", "www.postgresql.org", "www.psycopg.org", "keda.sh", "docs.dapr.io", "www.w3.org", "docs.docker.com"})
 
     def test_displayed_counts_match_card_data(self):
         html = (ROOT / "flashcards.html").read_text(encoding="utf-8")
