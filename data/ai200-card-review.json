@@ -2268,7 +2268,7 @@
     "term-d4-authentication": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "5878c42af673c72a67e6cfa951bf9df54d188db3cfdc2ecb5f5f8c71262ff59e"
+      "fingerprint": "6e66cc45a639ddc2d39ff06f57a34596bf3c4b824c2f835325028678e0c7f8d3"
     },
     "term-d4-authorization": {
       "objective": "d4-secrets",

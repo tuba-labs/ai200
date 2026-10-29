@@ -835,7 +835,7 @@ window.AI200_JARGON = {
         "authenticated",
         "authenticate"
       ],
-      "definition": "Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token. Authorization is the next question: whether that caller may perform the requested action.",
+      "definition": "Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token.",
       "domains": [
         4
       ],

@@ -18907,7 +18907,7 @@ window.AI200_FLASHCARDS = {
       "title": "Authentication",
       "question": "What does authentication mean?",
       "answers": [
-        "Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token. Authorization is the next question: whether that caller may perform the requested action."
+        "Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -18929,7 +18929,7 @@ window.AI200_FLASHCARDS = {
       "clarityReview": {
         "date": "2026-10-29",
         "status": "rewritten",
-        "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+        "note": "Standalone definition of authentication with sign-in and token examples."
       },
       "importance": {
         "level": "terms",

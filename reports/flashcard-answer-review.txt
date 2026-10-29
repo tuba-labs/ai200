@@ -2927,7 +2927,7 @@ Primary material: https://learn.microsoft.com/en-us/azure/role-based-access-cont
 
 431 | term-d4-authentication | Domain 4 | terms-4 | clarified
 Q: What does authentication mean?
-A: Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token. Authorization is the next question: whether that caller may perform the requested action.
+A: Authentication verifies who or what is making a request, for example by validating a user’s sign-in or an application’s token.
 Review: Identity/permission boundaries, configuration refresh and distinct observability components.
 Primary material: https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization
 
