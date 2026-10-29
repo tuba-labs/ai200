@@ -38,7 +38,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview"
       ],
-      "id": "abac"
+      "id": "abac",
+      "example": {
+        "id": "card-term-d4-abac",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A supported Blob Data Reader assignment has a condition selecting blobs tagged project=repairs. With no other grant, that assignment permits reads of matching blob content rather than every blob covered by its broader scope."
+      }
     },
     {
       "primary": "Access reviews",
@@ -85,7 +91,14 @@ window.AI200_JARGON = {
           "note": "Stores container images and other artifacts. Repository formats, permissions and build integrations differ.",
           "url": "https://docs.cloud.google.com/artifact-registry/docs/overview"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d1-acr",
+        "mode": "inline",
+        "language": "Image address",
+        "code": "studyacr.azurecr.io/orders:v1",
+        "summary": "studyacr.azurecr.io is the example ACR login server. orders is a repository inside it, and v1 selects a tagged image version."
+      }
     },
     {
       "primary": "AcrPull",
@@ -249,7 +262,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
       ],
-      "id": "aks-node"
+      "id": "aks-node",
+      "example": {
+        "id": "card-term-d1-node",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "worker-a can host two orders pods and a logging-agent pod at once. They are separate workloads sharing one worker machine."
+      }
     },
     {
       "primary": "AKS node pool",
@@ -271,7 +290,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts",
         "https://learn.microsoft.com/en-us/azure/aks/use-system-pools"
       ],
-      "id": "aks-node-pool"
+      "id": "aks-node-pool",
+      "example": {
+        "id": "card-term-d1-node-pool",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One pool uses smaller machines for web APIs; another uses larger-memory machines for search workers. Adding a node to a pool adds a worker machine, rather than directly changing a Deployment’s replica setting."
+      }
     },
     {
       "primary": "Amazon EKS",
@@ -508,7 +533,13 @@ window.AI200_JARGON = {
         "https://github.com/pgvector/pgvector",
         "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
       ],
-      "id": "ann"
+      "id": "ann",
+      "example": {
+        "id": "card-term-d2-ann",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An exact search’s five closest IDs are A, B, C, D and E. An approximate search might return A, B, C, D and X after searching fewer candidates. It found useful neighbors but missed one exact top-five result."
+      }
     },
     {
       "primary": "AOF",
@@ -663,7 +694,14 @@ window.AI200_JARGON = {
           "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
           "term": "configmap"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-app-configuration",
+        "mode": "inline",
+        "language": "App Configuration key/value",
+        "code": "Search:ResultLimit = \"5\"",
+        "summary": "This ordinary setting tells the application how many results to return. App Configuration stores the string value; application code can convert it to a number when using it."
+      }
     },
     {
       "primary": "App Service",
@@ -695,7 +733,13 @@ window.AI200_JARGON = {
           "note": "A managed application platform. Runtime environments, scaling and deployment versions differ from App Service plans and slots.",
           "url": "https://docs.cloud.google.com/appengine/docs/an-overview-of-app-engine"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d1-app-service",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deploy an orders API container as an App Service web app. Configure its environment values in app settings and call its HTTPS endpoint; Azure manages the underlying web-hosting infrastructure."
+      }
     },
     {
       "primary": "App setting",
@@ -767,7 +811,13 @@ window.AI200_JARGON = {
           "note": "Provides distributed trace analysis. Logs, metrics and application views use additional observability services.",
           "url": "https://docs.cloud.google.com/trace/docs/overview"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-application-insights",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repair request takes 800 ms and its database dependency accounts for most of that time. Application Insights can connect those observed operations so you can investigate the slow dependency."
+      }
     },
     {
       "primary": "AppRequests",
@@ -900,7 +950,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/reliability/regions-overview"
       ],
-      "id": "availability-zone"
+      "id": "availability-zone",
+      "example": {
+        "id": "card-term-d1-availability-zone",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Place healthy API replicas in two different supported zones. If one zone fails, a replica in the other can continue serving requests, provided enough healthy capacity remains."
+      }
     },
     {
       "primary": "AWS CloudFormation",
@@ -1045,7 +1101,13 @@ window.AI200_JARGON = {
           "note": "Runs function code through managed HTTP or event handling. Its deployment and trigger model differs from Azure Functions.",
           "url": "https://docs.cloud.google.com/functions/docs/concepts/overview"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d3-function",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A queue-triggered make_thumbnail function receives a photo-processing message and writes a thumbnail. That handler is one function, invoked through its configured trigger."
+      }
     },
     {
       "primary": "Azure Managed Redis",
@@ -1106,7 +1168,13 @@ window.AI200_JARGON = {
           "note": "Google Cloud splits monitoring and log management across connected services. Queries and instrumentation setup differ.",
           "url": "https://docs.cloud.google.com/monitoring/docs/monitoring-overview"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-azure-monitor",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Repair-request failures start rising. Azure Monitor can show a failure-rate trend, let you inspect collected logs and trigger an alert when your configured condition is met."
+      }
     },
     {
       "primary": "Azure Monitor workbook",
@@ -1239,7 +1307,13 @@ window.AI200_JARGON = {
           "note": "A common resource and IAM boundary linked to billing. A project is not an exact match for an Azure subscription or resource group.",
           "url": "https://docs.cloud.google.com/resource-manager/docs/creating-managing-projects"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d1-subscription",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Select the Training subscription before creating rg-repairs. The new resource group and its resources belong to Training, and their usage is billed through that subscription."
+      }
     },
     {
       "primary": "AzureActivity",
@@ -1399,7 +1473,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage"
       ],
-      "id": "blob"
+      "id": "blob",
+      "example": {
+        "id": "card-term-d3-blob",
+        "mode": "inline",
+        "language": "Blob URL",
+        "code": "https://studystore.blob.core.windows.net/photos/repair-42.jpg",
+        "summary": "In this illustrative address, studystore is the storage account, photos is the blob container and repair-42.jpg is the blob name. The URL alone does not grant read permission."
+      }
     },
     {
       "primary": "Build context",
@@ -1472,7 +1553,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://redis.io/docs/latest/develop/reference/eviction/"
       ],
-      "id": "cache-eviction"
+      "id": "cache-eviction",
+      "example": {
+        "id": "card-term-d2-eviction",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A memory-full cache needs space for a new key. Under an applicable eviction policy, it can discard an eligible old key even though that key’s TTL has not expired."
+      }
     },
     {
       "primary": "Cache hit",
@@ -1490,7 +1577,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
       ],
-      "id": "cache-hit"
+      "id": "cache-hit",
+      "example": {
+        "id": "card-term-d2-cache-hit",
+        "mode": "inline",
+        "language": "Redis command",
+        "code": "GET repair:42",
+        "summary": "If this returns a usable cached status such as open, the request is a cache hit. Apply the application’s freshness and access rules before reusing it."
+      }
     },
     {
       "primary": "Cache miss",
@@ -1508,7 +1602,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
       ],
-      "id": "cache-miss"
+      "id": "cache-miss",
+      "example": {
+        "id": "card-term-d2-cache-miss",
+        "mode": "inline",
+        "language": "Redis command",
+        "code": "GET repair:42",
+        "summary": "If the key is absent, Redis returns nil. A cache-aside application then reads repair 42 from its source database and can cache the result for future requests."
+      }
     },
     {
       "primary": "Cache stampede",
@@ -1633,7 +1734,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/devops/deliver/what-is-continuous-delivery"
       ],
-      "id": "ci-cd"
+      "id": "ci-cd",
+      "example": {
+        "id": "card-term-d1-cicd",
+        "mode": "inline",
+        "language": "Pipeline flow",
+        "code": "Commit → build and test → publish orders:build-42 → deploy to staging",
+        "summary": "CI builds and checks the change. Delivery prepares a release for deployment; automatic promotion to production is a separate pipeline choice."
+      }
     },
     {
       "primary": "Claim-check",
@@ -1735,7 +1843,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
       ],
-      "id": "cold-start"
+      "id": "cold-start",
+      "example": {
+        "id": "card-term-d3-cold-start",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The first photo event after idle scale-to-zero may wait while the Functions host starts and imports Python code. Later work can reuse a ready instance; a traffic surge can still require new instances to initialize."
+      }
     },
     {
       "primary": "ConfigMap",
@@ -1782,7 +1896,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://www.psycopg.org/psycopg3/docs/advanced/pool.html"
       ],
-      "id": "connection-pool"
+      "id": "connection-pool",
+      "example": {
+        "id": "card-term-d2-connection-pool",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A web API keeps a pool of ten database connections. Successive requests borrow and return them instead of opening a new connection for each query; requests may wait when all ten are busy."
+      }
     },
     {
       "primary": "Consumer",
@@ -1890,7 +2010,13 @@ window.AI200_JARGON = {
           "note": "These cover some of the underlying responsibilities. Container Apps exposes an application model rather than unrestricted access to a Kubernetes cluster.",
           "url": "https://learn.microsoft.com/en-us/azure/container-apps/compare-options"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d1-container-apps",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deploy orders-api and orders-worker as two Container Apps in one environment. The API accepts HTTP requests, while the worker can scale in response to queued jobs."
+      }
     },
     {
       "primary": "Container Apps environment",
@@ -1907,7 +2033,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/container-apps/environment"
       ],
-      "id": "container-apps-environment"
+      "id": "container-apps-environment",
+      "example": {
+        "id": "card-prep-ca-001",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Place orders-api and orders-worker in a production environment with shared environment networking and logging configuration. Use a separate environment for staging when you need a separate hosting boundary."
+      }
     },
     {
       "primary": "Container Apps revision",
@@ -1924,7 +2056,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
       ],
-      "id": "container-apps-revision"
+      "id": "container-apps-revision",
+      "example": {
+        "id": "card-prep-ca-002",
+        "mode": "inline",
+        "language": "Revision name examples",
+        "code": "orders--v1\norders--v2",
+        "summary": "These can be two named revisions of one orders Container App, using different image/configuration snapshots. Moving traffic between them changes the served revision without creating a second app."
+      }
     },
     {
       "primary": "Container image",
@@ -1944,7 +2083,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/"
       ],
-      "id": "container-image"
+      "id": "container-image",
+      "example": {
+        "id": "card-term-d1-image",
+        "mode": "inline",
+        "language": "Image address",
+        "code": "studyacr.azurecr.io/orders:v1",
+        "summary": "This names one published image version. Starting three containers from it creates three running instances of the same packaged application."
+      }
     },
     {
       "primary": "Container registry",
@@ -2057,7 +2203,14 @@ window.AI200_JARGON = {
           "note": "Overlaps in managed document storage. Data hierarchy, querying, transactions and billing have different models.",
           "url": "https://docs.cloud.google.com/firestore/native/docs/overview"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d2-cosmos",
+        "mode": "inline",
+        "language": "JSON · example item",
+        "code": "{\"id\":\"repair-42\",\"customerId\":\"c1\",\"status\":\"open\"}",
+        "summary": "An item like this can be stored in a Cosmos DB for NoSQL container. If its partition key path is /customerId, the value c1 identifies this item’s logical partition."
+      }
     },
     {
       "primary": "Cosmos DB container",
@@ -2077,7 +2230,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/cosmos-db/resource-model"
       ],
-      "id": "cosmos-db-container"
+      "id": "cosmos-db-container",
+      "example": {
+        "id": "card-term-d2-cosmos-container",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repairs container holds repair-42 and repair-43. Both follow that container’s partition-key and indexing settings; a separate articles container can have different settings."
+      }
     },
     {
       "primary": "Cosmos DB partition key",
@@ -2164,7 +2323,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation",
         "https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation-dual"
       ],
-      "id": "credential-rotation"
+      "id": "credential-rotation",
+      "example": {
+        "id": "card-term-d4-rotation",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The payments service still accepts credential A, but someone stores a new B value only in Key Vault. Clients switching to B fail until the target service accepts that replacement too. Rotation must coordinate the service and its consumers."
+      }
     },
     {
       "primary": "Cryptographic key",
@@ -2211,7 +2376,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver"
       ],
-      "id": "csi"
+      "id": "csi",
+      "example": {
+        "id": "card-term-d4-csi",
+        "mode": "inline",
+        "language": "Example mounted file path",
+        "code": "/mnt/secrets-store/payments-api-key",
+        "summary": "A Secrets Store CSI mount can expose a selected Key Vault secret as this file. The application reads the file’s contents and must reread it when rotation updates the mounted value."
+      }
     },
     {
       "primary": "DaemonSet",
@@ -2312,7 +2484,14 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy",
         "https://github.com/pgvector/pgvector"
       ],
-      "id": "database-index"
+      "id": "database-index",
+      "example": {
+        "id": "card-term-d2-index",
+        "mode": "inline",
+        "language": "SQL",
+        "code": "CREATE INDEX repairs_customer_idx ON repairs (customer_id);",
+        "summary": "For an existing repairs table with customer_id, this creates an index that can help queries filter by customer. The planner decides whether using it is worthwhile."
+      }
     },
     {
       "primary": "Database transaction",
@@ -2374,7 +2553,13 @@ window.AI200_JARGON = {
           "note": "Can forward unacknowledged messages after approximately the configured delivery-attempt threshold. A subscription is needed to consume the forwarded messages.",
           "url": "https://docs.cloud.google.com/pubsub/docs/dead-letter-topics"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d3-dlq",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repair message lacks its required photo URL, so the handler dead-letters it with a useful reason. A recovery process inspects the message, fixes the cause and deliberately resubmits or discards the failed work."
+      }
     },
     {
       "primary": "Dead-lettering",
@@ -2508,7 +2693,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/key-vault/certificates/about-certificates"
       ],
-      "id": "digital-certificate"
+      "id": "digital-certificate",
+      "example": {
+        "id": "card-term-d4-certificate",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A client requests https://api.example.com but receives a certificate valid only for other.example.com. Hostname validation rejects that mismatch even if the certificate has a trusted issuer."
+      }
     },
     {
       "primary": "DiskANN",
@@ -2525,7 +2716,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search"
       ],
-      "id": "diskann"
+      "id": "diskann",
+      "example": {
+        "id": "card-term-d2-diskann",
+        "mode": "inline",
+        "language": "JSON · vector-index entry",
+        "code": "{\"path\":\"/embedding\",\"type\":\"diskANN\"}",
+        "summary": "An entry in Cosmos DB indexingPolicy.vectorIndexes selects diskANN for /embedding. The separate vector embedding policy defines that path’s numeric type, dimensions and distance function."
+      }
     },
     {
       "primary": "Distributed trace",
@@ -2545,7 +2743,14 @@ window.AI200_JARGON = {
         "https://opentelemetry.io/docs/concepts/observability-primer/",
         "https://www.w3.org/TR/trace-context/"
       ],
-      "id": "distributed-trace"
+      "id": "distributed-trace",
+      "example": {
+        "id": "card-term-d4-trace",
+        "mode": "inline",
+        "language": "Operation flow",
+        "code": "GET /repairs/42 → API handler → PostgreSQL query",
+        "summary": "One distributed trace can connect the incoming request span with the API’s database-call span through propagated/current context, showing which timed step caused a delay."
+      }
     },
     {
       "primary": "DNS",
@@ -2580,7 +2785,14 @@ window.AI200_JARGON = {
         "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/",
         "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/"
       ],
-      "id": "docker"
+      "id": "docker",
+      "example": {
+        "id": "card-term-d1-docker",
+        "mode": "inline",
+        "language": "Docker CLI",
+        "code": "docker build -t orders:v1 .\ndocker run --rm -p 8080:8000 orders:v1",
+        "summary": "The current directory supplies the Dockerfile and source. Assume the image starts an API on port 8000; the second command makes it available on the host at port 8080."
+      }
     },
     {
       "primary": "Docker container",
@@ -2598,7 +2810,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
       ],
-      "id": "docker-container"
+      "id": "docker-container",
+      "example": {
+        "id": "card-term-d1-container",
+        "mode": "inline",
+        "language": "Docker CLI",
+        "code": "docker run -d --name orders-a orders:v1\ndocker run -d --name orders-b orders:v1",
+        "summary": "Assuming orders:v1 is a locally available long-running app image, these commands start two separately named containers from that same image."
+      }
     },
     {
       "primary": "Dockerfile",
@@ -2730,7 +2949,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/cosmos-db/vector-search",
         "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview"
       ],
-      "id": "embedding"
+      "id": "embedding",
+      "example": {
+        "id": "card-term-d2-embedding",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A compatible embedding model gives similar directions to “The lamp is broken” and “The light does not work.” Comparing the query embedding with stored article embeddings can retrieve the related repair article even when its words differ."
+      }
     },
     {
       "primary": "Endpoint",
@@ -2989,7 +3214,14 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/event-grid/overview",
         "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage"
       ],
-      "id": "event-notification"
+      "id": "event-notification",
+      "example": {
+        "id": "card-term-d3-event",
+        "mode": "inline",
+        "language": "JSON · Event Grid schema fragment",
+        "code": "{\"eventType\":\"Microsoft.Storage.BlobCreated\",\"data\":{\"url\":\"https://studystore.blob.core.windows.net/photos/42.jpg\"}}",
+        "summary": "This notification fragment identifies what happened and where the photo is stored. It does not contain the photo bytes; the handler retrieves those separately if needed."
+      }
     },
     {
       "primary": "Event offset",
@@ -3223,7 +3455,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview",
         "https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json"
       ],
-      "id": "function-app"
+      "id": "function-app",
+      "example": {
+        "id": "card-term-d3-function-app",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repairs Function App can host an HTTP GetRepair function and an Event Grid PhotoUploaded function. They have separate handlers/triggers but share app-level settings and hosting configuration."
+      }
     },
     {
       "primary": "Function trigger",
@@ -3282,7 +3520,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://www.postgresql.org/docs/current/datatype-json.html#JSON-INDEXING"
       ],
-      "id": "gin"
+      "id": "gin",
+      "example": {
+        "id": "card-term-d2-gin",
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "CREATE INDEX article_metadata_idx ON articles USING gin (metadata);",
+        "summary": "If metadata is a JSONB column, this GIN index can support containment predicates such as metadata @> '{\"topic\":\"repairs\"}'. It indexes values inside the document."
+      }
     },
     {
       "primary": "Git",
@@ -3468,7 +3713,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://github.com/pgvector/pgvector"
       ],
-      "id": "hnsw"
+      "id": "hnsw",
+      "example": {
+        "id": "card-term-d2-hnsw",
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX article_vectors ON articles USING hnsw (embedding vector_cosine_ops);",
+        "summary": "With pgvector enabled and an existing vector column embedding, this builds an HNSW index for cosine-distance ordering."
+      }
     },
     {
       "primary": "Horizontal scaling",
@@ -3555,7 +3807,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
       ],
-      "id": "hpa"
+      "id": "hpa",
+      "example": {
+        "id": "card-m-16-1-1",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two equally requested API pods average 80% CPU utilization against a 40% target. With usable metrics, the basic ratio estimate is four replicas, before minimum/maximum bounds and stabilization rules."
+      }
     },
     {
       "primary": "HSM",
@@ -3717,7 +3975,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version"
       ],
-      "id": "image-digest"
+      "id": "image-digest",
+      "example": {
+        "id": "card-term-d1-digest",
+        "mode": "inline",
+        "language": "Image address format",
+        "code": "studyacr.azurecr.io/orders@sha256:<manifest-digest>",
+        "summary": "Replace <manifest-digest> with the real digest returned by the registry. The @sha256 part selects exact manifest content rather than following a movable tag."
+      }
     },
     {
       "primary": "Image pull",
@@ -3736,7 +4001,14 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli",
         "https://kubernetes.io/docs/concepts/containers/images/"
       ],
-      "id": "image-pull"
+      "id": "image-pull",
+      "example": {
+        "id": "card-term-d1-image-pull",
+        "mode": "inline",
+        "language": "Docker CLI",
+        "code": "docker pull studyacr.azurecr.io/orders:v1",
+        "summary": "After authenticating to this example registry, the command downloads the content needed for orders:v1. Pulling an image does not start its application."
+      }
     },
     {
       "primary": "Image push",
@@ -3935,7 +4207,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://opentelemetry.io/docs/languages/python/instrumentation/"
       ],
-      "id": "instrumentation"
+      "id": "instrumentation",
+      "example": {
+        "id": "card-term-d4-instrumentation",
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.instrumentation.requests import RequestsInstrumentor\nRequestsInstrumentor().instrument()",
+        "summary": "With the package installed and tracing configured, this adds telemetry hooks to Python’s requests library. Outgoing calls can then create client spans and propagate context."
+      }
     },
     {
       "primary": "Invalidation",
@@ -3996,7 +4275,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://github.com/pgvector/pgvector"
       ],
-      "id": "ivfflat"
+      "id": "ivfflat",
+      "example": {
+        "id": "card-term-d2-ivfflat",
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX article_vectors ON articles USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);",
+        "summary": "This example trains an IVFFlat cosine index from existing article vectors and groups them into 100 lists. Load representative data first; 100 is an example choice, not a universal recommendation."
+      }
     },
     {
       "primary": "JMS",
@@ -4092,7 +4378,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/container-apps/scale-app"
       ],
-      "id": "keda"
+      "id": "keda",
+      "example": {
+        "id": "card-term-d1-keda",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An empty jobs queue allows an appropriately configured worker to scale to zero. When jobs arrive, KEDA can detect the backlog and request a replica before any worker is running to report CPU usage."
+      }
     },
     {
       "primary": "KEK",
@@ -4146,7 +4438,14 @@ window.AI200_JARGON = {
           "url": "https://kubernetes.io/docs/concepts/configuration/secret/",
           "term": "kubernetes-secret"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-key-vault",
+        "mode": "inline",
+        "language": "Vault URL",
+        "code": "https://study-vault.vault.azure.net",
+        "summary": "This illustrative vault endpoint is the base URL a SecretClient uses. A secret such as payments-api-key is a separately named object inside the vault."
+      }
     },
     {
       "primary": "Key Vault Administrator",
@@ -4220,7 +4519,14 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references",
         "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core"
       ],
-      "id": "key-vault-reference"
+      "id": "key-vault-reference",
+      "example": {
+        "id": "card-term-d4-key-vault-reference",
+        "mode": "inline",
+        "language": "App Service / Functions app-setting value",
+        "code": "@Microsoft.KeyVault(SecretUri=https://study-vault.vault.azure.net/secrets/payments-api-key)",
+        "summary": "Use this as the PAYMENTS_KEY app-setting value. It points to payments-api-key in study-vault; the platform supplies the secret’s value using its configured authorized identity. Other reference mechanisms have different syntax."
+      }
     },
     {
       "primary": "Key Vault secret",
@@ -4394,7 +4700,13 @@ window.AI200_JARGON = {
           "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview",
           "term": "gke"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d1-kubernetes",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Declare that three orders pods should be running. If one disappears, Kubernetes controllers create a replacement and the scheduler finds a suitable node for it."
+      }
     },
     {
       "primary": "Kubernetes cluster",
@@ -4414,7 +4726,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
       ],
-      "id": "kubernetes-cluster"
+      "id": "kubernetes-cluster",
+      "example": {
+        "id": "card-term-d1-cluster",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A small cluster has worker-a and worker-b. Two orders pods run on worker-a and another runs on worker-b; one control plane coordinates these workloads as part of the same cluster."
+      }
     },
     {
       "primary": "Kubernetes control plane",
@@ -4430,7 +4748,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
       ],
-      "id": "kubernetes-control-plane"
+      "id": "kubernetes-control-plane",
+      "example": {
+        "id": "card-term-d1-control-plane",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "You request three API replicas, but only two exist. A controller creates the missing pod, and the scheduler selects a node that can run it."
+      }
     },
     {
       "primary": "Kubernetes Deployment",
@@ -4536,7 +4860,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
       ],
-      "id": "kubernetes-namespace"
+      "id": "kubernetes-namespace",
+      "example": {
+        "id": "card-term-d1-namespace",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A Deployment named orders can exist in both training and production namespaces. Asking kubectl for the training namespace selects that namespace’s resources, not production’s copy."
+      }
     },
     {
       "primary": "Kubernetes pod",
@@ -4556,7 +4886,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/aks/core-aks-concepts"
       ],
-      "id": "kubernetes-pod"
+      "id": "kubernetes-pod",
+      "example": {
+        "id": "card-term-d1-pod",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An API container and a helper container run in one pod. They share the pod’s IP address and can communicate through localhost; they can also mount the same declared volume."
+      }
     },
     {
       "primary": "Kubernetes Secret",
@@ -4621,7 +4957,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/concepts/services-networking/service/"
       ],
-      "id": "kubernetes-service"
+      "id": "kubernetes-service",
+      "example": {
+        "id": "card-term-d1-service",
+        "mode": "inline",
+        "language": "YAML · Service spec fragment",
+        "code": "selector:\n  app: orders\nports:\n  - port: 80\n    targetPort: 8000",
+        "summary": "Under a Service’s spec, this selects pods labeled app=orders and forwards Service port 80 to port 8000 on those pods. The application must actually listen there."
+      }
     },
     {
       "primary": "Kubernetes ServiceAccount",
@@ -4694,7 +5037,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apprequests",
         "https://opentelemetry.io/docs/concepts/observability-primer/"
       ],
-      "id": "latency"
+      "id": "latency",
+      "example": {
+        "id": "card-term-d4-latency",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A browser measures 250 ms from sending a request to receiving its response, while the API’s server span measures 100 ms. Those measurements have different boundaries; the remainder can include network, proxy and client-side time."
+      }
     },
     {
       "primary": "Lease",
@@ -4738,7 +5087,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://redis.io/docs/latest/develop/reference/eviction/"
       ],
-      "id": "lfu"
+      "id": "lfu",
+      "example": {
+        "id": "card-term-d2-lfu",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Eligible key A is requested frequently, while B is rarely requested. LFU favors removing B, using Redis’s approximate, aging frequency information."
+      }
     },
     {
       "primary": "LimitRange",
@@ -4803,7 +5158,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview"
       ],
-      "id": "log-analytics"
+      "id": "log-analytics",
+      "example": {
+        "id": "card-term-d4-log-analytics",
+        "mode": "inline",
+        "language": "KQL",
+        "code": "AppRequests | where Success == false",
+        "summary": "Run this in Log Analytics at a scope containing collected Application Insights request data. The query tool explores the data; the workspace is the resource storing it."
+      }
     },
     {
       "primary": "Log Analytics workspace",
@@ -4839,7 +5201,14 @@ window.AI200_JARGON = {
         "https://opentelemetry.io/docs/concepts/observability-primer/",
         "https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete"
       ],
-      "id": "log-record"
+      "id": "log-record",
+      "example": {
+        "id": "card-term-d4-log",
+        "mode": "inline",
+        "language": "JSON · application log example",
+        "code": "{\"time\":\"2026-10-29T10:00:00Z\",\"level\":\"ERROR\",\"repairId\":\"42\",\"message\":\"Photo is missing\"}",
+        "summary": "This illustrative structured log records when the problem occurred, its severity and the affected repair. The actual collected table/schema depends on the logging pipeline."
+      }
     },
     {
       "primary": "LRU",
@@ -4855,7 +5224,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://redis.io/docs/latest/develop/reference/eviction/"
       ],
-      "id": "lru"
+      "id": "lru",
+      "example": {
+        "id": "card-term-d2-lru",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Eligible key A was read just now, while B has not been used for a long time. LRU favors removing B. Redis approximates this choice rather than maintaining a perfect access-order list."
+      }
     },
     {
       "primary": "Managed identity",
@@ -4871,7 +5246,8 @@ window.AI200_JARGON = {
       ],
       "sourceCard": "term-d4-managed-identity",
       "sources": [
-        "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
+        "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
+        "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains"
       ],
       "id": "managed-identity",
       "related": [
@@ -4899,7 +5275,14 @@ window.AI200_JARGON = {
           "url": "https://kubernetes.io/docs/concepts/security/service-accounts/",
           "term": "kubernetes-serviceaccount"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-managed-identity",
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.identity import ManagedIdentityCredential\ncredential = ManagedIdentityCredential()",
+        "summary": "On a supported Azure host with managed identity enabled, this credential uses the host’s identity mechanism to obtain tokens. Constructing it does not create the identity or grant service permissions."
+      }
     },
     {
       "primary": "maxSurge",
@@ -5096,7 +5479,13 @@ window.AI200_JARGON = {
           "url": "https://kafka.apache.org/intro/",
           "term": "apache-kafka"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d3-queue",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two photo workers compete on one queue. Worker A can receive photo 42 while worker B receives photo 43. They share pending work; adding a worker does not give it an independent copy of every queued message."
+      }
     },
     {
       "primary": "Message settlement",
@@ -5172,7 +5561,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://opentelemetry.io/docs/concepts/observability-primer/"
       ],
-      "id": "metric"
+      "id": "metric",
+      "example": {
+        "id": "card-term-d4-metric",
+        "mode": "inline",
+        "language": "Illustrative counter measurement",
+        "code": "repair_jobs_completed_total 42",
+        "summary": "This measurement says the counter has recorded 42 completed jobs. Repeated measurements can show throughput over time; it is not an individual job’s detailed trace."
+      }
     },
     {
       "primary": "MFA",
@@ -5221,7 +5617,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/entra/fundamentals/whatis"
       ],
-      "id": "microsoft-entra-id"
+      "id": "microsoft-entra-id",
+      "example": {
+        "id": "card-term-d4-entra",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Employees sign in through their organization’s Microsoft Entra directory, and an Azure app can obtain an Entra token for a protected service. The directory manages identities rather than storing the app’s business repair records."
+      }
     },
     {
       "primary": "Millicore",
@@ -5391,7 +5793,14 @@ window.AI200_JARGON = {
           "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
           "term": "networkpolicy"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-prep-rbac-028",
+        "mode": "inline",
+        "language": "Example network-rule intent",
+        "code": "Allow TCP 443 from 10.20.1.0/24 to 10.20.2.4",
+        "summary": "This describes a network-flow rule, not a data-access role. Matching traffic still depends on applicable rule priority/routing, and the receiving service still checks the caller’s access."
+      }
     },
     {
       "primary": "OAuth 2.0",
@@ -5454,7 +5863,14 @@ window.AI200_JARGON = {
         "https://opentelemetry.io/docs/concepts/observability-primer/",
         "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable"
       ],
-      "id": "opentelemetry"
+      "id": "opentelemetry",
+      "example": {
+        "id": "card-term-d4-otel",
+        "mode": "inline",
+        "language": "Telemetry flow",
+        "code": "Instrumentation → OpenTelemetry SDK → exporter → Azure Monitor",
+        "summary": "OpenTelemetry produces/processes the observations and the exporter delivers them. Azure Monitor is the separate storage/analysis destination in this example."
+      }
     },
     {
       "primary": "Operation ID",
@@ -5508,7 +5924,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/kusto/query/percentiles-aggregation-function"
       ],
-      "id": "p95-latency"
+      "id": "p95-latency",
+      "example": {
+        "id": "card-term-d4-p95",
+        "mode": "inline",
+        "language": "Illustrative latency measurement",
+        "code": "P95 request latency = 400 ms",
+        "summary": "Approximately 95% of the measured durations are no greater than 400 ms. This percentile describes duration, not the percentage of successful requests."
+      }
     },
     {
       "primary": "ParentBased",
@@ -5553,7 +5976,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
       ],
-      "id": "pdb"
+      "id": "pdb",
+      "example": {
+        "id": "card-prep-aks-015",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "With three healthy matching pods and minAvailable=2, a node drain can evict one while two remain available. It cannot voluntarily evict another if doing so would break that budget."
+      }
     },
     {
       "primary": "PeekLock",
@@ -5630,7 +6059,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer"
       ],
-      "id": "pgbouncer"
+      "id": "pgbouncer",
+      "example": {
+        "id": "card-term-d2-pgbouncer",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "With transaction pooling, many mostly idle application clients can reuse a smaller set of PostgreSQL server connections. If all backend connections are busy, additional transactions wait rather than receiving an unlimited new database connection."
+      }
     },
     {
       "primary": "pgvector",
@@ -5707,7 +6142,14 @@ window.AI200_JARGON = {
         "https://www.postgresql.org/docs/current/tutorial-sql.html",
         "https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector"
       ],
-      "id": "postgresql"
+      "id": "postgresql",
+      "example": {
+        "id": "card-term-d2-postgresql",
+        "mode": "inline",
+        "language": "SQL",
+        "code": "CREATE TABLE repairs (id integer PRIMARY KEY, status text);\nINSERT INTO repairs VALUES (42, 'open');\nSELECT status FROM repairs WHERE id = 42;",
+        "summary": "This small relational example defines a table, stores a repair record and retrieves its status, open."
+      }
     },
     {
       "primary": "PowerShell",
@@ -5761,7 +6203,14 @@ window.AI200_JARGON = {
           "note": "Private connectivity to supported service producers. The endpoint, service publication and DNS models are provider-specific.",
           "url": "https://docs.cloud.google.com/vpc/docs/private-service-connect"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-private-endpoint",
+        "mode": "inline",
+        "language": "Illustrative private DNS resolution",
+        "code": "study-vault.vault.azure.net → 10.20.1.5",
+        "summary": "Here the vault’s normal service hostname resolves to a private endpoint address for connected clients. They need a route to that private IP as well as their usual vault permissions."
+      }
     },
     {
       "primary": "Producer",
@@ -6118,7 +6567,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
       ],
-      "id": "read-consistency"
+      "id": "read-consistency",
+      "example": {
+        "id": "card-term-d2-consistency",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A committed update changes repair 42 from open to closed. A later Strong read must return the committed latest value, while an Eventual read can temporarily return an older version before replicas catch up."
+      }
     },
     {
       "primary": "Readiness probe",
@@ -6174,7 +6629,14 @@ window.AI200_JARGON = {
         "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
         "https://redis.io/docs/latest/develop/data-types/sorted-sets/"
       ],
-      "id": "redis"
+      "id": "redis",
+      "example": {
+        "id": "card-term-d2-redis",
+        "mode": "inline",
+        "language": "Redis commands",
+        "code": "SET repair:42 open EX 600\nGET repair:42",
+        "summary": "This stores a small status value for ten minutes, then reads it. Redis can supply the cached status without querying the source database on this hit."
+      }
     },
     {
       "primary": "Redis query engine",
@@ -6226,7 +6688,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries"
       ],
-      "id": "request-unit"
+      "id": "request-unit",
+      "example": {
+        "id": "card-term-d2-ru",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Suppose one request reports a charge of 2 RUs and another reports 20 RUs. The second consumed ten times as much measured database work; these illustrative charges are not fixed prices for every operation of those types."
+      }
     },
     {
       "primary": "Resource",
@@ -6319,7 +6787,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
       ],
-      "id": "resource-limit"
+      "id": "resource-limit",
+      "example": {
+        "id": "card-term-d1-limit",
+        "mode": "inline",
+        "language": "YAML · container resources.limits fragment",
+        "code": "cpu: \"500m\"\nmemory: \"128Mi\"",
+        "summary": "Under resources.limits, these illustrative values cap CPU at half a core and memory at 128 MiB. CPU can be throttled; exceeding the memory limit can terminate the container."
+      }
     },
     {
       "primary": "Resource request",
@@ -6461,7 +6936,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/cosmos-db/autoscale-faq",
         "https://learn.microsoft.com/en-us/azure/cosmos-db/optimize-cost-queries"
       ],
-      "id": "ru-s"
+      "id": "ru-s",
+      "example": {
+        "id": "card-term-d2-rus",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "If requests average 5 RUs each, 1,000 RU/s represents a theoretical budget of about 200 such requests per second. Hot partitions, other operations and service/client bottlenecks can reduce achievable throughput."
+      }
     },
     {
       "primary": "Scaling",
@@ -6604,7 +7085,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider"
       ],
-      "id": "sentinel-key"
+      "id": "sentinel-key",
+      "example": {
+        "id": "card-m-55-3-1",
+        "mode": "inline",
+        "language": "App Configuration key/value",
+        "code": "Config:Sentinel = \"release-42\"",
+        "summary": "Update related settings first, then change this watched key. A correctly configured provider can reload the selected values when the app triggers an eligible refresh; the sentinel is a signal, not a multi-write transaction."
+      }
     },
     {
       "primary": "Serverless",
@@ -6621,7 +7109,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale"
       ],
-      "id": "serverless"
+      "id": "serverless",
+      "example": {
+        "id": "card-term-d3-serverless",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deploy a photo-processing function without creating and patching your own worker VM. Azure manages the hosting servers; you still choose a plan whose scaling, execution limits and capacity costs fit the workload."
+      }
     },
     {
       "primary": "Service Bus",
@@ -6680,7 +7174,13 @@ window.AI200_JARGON = {
           "url": "https://docs.cloud.google.com/pubsub/docs/overview",
           "term": "google-cloud-pub-sub"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d3-service-bus",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The API queues a repair-photo job, then returns promptly. A worker can receive and complete it later; if processing repeatedly fails, the message can be inspected and recovered through the entity’s dead-letter path."
+      }
     },
     {
       "primary": "Service Bus auto-forwarding",
@@ -6698,7 +7198,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-auto-forwarding"
       ],
-      "id": "service-bus-auto-forwarding"
+      "id": "service-bus-auto-forwarding",
+      "example": {
+        "id": "card-m-44-5-1",
+        "mode": "inline",
+        "language": "Forwarding flow",
+        "code": "incoming queue → processing queue",
+        "summary": "Both entities are in the same Service Bus namespace. Successful forwarding moves the message onward; it is not independent fan-out to two consumer subscriptions."
+      }
     },
     {
       "primary": "Service Bus session",
@@ -6716,7 +7223,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions"
       ],
-      "id": "service-bus-session"
+      "id": "service-bus-session",
+      "example": {
+        "id": "card-term-d3-session",
+        "mode": "inline",
+        "language": "Service Bus message property",
+        "code": "SessionId = \"repair-42\"",
+        "summary": "Give related repair-42 messages this same session ID for grouped ordered processing. A different repair can use repair-43 and be handled concurrently by another session receiver."
+      }
     },
     {
       "primary": "Service Bus topic",
@@ -6775,7 +7289,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals"
       ],
-      "id": "service-principal"
+      "id": "service-principal",
+      "example": {
+        "id": "card-prep-rbac-015",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A multitenant repairs application used by Contoso and Fabrikam has a local service principal in each tenant. Each tenant can manage the local identity’s grants for that application."
+      }
     },
     {
       "primary": "Service role name",
@@ -6959,7 +7479,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/concepts/workloads/pods/probes/"
       ],
-      "id": "startup-probe"
+      "id": "startup-probe",
+      "example": {
+        "id": "card-m-11-3-1",
+        "mode": "inline",
+        "language": "YAML · startupProbe timing fragment",
+        "code": "failureThreshold: 30\nperiodSeconds: 10",
+        "summary": "Put these values under a startupProbe that already defines its check. Thirty failed attempts at ten-second intervals provide roughly five minutes for startup; these are example values, not universal defaults."
+      }
     },
     {
       "primary": "StatefulSet",
@@ -6976,7 +7503,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
       ],
-      "id": "statefulset"
+      "id": "statefulset",
+      "example": {
+        "id": "card-prep-aks-023",
+        "mode": "inline",
+        "language": "Pod name examples",
+        "code": "postgres-0\npostgres-1",
+        "summary": "A StatefulSet named postgres gives its members predictable names and can give each its own persistent volume claim. The database software still has to implement replication and recovery."
+      }
     },
     {
       "primary": "Subscription",
@@ -7037,7 +7571,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://opentelemetry.io/docs/concepts/observability-primer/"
       ],
-      "id": "telemetry"
+      "id": "telemetry",
+      "example": {
+        "id": "card-term-d4-telemetry",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One repair request produces a duration measurement, a dependency span and a log explaining a validation failure. These are different observations of the application’s behavior that a monitoring system can collect."
+      }
     },
     {
       "primary": "Telemetry exporter",
@@ -7058,7 +7598,14 @@ window.AI200_JARGON = {
         "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
         "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable"
       ],
-      "id": "telemetry-exporter"
+      "id": "telemetry-exporter",
+      "example": {
+        "id": "card-term-d4-exporter",
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.sdk.trace.export import ConsoleSpanExporter\nexporter = ConsoleSpanExporter()",
+        "summary": "This exporter writes spans to the console when attached to a configured span-processing pipeline. Other exporters send them to remote backends; creating the exporter alone does not instrument application code."
+      }
     },
     {
       "primary": "Telemetry span processor",
@@ -7092,7 +7639,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/entra/fundamentals/whatis"
       ],
-      "id": "tenant"
+      "id": "tenant",
+      "example": {
+        "id": "card-term-d4-tenant",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Contoso’s tenant contains its employee accounts and application identities. Both its Training and Production Azure subscriptions can trust that tenant, even though the subscriptions are separate resource/billing boundaries."
+      }
     },
     {
       "primary": "Terraform",
@@ -7308,7 +7861,13 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
         "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-filter-examples"
       ],
-      "id": "topic-subscription"
+      "id": "topic-subscription",
+      "example": {
+        "id": "card-term-d3-subscription",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Billing and shipping have separate subscriptions to OrderCreated. If billing pauses, its matching messages can remain pending within the service’s limits while shipping continues consuming its own subscription."
+      }
     },
     {
       "primary": "Trace context",
@@ -7363,7 +7922,14 @@ window.AI200_JARGON = {
         "https://opentelemetry.io/docs/concepts/observability-primer/",
         "https://opentelemetry.io/docs/languages/python/instrumentation/"
       ],
-      "id": "trace-span"
+      "id": "trace-span",
+      "example": {
+        "id": "card-term-d4-span",
+        "mode": "inline",
+        "language": "Python",
+        "code": "with tracer.start_as_current_span(\"load-repair\") as span:\n    span.set_attribute(\"repair.id\", \"42\")",
+        "summary": "With a configured tracer, this creates one named span and records an attribute. Put the operation being timed inside the block; the span ends when the block exits."
+      }
     },
     {
       "primary": "TraceIdRatioBased",
@@ -7406,7 +7972,14 @@ window.AI200_JARGON = {
         "https://opentelemetry.io/docs/specs/otel/trace/sdk/",
         "https://opentelemetry.io/docs/languages/python/instrumentation/"
       ],
-      "id": "tracerprovider"
+      "id": "tracerprovider",
+      "example": {
+        "id": "card-m-64-1-1",
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.sdk.resources import Resource\nfrom opentelemetry.sdk.trace import TracerProvider\nprovider = TracerProvider(resource=Resource.create({\"service.name\": \"repairs-api\"}))",
+        "summary": "This constructs a provider with shared service metadata. Register it and configure its sampler/processors/exporters as needed; the constructor alone does not deliver spans to a backend."
+      }
     },
     {
       "primary": "Transactional outbox",
@@ -7713,7 +8286,14 @@ window.AI200_JARGON = {
           "note": "Google Cloud VPC networks are global and contain regional subnets. Azure VNets are regional, so the scope differs.",
           "url": "https://docs.cloud.google.com/vpc/docs/vpc"
         }
-      ]
+      ],
+      "example": {
+        "id": "card-term-d4-vnet",
+        "mode": "inline",
+        "language": "Example address space",
+        "code": "10.20.0.0/16",
+        "summary": "A VNet can use this private range and contain a subnet such as 10.20.1.0/24. Routing, network rules and service connectivity still need to be configured for the intended traffic."
+      }
     },
     {
       "primary": "VPA",
@@ -7730,7 +8310,13 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/aks/use-vertical-pod-autoscaler"
       ],
-      "id": "vpa"
+      "id": "vpa",
+      "example": {
+        "id": "card-m-16-3-1",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A VPA recommendation might raise a container’s memory request from 128 MiB to 512 MiB after observing its usage. This changes the size requested for a container, rather than simply adding more copies."
+      }
     },
     {
       "primary": "W3C",
@@ -7773,7 +8359,14 @@ window.AI200_JARGON = {
       "sources": [
         "https://learn.microsoft.com/en-us/azure/event-grid/end-point-validation-event-grid-events-schema"
       ],
-      "id": "webhook"
+      "id": "webhook",
+      "example": {
+        "id": "card-term-d3-webhook",
+        "mode": "inline",
+        "language": "HTTP request fragment",
+        "code": "POST /events HTTP/1.1\nHost: repairs.example.com",
+        "summary": "An event publisher calls this receiver endpoint with the event payload. Your application exposes the webhook; it is the publisher that initiates this notification request."
+      }
     },
     {
       "primary": "Worker",

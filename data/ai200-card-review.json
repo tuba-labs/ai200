@@ -133,7 +133,7 @@
     "term-d1-subscription": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "70b4c5ba1ca1441b49b3f111d8ce67c641f26e801f1393e750358811e27010c2"
+      "fingerprint": "f3f5c5691c741283a64c5e4752357f571db7f3c9c9978cca72a7c688c99e3808"
     },
     "term-d1-region": {
       "objective": "d1-aks-workloads",
@@ -143,7 +143,7 @@
     "term-d1-availability-zone": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "7f9a6ff3b7d433a0cef3c3beec67a161546eef41f34e76452a5c82d7926706b1"
+      "fingerprint": "4eda334acd8dfa2a0c57834b31d67c12931963f7de0e650bab8e51d6caab321b"
     },
     "term-d1-sku": {
       "objective": "d1-aks-workloads",
@@ -178,22 +178,22 @@
     "term-d1-cicd": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "59c46aeaa56ca5f46eb667226bab8efca0589ba02e4995a5bff29aabe276ed0e"
+      "fingerprint": "594f7dfb4a887c8e69bd085f5d7dd14b2ee648a58e710094339779b159e62dee"
     },
     "term-d1-docker": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "e9e8cea8168558c2f49883244edf0c205c6c870129bc516d303eaa27f6b3d9be"
+      "fingerprint": "fd4d4e4e1afd60f320e8e08821211a1bf87e016d2cd54eea687b16609f3a9194"
     },
     "term-d1-image": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "1bb7cf48ba556f89973f8ad6814c2213a9162af2ea3f5ad334c0cc444d542414"
+      "fingerprint": "5075d3732348fe2e15571ddad5ba5dfbd096061263a80790c12e6d1d142a5b9e"
     },
     "term-d1-container": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "2df09a5a332553048464e4e5de871d9967454d017f25635fd3e50f3841d1dd02"
+      "fingerprint": "345b2f49abab95059ae400eac5a41f4ebdde9070b65ef65c5c38ac96dfd2e4f6"
     },
     "term-d1-dockerfile": {
       "objective": "d1-aks-workloads",
@@ -208,7 +208,7 @@
     "term-d1-acr": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "5c489f56eb55a64e2fbf4a763739a5163da1613376cb123b2d175026a13f9fc6"
+      "fingerprint": "a3358a4450176590bef9e21679013c51611fdd829ce4d306b22ba7a85bec7ef0"
     },
     "term-d1-repository": {
       "objective": "d1-aks-workloads",
@@ -223,7 +223,7 @@
     "term-d1-digest": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "4c45401f72e9313db78b2b99240e1056d4a695add96785fc901816059e0f4a2d"
+      "fingerprint": "7485a73b9a224d615320e3faa97c189e41b1c3e1a4f0b225b9b605676b33afb9"
     },
     "term-d1-build-context": {
       "objective": "d1-aks-workloads",
@@ -238,12 +238,12 @@
     "term-d1-image-pull": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "edacdc22e16153a071b83fc7854261f52662556feba6d27555444945ee2b184f"
+      "fingerprint": "c37459805565b622a0e1385b0f93ff571713f86c0b5c0c4c6a3f83b65f0668f6"
     },
     "term-d1-app-service": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "2ba8a8aa1c6e47f8c7722eca23ba3c6c3ba46d6d60b7077bd519f64fcd7173a4"
+      "fingerprint": "31b7bb0948664118bb06eeb231b89be9fe917a9b0314fbbfd5eae22bf0c37ed8"
     },
     "term-d1-deployment-slot": {
       "objective": "d1-aks-workloads",
@@ -253,12 +253,12 @@
     "term-d1-container-apps": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "dfa3d42a4043b97d648efe2bf4c8dd8f7014cf550a14d7e4dcb3aee58544e943"
+      "fingerprint": "e3f8ef03b0f40698d893b14199d70b2afce832661f1edc863e783337185c2850"
     },
     "term-d1-kubernetes": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "c12de7f327801cb203f0c75d06e7db2ceb3722cbb1a9876f1b23fbb07d17c597"
+      "fingerprint": "824a6a67568855a3de93e74cfb6cfed042a9f264236e9908b6033e6fac741382"
     },
     "term-d1-aks": {
       "objective": "d1-aks-workloads",
@@ -268,27 +268,27 @@
     "term-d1-cluster": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "86d2f62e3829d22f8c87dc4156e863d00b335a0e068166f14f5c45d890de372c"
+      "fingerprint": "138df4f27ef4d494289daeaef52b17307f49cccb925b7dc868629b59d2fb6c98"
     },
     "term-d1-control-plane": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "7f6badfb4c6d219ca179cfc589b27f54793205977ed331e8996d8a0aeb5e1d43"
+      "fingerprint": "ef3c21f900142acc1891b3da81225fdb04eb03a3adac2b5c313b5dcb3736f6dd"
     },
     "term-d1-node": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "9c0905145ce0f4ba1a8319fa1237a93758121fdd20673b5c89c79efc1e7f0eef"
+      "fingerprint": "816fa5082c4eedf2299a0d28cfaf01c294d97792334748abdb8068ed12af98e9"
     },
     "term-d1-node-pool": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "39cf505d6159d10065afb3f3f474e00098b1457f81cf31073634357e83660a55"
+      "fingerprint": "22514bb7315358e1f290823d4d40b1698d14baff284fa9c3e81594f30fb2fb9b"
     },
     "term-d1-pod": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "5695d62aef33259f08ec0165296fe83ffad61188c9d2a770e9d1830696dbca71"
+      "fingerprint": "0cb367691f28a70397d503d633b91d9ca33e86a858076a47b88517570e9e1021"
     },
     "term-d1-replica": {
       "objective": "d1-aks-workloads",
@@ -308,7 +308,7 @@
     "term-d1-service": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "f3191a16eec5a513f000f1ab78113f064ee17f4051dec5436ae584dea3e0ed6b"
+      "fingerprint": "5d4ef42a23b3e1a5e45d51f8304413ee910ba165a714dbf36cf776954b0046eb"
     },
     "term-d1-ingress": {
       "objective": "d1-aks-workloads",
@@ -318,7 +318,7 @@
     "term-d1-namespace": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "b291977a2ca5632bb1dcc93962768dcc01b3d53a1ae3e20d21867a16095be3fa"
+      "fingerprint": "aeacddc56515bf6cab7656809d22681658032e0c181d5cdd91f9acb77aab089f"
     },
     "term-d1-manifest": {
       "objective": "d1-aks-workloads",
@@ -343,7 +343,7 @@
     "term-d1-limit": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "77455f4f36c5f0ccf76fe31a99550c27c1fed291e6a9391d9642eda8c4a23d27"
+      "fingerprint": "b8bfa8d2c533e301acd7c74e81e8e3ddc1a2183aaae4efa1daf953dfa6282650"
     },
     "term-d1-dns": {
       "objective": "d1-aks-workloads",
@@ -363,7 +363,7 @@
     "term-d1-keda": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "5a20324eec3590fbda2c4155fe47d5a979fd0359abc81bfa12a184514f463a65"
+      "fingerprint": "a008b9e99825aaabf99ccf7445258e0da895467f7dc0bbbafc59b3e0cbc53468"
     },
     "term-d1-cpu": {
       "objective": "d1-aks-workloads",
@@ -393,47 +393,47 @@
     "m-11-3-1": {
       "objective": "d1-container-troubleshooting",
       "level": "foundation",
-      "fingerprint": "fac7049dfec1169fe07fcd3efae5db4b42a8aa72a2d6681aceab6f83b71748c9"
+      "fingerprint": "74176dfebe1b66b8d7422b4efa1f666f5449c3346c391056af94e072aaade382"
     },
     "m-16-1-1": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "827b7231287323db78907438daf5a9ba253d433761df172d20dc45bc5522f7aa"
+      "fingerprint": "8c5e4e6953b7455fec4403d8e3bf623117450ae19f953f36acef346fd1e88318"
     },
     "m-16-3-1": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "0530d7ad1a1f92ef66432d1ab6446196b6fcba7af9085d7e53d89e938542383d"
+      "fingerprint": "9a8f37feaf0027f625a403a7e2c4fd0fb023f70b55123a01640983fcb9756154"
     },
     "prep-aks-015": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "c0d25510539fdbf1c7b65cbff245b597334202da18613d9b5abcc1672d82bd1e"
+      "fingerprint": "f3f168ba6910348b5b1804e5ab4b0b446dac45b76ea5b4deb4d63d3ae31acacc"
     },
     "prep-aks-023": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "5d9d702bc461782dae631c0abe72155b79f59c18e63daaeef7a2cf661735bae7"
+      "fingerprint": "16577f102f78b7887aeccf686e387f953804df7391bfbd3ceebaabdb74ac7314"
     },
     "prep-ca-001": {
       "objective": "d1-container-apps",
       "level": "foundation",
-      "fingerprint": "d7704d94128739fe2e16633ce5330bc224a3207276d0ad31b817229c030381af"
+      "fingerprint": "57792b777be4902c937fe7fb49844cd5c286de8bfb36ba0e940f871545c5d3fe"
     },
     "prep-ca-002": {
       "objective": "d1-container-apps",
       "level": "foundation",
-      "fingerprint": "c939b08f2faa9be2bf23df648cc8719850baa009933f8ca8ac23c1cf681565f4"
+      "fingerprint": "02393e0ad03ef040827d70501195b02d785cab530498987857182ada0cb2560d"
     },
     "m-01-1-1": {
       "objective": "d1-builds",
       "level": "objective",
-      "fingerprint": "879ce56bc3fec12767d962e5fa25b8b1c4c0a7d8b996b03d3898295b8f747c31"
+      "fingerprint": "45023d723a031ead3f4ae0485fb2af526a682fb39cb4a5e811183b89824643bb"
     },
     "m-01-2-1": {
       "objective": "d1-builds",
       "level": "objective",
-      "fingerprint": "656ea46f46e2764e9cabbcb1864d6699616126a38004a3ca5f4fdafbf9c38b7b"
+      "fingerprint": "7873a39299688d004b29055766611cd6fafcb94c44862c66b3f17c9208cddc97"
     },
     "m-01-3-1": {
       "objective": "d1-builds",
@@ -443,22 +443,22 @@
     "m-01-4-1": {
       "objective": "d1-builds",
       "level": "objective",
-      "fingerprint": "494756af1e90d4afcd7116018eab5c6ddffed480a4c135912a842ef5f1eed7e7"
+      "fingerprint": "23f7c085f57b0b09a0f39bcc3f5ea22e7c6e2042dfef9102e1bf3b879cef0dc4"
     },
     "m-02-1-1": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "8110637209df13806c214a676723646df2a7f931ecf822995af1670bcf6cc160"
+      "fingerprint": "f7e3e11a432ba510d153727da8e5dbf057e13d597ecfc100f4265401983db19f"
     },
     "m-02-2-1": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "e8ea761042f8250b11a9c2de2e2d4a2ef73d89f544fd387a958a0a1bb6fda60c"
+      "fingerprint": "2bb792325fc6438ceed14fa234f0412ebf0f978d0b134dde264a69493ddddc03"
     },
     "m-02-3-1": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "6c88a5275cc08b6b74d4f9708dcd54ecb949bbb55c0355ff3c73b4b30f45ca78"
+      "fingerprint": "03dec56e1f327687c3c7b5ee5d6144c172eaf1cbf6183a3dbdf549b0bf145816"
     },
     "m-03-1-1": {
       "objective": "d1-builds",
@@ -488,7 +488,7 @@
     "m-04-1-1": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "a8acdd7f91a78c4d94d3cda696a82bae98777ee280cd29e7b08a6b053736b786"
+      "fingerprint": "03e918a68940d712456a625a31b392e0bf6fde94cc426f95f96dd7b31dab776b"
     },
     "m-04-2-1": {
       "objective": "d1-images",
@@ -523,12 +523,12 @@
     "m-05-3-1": {
       "objective": "d1-web-hosting",
       "level": "objective",
-      "fingerprint": "878db43dbefe1fe53622daa1ecabf7bc8d797c823d5f0e6e3b37a255d6efb95a"
+      "fingerprint": "6e28a5efa527ffa6a8e799604adfe9bc61f1fc22bef4abb75581bc800fcf4979"
     },
     "m-05-4-1": {
       "objective": "d1-web-hosting",
       "level": "objective",
-      "fingerprint": "efe1dfd74fb3264f0317e9f1284f8ba2026dd89c792e1d3d0ce79bd627382f1a"
+      "fingerprint": "053f3921c3ba0ddcd554d97e9c4ef28606dad828e2ad8a3eaa6cdf3c7c67d946"
     },
     "m-06-1-1": {
       "objective": "d1-web-hosting",
@@ -538,7 +538,7 @@
     "m-06-3-1": {
       "objective": "d1-web-hosting",
       "level": "objective",
-      "fingerprint": "7e6ed10143a8f477a8692a0e9ac9d3e10be57c3f9d570bc6583eecbb464cd9fd"
+      "fingerprint": "1aac003264a047cbf859ef8c6c8d170c009c86c75aa3ff9abb4bf2fd60c3e432"
     },
     "m-06-4-1": {
       "objective": "d1-web-hosting",
@@ -558,12 +558,12 @@
     "m-07-2-1": {
       "objective": "d1-web-hosting",
       "level": "objective",
-      "fingerprint": "1bb79db8abd21077321f441a27465cf1ac4dbf4b48583cf6b3ba0990724ffac3"
+      "fingerprint": "409e9f5b0a606633ce5331b43dd790d73958ae29ce1a0ec0685593cdcaed3c93"
     },
     "m-07-3-1": {
       "objective": "d1-web-hosting",
       "level": "objective",
-      "fingerprint": "2cf4691c5b56ac5730040a47e0ca05eb89ad53c7e708c1e8c045c2efc4434738"
+      "fingerprint": "dbb226beb4c999dad507f9e31b295111744b8e500fde9aea19232af8c32663c1"
     },
     "m-07-4-1": {
       "objective": "d1-web-hosting",
@@ -603,27 +603,27 @@
     "m-09-1-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "65f5f317364c1a225d51e439e84baf651fcde018724d6ba11cebb70690e83325"
+      "fingerprint": "ca2c5e68da67ee543c975a8ec75db379f730bbd3eafd975c38c5059453821714"
     },
     "m-09-2-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "b4181de4a1ad666b5c7f070c5f6eb1c7fa4aec38d46ef32aaf2fa631ff83b4dd"
+      "fingerprint": "3b9031c65f09c33ad6b321fdee95bba0f3c5f7a2b0927d386b4df454f97486a6"
     },
     "m-09-3-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "292c1bed1bdc1c2a4f4257e6376729e559ed1fc488fe418bc1e6b6fa5bf3dfc1"
+      "fingerprint": "cb0f24e876b254e11e38949ffb91e4b737e5a3c3eb4c4abe2eee6fb56b6352ca"
     },
     "m-09-4-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "9b7a9322ad3e9f8f006f726dbcc4ab74b71f7d9c724f1d4da50e636e69dd4707"
+      "fingerprint": "d590aa68a30ade3da292abfa5d7710365bc9ea15f778160c71fea05f226d809d"
     },
     "m-09-5-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "4249cf25efc2ad1fcdd5ce4c1bfe992946df57582767bdeca958864a5986f295"
+      "fingerprint": "00eafc2f05eb80cd838a94a1d82c1920526649bc7b5e2e9a8c9a765df05ad8a5"
     },
     "m-10-1-1": {
       "objective": "d1-aks-workloads",
@@ -633,27 +633,27 @@
     "m-10-2-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "38d0f3efaa88428e5cf774cc4815bc14492637493cbcb520a0e1c6393652b139"
+      "fingerprint": "d8c9d509e4ec7c31ddede078a173e34e96b447c96b34e4611185286cd41a6f82"
     },
     "m-11-1-1": {
       "objective": "d1-container-troubleshooting",
       "level": "objective",
-      "fingerprint": "7f697aa9f86fe040a4e4fc4456c92f5e7c3c674f5166c354f21c88c8d121279e"
+      "fingerprint": "fa3a1d18a23811edb09d77d7f02de08d83e2258ed876da867a59b10b697b59c2"
     },
     "m-11-2-1": {
       "objective": "d1-container-troubleshooting",
       "level": "objective",
-      "fingerprint": "c67f9939adc3aab09cdf2bcd765c4d32ae56d50251899b7b9ed7800a6c4e07b3"
+      "fingerprint": "96d0a522386b08211f51de478a88198c3c6df59073b788942c30cd267b3b8583"
     },
     "m-11-4-1": {
       "objective": "d1-container-troubleshooting",
       "level": "objective",
-      "fingerprint": "4cc39ff592b61fd40c552e3e476c6bb7ec04903a789d49bb06899f0c8314c1a0"
+      "fingerprint": "66eed3baa95fc8c8b6e911c08c16cd758907bcaee84b23deae0381afd162a981"
     },
     "m-12-1-1": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "25cafcf3af9fc802c01a3ab79e8cad37f4ee9b2e0f4b981a85e8524608c93f5b"
+      "fingerprint": "04b2cb58c6d760677c81a461044a9e87b137f5e4004046fd02537f533dc7bf38"
     },
     "m-12-2-1": {
       "objective": "d1-container-apps",
@@ -688,17 +688,17 @@
     "m-13-3-1": {
       "objective": "d1-keda",
       "level": "objective",
-      "fingerprint": "a9248b3e719621e8f20ad0d3866c1f89781f45dfb4092cdf913956e9599a094b"
+      "fingerprint": "1b7a3b86e9f58412b70ed5f073e649c305a775125c00e2301d7d3e2095170e0f"
     },
     "m-13-4-1": {
       "objective": "d1-keda",
       "level": "objective",
-      "fingerprint": "c14d78e26afb86d3475dddd5b43150bec3f8a186c633fff3f1287e8865959fce"
+      "fingerprint": "e3cc9d39ef3b1b784a5dceaea0fb368e7e1b53a79569e700b0a5e6a6cb93bac9"
     },
     "m-13-5-1": {
       "objective": "d1-keda",
       "level": "objective",
-      "fingerprint": "38b0d2e6c4cf17b79258c038f090c6974090113a3fe43e04ef1bff6e93f3bc49"
+      "fingerprint": "88070c75d9120b4b81cd0ffc8006e29dd118aee19ac036b11682095c98d58053"
     },
     "m-13-6-1": {
       "objective": "d1-keda",
@@ -708,17 +708,17 @@
     "m-13-6-2": {
       "objective": "d1-keda",
       "level": "objective",
-      "fingerprint": "caf056e72f2b23820306d5ac46cc5d4b4f0e48692d1bbf37ca33b74fb6b336f8"
+      "fingerprint": "d7701160017106e23d968c5cbe91c2474872d9b8feefdd12bb8c048727b1d7c0"
     },
     "m-14-1-1": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "6a6a9b80104d6e6b61f86eead5258f61c95cc76163eb0d359b781d50ffe16aab"
+      "fingerprint": "62b2052913b7756c05a8b094d146578627dd9f70b8cae3d0e4e0578388cde4b7"
     },
     "m-14-2-1": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "8c4bb3c7a613730a7682560573872ffcc130a8c6a38274f9206a57e082f43de5"
+      "fingerprint": "b2502733c3aa26e3d6a0032059715ca0b1a6bec7fbd2cec98e020dfeae03760c"
     },
     "m-14-3-1": {
       "objective": "d1-container-apps",
@@ -738,7 +738,7 @@
     "m-15-1-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "6d15d4e317dfb9d68a43344e327c980cd962c2fd1b6acefe426af01ebedef678"
+      "fingerprint": "b40a55dfb784ef83b54d42e9a5d64fd645a8b3303356e0cb1d35323c0e555759"
     },
     "m-15-2-1": {
       "objective": "d1-aks-workloads",
@@ -758,12 +758,12 @@
     "m-15-5-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "c8714f5b9115aed6ad0ad9384186b5db212922f0d4fbcc4cea38993408641608"
+      "fingerprint": "72b81a5e45066ded6b38e5f314dfe10888f39681070199732914842f14acde24"
     },
     "m-16-2-1": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "38e43d9de0df70282ceeaf839a881871c5d1c4fc15fd84e2c1fcea27e0b72ad7"
+      "fingerprint": "f79e0a79979ecb87992762a4b02525a58a255f543a38073afb4d6ca496e9e11c"
     },
     "m-16-5-1": {
       "objective": "d1-aks-workloads",
@@ -788,12 +788,12 @@
     "m-17-3-1": {
       "objective": "d1-container-troubleshooting",
       "level": "objective",
-      "fingerprint": "0b2f1604ecd53e50ddccac92f3b2382984710b58dcea98454cf2d56bac4e55f8"
+      "fingerprint": "cf923db6c46800afa035104e6af6a664bf2877f3fc0e956f02d9f70f171f5f4b"
     },
     "m-17-4-1": {
       "objective": "d1-container-troubleshooting",
       "level": "objective",
-      "fingerprint": "e10732af449f386c509e742c029c82c443c0ca149e68292f20326c379ece1bce"
+      "fingerprint": "3b39af00a44d12b04218b640aeffa03d88307437f69203a2f85bede37b26c3ad"
     },
     "m-17-6-1": {
       "objective": "d1-container-troubleshooting",
@@ -823,17 +823,17 @@
     "prep-p-acr-m01": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "b8f784cb48a6c7d82f288424c65a418389506bf3b350b5fc56e62724f2f0e707"
+      "fingerprint": "2e4d3226c86b9d2a44fdaeacb12a1e8bdf32c7875564382d67f3d958e29be8de"
     },
     "prep-p-acr-008": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "29abc595312590aad0002a49fb114d2ed600ef13304239226b0a48190d280de7"
+      "fingerprint": "d043610b94dd29b8c1111d31ede937ee12e2c9a1eb59954c7b9e7f57117a6195"
     },
     "prep-acr-012": {
       "objective": "d1-images",
       "level": "objective",
-      "fingerprint": "3eb4e582d4489f6a2e3f33a6d749e9b727ea4d6c9fa9b8ef57289537edaffa2b"
+      "fingerprint": "f3b1988bddfedc01ce90d977274b7979aa77c03900e9ff61b56e04ee075b9b75"
     },
     "prep-acr-014": {
       "objective": "d1-images",
@@ -848,32 +848,32 @@
     "prep-aks-009": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "0aff06526572252443e06b0406ed1c5df2ef2d3eaca279967d1b78eb1c4a3b3f"
+      "fingerprint": "eae59917fb6e8ebd18f1680b2e9902cfe4316de544e936636717146d30a83a48"
     },
     "prep-aks-025": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "256f481564cee66151af54d016d8fac6061ef92076e4e431ce7384fcf066a449"
+      "fingerprint": "ae8a74115fb1a00f2897197cd41745dabb329ec12815260f1999cd50c7e57828"
     },
     "prep-p-aks-008": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "d05f69dbcb4678a911a3f0964bf37ae2acf8065e6511fe27c2fee82b74e4ba4a"
+      "fingerprint": "88233b99aeff9f6cec64aaea33a9e0766dc904252bd9ca44789210d3da5ee9ae"
     },
     "prep-p-aks-006": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "f03bcb47e9c9596bb3a02d31bf0fa79679374464740a4d6dac7eda08fca42679"
+      "fingerprint": "0365598d6cd13673bba8c9c33a5c123bcf78e90d1cdba16c45098608b3ce3a46"
     },
     "prep-p-aks-011": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "34b6d0dcda02a66ad64f6480bbd63ba16d54375bbf3dc6990476b4aa59f96c3c"
+      "fingerprint": "5ae76af7f20eba511e8dd1d5516f017ae3c0e1b74596063cd6923222ec0c1d0f"
     },
     "prep-aks-040": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "544a4a3692a93f847348594fd6103284f72612117a076cdfa96c3d372366db89"
+      "fingerprint": "d740e008cd74b9c7dbbfea4efb10faf5d0a5fb0d9660f69fe0af2cf030d10936"
     },
     "prep-aks-037": {
       "objective": "d1-aks-workloads",
@@ -883,12 +883,12 @@
     "prep-p-aks-010": {
       "objective": "d1-aks-workloads",
       "level": "objective",
-      "fingerprint": "95dd71fa3fcc81d4de7cedb6d13651c2edda1b365ad3681e4b08b2be0de7d5b4"
+      "fingerprint": "aee06093f7d11837dc725c1fef7f7d87044088b1f57cba6f7651b2d156fc7b43"
     },
     "prep-ca-003": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "c2d196435c67cb6f62b022d1c63030183bb1c396f9a3c1eba7f46f4ff4cb4d73"
+      "fingerprint": "3b862599f91c0c6fb2154843f3bdf8b9d37afa2f847003764e8292da842e01b4"
     },
     "prep-ca-011": {
       "objective": "d1-container-apps",
@@ -903,32 +903,32 @@
     "prep-p-ca-010": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "c8908e1d0f791b8c3239c57a29bdee4355808043d344652581c20c6cff534c62"
+      "fingerprint": "6ab73c1e29e02f65fbf9b8455941a30ea93ffc41705a34b9fa224d6f8541c6a2"
     },
     "prep-p-ca-011": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "457261c9209c7f8d01a4fb3ab0826b406d325ed4b9372816f24945238f73dd4a"
+      "fingerprint": "dff61e0e6c75bdc6f4dff4ffc8a7e643aa3a34e1fbc26cc77e26f5e236aca1b7"
     },
     "prep-p-ca-012": {
       "objective": "d1-container-troubleshooting",
       "level": "objective",
-      "fingerprint": "6a68b6c9a48573d7f816c925563fe0a207cd9d3678faa66c44c0a73440533f8b"
+      "fingerprint": "f65959e04a164020a8ed32c5680cfdec235c8fbc4e873e075879c9d1a8789d2e"
     },
     "prep-p-ca-017": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "3495933e2fa804ec965fa556fc29df60980427c3a33c1bc876b1021ace5ae79a"
+      "fingerprint": "ef731e1fe23d812330264e477f952e58db30d7f38d629fdd732c88c6a6521ba1"
     },
     "prep-ca-025": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "14b34fece59c4361a20e034254af18a101830f40b6db5a531fc9c5bba626ebe5"
+      "fingerprint": "0672b0914eef966ce2fd94bba41cf0be93f5c530ed3085079d87cb8211643b5a"
     },
     "prep-p-ca-007": {
       "objective": "d1-container-apps",
       "level": "objective",
-      "fingerprint": "575b635a19cc4a45580029222ca2bf547c9b186ef463d4b9b7eb388518c92964"
+      "fingerprint": "b1e147b705693fa3d411981fed6c470ec5c3777b45f7016a9f0c118880039114"
     },
     "term-d2-database": {
       "objective": "d2-postgres-vectors",
@@ -938,7 +938,7 @@
     "term-d2-postgresql": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "40a1b6a5a6de4fe63e1a97818cdb6e0af1d86af14cd8d53e84f118c4a77bef25"
+      "fingerprint": "b05fc4b4b88d39e15a9468da78827efd8a437679974ae469edc3c140c13836b3"
     },
     "term-d2-sql": {
       "objective": "d2-postgres-vectors",
@@ -953,12 +953,12 @@
     "term-d2-index": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "77bd135e2548512637f05b071dffa98cd8b453eb6442edb26a7a3f80b30b05de"
+      "fingerprint": "ed9f3c8dbd25c0cbf08ca601d217e953d0ea53d948d33cc527ee8b60f90a1d16"
     },
     "term-d2-embedding": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "10be68c1722694c571102c4fe7993914a2c432e2e9dd0f6765460b6f47763183"
+      "fingerprint": "ea5fa1312f83a4322e6ff6ecd25fb25b38ec49dfcdc2b65caf6b2b0d734471a5"
     },
     "term-d2-vector": {
       "objective": "d2-postgres-vectors",
@@ -978,17 +978,17 @@
     "term-d2-ann": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "67a4499f5bfad141e5561d1cb350f91827b5cdb4c5b02cd2343c4048f6c69aab"
+      "fingerprint": "b68d618cf556810c6b3ac4ba3cb2607e4b10745253a7f6033f164f6d55d1f482"
     },
     "term-d2-hnsw": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "fc896106378c952441cbe8374df4f38a3670fe0e878832b2eb645175c294ab99"
+      "fingerprint": "9d1d83f4f5276bd192c58fc48b260cdfd064b3ebc9c28e0137921dadd07c3f9d"
     },
     "term-d2-ivfflat": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "1bb6cf19195ceb2d989f9cf3f5326ffe229f65ed72d8d5485d7e3d3e88364ac6"
+      "fingerprint": "e40b743b12cf12eae25d502a94ab0cb087f6685c640995752b2643466dc1213e"
     },
     "term-d2-recall": {
       "objective": "d2-postgres-vectors",
@@ -1003,22 +1003,22 @@
     "term-d2-connection-pool": {
       "objective": "d2-postgres-connections",
       "level": "foundation",
-      "fingerprint": "48d93f1ef31e1eee2bc216e2b112ad92d504572f2f663aeff117d09702d1f662"
+      "fingerprint": "8791211c8b8fd917622b47aabdb6db52a87aeb300636fdfa0a1bf95e9b2fe7df"
     },
     "term-d2-pgbouncer": {
       "objective": "d2-postgres-connections",
       "level": "foundation",
-      "fingerprint": "6a5ff5f09700b76e3a0c97bd572b41ca4953f413e66c78778dcf47d360bc5837"
+      "fingerprint": "6aeecbd702b20b60a0039fa0db9c687128438879348647052a31ac07c36129b8"
     },
     "term-d2-cosmos": {
       "objective": "d2-cosmos-access",
       "level": "foundation",
-      "fingerprint": "180c78d3f1b837ed42766a2de91c0dec2f9bca1c3a1aea785500138285fdb34c"
+      "fingerprint": "c3a25ce71172156068c2df506ee56247b2b03908ec7d189c5cc35cf7a1f88f9c"
     },
     "term-d2-cosmos-container": {
       "objective": "d2-cosmos-access",
       "level": "foundation",
-      "fingerprint": "1f912521adbc98cc96fa5b5df3dde8645372b26079686b8d29b9b12c1d469aa0"
+      "fingerprint": "bf3d333378cbe302149413ae8fc5ebe55f420b4dfafacd0bb476c48ec6440301"
     },
     "term-d2-partition-key": {
       "objective": "d2-cosmos-access",
@@ -1028,17 +1028,17 @@
     "term-d2-ru": {
       "objective": "d2-cosmos-performance",
       "level": "foundation",
-      "fingerprint": "c9eea7897803ffd165536ef9d7abca1ba434ef70ac2a403baa3143ea6b5fc293"
+      "fingerprint": "758ad7a125570fc80a2c615475393a208d408257604d2723d0f1b8eb104594c5"
     },
     "term-d2-rus": {
       "objective": "d2-cosmos-performance",
       "level": "foundation",
-      "fingerprint": "15fe9ffec15745c8388b89101aeb52d5750d45ff1072f02d414a0d74010821e6"
+      "fingerprint": "62b1836f14f7d24ad98586338e7757e0a85c920fd1cbc6f4ef3bcb3723927f9c"
     },
     "term-d2-consistency": {
       "objective": "d2-cosmos-performance",
       "level": "foundation",
-      "fingerprint": "80f19cc2b15f6ade7985ac42bd8771052afc45e0f2dabe5461b8477489d5d874"
+      "fingerprint": "82048a0948c54f56ff25e569857b0a07a05e2f2c60abbf2e3b8306f0649e0edd"
     },
     "term-d2-change-feed": {
       "objective": "d2-cosmos-changes",
@@ -1048,7 +1048,7 @@
     "term-d2-redis": {
       "objective": "d2-redis-cache",
       "level": "foundation",
-      "fingerprint": "95d5f7b12becd03984e3a8e3620396489d272fa112bc13493cc23de0c8efc86e"
+      "fingerprint": "87d5e594bcf50e750ce2995654b781a177115a2d8dd5eb27a2d1dcbfd3a6a3a9"
     },
     "term-d2-cache": {
       "objective": "d2-redis-cache",
@@ -1058,12 +1058,12 @@
     "term-d2-cache-hit": {
       "objective": "d2-redis-cache",
       "level": "foundation",
-      "fingerprint": "1d3e04a194bbbb7515636d24f5bb06931594beeb229663544b590dd17b258e48"
+      "fingerprint": "5aeea8af49d6d8f2dac41f7566c533a2d1c2c0216eb967b273b34aa4e50585e1"
     },
     "term-d2-cache-miss": {
       "objective": "d2-redis-cache",
       "level": "foundation",
-      "fingerprint": "b81eae46e6864b74df7837b871a2f01314ddec2b8e4772ff64a6ae43099984f2"
+      "fingerprint": "1f8be51765e7e7267b0e7641764cc7ebb1407c4c090906287cff2338479c716e"
     },
     "term-d2-ttl": {
       "objective": "d2-redis-cache",
@@ -1073,17 +1073,17 @@
     "term-d2-eviction": {
       "objective": "d2-redis-cache",
       "level": "foundation",
-      "fingerprint": "91f59c7cdb620d8f00a7311db8e1e9935e048d1554982fdfec89c18d37fb3582"
+      "fingerprint": "da9748a8a7da785afd2c91453c9a83c017e9c034055ce0029512fb0bd6cc66ac"
     },
     "term-d2-lru": {
       "objective": "d2-redis-cache",
       "level": "foundation",
-      "fingerprint": "095fa65eb644b217e2e7c99397fe0120459bb3487d7b63e77e31e4a69999183b"
+      "fingerprint": "3817d6f4fac14ee736c371b59e32a0cbdc9559fed254b8324b9156b14f4ae5b2"
     },
     "term-d2-lfu": {
       "objective": "d2-redis-cache",
       "level": "foundation",
-      "fingerprint": "ba03dd66e1de674dd40305361159087075698aa40b8619efe7aa3a78ac913c0d"
+      "fingerprint": "f3cf984cfba168226b0c13cafe141fc516f0e499991b92e7a8f028168461390f"
     },
     "term-d2-rag": {
       "objective": "d2-postgres-vectors",
@@ -1093,12 +1093,12 @@
     "term-d2-gin": {
       "objective": "d2-postgres-vectors",
       "level": "foundation",
-      "fingerprint": "b184d4a3fd9a311c00e3609166283bd47250f007a7dad4536490b1c2312a1b2c"
+      "fingerprint": "93adf6ecaab5433c3948da580b30a59eaf5578f829f9beddc7f78f5aa509f71b"
     },
     "term-d2-diskann": {
       "objective": "d2-cosmos-vectors",
       "level": "foundation",
-      "fingerprint": "9eb957a8b6c40bc39d20e5c8df16d8d9e928c0595e81ab9de3698d3d51a2e449"
+      "fingerprint": "fa9c8ea29ccf02c50a0605a77da3781d5b58e4242e3fbf2e076e7ab66afd01e8"
     },
     "term-d2-nosql": {
       "objective": "d2-postgres-vectors",
@@ -1108,17 +1108,17 @@
     "m-18-1-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "1e068187f9936cd43ac26a7c67852751ca088d5390614a5001a5a5f5c7a4bdd6"
+      "fingerprint": "48657e07ed7ea53daa2082e103c12e93d6b72f9ea6b0768a5cc1d0100921846c"
     },
     "m-18-2-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "e147f9bddfb36a3aa1f6b2b7484a4476d0c1ad3ac2b5628d5e16519d86228171"
+      "fingerprint": "48e61b9f652b4a5a769f40f4b8a71b37b4b432005b055658ab2999d669c3adff"
     },
     "m-18-3-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "f1d55533b90f6808f6f6b6fe1ffa73688a507cd195e044b09bd75dd2e02c4e58"
+      "fingerprint": "0e8a7dc44757805335c5f13dd8ad1f18073f41de6ed7461d55558536bd99e253"
     },
     "m-18-4-1": {
       "objective": "d2-cosmos-performance",
@@ -1128,7 +1128,7 @@
     "m-18-5-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "e52d02c72e5b400b5361313b8836c7756f894e86af47b7de6e8b28e092e74960"
+      "fingerprint": "3a75acd1db587c0ea8bd73ec2f52c7ee23b13c2c28c48b36e15fb73882bd05ba"
     },
     "m-18-6-1": {
       "objective": "d2-cosmos-performance",
@@ -1143,17 +1143,17 @@
     "m-19-1-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "975660b8a699ff64ec996ad7e340ec16096ac06eb1ff50b57236bd5938eea1c0"
+      "fingerprint": "8df0959dcb131e6a7e48fec87df4af9845514fdb9ef6e1b4f250de4fbbad9393"
     },
     "m-19-2-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "654c1d79bb4c87b000cef89f6114dda6d6b25cadc14f42b467b6e44168378caf"
+      "fingerprint": "cb3fe40676eb320795b55c04ab5bd8331e325e92f267a208e05249e97d4b2aad"
     },
     "m-19-3-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "0bddbf2562161bb6ef3f0259edadeb6189182cf2b9e586085ddc9ee564b9d4d5"
+      "fingerprint": "5a00b78ad1ce6af46467cb2210a84a4f208ba6871da649a5f5dc2f2f4f228e31"
     },
     "m-19-4-1": {
       "objective": "d2-cosmos-vectors",
@@ -1163,12 +1163,12 @@
     "m-19-5-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "b4ba82a43599fdafd5273023701ec9f041de47d8cad1ea33e2cf3dd3bb0bf1f0"
+      "fingerprint": "ba2dca8f1142d7db074f774e74e0b2efcf999ac09575358d13e5dbc9abd5c0f0"
     },
     "m-19-6-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "acbdd832aebc7337d5d1be00fa585c301ef590a35fc2cd249ed7f5a7de2be97a"
+      "fingerprint": "d24fbcc215ee95b3a7eb1b428e59d55a2eb1f1725f3803db3b2c7787bfe089b4"
     },
     "m-20-1-1": {
       "objective": "d2-cosmos-performance",
@@ -1183,17 +1183,17 @@
     "m-20-3-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "ff1bdf44fc3c010060f050ae48d4a1d1fe178cb327b3359bd31975c46581256d"
+      "fingerprint": "4283a91790937b0b1d534560968e5fef182606cfc193fa4dfa83cd7ec7e85e05"
     },
     "m-20-4-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "92eb08792a0f016b48c33c93aa6fdf3d8a6e9cb703281188fa79fb87dc80f790"
+      "fingerprint": "8357f28c7ad58ffb02bb0afd8de4eb7f20c8891118b440df74d16f5d134ae15e"
     },
     "m-21-1-1": {
       "objective": "d2-cosmos-changes",
       "level": "objective",
-      "fingerprint": "b5f3f0d1d3b0b156ab6e236e767404328d8b35affb61a366657e5dec0c969c62"
+      "fingerprint": "d0fe3a687f8b48d958fdcdbbe2269ef742a9e4142e1e37409a484ae97d50fe87"
     },
     "m-21-2-1": {
       "objective": "d2-cosmos-changes",
@@ -1203,22 +1203,22 @@
     "m-21-3-1": {
       "objective": "d2-cosmos-changes",
       "level": "objective",
-      "fingerprint": "8c207499a9bd60ffcbd2f5980b377216ea87f48b80c677c221a43093cc5f8e34"
+      "fingerprint": "6a2d33b6cb55ce19fe96f6a37f3e986f2b43add0f470fe3ac68f34b692326575"
     },
     "m-21-4-1": {
       "objective": "d2-cosmos-changes",
       "level": "objective",
-      "fingerprint": "53fe6a02e6c9976f4c804d53714a243d56cecdb303ae6dd27ae9430a5d8bbef2"
+      "fingerprint": "837df4a05e0882a9e8cebc50ae0c4713723b1be86b2fb9cc0fb3293e79b5e661"
     },
     "m-22-1-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "aff3a4d55805a8da6e3964241641fe648bd09110ac09d1a1f25b9fee8f59c3ef"
+      "fingerprint": "1a10f4cccfccbe0848a381c5b23408d6f864e312918021bf150fcb7d80e56132"
     },
     "m-22-2-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "f4416737372aee2b11cbcadf15af21e5f2c39adbeb24c547677c21c42e191870"
+      "fingerprint": "30292c9d99e44bdae19ce295a03278a406083c9cfd8b64c2a21267f1c2177256"
     },
     "m-22-4-1": {
       "objective": "d2-cosmos-performance",
@@ -1228,7 +1228,7 @@
     "m-22-5-1": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "0936dd8092152b76ddc81b30f338ae2af84a07a335c0f7a33599ef610b34df5a"
+      "fingerprint": "ad2e9e3f70d43c7bdc8662a0ffab18a7c0e49caa2d8f8b2310e8190d95e43c25"
     },
     "m-23-1-1": {
       "objective": "d2-cosmos-access",
@@ -1263,12 +1263,12 @@
     "m-24-3-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "7c4c9783d2c5bc133f1d228eef0172033926d063045772c44338407c4e77ee4d"
+      "fingerprint": "b9bf80e86edccea771846c0584715b3e33260818bfeaaf217f206102001d0c34"
     },
     "m-24-4-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "2ffa14377895cd6d0b923447e5632b4aa0ed6150cf584b2364fae081f03304ac"
+      "fingerprint": "06b26f8b445878e63646e02772544ad9d7e65257ef807c62368202714801c255"
     },
     "m-24-5-1": {
       "objective": "d2-cosmos-vectors",
@@ -1278,12 +1278,12 @@
     "m-24-6-1": {
       "objective": "d2-cosmos-vectors",
       "level": "objective",
-      "fingerprint": "be89863b5f6f559709535aa13b769f5374c904aeed92d7cbf45d5d23e78d260c"
+      "fingerprint": "7c8a717d4d36141f65d181bde2aceee1d4bc43a78900f098bbaffb7e4eb0f520"
     },
     "m-25-1-1": {
       "objective": "d2-cosmos-changes",
       "level": "objective",
-      "fingerprint": "e64b65d84cf7ffa506876f73c8ab07ffa4210121ab964cc65c05e52072fd0d5f"
+      "fingerprint": "713cf2d7af334e3f3655cedfb943f92e38828f025f909277406f99799fe3273a"
     },
     "m-25-3-1": {
       "objective": "d2-cosmos-changes",
@@ -1293,12 +1293,12 @@
     "m-25-4-1": {
       "objective": "d2-cosmos-changes",
       "level": "objective",
-      "fingerprint": "ecfce4f37ebd51974336bc7fcf14e1855278c60a348b2f0145e9f2fab1e4e746"
+      "fingerprint": "a1296301bc46f09368575e6887109c2eafa45af4e6e66bfc547065e9bdec6531"
     },
     "m-25-5-1": {
       "objective": "d2-cosmos-changes",
       "level": "objective",
-      "fingerprint": "57aea819fef7c92a4bbe87c448170d1df101148cf7233e7bd7f755e7930ac471"
+      "fingerprint": "aa2a2e9ce79b71892ea0f1a734635ca7ff46ee0fc714d098b30084f2773655a1"
     },
     "m-25-6-1": {
       "objective": "d2-cosmos-changes",
@@ -1313,7 +1313,7 @@
     "m-26-2-1": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "11c5830ee190b68ab884e924516a5faee2b999fb4f4b5101131bd8833a1fca03"
+      "fingerprint": "62b2cb037df463f3f2102ffbd5de19e04cde26f4d1a42a758fa95b2198a9dceb"
     },
     "m-26-3-1": {
       "objective": "d2-postgres-indexes",
@@ -1338,12 +1338,12 @@
     "m-26-7-1": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "bf3811c0700fcf701c918ea317c10156727531adbcc98292648b945d9faf951a"
+      "fingerprint": "12da6def77958a184055241a5bf2c2f5cf691888f98e8796120fe80080881578"
     },
     "m-27-1-1": {
       "objective": "d2-postgres-connections",
       "level": "objective",
-      "fingerprint": "7ef8f5661685e19e358a188e367606a5b37dafc733074a9dac4b352948a9503c"
+      "fingerprint": "7c66ee74105c8becf590aa219f71175924df76dd488b4239383a58fa53dce0b3"
     },
     "m-27-2-1": {
       "objective": "d2-postgres-connections",
@@ -1353,7 +1353,7 @@
     "m-27-3-1": {
       "objective": "d2-postgres-connections",
       "level": "objective",
-      "fingerprint": "31e86caf73578201c2c288aa423e934284422ff1c1ed4affcc01f3e553685dfc"
+      "fingerprint": "0899aec8ac8d2dfbf155f6d2272d87485bd278a4ea2fe8878ccd1e9293effddd"
     },
     "m-27-5-1": {
       "objective": "d2-postgres-connections",
@@ -1363,17 +1363,17 @@
     "m-27-6-1": {
       "objective": "d2-postgres-connections",
       "level": "objective",
-      "fingerprint": "097575b00432a564ce031eb9d36485c359947aaa055e311bdf73fa13982f6de3"
+      "fingerprint": "d2a01642862cedcdd210cc5bb0a4913f83dce0d9eb002b87190cbf84c591c891"
     },
     "m-28-1-1": {
       "objective": "d2-postgres-access",
       "level": "objective",
-      "fingerprint": "8560dad2f2fcd64570a665087119e76918132a2317fa330f86168fe924778eec"
+      "fingerprint": "d9242d231c0df16d46a6c16df27461b6469b6ad7d3a3b4503a9192c1631d0b44"
     },
     "m-28-2-1": {
       "objective": "d2-postgres-connections",
       "level": "objective",
-      "fingerprint": "a000e72d06812e20183b3510560ef9097e3b9870c43e1e1c3f40728eeee5abbe"
+      "fingerprint": "b2b8195e50d0633637e5e54a96396733b40573f3a35e1573fe259033a31e24f0"
     },
     "m-28-3-1": {
       "objective": "d2-postgres-connections",
@@ -1408,22 +1408,22 @@
     "m-29-4-1": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "33ddc16cc969ebcc1f3aefd12e59c818c224c75dcb27d0cc24939e2969376441"
+      "fingerprint": "e729cfab3ddff274c2ec918b2b336213d2009ded785b243fadf45b5ce630855e"
     },
     "m-29-5-1": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "237244d8dbf8d7462497a2334ebc1e1d90169d73922d040342ad364e1d05aa42"
+      "fingerprint": "c1fb9aa27006797354660b259788497de335b6d3ae78d2495cff56f1414071bc"
     },
     "m-30-1-1": {
       "objective": "d2-postgres-capacity",
       "level": "objective",
-      "fingerprint": "f41bfe1fe706c5efc881beea917805f3379ddf52332a8d874e37fcb9c261a26c"
+      "fingerprint": "3ec1c5068099c630071ca8da64d614624ed41728c713a6d75892a718da8c08b0"
     },
     "m-30-2-1": {
       "objective": "d2-postgres-capacity",
       "level": "objective",
-      "fingerprint": "cb3da4660261c0d6f32dfa29e205cbe27703cdd2697a9250dcb54b42a710cdc5"
+      "fingerprint": "1be8bb2c200a18cb6a05addbf79ee6d6015164cd34e6cd217650f8b16c5ad6b8"
     },
     "m-30-3-1": {
       "objective": "d2-postgres-capacity",
@@ -1438,27 +1438,27 @@
     "m-30-5-1": {
       "objective": "d2-postgres-capacity",
       "level": "objective",
-      "fingerprint": "0a3e4cd49570e6ac55c1a6886698631a58665791498845662edd9c371965182c"
+      "fingerprint": "a4d0bd0bbee038e24a89cca9f6230fd6275778f5faafd26e358647a14b924f14"
     },
     "m-30-6-1": {
       "objective": "d2-postgres-connections",
       "level": "objective",
-      "fingerprint": "401987da4e3bbd0fc8960b5b06d900ca2b9d460c1ada045b79ff37b73d16a69f"
+      "fingerprint": "563c8a5a14cba8ccb25e86bb8ce3400b521aa7a1aa57c217cafca6ae7173b255"
     },
     "m-31-1-1": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "15cbdf516e62339254788ea888f4ce799c0bd8b62acc4fbbbe88395f7bb33054"
+      "fingerprint": "4512ae46e47351466b01694e866ba9704920d908da508679803712693ae72b56"
     },
     "m-31-3-1": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "baffcbfc89058bb045a28522bb55769d6b810cacfacc8ed71fb7dd69deaa618b"
+      "fingerprint": "c29bfc80af9272a023dd36746f63be5616509665f9c80b3f43e5bc747eaaf7a3"
     },
     "m-31-6-1": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "abc1dd8fa2b0a88576aa80140fed8e7d236c2ba0d1806060678a44fe1ab1d8c5"
+      "fingerprint": "6d4511898d10607a32d1c5f80681f9c88922debf739bc007bd6b2da52aa4b723"
     },
     "m-32-1-1": {
       "objective": "d2-redis-cache",
@@ -1468,12 +1468,12 @@
     "m-34-2-1": {
       "objective": "d2-redis-vectors",
       "level": "objective",
-      "fingerprint": "b6bfd04cfd313779e483f0d510cbd5b5634747adbd868fe7641df58cf58b32b8"
+      "fingerprint": "d4a75e0210d7d2e3733c133ae00b466e90a37e8d8e9051d45b1e62d808cbcdf1"
     },
     "m-34-3-1": {
       "objective": "d2-redis-vectors",
       "level": "objective",
-      "fingerprint": "b02591187ffe1304df7cc5799f95207e2d9186cae1e5dc8ba7bbf449ef901b02"
+      "fingerprint": "e94d19023e58d297acb049d0dac650979df43985d6be399971c7e6e3ffe6beea"
     },
     "m-34-4-1": {
       "objective": "d2-redis-vectors",
@@ -1488,7 +1488,7 @@
     "m-35-1-1": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "e474f6396ab6fccbb990c47f8a02148d5254d4bc62e957054b306fdab238f7be"
+      "fingerprint": "c91088d398200a44251411c7ca69d9d7b026990cf136e9a9e394791f314342dd"
     },
     "m-35-2-1": {
       "objective": "d2-redis-cache",
@@ -1508,7 +1508,7 @@
     "m-36-5-1": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "04bccc2c7ff5cc03fa0121917d7036ee47ad83d0adefe5d3c542cdcaccbf55d9"
+      "fingerprint": "9d962b5129bff32d769c5d7d09a5c10660cfbff4e5c864d7abec8c658c01fe6c"
     },
     "m-36-6-1": {
       "objective": "d2-redis-cache",
@@ -1538,7 +1538,7 @@
     "prep-cosmos-002": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "c3ef699fbb5f99167ab390430d16faf9526d43eb19cc8e8f2cbf516cfe68926e"
+      "fingerprint": "8f819b337688958e8d7ae3dc68408a64b66fd8fa3f1161bb639dfeb036687c2e"
     },
     "prep-cosmos-004": {
       "objective": "d2-cosmos-performance",
@@ -1553,12 +1553,12 @@
     "prep-cosmos-008": {
       "objective": "d2-cosmos-access",
       "level": "objective",
-      "fingerprint": "267535753920c90a842c17bd6172c0807e35d52546bfcec6b78e155b065cc726"
+      "fingerprint": "e3df3d2b2a64f4826d26143b8cd8ebb23b2e80cc13b2bd48f5856775dba30cfb"
     },
     "prep-cosmos-013": {
       "objective": "d2-cosmos-performance",
       "level": "objective",
-      "fingerprint": "6ea060afa829dfe7d696f4df13027a4591f7120368da591a8e5a45134235340d"
+      "fingerprint": "3e44ce91a5a1ee11b221451cae9537cff3a00652503ba7f0d396f1932c304ecf"
     },
     "prep-p-cos-010": {
       "objective": "d2-cosmos-performance",
@@ -1573,7 +1573,7 @@
     "prep-p-pg-003": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "65c008774a5e831a3e359a63598d49af34c9df0b22a12f67e3c5543d9231cb3f"
+      "fingerprint": "a05ca2638942dfba7c390c03f1c3cb578fc31453ae85bda1b398c25234d0ea6c"
     },
     "prep-p-pg-004": {
       "objective": "d2-postgres-indexes",
@@ -1583,7 +1583,7 @@
     "prep-pg-016": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "e358cf248cc1a247287330ef02afc18988566f2050a7c154910503d12126f35d"
+      "fingerprint": "2b37ab26a939fa004fb587b022b54d5613d6995696a4ffd73304fac2dded3830"
     },
     "prep-pg-034": {
       "objective": "d2-postgres-indexes",
@@ -1593,57 +1593,57 @@
     "prep-p-pg-005": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "3417b871378f3768ceb7f0d13f99d6b60cd52c265853f333fa3902410f480f8c"
+      "fingerprint": "34fa10ca4e7ce2666e646d5042c80f8c2324407dd405adc31b3d0818cb690a83"
     },
     "prep-pg-010": {
       "objective": "d2-postgres-vectors",
       "level": "objective",
-      "fingerprint": "52a15f2f8071979a7daaf043fe4fae0c4715b9beac721e2620356cde3c180f19"
+      "fingerprint": "8c0426f462049eabe6f74ec3395d8b62165921df31aa912123623c1a73288ab6"
     },
     "prep-p-pg-012": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "b527ebb3e21a0284920600bafe39606a1c7219f0e96dba1dc2115f9e57e8048d"
+      "fingerprint": "20c6f263435e5b627efed9ef7063a43f388aaf4be2b537b0b2091041d249c245"
     },
     "prep-p-pg-013": {
       "objective": "d2-postgres-model",
       "level": "objective",
-      "fingerprint": "3fab90e14e5ad1976ee4bea7126652cd191b494c932c71d03839ab0594ceb5ae"
+      "fingerprint": "a10e71a1ed995e353a518140581e65d0a85e35edca744c7510a9ed190fefa7b1"
     },
     "prep-p-pg-016": {
       "objective": "d2-postgres-vectors",
       "level": "objective",
-      "fingerprint": "2e956a708e792a308fdfb7d62ebd01bbf0b572e025d0a491cfa56b5bd29171db"
+      "fingerprint": "3799fa45e7bb8b19636a795822ebc46383eab58aeea6a8a5d94ac38392d4d71f"
     },
     "prep-p-pg-017": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "5a2f41a18b65cb1a96eb796b63c13d87607fd3ec4825284f672e641dff3b7b99"
+      "fingerprint": "8ba49a930b656bcbe7f9f9c3cbfed2316d9ef1c364c415322187a2e5d716c575"
     },
     "prep-pg-029": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "5f3d3e89f6568fd2a7bf5b863dc2dd417b6b05b4b0482a1c6f6114cd93f15d2f"
+      "fingerprint": "5160a02b15d9fa22ff9ac9edbee82548fafcc966fcce40434c37c92639e9a580"
     },
     "prep-p-pg-020": {
       "objective": "d2-postgres-indexes",
       "level": "objective",
-      "fingerprint": "f0ba4fef328a679608fb9b8bf28d65501e6c1a39f207c0c874eced425f6cddc6"
+      "fingerprint": "dff23c33f27de11235325e93a037facc45d38e2b13c42a43e6b49ac4f1cac318"
     },
     "prep-p-pg-023": {
       "objective": "d2-postgres-vectors",
       "level": "objective",
-      "fingerprint": "2e87b435d6ce430486d8948d919d485ed374209349c7a6c35d492bf8f804e78c"
+      "fingerprint": "5b777eac3e3c445672146991da24269d79e1afdc62d93d83dbd86e92fdc16ec2"
     },
     "prep-p-pg-025": {
       "objective": "d2-postgres-vectors",
       "level": "objective",
-      "fingerprint": "4b5f14cf35941643733f3335a4e9076f4c944aaa8e579240af148961f5c53308"
+      "fingerprint": "6863249c849338ca53fbac57f7f35ee66d8ccadb7c20da028330720bcc8fd5b9"
     },
     "prep-p-red-003": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "8bb9f1dbfc358d9f7e2a355a949eda638ced9cf4d6f6b363f07d0c23b9aca9d8"
+      "fingerprint": "9d794daa4c2ee640512cfcc11e55b6631faf75a4d7360c7c6cf4f30f129c5ad9"
     },
     "prep-p-red-010": {
       "objective": "d2-redis-cache",
@@ -1663,7 +1663,7 @@
     "prep-p-red-011": {
       "objective": "d2-redis-cache",
       "level": "objective",
-      "fingerprint": "84e2706fd8241f8ab940f78a50dbc6603923a725228670668f025bbc3da93819"
+      "fingerprint": "d42c75faccbfd1eddc6b0d30d51f6a5a5df4d0131dc126690754974b93b63a51"
     },
     "term-d3-api": {
       "objective": "d3-functions-code",
@@ -1688,22 +1688,22 @@
     "term-d3-function": {
       "objective": "d3-functions-code",
       "level": "foundation",
-      "fingerprint": "c9e8f1ef47ef05deff9f7974faa2260165f078cee246455d5dd62b16756ea5e4"
+      "fingerprint": "5555ba2090a2d287d552f5a7e7d2c0e45ea1ebfda70158e9f8a1324b5b0ca941"
     },
     "term-d3-function-app": {
       "objective": "d3-functions-code",
       "level": "foundation",
-      "fingerprint": "517dd7657ff394b3a1f9fe4be15059c3ed0be17de07a68a4f13f03aba1f63afb"
+      "fingerprint": "22ffe81074694e9380ab1177c85193d8f853ae83e787b017d603fb1976927ce4"
     },
     "term-d3-serverless": {
       "objective": "d3-functions-code",
       "level": "foundation",
-      "fingerprint": "7df064ec20f01c008f0df053ecbe21874e3bd252045b405395198b2e9a9d21d9"
+      "fingerprint": "3fade6c34e68c284b352fb659c27d565eb9b6856975dae14207c8639ee094505"
     },
     "term-d3-cold-start": {
       "objective": "d3-functions-code",
       "level": "foundation",
-      "fingerprint": "ab9ea6c9b3a411068f9fd7491b2ea089ed7a94e9155849be00489baf3a4937da"
+      "fingerprint": "41d69d856a9939bde7dd1f2b86b6b8593c2dd5c7d10bc9289c22fb20285d89de"
     },
     "term-d3-trigger": {
       "objective": "d3-functions-code",
@@ -1718,12 +1718,12 @@
     "term-d3-service-bus": {
       "objective": "d3-service-bus",
       "level": "foundation",
-      "fingerprint": "4f082f93b61d90d9d8b5e798a0a0d41053c68e251a9184820769dbbcc324551c"
+      "fingerprint": "c2dc4c226ce446d44d6b9cfc22ead0bf88f26a922dda7c8c65b976121f7cddd0"
     },
     "term-d3-blob": {
       "objective": "d3-functions-code",
       "level": "foundation",
-      "fingerprint": "e0825228c10d8f36ba1078b5a900ea6c3362fc404ebf8dc1b139e7ae93dc50ae"
+      "fingerprint": "af63015e465741b18cebe46d07168bdb9aa0a7097fac1910abc514b67f152f5f"
     },
     "term-d3-message-broker": {
       "objective": "d3-service-bus",
@@ -1733,7 +1733,7 @@
     "term-d3-queue": {
       "objective": "d3-service-bus",
       "level": "foundation",
-      "fingerprint": "501a41101a11665e646e805bc111ef2171c95fa139e94b98b3efa98f3c371f2b"
+      "fingerprint": "25638acacbb55f46bd8d4a8d52d8f5ddc989819bf1f770daf73ebeda448efd5d"
     },
     "term-d3-topic": {
       "objective": "d3-service-bus",
@@ -1743,17 +1743,17 @@
     "term-d3-subscription": {
       "objective": "d3-service-bus",
       "level": "foundation",
-      "fingerprint": "58b82d99c1676c678228f21964e03c833715a151f52c5e54435b2ad52f1c3ace"
+      "fingerprint": "03e7fe1b847b4bc7f059d68bf62f88d3a6a5ea159bdb74ce0a3ea8a435c004c5"
     },
     "term-d3-event": {
       "objective": "d3-event-grid",
       "level": "foundation",
-      "fingerprint": "381721564b41103c338a44ede6eb1077065ceef4b2b00f3e875289a8e1759c62"
+      "fingerprint": "1c1050618ef63f23383f03953717320e7c25e36e350e50b25a6ece6e6cd6e626"
     },
     "term-d3-webhook": {
       "objective": "d3-event-grid",
       "level": "foundation",
-      "fingerprint": "3451156d36f78d70c569c1d00973cfc1ce74e16b4af3aa6e0606dff851c5cec1"
+      "fingerprint": "b620c6be125777a3cccd6459ca0247905e0ae25a954b8898ed2fe7f521587efe"
     },
     "term-d3-event-grid": {
       "objective": "d3-event-grid",
@@ -1778,12 +1778,12 @@
     "term-d3-dlq": {
       "objective": "d3-service-bus",
       "level": "foundation",
-      "fingerprint": "25eefebce542d5fbec69c99665bda6556ddca751a331d37c437b05d19d5bfc85"
+      "fingerprint": "15c681def06b76448b39cc45962794b3057c20c67dbd17bffcdc7d871e11fca5"
     },
     "term-d3-session": {
       "objective": "d3-service-bus",
       "level": "foundation",
-      "fingerprint": "26c22a04fcb6be090d32232163cd76c7627020b21ee1396fcb56c42642ca83d8"
+      "fingerprint": "42659df0d1fa3cd1f708db7ba12c4b27393eccd836caa64ffeeaaa1606c64223"
     },
     "term-d3-amqp": {
       "objective": "d3-service-bus",
@@ -1793,7 +1793,7 @@
     "m-44-5-1": {
       "objective": "d3-service-bus",
       "level": "foundation",
-      "fingerprint": "deca74be4eb3df216d0cbd675d9891fe5785b59f01ce780e6f4336ac5946794d"
+      "fingerprint": "fa372e3510fc22d8a68326b44686ede618be907fa1a3967399f00afa2285722a"
     },
     "m-49-3-1": {
       "objective": "d3-functions-code",
@@ -1843,57 +1843,57 @@
     "m-39-4-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "f35c90c15e70f448d8a4cc4c1ff08966daed60bb4aded8f6f4a1fdcb8f91c84e"
+      "fingerprint": "3c1ab3f50c0f5c6c92274bd26ac8cdb558535d9c560cd0b9122515577492625a"
     },
     "m-39-5-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "d85d8dcd135469a07f9d1565b826cd6d71b5ce0c16316a29765ebc4634e49316"
+      "fingerprint": "2601058e5141af5db752f7874e3c1774fe4e00b0229e0c8a9d3a6c5fa3ad09fc"
     },
     "m-40-1-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "abe1fb166e42ff0f86a64dffa27bd7257ec33fd589659a794aac45afaf8896e6"
+      "fingerprint": "1d1c50b8fa8687f823cbc90ca3784877a9b6f31e18c99ad6a201310809d04e64"
     },
     "m-40-2-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "5a39b5b17f9b0e787cb15ee6a25138823d24ccf4981b0458da38dfe327bde6bf"
+      "fingerprint": "95d6d995fddb8ae8b74017652dc553573a581ab0ccc39223fe0a9d960372c936"
     },
     "m-40-3-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "e6005927a4433a8febc835a2ada5588ca090b22444df9b3821c529c3eba70048"
+      "fingerprint": "12f2bf1cd3d9c859af2858f7e989d15393b1c962604fafa27c7ba9108557d4f7"
     },
     "m-40-4-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "e53a092414dd391db7919958a984be1f50cbf1a3a7335df9ef719c4c7da0dc3c"
+      "fingerprint": "a8cb9372255bf8176ab8f58683bb905b503f8b26bc1e5b572d45ac2845a3e06a"
     },
     "m-40-5-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "c897eecac63d78548bf0b50959c234de11fb48627c8852ef972f1f514b8e1e20"
+      "fingerprint": "22951c1d2c4a3de20f8cdb06e1ddbb481cd79938ac32055c9d05c212a15b3be3"
     },
     "m-41-1-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "eb1632846b544283eafd4d60f9c9c15a02ea239ce3cb8128c76d354a1a87a2be"
+      "fingerprint": "1ac9731d83264b653b17e9545a41c6f8700bda58d5af068a0bab3ac7898f3bda"
     },
     "m-41-2-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "9a464037f07d7f5965144555a9a2ecd34a7f3bf32d118529c0e9fe2f4483ccee"
+      "fingerprint": "7df4968bcc4067d19bbc8a22686d843d73a6ea192c920221633569904b23a9df"
     },
     "m-41-3-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "f99dc3a73376a99b1222fe4ab992314fb9732336c9e5f8a0bb14902c144fed6c"
+      "fingerprint": "0ea735a0545e882c8b632c803a8165f5c2515f97c7075ee83cc1615d53d01dd7"
     },
     "m-41-4-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "6678240f6f76368ae9b15e3ad7706fd2eb2ca2251a1643aa52b22e9fb422dab2"
+      "fingerprint": "8ce2189750414b822fcfd42b257e63819c965c01e09c7d8889769317627f3808"
     },
     "m-41-5-1": {
       "objective": "d3-service-bus",
@@ -1913,12 +1913,12 @@
     "m-42-3-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "2ad610b764f95de4f525230755fd1cb144bbe34fa017d08a5b219350764c6f06"
+      "fingerprint": "5588a6076e5c1f9cc1abbacf42a31869b68f3cd393de266a14184839cadc2ab5"
     },
     "m-42-4-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "abd1deea5c421f691c2082c66721f44e5353da02de590f9e587371e8e3cdf995"
+      "fingerprint": "2289de3f5e8e98938e6e0f04136c07185d0b517c4e4d76c3f31af4695a9f2b8e"
     },
     "m-43-1-1": {
       "objective": "d3-event-grid",
@@ -1933,17 +1933,17 @@
     "m-43-4-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "243c516989764d835f600638914669c61ead8430734de37f8f3dc50433ae8262"
+      "fingerprint": "a0bfd3ac459d0118d0ed7b189dea1baa3b4efcbee610cda1b0b4395c43654007"
     },
     "m-43-5-1": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "8e61970664b8d09e9b5a5560aaa49259d22e3c369e12a7033081d1039ea14b95"
+      "fingerprint": "cdaaaa0552791ef9feda1905a51992bf43cb2a2534389c88d4f3d1f6c9ad972d"
     },
     "m-44-1-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "762ac14e33790c49db008e415d9edf3388246bd9a6923b9e7aa85cbbc0664ee5"
+      "fingerprint": "3a568daaaec6c160cd385a0f6bc2bf4ea7cccf3d6f28454d852665a14ffe0f0d"
     },
     "m-44-2-1": {
       "objective": "d3-service-bus",
@@ -1958,12 +1958,12 @@
     "m-44-4-1": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "26cdc9a0202aa3b6c6f13e75b3093f0ae88e678bf9085a500455dad9d4119634"
+      "fingerprint": "1b74e351146fd3a4fce91cdbb7841183def5745817d1255250d823e8638a046b"
     },
     "m-46-1-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "75099ba2e9a6ee4e3126193b29b00c8ddaeec9f624632674bd21652b31277d04"
+      "fingerprint": "a8f546a0d8d76be520e57f64381ba8cde26bb81bc901b1469700d527149ab53f"
     },
     "m-46-2-1": {
       "objective": "d3-functions-code",
@@ -1978,17 +1978,17 @@
     "m-46-4-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "43f3d1f3fa1f5ddbab2e5beba3bb0bafd299fb11a5eb17edef4fb98a50079e01"
+      "fingerprint": "5fc10b47e0288f9b6584ba8cff5d0dec397937f3182d25b19b442549fd2ccf6f"
     },
     "m-47-1-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "0d40044595e99b6f26343fb4bb16bcf678f96b5a0bee1558e591b6e0c4c22343"
+      "fingerprint": "a3375c3a47a3381d7c6fe44edd8d3d3d22abb2877f8f252d8acb7df5b49bf6a3"
     },
     "m-47-3-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "0e38596c612c420192bebe91be431c70f15bcf2a20ba53374f837ee96f768943"
+      "fingerprint": "8aaa4fb6eaac201fb31295afc2bc3d7ee871a0b85ad681c1204b6f5952477ecc"
     },
     "m-47-4-1": {
       "objective": "d3-functions-code",
@@ -1998,12 +1998,12 @@
     "m-48-1-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "63757f82b9389e71546903fdaa998c32319de6aff323753d00c35821e54b72a9"
+      "fingerprint": "12ec58455d98323d5d7a3da106e76dc5eee4a952003be17a6fb3215be1b14c92"
     },
     "m-48-2-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "70a20304d42f4d6fd350848c9820f622c348abae34560abdf2845be07fd40bd6"
+      "fingerprint": "29ed77934183104eb45f8f0ec9df51a5fc21d6f4e3d7385d2727e438e8fce1be"
     },
     "m-48-2-2": {
       "objective": "d3-functions-code",
@@ -2028,7 +2028,7 @@
     "m-48-5-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "d34920a38a2e8b593be0353746d57498dfb815601ba6fb06b89f138ac49acae3"
+      "fingerprint": "d56905702603e0a3561176207f09f1781fd62b7d13344e3d0f281d663d448813"
     },
     "m-49-1-1": {
       "objective": "d3-functions-code",
@@ -2038,7 +2038,7 @@
     "m-49-2-1": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "c057bb3707455595cf66174050b90fa625673fe2f10de25d524b5a741726b3e7"
+      "fingerprint": "f9897c36a1bbc1efe75d7178e4245d67fb9c1d5231fc602a3a1f6ef191b09460"
     },
     "m-49-4-1": {
       "objective": "d3-functions-code",
@@ -2058,7 +2058,7 @@
     "m-51-2-1": {
       "objective": "d3-functions-deploy",
       "level": "objective",
-      "fingerprint": "895cebfab7fe540e8994b055a8eda9c4cdefbc0229ee554638b9899ad77f661a"
+      "fingerprint": "1cbcd6b84b7d0566828d905686698ec8d69577a553a9abb1653a1e0c97e05c10"
     },
     "m-51-3-1": {
       "objective": "d3-functions-deploy",
@@ -2073,7 +2073,7 @@
     "m-51-5-1": {
       "objective": "d3-functions-deploy",
       "level": "objective",
-      "fingerprint": "f8e01098ec27e60bd9db6699efc995011223c9218fd12052f449e49a4b84e579"
+      "fingerprint": "36e235e13d0b79e5f3ae41da63ac7d35bc6be67066bbbdc65379d32a2d4ac0a9"
     },
     "prep-sb-002": {
       "objective": "d3-service-bus",
@@ -2083,7 +2083,7 @@
     "prep-sb-007": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "6a1151b69d392d5e6a9bbe5f66ee40032ee49edba7b9f42ae26108daf95cff6b"
+      "fingerprint": "96471862aee701f48c8b81ce3592644db366d221181b422c901ae72d86bd26d0"
     },
     "prep-p-sb-005": {
       "objective": "d3-service-bus",
@@ -2093,12 +2093,12 @@
     "prep-p-sb-006": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "ab0d2d3ca3f0a9beebaeb905b0366b2ec8d13ea075e5d5d4426fd14ac0b82d2a"
+      "fingerprint": "7d04655fc4a6be7dd626879bbaa4f3e0ad7a85cef495d69bf27abd145bc5cb96"
     },
     "prep-sb-010": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "f44f858b5d61d95a2c03a5a021d850c414624974ba7decdd743d784db3b95d09"
+      "fingerprint": "f34e8a37f09f6af4d942ef6a3a0108c02d7e5c1bbf8c88efb2b42a1b4c2cf10b"
     },
     "prep-p-sb-009": {
       "objective": "d3-service-bus",
@@ -2123,7 +2123,7 @@
     "prep-p-sb-014": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "62d3495b5c46057f0f64b046e87848643f924745f3aa67342d8a3061559a2556"
+      "fingerprint": "2245b0d2ead62952613d4ecdb564ac815619d0df09c8610da571f2691de9ba8a"
     },
     "prep-p-sb-017": {
       "objective": "d3-service-bus",
@@ -2133,12 +2133,12 @@
     "prep-p-sb-018": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "9fc2b8eb8ea43c6e3eade85f002283d8e15ccf752b440728f179c677fdec8339"
+      "fingerprint": "d0c37511c13ba96e205fca34084701869243d6a5241e29c399466b1d6f430928"
     },
     "prep-p-sb-019": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "7fa54c19287c803b98416e0cc3281a9ad8235671dc6ebf9d80869d62eb3419be"
+      "fingerprint": "d7b8f2a2c326420cc35bd211038cdd888ae22a0c8020b36fc076e52bf63c13eb"
     },
     "prep-p-sb-020": {
       "objective": "d3-service-bus",
@@ -2153,12 +2153,12 @@
     "prep-sb-030": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "1d2aa5ef67a4e2a1e068cca6c0d5859233186bd0fba5ac5aff4cdb314ff60f7b"
+      "fingerprint": "debf38dff6d8490be3d62116ef1daa4ce5dfa70c86e7d209289383d3b2f956ac"
     },
     "prep-sb-028": {
       "objective": "d3-service-bus",
       "level": "objective",
-      "fingerprint": "1d82d17101aefc6424036af37e3a303f5a17163f5285d94460985db15295015e"
+      "fingerprint": "5e6f635b2140e8a869129327a1b2d1d421e4be2740710570adaae179faa2d989"
     },
     "prep-p-sb-025": {
       "objective": "d3-service-bus",
@@ -2173,7 +2173,7 @@
     "prep-p-eg-004": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "cdd07b28e985d9bad2ed98cb6e225c342c45b3afb17d45034ec8b48a4129c86f"
+      "fingerprint": "580f7416bb8b9e7dcf362f7e88e9da7179bb2fea2497354f31b86a763d61a978"
     },
     "prep-eg-006": {
       "objective": "d3-event-grid",
@@ -2183,7 +2183,7 @@
     "prep-eg-010": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "e2042a68ed30b5bd89ce25d447b4fb37ace0f1089151aaef20d64120b660fe72"
+      "fingerprint": "ce60b304eb78dbecf5f22ad00de68cafe5ae9e3b6530c303eff0befd7b923735"
     },
     "prep-eg-011": {
       "objective": "d3-event-grid",
@@ -2198,17 +2198,17 @@
     "prep-p-eg-014": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "3f36969fd085cf915bc89f7e4574987e8c93403e4d3d89172476ef518c0b559f"
+      "fingerprint": "4651123b7faf7cc43084487af65198c87b054671d637e193dc9ffa7455875357"
     },
     "prep-p-eg-016": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "86140e4c6245c909aa0976eb685f03b941e99046c509db727b47705476780d80"
+      "fingerprint": "e74ea2ba1a2f61dd910f9804a20c169a2bb2c53507d21b4c7cc794b1b3564c16"
     },
     "prep-p-eg-024": {
       "objective": "d3-event-grid",
       "level": "objective",
-      "fingerprint": "f83efa2d9936238495f61740a6e7e4cdf2245a3c1522468dd45927d5f6843540"
+      "fingerprint": "fbec01d963508dfccbfb0c65cd7813289fb32139267598ec1ce7b0cbb38c5e21"
     },
     "prep-func-001": {
       "objective": "d3-functions-code",
@@ -2218,27 +2218,27 @@
     "prep-p-fn-002": {
       "objective": "d3-functions-deploy",
       "level": "objective",
-      "fingerprint": "7d214aa7c3968cfdc19871f3e3af0d1a5779378428172602d9edb4474c1c37c0"
+      "fingerprint": "d9d9e8c38247543493b8b49198da697a968a00cd5a0b2c834a2cc743e33150c3"
     },
     "prep-func-003": {
       "objective": "d3-functions-deploy",
       "level": "objective",
-      "fingerprint": "8b90df27ad609bb09f187d0cd303c88f6e308efaee7282b9122d624a2191d216"
+      "fingerprint": "33781a26182dc63a8d6b391680383b727e231ff4030ab3fd2c800809fc74b520"
     },
     "prep-func-007": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "c168160f7777de65423b9607ca39ff285d27d96e3a17a01426c32326edf1695e"
+      "fingerprint": "8f63a1d4fffd46887ebb9bb74fe9b0ae231c4d7294ecdf2602441e6c647362bc"
     },
     "prep-p-fn-011": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "eb57889d65ff2894d7fed9f251ef928064a6b8981359e94f87afff90fbb075e9"
+      "fingerprint": "779d461e4ba165f7f93ca94315799ee40d3d50e32ad6d1409910dbc8643284b6"
     },
     "prep-p-fn-021": {
       "objective": "d3-functions-code",
       "level": "objective",
-      "fingerprint": "ec401ef54d0f57d15be4dd90d2e22499ed41758ea26833375811922b21619683"
+      "fingerprint": "daf11e88bdfe1f74d81396233cc1b9c7202a9da25190a5b817e29bf12e1b8dee"
     },
     "prep-p-fn-022": {
       "objective": "d3-functions-deploy",
@@ -2253,12 +2253,12 @@
     "term-d4-entra": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "1ed1cd20744ae59c51ac13da489482cfe7fdcb7eccdf667cb108d44c3f66696a"
+      "fingerprint": "ad8823032eb6721fd0d4fa43fa6c25b56a2e7c72575de679d45690c7368b3f53"
     },
     "term-d4-tenant": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "e27d50df0c875aead22c3d427d14637b0980ad60e8d48f4f0651b9716f660bab"
+      "fingerprint": "a4bd4b75f4b3b7042e9d7ab16c5fc3994acbfbd7809e19e36b18b8cf413c283a"
     },
     "term-d4-identity": {
       "objective": "d4-secrets",
@@ -2278,7 +2278,7 @@
     "term-d4-managed-identity": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "8e620f935444c2e453ae366e7170ee6b1c26d2a5ed9066ed2bf99fbe93f65b35"
+      "fingerprint": "0351ac2d7127845aec76ae9f699a28cdf7bd5119d0ce559b96c971de90cd5579"
     },
     "term-d4-rbac": {
       "objective": "d4-secrets",
@@ -2288,7 +2288,7 @@
     "term-d4-abac": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "d9bf00bab867c2872427293bd3bc9399023b80685157ae1bba1a954187415ef3"
+      "fingerprint": "c78c98d36049f7b2a209028121b8bba0c94141c5ee7ba74b6d790560dff86527"
     },
     "term-d4-scope": {
       "objective": "d4-secrets",
@@ -2308,7 +2308,7 @@
     "term-d4-key-vault": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "a898a6bcb3eb98073d072739e7ee2bb0a2076b96302e2db21c95c977236d0fb5"
+      "fingerprint": "a862184106dcf106bda73b2167b42c3fc6678db5f5e454269dfd1ddfc773704a"
     },
     "term-d4-secret": {
       "objective": "d4-secrets",
@@ -2318,7 +2318,7 @@
     "term-d4-certificate": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "e15c1719efea6c4e0c5be51b083bee514e6443aed1b5fa8b8a5a87d4a10c3b4c"
+      "fingerprint": "7b4d8ad7b32c179575a314972a7d3f061e738503f17aaae5f07530e15a4060f6"
     },
     "term-d4-tls": {
       "objective": "d4-secrets",
@@ -2328,17 +2328,17 @@
     "term-d4-key-vault-reference": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "41f0e0cdfa53184b228e644880faed50d823cf84bbce4bab6bc2ef7f0c5c2744"
+      "fingerprint": "bdc70cad2626d12648ae084e0422909022bf46a8a987f6d665a216b2abe28b31"
     },
     "term-d4-rotation": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "70b18943349474697a36f00b12dadf1e13dce7f1686ba28c822a962b11be703e"
+      "fingerprint": "781be90d26435437734fc9c1bf49296abeb5ac9a580e33c1ac8df22fcacfeb39"
     },
     "term-d4-app-configuration": {
       "objective": "d4-configuration",
       "level": "foundation",
-      "fingerprint": "da040041c5e4df5d328b98a685b86993e62d1749649b5b87b10a400b0fee5173"
+      "fingerprint": "0be0a5aa8c8061a045525b044af76cb78249d489b24a2411688ea088c93e7ad4"
     },
     "term-d4-feature-flag": {
       "objective": "d4-configuration",
@@ -2348,72 +2348,72 @@
     "term-d4-vnet": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "7a96b20abc28a2415e36884f77f8edbee6974554b96e425e0537e9f8c797fc49"
+      "fingerprint": "1b3be336a9c3398821883445bf58bfd5449908dda1fbb21c229870db1fe88fef"
     },
     "term-d4-private-endpoint": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "c6875a146f53a559fbe0d3d980f20ba20577b88b251a879e1c6f14121e3e63c4"
+      "fingerprint": "c3f159b2c75aac65c9733f233b598e0569d946fc0f54f321666e8f8503611b5e"
     },
     "term-d4-azure-monitor": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "30a456aa62ee9ef63d12849cc2a191e0aee5f03702237b5ac9a10d853dc1ef5b"
+      "fingerprint": "098c8e30f433bd3822b4729bf78b7f1f025f71f876941878a78fe9acd5cca250"
     },
     "term-d4-application-insights": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "27643259a93761306f9fbb7ac914ba59b72e636a6272be74c9ee9c0075d027a3"
+      "fingerprint": "f7719f407701dc3c61d892c9346c72d91bac65c33bb1e9a45f94b15743d537e6"
     },
     "term-d4-log-analytics": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "7cedb587221e072e721369c785ee4c31ed8b7eacaf96f5ac5d8c93b79b301ee8"
+      "fingerprint": "4014f0127bf49f9f4a5630fa1d44b635ce979d756188272e416b61a9bec41b7f"
     },
     "term-d4-csi": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "0680253ac44203c25db37218ff46665da4b741899584f8d06aeea91cd4f5fb2f"
+      "fingerprint": "5c28be151f951a82be24992864615e3acb96bb28a38c79794cb1a9a3e136a162"
     },
     "term-d4-telemetry": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "0ac6b66db1420de34238c239c52d672bfbc58c5b51b83b51f2081dd14e052bfb"
+      "fingerprint": "ae0bc68bccd2c1b9a4466e86ca5b0acb70feb1050a460b87b99efebf85f65e8a"
     },
     "term-d4-log": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "b7c21bbb7379049ff2440cd5cf3e501df961182d80e040065451d34964541b84"
+      "fingerprint": "177a93e1ba0062d955b4e0cde55b4cdd614e674581b8f4f0caf89c3679704a8d"
     },
     "term-d4-metric": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "941f8d43e647adea5e6f916e95cd95ae20f3c7b7f5d6d97124947a37ef8167ba"
+      "fingerprint": "cc051d47d590e2344ccaa49bd64ab2199cfc5d6b3bb467b1f0801c3e60194fe0"
     },
     "term-d4-trace": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "23f75dd0b4704dd1d20d71c07312e75aad6ae9373ad5f8bd98c8575707d0647c"
+      "fingerprint": "7267732fadc9a2d7bf0e7fd4549088c343ec1c04b08785f3c31c93a14821b64d"
     },
     "term-d4-span": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "ac66f710477e4d5d103cbe683359d1a789f858cb05c2b92d117e193976fdfb9c"
+      "fingerprint": "ffa191224ba75f4fab4c736100c181ee23ba891707bc40157e1d0ed15f0ce811"
     },
     "term-d4-otel": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "ce2ec76eb28ed10f256d16a52041b6aa9a696478453992063336e38afb74e864"
+      "fingerprint": "b97b2c5d77244a2551f5c40470ecf876b3170edda5345c2e169c27d389e69aa8"
     },
     "term-d4-instrumentation": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "12a5ff35f7cace7e7dfb312fd04be7e93d1850b398d53caec6ded6d92ae1b7d0"
+      "fingerprint": "3a713e2d1df0c150c33683c5ca6273aa185f8a7283fae119ac388abfdc007fd4"
     },
     "term-d4-exporter": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "c5621713229dfcc98411d944fdf9fb69db3853195646b8d97935f524246e1298"
+      "fingerprint": "2031f10d37b3195920b5bf698872fd504ec7e34425d4c393a50004ba1fb005d2"
     },
     "term-d4-sampling": {
       "objective": "d4-traces",
@@ -2428,67 +2428,67 @@
     "term-d4-latency": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "092b4ca6fbd33f2f5aea7198e9a9146350b86110f016674adcf1b38a5ec8f29d"
+      "fingerprint": "7e5cf04aa99e9a12aeaa88ff4ca25a8d4602d7b796884e986e2816346391be58"
     },
     "term-d4-p95": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "56fc36531247c87cd60b288f2db98a05ee3216739277a6e1343e3b9e5d1474a7"
+      "fingerprint": "0d5b3effa043bd8686295750db68ddd06fe5e5a7cdca51824c32b35ee013a6c1"
     },
     "m-55-3-1": {
       "objective": "d4-configuration",
       "level": "foundation",
-      "fingerprint": "57263e6c23d3f8552d5238908a3ecf190fc56fa788cf12bfe517a32160174561"
+      "fingerprint": "b05be09dd7bc07e627f13f89114ac8f6c0c949679c0d4c913509c94acc7ea3fc"
     },
     "m-64-1-1": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "ebacaec76d030c5e1f9824943c84c5e31aec6971dca2038893905c0c0a1a18ab"
+      "fingerprint": "a5a930009f3da881d8b3e271b4cf6ae0102a54cbe499ea7642c9429d0f0e880e"
     },
     "prep-rbac-015": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "e0a7080ea3fb1ecec95547cdb5ed329fd0e443c6eb400220b5b1c36d441a84ac"
+      "fingerprint": "84679d5cec86a498b767358f6a920e63db0c391961ae30e02d02805e2547ddeb"
     },
     "prep-rbac-028": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "818fb657bdbc242622a9fc3998a2756a75dd485986d9621733a44d629131a453"
+      "fingerprint": "b2f3692cfb49e551468f8cb59480a1362e4806d208c069704bed98ea747be3dc"
     },
     "m-05-2-1": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "c701d805218b31166cec39ab562297597da79e1e53a0718f55318889b05bf80d"
+      "fingerprint": "44d166e598bb4dad39be9ee28dad2dae24a7ea9574181fd6dbd44b1560431097"
     },
     "m-07-5-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "55f8eac27992b8d66358fbcdc89040a4e2e87a022f8d461357f0d97331e851b2"
+      "fingerprint": "377018a54a2fb0f71d0759efb1b926a4e0f1a95d229d934b37d3da6fc678a5d6"
     },
     "m-14-6-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "3252c32bc827b14afa15b87efacfea4ceb182dd036c3486ca10373c33481d33d"
+      "fingerprint": "806e497b7111b663cad57c16b69137c532cc4d7e9430fe08b6a0876a3ee2fb29"
     },
     "m-52-1-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "ec6883ca74a4b7db94bab867aa16f8257a8fe81557f5086e8e57dc23d6a73221"
+      "fingerprint": "1c78d8a3db64f8e36e71d9b4830216a200241a579ab6b29e75a0b16b88f976e1"
     },
     "m-52-2-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "ef385456f6bc5c4221cc8370b76e3cad00b2e3656564fca70b3b1ed314c6b49c"
+      "fingerprint": "7f55ff5f6554406ed40ef243e7c8e85b9e7cb23be58f38ffc3a62c03d626c692"
     },
     "m-52-3-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "0bb7e6cdde3fa695e7d656d78138fb60b556e5a253bd6ebd8fd8bb4cdbebb749"
+      "fingerprint": "ac8470b068e617e753e7430632202bd3e61d6d50ac024598330589e9bb539e30"
     },
     "m-52-4-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "88146fa06652b0b4f2ce8837da629322cdc548eec636629ef41b571c24c9d30f"
+      "fingerprint": "4c927c5521008cf987193ff5054cd2ad8907dd1028718c0ff7690118d908b779"
     },
     "m-52-6-1": {
       "objective": "d4-secrets",
@@ -2513,7 +2513,7 @@
     "m-53-3-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "f27fd978a6027766200a688d5e0460f9d1a41176a175aa9aa102c6d7c25b1067"
+      "fingerprint": "2b0778084d126861a2d061657c95df0d0c6e60df8f6c9e4a1fc2753116c419cd"
     },
     "m-53-4-1": {
       "objective": "d4-secrets",
@@ -2528,7 +2528,7 @@
     "m-54-2-1": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "777a196d5de0a54f72497d8e2d5d6092770259cd446e47a3a98f5fc99eb82faa"
+      "fingerprint": "53ec5b68690bbf1c9d75f41153d69f94890e08236582b7975b70ac1dae232eeb"
     },
     "m-54-3-1": {
       "objective": "d4-secrets",
@@ -2548,42 +2548,42 @@
     "m-55-4-1": {
       "objective": "d4-configuration",
       "level": "objective",
-      "fingerprint": "1b4536c1a9b570ff7b26766ed66dcabe4d1dc248c9d582bb09263f260e93ee49"
+      "fingerprint": "bf33aeb91fa683591d1d7b67432a3ef279e390963fd231fe04df6d7238a5e5ad"
     },
     "m-56-1-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "46f091728ff21dfe4340e836aeba894227cc9249aaa06621d485157968db09e2"
+      "fingerprint": "51b090c1dc6feb09adf6d5a1603a42c674b445fb09aba7a543751f59edb24f0b"
     },
     "m-56-3-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "36b3430778219c85d7d87b4bcff7d12ebf82b174b897c26b6fcd836b6cad578d"
+      "fingerprint": "24ffcabfb5a77e8551fb29a6189a1757516634cd8f4735384cafeaf3f17b07cc"
     },
     "m-56-4-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "4d0b66d85ff8efda035fafd72328c69031ad633dd3e5921bddc8d505a0bf2d7e"
+      "fingerprint": "aa4c617570a29ae58c06cc4f7c5283b35fb0dd7e46a54dbf903c0e6731f5068a"
     },
     "m-56-6-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "4287827a865d977e7fdcf3d2f33d29d1d30a67be1250c0017a389b597a24a62d"
+      "fingerprint": "49f006e680595ca581641d3ce5e0cd9a2d533ae8caa2a91af9178f6f338aeb85"
     },
     "m-57-2-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "dd89685a6c47eb91881bf9209b12389c4ce4200d56a4295fad21f15e9ed138da"
+      "fingerprint": "acb8e9be8784d0569ffb8cee35afb9305ec0e4cf9f61e739d33ef17438ecb18d"
     },
     "m-57-3-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "5c5868d82a933113144a37975a7ca6516b7119ba02586442144f65684376665b"
+      "fingerprint": "89b7d64fc208746bc4aa4419570367a38a1faeeca45182c1159f7101b6438626"
     },
     "m-57-4-1": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "f441ceaee2e704fb4d3cdf353d96b561c60baef5232d8fe919b005eab761f7b3"
+      "fingerprint": "11bf03097cd7bb63c5bd98ec39d3bf3d51cb6d3aac8e0a2b7cdb3a66647ca978"
     },
     "m-58-1-1": {
       "objective": "d4-configuration",
@@ -2603,7 +2603,7 @@
     "m-59-1-1": {
       "objective": "d4-configuration",
       "level": "objective",
-      "fingerprint": "363de5e8e02d8eb42fb197b0755dd1d2bfff2247cc0de05db4cf4268ccd0681e"
+      "fingerprint": "22aff52708138bbcaf8e6a164207e3ae45bdc4c08c5b7a6ee4275c839cc939cc"
     },
     "m-59-2-1": {
       "objective": "d4-configuration",
@@ -2613,12 +2613,12 @@
     "m-59-4-1": {
       "objective": "d4-configuration",
       "level": "objective",
-      "fingerprint": "6e615ca9ea4b8e9030e2c944bda94411c3429e8129baaf10d995a3dfd82af08f"
+      "fingerprint": "afcc3aec91cae848b1b91e39031276ce3548ecacc9a4b83417ef21204367b7d1"
     },
     "m-59-5-1": {
       "objective": "d4-configuration",
       "level": "objective",
-      "fingerprint": "61bfc15b5c93f0c461f288d91ee259b2852924d71be42c4e6871ae87fdf19320"
+      "fingerprint": "5b768235cebf458e115975675f3102f157164ac955eef1a1d58408e92dd1e2df"
     },
     "m-60-1-1": {
       "objective": "d4-log-queries",
@@ -2658,17 +2658,17 @@
     "m-60-6-1": {
       "objective": "d4-log-queries",
       "level": "objective",
-      "fingerprint": "c03f240d9f8be4b4f710f260bb390fbfbc0074cb801ad21fc81c8303e5b263fb"
+      "fingerprint": "f02d3f6442c3417b26b973f2e9273b5aaef501616aaae91c4955ff7035850086"
     },
     "m-61-1-1": {
       "objective": "d4-log-queries",
       "level": "objective",
-      "fingerprint": "9926484be6b7f139b0c2b7ca10a679fda17dedae118dad82e728d8bb6adfe10a"
+      "fingerprint": "b4b28909c5f843f9da79430ad1c4fc021c407490ccef35d751f7a455cfb58673"
     },
     "m-61-2-1": {
       "objective": "d4-log-queries",
       "level": "objective",
-      "fingerprint": "363c3dadd793e7da97df5b71cbfe93c11dfa4b8e50fe4748a617f204642b4b47"
+      "fingerprint": "9946bc9072bdd644724154052bdf32ab10f812d8e9accda471a8a865d41cce58"
     },
     "m-61-3-1": {
       "objective": "d4-log-queries",
@@ -2693,7 +2693,7 @@
     "m-62-4-1": {
       "objective": "d4-log-queries",
       "level": "objective",
-      "fingerprint": "f0f1c7dc6a018beee6ea44c9d2ee3d19b3f8bf03727b3babea63ca93ef649bc3"
+      "fingerprint": "62cc70f85070ea063aa8395ee75575fcfdd1d8d0bf1cf4ad8c94b020e99c4582"
     },
     "m-63-1-1": {
       "objective": "d4-log-queries",
@@ -2718,12 +2718,12 @@
     "m-64-2-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "b12bc870db96e63818871f1fa5ddc64b1592f434798e7fc16f7c9f05e846fa2e"
+      "fingerprint": "2ca7c6fb6d072d87d3275beeff90ee00d90f853cd7a493fcad38427d5126afcc"
     },
     "m-64-3-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "6820ca276309e1407a787f75310a4809c67e342edbdff80cf25da9eba00e3b48"
+      "fingerprint": "2b0a31ab78ab9662e4f231086f4a5abc890e52abda9b7f6f37f2f13b270c7a58"
     },
     "m-64-4-1": {
       "objective": "d4-traces",
@@ -2733,17 +2733,17 @@
     "m-65-1-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "febb8bb924bac5602288dc47f1810171462fb3e2b44323771d6f7162f28e26d7"
+      "fingerprint": "864b669dcf05076da4de4161799c8a3fdb7e44114285fbeb3c32ad8eaba81930"
     },
     "m-65-2-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "3b2aafb71650e9d7b8fa91232d197c31b2d1634343f00ae47e2c77625c4b31cf"
+      "fingerprint": "7c8072cc3beaf0c104ee214847da87f17e002c516e8481a30079c3b2bca5bdd5"
     },
     "m-65-5-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "4204fe9531803d35fb7591bfb1f1b4516e44e95c83f7b19596adb48fc9ab1e59"
+      "fingerprint": "e53fefef2bb16552cf79e06abdac2db1e1deab4ed43d8f81c718fec039355508"
     },
     "m-66-2-1": {
       "objective": "d4-traces",
@@ -2753,12 +2753,12 @@
     "m-66-3-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "74fcc0185346f8ca3f8a27268fc7d722ffa97784f07479bc7b993db4a154bbf6"
+      "fingerprint": "91bb49b168d7aa591028431a5450baf329e72f82779e27cbaabf90ef740b1cce"
     },
     "m-66-4-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "1ed957fa17462127cd9891ffa1e495ddc40481712baa0a74881c7e0ca728365e"
+      "fingerprint": "3094ffbbfceb951bdd6d05674dc79ed5916a56b4ebdd0e34b40462822a6c918e"
     },
     "m-66-5-1": {
       "objective": "d4-traces",
@@ -2778,7 +2778,7 @@
     "m-67-1-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "8319342a71f84aee82b2d2f5ed9da010ac9b3026fce9012074a3742bb8dcee21"
+      "fingerprint": "c21f425eb9eed5376813274ae3fc3c2a319326551a97a95f305cc95e28563fef"
     },
     "m-67-2-1": {
       "objective": "d4-traces",
@@ -2793,22 +2793,22 @@
     "m-67-4-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "17f111a1b7e6a3cc2b473cf5c9e5050b3ecc8af34d802c6548c3ffb864f1f05e"
+      "fingerprint": "05a45fc575b3bc571c5728e7893851a1b446a753582ff07f683ff3c6eb4cc2cb"
     },
     "m-67-5-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "ff0a09484c48e8f7765926de32d999e18178ca9a958ef59f6e71f3cb45b7c575"
+      "fingerprint": "a29879b5371676edb13dea242200134f2c440f166f17813086da0301a27d5c2b"
     },
     "m-68-1-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "ecf6b77b5f6092c04ef913da4e56bd8477b92307562c060a1d6547bc46660874"
+      "fingerprint": "15360a5731081c283e999ad210a2656f83a907babf9513a699c8886ab6f3c486"
     },
     "m-68-2-1": {
       "objective": "d4-traces",
       "level": "objective",
-      "fingerprint": "c2365a03dd26842b2c0b49de2dcc110851cbb5e308773a8955e5ab3c65764cff"
+      "fingerprint": "3c240a52f5b63e2e0231ea4a4931f501a68fe41d1f4076cdef2dbc8666a6585e"
     },
     "m-68-3-1": {
       "objective": "d4-traces",
@@ -2818,17 +2818,17 @@
     "prep-kv-002": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "34055174f1415f6b72531e46c7fff4a10c13b90ba610eae81acb7fe5a7a0f05f"
+      "fingerprint": "7d21d7247f71df583201c21150a34c1ca7dde1cf7a584ed5be4b0e7fa085bff3"
     },
     "prep-kv-009": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "88caea522871d30e58541f0f8c25774ae3d07ad38a3c3799f4928542c4e810c6"
+      "fingerprint": "83dd168accddcc0c0dc33aa0073eba11d0c7873903ce73d3754a444b7474cba3"
     },
     "prep-kv-013": {
       "objective": "d4-secrets",
       "level": "objective",
-      "fingerprint": "506b5e80d47052a694cf97444233d44ff01948cebbc4c12f1a87e24c924779fa"
+      "fingerprint": "98597bf36dda004e722bf72c79e4175788dc1959fa00c0af7d6cbb4c39e46f87"
     },
     "prep-p-kv-023": {
       "objective": "d4-secrets",
@@ -2843,7 +2843,7 @@
     "prep-rbac-001": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "907abe0641330c286d481f1cafa1896a381bfd3341a20651fbe80977dd3b9920"
+      "fingerprint": "1af311f29aa9a47b496b8dfed29d627a4bc254ccac802f393e7a998aaa172e90"
     },
     "prep-rbac-003": {
       "objective": "d4-secrets",
@@ -2853,17 +2853,17 @@
     "prep-p-rbac-003": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "2081f970cb0de5d3da30277e95511e3e153aeac2a8d03e82286499e68608adc9"
+      "fingerprint": "4e961ad532dfc35f7feb6765080686aff2cb508a30c09869587b9a37ef6e4ff7"
     },
     "prep-p-rbac-007": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "e1dc46d4a177ea8c389b60aa6ce6dcb65f91b200cf8379486c0b1a044d6c45b0"
+      "fingerprint": "5be0c9905c36c73546c71cc9a85df84f95181168655b8c4967846f7fe71a28aa"
     },
     "prep-p-rbac-023": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "744eb967beffe3f5274cffe7448156bacb4ef3f0652036bc3c9453a9148db1f8"
+      "fingerprint": "b2593286c6e4a342e7c45186db54532f6551a2f45618407665847040038d2fdc"
     },
     "prep-p-rbac-020": {
       "objective": "d4-secrets",
@@ -2873,7 +2873,7 @@
     "prep-rbac-027": {
       "objective": "d4-secrets",
       "level": "foundation",
-      "fingerprint": "ef39acc2857680c4ce740aa74b6dfc8b45b8b03d173c477d46038f3972e5307a"
+      "fingerprint": "4358e76900495c4ac04748c90d31a5e1aa414766b0b23ae4b51340ed327226ed"
     },
     "prep-mon-003": {
       "objective": "d4-log-queries",
@@ -2883,7 +2883,7 @@
     "prep-p-mon-009": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "6d17bfa73f7de2233d89161927a3ca8b31d014add625b51f97d297d8d2366c4b"
+      "fingerprint": "8f0254096c0527a7b0ac9abb13d6c0f0319f95e0ceff17cc0b251e92872a811f"
     },
     "prep-mon-019": {
       "objective": "d4-log-queries",
@@ -2893,7 +2893,7 @@
     "prep-p-mon-017": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "812f632f1b3db80add7dc8833bcbca040c2484bc9c7a2500585079985c633a1e"
+      "fingerprint": "ae5d0f7cc65db40a1df17e6beea71c0cb0578a078db13b7d892f7043832b8fc9"
     },
     "prep-mon-021": {
       "objective": "d4-log-queries",
@@ -2903,12 +2903,12 @@
     "prep-mon-028": {
       "objective": "d4-traces",
       "level": "foundation",
-      "fingerprint": "25bfe99d791ddb4aed37a6549a331d737f3b045613d1b088d9b49e5ce0984f5b"
+      "fingerprint": "084865163756fdb5954c857a508a6c3bf68ce6240d3a304db6211bc1b19dc61c"
     },
     "prep-p-mon-013": {
       "objective": "d4-log-queries",
       "level": "foundation",
-      "fingerprint": "6d16c49163df3d46515281a13a3b532f39b76ffffbaa5971c95b218bc9c6eb6c"
+      "fingerprint": "d0065ec444277a76f21e100ef86523777851f27db259db2d0ad4844c3ab45b00"
     }
   },
   "removed": [

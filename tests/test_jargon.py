@@ -56,6 +56,25 @@ class JargonTests(unittest.TestCase):
         self.assertNotEqual(names['subscription'], names['topic subscription'])
         self.assertNotEqual(names['ingress'], names['kubernetes ingress'])
 
+    def test_card_examples_are_reused_in_glossary_without_losing_code_or_scenarios(self):
+        deck = json.loads((ROOT / 'flashcards-data.js').read_text(encoding='utf-8')
+                          .split('window.AI200_FLASHCARDS = ', 1)[1].strip().removesuffix(';'))
+        terms = {term['sourceCard']: term for term in self.terms if term.get('sourceCard')}
+        for card in deck['cards']:
+            if card.get('kind') != 'term' or not card.get('example'):
+                continue
+            with self.subTest(card=card['id']):
+                example = terms[card['id']]['example']
+                self.assertEqual({key: value for key, value in example.items() if key != 'id'}, card['example'])
+                html = jargon.render_example(example, './')
+                self.assertIn(example['summary'], unescape(html))
+                page = Page(html)
+                if example['mode'] == 'inline':
+                    self.assertEqual(page.code[0]['text'], example['code'])
+                else:
+                    self.assertFalse(page.code)
+                    self.assertNotIn('<a ', html)
+
     def test_all_current_pages_load_the_shared_assets_once(self):
         for path in self.pages:
             with self.subTest(page=path.relative_to(ROOT)):

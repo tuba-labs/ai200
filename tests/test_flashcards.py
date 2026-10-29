@@ -1,5 +1,6 @@
 """Check recall-card content and metadata without browser dependencies."""
 from collections import Counter
+import ast
 import json
 from pathlib import Path
 import re
@@ -42,6 +43,33 @@ class FlashcardContentTests(unittest.TestCase):
         for card in self.cards:
             groups.setdefault(normalize(card["question"]), []).append(card["id"])
         self.assertFalse({question: ids for question, ids in groups.items() if len(ids) > 1})
+
+    def test_examples_are_short_explained_and_have_valid_json_or_python_syntax(self):
+        for card in self.cards:
+            example = card.get('example')
+            if not example:
+                continue
+            with self.subTest(card=card['id']):
+                self.assertIn(example['mode'], {'inline', 'scenario'})
+                self.assertTrue(example['language'].strip())
+                self.assertTrue(example['summary'].strip())
+                self.assertLessEqual(len(example['summary'].split()), 70)
+                if example['mode'] == 'scenario':
+                    self.assertNotIn('code', example)
+                    continue
+                self.assertTrue(example['code'].strip())
+                self.assertLessEqual(len(example['code'].splitlines()), 10)
+                if example['language'].startswith('Python'):
+                    ast.parse(example['code'])
+                if example['language'].startswith('JSON'):
+                    json.loads(example['code'])
+
+    def test_example_review_accounts_for_each_card(self):
+        report = (ROOT / 'reports/flashcard-example-review.txt').read_text(encoding='utf-8')
+        identifiers = re.findall(r'^\d+ \| ([a-z0-9-]+) \| Domain ', report, flags=re.M)
+        self.assertEqual(len(identifiers), len(set(identifiers)))
+        self.assertEqual(set(identifiers), {card['id'] for card in self.cards})
+        self.assertEqual(len(re.findall(r'^Decision: (?:added|already concrete|not needed)\.', report, flags=re.M)), len(self.cards))
 
     def test_unique_ids_and_valid_categories(self):
         self.assertEqual(len({card["id"] for card in self.cards}), len(self.cards))

@@ -279,6 +279,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Select the Training subscription before creating rg-repairs. The new resource group and its resources belong to Training, and their usage is billed through that subscription."
       }
     },
     {
@@ -357,6 +362,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Place healthy API replicas in two different supported zones. If one zone fails, a replica in the other can continue serving requests, provided enough healthy capacity remains."
       }
     },
     {
@@ -648,6 +658,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Pipeline flow",
+        "code": "Commit → build and test → publish orders:build-42 → deploy to staging",
+        "summary": "CI builds and checks the change. Delivery prepares a release for deployment; automatic promotion to production is a separate pipeline choice."
       }
     },
     {
@@ -693,6 +709,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Docker CLI",
+        "code": "docker build -t orders:v1 .\ndocker run --rm -p 8080:8000 orders:v1",
+        "summary": "The current directory supplies the Dockerfile and source. Assume the image starts an API on port 8000; the second command makes it available on the host at port 8080."
       }
     },
     {
@@ -732,6 +754,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Image address",
+        "code": "studyacr.azurecr.io/orders:v1",
+        "summary": "This names one published image version. Starting three containers from it creates three running instances of the same packaged application."
       }
     },
     {
@@ -771,6 +799,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Docker CLI",
+        "code": "docker run -d --name orders-a orders:v1\ndocker run -d --name orders-b orders:v1",
+        "summary": "Assuming orders:v1 is a locally available long-running app image, these commands start two separately named containers from that same image."
       }
     },
     {
@@ -888,6 +922,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Image address",
+        "code": "studyacr.azurecr.io/orders:v1",
+        "summary": "studyacr.azurecr.io is the example ACR login server. orders is a repository inside it, and v1 selects a tagged image version."
       }
     },
     {
@@ -1011,6 +1051,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Image address format",
+        "code": "studyacr.azurecr.io/orders@sha256:<manifest-digest>",
+        "summary": "Replace <manifest-digest> with the real digest returned by the registry. The @sha256 part selects exact manifest content rather than following a movable tag."
       }
     },
     {
@@ -1134,6 +1180,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Docker CLI",
+        "code": "docker pull studyacr.azurecr.io/orders:v1",
+        "summary": "After authenticating to this example registry, the command downloads the content needed for orders:v1. Pulling an image does not start its application."
       }
     },
     {
@@ -1173,6 +1225,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deploy an orders API container as an App Service web app. Configure its environment values in app settings and call its HTTPS endpoint; Azure manages the underlying web-hosting infrastructure."
       }
     },
     {
@@ -1251,6 +1308,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deploy orders-api and orders-worker as two Container Apps in one environment. The API accepts HTTP requests, while the worker can scale in response to queued jobs."
       }
     },
     {
@@ -1290,6 +1352,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Declare that three orders pods should be running. If one disappears, Kubernetes controllers create a replacement and the scheduler finds a suitable node for it."
       }
     },
     {
@@ -1368,6 +1435,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A small cluster has worker-a and worker-b. Two orders pods run on worker-a and another runs on worker-b; one control plane coordinates these workloads as part of the same cluster."
       }
     },
     {
@@ -1407,6 +1479,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "You request three API replicas, but only two exist. A controller creates the missing pod, and the scheduler selects a node that can run it."
       }
     },
     {
@@ -1446,6 +1523,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "worker-a can host two orders pods and a logging-agent pod at once. They are separate workloads sharing one worker machine."
       }
     },
     {
@@ -1491,6 +1573,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One pool uses smaller machines for web APIs; another uses larger-memory machines for search workers. Adding a node to a pool adds a worker machine, rather than directly changing a Deployment’s replica setting."
       }
     },
     {
@@ -1530,6 +1617,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An API container and a helper container run in one pod. They share the pod’s IP address and can communicate through localhost; they can also mount the same declared volume."
       }
     },
     {
@@ -1686,6 +1778,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · Service spec fragment",
+        "code": "selector:\n  app: orders\nports:\n  - port: 80\n    targetPort: 8000",
+        "summary": "Under a Service’s spec, this selects pods labeled app=orders and forwards Service port 80 to port 8000 on those pods. The application must actually listen there."
       }
     },
     {
@@ -1764,6 +1862,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A Deployment named orders can exist in both training and production namespaces. Asking kubectl for the training namespace selects that namespace’s resources, not production’s copy."
       }
     },
     {
@@ -1965,6 +2068,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · container resources.limits fragment",
+        "code": "cpu: \"500m\"\nmemory: \"128Mi\"",
+        "summary": "Under resources.limits, these illustrative values cap CPU at half a core and memory at 128 MiB. CPU can be throttled; exceeding the memory limit can terminate the container."
       }
     },
     {
@@ -2121,6 +2230,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An empty jobs queue allows an appropriately configured worker to scale to zero. When jobs arrive, KEDA can detect the backlog and request a replica before any worker is running to report CPU usage."
       }
     },
     {
@@ -2362,6 +2476,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · startupProbe timing fragment",
+        "code": "failureThreshold: 30\nperiodSeconds: 10",
+        "summary": "Put these values under a startupProbe that already defines its check. Thirty failed attempts at ten-second intervals provide roughly five minutes for startup; these are example values, not universal defaults."
       }
     },
     {
@@ -2408,6 +2528,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two equally requested API pods average 80% CPU utilization against a 40% target. With usable metrics, the basic ratio estimate is four replicas, before minimum/maximum bounds and stabilization rules."
       }
     },
     {
@@ -2454,6 +2579,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A VPA recommendation might raise a container’s memory request from 128 MiB to 512 MiB after observing its usage. This changes the size requested for a container, rather than simply adding more copies."
       }
     },
     {
@@ -2506,6 +2636,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "With three healthy matching pods and minAvailable=2, a node drain can evict one while two remain available. It cannot voluntarily evict another if doing so would break that budget."
       }
     },
     {
@@ -2550,6 +2685,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Pod name examples",
+        "code": "postgres-0\npostgres-1",
+        "summary": "A StatefulSet named postgres gives its members predictable names and can give each its own persistent volume claim. The database software still has to implement replication and recovery."
       }
     },
     {
@@ -2602,6 +2743,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Place orders-api and orders-worker in a production environment with shared environment networking and logging configuration. Use a separate environment for staging when you need a separate hosting boundary."
       }
     },
     {
@@ -2646,6 +2792,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Revision name examples",
+        "code": "orders--v1\norders--v2",
+        "summary": "These can be two named revisions of one orders Container App, using different image/configuration snapshots. Moving traffic between them changes the served revision without creating a second app."
       }
     },
     {
@@ -2689,6 +2841,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
         "objective": "d1-builds"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A build-orders task watches the main branch. Pushing a commit to main starts its image build. Opening a pull request starts a build only if the task’s pull-request trigger has also been enabled."
       }
     },
     {
@@ -2732,6 +2889,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
         "objective": "d1-builds"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Dockerfile base-image fragment",
+        "code": "FROM studyacr.azurecr.io/python-base:v1",
+        "summary": "An ACR Task’s first build records this dependency. With base-image triggering configured, publishing changed content to this tracked base can trigger a dependent rebuild after detection."
       }
     },
     {
@@ -2818,6 +2981,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical ACR task configuration or invocation supporting the measured image-build workflow.",
         "objective": "d1-builds"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An Artifact Cache rule makes an upstream nginx image available through your registry. It does not compile the orders repository. To compile that source after a commit, configure an ACR Task with a source trigger."
       }
     },
     {
@@ -2861,6 +3029,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Give the running orders app only AcrPull so it can download images. Give the build identity AcrPush so it can upload releases as well. This example assumes RBAC Registry Permissions mode and no other grants."
       }
     },
     {
@@ -2904,6 +3077,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Assign Repository Writer with a condition selecting the orders repository. If this is the identity’s only repository grant, it can push and pull orders images but cannot use that assignment to access payments images."
       }
     },
     {
@@ -2947,6 +3125,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An app whose only image permission is AcrPull starts failing pulls after its registry switches to ABAC repository permissions. Replace that legacy grant with the appropriate repository-reader assignment; changing the image’s name alone will not fix authorization."
       }
     },
     {
@@ -3211,6 +3394,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "On Monday, orders:latest points to build 10. On Tuesday, the pipeline reuses latest for build 11. A new pull can now select build 11 even though the text of the image reference has not changed."
       }
     },
     {
@@ -3536,6 +3724,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
         "objective": "d1-web-hosting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "If two apps share the registry administrator password, rotating it affects both. Separate app identities let you revoke one app’s image access without changing a shared password used by the other."
       }
     },
     {
@@ -3579,6 +3772,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical App Service/container configuration supporting the measured hosting and secret-supply workflow.",
         "objective": "d1-web-hosting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The running API reports version 1. A pipeline pushes version 2 under the same orders:latest tag, but requests still reach the existing version-1 process until App Service restarts/updates and pulls the replacement."
       }
     },
     {
@@ -3670,6 +3868,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical App Service/container configuration supporting the measured hosting and secret-supply workflow.",
         "objective": "d1-web-hosting"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "import os\ndsn = os.environ[\"CUSTOMCONNSTR_OrdersDb\"]",
+        "summary": "For an App Service custom connection string named OrdersDb, read this prefixed environment variable. An ordinary app setting named OrdersDb would use its unprefixed name."
       }
     },
     {
@@ -3852,6 +4056,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
         "objective": "d1-web-hosting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An app can reach its vault but has only Key Vault Reader. Secret-value retrieval is still denied. On an RBAC-enabled vault, give the resolving identity Key Vault Secrets User at the appropriate scope."
       }
     },
     {
@@ -3895,6 +4104,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
         "objective": "d1-web-hosting"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "import os\napi_key = os.environ[\"PAYMENTS_KEY\"]",
+        "summary": "Configure PAYMENTS_KEY as a Key Vault reference in App Service. The platform resolves the reference, and this code reads the resulting environment value without calling a Key Vault SDK."
       }
     },
     {
@@ -4244,6 +4459,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Internal Service URL",
+        "code": "http://orders.training.svc.cluster.local",
+        "summary": "For a Service named orders in namespace training, this is an internal DNS address in a cluster using the cluster.local domain. A ClusterIP Service is not automatically an internet endpoint."
       }
     },
     {
@@ -4287,6 +4508,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "NodePort URL format",
+        "code": "http://<reachable-node-ip>:30080",
+        "summary": "If the Service is configured with nodePort 30080, use a reachable node address and that port. Replace the placeholder; routing/firewalls must allow the connection."
       }
     },
     {
@@ -4330,6 +4557,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · Service spec fragment",
+        "code": "type: LoadBalancer",
+        "summary": "Set this in a Service’s spec alongside its ports and selector. A supporting cloud controller provisions the frontend; additional settings determine public versus private exposure."
       }
     },
     {
@@ -4373,6 +4606,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · Service spec fragment",
+        "code": "type: ExternalName\nexternalName: database.example.com",
+        "summary": "The Service’s DNS name becomes an alias for database.example.com. Clients resolve and connect to that destination; this Service type does not proxy database traffic."
       }
     },
     {
@@ -4416,6 +4655,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An Ingress routes https://api.example.com/orders to the orders Service on port 80. The Ingress supplies the HTTP routing rule, while the Service selects the application’s backend pods."
       }
     },
     {
@@ -4502,6 +4746,11 @@ window.AI200_FLASHCARDS = {
         "level": "esoteric",
         "reason": "A specialized node-agent or GPU placement detail is less central than deploying, scaling and troubleshooting the application itself.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A logging DaemonSet runs on nodes A, B and C. With maxUnavailable=1 and maxSurge=0, its rollout can replace the agent on A while agents on B and C remain available."
       }
     },
     {
@@ -4545,6 +4794,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An API process deadlocks and its liveness check keeps failing. After the failure threshold, the kubelet restarts the Deployment’s container, giving the application a new process."
       }
     },
     {
@@ -4588,6 +4842,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A warming API returns HTTP 503 from its readiness endpoint. Its process keeps running, but the Service stops sending it normal ready-endpoint traffic until the readiness check succeeds."
       }
     },
     {
@@ -4642,6 +4901,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The pods are labeled app=orders, but the Service selects app=order. The pods can be running normally while that Service has no matching backends. Correct the selector before debugging the HTTP handler."
       }
     },
     {
@@ -4685,6 +4949,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Revision v1 serves customers while v2 starts. If v2 is not ready, v1 keeps serving. Once v2 becomes ready, single-revision mode moves traffic to it and deactivates v1."
       }
     },
     {
@@ -5004,6 +5273,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
         "objective": "d1-keda"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A worker receives a few repair jobs each evening. Allowing zero replicas can avoid keeping its compute running all day, but the next job may wait for a worker to start."
       }
     },
     {
@@ -5053,6 +5327,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
         "objective": "d1-keda"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · Container Apps scale fragment",
+        "code": "minReplicas: 1\nmaxReplicas: 4",
+        "summary": "These example settings keep one API replica available while permitting growth to four. They trade idle capacity cost for less startup delay after quiet periods."
       }
     },
     {
@@ -5096,6 +5376,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
         "objective": "d1-keda"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "With a target of ten concurrent requests per replica, thirty simultaneous requests suggest roughly three replicas before bounds and stabilization. Thirty requests spread across a whole minute are a different measurement."
       }
     },
     {
@@ -5188,6 +5473,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
         "objective": "d1-keda"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Change maxReplicas from 3 to 6 while keeping the same container image. Because scale settings are revision-scoped, this configuration change still creates another revision."
       }
     },
     {
@@ -5231,6 +5521,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Revisions v1 and v2 both reference the app secret payments-key. Updating that ordinary secret changes the shared definition; restart the revisions that must receive the new value."
       }
     },
     {
@@ -5274,6 +5569,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · Container Apps secret entry",
+        "code": "{\"name\":\"payments-key\",\"keyVaultUrl\":\"https://study-vault.vault.azure.net/secrets/payments-api-key\",\"identity\":\"system\"}",
+        "summary": "An entry in properties.configuration.secrets defines payments-key using a Key Vault URL. The system-assigned identity must exist and have secret-read permission and network access."
       }
     },
     {
@@ -5452,6 +5753,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · minimal Deployment",
+        "code": "apiVersion: apps/v1\nkind: Deployment\nmetadata: {name: orders}\nspec:\n  replicas: 3\n  selector: {matchLabels: {app: orders}}\n  template:\n    metadata: {labels: {app: orders}}\n    spec:\n      containers: [{name: api, image: \"studyacr.azurecr.io/orders:v1\"}]",
+        "summary": "The selector matches the pod-template labels, and replicas requests three copies. The image address is illustrative; its image and any required registry access must exist before pods can start."
       }
     },
     {
@@ -5636,6 +5943,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · container environment fragment",
+        "code": "env:\n  - name: PAYMENTS_KEY\n    valueFrom:\n      secretKeyRef: {name: payments, key: api-key}",
+        "summary": "The container receives PAYMENTS_KEY from key api-key in an existing Kubernetes Secret named payments in the same namespace. This manifest contains a reference, not the secret’s value."
       }
     },
     {
@@ -5679,6 +5992,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · container resources fragment",
+        "code": "requests:\n  cpu: \"200m\"",
+        "summary": "With a 200-millicore request, usage of 80 millicores is 40% utilization for this container. The request supplies the baseline that a CPU-utilization HPA needs."
       }
     },
     {
@@ -5918,6 +6237,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The manifest requests orders:v99, but that tag was never published. The pod cannot pull its image and eventually backs off between attempts. Inspect the pull error and correct the image reference."
       }
     },
     {
@@ -5961,6 +6285,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two workers each have two CPU units free, but a pod requests four. The pod cannot split its request across machines, so neither node can host it. FailedScheduling events can identify this insufficient-capacity constraint."
       }
     },
     {
@@ -6215,6 +6544,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An image has the digest you downloaded, but your verification policy requires a signature from the company’s release identity. A matching digest alone does not establish that trusted identity as the publisher."
       }
     },
     {
@@ -6260,6 +6594,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A deployment token’s scope map permits reading the orders repository. That token can pull orders:v1, while a push or access to an unrelated repository is outside the granted scope."
       }
     },
     {
@@ -6309,6 +6648,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
         "objective": "d1-images"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The registry’s public access is off. A developer connects through the approved private network, where DNS resolves the registry endpoints to private addresses. A laptop with no route to that network still cannot pull the image."
       }
     },
     {
@@ -6452,6 +6796,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Federated subject",
+        "code": "system:serviceaccount:production:orders",
+        "summary": "This subject identifies the orders ServiceAccount in namespace production. A matching issuer/subject/audience federation trust lets its projected token be exchanged for the configured Azure identity."
       }
     },
     {
@@ -6493,6 +6843,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Azure CLI",
+        "code": "az aks update --resource-group study --name study-aks --enable-oidc-issuer --enable-workload-identity",
+        "summary": "For an existing cluster, enable these features before configuring the federated identity credential and workload ServiceAccount/pod settings. The switches alone do not grant resource access."
       }
     },
     {
@@ -6534,6 +6890,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · NetworkPolicy spec fragment",
+        "code": "podSelector: {matchLabels: {app: orders}}\npolicyTypes: [Ingress]\ningress:\n  - from:\n      - podSelector: {matchLabels: {app: frontend}}",
+        "summary": "With a supporting network implementation, this selects orders pods and permits ingress from frontend-labeled pods in the same namespace. Other applicable policies can also allow traffic."
       }
     },
     {
@@ -6575,6 +6937,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · namespaced Role rules fragment",
+        "code": "rules:\n  - apiGroups: [\"\"]\n    resources: [\"pods\"]\n    verbs: [\"get\", \"list\", \"watch\"]",
+        "summary": "A Role with these rules grants read operations on pods in its namespace. A RoleBinding must attach it to the intended user, group or ServiceAccount."
       }
     },
     {
@@ -6616,6 +6984,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two API pods on different nodes mount the same Azure Files share. A report file written through one mount can be read through the other, subject to file permissions and the chosen storage configuration."
       }
     },
     {
@@ -6667,6 +7040,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A namespace quota permits four CPU units of requests in total. If existing requests already total three, another two-CPU pod exceeds that quota. A LimitRange separately controls defaults or bounds for each container."
       }
     },
     {
@@ -6753,6 +7131,12 @@ window.AI200_FLASHCARDS = {
         "level": "esoteric",
         "reason": "A specialized node-agent or GPU placement detail is less central than deploying, scaling and troubleshooting the application itself.",
         "objective": "d1-aks-workloads"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · Pod spec fragment",
+        "code": "nodeSelector: {workload: gpu}\ntolerations:\n  - key: workload\n    operator: Equal\n    value: gpu\n    effect: NoSchedule",
+        "summary": "The selector requires a matching node label; the toleration permits a matching workload=gpu:NoSchedule taint. A container using a GPU must also request the device resource."
       }
     },
     {
@@ -6798,6 +7182,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An orders API can call an internal catalog app in the same environment. A customer outside that environment cannot directly call that internal endpoint. An external frontend’s reachability still depends on its environment networking."
       }
     },
     {
@@ -6931,6 +7320,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A visitor opens the orders app. The configured platform authentication flow checks the visitor’s Microsoft Entra sign-in before forwarding an authenticated request. The application still decides whether that user may perform its business operation."
       }
     },
     {
@@ -6976,6 +7370,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Register a reports share with the environment and mount it in two replicas at /mnt/reports. The app uses paths such as /mnt/reports/repair-42.txt; the files live on the share rather than only in one container’s temporary filesystem."
       }
     },
     {
@@ -7023,6 +7422,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
         "objective": "d1-container-troubleshooting"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An image tag that does not exist produces a platform image-pull failure to investigate in system/provisioning logs. A Python exception after the container starts belongs in its application console output."
       }
     },
     {
@@ -7064,6 +7468,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example allow-rule CIDR",
+        "code": "203.0.113.0/24",
+        "summary": "This documentation-only address range illustrates a CIDR used in an ingress allow rule. Replace it with the real approved client range and test access from that network."
       }
     },
     {
@@ -7105,6 +7515,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "YAML · Container Apps ingress fragment",
+        "code": "transport: http2\ntargetPort: 50051",
+        "summary": "This example expects a container serving HTTP/2 on port 50051. Set these ingress fields for that server; selecting http2 does not convert a plain HTTP/1-only application into a gRPC server."
       }
     },
     {
@@ -7146,6 +7562,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
         "objective": "d1-container-apps"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A worker receives the termination signal while handling repair 42. It stops accepting new jobs and completes or safely stops the current one. If interrupted before completion/checkpointing, a later retry must not duplicate the business effect."
       }
     },
     {
@@ -7236,6 +7657,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "SQL",
+        "code": "CREATE TABLE repairs (id integer PRIMARY KEY, status text);\nINSERT INTO repairs VALUES (42, 'open');\nSELECT status FROM repairs WHERE id = 42;",
+        "summary": "This small relational example defines a table, stores a repair record and retrieves its status, open."
       }
     },
     {
@@ -7365,6 +7792,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "SQL",
+        "code": "CREATE INDEX repairs_customer_idx ON repairs (customer_id);",
+        "summary": "For an existing repairs table with customer_id, this creates an index that can help queries filter by customer. The planner decides whether using it is worthwhile."
       }
     },
     {
@@ -7410,6 +7843,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A compatible embedding model gives similar directions to “The lamp is broken” and “The light does not work.” Comparing the query embedding with stored article embeddings can retrieve the related repair article even when its words differ."
       }
     },
     {
@@ -7584,6 +8022,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An exact search’s five closest IDs are A, B, C, D and E. An approximate search might return A, B, C, D and X after searching fewer candidates. It found useful neighbors but missed one exact top-five result."
       }
     },
     {
@@ -7623,6 +8066,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX article_vectors ON articles USING hnsw (embedding vector_cosine_ops);",
+        "summary": "With pgvector enabled and an existing vector column embedding, this builds an HNSW index for cosine-distance ordering."
       }
     },
     {
@@ -7662,6 +8111,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX article_vectors ON articles USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);",
+        "summary": "This example trains an IVFFlat cosine index from existing article vectors and groups them into 100 lists. Load representative data first; 100 is an example choice, not a universal recommendation."
       }
     },
     {
@@ -7785,6 +8240,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A web API keeps a pool of ten database connections. Successive requests borrow and return them instead of opening a new connection for each query; requests may wait when all ten are busy."
       }
     },
     {
@@ -7824,6 +8284,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "With transaction pooling, many mostly idle application clients can reuse a smaller set of PostgreSQL server connections. If all backend connections are busy, additional transactions wait rather than receiving an unlimited new database connection."
       }
     },
     {
@@ -7863,6 +8328,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-access"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · example item",
+        "code": "{\"id\":\"repair-42\",\"customerId\":\"c1\",\"status\":\"open\"}",
+        "summary": "An item like this can be stored in a Cosmos DB for NoSQL container. If its partition key path is /customerId, the value c1 identifies this item’s logical partition."
       }
     },
     {
@@ -7902,6 +8373,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-access"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repairs container holds repair-42 and repair-43. Both follow that container’s partition-key and indexing settings; a separate articles container can have different settings."
       }
     },
     {
@@ -7980,6 +8456,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Suppose one request reports a charge of 2 RUs and another reports 20 RUs. The second consumed ten times as much measured database work; these illustrative charges are not fixed prices for every operation of those types."
       }
     },
     {
@@ -8025,6 +8506,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "If requests average 5 RUs each, 1,000 RU/s represents a theoretical budget of about 200 such requests per second. Hot partitions, other operations and service/client bottlenecks can reduce achievable throughput."
       }
     },
     {
@@ -8064,6 +8550,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A committed update changes repair 42 from open to closed. A later Strong read must return the committed latest value, while an Eventual read can temporarily return an older version before replicas catch up."
       }
     },
     {
@@ -8148,6 +8639,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Redis commands",
+        "code": "SET repair:42 open EX 600\nGET repair:42",
+        "summary": "This stores a small status value for ten minutes, then reads it. Redis can supply the cached status without querying the source database on this hit."
       }
     },
     {
@@ -8226,6 +8723,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Redis command",
+        "code": "GET repair:42",
+        "summary": "If this returns a usable cached status such as open, the request is a cache hit. Apply the application’s freshness and access rules before reusing it."
       }
     },
     {
@@ -8265,6 +8768,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Redis command",
+        "code": "GET repair:42",
+        "summary": "If the key is absent, Redis returns nil. A cache-aside application then reads repair 42 from its source database and can cache the result for future requests."
       }
     },
     {
@@ -8343,6 +8852,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A memory-full cache needs space for a new key. Under an applicable eviction policy, it can discard an eligible old key even though that key’s TTL has not expired."
       }
     },
     {
@@ -8382,6 +8896,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Eligible key A was read just now, while B has not been used for a long time. LRU favors removing B. Redis approximates this choice rather than maintaining a perfect access-order list."
       }
     },
     {
@@ -8421,6 +8940,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Eligible key A is requested frequently, while B is rarely requested. LFU favors removing B, using Redis’s approximate, aging frequency information."
       }
     },
     {
@@ -8499,6 +9023,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "CREATE INDEX article_metadata_idx ON articles USING gin (metadata);",
+        "summary": "If metadata is a JSONB column, this GIN index can support containment predicates such as metadata @> '{\"topic\":\"repairs\"}'. It indexes values inside the document."
       }
     },
     {
@@ -8538,6 +9068,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · vector-index entry",
+        "code": "{\"path\":\"/embedding\",\"type\":\"diskANN\"}",
+        "summary": "An entry in Cosmos DB indexingPolicy.vectorIndexes selects diskANN for /embedding. The separate vector embedding policy defines that path’s numeric type, dimensions and distance function."
       }
     },
     {
@@ -8620,6 +9156,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An item’s price is changed from 10 to 12 and the write commits. A Strong read started afterward must return the latest committed price, rather than an older replica’s value."
       }
     },
     {
@@ -8663,6 +9204,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "In a single-region account configured with K=100 versions and T=10 seconds, lag is constrained by whichever bound is reached first. These example settings are maximum permitted staleness, not a delay that every read must experience."
       }
     },
     {
@@ -8706,6 +9252,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "API instance A creates an order, but the customer’s next request reaches instance B with a different SDK client. Preserving the relevant partition’s session token lets B request the same read-your-own-writes session guarantee."
       }
     },
     {
@@ -8792,6 +9343,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A committed update closes repair 42. A read from a lagging replica may still report open. If writes stop, replicas eventually converge on the committed state; no fixed catch-up time is promised by this level."
       }
     },
     {
@@ -8921,6 +9477,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · vector-index entry",
+        "code": "{\"path\":\"/embedding\",\"type\":\"flat\"}",
+        "summary": "Inside indexingPolicy.vectorIndexes, this selects exact flat indexing for /embedding. It must fit the flat index’s supported dimension limit; the vector embedding policy is configured separately."
       }
     },
     {
@@ -8964,6 +9526,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · vector-index entry",
+        "code": "{\"path\":\"/embedding\",\"type\":\"quantizedFlat\"}",
+        "summary": "This vector-index entry selects compressed flat search for /embedding. Compare its result quality and RU use with full-precision results on representative vectors."
       }
     },
     {
@@ -9007,6 +9575,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · vector-index entry",
+        "code": "{\"path\":\"/embedding\",\"type\":\"diskANN\"}",
+        "summary": "This vector-index entry selects graph-based approximate search for /embedding. It is an index-policy setting, separate from the embedding dimensions and distance function."
       }
     },
     {
@@ -9093,6 +9667,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Toy vector values",
+        "code": "a = [1, 0]; b = [2, 0]",
+        "summary": "These vectors point in the same direction: cosine distance is 0, Euclidean distance is 1, and their ordinary dot product is 2. This illustrates why direction and magnitude affect metrics differently."
       }
     },
     {
@@ -9136,6 +9716,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An app switches from 768-dimensional to 1,536-dimensional embeddings. Create a container with the new embedding policy and migrate compatible newly generated embeddings, rather than editing that policy in place."
       }
     },
     {
@@ -9265,6 +9850,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "HTTP response header",
+        "code": "x-ms-retry-after-ms: 200",
+        "summary": "A throttled response with this illustrative header requests a wait of 200 milliseconds, not 200 seconds. The SDK can retry within its configured limits; persistent throttling still needs diagnosis."
       }
     },
     {
@@ -9313,6 +9904,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The repairs and articles containers share a database-level throughput budget. Heavy repair queries consume that shared capacity and reduce headroom for article queries. Giving a container dedicated throughput separates its capacity budget."
       }
     },
     {
@@ -9356,6 +9952,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
         "objective": "d2-cosmos-changes"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An item changes from draft to reviewed to approved before the consumer catches up. Latest-version feed may provide only the later state. Deleting the item also does not create a deletion notification in that feed mode."
       }
     },
     {
@@ -9447,6 +10048,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
         "objective": "d2-cosmos-changes"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Worker A owns a feed-range lease and saves a checkpoint. After A stops and its ownership is transferred, worker B can resume from saved progress. A batch may be delivered again, so the handler remains duplicate-safe."
       }
     },
     {
@@ -9490,6 +10096,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical feed configuration, API usage or progress handling supporting the measured change-processing task.",
         "objective": "d2-cosmos-changes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · illustrative lease document fragment",
+        "code": "{\"id\":\"lease-range-1\"}",
+        "summary": "With lease-container partition key /id, this document’s partition-key value is lease-range-1. Real lease documents also contain processor-managed ownership and progress fields."
       }
     },
     {
@@ -9533,6 +10145,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · indexing-policy fragment",
+        "code": "{\"indexingMode\":\"consistent\",\"automatic\":true}",
+        "summary": "This enables ordinary synchronous index maintenance for the policy. The word consistent here describes indexing behavior, not the account’s read-consistency level."
       }
     },
     {
@@ -9576,6 +10194,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · example item",
+        "code": "{\"id\":\"42\",\"address\":{\"city\":\"Oslo\"}}",
+        "summary": "An included path of /* covers nested paths such as address.city, unless a more-specific exclusion removes one. It is not limited to top-level properties."
       }
     },
     {
@@ -9662,6 +10286,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · indexing-policy fragment",
+        "code": "{\"excludedPaths\":[{\"path\":\"/rawText/?\"}]}",
+        "summary": "If queries never filter or sort on rawText, excluding its ordinary property index can reduce write-maintenance work. Preserve the rest of the required policy and measure the actual RU effect."
       }
     },
     {
@@ -9993,6 +10623,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · indexing-policy fragment",
+        "code": "{\"excludedPaths\":[{\"path\":\"/embedding/*\"}],\n \"vectorIndexes\":[{\"path\":\"/embedding\",\"type\":\"diskANN\"}]}",
+        "summary": "This fragment avoids ordinary per-component indexing of the embedding array while keeping a separate vector index on /embedding. Include the other policy paths your queries require."
       }
     },
     {
@@ -10036,6 +10672,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "For 1,536 components, float32 uses 6,144 raw component bytes and float16 uses 3,072. This arithmetic excludes the item’s other fields, serialized representation and index overhead, so it does not predict a 50% reduction in the whole database."
       }
     },
     {
@@ -10128,6 +10769,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
         "objective": "d2-cosmos-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · vectorEmbeddingPolicy",
+        "code": "{\"vectorEmbeddings\":[{\"path\":\"/embedding\",\"dataType\":\"float32\",\"dimensions\":3,\"distanceFunction\":\"cosine\"}]}",
+        "summary": "Define this in the container-creation settings. Three dimensions keep the example small; use your model’s actual dimensions and compatible vectors. This policy describes the vectors rather than selecting the vector index type."
       }
     },
     {
@@ -10171,6 +10818,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
         "objective": "d2-cosmos-changes"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Repair records live in the monitored container. Workers share a lease container, and each worker runs processing code whose callback updates a derived search index. The leases track ownership and progress while the callback performs your business work."
       }
     },
     {
@@ -10269,6 +10921,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
         "objective": "d2-cosmos-changes"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two repair records change. The processor retrieves them through its background polling and invokes your registered handler with a batch. Your handler receives that batch automatically rather than issuing each change-feed request itself."
       }
     },
     {
@@ -10324,6 +10981,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical feed configuration, API usage or progress handling supporting the measured change-processing task.",
         "objective": "d2-cosmos-changes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "feed = container.query_items_change_feed(start_time=\"Beginning\", partition_key=\"c1\")",
+        "summary": "For a container partitioned by /customerId, this Python pull-model example reads changes for partition c1 from the beginning. Consume the paged result and preserve continuation state. A Functions trigger is the host-managed alternative."
       }
     },
     {
@@ -10459,6 +11122,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "SELECT '[1,0]'::vector <=> '[2,0]'::vector;",
+        "summary": "With pgvector enabled, the result is 0: these nonzero vectors point in the same direction. Cosine compares direction, so different lengths alone do not make them distant."
       }
     },
     {
@@ -10674,6 +11343,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "CREATE INDEX docs_department ON documents (department);\nCREATE INDEX docs_vectors ON documents USING hnsw (embedding vector_cosine_ops);",
+        "summary": "For existing department and vector embedding columns, the first index supports ordinary metadata predicates and the second supports cosine-vector ordering. The planner chooses the access path."
       }
     },
     {
@@ -10717,6 +11392,12 @@ window.AI200_FLASHCARDS = {
         "level": "esoteric",
         "reason": "Primarily recalls a built-in pooler port or default mode; understanding connection reuse and transaction/session constraints comes first.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "libpq connection options",
+        "code": "host=study-pg.postgres.database.azure.com port=6432 dbname=repairs user=app sslmode=verify-full sslrootcert=/path/to/trusted-ca.pem",
+        "summary": "This illustrative connection goes through enabled built-in PgBouncer. Replace the host, database, principal and CA path, and supply credentials securely. Changing the port to 5432 selects the direct PostgreSQL endpoint."
       }
     },
     {
@@ -10803,6 +11484,11 @@ window.AI200_FLASHCARDS = {
         "level": "esoteric",
         "reason": "Primarily recalls a built-in pooler port or default mode; understanding connection reuse and transaction/session constraints comes first.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A client finishes one transaction and returns its backend connection to the pool. Its next transaction may use a different PostgreSQL connection, so application behavior cannot assume one permanently attached backend session."
       }
     },
     {
@@ -10895,6 +11581,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A hundred sequential short API requests can reuse a small connection pool. Merely raising max_connections does not prevent a poorly written client from opening a fresh connection and repeating authentication for every request."
       }
     },
     {
@@ -10938,6 +11629,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical database authentication or SDK query usage supporting the measured PostgreSQL access task.",
         "objective": "d2-postgres-access"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.identity import DefaultAzureCredential\naccess_token = DefaultAzureCredential().get_token(\"https://ossrdbms-aad.database.windows.net/.default\").token",
+        "summary": "Use a fresh token as the password when opening a PostgreSQL connection as an already configured Entra database principal. The database privileges and secure connection settings still need to be in place."
       }
     },
     {
@@ -10981,6 +11678,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The first request opens a database connection and returns it to the pool. A later request borrows that established connection, avoiding a second network/TLS/authentication setup for the same server session."
       }
     },
     {
@@ -11300,6 +12002,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "CREATE INDEX docs_department_idx ON documents (department);",
+        "summary": "This can help select Finance rows before other work where the chosen plan uses it. It is not itself a nearest-neighbor index; verify filtered-vector plans with EXPLAIN."
       }
     },
     {
@@ -11349,6 +12057,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX docs_cosine_idx ON documents USING hnsw (embedding vector_cosine_ops);",
+        "summary": "This example matches cosine queries using <=> on an existing embedding column. Choose and benchmark the algorithm and operator class for the real workload."
       }
     },
     {
@@ -11398,6 +12112,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
         "objective": "d2-postgres-capacity"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "EXPLAIN still shows a large scan after a vCore increase. The change did not remove the work of examining those rows, so latency need not improve as expected. Investigate index eligibility and the measured bottleneck."
       }
     },
     {
@@ -11447,6 +12166,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
         "objective": "d2-postgres-capacity"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Repeated searches keep reading the same large index from disk because the working set exceeds available cache. More RAM may reduce those reads; confirm that memory pressure and I/O improve under the same workload."
       }
     },
     {
@@ -11582,6 +12306,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
         "objective": "d2-postgres-capacity"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Illustrative benchmark result",
+        "code": "Before: P95 240 ms, many disk reads\nAfter:  P95  90 ms, fewer disk reads",
+        "summary": "These are example measurements, not a promised scale-up benefit. Keep data, concurrency and search-quality requirements comparable, then look for both a latency improvement and evidence explaining it."
       }
     },
     {
@@ -11631,6 +12361,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
         "objective": "d2-postgres-connections"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Opening a new connection takes 180 ms, while its SQL runs in 6 ms. Reusing connections targets that setup overhead. If the query itself took most of the time instead, investigate its execution plan and resources."
       }
     },
     {
@@ -11680,6 +12415,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Key A has an expiry; key B has none. A volatile policy can choose only A for eviction. An allkeys policy can consider either. These are eligibility rules; the rest of the policy decides how candidates are ranked."
       }
     },
     {
@@ -11729,6 +12469,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A full NoEviction cache still holds repair:42. Reading that key can succeed, while adding a new key that needs more memory fails. NoEviction does not make all Redis commands stop working."
       }
     },
     {
@@ -11772,6 +12517,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A was read just now but is rarely used; B was used frequently but less recently. Recency favors keeping A, while frequency can favor keeping B. Redis’s approximate sampling and frequency aging affect the real choice."
       }
     },
     {
@@ -11870,6 +12620,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
         "objective": "d2-redis-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Redis search commands",
+        "code": "FT.CREATE exact ON HASH PREFIX 1 doc: SCHEMA embedding VECTOR FLAT 6 TYPE FLOAT32 DIM 3 DISTANCE_METRIC COSINE\nFT.CREATE approximate ON HASH PREFIX 1 doc: SCHEMA embedding VECTOR HNSW 6 TYPE FLOAT32 DIM 3 DISTANCE_METRIC COSINE",
+        "summary": "These alternative indexes use the same illustrative three-dimensional hash-vector field, enabling an exact-versus-approximate comparison. Vector search must already be supported/configured, and stored bytes must match FLOAT32 and DIM 3."
       }
     },
     {
@@ -11913,6 +12669,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
         "objective": "d2-redis-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Redis vector-field option",
+        "code": "DISTANCE_METRIC COSINE",
+        "summary": "Use this option inside an FT.CREATE vector field definition. With distance scores such as 0.08 and 0.35, the smaller score ranks closer; a distance score is not a larger-is-better similarity score."
       }
     },
     {
@@ -12048,6 +12810,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The first request for repair 42 misses Redis, reads its status from Cosmos DB and caches it. The next request can use that cached value. After a successful status update, invalidate the cached entry so later reads can reload it."
       }
     },
     {
@@ -12256,6 +13023,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Redis commands",
+        "code": "PERSIST repair:42\nTTL repair:42",
+        "summary": "Assuming the key exists and remains present, the first command removes its expiry and the second returns -1. This changes lifetime, not whether Redis data is persisted to disk."
       }
     },
     {
@@ -12524,6 +13297,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An application accepts writes in Europe and North America. Two regions may update the same item concurrently, so multi-region write configuration also needs an appropriate conflict-resolution strategy."
       }
     },
     {
@@ -12667,6 +13445,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
         "objective": "d2-cosmos-access"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Cosmos DB SQL",
+        "code": "SELECT * FROM c WHERE c.customerId = 'c1' AND c.status = 'open'\nSELECT * FROM c WHERE c.status = 'open'",
+        "summary": "With partition key /customerId, the first query can target c1. The second needs results across customer partitions. Configure the SDK’s cross-partition query behavior when required."
       }
     },
     {
@@ -12712,6 +13496,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
         "objective": "d2-cosmos-performance"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · example item",
+        "code": "{\"id\":\"repair-42\",\"customerId\":\"c1\",\"ttl\":3600}",
+        "summary": "With TTL enabled on the container, this item-level value gives the item a one-hour lifetime measured from its last modification. Updating it restarts that clock."
       }
     },
     {
@@ -12835,6 +13625,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX docs_hnsw ON documents USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 128);",
+        "summary": "These illustrative build settings control graph connectivity and construction effort. They do not set hnsw.ef_search, which controls query-time search effort."
       }
     },
     {
@@ -12921,6 +13717,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "CREATE INDEX docs_ivf ON documents USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);",
+        "summary": "The index groups representative existing vectors into 100 lists. Query-time probes decides how many lists to search; 100 is an example index choice."
       }
     },
     {
@@ -13007,6 +13809,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An index trained only on one narrow article collection may group later, very different content poorly. Load data representative of the searches you expect before training IVFFlat’s list centers."
       }
     },
     {
@@ -13052,6 +13859,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Keyword search ranks A, B, C; vector search ranks B, D, A. Equal-weight reciprocal rank fusion can favor B because it ranks well in both lists, using rank positions rather than adding incompatible raw scores."
       }
     },
     {
@@ -13093,6 +13905,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "EXPLAIN (ANALYZE, BUFFERS) SELECT id FROM documents WHERE department = 'Finance';",
+        "summary": "This executes the SELECT on an existing table and reports observed timings, rows and buffer activity. A modifying statement inside EXPLAIN ANALYZE would also execute its modifications."
       }
     },
     {
@@ -13138,6 +13956,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical schema, data-type, loading or index choice supporting the measured PostgreSQL modeling task.",
         "objective": "d2-postgres-model"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "VACUUM (ANALYZE) documents;",
+        "summary": "As a standalone maintenance command, this makes obsolete row-version space reusable and refreshes planner statistics. It does not perform the table rewrite of VACUUM FULL."
       }
     },
     {
@@ -13179,6 +14003,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "CREATE INDEX docs_metadata ON documents USING gin (metadata);\nSELECT id FROM documents WHERE metadata @> '{\"department\":\"Finance\"}';",
+        "summary": "Assume metadata is an existing JSONB column. The query selects documents containing that key/value pair, and the GIN index can make that containment lookup efficient."
       }
     },
     {
@@ -13226,6 +14056,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL",
+        "code": "SET maintenance_work_mem = '512MB';",
+        "summary": "This illustrative session setting supplies a maintenance memory budget, including for an HNSW build. Choose a value that fits the server alongside concurrent work; it is not a universal recommended setting."
       }
     },
     {
@@ -13271,6 +14107,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "PostgreSQL · pgvector",
+        "code": "SELECT '[0.12,0.34,0.56]'::halfvec(3);",
+        "summary": "This creates a three-component half-precision vector value. Reduced precision can round components; the example keeps dimensions small so the representation is easy to inspect."
       }
     },
     {
@@ -13312,6 +14154,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
         "objective": "d2-postgres-indexes"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "After a deployment, searches become slower. If Query Store was already collecting, compare the query’s earlier and later execution statistics to identify the regression rather than relying only on one current request."
       }
     },
     {
@@ -13353,6 +14200,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "libpq connection options",
+        "code": "sslmode=verify-full sslrootcert=/path/to/trusted-ca.pem",
+        "summary": "Use the real trusted CA file and server hostname with these client options. The server setting requires encrypted transport, while verify-full also checks that the certificate identifies the intended server."
       }
     },
     {
@@ -13400,6 +14253,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
         "objective": "d2-postgres-vectors"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "psql · COPY with CSV input",
+        "code": "COPY articles (id, embedding) FROM STDIN WITH (FORMAT csv);\n1,\"[0.1,0.2,0.3]\"\n2,\"[0.2,0.1,0.4]\"\n\\.",
+        "summary": "For an existing articles table with id and vector(3) embedding columns, psql sends these CSV rows through COPY. Quoting protects commas inside each vector; the backslash-dot line ends the input."
       }
     },
     {
@@ -13451,6 +14310,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A cached answer for “How do I reset my password?” may be a candidate for “I forgot my password.” Reuse it only if the similarity threshold, user/tenant access and relevant knowledge/model versions also match."
       }
     },
     {
@@ -13655,6 +14519,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
         "objective": "d2-redis-cache"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A popular article expires just before 100 requests arrive. One coordinated worker reloads it while the others wait or follow an explicitly permitted stale-data policy, avoiding 100 simultaneous source reloads."
       }
     },
     {
@@ -13862,6 +14731,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A queue-triggered make_thumbnail function receives a photo-processing message and writes a thumbnail. That handler is one function, invoked through its configured trigger."
       }
     },
     {
@@ -13907,6 +14781,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repairs Function App can host an HTTP GetRepair function and an Event Grid PhotoUploaded function. They have separate handlers/triggers but share app-level settings and hosting configuration."
       }
     },
     {
@@ -13946,6 +14825,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deploy a photo-processing function without creating and patching your own worker VM. Azure manages the hosting servers; you still choose a plan whose scaling, execution limits and capacity costs fit the workload."
       }
     },
     {
@@ -13985,6 +14869,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The first photo event after idle scale-to-zero may wait while the Functions host starts and imports Python code. Later work can reuse a ready instance; a traffic surge can still require new instances to initialize."
       }
     },
     {
@@ -14108,6 +14997,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The API queues a repair-photo job, then returns promptly. A worker can receive and complete it later; if processing repeatedly fails, the message can be inspected and recovered through the entity’s dead-letter path."
       }
     },
     {
@@ -14147,6 +15041,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Blob URL",
+        "code": "https://studystore.blob.core.windows.net/photos/repair-42.jpg",
+        "summary": "In this illustrative address, studystore is the storage account, photos is the blob container and repair-42.jpg is the blob name. The URL alone does not grant read permission."
       }
     },
     {
@@ -14225,6 +15125,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two photo workers compete on one queue. Worker A can receive photo 42 while worker B receives photo 43. They share pending work; adding a worker does not give it an independent copy of every queued message."
       }
     },
     {
@@ -14309,6 +15214,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Billing and shipping have separate subscriptions to OrderCreated. If billing pauses, its matching messages can remain pending within the service’s limits while shipping continues consuming its own subscription."
       }
     },
     {
@@ -14354,6 +15264,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · Event Grid schema fragment",
+        "code": "{\"eventType\":\"Microsoft.Storage.BlobCreated\",\"data\":{\"url\":\"https://studystore.blob.core.windows.net/photos/42.jpg\"}}",
+        "summary": "This notification fragment identifies what happened and where the photo is stored. It does not contain the photo bytes; the handler retrieves those separately if needed."
       }
     },
     {
@@ -14393,6 +15309,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "HTTP request fragment",
+        "code": "POST /events HTTP/1.1\nHost: repairs.example.com",
+        "summary": "An event publisher calls this receiver endpoint with the event payload. Your application exposes the webhook; it is the publisher that initiates this notification request."
       }
     },
     {
@@ -14594,6 +15516,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repair message lacks its required photo URL, so the handler dead-letters it with a useful reason. A recovery process inspects the message, fixes the cause and deliberately resubmits or discards the failed work."
       }
     },
     {
@@ -14633,6 +15560,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Service Bus message property",
+        "code": "SessionId = \"repair-42\"",
+        "summary": "Give related repair-42 messages this same session ID for grouped ordered processing. A different repair can use repair-43 and be handled concurrently by another session receiver."
       }
     },
     {
@@ -14718,6 +15651,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Forwarding flow",
+        "code": "incoming queue → processing queue",
+        "summary": "Both entities are in the same Service Bus namespace. Successful forwarding moves the message onward; it is not independent fan-out to two consumer subscriptions."
       }
     },
     {
@@ -15155,6 +16094,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · event-subscription retryPolicy",
+        "code": "{\"maxDeliveryAttempts\":3,\"eventTimeToLiveInMinutes\":30}",
+        "summary": "This illustrative policy stops eligible failed delivery when either the attempt limit or 30-minute lifetime is reached. These values are examples, not the service defaults."
       }
     },
     {
@@ -15198,6 +16143,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An endpoint returns a non-retryable 403 and no dead-letter destination is configured. The event is dropped. Fixing the endpoint’s permissions afterward does not automatically restore that already dropped event."
       }
     },
     {
@@ -15241,6 +16191,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · event-subscription filter",
+        "code": "{\"includedEventTypes\":[\"Microsoft.Storage.BlobCreated\"]}",
+        "summary": "This filter includes that complete event-type name. It is an array of selected types, not a substring search for any type containing Blob."
       }
     },
     {
@@ -15284,6 +16240,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · event-subscription filter",
+        "code": "{\"subjectBeginsWith\":\"/blobServices/default/containers/photos/blobs/\",\"subjectEndsWith\":\".jpg\"}",
+        "summary": "For Storage events, this selects matching blob subjects in the photos container with the requested suffix. These fields inspect the event subject rather than opening each blob."
       }
     },
     {
@@ -15327,6 +16289,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · advancedFilters entry",
+        "code": "{\"key\":\"data.order.total\",\"operatorType\":\"NumberGreaterThan\",\"value\":100}",
+        "summary": "Place this entry in advancedFilters. A numeric order total of 120 matches, while 80 does not. Dot notation follows properties inside the event payload."
       }
     },
     {
@@ -15370,6 +16338,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Use NumberGreaterThan for a numeric order total such as 120. Use StringIn for a country string such as NO. Matching an operator to the field type is different from merely choosing a comparison value."
       }
     },
     {
@@ -15413,6 +16386,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · event-subscription filter",
+        "code": "{\"enableAdvancedFilteringOnArrays\":true,\"advancedFilters\":[{\"key\":\"data.tags\",\"operatorType\":\"StringIn\",\"values\":[\"urgent\"]}]}",
+        "summary": "With this array-filter configuration, an event whose data.tags contains the string urgent can match. Use an operator supported for the element type."
       }
     },
     {
@@ -15437,6 +16416,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Service Bus locks and settlement",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -15444,7 +16428,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
+          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -15456,6 +16441,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "receiver.complete_message(message)",
+        "summary": "With a live Python ServiceBusReceiver in PeekLock mode and its received message, call this after successful business processing. It acknowledges completion and removes the message."
       }
     },
     {
@@ -15485,6 +16476,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Service Bus dead-letter queues",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -15493,7 +16489,8 @@ window.AI200_FLASHCARDS = {
         "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
-          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
+          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -15505,6 +16502,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "receiver.abandon_message(message)",
+        "summary": "With a live receiver and its locked message, this releases the message for another delivery attempt. It does not schedule a particular retry delay."
       }
     },
     {
@@ -15529,6 +16532,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Defer a message",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -15536,7 +16544,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral"
+          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -15548,6 +16557,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "sequence = message.sequence_number\nreceiver.defer_message(message)\nmessages = receiver.receive_deferred_messages(sequence_numbers=[sequence])",
+        "summary": "Save the sequence number before deferral. The last line represents a later retrieval when the application is ready; ordinary receives do not pick the deferred message up."
       }
     },
     {
@@ -15572,6 +16587,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Service Bus dead-letter queues",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -15579,7 +16599,8 @@ window.AI200_FLASHCARDS = {
         "status": "confirmed",
         "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues"
+          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -15591,6 +16612,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "receiver.dead_letter_message(message, reason=\"InvalidPhotoUrl\", error_description=\"Photo URL is missing\")",
+        "summary": "On the receiver that owns this locked message, record a useful application-defined reason. The message moves to the entity’s dead-letter subqueue for explicit recovery."
       }
     },
     {
@@ -15769,6 +16796,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A sender retries the same business send with MessageId repair-42 inside the configured detection window. The broker can discard that repeat send. The already accepted message can still be redelivered if a receiver later fails."
       }
     },
     {
@@ -15817,6 +16849,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Created, assigned and completed messages for repair 42 share SessionId repair-42 and are enqueued in that order. One session receiver can handle them sequentially while a different session receiver handles repair 43."
       }
     },
     {
@@ -15958,6 +16995,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · Event Grid-schema validation response",
+        "code": "{\"validationResponse\":\"abc123\"}",
+        "summary": "If an expected subscription-validation event supplies validationCode abc123, return that code in this response with HTTP 200. Copy the received value rather than hard-coding it. CloudEvents uses its different OPTIONS handshake."
       }
     },
     {
@@ -16007,6 +17050,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A failing webhook first gets more delivery attempts. After eligible delivery is abandoned, configured dead-lettering can save the event to Blob Storage. Your recovery process then handles that saved event; storing it is not another successful subscriber delivery."
       }
     },
     {
@@ -16056,6 +17104,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Two workers receive from the same repairs queue. A can lock repair-42 while B locks repair-43. A failed locked job can later be redelivered; creating B did not give it a separate copy of all work."
       }
     },
     {
@@ -16191,6 +17244,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Service Bus entity paths",
+        "code": "repairs/$DeadLetterQueue\norders/Subscriptions/billing/$DeadLetterQueue",
+        "summary": "The first path is the repairs queue’s dead-letter subqueue. The second belongs to billing’s subscription on topic orders. These subqueues are provided automatically rather than created as separate queues."
       }
     },
     {
@@ -16240,6 +17299,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · host.json",
+        "code": "{\"version\":\"2.0\",\"extensions\":{\"queues\":{\"maxDequeueCount\":3}}}",
+        "summary": "This example changes a Storage queue trigger’s attempt limit to three, including the first attempt. If all fail, the host uses the original queue’s -poison queue; three is not the default."
       }
     },
     {
@@ -16375,6 +17440,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One Functions instance stops after processing a batch of repair changes. Its saved lease/checkpoint state lets the host transfer ownership and resume processing, with duplicate-safe handling if a batch is repeated."
       }
     },
     {
@@ -16418,6 +17488,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "HTTP request header",
+        "code": "x-functions-key: <function-key>",
+        "summary": "For an endpoint requiring Function authorization, replace the placeholder with an authorized function or host key. This shared endpoint credential does not identify a particular end user."
       }
     },
     {
@@ -16461,6 +17537,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An endpoint configured with Function authorization accepts a keyless request when tested directly through local Core Tools. Its deployed Azure endpoint still requires the key; that local success did not prove anonymous production access."
       }
     },
     {
@@ -16547,6 +17628,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "HTTP response example",
+        "code": "HTTP/1.1 200 OK\nContent-Type: application/json\n\n{\"repairId\":\"42\",\"status\":\"open\"}",
+        "summary": "An HTTP-triggered function can return this result to the client that made the request. The response must still fit the relevant request/execution time limits."
       }
     },
     {
@@ -16590,6 +17677,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python · function fragment",
+        "code": "@app.queue_trigger(arg_name=\"msg\", queue_name=\"jobs\", connection=\"StorageConnection\")\ndef process_job(msg):\n    payload = msg.get_body().decode(\"utf-8\")",
+        "summary": "Here app is an existing azure.functions.FunctionApp, StorageConnection names a configured connection and the job body is UTF-8 text. This fragment shows trigger/body access; add the real business processing."
       }
     },
     {
@@ -16817,6 +17910,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "HTTP response example",
+        "code": "HTTP/1.1 202 Accepted\nLocation: /jobs/42\nContent-Type: application/json\n\n{\"jobId\":\"42\",\"status\":\"queued\"}",
+        "summary": "Save or enqueue the work before returning this response. The client checks GET /jobs/42 later while a background worker completes the operation."
       }
     },
     {
@@ -16909,6 +18008,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python · function fragment",
+        "code": "@app.route(route=\"photos/{id}\")\n@app.blob_input(arg_name=\"photo\", path=\"photos/{id}\", connection=\"StorageConnection\")\ndef get_photo(req: func.HttpRequest, photo: func.InputStream):\n    return func.HttpResponse(body=photo.read(), mimetype=\"image/jpeg\")",
+        "summary": "Assume func is azure.functions and app is an initialized FunctionApp. The input binding loads the addressed blob into photo using the configured StorageConnection; the handler reads its bytes without constructing a Blob SDK client."
       }
     },
     {
@@ -17087,6 +18192,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
         "objective": "d3-functions-deploy"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Local setting",
+        "code": "AzureWebJobsStorage = UseDevelopmentStorage=true",
+        "summary": "For local development, this directs host storage to a running Azurite emulator. In Azure, configure a real supported storage connection or identity-based settings instead."
       }
     },
     {
@@ -17228,6 +18339,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
         "objective": "d3-functions-deploy"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Functions Core Tools",
+        "code": "func azure functionapp publish repairs-functions",
+        "summary": "This publishes code into the existing repairs-functions app. It does not declare that app’s vaults, databases, identities and role assignments as infrastructure resources."
       }
     },
     {
@@ -17299,6 +18416,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Scheduled messages",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sequencing",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebussender?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -17306,7 +18428,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Broker settlement, locking, independent subscriptions, property filtering and coordination with external data.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sequencing"
+          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sequencing",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebussender?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -17318,6 +18441,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from datetime import datetime, timedelta, timezone\nsender.schedule_messages(message, datetime.now(timezone.utc) + timedelta(minutes=10))",
+        "summary": "With an existing Python ServiceBusSender and message, this schedules availability ten minutes from now. Actual processing also depends on consumers being ready."
       }
     },
     {
@@ -17404,6 +18533,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One database transaction closes repair 42 and adds an outbox record for RepairCompleted. If the broker is temporarily unavailable, the relay can retry the saved record later instead of losing the event after the repair update committed."
       }
     },
     {
@@ -17426,6 +18560,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Service Bus locks and settlement",
           "url": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -17433,7 +18572,8 @@ window.AI200_FLASHCARDS = {
         "status": "confirmed",
         "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement"
+          "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -17445,6 +18585,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "messages = receiver.peek_messages(max_message_count=5)",
+        "summary": "This inspects up to five stored messages using an existing receiver. It does not lock them for processing or settle them."
       }
     },
     {
@@ -17648,6 +18794,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · .NET ServiceBusProcessor",
           "url": "https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusprocessor?view=azure-dotnet",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -17656,7 +18807,8 @@ window.AI200_FLASHCARDS = {
         "note": "Checked receive modes and settlement, delivery-count exceptions, lock duration/renewal, dead-letter behavior, duplicate-detection scope/window and queue/topic/subscription delivery semantics against the linked broker documentation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
-          "https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusprocessor?view=azure-dotnet"
+          "https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusprocessor?view=azure-dotnet",
+          "https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.servicebusreceiver?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -17668,6 +18820,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "receiver.renew_message_lock(message)",
+        "summary": "Renew a message lock before it expires while using the receiver that owns it. A renewal can fail, so completion/retry handling must still be safe."
       }
     },
     {
@@ -17756,6 +18914,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · example message body",
+        "code": "{\"repairId\":\"42\",\"payloadUrl\":\"https://studystore.blob.core.windows.net/photos/42.jpg\"}",
+        "summary": "The broker carries this small reference. The consumer retrieves the large photo using its own authorized storage access; keep the payload available for the message’s processing/recovery lifetime."
       }
     },
     {
@@ -17801,6 +18965,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Illustrative queue-depth measurements",
+        "code": "10:00  100 active messages\n10:05  250 active messages\n10:10  500 active messages",
+        "summary": "A sustained rise indicates accumulating pending work. Compare send/receive rates, processing time and failures before deciding whether to add consumers or fix a processing problem."
       }
     },
     {
@@ -17928,6 +19098,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Service Bus SQL rule action",
+        "code": "SET user.route = 'photo-processing'",
+        "summary": "This action sets an application property on the copy admitted through the rule. It does not rewrite the message’s binary body or execute your application handler."
       }
     },
     {
@@ -17979,6 +19155,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
         "objective": "d3-service-bus"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Request/reply property examples",
+        "code": "Request: MessageId=request-42, ReplyTo=reply-orders\nReply:   CorrelationId=request-42",
+        "summary": "The receiver application sends a reply to reply-orders and copies the original identifier for correlation. Service Bus does not generate this application response automatically."
       }
     },
     {
@@ -18110,6 +19292,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The handler applies event photo-42 to a database counter, but its success response is lost. Event Grid retries photo-42. The handler must recognize the completed operation and avoid incrementing the counter a second time."
       }
     },
     {
@@ -18206,6 +19393,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · CloudEvents 1.0",
+        "code": "{\"specversion\":\"1.0\",\"id\":\"event-42\",\"source\":\"/repairs\",\"type\":\"com.example.repair.completed\",\n \"data\":{\"repairId\":\"42\"}}",
+        "summary": "This small custom event includes the required CloudEvents context fields. id identifies this event, source identifies its originating context, type describes the event class and data carries the business payload."
       }
     },
     {
@@ -18339,6 +19532,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example deduplication key",
+        "code": "(\"/repairs\", \"event-42\")",
+        "summary": "The source/event-ID pair can identify a retried CloudEvent. The same ID from a different source is not necessarily the same event; coordinate the durable deduplication record with the business update."
       }
     },
     {
@@ -18380,6 +19579,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One request contains events photo-42 and photo-43. A successful HTTP response acknowledges that whole delivery request. Process or safely hand off both; the HTTP response cannot mark only one event complete."
       }
     },
     {
@@ -18421,6 +19625,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
         "objective": "d3-event-grid"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Update version 7 arrives before a retried version 6. Check the source version before applying it, so the older event cannot overwrite the newer state."
       }
     },
     {
@@ -18511,6 +19720,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
         "objective": "d3-functions-deploy"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An interactive API must avoid long startup delays after quiet periods. Premium can keep ready capacity available; that provisioned baseline remains billable even while no requests arrive."
       }
     },
     {
@@ -18562,6 +19776,12 @@ window.AI200_FLASHCARDS = {
         "level": "esoteric",
         "reason": "Recalls default/maximum lock or execution durations. Understand renewal, redelivery and asynchronous work first, then check the plan/entity limits.",
         "objective": "d3-functions-deploy"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · host.json",
+        "code": "{\"version\":\"2.0\",\"functionTimeout\":\"00:08:00\"}",
+        "summary": "An eight-minute timeout fits within classic Consumption’s documented ten-minute execution maximum. This is an example override, and it does not extend the separate synchronous HTTP response limit."
       }
     },
     {
@@ -18603,6 +19823,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python · batch-handling fragment",
+        "code": "for document in documents:\n    process_change(document)",
+        "summary": "documents is the trigger’s delivered batch, and process_change represents your application handler. Iterate every document rather than assuming the batch always contains one item."
       }
     },
     {
@@ -18644,6 +19870,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · host.json",
+        "code": "{\"version\":\"2.0\",\"extensions\":{\"serviceBus\":{\"maxConcurrentCalls\":8}}}",
+        "summary": "This illustrates fixed callback concurrency for a non-session single-message handler. CPU cores, host instances and dynamic/session/batch configurations affect total concurrency; eight is not an app-wide ceiling."
       }
     },
     {
@@ -18691,6 +19923,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
         "objective": "d3-functions-code"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The Function App has three running instances. Host-storage coordination gives one instance ownership of the timer occurrence, rather than intentionally executing the same schedule independently on all three."
       }
     },
     {
@@ -18812,6 +20049,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Employees sign in through their organization’s Microsoft Entra directory, and an Azure app can obtain an Entra token for a protected service. The directory manages identities rather than storing the app’s business repair records."
       }
     },
     {
@@ -18851,6 +20093,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Contoso’s tenant contains its employee accounts and application identities. Both its Training and Production Azure subscriptions can trust that tenant, even though the subscriptions are separate resource/billing boundaries."
       }
     },
     {
@@ -19000,6 +20247,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Managed identity lifecycle",
           "url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -19007,7 +20259,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Identity/permission boundaries, configuration refresh and distinct observability components.",
         "sources": [
-          "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
+          "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
+          "https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication/credential-chains"
         ]
       },
       "clarityReview": {
@@ -19019,6 +20272,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.identity import ManagedIdentityCredential\ncredential = ManagedIdentityCredential()",
+        "summary": "On a supported Azure host with managed identity enabled, this credential uses the host’s identity mechanism to obtain tokens. Constructing it does not create the identity or grant service permissions."
       }
     },
     {
@@ -19103,6 +20362,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A supported Blob Data Reader assignment has a condition selecting blobs tagged project=repairs. With no other grant, that assignment permits reads of matching blob content rather than every blob covered by its broader scope."
       }
     },
     {
@@ -19265,6 +20529,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Vault URL",
+        "code": "https://study-vault.vault.azure.net",
+        "summary": "This illustrative vault endpoint is the base URL a SecretClient uses. A secret such as payments-api-key is a separately named object inside the vault."
       }
     },
     {
@@ -19343,6 +20613,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A client requests https://api.example.com but receives a certificate valid only for other.example.com. Hostname validation rejects that mismatch even if the certificate has a trusted issuer."
       }
     },
     {
@@ -19433,6 +20708,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "App Service / Functions app-setting value",
+        "code": "@Microsoft.KeyVault(SecretUri=https://study-vault.vault.azure.net/secrets/payments-api-key)",
+        "summary": "Use this as the PAYMENTS_KEY app-setting value. It points to payments-api-key in study-vault; the platform supplies the secret’s value using its configured authorized identity. Other reference mechanisms have different syntax."
       }
     },
     {
@@ -19478,6 +20759,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The payments service still accepts credential A, but someone stores a new B value only in Key Vault. Clients switching to B fail until the target service accepts that replacement too. Rotation must coordinate the service and its consumers."
       }
     },
     {
@@ -19523,6 +20809,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-configuration"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "App Configuration key/value",
+        "code": "Search:ResultLimit = \"5\"",
+        "summary": "This ordinary setting tells the application how many results to return. App Configuration stores the string value; application code can convert it to a number when using it."
       }
     },
     {
@@ -19601,6 +20893,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example address space",
+        "code": "10.20.0.0/16",
+        "summary": "A VNet can use this private range and contain a subnet such as 10.20.1.0/24. Routing, network rules and service connectivity still need to be configured for the intended traffic."
       }
     },
     {
@@ -19640,6 +20938,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Illustrative private DNS resolution",
+        "code": "study-vault.vault.azure.net → 10.20.1.5",
+        "summary": "Here the vault’s normal service hostname resolves to a private endpoint address for connected clients. They need a route to that private IP as well as their usual vault permissions."
       }
     },
     {
@@ -19679,6 +20983,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Repair-request failures start rising. Azure Monitor can show a failure-rate trend, let you inspect collected logs and trigger an alert when your configured condition is met."
       }
     },
     {
@@ -19718,6 +21027,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A repair request takes 800 ms and its database dependency accounts for most of that time. Application Insights can connect those observed operations so you can investigate the slow dependency."
       }
     },
     {
@@ -19757,6 +21071,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "KQL",
+        "code": "AppRequests | where Success == false",
+        "summary": "Run this in Log Analytics at a scope containing collected Application Insights request data. The query tool explores the data; the workspace is the resource storing it."
       }
     },
     {
@@ -19796,6 +21116,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example mounted file path",
+        "code": "/mnt/secrets-store/payments-api-key",
+        "summary": "A Secrets Store CSI mount can expose a selected Key Vault secret as this file. The application reads the file’s contents and must reread it when rotation updates the mounted value."
       }
     },
     {
@@ -19835,6 +21161,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "One repair request produces a duration measurement, a dependency span and a log explaining a validation failure. These are different observations of the application’s behavior that a monitoring system can collect."
       }
     },
     {
@@ -19880,6 +21211,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · application log example",
+        "code": "{\"time\":\"2026-10-29T10:00:00Z\",\"level\":\"ERROR\",\"repairId\":\"42\",\"message\":\"Photo is missing\"}",
+        "summary": "This illustrative structured log records when the problem occurred, its severity and the affected repair. The actual collected table/schema depends on the logging pipeline."
       }
     },
     {
@@ -19919,6 +21256,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Illustrative counter measurement",
+        "code": "repair_jobs_completed_total 42",
+        "summary": "This measurement says the counter has recorded 42 completed jobs. Repeated measurements can show throughput over time; it is not an individual job’s detailed trace."
       }
     },
     {
@@ -19964,6 +21307,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Operation flow",
+        "code": "GET /repairs/42 → API handler → PostgreSQL query",
+        "summary": "One distributed trace can connect the incoming request span with the API’s database-call span through propagated/current context, showing which timed step caused a delay."
       }
     },
     {
@@ -20009,6 +21358,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "with tracer.start_as_current_span(\"load-repair\") as span:\n    span.set_attribute(\"repair.id\", \"42\")",
+        "summary": "With a configured tracer, this creates one named span and records an attribute. Put the operation being timed inside the block; the span ends when the block exits."
       }
     },
     {
@@ -20054,6 +21409,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Telemetry flow",
+        "code": "Instrumentation → OpenTelemetry SDK → exporter → Azure Monitor",
+        "summary": "OpenTelemetry produces/processes the observations and the exporter delivers them. Azure Monitor is the separate storage/analysis destination in this example."
       }
     },
     {
@@ -20093,6 +21454,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.instrumentation.requests import RequestsInstrumentor\nRequestsInstrumentor().instrument()",
+        "summary": "With the package installed and tracing configured, this adds telemetry hooks to Python’s requests library. Outgoing calls can then create client spans and propagate context."
       }
     },
     {
@@ -20138,6 +21505,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.sdk.trace.export import ConsoleSpanExporter\nexporter = ConsoleSpanExporter()",
+        "summary": "This exporter writes spans to the console when attached to a configured span-processing pipeline. Other exporters send them to remote backends; creating the exporter alone does not instrument application code."
       }
     },
     {
@@ -20267,6 +21640,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A browser measures 250 ms from sending a request to receiving its response, while the API’s server span measures 100 ms. Those measurements have different boundaries; the remainder can include network, proxy and client-side time."
       }
     },
     {
@@ -20306,6 +21684,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Illustrative latency measurement",
+        "code": "P95 request latency = 400 ms",
+        "summary": "Approximately 95% of the measured durations are no greater than 400 ms. This percentile describes duration, not the percentage of successful requests."
       }
     },
     {
@@ -20352,6 +21736,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-configuration"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "App Configuration key/value",
+        "code": "Config:Sentinel = \"release-42\"",
+        "summary": "Update related settings first, then change this watched key. A correctly configured provider can reload the selected values when the app triggers an eligible refresh; the sentinel is a signal, not a multi-write transaction."
       }
     },
     {
@@ -20404,6 +21794,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.sdk.resources import Resource\nfrom opentelemetry.sdk.trace import TracerProvider\nprovider = TracerProvider(resource=Resource.create({\"service.name\": \"repairs-api\"}))",
+        "summary": "This constructs a provider with shared service metadata. Register it and configure its sampler/processors/exporters as needed; the constructor alone does not deliver spans to a backend."
       }
     },
     {
@@ -20448,6 +21844,11 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A multitenant repairs application used by Contoso and Fabrikam has a local service principal in each tenant. Each tenant can manage the local identity’s grants for that application."
       }
     },
     {
@@ -20492,6 +21893,12 @@ window.AI200_FLASHCARDS = {
         "level": "terms",
         "reason": "Vocabulary definition. Select Terms to study the terminology separately from applied exam questions.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example network-rule intent",
+        "code": "Allow TCP 443 from 10.20.1.0/24 to 10.20.2.4",
+        "summary": "This describes a network-flow rule, not a data-access role. Matching traffic still depends on applicable rule priority/routing, and the receiving service still checks the caller’s access."
       }
     },
     {
@@ -20540,6 +21947,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An API is deleted and recreated during deployment. Its old system-assigned identity disappears with the old resource. A separately created user-assigned identity can be attached to the replacement API, keeping the identity that was already granted access."
       }
     },
     {
@@ -20604,6 +22016,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Illustrative configuration entries",
+        "code": "Api:BaseUrl = \"https://api.example.com\"\nPAYMENTS_KEY = \"@Microsoft.KeyVault(SecretUri=https://study-vault.vault.azure.net/secrets/payments-api-key)\"",
+        "summary": "The first value is ordinary configuration. In App Service/Functions, the second is a reference used as an app-setting value, pointing to a separately stored secret. The platform needs an authorized identity and network access to resolve it."
       }
     },
     {
@@ -20647,6 +22065,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A payments API expects an opaque credential string in an HTTP header. Store that string as a Key Vault secret named payments-api-key. It is not a Key Vault cryptographic key used to sign or encrypt data."
       }
     },
     {
@@ -20690,6 +22113,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An operator with only Key Vault Reader can see that payments-api-key exists and inspect its metadata, but cannot retrieve its password/token value. Seeing the secret’s name is different from reading its contents."
       }
     },
     {
@@ -20733,6 +22161,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A deployed payments app uses its managed identity to retrieve payments-api-key. Key Vault Secrets User authorizes reading that secret’s value in the assigned scope, while leaving secret creation and deletion unavailable through this role."
       }
     },
     {
@@ -20776,6 +22209,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A rotation worker must create a replacement secret version and read it for verification. Secrets Officer supplies secret-management permissions; the ordinary app that only consumes the credential can keep the narrower Secrets User role."
       }
     },
     {
@@ -20825,6 +22263,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A Key Vault Administrator can create a secret and perform permitted key/certificate data operations in its scope. That role alone cannot grant another app an Azure role or change the vault resource’s networking configuration."
       }
     },
     {
@@ -21040,6 +22483,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Rotation workflow",
+        "code": "SecretNearExpiry → Event Grid → rotation Function → target service + new Key Vault version",
+        "summary": "For a database password, the function must update the database credential and store its matching new value in Key Vault. Applications then refresh their cached secret and affected connections. The event starts the work; it does not rotate the external password by itself."
       }
     },
     {
@@ -21181,6 +22630,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Understand which local/deployed identity is used and how role scope/inheritance governs access before debugging individual SDK settings.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.identity import DefaultAzureCredential\ncredential = DefaultAzureCredential()",
+        "summary": "Pass this credential to the service client in both environments. Locally, sign in with an eligible developer tool such as az login; on Azure, enable a managed identity. Grant each selected identity the required data access."
       }
     },
     {
@@ -21364,6 +22819,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical App Configuration permission, SDK or refresh configuration supporting the measured app-settings workflow.",
         "objective": "d4-configuration"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The repairs API loads Search:ResultLimit using Data Reader. A separate configuration-management job uses Data Owner to change that value. The runtime app does not need write access merely to consume the setting."
       }
     },
     {
@@ -21413,6 +22873,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.identity import DefaultAzureCredential\nfrom azure.keyvault.secrets import SecretClient\nclient = SecretClient(vault_url=\"https://study-vault.vault.azure.net\", credential=DefaultAzureCredential())\nvalue = client.get_secret(\"payments-api-key\").value",
+        "summary": "After identity, permissions and networking are configured, this reads the named secret’s latest version. value contains the returned credential; the vault URL and secret name identify where it lives. The selected local or Azure identity must have access."
       }
     },
     {
@@ -21456,6 +22922,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example vault boundaries",
+        "code": "repairs-dev-vault\nrepairs-prod-vault",
+        "summary": "Use separate vaults for this application’s development and production secrets. Grant the production app Secrets User on its production vault, avoiding a broad subscription-level grant that could include unrelated vaults."
       }
     },
     {
@@ -21499,6 +22971,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An API currently reads secrets through a legacy access policy. If the vault switches to RBAC before the API identity has an equivalent data role, the old policy no longer authorizes its reads. Prepare the role assignments before switching."
       }
     },
     {
@@ -21548,6 +23025,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "The guide explicitly requires secret rotation/retrieval; distinguish new versions from cached copies and update the real credential and its consumers.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Deployment copies password A into DB_PASSWORD. Later, the database and Key Vault move to password B. The running app still has A until its configuration and connections are updated; the original deployment-time copy does not follow Key Vault versions."
       }
     },
     {
@@ -21609,6 +23091,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A mistakenly deleted API secret can be recovered while soft-delete retention still applies. If it also has purge protection, an administrator cannot permanently purge it early to remove that recovery opportunity. These protections do not change the credential accepted by the API."
       }
     },
     {
@@ -21633,6 +23120,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Resolve Key Vault references",
           "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-config-file",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -21640,7 +23132,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core"
+          "https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core",
+          "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-config-file"
         ]
       },
       "clarityReview": {
@@ -21652,6 +23145,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "JSON · App Configuration Key Vault reference value",
+        "code": "{\"uri\":\"https://study-vault.vault.azure.net/secrets/payments-api-key\"}",
+        "summary": "Store this value with content type application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8. A configured application provider resolves it using vault permissions; App Configuration itself stores the reference rather than fetching the secret."
       }
     },
     {
@@ -21695,6 +23194,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example mounted path",
+        "code": "/mnt/secrets-store/payments-api-key",
+        "summary": "An appropriately configured SecretProviderClass and pod volume can mount the Key Vault object’s value here. The file contains the credential; its pathname is not the credential itself. A Kubernetes Secret object is unnecessary unless optional synchronization is enabled."
       }
     },
     {
@@ -21879,6 +23384,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
         "objective": "d4-configuration"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An API serves 1,000 requests from its in-memory configuration. Calls to refresh are interval-gated, so those requests do not each fetch remote settings. When an eligible check detects the watched change, later reads use refreshed values."
       }
     },
     {
@@ -21971,6 +23481,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
         "objective": "d4-configuration"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The app successfully loaded a timeout of 30 seconds, then App Configuration becomes unreachable. Keep using the cached 30-second value while logging/retrying refresh. A newly starting instance has no such cached success and needs an explicit startup policy."
       }
     },
     {
@@ -22026,6 +23541,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
         "objective": "d4-configuration"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An already running process read SEARCH_LIMIT=5. Changing that setting in the hosting platform does not mutate the process’s environment in place. Use the platform’s restart/new revision behavior, or read a refresh-capable provider for updates within the process."
       }
     },
     {
@@ -22387,6 +23907,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "KQL",
+        "code": "AppRequests\n| where TimeGenerated > ago(1h)\n| where Success == false\n| summarize Failures=count() by AppRoleName",
+        "summary": "This starts with request records, limits the time window, filters failed requests and only then groups them by service. Early filtering reduces the rows the aggregation must process without changing this question’s result."
       }
     },
     {
@@ -22436,6 +23962,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "KQL · Application Insights resource scope",
+        "code": "requests | where success == false | project timestamp, name, duration",
+        "summary": "This scope uses the lowercase requests table and its case-sensitive field names. It returns the time, operation name and duration for failed requests; the equivalent workspace query uses AppRequests and differently named columns."
       }
     },
     {
@@ -22485,6 +24017,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "KQL · Log Analytics workspace scope",
+        "code": "AppRequests | where Success == false | project TimeGenerated, Name, DurationMs",
+        "summary": "This is the workspace-schema form of a failed-request query. Use its capitalized table/field names together; do not mix in timestamp or duration from the Application Insights resource schema."
       }
     },
     {
@@ -22724,6 +24262,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "The left table has two rows with key=42; the right table has one matching row. An inner join returns both matching pairs. The default innerunique join first keeps one left row for that key, so only one pair remains; do not depend on which duplicate is retained."
       }
     },
     {
@@ -22931,6 +24474,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Azure Monitor Python distro",
           "url": "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/python/api/overview/azure/monitor-opentelemetry-exporter-readme?preserve-view=true&view=azure-python-preview",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -22939,7 +24487,8 @@ window.AI200_FLASHCARDS = {
         "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
           "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable",
-          "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme"
+          "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme",
+          "https://learn.microsoft.com/python/api/overview/azure/monitor-opentelemetry-exporter-readme?preserve-view=true&view=azure-python-preview"
         ]
       },
       "clarityReview": {
@@ -22951,6 +24500,12 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "import os\nfrom azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter\nexporter = AzureMonitorTraceExporter(connection_string=os.environ[\"APPLICATIONINSIGHTS_CONNECTION_STRING\"])",
+        "summary": "Set the environment variable to your Application Insights connection string. Attach this exporter through a span processor to a registered tracing provider; constructing the exporter alone does not create or send spans."
       }
     },
     {
@@ -22994,6 +24549,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.sdk.trace.export import BatchSpanProcessor\nprovider.add_span_processor(BatchSpanProcessor(exporter))",
+        "summary": "Here provider is your TracerProvider and exporter is the chosen destination exporter. Completed sampled spans are queued for batch export. Shut down/flush the provider when the process exits so buffered telemetry can leave."
       }
     },
     {
@@ -23086,6 +24647,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "You configure the exporter but never run the instrumented checkout operation: no checkout span exists to display. Invoke it, then check span creation, sampling and export in that order if the trace is still missing."
       }
     },
     {
@@ -23115,6 +24681,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Azure Monitor Python distro",
           "url": "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme?view=azure-python",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -23122,7 +24693,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Python tracing APIs, exporter mapping, sampler/distribution defaults and cross-process context propagation.",
         "sources": [
-          "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme"
+          "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme",
+          "https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme?view=azure-python"
         ]
       },
       "clarityReview": {
@@ -23134,6 +24706,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.monitor.opentelemetry import configure_azure_monitor\nconfigure_azure_monitor()",
+        "summary": "With azure-monitor-opentelemetry installed and APPLICATIONINSIGHTS_CONNECTION_STRING set, call this once during startup before handling work. It sets up the supported Azure Monitor pipeline/instrumentations. Creating additional manual instrumentation for the same library can duplicate telemetry."
       }
     },
     {
@@ -23183,6 +24761,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example observed span kinds",
+        "code": "SERVER: POST /repairs → AppRequests\nCLIENT: PostgreSQL query → AppDependencies",
+        "summary": "The incoming HTTP handler is a server operation; its outgoing database call is a client operation. These are workspace table names; the Application Insights resource view calls them requests and dependencies."
       }
     },
     {
@@ -23275,6 +24859,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Environment variables",
+        "code": "OTEL_TRACES_SAMPLER=parentbased_traceidratio\nOTEL_TRACES_SAMPLER_ARG=0.1",
+        "summary": "Set these before initializing a distribution that honors the standard settings. New root traces use a roughly 10% ratio; child spans follow the configured parent-based rules. The argument is a fraction, not the number 10."
       }
     },
     {
@@ -23324,6 +24914,12 @@ window.AI200_FLASHCARDS = {
         "level": "esoteric",
         "reason": "Vendor-specific sampler spellings/defaults are lower priority than tracing concepts, propagation and general sampling behavior.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Environment variables",
+        "code": "OTEL_TRACES_SAMPLER=microsoft.rate_limited\nOTEL_TRACES_SAMPLER_ARG=5.0",
+        "summary": "In a supporting Azure Monitor distribution, this requests an approximate five-traces-per-second target. If you choose microsoft.fixed_percentage instead, an argument of 0.1 means about 10%; the argument’s interpretation depends on the selected sampler."
       }
     },
     {
@@ -23514,6 +25110,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from opentelemetry.sdk.trace import TracerProvider\nfrom opentelemetry.sdk.trace.sampling import ALWAYS_ON\nprovider = TracerProvider(sampler=ALWAYS_ON)",
+        "summary": "This provider samples every span it evaluates. Register it and attach processors/exporters to view telemetry; this is useful for local debugging and does not recover spans another process has already dropped."
       }
     },
     {
@@ -23661,6 +25263,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Python",
+        "code": "from azure.monitor.opentelemetry import configure_azure_monitor\nconfigure_azure_monitor(sampling_ratio=0.1)",
+        "summary": "For a supporting Azure Monitor Python distro, initialize once with the same fixed ratio in cooperating services and propagate their trace context. This requests about 10%; incompatible strategies or sampler overrides can prevent coordinated selection."
       }
     },
     {
@@ -23704,6 +25312,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An application increments an independent request counter for all 100 requests, while ratio sampling retains traces for roughly 10 of them. The counter still records 100; trace sampling does not remove those metric measurements. Metrics derived from sampled spans are a different pipeline."
       }
     },
     {
@@ -23747,6 +25360,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "HTTP header",
+        "code": "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01",
+        "summary": "The parts are version 00, a 32-hex-digit trace ID, a 16-hex-digit sending span ID and flags 01 indicating sampled. The receiver continues that trace and creates its own span; it does not reuse the sender’s span ID."
       }
     },
     {
@@ -23790,6 +25409,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Service A creates a span and calls B without sending trace context. B can record a separate trace, but cannot infer that A was its parent. Injecting traceparent and extracting it at B connects the two operations."
       }
     },
     {
@@ -23884,6 +25508,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "With a configured 30-day retention period, deleting a secret leaves it recoverable during that period, subject to permissions and no earlier permanent purge. Soft delete is the recovery window; it is not a permanent backup."
       }
     },
     {
@@ -23933,6 +25562,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A vault has 30-day retention and purge protection. After a secret is deleted, even an administrator must wait for that retention period before permanently purging it. Authorized recovery is still possible during retention."
       }
     },
     {
@@ -23959,6 +25593,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Key Vault audit logs",
           "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/logging",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azkvauditlogs",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -23966,7 +25605,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Vault permission models, data/control-plane roles, version selection, rotation and recovery protections.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/key-vault/general/logging"
+          "https://learn.microsoft.com/en-us/azure/key-vault/general/logging",
+          "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azkvauditlogs"
         ]
       },
       "clarityReview": {
@@ -23978,6 +25618,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "KQL · resource-specific destination",
+        "code": "AZKVAuditLogs | where OperationName == \"SecretGet\"",
+        "summary": "When Key Vault AuditEvent logs are routed to a workspace using resource-specific tables, this selects secret-read audit events. Inspect their result fields to investigate failures. With the legacy AzureDiagnostics destination, the table/schema is different."
       }
     },
     {
@@ -24109,6 +25755,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "A Contributor can deploy an app in its resource group but cannot use that role alone to grant the app a data-access role. An Owner at the applicable scope can create that role assignment."
       }
     },
     {
@@ -24197,6 +25848,11 @@ window.AI200_FLASHCARDS = {
         "level": "critical",
         "reason": "Understand which local/deployed identity is used and how role scope/inheritance governs access before debugging individual SDK settings.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Sam has Contributor on a resource group and Reader on one app inside it. The app-level Reader assignment does not downgrade the inherited Contributor grant; both applicable grants contribute permissions."
       }
     },
     {
@@ -24238,6 +25894,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An image-processing app needs to download photos from one blob container. Assign its identity Storage Blob Data Reader at that container, then use a token-authenticated Blob client. It can read those blobs without gaining write/delete permission from this role."
       }
     },
     {
@@ -24264,6 +25925,11 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Workload identity federation",
           "url": "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · example documentation",
+          "url": "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-github",
+          "kind": "primary"
         }
       ],
       "review": {
@@ -24271,7 +25937,8 @@ window.AI200_FLASHCARDS = {
         "status": "clarified",
         "note": "Identity lifecycle, inherited role permissions, supported conditions and workload federation.",
         "sources": [
-          "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation"
+          "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation",
+          "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-github"
         ]
       },
       "clarityReview": {
@@ -24283,6 +25950,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "GitHub Actions federated subject example",
+        "code": "repo:contoso/repairs:ref:refs/heads/main",
+        "summary": "A federated credential can trust this repository/branch subject from GitHub’s configured token issuer with the expected audience. A different branch has a different subject and does not match this trust entry."
       }
     },
     {
@@ -24365,6 +26038,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
         "objective": "d4-secrets"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "An employee cannot sign in because a Conditional Access policy requires a compliant device. The sign-in log can identify the failed policy. If sign-in succeeds but a later blob read is forbidden, inspect that service’s access configuration and logs too."
       }
     },
     {
@@ -24451,6 +26129,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Enable Key Vault’s supported audit category in a diagnostic setting and select a Log Analytics workspace as the destination. Secret-read audit records can then be queried there; this does not instrument the code of an app that calls the vault."
       }
     },
     {
@@ -24533,6 +26216,11 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Eligible ingestion reaches the daily cap before an evening outage. The app can still fail while later diagnostic records are missing from the workspace. An empty query result during that gap does not prove the app was healthy."
       }
     },
     {
@@ -24619,6 +26307,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
         "objective": "d4-traces"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "Example application map",
+        "code": "web-frontend → repairs-api → PostgreSQL",
+        "summary": "With appropriate instrumentation, service names and trace propagation, the map can show the frontend’s API dependency and the API’s database dependency, including available duration/failure information. An unobserved call may be absent from the map."
       }
     },
     {
@@ -24660,6 +26354,12 @@ window.AI200_FLASHCARDS = {
         "level": "important",
         "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
         "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "inline",
+        "language": "KQL · workspace custom metric",
+        "code": "AppMetrics | where Name == \"repairs.queue.length\"",
+        "summary": "This selects standalone custom metric telemetry published with that name. It is not a query of request records’ custom measurement fields. In the Application Insights resource schema, use customMetrics with its corresponding lowercase field names."
       }
     }
   ],

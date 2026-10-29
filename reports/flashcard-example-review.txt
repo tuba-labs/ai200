@@ -1,0 +1,3095 @@
+Flashcard example review — 2026-10-29
+
+All 559 cards reviewed individually.
+Added examples: 294. Already concrete: 215. No additional example needed: 50.
+
+Examples use short values, commands, configuration fragments or scenarios with a visible result.
+Existing clear commands, calculations, comparisons and shared term examples were retained.
+Exact recall facts and already clear definitions were not padded with repetitive examples.
+Questions, answer text, stable card IDs, categories and importance ratings were preserved.
+
+Edit each new example directly in the example property beside its answer in flashcards-data.js.
+Term examples are reused in the glossary/tooltips. Current workshop answer panels also include examples.
+Run scripts/build_jargon.py and scripts/build_workshops.py after editing to update generated copies.
+
+Validation: reviewed against primary documentation linked on the cards; JSON/Python syntax and
+rendering are checked locally. Fragments identify their surrounding context in the explanation.
+Sample values are illustrative, not default settings. The examples were not executed against Azure.
+
+001 | term-d1-provisioning | Domain 1 | Terms · Containere
+What does provision mean in Azure?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+002 | term-d1-resource | Domain 1 | Terms · Containere
+What is an Azure resource?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+003 | term-d1-resource-group | Domain 1 | Terms · Containere
+What is an Azure resource group?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+004 | term-d1-subscription | Domain 1 | Terms · Containere
+What is an Azure subscription?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Select the Training subscription before creating rg-repairs. The new resource group and its resources belong to Training, and their usage is billed through that subscription.
+
+005 | term-d1-region | Domain 1 | Terms · Containere
+What is an Azure region?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+006 | term-d1-availability-zone | Domain 1 | Terms · Containere
+What is an Azure availability zone?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Place healthy API replicas in two different supported zones. If one zone fails, a replica in the other can continue serving requests, provided enough healthy capacity remains.
+
+007 | term-d1-sku | Domain 1 | Terms · Containere
+What does SKU mean for an Azure service?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+008 | term-d1-vm | Domain 1 | Terms · Containere
+What is a virtual machine in Azure?
+Decision: not needed. The definition already gives a familiar computer/workload or named implementation example; extra syntax would distract from identifying the term.
+
+009 | term-d1-cli | Domain 1 | Terms · Containere
+What does CLI stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+010 | term-d1-sdk | Domain 1 | Terms · Containere
+What does SDK stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+011 | term-d1-iac | Domain 1 | Terms · Containere
+What does Infrastructure as Code mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+012 | term-d1-bicep | Domain 1 | Terms · Containere
+What is Bicep in Azure?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+013 | term-d1-cicd | Domain 1 | Terms · Containere
+What does CI/CD stand for?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Pipeline flow
+    Commit → build and test → publish orders:build-42 → deploy to staging
+CI builds and checks the change. Delivery prepares a release for deployment; automatic promotion to production is a separate pipeline choice.
+
+014 | term-d1-docker | Domain 1 | Terms · Containere
+What is Docker?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Docker CLI
+    docker build -t orders:v1 .
+    docker run --rm -p 8080:8000 orders:v1
+The current directory supplies the Dockerfile and source. Assume the image starts an API on port 8000; the second command makes it available on the host at port 8080.
+
+015 | term-d1-image | Domain 1 | Terms · Containere
+What is a container image?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Image address
+    studyacr.azurecr.io/orders:v1
+This names one published image version. Starting three containers from it creates three running instances of the same packaged application.
+
+016 | term-d1-container | Domain 1 | Terms · Containere
+What is an application container?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Docker CLI
+    docker run -d --name orders-a orders:v1
+    docker run -d --name orders-b orders:v1
+Assuming orders:v1 is a locally available long-running app image, these commands start two separately named containers from that same image.
+
+017 | term-d1-dockerfile | Domain 1 | Terms · Containere
+What is a Dockerfile?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+018 | term-d1-registry | Domain 1 | Terms · Containere
+What is a container registry?
+Decision: already concrete. The answer already describes a build pipeline pushing and a hosting service pulling. Image-address examples are supplied by the related image/repository terms.
+
+019 | term-d1-acr | Domain 1 | Terms · Containere
+What does ACR stand for?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Image address
+    studyacr.azurecr.io/orders:v1
+studyacr.azurecr.io is the example ACR login server. orders is a repository inside it, and v1 selects a tagged image version.
+
+020 | term-d1-repository | Domain 1 | Terms · Containere
+What is a repository inside a container registry?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+021 | term-d1-image-tag | Domain 1 | Terms · Containere
+What is a container image tag?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+022 | term-d1-digest | Domain 1 | Terms · Containere
+What is a container image digest?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Image address format
+    studyacr.azurecr.io/orders@sha256:<manifest-digest>
+Replace <manifest-digest> with the real digest returned by the registry. The @sha256 part selects exact manifest content rather than following a movable tag.
+
+023 | term-d1-build-context | Domain 1 | Terms · Containere
+What is a Docker build context?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+024 | term-d1-image-push | Domain 1 | Terms · Containere
+What does pushing a container image mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+025 | term-d1-image-pull | Domain 1 | Terms · Containere
+What does pulling a container image mean?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Docker CLI
+    docker pull studyacr.azurecr.io/orders:v1
+After authenticating to this example registry, the command downloads the content needed for orders:v1. Pulling an image does not start its application.
+
+026 | term-d1-app-service | Domain 1 | Terms · Containere
+What is Azure App Service?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Deploy an orders API container as an App Service web app. Configure its environment values in app settings and call its HTTPS endpoint; Azure manages the underlying web-hosting infrastructure.
+
+027 | term-d1-deployment-slot | Domain 1 | Terms · Containere
+What is a deployment slot in Azure App Service?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+028 | term-d1-container-apps | Domain 1 | Terms · Containere
+What is Azure Container Apps?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Deploy orders-api and orders-worker as two Container Apps in one environment. The API accepts HTTP requests, while the worker can scale in response to queued jobs.
+
+029 | term-d1-kubernetes | Domain 1 | Terms · Containere
+What is Kubernetes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Declare that three orders pods should be running. If one disappears, Kubernetes controllers create a replacement and the scheduler finds a suitable node for it.
+
+030 | term-d1-aks | Domain 1 | Terms · Containere
+What does AKS stand for?
+Decision: not needed. The acronym expansion and Azure/control-plane boundary already answer this identification question directly.
+
+031 | term-d1-cluster | Domain 1 | Terms · Containere
+What is a Kubernetes cluster?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A small cluster has worker-a and worker-b. Two orders pods run on worker-a and another runs on worker-b; one control plane coordinates these workloads as part of the same cluster.
+
+032 | term-d1-control-plane | Domain 1 | Terms · Containere
+What is the Kubernetes control plane?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+You request three API replicas, but only two exist. A controller creates the missing pod, and the scheduler selects a node that can run it.
+
+033 | term-d1-node | Domain 1 | Terms · Containere
+What is a node in Kubernetes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+worker-a can host two orders pods and a logging-agent pod at once. They are separate workloads sharing one worker machine.
+
+034 | term-d1-node-pool | Domain 1 | Terms · Containere
+What is a node pool in AKS?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+One pool uses smaller machines for web APIs; another uses larger-memory machines for search workers. Adding a node to a pool adds a worker machine, rather than directly changing a Deployment’s replica setting.
+
+035 | term-d1-pod | Domain 1 | Terms · Containere
+What is a pod in Kubernetes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An API container and a helper container run in one pod. They share the pod’s IP address and can communicate through localhost; they can also mount the same declared volume.
+
+036 | term-d1-replica | Domain 1 | Terms · Containere
+What is a replica of an application?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+037 | term-d1-deployment | Domain 1 | Terms · Containere
+What is a Deployment in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+038 | term-d1-daemonset | Domain 1 | Terms · Containere
+What is a DaemonSet in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+039 | term-d1-service | Domain 1 | Terms · Containere
+What is a Service in Kubernetes?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · Service spec fragment
+    selector:
+      app: orders
+    ports:
+      - port: 80
+        targetPort: 8000
+Under a Service’s spec, this selects pods labeled app=orders and forwards Service port 80 to port 8000 on those pods. The application must actually listen there.
+
+040 | term-d1-ingress | Domain 1 | Terms · Containere
+What is Ingress in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+041 | term-d1-namespace | Domain 1 | Terms · Containere
+What is a namespace in Kubernetes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A Deployment named orders can exist in both training and production namespaces. Asking kubectl for the training namespace selects that namespace’s resources, not production’s copy.
+
+042 | term-d1-manifest | Domain 1 | Terms · Containere
+What is a Kubernetes manifest?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+043 | term-d1-label | Domain 1 | Terms · Containere
+What is a label in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+044 | term-d1-selector | Domain 1 | Terms · Containere
+What is a selector in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+045 | term-d1-request | Domain 1 | Terms · Containere
+What is a resource request in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+046 | term-d1-limit | Domain 1 | Terms · Containere
+What is a resource limit in Kubernetes?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · container resources.limits fragment
+    cpu: "500m"
+    memory: "128Mi"
+Under resources.limits, these illustrative values cap CPU at half a core and memory at 128 MiB. CPU can be throttled; exceeding the memory limit can terminate the container.
+
+047 | term-d1-dns | Domain 1 | Terms · Containere
+What does DNS stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+048 | term-d1-yaml | Domain 1 | Terms · Containere
+What is YAML?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+049 | term-d1-json | Domain 1 | Terms · Containere
+What is JSON?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+050 | term-d1-keda | Domain 1 | Terms · Containere
+What does KEDA stand for?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An empty jobs queue allows an appropriately configured worker to scale to zero. When jobs arrive, KEDA can detect the backlog and request a replica before any worker is running to report CPU usage.
+
+051 | term-d1-cpu | Domain 1 | Terms · Containere
+What does CPU stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+052 | term-d1-gpu | Domain 1 | Terms · Containere
+What does GPU stand for?
+Decision: not needed. The definition already gives a familiar computer/workload or named implementation example; extra syntax would distract from identifying the term.
+
+053 | term-d1-cni | Domain 1 | Terms · Containere
+What does CNI stand for in Kubernetes networking?
+Decision: not needed. The definition already gives a familiar computer/workload or named implementation example; extra syntax would distract from identifying the term.
+
+054 | term-d1-url | Domain 1 | Terms · Containere
+What does URL stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+055 | term-d1-uri | Domain 1 | Terms · Containere
+What does URI stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+056 | m-11-3-1 | Domain 1 | Terms · Containere
+What is the purpose of a Kubernetes startup probe?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · startupProbe timing fragment
+    failureThreshold: 30
+    periodSeconds: 10
+Put these values under a startupProbe that already defines its check. Thirty failed attempts at ten-second intervals provide roughly five minutes for startup; these are example values, not universal defaults.
+
+057 | m-16-1-1 | Domain 1 | Terms · Containere
+What does the Kubernetes Horizontal Pod Autoscaler scale?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Two equally requested API pods average 80% CPU utilization against a 40% target. With usable metrics, the basic ratio estimate is four replicas, before minimum/maximum bounds and stabilization rules.
+
+058 | m-16-3-1 | Domain 1 | Terms · Containere
+What does the Kubernetes Vertical Pod Autoscaler adjust?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A VPA recommendation might raise a container’s memory request from 128 MiB to 512 MiB after observing its usage. This changes the size requested for a container, rather than simply adding more copies.
+
+059 | prep-aks-015 | Domain 1 | Terms · Containere
+What does a Kubernetes PodDisruptionBudget limit during node maintenance?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+With three healthy matching pods and minAvailable=2, a node drain can evict one while two remain available. It cannot voluntarily evict another if doing so would break that budget.
+
+060 | prep-aks-023 | Domain 1 | Terms · Containere
+What is a Kubernetes StatefulSet used for?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Pod name examples
+    postgres-0
+    postgres-1
+A StatefulSet named postgres gives its members predictable names and can give each its own persistent volume claim. The database software still has to implement replication and recovery.
+
+061 | prep-ca-001 | Domain 1 | Terms · Containere
+What is a Container Apps environment?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Place orders-api and orders-worker in a production environment with shared environment networking and logging configuration. Use a separate environment for staging when you need a separate hosting boundary.
+
+062 | prep-ca-002 | Domain 1 | Terms · Containere
+What does a Container Apps revision represent?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Revision name examples
+    orders--v1
+    orders--v2
+These can be two named revisions of one orders Container App, using different image/configuration snapshots. Moving traffic between them changes the served revision without creating a second app.
+
+063 | m-01-1-1 | Domain 1 | Azure Container Registry (ACR)
+Which source-code events can trigger an ACR Task?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A build-orders task watches the main branch. Pushing a commit to main starts its image build. Opening a pull request starts a build only if the task’s pull-request trigger has also been enabled.
+
+064 | m-01-2-1 | Domain 1 | Azure Container Registry (ACR)
+How does an ACR Task know when to rebuild after its base image changes?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Dockerfile base-image fragment
+    FROM studyacr.azurecr.io/python-base:v1
+An ACR Task’s first build records this dependency. With base-image triggering configured, publishing changed content to this tracked base can trigger a dependent rebuild after detection.
+
+065 | m-01-3-1 | Domain 1 | Azure Container Registry (ACR)
+What schedule format does an ACR Tasks timer use?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+066 | m-01-4-1 | Domain 1 | Azure Container Registry (ACR)
+Do ACR webhooks or Artifact Cache rules start source builds?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An Artifact Cache rule makes an upstream nginx image available through your registry. It does not compile the orders repository. To compile that source after a commit, configure an ACR Task with a source trigger.
+
+067 | m-02-1-1 | Domain 1 | Azure Container Registry (ACR)
+Which pull and push roles apply to an ACR registry using RBAC Registry Permissions?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Give the running orders app only AcrPull so it can download images. Give the build identity AcrPush so it can upload releases as well. This example assumes RBAC Registry Permissions mode and no other grants.
+
+068 | m-02-2-1 | Domain 1 | Azure Container Registry (ACR)
+Which ACR roles grant repository pull or push access when ABAC is enabled?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Assign Repository Writer with a condition selecting the orders repository. If this is the identity’s only repository grant, it can push and pull orders images but cannot use that assignment to access payments images.
+
+069 | m-02-3-1 | Domain 1 | Azure Container Registry (ACR)
+Are legacy AcrPull, AcrPush and AcrDelete roles honored on an ABAC-enabled registry?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An app whose only image permission is AcrPull starts failing pulls after its registry switches to ABAC repository permissions. Replace that legacy grant with the appropriate repository-reader assignment; changing the image’s name alone will not fix authorization.
+
+070 | m-03-1-1 | Domain 1 | Azure Container Registry (ACR)
+What does an ACR quick task do?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+071 | m-03-2-1 | Domain 1 | Azure Container Registry (ACR)
+How is a Git repository configured as an ACR Task's build context?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+072 | m-03-3-1 | Domain 1 | Azure Container Registry (ACR)
+What defines an ACR multi-step task?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+073 | m-03-4-1 | Domain 1 | Azure Container Registry (ACR)
+What sequence connects a Git commit to a new ACR image?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+074 | m-03-5-1 | Domain 1 | Azure Container Registry (ACR)
+How can a GitHub Actions workflow run an existing ACR Task?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+075 | m-04-1-1 | Domain 1 | Azure Container Registry (ACR)
+Why can pulling myapp:latest return a different image after another push?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+On Monday, orders:latest points to build 10. On Tuesday, the pipeline reuses latest for build 11. A new pull can now select build 11 even though the text of the image reference has not changed.
+
+076 | m-04-2-1 | Domain 1 | Azure Container Registry (ACR)
+Why use a different image tag for each build?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+077 | m-04-3-1 | Domain 1 | Azure Container Registry (ACR)
+Which image reference pins exact content even if a tag moves?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+078 | m-04-4-1 | Domain 1 | Azure Container Registry (ACR)
+How do you push a local container image to Azure Container Registry?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+079 | m-04-5-1 | Domain 1 | Azure Container Registry (ACR)
+Which image tag is assumed when none is specified?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+080 | m-04-5-2 | Domain 1 | Azure Container Registry (ACR)
+How can an ACR tag be protected from later overwrites?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+081 | m-05-1-1 | Domain 1 | App Service
+How can App Service pull from ACR without storing registry credentials?
+Decision: already concrete. The existing answer already gives the complete identity → mode-appropriate image role → hosting configuration sequence. Extra commands would repeat implementation cards.
+
+082 | m-05-3-1 | Domain 1 | App Service
+Why is the ACR administrator account unsuitable for a production app identity?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+If two apps share the registry administrator password, rotating it affects both. Separate app identities let you revoke one app’s image access without changing a shared password used by the other.
+
+083 | m-05-4-1 | Domain 1 | App Service
+Does pushing to the same tag automatically refresh an App Service container?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The running API reports version 1. A pipeline pushes version 2 under the same orders:latest tag, but requests still reach the existing version-1 process until App Service restarts/updates and pulls the replacement.
+
+084 | m-06-1-1 | Domain 1 | App Service
+How do App Service and Functions expose app settings to application code?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+085 | m-06-3-1 | Domain 1 | App Service
+How do App Service connection strings differ from ordinary app settings?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    import os
+    dsn = os.environ["CUSTOMCONNSTR_OrdersDb"]
+For an App Service custom connection string named OrdersDb, read this prefixed environment variable. An ordinary app setting named OrdersDb would use its unprefixed name.
+
+086 | m-06-4-1 | Domain 1 | App Service
+What happens to a slot setting during an App Service slot swap?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+087 | m-06-5-1 | Domain 1 | App Service
+Why should runtime credentials be kept out of a Dockerfile?
+Decision: not needed. The answer already directly explains the image-inspection risk and the runtime-secret alternative. Avoid adding a contrived example containing a credential.
+
+088 | m-07-1-1 | Domain 1 | App Service
+What is the syntax of an App Service or Functions Key Vault reference?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+089 | m-07-2-1 | Domain 1 | App Service
+Which identity permission is needed to resolve an App Service Key Vault reference?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An app can reach its vault but has only Key Vault Reader. Secret-value retrieval is still denied. On an RBAC-enabled vault, give the resolving identity Key Vault Secrets User at the appropriate scope.
+
+090 | m-07-3-1 | Domain 1 | App Service
+Does using a Key Vault reference require secret-reading code in the app?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    import os
+    api_key = os.environ["PAYMENTS_KEY"]
+Configure PAYMENTS_KEY as a Key Vault reference in App Service. The platform resolves the reference, and this code reads the resulting environment value without calling a Key Vault SDK.
+
+091 | m-07-4-1 | Domain 1 | App Service
+When does App Service refresh a versionless Key Vault reference?
+Decision: not needed. The answer already states the exact interval/tier and its meaning. Another numeric or tier example would simply repeat that fact.
+
+092 | m-08-1-1 | Domain 1 | KEDA og hendelsesstyrt skalering
+Which KEDA settings select a Service Bus queue and its scaling target?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+093 | m-08-2-1 | Domain 1 | KEDA og hendelsesstyrt skalering
+Which KEDA settings select a Storage queue and its scaling target?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+094 | m-08-3-1 | Domain 1 | KEDA og hendelsesstyrt skalering
+What is the default polling interval for Container Apps event-driven scaling?
+Decision: not needed. The answer already states the exact interval/tier and its meaning. Another numeric or tier example would simply repeat that fact.
+
+095 | m-08-3-2 | Domain 1 | KEDA og hendelsesstyrt skalering
+When does the default 300-second Container Apps cooldown apply?
+Decision: not needed. The answer already states the exact interval/tier and its meaning. Another numeric or tier example would simply repeat that fact.
+
+096 | m-08-4-1 | Domain 1 | KEDA og hendelsesstyrt skalering
+How is the target replica count estimated from a queue-length metric?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+097 | m-08-5-1 | Domain 1 | KEDA og hendelsesstyrt skalering
+What are the Container Apps min/max replica settings used for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+098 | m-09-1-1 | Domain 1 | AKS og Kubernetes
+Which Kubernetes Service type is the default?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Internal Service URL
+    http://orders.training.svc.cluster.local
+For a Service named orders in namespace training, this is an internal DNS address in a cluster using the cluster.local domain. A ClusterIP Service is not automatically an internet endpoint.
+
+099 | m-09-2-1 | Domain 1 | AKS og Kubernetes
+What does a Kubernetes NodePort Service expose?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: NodePort URL format
+    http://<reachable-node-ip>:30080
+If the Service is configured with nodePort 30080, use a reachable node address and that port. Replace the placeholder; routing/firewalls must allow the connection.
+
+100 | m-09-3-1 | Domain 1 | AKS og Kubernetes
+What does a Kubernetes LoadBalancer Service provision?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · Service spec fragment
+    type: LoadBalancer
+Set this in a Service’s spec alongside its ports and selector. A supporting cloud controller provisions the frontend; additional settings determine public versus private exposure.
+
+101 | m-09-4-1 | Domain 1 | AKS og Kubernetes
+What does a Kubernetes ExternalName Service return?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · Service spec fragment
+    type: ExternalName
+    externalName: database.example.com
+The Service’s DNS name becomes an alias for database.example.com. Clients resolve and connect to that destination; this Service type does not proxy database traffic.
+
+102 | m-09-5-1 | Domain 1 | AKS og Kubernetes
+Is Kubernetes Ingress a Service type?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An Ingress routes https://api.example.com/orders to the orders Service on port 80. The Ingress supplies the HTTP routing rule, while the Service selects the application’s backend pods.
+
+103 | m-10-1-1 | Domain 1 | AKS og Kubernetes
+How do maxSurge and maxUnavailable control a Kubernetes Deployment rollout?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+104 | m-10-2-1 | Domain 1 | AKS og Kubernetes
+How does a DaemonSet rolling update limit disruption to node agents?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A logging DaemonSet runs on nodes A, B and C. With maxUnavailable=1 and maxSurge=0, its rollout can replace the agent on A while agents on B and C remain available.
+
+105 | m-11-1-1 | Domain 1 | AKS og Kubernetes
+What happens when a Kubernetes liveness probe fails repeatedly?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An API process deadlocks and its liveness check keeps failing. After the failure threshold, the kubelet restarts the Deployment’s container, giving the application a new process.
+
+106 | m-11-2-1 | Domain 1 | AKS og Kubernetes
+What happens when a Kubernetes readiness probe fails?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A warming API returns HTTP 503 from its readiness endpoint. Its process keeps running, but the Service stops sending it normal ready-endpoint traffic until the readiness check succeeds.
+
+107 | m-11-4-1 | Domain 1 | AKS og Kubernetes
+What should you check when running pods receive no traffic through their Kubernetes Service?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The pods are labeled app=orders, but the Service selects app=order. The pods can be running normally while that Service has no matching backends. Correct the selector before debugging the HTTP handler.
+
+108 | m-12-1-1 | Domain 1 | Container Apps
+How does single-revision mode route Container Apps traffic?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Revision v1 serves customers while v2 starts. If v2 is not ready, v1 keeps serving. Once v2 becomes ready, single-revision mode moves traffic to it and deactivates v1.
+
+109 | m-12-2-1 | Domain 1 | Container Apps
+What does multiple-revision mode allow in Container Apps?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+110 | m-12-3-1 | Domain 1 | Container Apps
+How does Deployment labels mode route traffic in Azure Container Apps?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+111 | m-12-4-1 | Domain 1 | Container Apps
+What must the traffic percentages for a Container Apps endpoint add up to?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+112 | m-12-5-1 | Domain 1 | Container Apps
+How can one Container Apps revision have a stable test URL?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+113 | m-13-1-1 | Domain 1 | Container Apps
+What information does a custom scaling rule need in Azure Container Apps?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+114 | m-13-2-1 | Domain 1 | Container Apps
+How can Azure CLI configure queue-based scaling for an existing Container App?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+115 | m-13-3-1 | Domain 1 | Container Apps
+What is the trade-off of setting Container Apps minReplicas to zero?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A worker receives a few repair jobs each evening. Allowing zero replicas can avoid keeping its compute running all day, but the next job may wait for a worker to start.
+
+116 | m-13-4-1 | Domain 1 | Container Apps
+Why keep at least one Container Apps replica running?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · Container Apps scale fragment
+    minReplicas: 1
+    maxReplicas: 4
+These example settings keep one API replica available while permitting growth to four. They trade idle capacity cost for less startup delay after quiet periods.
+
+117 | m-13-5-1 | Domain 1 | Container Apps
+What does a Container Apps HTTP scale rule measure?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+With a target of ten concurrent requests per replica, thirty simultaneous requests suggest roughly three replicas before bounds and stabilization. Thirty requests spread across a whole minute are a different measurement.
+
+118 | m-13-6-1 | Domain 1 | Container Apps
+Can CPU- or memory-only Container Apps rules scale an app from zero?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+119 | m-13-6-2 | Domain 1 | Container Apps
+Does changing a Container Apps scale rule create a revision?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Change maxReplicas from 3 to 6 while keeping the same container image. Because scale settings are revision-scoped, this configuration change still creates another revision.
+
+120 | m-14-1-1 | Domain 1 | Container Apps
+Are Container Apps secrets scoped to an app or a revision?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Revisions v1 and v2 both reference the app secret payments-key. Updating that ordinary secret changes the shared definition; restart the revisions that must receive the new value.
+
+121 | m-14-2-1 | Domain 1 | Container Apps
+How is a Container Apps secret linked to Key Vault?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · Container Apps secret entry
+    {"name":"payments-key","keyVaultUrl":"https://study-vault.vault.azure.net/secrets/payments-api-key","identity":"system"}
+An entry in properties.configuration.secrets defines payments-key using a Key Vault URL. The system-assigned identity must exist and have secret-read permission and network access.
+
+122 | m-14-3-1 | Domain 1 | Container Apps
+Which identity can be pre-authorized for Key Vault before a Container App is created?
+Decision: not needed. The answer already explains the identity lifecycle or precise refresh behavior directly; another example would restate the same fact.
+
+123 | m-14-4-1 | Domain 1 | Container Apps
+When are versionless Container Apps Key Vault references refreshed?
+Decision: not needed. The answer already explains the identity lifecycle or precise refresh behavior directly; another example would restate the same fact.
+
+124 | m-14-5-1 | Domain 1 | Container Apps
+How does a Container Apps container consume an app secret?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+125 | m-15-1-1 | Domain 1 | AKS og Kubernetes
+What does a Kubernetes Deployment manifest describe?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · minimal Deployment
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata: {name: orders}
+    spec:
+      replicas: 3
+      selector: {matchLabels: {app: orders}}
+      template:
+        metadata: {labels: {app: orders}}
+        spec:
+          containers: [{name: api, image: "studyacr.azurecr.io/orders:v1"}]
+The selector matches the pod-template labels, and replicas requests three copies. The image address is illustrative; its image and any required registry access must exist before pods can start.
+
+126 | m-15-2-1 | Domain 1 | AKS og Kubernetes
+Which kubectl command creates or updates resources from a manifest file?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+127 | m-15-3-1 | Domain 1 | AKS og Kubernetes
+What is the sequence for a rolling image update in Kubernetes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+128 | m-15-4-1 | Domain 1 | AKS og Kubernetes
+Which command rolls a Kubernetes Deployment back?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+129 | m-15-5-1 | Domain 1 | AKS og Kubernetes
+How can a pod consume a Kubernetes Secret without embedding its value in the pod manifest?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · container environment fragment
+    env:
+      - name: PAYMENTS_KEY
+        valueFrom:
+          secretKeyRef: {name: payments, key: api-key}
+The container receives PAYMENTS_KEY from key api-key in an existing Kubernetes Secret named payments in the same namespace. This manifest contains a reference, not the secret’s value.
+
+130 | m-16-2-1 | Domain 1 | AKS og Kubernetes
+What resource setting is needed for CPU-utilization-based HPA scaling?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · container resources fragment
+    requests:
+      cpu: "200m"
+With a 200-millicore request, usage of 80 millicores is 40% utilization for this container. The request supplies the baseline that a CPU-utilization HPA needs.
+
+131 | m-16-5-1 | Domain 1 | AKS og Kubernetes
+Why can KEDA wake a workload from zero replicas when CPU-only scaling cannot?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+132 | m-16-6-1 | Domain 1 | AKS og Kubernetes
+Which command changes a Deployment's replica count manually?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+133 | m-17-1-1 | Domain 1 | AKS og Kubernetes
+Which two kubectl commands are a useful starting point for investigating an unhealthy pod?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+134 | m-17-2-1 | Domain 1 | AKS og Kubernetes
+How do you inspect logs from a container's previous crashed instance?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+135 | m-17-3-1 | Domain 1 | AKS og Kubernetes
+What does ImagePullBackOff indicate?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The manifest requests orders:v99, but that tag was never published. The pod cannot pull its image and eventually backs off between attempts. Inspect the pull error and correct the image reference.
+
+136 | m-17-4-1 | Domain 1 | AKS og Kubernetes
+How do you find why a Pending Kubernetes pod cannot be scheduled?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Two workers each have two CPU units free, but a pod requests four. The pod cannot split its request across machines, so neither node can host it. FailedScheduling events can identify this insufficient-capacity constraint.
+
+137 | m-17-6-1 | Domain 1 | AKS og Kubernetes
+Which kubectl commands show current pod or node CPU and memory usage?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+138 | prep-acr-001 | Domain 1 | Azure Container Registry (ACR)
+Which ACR service tier supports geo-replication?
+Decision: not needed. The answer already states the exact interval/tier and its meaning. Another numeric or tier example would simply repeat that fact.
+
+139 | prep-acr-010 | Domain 1 | Azure Container Registry (ACR)
+Which ACR service tier supports private endpoints?
+Decision: not needed. The answer already states the exact interval/tier and its meaning. Another numeric or tier example would simply repeat that fact.
+
+140 | prep-acr-003 | Domain 1 | Azure Container Registry (ACR)
+Which Azure CLI command imports an existing image into ACR without local Docker?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+141 | prep-acr-004 | Domain 1 | Azure Container Registry (ACR)
+How do you find the login-server hostname to use for an ACR image?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+142 | prep-p-acr-m01 | Domain 1 | Azure Container Registry (ACR)
+What does image signature verification add beyond digest pinning?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An image has the digest you downloaded, but your verification policy requires a signature from the company’s release identity. A matching digest alone does not establish that trusted identity as the publisher.
+
+143 | prep-p-acr-008 | Domain 1 | Azure Container Registry (ACR)
+What can an ACR repository-scoped token restrict?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A deployment token’s scope map permits reading the orders repository. That token can pull orders:v1, while a push or access to an unrelated repository is outside the granted scope.
+
+144 | prep-acr-012 | Domain 1 | Azure Container Registry (ACR)
+What must accompany an ACR private endpoint when public registry access is disabled?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The registry’s public access is off. A developer connects through the approved private network, where DNS resolves the registry endpoints to private addresses. A laptop with no route to that network still cannot pull the image.
+
+145 | prep-acr-014 | Domain 1 | Azure Container Registry (ACR)
+Which ACR capability can recover accidentally deleted artifacts when enabled beforehand?
+Decision: not needed. The answer already describes accidental deletion, prior enablement and the recovery window; another deletion story adds no new understanding.
+
+146 | prep-acr-017 | Domain 1 | Azure Container Registry (ACR)
+Which Azure CLI command lists a repository's tags in ACR?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+147 | prep-aks-009 | Domain 1 | AKS og Kubernetes
+How does Microsoft Entra Workload ID authenticate an AKS workload?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Federated subject
+    system:serviceaccount:production:orders
+This subject identifies the orders ServiceAccount in namespace production. A matching issuer/subject/audience federation trust lets its projected token be exchanged for the configured Azure identity.
+
+148 | prep-aks-025 | Domain 1 | AKS og Kubernetes
+Which AKS issuer feature is required for service-account federation with Entra Workload ID?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Azure CLI
+    az aks update --resource-group study --name study-aks --enable-oidc-issuer --enable-workload-identity
+For an existing cluster, enable these features before configuring the federated identity credential and workload ServiceAccount/pod settings. The switches alone do not grant resource access.
+
+149 | prep-p-aks-008 | Domain 1 | AKS og Kubernetes
+Which Kubernetes resource controls network traffic into or out of pods?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · NetworkPolicy spec fragment
+    podSelector: {matchLabels: {app: orders}}
+    policyTypes: [Ingress]
+    ingress:
+      - from:
+          - podSelector: {matchLabels: {app: frontend}}
+With a supporting network implementation, this selects orders pods and permits ingress from frontend-labeled pods in the same namespace. Other applicable policies can also allow traffic.
+
+150 | prep-p-aks-006 | Domain 1 | AKS og Kubernetes
+How is native Kubernetes read-only access limited to one namespace?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · namespaced Role rules fragment
+    rules:
+      - apiGroups: [""]
+        resources: ["pods"]
+        verbs: ["get", "list", "watch"]
+A Role with these rules grants read operations on pods in its namespace. A RoleBinding must attach it to the intended user, group or ServiceAccount.
+
+151 | prep-p-aks-011 | Domain 1 | AKS og Kubernetes
+Which Azure storage service commonly backs a Kubernetes ReadWriteMany file volume?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Two API pods on different nodes mount the same Azure Files share. A report file written through one mount can be read through the other, subject to file permissions and the chosen storage configuration.
+
+152 | prep-aks-040 | Domain 1 | AKS og Kubernetes
+How do ResourceQuota and LimitRange differ in Kubernetes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A namespace quota permits four CPU units of requests in total. If existing requests already total three, another two-CPU pod exceeds that quota. A LimitRange separately controls defaults or bounds for each container.
+
+153 | prep-aks-037 | Domain 1 | AKS og Kubernetes
+What does Kubernetes imagePullPolicy: Always check at container startup?
+Decision: already concrete. The answer already gives the important registry-check versus cached-content comparison.
+
+154 | prep-p-aks-010 | Domain 1 | AKS og Kubernetes
+Why is a toleration alone insufficient to require GPU placement?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · Pod spec fragment
+    nodeSelector: {workload: gpu}
+    tolerations:
+      - key: workload
+        operator: Equal
+        value: gpu
+        effect: NoSchedule
+The selector requires a matching node label; the toleration permits a matching workload=gpu:NoSchedule taint. A container using a GPU must also request the device resource.
+
+155 | prep-ca-003 | Domain 1 | Container Apps
+How do internal and external Container Apps ingress differ?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An orders API can call an internal catalog app in the same environment. A customer outside that environment cannot directly call that internal endpoint. An external frontend’s reachability still depends on its environment networking.
+
+156 | prep-ca-011 | Domain 1 | Container Apps
+Which Container Apps workload profile uses allocated compute instances?
+Decision: not needed. A direct workload-profile identification question; adding arbitrary resource sizes would distract from the answer.
+
+157 | prep-ca-012 | Domain 1 | Container Apps
+What is required to serve a Container App through a custom HTTPS hostname?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+158 | prep-p-ca-010 | Domain 1 | Container Apps
+How can Container Apps require Microsoft Entra sign-in without implementing the sign-in flow in app code?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A visitor opens the orders app. The configured platform authentication flow checks the visitor’s Microsoft Entra sign-in before forwarding an authenticated request. The application still decides whether that user may perform its business operation.
+
+159 | prep-p-ca-011 | Domain 1 | Container Apps
+How is Azure Files mounted in a Container App?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Register a reports share with the environment and mount it in two replicas at /mnt/reports. The app uses paths such as /mnt/reports/repair-42.txt; the files live on the share rather than only in one container’s temporary filesystem.
+
+160 | prep-p-ca-012 | Domain 1 | Container Apps
+Where should a failing Container Apps revision's provisioning errors be investigated?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An image tag that does not exist produces a platform image-pull failure to investigate in system/provisioning logs. A Python exception after the container starts belongs in its application console output.
+
+161 | prep-p-ca-017 | Domain 1 | Container Apps
+Where do you allow or block client IP ranges for a Container App?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example allow-rule CIDR
+    203.0.113.0/24
+This documentation-only address range illustrates a CIDR used in an ingress allow rule. Replace it with the real approved client range and test access from that network.
+
+162 | prep-ca-025 | Domain 1 | Container Apps
+Which Container Apps HTTP ingress transport supports end-to-end HTTP/2 such as gRPC?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: YAML · Container Apps ingress fragment
+    transport: http2
+    targetPort: 50051
+This example expects a container serving HTTP/2 on port 50051. Set these ingress fields for that server; selecting http2 does not convert a plain HTTP/1-only application into a gRPC server.
+
+163 | prep-p-ca-007 | Domain 1 | Container Apps
+Why should a Container Apps container handle termination gracefully during a revision change?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A worker receives the termination signal while handling repair 42. It stops accepting new jobs and completes or safely stops the current one. If interrupted before completion/checkpointing, a later retry must not duplicate the business effect.
+
+164 | term-d2-database | Domain 2 | Terms · AI-data
+What is a database?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+165 | term-d2-postgresql | Domain 2 | Terms · AI-data
+What is PostgreSQL?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: SQL
+    CREATE TABLE repairs (id integer PRIMARY KEY, status text);
+    INSERT INTO repairs VALUES (42, 'open');
+    SELECT status FROM repairs WHERE id = 42;
+This small relational example defines a table, stores a repair record and retrieves its status, open.
+
+166 | term-d2-sql | Domain 2 | Terms · AI-data
+What does SQL stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+167 | term-d2-transaction | Domain 2 | Terms · AI-data
+What is a database transaction?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+168 | term-d2-index | Domain 2 | Terms · AI-data
+What is a database index?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: SQL
+    CREATE INDEX repairs_customer_idx ON repairs (customer_id);
+For an existing repairs table with customer_id, this creates an index that can help queries filter by customer. The planner decides whether using it is worthwhile.
+
+169 | term-d2-embedding | Domain 2 | Terms · AI-data
+What is an embedding?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A compatible embedding model gives similar directions to “The lamp is broken” and “The light does not work.” Comparing the query embedding with stored article embeddings can retrieve the related repair article even when its words differ.
+
+170 | term-d2-vector | Domain 2 | Terms · AI-data
+What is a vector in similarity search?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+171 | term-d2-dimensions | Domain 2 | Terms · AI-data
+What does the dimension count of a vector mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+172 | term-d2-knn | Domain 2 | Terms · AI-data
+What does KNN mean in vector search?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+173 | term-d2-ann | Domain 2 | Terms · AI-data
+What does ANN stand for in vector search?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An exact search’s five closest IDs are A, B, C, D and E. An approximate search might return A, B, C, D and X after searching fewer candidates. It found useful neighbors but missed one exact top-five result.
+
+174 | term-d2-hnsw | Domain 2 | Terms · AI-data
+What does HNSW stand for?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    CREATE INDEX article_vectors ON articles USING hnsw (embedding vector_cosine_ops);
+With pgvector enabled and an existing vector column embedding, this builds an HNSW index for cosine-distance ordering.
+
+175 | term-d2-ivfflat | Domain 2 | Terms · AI-data
+What is an IVFFlat vector index?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    CREATE INDEX article_vectors ON articles USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+This example trains an IVFFlat cosine index from existing article vectors and groups them into 100 lists. Load representative data first; 100 is an example choice, not a universal recommendation.
+
+176 | term-d2-recall | Domain 2 | Terms · AI-data
+What does recall mean in approximate vector search?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+177 | term-d2-pgvector | Domain 2 | Terms · AI-data
+What is pgvector?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+178 | term-d2-connection-pool | Domain 2 | Terms · AI-data
+What is a database connection pool?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A web API keeps a pool of ten database connections. Successive requests borrow and return them instead of opening a new connection for each query; requests may wait when all ten are busy.
+
+179 | term-d2-pgbouncer | Domain 2 | Terms · AI-data
+What is PgBouncer?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+With transaction pooling, many mostly idle application clients can reuse a smaller set of PostgreSQL server connections. If all backend connections are busy, additional transactions wait rather than receiving an unlimited new database connection.
+
+180 | term-d2-cosmos | Domain 2 | Terms · AI-data
+What is Azure Cosmos DB?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · example item
+    {"id":"repair-42","customerId":"c1","status":"open"}
+An item like this can be stored in a Cosmos DB for NoSQL container. If its partition key path is /customerId, the value c1 identifies this item’s logical partition.
+
+181 | term-d2-cosmos-container | Domain 2 | Terms · AI-data
+What is a container in Cosmos DB?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A repairs container holds repair-42 and repair-43. Both follow that container’s partition-key and indexing settings; a separate articles container can have different settings.
+
+182 | term-d2-partition-key | Domain 2 | Terms · AI-data
+What is a partition key in Cosmos DB?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+183 | term-d2-ru | Domain 2 | Terms · AI-data
+What is a request unit in Cosmos DB?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Suppose one request reports a charge of 2 RUs and another reports 20 RUs. The second consumed ten times as much measured database work; these illustrative charges are not fixed prices for every operation of those types.
+
+184 | term-d2-rus | Domain 2 | Terms · AI-data
+What does RU/s measure in Cosmos DB?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+If requests average 5 RUs each, 1,000 RU/s represents a theoretical budget of about 200 such requests per second. Hot partitions, other operations and service/client bottlenecks can reduce achievable throughput.
+
+185 | term-d2-consistency | Domain 2 | Terms · AI-data
+What does consistency mean for a distributed database read?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A committed update changes repair 42 from open to closed. A later Strong read must return the committed latest value, while an Eventual read can temporarily return an older version before replicas catch up.
+
+186 | term-d2-change-feed | Domain 2 | Terms · AI-data
+What is a change feed in Cosmos DB?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+187 | term-d2-redis | Domain 2 | Terms · AI-data
+What is Redis?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Redis commands
+    SET repair:42 open EX 600
+    GET repair:42
+This stores a small status value for ten minutes, then reads it. Redis can supply the cached status without querying the source database on this hit.
+
+188 | term-d2-cache | Domain 2 | Terms · AI-data
+What is a cache?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+189 | term-d2-cache-hit | Domain 2 | Terms · AI-data
+What is a cache hit?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Redis command
+    GET repair:42
+If this returns a usable cached status such as open, the request is a cache hit. Apply the application’s freshness and access rules before reusing it.
+
+190 | term-d2-cache-miss | Domain 2 | Terms · AI-data
+What is a cache miss?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Redis command
+    GET repair:42
+If the key is absent, Redis returns nil. A cache-aside application then reads repair 42 from its source database and can cache the result for future requests.
+
+191 | term-d2-ttl | Domain 2 | Terms · AI-data
+What does TTL stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+192 | term-d2-eviction | Domain 2 | Terms · AI-data
+What is eviction in a Redis cache?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A memory-full cache needs space for a new key. Under an applicable eviction policy, it can discard an eligible old key even though that key’s TTL has not expired.
+
+193 | term-d2-lru | Domain 2 | Terms · AI-data
+What does LRU stand for?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Eligible key A was read just now, while B has not been used for a long time. LRU favors removing B. Redis approximates this choice rather than maintaining a perfect access-order list.
+
+194 | term-d2-lfu | Domain 2 | Terms · AI-data
+What does LFU stand for?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Eligible key A is requested frequently, while B is rarely requested. LFU favors removing B, using Redis’s approximate, aging frequency information.
+
+195 | term-d2-rag | Domain 2 | Terms · AI-data
+What does RAG stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+196 | term-d2-gin | Domain 2 | Terms · AI-data
+What does GIN stand for in PostgreSQL?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    CREATE INDEX article_metadata_idx ON articles USING gin (metadata);
+If metadata is a JSONB column, this GIN index can support containment predicates such as metadata @> '{"topic":"repairs"}'. It indexes values inside the document.
+
+197 | term-d2-diskann | Domain 2 | Terms · AI-data
+What is DiskANN?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · vector-index entry
+    {"path":"/embedding","type":"diskANN"}
+An entry in Cosmos DB indexingPolicy.vectorIndexes selects diskANN for /embedding. The separate vector embedding policy defines that path’s numeric type, dimensions and distance function.
+
+198 | term-d2-nosql | Domain 2 | Terms · AI-data
+What does NoSQL describe?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+199 | m-18-1-1 | Domain 2 | Cosmos DB
+What read guarantee does Cosmos DB Strong consistency provide?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An item’s price is changed from 10 to 12 and the write commits. A Strong read started afterward must return the latest committed price, rather than an older replica’s value.
+
+200 | m-18-2-1 | Domain 2 | Cosmos DB
+How far behind can Cosmos DB reads be with Bounded staleness consistency?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+In a single-region account configured with K=100 versions and T=10 seconds, lag is constrained by whichever bound is reached first. These example settings are maximum permitted staleness, not a delay that every read must experience.
+
+201 | m-18-3-1 | Domain 2 | Cosmos DB
+Which Cosmos DB consistency level provides session read-your-own-writes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+API instance A creates an order, but the customer’s next request reaches instance B with a different SDK client. Preserving the relevant partition’s session token lets B request the same read-your-own-writes session guarantee.
+
+202 | m-18-4-1 | Domain 2 | Cosmos DB
+What does Cosmos DB Consistent prefix guarantee for transactional batch writes?
+Decision: not needed. The answer deliberately follows the documentation’s narrow transactional scope. A simplified sequence of separate reads could imply a stronger cross-request snapshot guarantee.
+
+203 | m-18-5-1 | Domain 2 | Cosmos DB
+What does Cosmos DB Eventual consistency guarantee?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A committed update closes repair 42. A read from a lagging replica may still report open. If writes stop, replicas eventually converge on the committed state; no fixed catch-up time is promised by this level.
+
+204 | m-18-6-1 | Domain 2 | Cosmos DB
+What are the minimum Bounded staleness settings for single-region and multi-region Cosmos DB accounts?
+Decision: not needed. The current answer directly states the numeric bound, level comparison or feature prerequisite; a second example would repeat the same fact or blur its qualifications.
+
+205 | m-18-7-1 | Domain 2 | Cosmos DB
+Which Cosmos DB consistency levels bound cross-region staleness?
+Decision: not needed. The current answer directly states the numeric bound, level comparison or feature prerequisite; a second example would repeat the same fact or blur its qualifications.
+
+206 | m-19-1-1 | Domain 2 | Cosmos DB
+What distinguishes a Cosmos DB flat vector index?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · vector-index entry
+    {"path":"/embedding","type":"flat"}
+Inside indexingPolicy.vectorIndexes, this selects exact flat indexing for /embedding. It must fit the flat index’s supported dimension limit; the vector embedding policy is configured separately.
+
+207 | m-19-2-1 | Domain 2 | Cosmos DB
+What distinguishes a Cosmos DB quantizedFlat vector index?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · vector-index entry
+    {"path":"/embedding","type":"quantizedFlat"}
+This vector-index entry selects compressed flat search for /embedding. Compare its result quality and RU use with full-precision results on representative vectors.
+
+208 | m-19-3-1 | Domain 2 | Cosmos DB
+What distinguishes a Cosmos DB DiskANN vector index?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · vector-index entry
+    {"path":"/embedding","type":"diskANN"}
+This vector-index entry selects graph-based approximate search for /embedding. It is an index-policy setting, separate from the embedding dimensions and distance function.
+
+209 | m-19-4-1 | Domain 2 | Cosmos DB
+What happens to Cosmos DB quantizedFlat or DiskANN searches with fewer than 1,000 vectors?
+Decision: not needed. The current answer directly states the numeric bound, level comparison or feature prerequisite; a second example would repeat the same fact or blur its qualifications.
+
+210 | m-19-5-1 | Domain 2 | Cosmos DB
+Which distance functions can a Cosmos DB vector embedding policy use?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Toy vector values
+    a = [1, 0]; b = [2, 0]
+These vectors point in the same direction: cosine distance is 0, Euclidean distance is 1, and their ordinary dot product is 2. This illustrates why direction and magnitude affect metrics differently.
+
+211 | m-19-6-1 | Domain 2 | Cosmos DB
+Can an existing Cosmos DB vector embedding policy be edited in place?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An app switches from 768-dimensional to 1,536-dimensional embeddings. Create a container with the new embedding policy and migrate compatible newly generated embeddings, rather than editing that policy in place.
+
+212 | m-20-1-1 | Domain 2 | Cosmos DB
+How many request units does a typical 1-KB Cosmos DB point read cost?
+Decision: not needed. The current answer directly states the numeric bound, level comparison or feature prerequisite; a second example would repeat the same fact or blur its qualifications.
+
+213 | m-20-2-1 | Domain 2 | Cosmos DB
+Within what range does Cosmos DB autoscale adjust provisioned RU/s?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+214 | m-20-3-1 | Domain 2 | Cosmos DB
+How does the Cosmos DB SDK handle throughput throttling?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: HTTP response header
+    x-ms-retry-after-ms: 200
+A throttled response with this illustrative header requests a wait of 200 milliseconds, not 200 seconds. The SDK can retry within its configured limits; persistent throttling still needs diagnosis.
+
+215 | m-20-4-1 | Domain 2 | Cosmos DB
+Where is Cosmos DB shared throughput configured?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The repairs and articles containers share a database-level throughput budget. Heavy repair queries consume that shared capacity and reduce headroom for article queries. Giving a container dedicated throughput separates its capacity budget.
+
+216 | m-21-1-1 | Domain 2 | Cosmos DB
+What does Cosmos DB latest-version change feed omit?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An item changes from draft to reviewed to approved before the consumer catches up. Latest-version feed may provide only the later state. Deleting the item also does not create a deletion notification in that feed mode.
+
+217 | m-21-2-1 | Domain 2 | Cosmos DB
+What does Cosmos DB all-versions-and-deletes change feed require?
+Decision: not needed. The current answer directly states the numeric bound, level comparison or feature prerequisite; a second example would repeat the same fact or blur its qualifications.
+
+218 | m-21-3-1 | Domain 2 | Cosmos DB
+What state does a Cosmos DB lease container store?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Worker A owns a feed-range lease and saves a checkpoint. After A stops and its ownership is transferred, worker B can resume from saved progress. A batch may be delivered again, so the handler remains duplicate-safe.
+
+219 | m-21-4-1 | Domain 2 | Cosmos DB
+Which partition key is used for a partitioned Cosmos DB lease container?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · illustrative lease document fragment
+    {"id":"lease-range-1"}
+With lease-container partition key /id, this document’s partition-key value is lease-range-1. Real lease documents also contain processor-managed ownership and progress fields.
+
+220 | m-22-1-1 | Domain 2 | Cosmos DB
+Which Cosmos DB indexing modes are available in the policy?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · indexing-policy fragment
+    {"indexingMode":"consistent","automatic":true}
+This enables ordinary synchronous index maintenance for the policy. The word consistent here describes indexing behavior, not the account’s read-consistency level.
+
+221 | m-22-2-1 | Domain 2 | Cosmos DB
+What does the default Cosmos DB included path /* mean?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · example item
+    {"id":"42","address":{"city":"Oslo"}}
+An included path of /* covers nested paths such as address.city, unless a more-specific exclusion removes one. It is not limited to top-level properties.
+
+222 | m-22-4-1 | Domain 2 | Cosmos DB
+Which Cosmos DB indexing path wins when inclusion and exclusion overlap?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+223 | m-22-5-1 | Domain 2 | Cosmos DB
+How can indexing fewer Cosmos DB properties reduce write RU cost?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · indexing-policy fragment
+    {"excludedPaths":[{"path":"/rawText/?"}]}
+If queries never filter or sort on rawText, excluding its ordinary property index can reduce write-maintenance work. Preserve the rest of the required policy and measure the actual RU effect.
+
+224 | m-23-1-1 | Domain 2 | Cosmos DB
+How do you create a Cosmos DB client in Python?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+225 | m-23-3-1 | Domain 2 | Cosmos DB
+Which Cosmos DB SDK object performs item CRUD and queries?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+226 | m-23-4-1 | Domain 2 | Cosmos DB
+What is the Python SDK sequence for querying an existing Cosmos DB container?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+227 | m-23-5-1 | Domain 2 | Cosmos DB
+Should Python Cosmos DB code construct DatabaseProxy and ContainerProxy directly?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+228 | m-24-1-1 | Domain 2 | Cosmos DB
+How should a Cosmos DB document represent an embedding?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+229 | m-24-2-1 | Domain 2 | Cosmos DB
+Does a Cosmos DB composite index accelerate VectorDistance queries?
+Decision: already concrete. The answer already makes a direct, explicit comparison between scalar/composite and vector index purposes.
+
+230 | m-24-3-1 | Domain 2 | Cosmos DB
+Why exclude an embedding array from ordinary Cosmos DB property indexing?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · indexing-policy fragment
+    {"excludedPaths":[{"path":"/embedding/*"}],
+     "vectorIndexes":[{"path":"/embedding","type":"diskANN"}]}
+This fragment avoids ordinary per-component indexing of the embedding array while keeping a separate vector index on /embedding. Include the other policy paths your queries require.
+
+231 | m-24-4-1 | Domain 2 | Cosmos DB
+What is the storage trade-off of float16 rather than float32 embeddings in Cosmos DB?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+For 1,536 components, float32 uses 6,144 raw component bytes and float16 uses 3,072. This arithmetic excludes the item’s other fields, serialized representation and index overhead, so it does not predict a 50% reduction in the whole database.
+
+232 | m-24-5-1 | Domain 2 | Cosmos DB
+What Cosmos DB SQL pattern returns the nearest five embeddings?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+233 | m-24-6-1 | Domain 2 | Cosmos DB
+Where is a Cosmos DB vector embedding policy defined?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · vectorEmbeddingPolicy
+    {"vectorEmbeddings":[{"path":"/embedding","dataType":"float32","dimensions":3,"distanceFunction":"cosine"}]}
+Define this in the container-creation settings. Three dimensions keep the example small; use your model’s actual dimensions and compatible vectors. This policy describes the vectors rather than selecting the vector index type.
+
+234 | m-25-1-1 | Domain 2 | Cosmos DB
+What are the four parts of a Cosmos DB change feed processor?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Repair records live in the monitored container. Workers share a lease container, and each worker runs processing code whose callback updates a derived search index. The leases track ownership and progress while the callback performs your business work.
+
+235 | m-25-3-1 | Domain 2 | Cosmos DB
+How do Cosmos DB change feed processor and instance names control shared versus independent consumption?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+236 | m-25-4-1 | Domain 2 | Cosmos DB
+Which Cosmos DB change-feed model invokes your handler with batches of changes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Two repair records change. The processor retrieves them through its background polling and invokes your registered handler with a batch. Your handler receives that batch automatically rather than issuing each change-feed request itself.
+
+237 | m-25-5-1 | Domain 2 | Cosmos DB
+How can Python consume Cosmos DB change feed without a native change feed processor client?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    feed = container.query_items_change_feed(start_time="Beginning", partition_key="c1")
+For a container partitioned by /customerId, this Python pull-model example reads changes for partition c1 from the beginning. Consume the paged result and preserve continuation state. A Functions trigger is the host-managed alternative.
+
+238 | m-25-6-1 | Domain 2 | Cosmos DB
+Why must a Cosmos DB change-feed handler tolerate duplicate processing?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+239 | m-26-1-1 | Domain 2 | PostgreSQL og pgvector
+Which pgvector operator and index operator class implement Euclidean distance?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+240 | m-26-2-1 | Domain 2 | PostgreSQL og pgvector
+Which pgvector operator and index operator class implement cosine distance?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    SELECT '[1,0]'::vector <=> '[2,0]'::vector;
+With pgvector enabled, the result is 0: these nonzero vectors point in the same direction. Cosine compares direction, so different lengths alone do not make them distant.
+
+241 | m-26-3-1 | Domain 2 | PostgreSQL og pgvector
+Which pgvector operator and index operator class implement negative inner product?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+242 | m-26-4-1 | Domain 2 | PostgreSQL og pgvector
+Why must a pgvector query operator match its index operator class?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+243 | m-26-5-1 | Domain 2 | PostgreSQL og pgvector
+What is the indexed-dimension limit for pgvector's vector type in HNSW and IVFFlat?
+Decision: not needed. The direct limit, parameter, tier or capacity explanation is already concrete; an arbitrary extra size/port/default would not add useful understanding.
+
+244 | m-26-6-1 | Domain 2 | PostgreSQL og pgvector
+What extension name must be allow-listed for pgvector on Azure PostgreSQL?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+245 | m-26-7-1 | Domain 2 | PostgreSQL og pgvector
+How do index choices differ for embeddings and ordinary filter columns in PostgreSQL?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    CREATE INDEX docs_department ON documents (department);
+    CREATE INDEX docs_vectors ON documents USING hnsw (embedding vector_cosine_ops);
+For existing department and vector embedding columns, the first index supports ordinary metadata predicates and the second supports cosine-vector ordering. The planner chooses the access path.
+
+246 | m-27-1-1 | Domain 2 | PostgreSQL og pgvector
+Which port connects through built-in PgBouncer on Azure PostgreSQL?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: libpq connection options
+    host=study-pg.postgres.database.azure.com port=6432 dbname=repairs user=app sslmode=verify-full sslrootcert=/path/to/trusted-ca.pem
+This illustrative connection goes through enabled built-in PgBouncer. Replace the host, database, principal and CA path, and supply credentials securely. Changing the port to 5432 selects the direct PostgreSQL endpoint.
+
+247 | m-27-2-1 | Domain 2 | PostgreSQL og pgvector
+How is built-in PgBouncer enabled on Azure PostgreSQL?
+Decision: not needed. The direct limit, parameter, tier or capacity explanation is already concrete; an arbitrary extra size/port/default would not add useful understanding.
+
+248 | m-27-3-1 | Domain 2 | PostgreSQL og pgvector
+What is the default pool mode of Azure's built-in PgBouncer?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A client finishes one transaction and returns its backend connection to the pool. Its next transaction may use a different PostgreSQL connection, so application behavior cannot assume one permanently attached backend session.
+
+249 | m-27-5-1 | Domain 2 | PostgreSQL og pgvector
+Which Azure PostgreSQL compute tiers support built-in PgBouncer?
+Decision: not needed. The direct limit, parameter, tier or capacity explanation is already concrete; an arbitrary extra size/port/default would not add useful understanding.
+
+250 | m-27-6-1 | Domain 2 | PostgreSQL og pgvector
+Why is increasing max_connections different from adding a connection pool?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A hundred sequential short API requests can reuse a small connection pool. Merely raising max_connections does not prevent a poorly written client from opening a fresh connection and repeating authentication for every request.
+
+251 | m-28-1-1 | Domain 2 | PostgreSQL og pgvector
+How can an application authenticate to Azure PostgreSQL with managed identity?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from azure.identity import DefaultAzureCredential
+    access_token = DefaultAzureCredential().get_token("https://ossrdbms-aad.database.windows.net/.default").token
+Use a fresh token as the password when opening a PostgreSQL connection as an already configured Entra database principal. The database privileges and secure connection settings still need to be in place.
+
+252 | m-28-2-1 | Domain 2 | PostgreSQL og pgvector
+How does a client-side PostgreSQL connection pool reduce overhead?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The first request opens a database connection and returns it to the pool. A later request borrows that established connection, avoiding a second network/TLS/authentication setup for the same server session.
+
+253 | m-28-3-1 | Domain 2 | PostgreSQL og pgvector
+How should a PostgreSQL connection pool be bounded across app instances?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+254 | m-28-4-1 | Domain 2 | PostgreSQL og pgvector
+How should user input be passed to a PostgreSQL query?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+255 | m-28-5-1 | Domain 2 | PostgreSQL og pgvector
+How can Psycopg return a borrowed PostgreSQL connection to its pool automatically?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+256 | m-29-1-1 | Domain 2 | PostgreSQL og pgvector
+Which PostgreSQL type stores an embedding with a fixed dimension count?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+257 | m-29-2-1 | Domain 2 | PostgreSQL og pgvector
+In what order should you load data and build indexes for PostgreSQL vector search?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+258 | m-29-3-1 | Domain 2 | PostgreSQL og pgvector
+What SQL retrieves the five closest Finance documents by cosine distance?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+259 | m-29-4-1 | Domain 2 | PostgreSQL og pgvector
+How can a B-tree index help a metadata-filtered PostgreSQL vector query?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    CREATE INDEX docs_department_idx ON documents (department);
+This can help select Finance rows before other work where the chosen plan uses it. It is not itself a nearest-neighbor index; verify filtered-vector plans with EXPLAIN.
+
+260 | m-29-5-1 | Domain 2 | PostgreSQL og pgvector
+Which index belongs on a PostgreSQL embedding column?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    CREATE INDEX docs_cosine_idx ON documents USING hnsw (embedding vector_cosine_ops);
+This example matches cosine queries using <=> on an existing embedding column. Choose and benchmark the algorithm and operator class for the real workload.
+
+261 | m-30-1-1 | Domain 2 | PostgreSQL og pgvector
+Why might adding PostgreSQL vCores fail to speed up one slow vector query?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+EXPLAIN still shows a large scan after a vCore increase. The change did not remove the work of examining those rows, so latency need not improve as expected. Investigate index eligibility and the measured bottleneck.
+
+262 | m-30-2-1 | Domain 2 | PostgreSQL og pgvector
+Which resource can help when a vector-index working set no longer fits in memory?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Repeated searches keep reading the same large index from disk because the working set exceeds available cache. More RAM may reduce those reads; confirm that memory pressure and I/O improve under the same workload.
+
+263 | m-30-3-1 | Domain 2 | PostgreSQL og pgvector
+How do typical Azure PostgreSQL tiers differ in memory per vCore?
+Decision: not needed. The direct limit, parameter, tier or capacity explanation is already concrete; an arbitrary extra size/port/default would not add useful understanding.
+
+264 | m-30-4-1 | Domain 2 | PostgreSQL og pgvector
+Which Azure PostgreSQL feature handles growing storage needs?
+Decision: not needed. The direct limit, parameter, tier or capacity explanation is already concrete; an arbitrary extra size/port/default would not add useful understanding.
+
+265 | m-30-5-1 | Domain 2 | PostgreSQL og pgvector
+How should a PostgreSQL memory scale-up be validated?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Illustrative benchmark result
+    Before: P95 240 ms, many disk reads
+    After:  P95  90 ms, fewer disk reads
+These are example measurements, not a promised scale-up benefit. Keep data, concurrency and search-quality requirements comparable, then look for both a latency improvement and evidence explaining it.
+
+266 | m-30-6-1 | Domain 2 | PostgreSQL og pgvector
+How can you distinguish PostgreSQL connection-setup overhead from slow SQL execution?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Opening a new connection takes 180 ms, while its SQL runs in 6 ms. Reusing connections targets that setup overhead. If the query itself took most of the time instead, investigate its execution plan and resources.
+
+267 | m-31-1-1 | Domain 2 | Redis
+How do Redis volatile-* and allkeys-* eviction policies differ?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Key A has an expiry; key B has none. A volatile policy can choose only A for eviction. An allkeys policy can consider either. These are eligibility rules; the rest of the policy decides how candidates are ranked.
+
+268 | m-31-3-1 | Domain 2 | Redis
+What does Redis noeviction do when memory is exhausted?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A full NoEviction cache still holds repair:42. Reading that key can succeed, while adding a new key that needs more memory fails. NoEviction does not make all Redis commands stop working.
+
+269 | m-31-6-1 | Domain 2 | Redis
+How do Redis LRU and LFU rank keys for eviction?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A was read just now but is rarely used; B was used frequently but less recently. Recency favors keeping A, while frequency can favor keeping B. Redis’s approximate sampling and frequency aging affect the real choice.
+
+270 | m-32-1-1 | Domain 2 | Redis
+How does Redis expiration differ from eviction?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+271 | m-34-2-1 | Domain 2 | Redis
+How do Redis FLAT and HNSW vector indexes differ?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Redis search commands
+    FT.CREATE exact ON HASH PREFIX 1 doc: SCHEMA embedding VECTOR FLAT 6 TYPE FLOAT32 DIM 3 DISTANCE_METRIC COSINE
+    FT.CREATE approximate ON HASH PREFIX 1 doc: SCHEMA embedding VECTOR HNSW 6 TYPE FLOAT32 DIM 3 DISTANCE_METRIC COSINE
+These alternative indexes use the same illustrative three-dimensional hash-vector field, enabling an exact-versus-approximate comparison. Vector search must already be supported/configured, and stored bytes must match FLOAT32 and DIM 3.
+
+272 | m-34-3-1 | Domain 2 | Redis
+Which vector distance metrics does RediSearch support?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Redis vector-field option
+    DISTANCE_METRIC COSINE
+Use this option inside an FT.CREATE vector field definition. With distance scores such as 0.08 and 0.35, the smaller score ranks closer; a distance score is not a larger-is-better similarity score.
+
+273 | m-34-4-1 | Domain 2 | Redis
+What must be configured before using vector search in Azure Managed Redis?
+Decision: not needed. The answer already lists the exact service prerequisites and explains their lifecycle/memory implications; repeating them as invented deployment settings adds little.
+
+274 | m-34-6-1 | Domain 2 | Redis
+When you create a Redis search index with FT.CREATE, does it include data already stored in Redis?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+275 | m-35-1-1 | Domain 2 | Redis
+How does the cache-aside pattern work?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The first request for repair 42 misses Redis, reads its status from Cosmos DB and caches it. The next request can use that cached value. After a successful status update, invalidate the cached entry so later reads can reload it.
+
+276 | m-35-2-1 | Domain 2 | Redis
+How can a Redis cache entry be given a fixed lifetime?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+277 | m-35-3-1 | Domain 2 | Redis
+How should cached data be invalidated after its source changes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+278 | m-36-1-1 | Domain 2 | Redis
+How can a Redis string’s expiry be refreshed whenever it is read?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+279 | m-36-5-1 | Domain 2 | Redis
+What does Redis PERSIST do?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Redis commands
+    PERSIST repair:42
+    TTL repair:42
+Assuming the key exists and remains present, the first command removes its expiry and the second returns -1. This changes lifetime, not whether Redis data is persisted to disk.
+
+280 | m-36-6-1 | Domain 2 | Redis
+What do Redis TTL return values -1 and -2 mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+281 | m-37-1-1 | Domain 2 | Redis
+How can an embedding and its metadata be stored in one Redis hash?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+282 | m-37-2-1 | Domain 2 | Redis
+How do you create a Redis vector index for embeddings stored in hashes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+283 | m-37-4-1 | Domain 2 | Redis
+How do you query Redis for the five closest embedding vectors?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+284 | m-37-5-1 | Domain 2 | Redis
+How is TLS enabled when connecting redis-py to Azure Managed Redis?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+285 | prep-cosmos-002 | Domain 2 | Cosmos DB
+Which Cosmos DB capability allows an account to accept writes in several regions?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An application accepts writes in Europe and North America. Two regions may update the same item concurrently, so multi-region write configuration also needs an appropriate conflict-resolution strategy.
+
+286 | prep-cosmos-004 | Domain 2 | Cosmos DB
+How do Cosmos DB provisioned throughput and serverless differ?
+Decision: already concrete. The answer already directly compares reserved throughput with consumption billing and states the storage/feature qualifications; no speculative pricing example is needed.
+
+287 | prep-cosmos-006 | Domain 2 | Cosmos DB
+What two goals should a Cosmos DB partition key balance?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+288 | prep-cosmos-008 | Domain 2 | Cosmos DB
+What happens when a Cosmos DB query cannot be routed to one partition?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Cosmos DB SQL
+    SELECT * FROM c WHERE c.customerId = 'c1' AND c.status = 'open'
+    SELECT * FROM c WHERE c.status = 'open'
+With partition key /customerId, the first query can target c1. The second needs results across customer partitions. Configure the SDK’s cross-partition query behavior when required.
+
+289 | prep-cosmos-013 | Domain 2 | Cosmos DB
+Which Cosmos DB feature automatically expires items after a configured lifetime?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · example item
+    {"id":"repair-42","customerId":"c1","ttl":3600}
+With TTL enabled on the container, this item-level value gives the item a one-hour lifetime measured from its last modification. Updating it restarts that clock.
+
+290 | prep-p-cos-010 | Domain 2 | Cosmos DB
+Which Cosmos DB index supports ORDER BY across more than one property?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+291 | prep-pg-003 | Domain 2 | PostgreSQL og pgvector
+How does HNSW generally trade index build cost for query quality compared with IVFFlat?
+Decision: already concrete. The answer already gives an explicit algorithm/build/recall trade-off. Invented benchmark numbers would suggest a universal winner.
+
+292 | prep-p-pg-003 | Domain 2 | PostgreSQL og pgvector
+Which pgvector HNSW parameters control graph construction?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    CREATE INDEX docs_hnsw ON documents USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 128);
+These illustrative build settings control graph connectivity and construction effort. They do not set hnsw.ef_search, which controls query-time search effort.
+
+293 | prep-p-pg-004 | Domain 2 | PostgreSQL og pgvector
+Which pgvector setting adjusts HNSW candidate search effort at query time?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+294 | prep-pg-016 | Domain 2 | PostgreSQL og pgvector
+What does pgvector's IVFFlat lists parameter configure?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    CREATE INDEX docs_ivf ON documents USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+The index groups representative existing vectors into 100 lists. Query-time probes decides how many lists to search; 100 is an example index choice.
+
+295 | prep-pg-034 | Domain 2 | PostgreSQL og pgvector
+Which pgvector setting selects how many IVFFlat lists are searched?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+296 | prep-p-pg-005 | Domain 2 | PostgreSQL og pgvector
+Why should an IVFFlat index be built with representative data already present?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An index trained only on one narrow article collection may group later, very different content poorly. Load data representative of the searches you expect before training IVFFlat’s list centers.
+
+297 | prep-pg-010 | Domain 2 | PostgreSQL og pgvector
+How can PostgreSQL combine keyword search with vector similarity search?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Keyword search ranks A, B, C; vector search ranks B, D, A. Equal-weight reciprocal rank fusion can favor B because it ranks well in both lists, using rank positions rather than adding incompatible raw scores.
+
+298 | prep-p-pg-012 | Domain 2 | PostgreSQL og pgvector
+What does EXPLAIN ANALYZE measure that EXPLAIN alone does not?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    EXPLAIN (ANALYZE, BUFFERS) SELECT id FROM documents WHERE department = 'Finance';
+This executes the SELECT on an existing table and reports observed timings, rows and buffer activity. A modifying statement inside EXPLAIN ANALYZE would also execute its modifications.
+
+299 | prep-p-pg-013 | Domain 2 | PostgreSQL og pgvector
+What does ordinary PostgreSQL VACUUM do with dead row versions?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    VACUUM (ANALYZE) documents;
+As a standalone maintenance command, this makes obsolete row-version space reusable and refreshes planner statistics. It does not perform the table rewrite of VACUUM FULL.
+
+300 | prep-p-pg-016 | Domain 2 | PostgreSQL og pgvector
+Which PostgreSQL index supports JSONB containment queries such as @>?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    CREATE INDEX docs_metadata ON documents USING gin (metadata);
+    SELECT id FROM documents WHERE metadata @> '{"department":"Finance"}';
+Assume metadata is an existing JSONB column. The query selects documents containing that key/value pair, and the GIN index can make that containment lookup efficient.
+
+301 | prep-p-pg-017 | Domain 2 | PostgreSQL og pgvector
+Which PostgreSQL setting provides memory for maintenance work such as an HNSW index build?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL
+    SET maintenance_work_mem = '512MB';
+This illustrative session setting supplies a maintenance memory budget, including for an HNSW build. Choose a value that fits the server alongside concurrent work; it is not a universal recommended setting.
+
+302 | prep-pg-029 | Domain 2 | PostgreSQL og pgvector
+What does pgvector halfvec change compared with vector?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: PostgreSQL · pgvector
+    SELECT '[0.12,0.34,0.56]'::halfvec(3);
+This creates a three-component half-precision vector value. Reduced precision can round components; the example keeps dimensions small so the representation is easy to inspect.
+
+303 | prep-p-pg-020 | Domain 2 | PostgreSQL og pgvector
+What does Azure PostgreSQL Query Store retain for performance analysis?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+After a deployment, searches become slower. If Query Store was already collecting, compare the query’s earlier and later execution statistics to identify the regression rather than relying only on one current request.
+
+304 | prep-p-pg-023 | Domain 2 | PostgreSQL og pgvector
+Which Azure PostgreSQL server setting requires secure client transport?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: libpq connection options
+    sslmode=verify-full sslrootcert=/path/to/trusted-ca.pem
+Use the real trusted CA file and server hostname with these client options. The server setting requires encrypted transport, while verify-full also checks that the certificate identifies the intended server.
+
+305 | prep-p-pg-025 | Domain 2 | PostgreSQL og pgvector
+Which PostgreSQL operation efficiently loads large batches of embedding rows?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: psql · COPY with CSV input
+    COPY articles (id, embedding) FROM STDIN WITH (FORMAT csv);
+    1,"[0.1,0.2,0.3]"
+    2,"[0.2,0.1,0.4]"
+    \.
+For an existing articles table with id and vector(3) embedding columns, psql sends these CSV rows through COPY. Quoting protects commas inside each vector; the backslash-dot line ends the input.
+
+306 | prep-p-red-003 | Domain 2 | Redis
+How does a semantic cache reuse an answer for a paraphrased prompt?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A cached answer for “How do I reset my password?” may be a candidate for “I forgot my password.” Reuse it only if the similarity threshold, user/tenant access and relevant knowledge/model versions also match.
+
+307 | prep-p-red-010 | Domain 2 | Redis
+Which Redis SET options create an expiring key only when it does not exist?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+308 | prep-redis-016 | Domain 2 | Redis
+How can an app reduce network round trips when reading several cached values?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+309 | prep-p-red-016 | Domain 2 | Redis
+What combination suggests a Redis cache may be undersized?
+Decision: already concrete. The answer already supplies a diagnostic combination and contrasts capacity pressure with poor cache design; arbitrary thresholds would be misleading.
+
+310 | prep-p-red-011 | Domain 2 | Redis
+How can an application reduce a cache stampede when a popular key expires?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A popular article expires just before 100 requests arrive. One coordinated worker reloads it while the others wait or follow an explicitly permitted stale-data policy, avoiding 100 simultaneous source reloads.
+
+311 | term-d3-api | Domain 3 | Terms · Integrasjoner
+What does API stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+312 | term-d3-endpoint | Domain 3 | Terms · Integrasjoner
+What is a service endpoint?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+313 | term-d3-http | Domain 3 | Terms · Integrasjoner
+What does HTTP stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+314 | term-d3-https | Domain 3 | Terms · Integrasjoner
+What is HTTPS?
+Decision: not needed. The protocol definition/expansion is already explicit and concrete; a packet example would distract from identifying the protocol.
+
+315 | term-d3-function | Domain 3 | Terms · Integrasjoner
+What is an Azure Function?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A queue-triggered make_thumbnail function receives a photo-processing message and writes a thumbnail. That handler is one function, invoked through its configured trigger.
+
+316 | term-d3-function-app | Domain 3 | Terms · Integrasjoner
+What is an Azure function app?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A repairs Function App can host an HTTP GetRepair function and an Event Grid PhotoUploaded function. They have separate handlers/triggers but share app-level settings and hosting configuration.
+
+317 | term-d3-serverless | Domain 3 | Terms · Integrasjoner
+What does serverless mean?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Deploy a photo-processing function without creating and patching your own worker VM. Azure manages the hosting servers; you still choose a plan whose scaling, execution limits and capacity costs fit the workload.
+
+318 | term-d3-cold-start | Domain 3 | Terms · Integrasjoner
+What is a cold start in serverless hosting?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The first photo event after idle scale-to-zero may wait while the Functions host starts and imports Python code. Later work can reuse a ready instance; a traffic surge can still require new instances to initialize.
+
+319 | term-d3-trigger | Domain 3 | Terms · Integrasjoner
+What is a trigger in Azure Functions?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+320 | term-d3-input-binding | Domain 3 | Terms · Integrasjoner
+What is an input binding in Azure Functions?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+321 | term-d3-service-bus | Domain 3 | Terms · Integrasjoner
+What is Azure Service Bus?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The API queues a repair-photo job, then returns promptly. A worker can receive and complete it later; if processing repeatedly fails, the message can be inspected and recovered through the entity’s dead-letter path.
+
+322 | term-d3-blob | Domain 3 | Terms · Integrasjoner
+What is a blob in Azure Storage?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Blob URL
+    https://studystore.blob.core.windows.net/photos/repair-42.jpg
+In this illustrative address, studystore is the storage account, photos is the blob container and repair-42.jpg is the blob name. The URL alone does not grant read permission.
+
+323 | term-d3-message-broker | Domain 3 | Terms · Integrasjoner
+What is a message broker?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+324 | term-d3-queue | Domain 3 | Terms · Integrasjoner
+What is a message queue?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Two photo workers compete on one queue. Worker A can receive photo 42 while worker B receives photo 43. They share pending work; adding a worker does not give it an independent copy of every queued message.
+
+325 | term-d3-topic | Domain 3 | Terms · Integrasjoner
+What is a topic in Azure Service Bus?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+326 | term-d3-subscription | Domain 3 | Terms · Integrasjoner
+What is a subscription to a Service Bus topic?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Billing and shipping have separate subscriptions to OrderCreated. If billing pauses, its matching messages can remain pending within the service’s limits while shipping continues consuming its own subscription.
+
+327 | term-d3-event | Domain 3 | Terms · Integrasjoner
+What is an event notification?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · Event Grid schema fragment
+    {"eventType":"Microsoft.Storage.BlobCreated","data":{"url":"https://studystore.blob.core.windows.net/photos/42.jpg"}}
+This notification fragment identifies what happened and where the photo is stored. It does not contain the photo bytes; the handler retrieves those separately if needed.
+
+328 | term-d3-webhook | Domain 3 | Terms · Integrasjoner
+What is a webhook?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: HTTP request fragment
+    POST /events HTTP/1.1
+    Host: repairs.example.com
+An event publisher calls this receiver endpoint with the event payload. Your application exposes the webhook; it is the publisher that initiates this notification request.
+
+329 | term-d3-event-grid | Domain 3 | Terms · Integrasjoner
+What is Azure Event Grid?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+330 | term-d3-idempotency | Domain 3 | Terms · Integrasjoner
+What does idempotent processing mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+331 | term-d3-at-least-once | Domain 3 | Terms · Integrasjoner
+What does at-least-once delivery mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+332 | term-d3-settlement | Domain 3 | Terms · Integrasjoner
+What is message settlement in Service Bus?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+333 | term-d3-dlq | Domain 3 | Terms · Integrasjoner
+What is a dead-letter queue?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A repair message lacks its required photo URL, so the handler dead-letters it with a useful reason. A recovery process inspects the message, fixes the cause and deliberately resubmits or discards the failed work.
+
+334 | term-d3-session | Domain 3 | Terms · Integrasjoner
+What is a session in Azure Service Bus?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Service Bus message property
+    SessionId = "repair-42"
+Give related repair-42 messages this same session ID for grouped ordered processing. A different repair can use repair-43 and be handled concurrently by another session receiver.
+
+335 | term-d3-amqp | Domain 3 | Terms · Integrasjoner
+What does AMQP stand for?
+Decision: not needed. The protocol definition/expansion is already explicit and concrete; a packet example would distract from identifying the protocol.
+
+336 | m-44-5-1 | Domain 3 | Terms · Integrasjoner
+What does Service Bus auto-forwarding do?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Forwarding flow
+    incoming queue → processing queue
+Both entities are in the same Service Bus namespace. Successful forwarding moves the message onward; it is not independent fan-out to two consumer subscriptions.
+
+337 | m-49-3-1 | Domain 3 | Terms · Integrasjoner
+What does an Azure Functions output binding do?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+338 | m-50-2-1 | Domain 3 | Terms · Integrasjoner
+What is local.settings.json used for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+339 | prep-func-010 | Domain 3 | Terms · Integrasjoner
+What is host.json used for in Azure Functions?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+340 | m-38-1-1 | Domain 3 | Event Grid
+How does Event Grid space out push-delivery retries?
+Decision: not needed. The answer already states the precise retry schedule/status behavior and its qualifications; repeating the timing or exception list would add clutter.
+
+341 | m-38-3-1 | Domain 3 | Event Grid
+How long does Event Grid wait for a push endpoint response?
+Decision: not needed. The answer already states the precise retry schedule/status behavior and its qualifications; repeating the timing or exception list would add clutter.
+
+342 | m-38-4-1 | Domain 3 | Event Grid
+Which HTTP success codes acknowledge Event Grid push delivery?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+343 | m-39-1-1 | Domain 3 | Event Grid
+Which Azure-resource endpoint failures are not retried by Event Grid push delivery?
+Decision: not needed. The answer already states the precise retry schedule/status behavior and its qualifications; repeating the timing or exception list would add clutter.
+
+344 | m-39-2-1 | Domain 3 | Event Grid
+Which webhook failures are not retried by Event Grid push delivery?
+Decision: not needed. The answer already states the precise retry schedule/status behavior and its qualifications; repeating the timing or exception list would add clutter.
+
+345 | m-39-3-1 | Domain 3 | Event Grid
+Is an HTTP 404 response retried by Event Grid push delivery?
+Decision: not needed. The answer already states the precise retry schedule/status behavior and its qualifications; repeating the timing or exception list would add clutter.
+
+346 | m-39-4-1 | Domain 3 | Event Grid
+Which limits bound Event Grid delivery retries?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · event-subscription retryPolicy
+    {"maxDeliveryAttempts":3,"eventTimeToLiveInMinutes":30}
+This illustrative policy stops eligible failed delivery when either the attempt limit or 30-minute lifetime is reached. These values are examples, not the service defaults.
+
+347 | m-39-5-1 | Domain 3 | Event Grid
+What happens to failed Event Grid events when dead-lettering is disabled?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An endpoint returns a non-retryable 403 and no dead-letter destination is configured. The event is dropped. Fixing the endpoint’s permissions afterward does not automatically restore that already dropped event.
+
+348 | m-40-1-1 | Domain 3 | Event Grid
+How does Event Grid filter by event type?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · event-subscription filter
+    {"includedEventTypes":["Microsoft.Storage.BlobCreated"]}
+This filter includes that complete event-type name. It is an array of selected types, not a substring search for any type containing Blob.
+
+349 | m-40-2-1 | Domain 3 | Event Grid
+What can an Event Grid subject filter match?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · event-subscription filter
+    {"subjectBeginsWith":"/blobServices/default/containers/photos/blobs/","subjectEndsWith":".jpg"}
+For Storage events, this selects matching blob subjects in the photos container with the requested suffix. These fields inspect the event subject rather than opening each blob.
+
+350 | m-40-3-1 | Domain 3 | Event Grid
+Which Event Grid filter can inspect fields inside event data?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · advancedFilters entry
+    {"key":"data.order.total","operatorType":"NumberGreaterThan","value":100}
+Place this entry in advancedFilters. A numeric order total of 120 matches, while 80 does not. Dot notation follows properties inside the event payload.
+
+351 | m-40-4-1 | Domain 3 | Event Grid
+How do you choose an Event Grid advanced-filter operator?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Use NumberGreaterThan for a numeric order total such as 120. Use StringIn for a country string such as NO. Matching an operator to the field type is different from merely choosing a comparison value.
+
+352 | m-40-5-1 | Domain 3 | Event Grid
+What must be enabled to use Event Grid advanced filters on arrays?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · event-subscription filter
+    {"enableAdvancedFilteringOnArrays":true,"advancedFilters":[{"key":"data.tags","operatorType":"StringIn","values":["urgent"]}]}
+With this array-filter configuration, an event whose data.tags contains the string urgent can match. Use an operator supported for the element type.
+
+353 | m-41-1-1 | Domain 3 | Service Bus
+What does completing a Service Bus message do?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    receiver.complete_message(message)
+With a live Python ServiceBusReceiver in PeekLock mode and its received message, call this after successful business processing. It acknowledges completion and removes the message.
+
+354 | m-41-2-1 | Domain 3 | Service Bus
+What does abandoning a Service Bus message do?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    receiver.abandon_message(message)
+With a live receiver and its locked message, this releases the message for another delivery attempt. It does not schedule a particular retry delay.
+
+355 | m-41-3-1 | Domain 3 | Service Bus
+How does Service Bus message deferral work?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    sequence = message.sequence_number
+    receiver.defer_message(message)
+    messages = receiver.receive_deferred_messages(sequence_numbers=[sequence])
+Save the sequence number before deferral. The last line represents a later retrieval when the application is ready; ordinary receives do not pick the deferred message up.
+
+356 | m-41-4-1 | Domain 3 | Service Bus
+What does dead-lettering a Service Bus message do?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    receiver.dead_letter_message(message, reason="InvalidPhotoUrl", error_description="Photo URL is missing")
+On the receiver that owns this locked message, record a useful application-defined reason. The message moves to the entity’s dead-letter subqueue for explicit recovery.
+
+357 | m-41-5-1 | Domain 3 | Service Bus
+When does a failed Service Bus PeekLock attempt increase DeliveryCount?
+Decision: not needed. The existing answer directly describes the counter/limit/tier/expiry rule with the relevant exceptions. Another numerical sequence could overstate edge-case behavior.
+
+358 | m-42-1-1 | Domain 3 | Service Bus
+What are Service Bus PeekLock's default and maximum lock durations?
+Decision: not needed. The existing answer directly describes the counter/limit/tier/expiry rule with the relevant exceptions. Another numerical sequence could overstate edge-case behavior.
+
+359 | m-42-2-1 | Domain 3 | Service Bus
+When does Service Bus automatically dead-letter a repeatedly delivered message?
+Decision: not needed. The existing answer directly describes the counter/limit/tier/expiry rule with the relevant exceptions. Another numerical sequence could overstate edge-case behavior.
+
+360 | m-42-3-1 | Domain 3 | Service Bus
+How does Service Bus duplicate detection identify a duplicate message?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A sender retries the same business send with MessageId repair-42 inside the configured detection window. The broker can discard that repeat send. The already accepted message can still be redelivered if a receiver later fails.
+
+361 | m-42-4-1 | Domain 3 | Service Bus
+How can Service Bus group related messages for ordered processing?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Created, assigned and completed messages for repair 42 share SessionId repair-42 and are enqueued in that order. One session receiver can handle them sequentially while a different session receiver handles repair 43.
+
+362 | m-43-1-1 | Domain 3 | Event Grid
+Which Azure CLI commands create a custom Event Grid topic and its event subscription?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+363 | m-43-2-1 | Domain 3 | Event Grid
+How do Event Grid custom, system and partner topics differ?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+364 | m-43-4-1 | Domain 3 | Event Grid
+What does Event Grid webhook subscription validation prove?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · Event Grid-schema validation response
+    {"validationResponse":"abc123"}
+If an expected subscription-validation event supplies validationCode abc123, return that code in this response with HTTP 200. Copy the received value rather than hard-coding it. CloudEvents uses its different OPTIONS handshake.
+
+365 | m-43-5-1 | Domain 3 | Event Grid
+How do Event Grid delivery retries and dead-lettering differ?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A failing webhook first gets more delivery attempts. After eligible delivery is abandoned, configured dead-lettering can save the event to Blob Storage. Your recovery process then handles that saved event; storing it is not another successful subscriber delivery.
+
+366 | m-44-1-1 | Domain 3 | Service Bus
+How are messages shared among consumers of a Service Bus queue?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Two workers receive from the same repairs queue. A can lock repair-42 while B locks repair-43. A failed locked job can later be redelivered; creating B did not give it a separate copy of all work.
+
+367 | m-44-2-1 | Domain 3 | Service Bus
+Which Service Bus entities give independent consumers their own copies?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+368 | m-44-3-1 | Domain 3 | Service Bus
+What do Service Bus subscription rules filter?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+369 | m-44-4-1 | Domain 3 | Service Bus
+Where are Service Bus dead-letter queues created?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Service Bus entity paths
+    repairs/$DeadLetterQueue
+    orders/Subscriptions/billing/$DeadLetterQueue
+The first path is the repairs queue’s dead-letter subqueue. The second belongs to billing’s subscription on topic orders. These subqueues are provided automatically rather than created as separate queues.
+
+370 | m-46-1-1 | Domain 3 | Azure Functions
+What happens after Queue Storage-triggered processing repeatedly fails?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · host.json
+    {"version":"2.0","extensions":{"queues":{"maxDequeueCount":3}}}
+This example changes a Storage queue trigger’s attempt limit to three, including the first attempt. If all fail, the host uses the original queue’s -poison queue; three is not the default.
+
+371 | m-46-2-1 | Domain 3 | Azure Functions
+What schedule format does an Azure Functions Timer trigger use?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+372 | m-46-3-1 | Domain 3 | Azure Functions
+How do polling and Event Grid-based Blob triggers differ?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+373 | m-46-4-1 | Domain 3 | Azure Functions
+What does an Azure Functions Cosmos DB trigger use to track progress?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+One Functions instance stops after processing a batch of repair changes. Its saved lease/checkpoint state lets the host transfer ownership and resume processing, with duplicate-safe handling if a batch is repeated.
+
+374 | m-47-1-1 | Domain 3 | Azure Functions
+How do Anonymous, Function and Admin HTTP authorization levels differ?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: HTTP request header
+    x-functions-key: <function-key>
+For an endpoint requiring Function authorization, replace the placeholder with an authorized function or host key. This shared endpoint credential does not identify a particular end user.
+
+375 | m-47-3-1 | Domain 3 | Azure Functions
+Are Function keys enforced by the local Functions host?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An endpoint configured with Function authorization accepts a keyless request when tested directly through local Core Tools. Its deployed Azure endpoint still requires the key; that local success did not prove anonymous production access.
+
+376 | m-47-4-1 | Domain 3 | Azure Functions
+How does an HTTP trigger's methods list restrict accepted requests?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+377 | m-48-1-1 | Domain 3 | Azure Functions
+Which Functions trigger supports a synchronous client response?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: HTTP response example
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+    
+    {"repairId":"42","status":"open"}
+An HTTP-triggered function can return this result to the client that made the request. The response must still fit the relevant request/execution time limits.
+
+378 | m-48-2-1 | Domain 3 | Azure Functions
+Which Functions trigger handles background Storage queue messages?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python · function fragment
+    @app.queue_trigger(arg_name="msg", queue_name="jobs", connection="StorageConnection")
+    def process_job(msg):
+        payload = msg.get_body().decode("utf-8")
+Here app is an existing azure.functions.FunctionApp, StorageConnection names a configured connection and the job body is UTF-8 text. This fragment shows trigger/body access; add the real business processing.
+
+379 | m-48-2-2 | Domain 3 | Azure Functions
+Which Functions trigger runs on a fixed schedule?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+380 | m-48-2-3 | Domain 3 | Azure Functions
+Which Functions trigger reacts to Cosmos DB document changes?
+Decision: already concrete. The answer already directly describes the trigger, its input batches, leases and the latest-feed omissions.
+
+381 | m-48-3-1 | Domain 3 | Azure Functions
+Which Functions trigger reacts to pushed BlobCreated events without polling?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+382 | m-48-4-1 | Domain 3 | Azure Functions
+What limits the synchronous response time of an HTTP-triggered function?
+Decision: not needed. The direct limit, invariant, prerequisite or hosting/package comparison is already clear. Another small invented case would repeat the same explanation.
+
+383 | m-48-5-1 | Domain 3 | Azure Functions
+How should slow HTTP-request work be moved into background processing?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: HTTP response example
+    HTTP/1.1 202 Accepted
+    Location: /jobs/42
+    Content-Type: application/json
+    
+    {"jobId":"42","status":"queued"}
+Save or enqueue the work before returning this response. The client checks GET /jobs/42 later while a background worker completes the operation.
+
+384 | m-49-1-1 | Domain 3 | Azure Functions
+How many triggers can an Azure Function have?
+Decision: not needed. The direct limit, invariant, prerequisite or hosting/package comparison is already clear. Another small invented case would repeat the same explanation.
+
+385 | m-49-2-1 | Domain 3 | Azure Functions
+Which Azure Functions binding reads a blob into the handler without Storage SDK code?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python · function fragment
+    @app.route(route="photos/{id}")
+    @app.blob_input(arg_name="photo", path="photos/{id}", connection="StorageConnection")
+    def get_photo(req: func.HttpRequest, photo: func.InputStream):
+        return func.HttpResponse(body=photo.read(), mimetype="image/jpeg")
+Assume func is azure.functions and app is an initialized FunctionApp. The input binding loads the addressed blob into photo using the configured StorageConnection; the handler reads its bytes without constructing a Blob SDK client.
+
+386 | m-49-4-1 | Domain 3 | Azure Functions
+Can an Azure Function have multiple optional bindings?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+387 | m-49-5-1 | Domain 3 | Azure Functions
+Which trigger/input/output binding combinations are supported by common Functions services?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+388 | m-51-1-1 | Domain 3 | Azure Functions
+In what order can you deploy a Function App that uses Key Vault references?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+389 | m-51-2-1 | Domain 3 | Azure Functions
+What role does AzureWebJobsStorage play in a Function App?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Local setting
+    AzureWebJobsStorage = UseDevelopmentStorage=true
+For local development, this directs host storage to a running Azurite emulator. In Azure, configure a real supported storage connection or identity-based settings instead.
+
+390 | m-51-3-1 | Domain 3 | Azure Functions
+Why must identity permissions be configured before Key Vault references can resolve?
+Decision: not needed. The direct limit, invariant, prerequisite or hosting/package comparison is already clear. Another small invented case would repeat the same explanation.
+
+391 | m-51-4-1 | Domain 3 | Azure Functions
+How can GitHub Actions deploy both Bicep infrastructure and Function code?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+392 | m-51-5-1 | Domain 3 | Azure Functions
+Why does Core Tools publishing not replace infrastructure-as-code deployment?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Functions Core Tools
+    func azure functionapp publish repairs-functions
+This publishes code into the existing repairs-functions app. It does not declare that app’s vaults, databases, identities and role assignments as infrastructure resources.
+
+393 | prep-sb-002 | Domain 3 | Service Bus
+How does Service Bus PeekLock differ from ReceiveAndDelete?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+394 | prep-sb-007 | Domain 3 | Service Bus
+How is a Service Bus message scheduled for future availability?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from datetime import datetime, timedelta, timezone
+    sender.schedule_messages(message, datetime.now(timezone.utc) + timedelta(minutes=10))
+With an existing Python ServiceBusSender and message, this schedules availability ten minutes from now. Actual processing also depends on consumers being ready.
+
+395 | prep-p-sb-005 | Domain 3 | Service Bus
+Which Service Bus tiers support topics and subscriptions?
+Decision: not needed. The existing answer directly describes the counter/limit/tier/expiry rule with the relevant exceptions. Another numerical sequence could overstate edge-case behavior.
+
+396 | prep-p-sb-006 | Domain 3 | Service Bus
+How does a transactional outbox coordinate a database update with message publication?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+One database transaction closes repair 42 and adds an outbox record for RepairCompleted. If the broker is temporarily unavailable, the relay can retry the saved record later instead of losing the event after the repair update committed.
+
+397 | prep-sb-010 | Domain 3 | Service Bus
+Which Service Bus operation inspects a message without receiving and settling it?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    messages = receiver.peek_messages(max_message_count=5)
+This inspects up to five stored messages using an existing receiver. It does not lock them for processing or settle them.
+
+398 | prep-p-sb-009 | Domain 3 | Service Bus
+Which Service Bus data role permits receiving and settling but not sending?
+Decision: not needed. The role name, allowed operations and least-privilege scope are already explicit; an additional app-name substitution adds no useful information.
+
+399 | prep-p-rbac-024 | Domain 3 | Service Bus
+Which Service Bus data role permits sending without receiving?
+Decision: not needed. The role name, allowed operations and least-privilege scope are already explicit; an additional app-name substitution adds no useful information.
+
+400 | prep-sb-017 | Domain 3 | Service Bus
+Where is a binary Service Bus payload stored?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+401 | prep-sb-018 | Domain 3 | Service Bus
+What happens when a Service Bus message expires with dead-lettering on expiration enabled?
+Decision: not needed. The existing answer directly describes the counter/limit/tier/expiry rule with the relevant exceptions. Another numerical sequence could overstate edge-case behavior.
+
+402 | prep-p-sb-014 | Domain 3 | Service Bus
+How can a Service Bus handler keep a PeekLock during long processing?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    receiver.renew_message_lock(message)
+Renew a message lock before it expires while using the receiver that owns it. A renewal can fail, so completion/retry handling must still be safe.
+
+403 | prep-p-sb-017 | Domain 3 | Service Bus
+How can a Service Bus Functions binding connect without a shared-access connection string?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+404 | prep-p-sb-018 | Domain 3 | Service Bus
+What does the claim-check messaging pattern put in the broker message?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · example message body
+    {"repairId":"42","payloadUrl":"https://studystore.blob.core.windows.net/photos/42.jpg"}
+The broker carries this small reference. The consumer retrieves the large photo using its own authorized storage access; keep the payload available for the message’s processing/recovery lifetime.
+
+405 | prep-p-sb-019 | Domain 3 | Service Bus
+Which Service Bus metric helps identify a growing backlog of unprocessed work?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Illustrative queue-depth measurements
+    10:00  100 active messages
+    10:05  250 active messages
+    10:10  500 active messages
+A sustained rise indicates accumulating pending work. Compare send/receive rates, processing time and failures before deciding whether to add consumers or fix a processing problem.
+
+406 | prep-p-sb-020 | Domain 3 | Service Bus
+How does a Service Bus correlation filter differ from a SQL subscription filter?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+407 | prep-p-sb-021 | Domain 3 | Service Bus
+What does Service Bus AutoDeleteOnIdle configure?
+Decision: not needed. The existing answer directly describes the counter/limit/tier/expiry rule with the relevant exceptions. Another numerical sequence could overstate edge-case behavior.
+
+408 | prep-sb-030 | Domain 3 | Service Bus
+What can a Service Bus subscription rule action modify?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Service Bus SQL rule action
+    SET user.route = 'photo-processing'
+This action sets an application property on the copy admitted through the rule. It does not rewrite the message’s binary body or execute your application handler.
+
+409 | prep-sb-028 | Domain 3 | Service Bus
+Which Service Bus properties coordinate a request/reply exchange?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Request/reply property examples
+    Request: MessageId=request-42, ReplyTo=reply-orders
+    Reply:   CorrelationId=request-42
+The receiver application sends a reply to reply-orders and copies the original identifier for correlation. Service Bus does not generate this application response automatically.
+
+410 | prep-p-sb-025 | Domain 3 | Service Bus
+What can a Service Bus broker transaction combine?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+411 | prep-eg-001 | Domain 3 | Event Grid
+What distinguishes Event Grid's event-routing role from a work queue?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+412 | prep-p-eg-004 | Domain 3 | Event Grid
+Why must Event Grid push handlers tolerate duplicate deliveries?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The handler applies event photo-42 to a database counter, but its success response is lost. Event Grid retries photo-42. The handler must recognize the completed operation and avoid incrementing the counter a second time.
+
+413 | prep-eg-006 | Domain 3 | Event Grid
+What is needed to preserve undeliverable Event Grid push events in Blob Storage?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+414 | prep-eg-010 | Domain 3 | Event Grid
+Which interoperable event schema is supported by Event Grid?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · CloudEvents 1.0
+    {"specversion":"1.0","id":"event-42","source":"/repairs","type":"com.example.repair.completed",
+     "data":{"repairId":"42"}}
+This small custom event includes the required CloudEvents context fields. id identifies this event, source identifies its originating context, type describes the event class and data carries the business payload.
+
+415 | prep-eg-011 | Domain 3 | Event Grid
+Which identity-based role allows an application to publish Event Grid events?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+416 | prep-eg-013 | Domain 3 | Event Grid
+Which Azure Storage event type represents creation of a blob?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+417 | prep-p-eg-014 | Domain 3 | Event Grid
+Which Event Grid event field is commonly used as a deduplication identifier?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example deduplication key
+    ("/repairs", "event-42")
+The source/event-ID pair can identify a retried CloudEvent. The same ID from a different source is not necessarily the same event; coordinate the durable deduplication record with the business update.
+
+418 | prep-p-eg-016 | Domain 3 | Event Grid
+What changes when batched Event Grid push delivery is enabled?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+One request contains events photo-42 and photo-43. A successful HTTP response acknowledges that whole delivery request. Process or safely hand off both; the HTTP response cannot mark only one event complete.
+
+419 | prep-p-eg-024 | Domain 3 | Event Grid
+Does Event Grid push delivery guarantee event order?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Update version 7 arrives before a retried version 6. Check the source version before applying it, so the older event cannot overwrite the newer state.
+
+420 | prep-func-001 | Domain 3 | Azure Functions
+How is classic Azure Functions Consumption compute charged for an idle application?
+Decision: not needed. The direct limit, invariant, prerequisite or hosting/package comparison is already clear. Another small invented case would repeat the same explanation.
+
+421 | prep-p-fn-002 | Domain 3 | Azure Functions
+What does Functions Elastic Premium provide for cold-start-sensitive workloads?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An interactive API must avoid long startup delays after quiet periods. Premium can keep ready capacity available; that provisioned baseline remains billable even while no requests arrive.
+
+422 | prep-func-003 | Domain 3 | Azure Functions
+What is the default and maximum functionTimeout on classic Functions Consumption?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · host.json
+    {"version":"2.0","functionTimeout":"00:08:00"}
+An eight-minute timeout fits within classic Consumption’s documented ten-minute execution maximum. This is an example override, and it does not extend the separate synchronous HTTP response limit.
+
+423 | prep-func-007 | Domain 3 | Azure Functions
+Does a Cosmos DB-triggered function normally run once per document or once per delivered batch?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python · batch-handling fragment
+    for document in documents:
+        process_change(document)
+documents is the trigger’s delivered batch, and process_change represents your application handler. Iterate every document rather than assuming the batch always contains one item.
+
+424 | prep-p-fn-011 | Domain 3 | Azure Functions
+Where is Service Bus trigger callback concurrency configured for a Functions host?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · host.json
+    {"version":"2.0","extensions":{"serviceBus":{"maxConcurrentCalls":8}}}
+This illustrates fixed callback concurrency for a non-session single-message handler. CPU cores, host instances and dynamic/session/batch configurations affect total concurrency; eight is not an app-wide ceiling.
+
+425 | prep-p-fn-021 | Domain 3 | Azure Functions
+How does a scaled-out Functions app coordinate a Timer trigger so only one instance runs a scheduled occurrence?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The Function App has three running instances. Host-storage coordination gives one instance ownership of the timer occurrence, rather than intentionally executing the same schedule independently on all three.
+
+426 | prep-p-fn-022 | Domain 3 | Azure Functions
+How does run-from-package deployment keep a Function App release consistent?
+Decision: not needed. The direct limit, invariant, prerequisite or hosting/package comparison is already clear. Another small invented case would repeat the same explanation.
+
+427 | prep-p-fn-025 | Domain 3 | Azure Functions
+What does Flex Consumption add while retaining a consumption-based scaling model?
+Decision: not needed. The direct limit, invariant, prerequisite or hosting/package comparison is already clear. Another small invented case would repeat the same explanation.
+
+428 | term-d4-entra | Domain 4 | Terms · Sikkerhet
+What is Microsoft Entra ID?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Employees sign in through their organization’s Microsoft Entra directory, and an Azure app can obtain an Entra token for a protected service. The directory manages identities rather than storing the app’s business repair records.
+
+429 | term-d4-tenant | Domain 4 | Terms · Sikkerhet
+What is a Microsoft Entra tenant?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Contoso’s tenant contains its employee accounts and application identities. Both its Training and Production Azure subscriptions can trust that tenant, even though the subscriptions are separate resource/billing boundaries.
+
+430 | term-d4-identity | Domain 4 | Terms · Sikkerhet
+What is an identity in Azure security?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+431 | term-d4-authentication | Domain 4 | Terms · Sikkerhet
+What does authentication mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+432 | term-d4-authorization | Domain 4 | Terms · Sikkerhet
+What does authorization mean?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+433 | term-d4-managed-identity | Domain 4 | Terms · Sikkerhet
+What is a managed identity in Azure?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from azure.identity import ManagedIdentityCredential
+    credential = ManagedIdentityCredential()
+On a supported Azure host with managed identity enabled, this credential uses the host’s identity mechanism to obtain tokens. Constructing it does not create the identity or grant service permissions.
+
+434 | term-d4-rbac | Domain 4 | Terms · Sikkerhet
+What does RBAC stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+435 | term-d4-abac | Domain 4 | Terms · Sikkerhet
+What does ABAC stand for?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A supported Blob Data Reader assignment has a condition selecting blobs tagged project=repairs. With no other grant, that assignment permits reads of matching blob content rather than every blob covered by its broader scope.
+
+436 | term-d4-scope | Domain 4 | Terms · Sikkerhet
+What is the scope of an Azure role assignment?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+437 | term-d4-role-assignment | Domain 4 | Terms · Sikkerhet
+What is an Azure role assignment?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+438 | term-d4-oidc | Domain 4 | Terms · Sikkerhet
+What does OIDC stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+439 | term-d4-key-vault | Domain 4 | Terms · Sikkerhet
+What is Azure Key Vault?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Vault URL
+    https://study-vault.vault.azure.net
+This illustrative vault endpoint is the base URL a SecretClient uses. A secret such as payments-api-key is a separately named object inside the vault.
+
+440 | term-d4-secret | Domain 4 | Terms · Sikkerhet
+What is a secret in Key Vault?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+441 | term-d4-certificate | Domain 4 | Terms · Sikkerhet
+What is a digital certificate?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A client requests https://api.example.com but receives a certificate valid only for other.example.com. Hostname validation rejects that mismatch even if the certificate has a trusted issuer.
+
+442 | term-d4-tls | Domain 4 | Terms · Sikkerhet
+What does TLS stand for?
+Decision: not needed. The answer already gives HTTPS as the concrete protocol example; a packet/cryptographic example would distract from the acronym’s purpose.
+
+443 | term-d4-key-vault-reference | Domain 4 | Terms · Sikkerhet
+What is a Key Vault reference?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: App Service / Functions app-setting value
+    @Microsoft.KeyVault(SecretUri=https://study-vault.vault.azure.net/secrets/payments-api-key)
+Use this as the PAYMENTS_KEY app-setting value. It points to payments-api-key in study-vault; the platform supplies the secret’s value using its configured authorized identity. Other reference mechanisms have different syntax.
+
+444 | term-d4-rotation | Domain 4 | Terms · Sikkerhet
+What does rotating a credential mean?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The payments service still accepts credential A, but someone stores a new B value only in Key Vault. Clients switching to B fail until the target service accepts that replacement too. Rotation must coordinate the service and its consumers.
+
+445 | term-d4-app-configuration | Domain 4 | Terms · Sikkerhet
+What is Azure App Configuration?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: App Configuration key/value
+    Search:ResultLimit = "5"
+This ordinary setting tells the application how many results to return. App Configuration stores the string value; application code can convert it to a number when using it.
+
+446 | term-d4-feature-flag | Domain 4 | Terms · Sikkerhet
+What is a feature flag?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+447 | term-d4-vnet | Domain 4 | Terms · Sikkerhet
+What does VNet stand for in Azure?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example address space
+    10.20.0.0/16
+A VNet can use this private range and contain a subnet such as 10.20.1.0/24. Routing, network rules and service connectivity still need to be configured for the intended traffic.
+
+448 | term-d4-private-endpoint | Domain 4 | Terms · Sikkerhet
+What is a private endpoint in Azure?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Illustrative private DNS resolution
+    study-vault.vault.azure.net → 10.20.1.5
+Here the vault’s normal service hostname resolves to a private endpoint address for connected clients. They need a route to that private IP as well as their usual vault permissions.
+
+449 | term-d4-azure-monitor | Domain 4 | Terms · Sikkerhet
+What is Azure Monitor?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Repair-request failures start rising. Azure Monitor can show a failure-rate trend, let you inspect collected logs and trigger an alert when your configured condition is met.
+
+450 | term-d4-application-insights | Domain 4 | Terms · Sikkerhet
+What is Application Insights?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A repair request takes 800 ms and its database dependency accounts for most of that time. Application Insights can connect those observed operations so you can investigate the slow dependency.
+
+451 | term-d4-log-analytics | Domain 4 | Terms · Sikkerhet
+What is Log Analytics in Azure Monitor?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: KQL
+    AppRequests | where Success == false
+Run this in Log Analytics at a scope containing collected Application Insights request data. The query tool explores the data; the workspace is the resource storing it.
+
+452 | term-d4-csi | Domain 4 | Terms · Sikkerhet
+What does CSI stand for in Kubernetes storage?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example mounted file path
+    /mnt/secrets-store/payments-api-key
+A Secrets Store CSI mount can expose a selected Key Vault secret as this file. The application reads the file’s contents and must reread it when rotation updates the mounted value.
+
+453 | term-d4-telemetry | Domain 4 | Terms · Sikkerhet
+What is application telemetry?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+One repair request produces a duration measurement, a dependency span and a log explaining a validation failure. These are different observations of the application’s behavior that a monitoring system can collect.
+
+454 | term-d4-log | Domain 4 | Terms · Sikkerhet
+What is a log record?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · application log example
+    {"time":"2026-10-29T10:00:00Z","level":"ERROR","repairId":"42","message":"Photo is missing"}
+This illustrative structured log records when the problem occurred, its severity and the affected repair. The actual collected table/schema depends on the logging pipeline.
+
+455 | term-d4-metric | Domain 4 | Terms · Sikkerhet
+What is a metric in observability?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Illustrative counter measurement
+    repair_jobs_completed_total 42
+This measurement says the counter has recorded 42 completed jobs. Repeated measurements can show throughput over time; it is not an individual job’s detailed trace.
+
+456 | term-d4-trace | Domain 4 | Terms · Sikkerhet
+What is a distributed trace?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Operation flow
+    GET /repairs/42 → API handler → PostgreSQL query
+One distributed trace can connect the incoming request span with the API’s database-call span through propagated/current context, showing which timed step caused a delay.
+
+457 | term-d4-span | Domain 4 | Terms · Sikkerhet
+What is a span in distributed tracing?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    with tracer.start_as_current_span("load-repair") as span:
+        span.set_attribute("repair.id", "42")
+With a configured tracer, this creates one named span and records an attribute. Put the operation being timed inside the block; the span ends when the block exits.
+
+458 | term-d4-otel | Domain 4 | Terms · Sikkerhet
+What is OpenTelemetry?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Telemetry flow
+    Instrumentation → OpenTelemetry SDK → exporter → Azure Monitor
+OpenTelemetry produces/processes the observations and the exporter delivers them. Azure Monitor is the separate storage/analysis destination in this example.
+
+459 | term-d4-instrumentation | Domain 4 | Terms · Sikkerhet
+What does instrumentation mean for an application?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from opentelemetry.instrumentation.requests import RequestsInstrumentor
+    RequestsInstrumentor().instrument()
+With the package installed and tracing configured, this adds telemetry hooks to Python’s requests library. Outgoing calls can then create client spans and propagate context.
+
+460 | term-d4-exporter | Domain 4 | Terms · Sikkerhet
+What is an exporter in OpenTelemetry?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from opentelemetry.sdk.trace.export import ConsoleSpanExporter
+    exporter = ConsoleSpanExporter()
+This exporter writes spans to the console when attached to a configured span-processing pipeline. Other exporters send them to remote backends; creating the exporter alone does not instrument application code.
+
+461 | term-d4-sampling | Domain 4 | Terms · Sikkerhet
+What is trace sampling?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+462 | term-d4-kql | Domain 4 | Terms · Sikkerhet
+What does KQL stand for?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+463 | term-d4-latency | Domain 4 | Terms · Sikkerhet
+What does request latency mean?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A browser measures 250 ms from sending a request to receiving its response, while the API’s server span measures 100 ms. Those measurements have different boundaries; the remainder can include network, proxy and client-side time.
+
+464 | term-d4-p95 | Domain 4 | Terms · Sikkerhet
+What does P95 latency mean?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Illustrative latency measurement
+    P95 request latency = 400 ms
+Approximately 95% of the measured durations are no greater than 400 ms. This percentile describes duration, not the percentage of successful requests.
+
+465 | m-55-3-1 | Domain 4 | Terms · Sikkerhet
+What is an App Configuration sentinel key used for?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: App Configuration key/value
+    Config:Sentinel = "release-42"
+Update related settings first, then change this watched key. A correctly configured provider can reload the selected values when the app triggers an eligible refresh; the sentinel is a signal, not a multi-write transaction.
+
+466 | m-64-1-1 | Domain 4 | Terms · Sikkerhet
+What does an OpenTelemetry TracerProvider own?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from opentelemetry.sdk.resources import Resource
+    from opentelemetry.sdk.trace import TracerProvider
+    provider = TracerProvider(resource=Resource.create({"service.name": "repairs-api"}))
+This constructs a provider with shared service metadata. Register it and configure its sampler/processors/exporters as needed; the constructor alone does not deliver spans to a backend.
+
+467 | prep-rbac-015 | Domain 4 | Terms · Sikkerhet
+What is a service principal in an Entra tenant?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A multitenant repairs application used by Contoso and Fabrikam has a local service principal in each tenant. Each tenant can manage the local identity’s grants for that application.
+
+468 | prep-rbac-028 | Domain 4 | Terms · Sikkerhet
+What does an Azure Network Security Group filter?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example network-rule intent
+    Allow TCP 443 from 10.20.1.0/24 to 10.20.2.4
+This describes a network-flow rule, not a data-access role. Matching traffic still depends on applicable rule priority/routing, and the receiving service still checks the caller’s access.
+
+469 | m-05-2-1 | Domain 4 | Identitet og RBAC
+How do system-assigned and user-assigned identities differ in lifecycle?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An API is deleted and recreated during deployment. Its old system-assigned identity disappears with the old resource. A separately created user-assigned identity can be attached to the replacement API, keeping the identity that was already granted access.
+
+470 | m-07-5-1 | Domain 4 | Key Vault
+Where should non-secret configuration and credentials be stored?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Illustrative configuration entries
+    Api:BaseUrl = "https://api.example.com"
+    PAYMENTS_KEY = "@Microsoft.KeyVault(SecretUri=https://study-vault.vault.azure.net/secrets/payments-api-key)"
+The first value is ordinary configuration. In App Service/Functions, the second is a reference used as an app-setting value, pointing to a separately stored secret. The platform needs an authorized identity and network access to resolve it.
+
+471 | m-14-6-1 | Domain 4 | Key Vault
+Which Key Vault object type should hold an API credential?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A payments API expects an opaque credential string in an HTTP header. Store that string as a Key Vault secret named payments-api-key. It is not a Key Vault cryptographic key used to sign or encrypt data.
+
+472 | m-52-1-1 | Domain 4 | Key Vault
+Can Key Vault Reader read secret values?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An operator with only Key Vault Reader can see that payments-api-key exists and inspect its metadata, but cannot retrieve its password/token value. Seeing the secret’s name is different from reading its contents.
+
+473 | m-52-2-1 | Domain 4 | Key Vault
+Which Key Vault RBAC role reads secret values?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A deployed payments app uses its managed identity to retrieve payments-api-key. Key Vault Secrets User authorizes reading that secret’s value in the assigned scope, while leaving secret creation and deletion unavailable through this role.
+
+474 | m-52-3-1 | Domain 4 | Key Vault
+Which Key Vault RBAC role manages secret versions and deletion?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A rotation worker must create a replacement secret version and read it for verification. Secrets Officer supplies secret-management permissions; the ordinary app that only consumes the credential can keep the narrower Secrets User role.
+
+475 | m-52-4-1 | Domain 4 | Key Vault
+What data-plane permissions does Key Vault Administrator grant?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A Key Vault Administrator can create a secret and perform permitted key/certificate data operations in its scope. That role alone cannot grant another app an Azure role or change the vault resource’s networking configuration.
+
+476 | m-52-6-1 | Domain 4 | Key Vault
+Does Key Vault Contributor grant access to secret contents?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+477 | m-52-7-1 | Domain 4 | Key Vault
+Which vault permission model makes Key Vault data-plane role assignments effective?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+478 | m-53-1-1 | Domain 4 | Key Vault
+How does a versionless Key Vault SDK read behave after rotation?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+479 | m-53-2-1 | Domain 4 | Key Vault
+How does a version-pinned Key Vault SDK read behave after rotation?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+480 | m-53-3-1 | Domain 4 | Key Vault
+How can Event Grid and Functions automate rotation of a Key Vault secret?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Rotation workflow
+    SecretNearExpiry → Event Grid → rotation Function → target service + new Key Vault version
+For a database password, the function must update the database credential and store its matching new value in Key Vault. Applications then refresh their cached secret and affected connections. The event starts the work; it does not rotate the external password by itself.
+
+481 | m-53-4-1 | Domain 4 | Key Vault
+Do Key Vault secrets have the same built-in rotation policies as cryptographic keys?
+Decision: already concrete. The answer already contrasts automatic cryptographic-key policies with a concrete password/API-secret rotation workflow.
+
+482 | m-54-1-1 | Domain 4 | Identitet og RBAC
+In what order does Python DefaultAzureCredential try credential types?
+Decision: not needed. The answer already walks the complete credential chain in order, including concrete developer tools; another example would obscure that ordering.
+
+483 | m-54-2-1 | Domain 4 | Identitet og RBAC
+How can the same DefaultAzureCredential code run locally and on Azure?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from azure.identity import DefaultAzureCredential
+    credential = DefaultAzureCredential()
+Pass this credential to the service client in both environments. Locally, sign in with an eligible developer tool such as az login; on Azure, enable a managed identity. Grant each selected identity the required data access.
+
+484 | m-54-3-1 | Domain 4 | Identitet og RBAC
+What does AZURE_TOKEN_CREDENTIALS control in Python DefaultAzureCredential?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+485 | m-54-4-1 | Domain 4 | Identitet og RBAC
+Why is ManagedIdentityCredential normally unavailable on a developer laptop?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+486 | m-55-1-1 | Domain 4 | App Configuration
+What uniquely identifies an App Configuration key-value?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+487 | m-55-4-1 | Domain 4 | App Configuration
+How do App Configuration Data Reader and Data Owner differ?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The repairs API loads Search:ResultLimit using Data Reader. A separate configuration-management job uses Data Owner to change that value. The runtime app does not need write access merely to consume the setting.
+
+488 | m-56-1-1 | Domain 4 | Key Vault
+What is the setup order for reading Key Vault with an app identity?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from azure.identity import DefaultAzureCredential
+    from azure.keyvault.secrets import SecretClient
+    client = SecretClient(vault_url="https://study-vault.vault.azure.net", credential=DefaultAzureCredential())
+    value = client.get_secret("payments-api-key").value
+After identity, permissions and networking are configured, this reads the named secret’s latest version. value contains the returned credential; the vault URL and secret name identify where it lives. The selected local or Azure identity must have access.
+
+489 | m-56-3-1 | Domain 4 | Key Vault
+What scope should be preferred for an application's Key Vault permissions?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example vault boundaries
+    repairs-dev-vault
+    repairs-prod-vault
+Use separate vaults for this application’s development and production secrets. Grant the production app Secrets User on its production vault, avoiding a broad subscription-level grant that could include unrelated vaults.
+
+490 | m-56-4-1 | Domain 4 | Key Vault
+What happens to access policies when a vault switches to Azure RBAC?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An API currently reads secrets through a legacy access policy. If the vault switches to RBAC before the API identity has an equivalent data role, the old policy no longer authorizes its reads. Prepare the role assignments before switching.
+
+491 | m-56-6-1 | Domain 4 | Key Vault
+Why does copying a secret into app settings at deployment not implement rotation?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Deployment copies password A into DB_PASSWORD. Later, the database and Key Vault move to password B. The running app still has A until its configuration and connections are updated; the original deployment-time copy does not follow Key Vault versions.
+
+492 | m-57-2-1 | Domain 4 | Key Vault
+Which secret lifecycle features does Key Vault provide?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A mistakenly deleted API secret can be recovered while soft-delete retention still applies. If it also has purge protection, an administrator cannot permanently purge it early to remove that recovery opportunity. These protections do not change the credential accepted by the API.
+
+493 | m-57-3-1 | Domain 4 | Key Vault
+Who resolves a Key Vault reference stored in App Configuration?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: JSON · App Configuration Key Vault reference value
+    {"uri":"https://study-vault.vault.azure.net/secrets/payments-api-key"}
+Store this value with content type application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8. A configured application provider resolves it using vault permissions; App Configuration itself stores the reference rather than fetching the secret.
+
+494 | m-57-4-1 | Domain 4 | Key Vault
+How can AKS mount Key Vault secrets as files without creating Kubernetes Secret objects?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example mounted path
+    /mnt/secrets-store/payments-api-key
+An appropriately configured SecretProviderClass and pod volume can mount the Key Vault object’s value here. The file contains the credential; its pathname is not the credential itself. A Kubernetes Secret object is unnecessary unless optional synchronization is enabled.
+
+495 | m-58-1-1 | Domain 4 | App Configuration
+How is a Python AzureAppConfigurationClient authenticated?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+496 | m-58-2-1 | Domain 4 | App Configuration
+Which Python App Configuration call reads a single key and label?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+497 | m-58-3-1 | Domain 4 | App Configuration
+Which Python App Configuration calls enumerate settings or labels?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+498 | m-59-1-1 | Domain 4 | App Configuration
+How can a long-lived app refresh configuration without a remote call per request?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An API serves 1,000 requests from its in-memory configuration. Calls to refresh are interval-gated, so those requests do not each fetch remote settings. When an eligible check detects the watched change, later reads use refreshed values.
+
+499 | m-59-2-1 | Domain 4 | App Configuration
+How does Python App Configuration refresh use a watch key and interval?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+500 | m-59-4-1 | Domain 4 | App Configuration
+What should an app do when a configuration refresh fails?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The app successfully loaded a timeout of 30 seconds, then App Configuration becomes unreachable. Keep using the cached 30-second value while logging/retrying refresh. A newly starting instance has no such cached success and needs an explicit startup policy.
+
+501 | m-59-5-1 | Domain 4 | App Configuration
+Why are environment variables unsuitable for in-process dynamic refresh?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An already running process read SEARCH_LIMIT=5. Changing that setting in the hosting platform does not mutate the process’s environment in place. Use the platform’s restart/new revision behavior, or read a refresh-capable provider for updates within the process.
+
+502 | m-60-1-1 | Domain 4 | KQL
+What does KQL where do to its input rows?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+503 | m-60-2-1 | Domain 4 | KQL
+What rows does KQL summarize return?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+504 | m-60-3-1 | Domain 4 | KQL
+What does KQL project do to columns?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+505 | m-60-4-1 | Domain 4 | KQL
+What does KQL extend do to columns?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+506 | m-60-5-1 | Domain 4 | KQL
+What does KQL distinct return?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+507 | m-60-5-2 | Domain 4 | KQL
+What does KQL join do?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+508 | m-60-5-3 | Domain 4 | KQL
+What does KQL render do?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+509 | m-60-6-1 | Domain 4 | KQL
+In what order should time filters, joins and aggregation usually run in a KQL query?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: KQL
+    AppRequests
+    | where TimeGenerated > ago(1h)
+    | where Success == false
+    | summarize Failures=count() by AppRoleName
+This starts with request records, limits the time window, filters failed requests and only then groups them by service. Early filtering reduces the rows the aggregation must process without changing this question’s result.
+
+510 | m-61-1-1 | Domain 4 | KQL
+Which table and column names are used in the Application Insights query schema?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: KQL · Application Insights resource scope
+    requests | where success == false | project timestamp, name, duration
+This scope uses the lowercase requests table and its case-sensitive field names. It returns the time, operation name and duration for failed requests; the equivalent workspace query uses AppRequests and differently named columns.
+
+511 | m-61-2-1 | Domain 4 | KQL
+Which table and column names are used in the workspace-based query schema?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: KQL · Log Analytics workspace scope
+    AppRequests | where Success == false | project TimeGenerated, Name, DurationMs
+This is the workspace-schema form of a failed-request query. Use its capitalized table/field names together; do not mix in timestamp or duration from the Application Insights resource schema.
+
+512 | m-61-3-1 | Domain 4 | KQL
+What unit is used for request duration in Application Insights queries?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+513 | m-61-4-1 | Domain 4 | KQL
+Which telemetry field identifies the emitting service?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+514 | m-62-1-1 | Domain 4 | KQL
+How does KQL express the last 30 minutes?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+515 | m-62-3-1 | Domain 4 | KQL
+How does KQL bin assign timestamps to time buckets?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+516 | m-62-4-1 | Domain 4 | KQL
+Which KQL join kind is used when no kind is specified?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+The left table has two rows with key=42; the right table has one matching row. An inner join returns both matching pairs. The default innerunique join first keeps one left row for that key, so only one pair remains; do not depend on which duplicate is retained.
+
+517 | m-63-1-1 | Domain 4 | Azure Monitor og Application Insights
+Which tool supports an ad hoc investigation of Azure application logs?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+518 | m-63-2-1 | Domain 4 | Azure Monitor og Application Insights
+What type of operations does the Azure Activity Log record?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+519 | m-63-4-1 | Domain 4 | Azure Monitor og Application Insights
+Why start a KQL query with the relevant table?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+520 | m-63-4-2 | Domain 4 | Azure Monitor og Application Insights
+How do KQL == and =~ differ?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+521 | m-64-2-1 | Domain 4 | OpenTelemetry og sporing
+What sends OpenTelemetry spans to Azure Monitor?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    import os
+    from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+    exporter = AzureMonitorTraceExporter(connection_string=os.environ["APPLICATIONINSIGHTS_CONNECTION_STRING"])
+Set the environment variable to your Application Insights connection string. Attach this exporter through a span processor to a registered tracing provider; constructing the exporter alone does not create or send spans.
+
+522 | m-64-3-1 | Domain 4 | OpenTelemetry og sporing
+How do BatchSpanProcessor and SimpleSpanProcessor export spans?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from opentelemetry.sdk.trace.export import BatchSpanProcessor
+    provider.add_span_processor(BatchSpanProcessor(exporter))
+Here provider is your TracerProvider and exporter is the chosen destination exporter. Completed sampled spans are queued for batch export. Shut down/flush the provider when the process exits so buffered telemetry can leave.
+
+523 | m-64-4-1 | Domain 4 | OpenTelemetry og sporing
+Which Python OpenTelemetry call starts an active span?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+524 | m-65-1-1 | Domain 4 | OpenTelemetry og sporing
+What must an application do to produce visible OpenTelemetry traces?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+You configure the exporter but never run the instrumented checkout operation: no checkout span exists to display. Invoke it, then check span creation, sampling and export in that order if the trace is still missing.
+
+525 | m-65-2-1 | Domain 4 | OpenTelemetry og sporing
+What does configure_azure_monitor configure automatically?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from azure.monitor.opentelemetry import configure_azure_monitor
+    configure_azure_monitor()
+With azure-monitor-opentelemetry installed and APPLICATIONINSIGHTS_CONNECTION_STRING set, call this once during startup before handling work. It sets up the supported Azure Monitor pipeline/instrumentations. Creating additional manual instrumentation for the same library can duplicate telemetry.
+
+526 | m-65-5-1 | Domain 4 | OpenTelemetry og sporing
+How does the Azure Monitor Python exporter map span kinds to telemetry tables?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example observed span kinds
+    SERVER: POST /repairs → AppRequests
+    CLIENT: PostgreSQL query → AppDependencies
+The incoming HTTP handler is a server operation; its outgoing database call is a client operation. These are workspace table names; the Application Insights resource view calls them requests and dependencies.
+
+527 | m-66-2-1 | Domain 4 | OpenTelemetry og sporing
+What are the Python names of common OpenTelemetry samplers?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+528 | m-66-3-1 | Domain 4 | OpenTelemetry og sporing
+Which standard OTEL_TRACES_SAMPLER values select ratio sampling?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Environment variables
+    OTEL_TRACES_SAMPLER=parentbased_traceidratio
+    OTEL_TRACES_SAMPLER_ARG=0.1
+Set these before initializing a distribution that honors the standard settings. New root traces use a roughly 10% ratio; child spans follow the configured parent-based rules. The argument is a fraction, not the number 10.
+
+529 | m-66-4-1 | Domain 4 | OpenTelemetry og sporing
+Which Azure Monitor-specific sampler environment settings are available?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Environment variables
+    OTEL_TRACES_SAMPLER=microsoft.rate_limited
+    OTEL_TRACES_SAMPLER_ARG=5.0
+In a supporting Azure Monitor distribution, this requests an approximate five-traces-per-second target. If you choose microsoft.fixed_percentage instead, an argument of 0.1 means about 10%; the argument’s interpretation depends on the selected sampler.
+
+530 | m-66-5-1 | Domain 4 | OpenTelemetry og sporing
+Which OpenTelemetry sampler honors a parent's sampling decision?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+531 | m-66-5-2 | Domain 4 | OpenTelemetry og sporing
+How does TraceIdRatioBased choose which traces to retain?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+532 | m-66-6-1 | Domain 4 | OpenTelemetry og sporing
+What default sampling behavior should you check in the Azure Monitor Python distro?
+Decision: not needed. The answer is explicitly about a version-sensitive distribution default and already explains its unit; another example would repeat it.
+
+533 | m-67-1-1 | Domain 4 | OpenTelemetry og sporing
+Which Python OpenTelemetry sampler records all spans during local testing?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from opentelemetry.sdk.trace import TracerProvider
+    from opentelemetry.sdk.trace.sampling import ALWAYS_ON
+    provider = TracerProvider(sampler=ALWAYS_ON)
+This provider samples every span it evaluates. Register it and attach processors/exporters to view telemetry; this is useful for local debugging and does not recover spans another process has already dropped.
+
+534 | m-67-2-1 | Domain 4 | OpenTelemetry og sporing
+Which OpenTelemetry sampler keeps approximately 10% of traces?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+535 | m-67-3-1 | Domain 4 | OpenTelemetry og sporing
+Where is an OpenTelemetry sampler configured?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+536 | m-67-4-1 | Domain 4 | OpenTelemetry og sporing
+How does Azure Monitor fixed-percentage sampling help coordinate trace selection across services?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Python
+    from azure.monitor.opentelemetry import configure_azure_monitor
+    configure_azure_monitor(sampling_ratio=0.1)
+For a supporting Azure Monitor Python distro, initialize once with the same fixed ratio in cooperating services and propagate their trace context. This requests about 10%; incompatible strategies or sampler overrides can prevent coordinated selection.
+
+537 | m-67-5-1 | Domain 4 | OpenTelemetry og sporing
+Are metrics reduced by trace sampling?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An application increments an independent request counter for all 100 requests, while ratio sampling retains traces for roughly 10 of them. The counter still records 100; trace sampling does not remove those metric measurements. Metrics derived from sampled spans are a different pipeline.
+
+538 | m-68-1-1 | Domain 4 | OpenTelemetry og sporing
+Which W3C header carries trace context between HTTP services?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: HTTP header
+    traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
+The parts are version 00, a 32-hex-digit trace ID, a 16-hex-digit sending span ID and flags 01 indicating sampled. The receiver continues that trace and creates its own span; it does not reuse the sender’s span ID.
+
+539 | m-68-2-1 | Domain 4 | OpenTelemetry og sporing
+Does creating a span automatically propagate context to another process?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Service A creates a span and calls B without sending trace context. B can record a separate trace, but cannot infer that A was its parent. Injecting traceparent and extracting it at B connects the two operations.
+
+540 | m-68-3-1 | Domain 4 | OpenTelemetry og sporing
+How is OpenTelemetry context propagated through an outbound Python HTTP call?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+541 | prep-kv-002 | Domain 4 | Key Vault
+Which Key Vault capability retains deleted objects for possible recovery?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+With a configured 30-day retention period, deleting a secret leaves it recoverable during that period, subject to permissions and no earlier permanent purge. Soft delete is the recovery window; it is not a permanent backup.
+
+542 | prep-kv-009 | Domain 4 | Key Vault
+What does Key Vault purge protection prevent?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A vault has 30-day retention and purge protection. After a secret is deleted, even an administrator must wait for that retention period before permanently purging it. Authorized recovery is still possible during retention.
+
+543 | prep-kv-013 | Domain 4 | Key Vault
+Which Key Vault diagnostic category records data-plane access such as secret reads?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: KQL · resource-specific destination
+    AZKVAuditLogs | where OperationName == "SecretGet"
+When Key Vault AuditEvent logs are routed to a workspace using resource-specific tables, this selects secret-read audit events. Inspect their result fields to investigate failures. With the legacy AzureDiagnostics destination, the table/schema is different.
+
+544 | prep-p-kv-023 | Domain 4 | Key Vault
+How should a private package-feed token be supplied during a container build?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+545 | prep-c-tw-003 | Domain 4 | Key Vault
+How can a credential rotation avoid immediately breaking clients that still hold the old value?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+546 | prep-rbac-001 | Domain 4 | Identitet og RBAC
+How do Azure Owner and Contributor differ in access management?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+A Contributor can deploy an app in its resource group but cannot use that role alone to grant the app a data-access role. An Owner at the applicable scope can create that role assignment.
+
+547 | prep-rbac-003 | Domain 4 | Identitet og RBAC
+What is the Azure RBAC scope hierarchy from broadest to narrowest?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+548 | prep-p-rbac-003 | Domain 4 | Identitet og RBAC
+How do Azure RBAC allow assignments combine across scopes?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Sam has Contributor on a resource group and Reader on one app inside it. The app-level Reader assignment does not downgrade the inherited Contributor grant; both applicable grants contribute permissions.
+
+549 | prep-p-rbac-007 | Domain 4 | Identitet og RBAC
+Which Azure data-plane role permits an app identity to read Blob content?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An image-processing app needs to download photos from one blob container. Assign its identity Storage Blob Data Reader at that container, then use a token-authenticated Blob client. It can read those blobs without gaining write/delete permission from this role.
+
+550 | prep-p-rbac-023 | Domain 4 | Identitet og RBAC
+How can a CI pipeline authenticate to Azure without storing a long-lived client secret?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: GitHub Actions federated subject example
+    repo:contoso/repairs:ref:refs/heads/main
+A federated credential can trust this repository/branch subject from GitHub’s configured token issuer with the expected audience. A different branch has a different subject and does not match this trust entry.
+
+551 | prep-p-rbac-020 | Domain 4 | Identitet og RBAC
+What can an Azure ABAC condition add to a supported role assignment?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+552 | prep-rbac-027 | Domain 4 | Identitet og RBAC
+What does an Entra sign-in log reveal about an authentication attempt?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+An employee cannot sign in because a Conditional Access policy requires a compliant device. The sign-in log can identify the failed policy. If sign-in succeeds but a later blob read is forbidden, inspect that service’s access configuration and logs too.
+
+553 | prep-mon-003 | Domain 4 | Azure Monitor og Application Insights
+How do Azure Monitor metrics differ from logs?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+554 | prep-p-mon-009 | Domain 4 | Azure Monitor og Application Insights
+What routes supported Azure resource platform logs to Log Analytics, Storage or Event Hubs?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Enable Key Vault’s supported audit category in a diagnostic setting and select a Log Analytics workspace as the destination. Secret-read audit records can then be queried there; this does not instrument the code of an app that calls the vault.
+
+555 | prep-mon-019 | Domain 4 | Azure Monitor og Application Insights
+Which Log Analytics table contains Azure Activity Log records when collected?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+556 | prep-p-mon-017 | Domain 4 | Azure Monitor og Application Insights
+Why can a telemetry ingestion daily cap hide later incidents?
+Decision: added. Added a short scenario with a visible result.
+Example: Scenario
+Eligible ingestion reaches the daily cap before an evening outage. The app can still fail while later diagnostic records are missing from the workspace. An empty query result during that gap does not prove the app was healthy.
+
+557 | prep-mon-021 | Domain 4 | Azure Monitor og Application Insights
+Which KQL function references another Log Analytics workspace?
+Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
+
+558 | prep-mon-028 | Domain 4 | Azure Monitor og Application Insights
+What does Application Insights Application Map visualize?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: Example application map
+    web-frontend → repairs-api → PostgreSQL
+With appropriate instrumentation, service names and trace propagation, the map can show the frontend’s API dependency and the API’s database dependency, including available duration/failure information. An unobserved call may be absent from the map.
+
+559 | prep-p-mon-013 | Domain 4 | Azure Monitor og Application Insights
+Which Application Insights query table stores custom metric telemetry?
+Decision: added. Added a concrete value, command or small configuration example.
+Example: KQL · workspace custom metric
+    AppMetrics | where Name == "repairs.queue.length"
+This selects standalone custom metric telemetry published with that name. It is not a query of request records’ custom measurement fields. In the Application Insights resource schema, use customMetrics with its corresponding lowercase field names.
+
