@@ -26,7 +26,7 @@
     .filter-panel{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin-top:20px;box-shadow:var(--shadow)}
     .panel-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}.panel-top h2{font-size:20px;margin:0;letter-spacing:-.4px}
     .tools{display:flex;gap:9px;flex-wrap:wrap}.tools button,.bar-btn{border:1px solid #b9d1e6;border-radius:9px;background:#f4f8fc;color:#1d466d;font-weight:700;padding:8px 12px;font-size:13px}
-    .tools button:hover,.bar-btn:hover{background:#e3f0fd}.filter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.field.search-field{grid-column:1/-1}
+    .tools button:hover,.bar-btn:hover{background:#e3f0fd}.filter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field.search-field{grid-column:1/-1}
     label.field{display:block;font-weight:700;color:#4f6178;font-size:12px}label.field select,label.field input{display:block;margin-top:5px;width:100%;border:1px solid #cbd8e6;padding:11px 13px;background:#fff;border-radius:9px;color:var(--ink);min-height:46px}
     .term-option{display:flex;align-items:flex-start;gap:10px;margin:16px 0 0;font-size:14px;font-weight:650;cursor:pointer}.term-option input{width:18px;height:18px;flex-shrink:0;margin:3px 0 0;accent-color:var(--accent)}.term-help{margin:5px 0 0 28px;color:var(--muted);font-size:12px}
     [data-importance="terms"]{--importance-ink:#176755;--importance-edge:#469b84;--importance-border:#b8ddcf;--importance-soft:#ddf3e9;--importance-surface:#eff9f4}
@@ -36,6 +36,9 @@
     .importance-filter{border:0;padding:0;margin:20px 0 0;min-width:0}.importance-filter legend{padding:0;margin-bottom:9px;font-size:14px;font-weight:750}.importance-options{display:flex;gap:10px;flex-wrap:wrap}
     .importance-option{display:flex;align-items:center;gap:9px;cursor:pointer;border:1px solid var(--importance-border);background:var(--importance-surface);color:var(--importance-ink);padding:10px 13px;border-radius:10px;font-size:14px;font-weight:700}
     .importance-option input{width:18px;height:18px;margin:0;accent-color:var(--importance-ink);flex-shrink:0}.importance-count{font-size:12px;font-variant-numeric:tabular-nums}.importance-help{font-size:12px;color:var(--muted);margin:9px 0 0;max-width:900px}
+    .rating-filter{border:0;padding:0;margin:20px 0 0;min-width:0}.rating-filter legend{padding:0;margin-bottom:9px;font-size:14px;font-weight:750}.rating-options{display:flex;gap:10px;flex-wrap:wrap}
+    .rating-option{display:flex;align-items:center;gap:9px;cursor:pointer;border:1px solid #ccd7e3;background:#f3f6fa;color:#43566d;padding:10px 13px;border-radius:10px;font-size:14px;font-weight:700}.rating-option[data-rating="review"]{border-color:#e7c187;background:#fff7eb;color:#8c5816}.rating-option[data-rating="known"]{border-color:#94d1af;background:#eaf8f0;color:#17633e}
+    .rating-option input{width:18px;height:18px;margin:0;color:inherit;accent-color:currentColor;flex-shrink:0}.rating-count{font-size:12px;font-variant-numeric:tabular-nums}
     .importance-tag{display:inline-flex;align-items:center;gap:5px;background:var(--importance-soft);border:1px solid var(--importance-border);color:var(--importance-ink);border-radius:30px;padding:4px 10px;margin:0 0 16px;font-size:12px;font-weight:800;line-height:1.4}
     .progress-line{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:18px 0 8px;color:var(--muted);font-size:13px}
     .progress-breakdown{display:flex;flex-wrap:wrap;gap:6px 18px}.progress-status{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-variant-numeric:tabular-nums}.progress-status strong{color:var(--ink)}.progress-total{font-size:12px}
@@ -52,6 +55,10 @@
     .card-hint{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#687a90;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
     .card-link-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;text-transform:none;letter-spacing:normal}.card-link-tools a{color:#52657c}.card-link-tools button{border:1px solid #cbd8e6;background:#fff;border-radius:7px;padding:5px 8px;min-height:32px;font-size:12px;font-weight:700;color:#245b91}
     .card-link-status{margin:7px 2px;color:var(--muted);font-size:12px}.card-link-status:empty{margin:0}.card-link-fallback{margin:12px 0}.card-link-fallback input{display:block;width:100%;padding:10px;border:1px solid #cbd8e6;border-radius:8px;font-size:13px}.card-link-fallback label{font-size:12px;font-weight:700}
+    .share-dialog{width:min(520px,calc(100vw - 26px));max-height:calc(100dvh - 32px);overflow:auto;padding:22px;border:1px solid #cbd8e6;border-radius:16px;background:#fff;color:var(--ink);box-shadow:var(--shadow)}.share-dialog::backdrop{background:rgba(7,28,55,.5)}
+    .share-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.share-dialog h2{font-size:22px;line-height:1.3;margin:0}.share-question{font-size:16px;line-height:1.5;overflow-wrap:anywhere;margin:16px 0}
+    .share-dialog label{font-size:12px;font-weight:700;color:var(--muted)}.share-dialog input,.share-dialog textarea{display:block;width:100%;margin:6px 0 0;padding:10px;border:1px solid #cbd8e6;border-radius:8px;background:#f5f8fc;color:var(--ink);font:13px/1.5 system-ui,sans-serif;overflow-wrap:anywhere}.share-dialog textarea{resize:vertical}
+    .share-copy-tools{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}.share-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.share-links a,.share-links button{text-align:center;display:block;min-height:44px;border:1px solid #c6d7e8;border-radius:9px;background:#f4f8fc;color:#254b70;padding:10px;text-decoration:none;font-size:14px;font-weight:700}.share-links a:hover,.share-links button:hover{background:#e3f0fd}.share-dialog .bar-btn{min-height:40px}.share-help,.share-status{font-size:12px;color:var(--muted);margin:12px 0 0}.share-status:empty{margin:0}.share-copy-fallback{margin-top:12px}
     .card-title{font-size:clamp(24px,3.6vw,33px);line-height:1.24;letter-spacing:-.8px;margin:0 0 17px}.question{font-size:clamp(18px,2.5vw,23px);line-height:1.55;max-width:860px;margin:0}
     .answer-prose{white-space:pre-wrap;line-height:1.6;color:#26364a;overflow-wrap:anywhere}.flip-tip{margin-top:34px;color:#62768d;font-size:13px}
     .card-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px;flex-wrap:wrap}
@@ -119,11 +126,6 @@
         <label class="field">Kortsett
           <select id="source-filter"><option value="all">Alle kortsett</option><option value="original">Opprinnelige, delt opp (294)</option><option value="prep">Fra spørsmålsbanken (113)</option><option value="terms" id="terms-source-option">Bare begrepskort</option></select>
         </label>
-        <label class="field">Status
-          <select id="status-filter">
-            <option value="all">Alle kort</option><option value="new">Ikke vurdert</option><option value="review">Må repetere</option><option value="known">Kan dette</option>
-          </select>
-        </label>
         <label class="field">Workshopdekning
           <select id="workshop-filter"><option value="all">Alle kort</option><option value="covered">Dekket av en oppgave</option><option value="practical">Praktisk oppgave</option><option value="analysis">Analyseoppgave</option><option value="review">Kun repetisjon</option></select>
         </label>
@@ -141,10 +143,17 @@
         </div>
         <p id="importance-help" class="importance-help">Terms: begreper og definisjoner. Critical: hovedprinsipper og sentrale valg. Important: praktiske kommandoer, kode og konfigurasjon. Esoteric: eksakte standardverdier, porter og smale detaljer. Prioriteringen er vår faglige vurdering ut fra <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">læringsmålene</a>. Valgene huskes på denne enheten.</p>
       </fieldset>
+      <fieldset class="rating-filter" data-no-jargon aria-describedby="rating-help">
+        <legend>Ta med vurderinger</legend>
+        <div class="rating-options" lang="en">
+          <label class="rating-option" data-rating="new"><input id="include-rating-new" type="checkbox" checked><span class="status-dot new" aria-hidden="true"></span><span>Unrated <span class="rating-count">(<span id="rating-new-count">559</span>)</span></span></label>
+          <label class="rating-option" data-rating="review"><input id="include-rating-review" type="checkbox" checked><span class="status-dot review" aria-hidden="true"></span><span>Needs repeat <span class="rating-count">(<span id="rating-review-count">0</span>)</span></span></label>
+          <label class="rating-option" data-rating="known"><input id="include-rating-known" type="checkbox" checked><span class="status-dot known" aria-hidden="true"></span><span>Know this <span class="rating-count">(<span id="rating-known-count">0</span>)</span></span></label>
+        </div>
+        <p id="rating-help" class="importance-help">Velg én eller flere vurderinger. Valgene huskes på denne enheten. Du kan angre siste vurdering under kortet.</p>
+      </fieldset>
       <label class="term-option" for="disable-tooltips" data-no-jargon><input id="disable-tooltips" type="checkbox" aria-describedby="tooltip-help"><span>Disable tooltips</span></label>
       <p id="tooltip-help" class="term-help" data-no-jargon>Slå av begrepsforklaringer på flashcardsiden. Valget huskes på denne enheten.</p>
-      <label class="term-option" for="skip-rated" data-no-jargon><input id="skip-rated" type="checkbox" aria-describedby="rated-help"><span>Skip rated cards</span></label>
-      <p id="rated-help" class="term-help" data-no-jargon>Neste og → hopper frem til neste uvurderte kort når det finnes. Forrige lar deg gå tilbake til kort du har sett. Alle kort beholdes i utvalget, og du kan fjerne en vurdering.</p>
       <div class="progress-line" data-no-jargon>
         <div class="progress-breakdown" id="progress-description" aria-live="polite" aria-atomic="true">
           <span class="progress-status"><span class="status-dot known" aria-hidden="true"></span><span>Kan dette: <strong id="progress-known">0 (0 %)</strong></span></span>
@@ -163,7 +172,7 @@
       <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domene 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Ikke vurdert</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Plass 1 av 559 i køen</span><form id="card-jump" class="card-jump" data-no-jargon><label for="card-number">Gå til kort #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Gå</button></form></div></div>
       <p id="jump-help" class="term-help" data-no-jargon>Bruk kortets faste nummer, for eksempel 35. Hoppet viser kortet selv om det er vurdert eller skjult av et filter, og fortsetter i nummerrekkefølge.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
-        <div class="card-hint"><span id="card-face-label">Spørsmål</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direktelenke til kortet">Kort #01</a><button id="copy-card-link" type="button">Kopier lenke</button></div></div>
+        <div class="card-hint"><span id="card-face-label">Spørsmål</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direktelenke til kortet">Kort #01</a><button id="copy-card-link" type="button">Kopier lenke</button><button id="share-card" type="button" aria-haspopup="dialog" aria-controls="card-share-dialog">Del</button></div></div>
         <p id="importance-tag" class="importance-tag" lang="en" data-no-jargon></p>
         <h2 class="card-title" id="card-title"></h2>
         <div id="card-content"></div>
@@ -173,6 +182,23 @@
       <p id="card-reference" class="card-reference"></p>
       <p id="card-link-status" class="card-link-status" role="status" data-no-jargon></p>
       <div id="card-link-fallback" class="card-link-fallback" data-no-jargon hidden><label for="card-link-value">Direktelenke – kopier den markerte teksten</label><input id="card-link-value" type="text" readonly spellcheck="false"></div>
+      <dialog id="card-share-dialog" class="share-dialog" aria-labelledby="card-share-title" data-no-jargon>
+        <div class="share-dialog-head"><h2 id="card-share-title">Del kort</h2><button id="card-share-close" class="bar-btn" type="button" autofocus>Lukk</button></div>
+        <p id="card-share-question" class="share-question" lang="en"></p>
+        <label for="card-share-url">Direktelenke</label><input id="card-share-url" type="text" readonly spellcheck="false">
+        <div class="share-copy-tools"><button id="card-share-copy-link" class="bar-btn" type="button">Kopier lenke</button><button id="card-share-copy-text" class="bar-btn" type="button">Kopier spørsmål og lenke</button></div>
+        <div class="share-links">
+          <a id="card-share-email">E-post</a>
+          <a id="card-share-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a id="card-share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          <a id="card-share-telegram" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+          <a id="card-share-x" target="_blank" rel="noopener noreferrer">X ↗</a>
+          <button id="card-share-native" type="button" hidden>Flere apper…</button>
+        </div>
+        <p class="share-help">Velg mottaker og fullfør delingen i appen du åpner. «Kopier spørsmål og lenke» gir en tekst du kan lime inn i en chat.</p>
+        <div id="card-share-copy-fallback" class="share-copy-fallback" hidden><label for="card-share-copy-value">Kopier den markerte teksten</label><textarea id="card-share-copy-value" rows="4" readonly spellcheck="false"></textarea></div>
+        <p id="card-share-status" class="share-status" role="status"></p>
+      </dialog>
       <div id="empty" class="empty" hidden>Ingen kort matcher filtrene. Prøv et annet domene, en annen status eller et nytt søk.</div>
       <div class="card-actions" id="card-actions">
         <div class="navigation"><button class="btn" id="previous" type="button">← Forrige</button><button class="btn primary" id="flip" type="button">Vis svar</button><button class="btn" id="next" type="button">Neste →</button></div>
@@ -202,6 +228,7 @@
     const STORAGE_KEY = 'ai-200-study-flashcards-progress-v2';
     const LEGACY_STORAGE_KEY = 'ai-200-study-flashcards-progress-v1';
     const PREFERENCES_KEY = 'ai-200-study-flashcards-preferences-v1';
+    const RATING_STATUSES = ['new','review','known'];
     const TERM_CATEGORIES = new Set(DECK.categories.filter(category=>category.kind==='term').map(category=>category.id));
     const VALID_IDS = new Set(CARDS.map(card=>card.id));
     let storageAvailable = true;
@@ -233,7 +260,12 @@
     const originalById = new Map(CARDS.map(card=>[card.id,card]));
     try{
       const preferences=parseState(localStorage.getItem(PREFERENCES_KEY));
-      $('skip-rated').checked=preferences.skipRated===true;
+      let ratings=RATING_STATUSES;
+      if(Array.isArray(preferences.ratingStatuses)){
+        const valid=preferences.ratingStatuses.filter(status=>RATING_STATUSES.includes(status));
+        if(valid.length||preferences.ratingStatuses.length===0)ratings=valid;
+      }else if(preferences.skipRated===true)ratings=['new'];
+      for(const status of RATING_STATUSES)$('include-rating-'+status).checked=ratings.includes(status);
       let selected=Object.keys(IMPORTANCE_LEVELS);
       if(Array.isArray(preferences.importanceLevels)){
         const valid=preferences.importanceLevels.filter(level=>Object.hasOwn(IMPORTANCE_LEVELS,level));
@@ -252,8 +284,10 @@
     function importanceLevel(card){return Object.hasOwn(IMPORTANCE_LEVELS,card.importance?.level)?card.importance.level:'important';}
     function selectedImportance(){return Object.keys(IMPORTANCE_LEVELS).filter(level=>$('include-'+level).checked);}
     function matchesImportance(card){return $('include-'+importanceLevel(card)).checked;}
+    function selectedRatings(){return RATING_STATUSES.filter(status=>$('include-rating-'+status).checked);}
+    function matchesRating(card){return $('include-rating-'+getStatus(card)).checked;}
     function studyCards(){return CARDS.filter(matchesImportance);}
-    function savePreferences(){try{localStorage.setItem(PREFERENCES_KEY,JSON.stringify({skipRated:$('skip-rated').checked,importanceVersion:2,importanceLevels:selectedImportance()}));}catch{storageAvailable=false;}}
+    function savePreferences(){try{localStorage.setItem(PREFERENCES_KEY,JSON.stringify({importanceVersion:2,importanceLevels:selectedImportance(),ratingStatuses:selectedRatings()}));}catch{storageAvailable=false;}}
     function current(){return list[position]||null;}
     function getStatus(card){return progress[card.id]||'new';}
     function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));storageAvailable=true;}catch{storageAvailable=false;}}
@@ -263,6 +297,9 @@
       const available=Object.fromEntries(Object.keys(IMPORTANCE_LEVELS).map(level=>[level,0]));
       for(const card of filtered(true))available[importanceLevel(card)]++;
       for(const level of Object.keys(IMPORTANCE_LEVELS))$('importance-'+level+'-count').textContent=available[level];
+      const ratings={known:0,review:0,new:0};
+      for(const card of filtered(false,true))ratings[getStatus(card)]++;
+      for(const status of RATING_STATUSES)$('rating-'+status+'-count').textContent=ratings[status];
       $('total').textContent=total;
       $('storage-note').textContent=storageAvailable?'Fremdriften lagres lokalt i nettleseren på denne enheten.':'Nettleseren tillater ikke lagring. Markeringene gjelder bare til siden lukkes.';
       const c=counts(),labels={known:'Kan dette',review:'Må repetere',new:'Ikke vurdert'};
@@ -280,14 +317,14 @@
       $('progress-total').textContent=`Av ${total} kort i valgte kortgrupper`;
       $('progress-track').setAttribute('aria-label',`Av ${total} kort: ${description.join('. ')}.`);
     }
-    function filtered(ignoreImportance=false){
-      const domain=$('domain-filter').value,category=$('category-filter').value,source=$('source-filter').value,status=$('status-filter').value,workshop=$('workshop-filter').value,q=$('search').value.trim().toLocaleLowerCase();
+    function filtered(ignoreImportance=false,ignoreRating=false){
+      const domain=$('domain-filter').value,category=$('category-filter').value,source=$('source-filter').value,workshop=$('workshop-filter').value,q=$('search').value.trim().toLocaleLowerCase();
       const order=shuffledIds?shuffledIds.map(id=>originalById.get(id)):CARDS;
       return order.filter(c=> (ignoreImportance||matchesImportance(c))
         &&(domain==='all'||String(c.domain)===domain)
         &&(category==='all'||c.category===category)
         &&(source==='all'||(source==='terms'?isTerm(c):c.origin===source))
-        &&(status==='all'||getStatus(c)===status)
+        &&(ignoreRating||matchesRating(c))
         &&matchesWorkshop(c,workshop)
         &&(!q||[CATEGORY_BY_ID.get(c.category).label,c.title,c.question,...c.answers].join(' ').toLocaleLowerCase().includes(q)));
     }
@@ -305,10 +342,67 @@
       if(card)url.searchParams.set('card',card.id);
       return url;
     }
+    function shareURL(card){
+      const local=['localhost','127.0.0.1','[::1]'].includes(location.hostname);
+      if(['http:','https:'].includes(location.protocol)&&!local)return cardURL(card,true);
+      const url=new URL('https://www.tubalabs.org/ai200/flashcards.html');
+      url.searchParams.set('card',card.id);url.hash='card';
+      return url;
+    }
+    function shareData(card){return {title:'AI-200 · '+card.title,text:card.question,url:shareURL(card).href};}
+    function shareMessage(card){return `AI-200 · Kort #${CARD_NUMBERS.get(card.id)} · ${card.title}\n${card.question}\n\n${shareURL(card).href}`;}
+    function setShareLink(id,base,parameters){
+      const url=new URL(base);
+      for(const [key,value] of Object.entries(parameters))url.searchParams.set(key,value);
+      $(id).href=url.href;
+    }
+    function openCardShare(){
+      const card=current();if(!card)return;
+      const data=shareData(card),dialog=$('card-share-dialog');
+      dialog.dataset.cardId=card.id;
+      $('card-share-title').textContent='Del kort #'+String(CARD_NUMBERS.get(card.id)).padStart(3,'0');
+      $('card-share-question').textContent=card.question;
+      $('card-share-url').value=data.url;
+      $('card-share-status').textContent='';$('card-share-copy-fallback').hidden=true;
+      $('card-share-email').href='mailto:?subject='+encodeURIComponent(data.title)+'&body='+encodeURIComponent(shareMessage(card));
+      setShareLink('card-share-linkedin','https://www.linkedin.com/sharing/share-offsite/',{url:data.url});
+      setShareLink('card-share-whatsapp','https://wa.me/',{text:shareMessage(card)});
+      setShareLink('card-share-telegram','https://t.me/share/url',{url:data.url,text:card.question});
+      setShareLink('card-share-x','https://twitter.com/intent/tweet',{url:data.url,text:card.question});
+      $('card-share-native').hidden=typeof navigator.share!=='function';
+      if(!dialog.open)dialog.showModal();
+    }
+    async function copyShare(text=false){
+      const card=current();if(!card)return;
+      const value=text?shareMessage(card):shareURL(card).href;
+      try{
+        if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(value);
+        if(current()?.id===card.id)$('card-share-status').textContent=text?'Spørsmålet og lenken er kopiert.':'Lenken er kopiert.';
+      }catch{
+        if(current()?.id!==card.id)return;
+        const field=text?$('card-share-copy-value'):$('card-share-url');
+        if(text)$('card-share-copy-fallback').hidden=false;
+        field.value=value;field.focus();field.select();
+        $('card-share-status').textContent='Kopier den markerte teksten.';
+      }
+    }
+    async function shareWithDevice(){
+      const card=current();if(!card||typeof navigator.share!=='function')return;
+      $('card-share-native').disabled=true;
+      try{
+        await navigator.share(shareData(card));
+        if(current()?.id===card.id)$('card-share-status').textContent='Lenken er sendt til den valgte appen.';
+      }catch(error){
+        if(error.name!=='AbortError'&&current()?.id===card.id)$('card-share-status').textContent='Velg en tjeneste eller kopier lenken for å dele kortet.';
+      }finally{$('card-share-native').disabled=false;}
+    }
     function syncCardLink(card){
       $('card-link-status').textContent='';
       $('card-link-fallback').hidden=true;
       $('copy-card-link').disabled=!card;
+      $('share-card').disabled=!card;
+      if($('card-share-dialog').open&&$('card-share-dialog').dataset.cardId!==card?.id)$('card-share-dialog').close();
       if(card){
         $('card-id').href=cardURL(card,true).href;
         $('card-id').setAttribute('aria-label','Direktelenke til kort #'+CARD_NUMBERS.get(card.id));
@@ -322,7 +416,7 @@
     }
     async function copyCardLink(){
       const card=current();if(!card)return;
-      const url=cardURL(card,true).href;
+      const url=shareURL(card).href;
       try{
         if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
         await navigator.clipboard.writeText(url);
@@ -338,7 +432,6 @@
     function refresh(preferId){
       list=filtered();const preferred=preferId?list.findIndex(c=>c.id===preferId):-1;position=Math.max(0,preferred);flipped=false;
       backStack=[];
-      if(preferred<0&&shouldFastForward()){const first=list.findIndex(card=>getStatus(card)==='new');if(first>=0)position=first;}
       renderStats();renderCard();
     }
     function renderCard(){
@@ -356,7 +449,7 @@
       $('workshop-tag').hidden=empty||!assignment;
       if(empty){
         $('counter').textContent='0 kort i køen';
-        $('empty').textContent='Ingen kort matcher filtrene. Inkluder flere viktighetsnivåer, eller endre de andre filtrene.';
+        $('empty').textContent='Ingen kort matcher filtrene. Ta med flere kortgrupper eller vurderinger, eller endre de andre filtrene.';
         return;
       }
       const importance=importanceLevel(c);
@@ -396,7 +489,6 @@
       $('mark-review').setAttribute('aria-pressed',String(status==='review'));$('mark-known').setAttribute('aria-pressed',String(status==='known'));
     }
     function flip(){if(!current())return;flipped=!flipped;renderCard();}
-    function shouldFastForward(){return $('skip-rated').checked&&['all','new'].includes($('status-filter').value);}
     function visit(index){if(index!==position&&current())backStack.push(current().id);position=index;flipped=false;renderCard();}
     function move(step){
       if(!current())return;
@@ -406,7 +498,6 @@
         position=index>=0?index:Math.max(0,position-1);flipped=false;renderCard();return;
       }
       let index=position+1;
-      if(shouldFastForward()){const next=list.findIndex((card,i)=>i>position&&getStatus(card)==='new');if(next>=0)index=next;}
       visit(Math.min(list.length-1,index));
     }
     function mark(status){
@@ -424,8 +515,9 @@
       const previous=current()?.id;
       shuffledIds=null;$('shuffle').textContent='Bland kortene';
       $('include-'+importanceLevel(card)).checked=true;
+      $('include-rating-'+getStatus(card)).checked=true;
       if(!filtered().some(item=>item.id===card.id)){
-        for(const id of ['domain-filter','category-filter','source-filter','status-filter','workshop-filter'])$(id).value='all';
+        for(const id of ['domain-filter','category-filter','source-filter','workshop-filter'])$(id).value='all';
         $('search').value='';
       }
       populateCategories();savePreferences();refresh(card.id);
@@ -444,6 +536,12 @@
     }
     $('flip').addEventListener('click',flip);
     $('copy-card-link').addEventListener('click',copyCardLink);
+    $('share-card').addEventListener('click',openCardShare);
+    $('card-share-close').addEventListener('click',()=>$('card-share-dialog').close());
+    $('card-share-dialog').addEventListener('close',()=>$('share-card').focus());
+    $('card-share-copy-link').addEventListener('click',()=>copyShare());
+    $('card-share-copy-text').addEventListener('click',()=>copyShare(true));
+    $('card-share-native').addEventListener('click',shareWithDevice);
     $('previous').addEventListener('click',()=>move(-1));$('next').addEventListener('click',()=>move(1));
     $('mark-review').addEventListener('click',()=>mark('review'));
     $('mark-known').addEventListener('click',()=>mark('known'));
@@ -470,20 +568,20 @@
       if([...$('category-filter').options].some(option=>option.value===previous))$('category-filter').value=previous;
     }
     $('domain-filter').addEventListener('change',()=>{populateCategories();refresh();});
-    $('skip-rated').addEventListener('change',()=>{
-      savePreferences();
-      if(shouldFastForward()&&current()&&getStatus(current())!=='new')move(1);
-    });
     for(const level of Object.keys(IMPORTANCE_LEVELS))$('include-'+level).addEventListener('change',()=>{
       const preferred=current()?.id;
       savePreferences();refresh(preferred);
     });
-    for(const id of ['category-filter','source-filter','status-filter','workshop-filter','search'])$(id).addEventListener(id==='search'?'input':'change',()=>refresh());
+    for(const status of RATING_STATUSES)$('include-rating-'+status).addEventListener('change',()=>{
+      const preferred=current()?.id;
+      savePreferences();refresh(preferred);
+    });
+    for(const id of ['category-filter','source-filter','workshop-filter','search'])$(id).addEventListener(id==='search'?'input':'change',()=>refresh());
     $('shuffle').addEventListener('click',shuffle);
     $('reset').addEventListener('click',()=>{if(!confirm('Vil du fjerne alle markeringene dine på denne enheten?'))return;for(const key of Object.keys(progress))delete progress[key];lastRating=null;save();refresh();});
     document.addEventListener('keydown',e=>{
       const active=document.activeElement;
-      if(e.altKey||e.ctrlKey||e.metaKey||active?.closest('[contenteditable]:not([contenteditable="false"]),.jargon-popover'))return;
+      if(e.altKey||e.ctrlKey||e.metaKey||$('card-share-dialog').open||active?.closest('[contenteditable]:not([contenteditable="false"]),.jargon-popover'))return;
       if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
         if(e.shiftKey||['SELECT','TEXTAREA'].includes(active?.tagName)||(active?.tagName==='INPUT'&&active.type!=='checkbox'))return;
         e.preventDefault();move(e.key==='ArrowLeft'?-1:1);return;
@@ -500,11 +598,16 @@
     const query=new URLSearchParams(location.search);
     // Explicit card or definition links reveal their group for this visit.
     const linkedCard=originalById.get(query.get('card'));
-    if(linkedCard)$('include-'+importanceLevel(linkedCard)).checked=true;
+    if(linkedCard){$('include-'+importanceLevel(linkedCard)).checked=true;$('include-rating-'+getStatus(linkedCard)).checked=true;}
     if(TERM_CATEGORIES.has(query.get('category'))||query.get('source')==='terms'){
       $('include-terms').checked=true;
     }
-    for(const [id,param] of [['domain-filter','domain'],['source-filter','source'],['status-filter','status'],['workshop-filter','workshop']]){
+    const linkedStatus=query.get('status');
+    if(RATING_STATUSES.includes(linkedStatus)||linkedStatus==='all'){
+      for(const status of RATING_STATUSES)$('include-rating-'+status).checked=linkedStatus==='all'||status===linkedStatus;
+      if(linkedCard)$('include-rating-'+getStatus(linkedCard)).checked=true;
+    }
+    for(const [id,param] of [['domain-filter','domain'],['source-filter','source'],['workshop-filter','workshop']]){
       const value=query.get(param);if([...$(id).options].some(option=>option.value===value))$(id).value=value;
     }
     populateCategories();
