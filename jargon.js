@@ -82,6 +82,28 @@
       link.rel = 'noopener noreferrer';
       container.append(link);
     }
+    if (example.table) {
+      const table = make('table', 'jargon-example-table');
+      table.append(make('caption', '', example.table.caption));
+      const head = make('thead', ''), headings = make('tr', '');
+      for (const label of example.table.headers) {
+        const cell = make('th', '', label);
+        cell.scope = 'col';
+        headings.append(cell);
+      }
+      head.append(headings);
+      const body = make('tbody', '');
+      for (const row of example.table.rows) {
+        const line = make('tr', ''), source = make('th', '', row[0]);
+        source.scope = 'row';
+        const value = make('td', '');
+        value.append(make('code', '', row[1]));
+        line.append(source, value);
+        body.append(line);
+      }
+      table.append(head, body);
+      container.append(table);
+    }
     const summary = make('p', '', example.summary);
     summary.lang = 'en';
     container.append(summary);

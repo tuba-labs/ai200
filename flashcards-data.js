@@ -16221,14 +16221,44 @@ window.AI200_FLASHCARDS = {
           "label": "Microsoft Learn · Event Grid filters",
           "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
           "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · Blob Storage event subjects",
+          "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage",
+          "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · Service Bus event subjects",
+          "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-service-bus",
+          "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · Container Registry event subjects",
+          "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-container-registry",
+          "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · Event Hubs event subjects",
+          "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-event-hubs",
+          "kind": "primary"
+        },
+        {
+          "label": "Microsoft Learn · Resource Group event subjects",
+          "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-resource-groups",
+          "kind": "primary"
         }
       ],
       "review": {
         "date": "2026-10-29",
         "status": "confirmed",
-        "note": "Checked full event-type matching, subject prefix/suffix fields and advanced operator names against event-filtering.",
+        "note": "Confirmed subject prefix/suffix filters and publisher-specific subject formats against the official source schemas; Event Hubs example applies to capture-file events.",
         "sources": [
-          "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering"
+          "https://learn.microsoft.com/en-us/azure/event-grid/event-filtering",
+          "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage",
+          "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-service-bus",
+          "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-container-registry",
+          "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-event-hubs",
+          "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-resource-groups"
         ]
       },
       "clarityReview": {
@@ -16244,8 +16274,41 @@ window.AI200_FLASHCARDS = {
       "example": {
         "mode": "inline",
         "language": "JSON · event-subscription filter",
-        "code": "{\"subjectBeginsWith\":\"/blobServices/default/containers/photos/blobs/\",\"subjectEndsWith\":\".jpg\"}",
-        "summary": "For Storage events, this selects matching blob subjects in the photos container with the requested suffix. These fields inspect the event subject rather than opening each blob."
+        "code": "{\"subjectBeginsWith\":\"/blobServices/default/containers/images/blobs/\",\"subjectEndsWith\":\".jpg\"}",
+        "summary": "These illustrative subjects vary by publisher and event type. The filter above selects .jpg blobs in images. The Event Hubs example is for a CaptureFileCreated event; custom applications choose their own subject paths. 123 is a placeholder subscription ID.",
+        "table": {
+          "caption": "Common Event Grid subjects",
+          "headers": [
+            "Event source",
+            "Example subject"
+          ],
+          "rows": [
+            [
+              "Blob Storage",
+              "/blobServices/default/containers/images/blobs/photo.jpg"
+            ],
+            [
+              "Service Bus",
+              "topics/orders/subscriptions/billing"
+            ],
+            [
+              "Container Registry",
+              "myapp:v1"
+            ],
+            [
+              "Event Hubs",
+              "eventhubs/myhub"
+            ],
+            [
+              "Resource Group events",
+              "/subscriptions/123/resourceGroups/production/providers/Microsoft.Compute/virtualMachines/vm1"
+            ],
+            [
+              "Custom application",
+              "/orders/customer-123/order-456"
+            ]
+          ]
+        }
       }
     },
     {

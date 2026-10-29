@@ -22,6 +22,7 @@
     .hero a{border:1px solid rgba(255,255,255,.3);padding:8px 13px;color:#f6fbff;text-decoration:none;border-radius:9px;font-size:14px;font-weight:700}
     main{padding:26px 0 70px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{background:#fff;border:1px solid var(--line);padding:18px;border-radius:13px}
     .stat strong{display:block;font-size:28px;line-height:1.2;color:var(--dark);font-variant-numeric:tabular-nums}.stat span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+    .stat .stat-percent{font-size:12px;font-weight:650;margin-top:4px;font-variant-numeric:tabular-nums}
     .filter-panel{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin-top:20px;box-shadow:var(--shadow)}
     .panel-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}.panel-top h2{font-size:20px;margin:0;letter-spacing:-.4px}
     .tools{display:flex;gap:9px;flex-wrap:wrap}.tools button,.bar-btn{border:1px solid #b9d1e6;border-radius:9px;background:#f4f8fc;color:#1d466d;font-weight:700;padding:8px 12px;font-size:13px}
@@ -36,8 +37,10 @@
     .importance-option{display:flex;align-items:center;gap:9px;cursor:pointer;border:1px solid var(--importance-border);background:var(--importance-surface);color:var(--importance-ink);padding:10px 13px;border-radius:10px;font-size:14px;font-weight:700}
     .importance-option input{width:18px;height:18px;margin:0;accent-color:var(--importance-ink);flex-shrink:0}.importance-count{font-size:12px;font-variant-numeric:tabular-nums}.importance-help{font-size:12px;color:var(--muted);margin:9px 0 0;max-width:900px}
     .importance-tag{display:inline-flex;align-items:center;gap:5px;background:var(--importance-soft);border:1px solid var(--importance-border);color:var(--importance-ink);border-radius:30px;padding:4px 10px;margin:0 0 16px;font-size:12px;font-weight:800;line-height:1.4}
-    .progress-line{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:18px 0 8px;color:var(--muted);font-size:13px}
-    .track{background:#e4edf8;overflow:hidden;height:9px;border-radius:20px}.fill{height:100%;width:0;background:#168268;border-radius:inherit;transition:width .2s ease}
+    .progress-line{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:18px 0 8px;color:var(--muted);font-size:13px}
+    .progress-breakdown{display:flex;flex-wrap:wrap;gap:6px 18px}.progress-status{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-variant-numeric:tabular-nums}.progress-status strong{color:var(--ink)}.progress-total{font-size:12px}
+    .status-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}.status-dot.known,.fill.known{background:#168268}.status-dot.review,.fill.review{background:#d49b35}.status-dot.new,.fill.new{background:#b3c1d1}
+    .track{display:flex;background:#e4edf8;overflow:hidden;height:14px;border-radius:20px}.fill{height:100%;width:0;flex:0 0 auto;transition:width .2s ease}
     .study{margin-top:20px}.study-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
     .meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.domain-tag{display:inline-block;background:var(--domain-light);color:var(--domain);border-radius:30px;font-weight:850;padding:5px 11px;font-size:12px}
     .category-tag{display:inline-block;background:#edf2f8;color:#344d67;border-radius:30px;font-weight:750;padding:5px 11px;font-size:12px}.card-reference{margin:12px 2px;color:var(--muted);font-size:13px}.card-reference a{margin-right:12px}.state-tag{display:inline-block;background:#edf2f8;color:#596a80;border-radius:30px;font-weight:750;padding:5px 11px;font-size:12px}.state-tag.review{background:#fff1dc;color:#89541c}.state-tag.known{background:#e5f6ed;color:#12633e}
@@ -96,9 +99,9 @@
   <main class="wrap" id="study">
     <section class="stats" aria-label="Fremdrift" aria-live="polite">
       <div class="stat"><strong id="total">559</strong><span>Kort totalt</span></div>
-      <div class="stat"><strong id="known-count">0</strong><span>Kan godt</span></div>
-      <div class="stat"><strong id="review-count">0</strong><span>Må repetere</span></div>
-      <div class="stat"><strong id="new-count">559</strong><span>Ikke vurdert ennå</span></div>
+      <div class="stat"><strong id="known-count">0</strong><span>Kan dette</span><span class="stat-percent" id="known-percent">0 % av totalen</span></div>
+      <div class="stat"><strong id="review-count">0</strong><span>Må repetere</span><span class="stat-percent" id="review-percent">0 % av totalen</span></div>
+      <div class="stat"><strong id="new-count">559</strong><span>Ikke vurdert</span><span class="stat-percent" id="new-percent">100 % av totalen</span></div>
     </section>
     <section class="filter-panel" aria-label="Filtrer kort">
       <div class="panel-top"><h2>Velg hva du vil øve på</h2>
@@ -118,7 +121,7 @@
         </label>
         <label class="field">Status
           <select id="status-filter">
-            <option value="all">Alle kort</option><option value="new">Ikke vurdert</option><option value="review">Må repetere</option><option value="known">Kan godt</option>
+            <option value="all">Alle kort</option><option value="new">Ikke vurdert</option><option value="review">Må repetere</option><option value="known">Kan dette</option>
           </select>
         </label>
         <label class="field">Workshopdekning
@@ -142,8 +145,19 @@
       <p id="tooltip-help" class="term-help" data-no-jargon>Slå av begrepsforklaringer på flashcardsiden. Valget huskes på denne enheten.</p>
       <label class="term-option" for="skip-rated" data-no-jargon><input id="skip-rated" type="checkbox" aria-describedby="rated-help"><span>Skip rated cards</span></label>
       <p id="rated-help" class="term-help" data-no-jargon>Neste og → hopper frem til neste uvurderte kort når det finnes. Forrige lar deg gå tilbake til kort du har sett. Alle kort beholdes i utvalget, og du kan fjerne en vurdering.</p>
-      <div class="progress-line"><span id="progress-description">0 av 559 kort vurdert</span><span id="progress-percent">0 %</span></div>
-      <div class="track" role="progressbar" aria-label="Andel vurderte kort" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track"><div class="fill" id="progress-fill"></div></div>
+      <div class="progress-line" data-no-jargon>
+        <div class="progress-breakdown" id="progress-description" aria-live="polite" aria-atomic="true">
+          <span class="progress-status"><span class="status-dot known" aria-hidden="true"></span><span>Kan dette: <strong id="progress-known">0 (0 %)</strong></span></span>
+          <span class="progress-status"><span class="status-dot review" aria-hidden="true"></span><span>Må repetere: <strong id="progress-review">0 (0 %)</strong></span></span>
+          <span class="progress-status"><span class="status-dot new" aria-hidden="true"></span><span>Ikke vurdert: <strong id="progress-new">559 (100 %)</strong></span></span>
+        </div>
+        <span class="progress-total" id="progress-total">Av 559 kort i valgte kortgrupper</span>
+      </div>
+      <div class="track" role="img" aria-label="Av 559 kort: Kan dette: 0 (0 %). Må repetere: 0 (0 %). Ikke vurdert: 559 (100 %)." id="progress-track">
+        <div class="fill known" id="progress-known-fill" aria-hidden="true"></div>
+        <div class="fill review" id="progress-review-fill" aria-hidden="true"></div>
+        <div class="fill new" id="progress-new-fill" style="width:100%" aria-hidden="true"></div>
+      </div>
     </section>
     <section class="study" aria-label="Flashcard">
       <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domene 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Ikke vurdert</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Plass 1 av 559 i køen</span><form id="card-jump" class="card-jump" data-no-jargon><label for="card-number">Gå til kort #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Gå</button></form></div></div>
@@ -251,10 +265,20 @@
       for(const level of Object.keys(IMPORTANCE_LEVELS))$('importance-'+level+'-count').textContent=available[level];
       $('total').textContent=total;
       $('storage-note').textContent=storageAvailable?'Fremdriften lagres lokalt i nettleseren på denne enheten.':'Nettleseren tillater ikke lagring. Markeringene gjelder bare til siden lukkes.';
-      const c=counts();$('known-count').textContent=c.known;$('review-count').textContent=c.review;$('new-count').textContent=c.new;
-      const assessed=c.known+c.review;const percent=total?Math.round(assessed/total*100):0;
-      $('progress-description').textContent=`${assessed} av ${total} kort vurdert`;
-      $('progress-percent').textContent=percent+' %';$('progress-fill').style.width=percent+'%';$('progress-track').setAttribute('aria-valuenow',String(percent));
+      const c=counts(),labels={known:'Kan dette',review:'Må repetere',new:'Ikke vurdert'};
+      const format=new Intl.NumberFormat('nb-NO',{maximumFractionDigits:1});
+      const description=[];
+      for(const status of ['known','review','new']){
+        const percent=total?c[status]/total*100:0;
+        const percentage=format.format(percent)+' %',summary=`${c[status]} (${percentage})`;
+        $(status+'-count').textContent=c[status];
+        $(status+'-percent').textContent=percentage+' av totalen';
+        $('progress-'+status).textContent=summary;
+        $('progress-'+status+'-fill').style.width=percent+'%';
+        description.push(labels[status]+': '+summary);
+      }
+      $('progress-total').textContent=`Av ${total} kort i valgte kortgrupper`;
+      $('progress-track').setAttribute('aria-label',`Av ${total} kort: ${description.join('. ')}.`);
     }
     function filtered(ignoreImportance=false){
       const domain=$('domain-filter').value,category=$('category-filter').value,source=$('source-filter').value,status=$('status-filter').value,workshop=$('workshop-filter').value,q=$('search').value.trim().toLocaleLowerCase();
@@ -344,7 +368,7 @@
       $('domain-tag').textContent=`Domene ${c.domain} · ${DOMAIN_NAMES[c.domain]}`;
       const [color,light]=DOMAIN_COLORS[c.domain];$('card').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain-light',light);
       const status=getStatus(c);$('state-tag').className='state-tag '+(status==='new'?'':status);
-      $('state-tag').textContent=status==='known'?'Kan godt':status==='review'?'Må repetere':'Ikke vurdert';
+      $('state-tag').textContent=status==='known'?'Kan dette':status==='review'?'Må repetere':'Ikke vurdert';
       $('card-id').textContent='Kort #'+String(CARD_NUMBERS.get(c.id)).padStart(3,'0');
       $('card-number').value=CARD_NUMBERS.get(c.id);
       $('category-tag').textContent=CATEGORY_BY_ID.get(c.category).label;

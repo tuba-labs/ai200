@@ -58,6 +58,13 @@
   font: 13px/1.55 ui-monospace, Consolas, monospace; text-align: left;
 }
 .jargon-example pre code { font: inherit; white-space: inherit; }
+.jargon-example-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 16px 0 8px; font-size: 13px; text-align: left; }
+.jargon-example-table caption { text-align: left; font: 700 14px/1.4 system-ui, sans-serif; color: #284e70; margin-bottom: 8px; }
+.jargon-example-table th,.jargon-example-table td { padding: 9px 10px; border: 1px solid #d5e2ed; vertical-align: top; overflow-wrap: anywhere; }
+.jargon-example-table thead { background: #f2f6fa; color: #284e70; }
+.jargon-example-table th:first-child { width: 30%; }
+.jargon-example-table tbody th { font-weight: 650; }
+.jargon-example-table td code { font: 12px/1.6 ui-monospace, Consolas, monospace; white-space: normal; overflow-wrap: anywhere; }
 .jargon-example p,.jargon-popover .jargon-example p { margin: 8px 0 0; font-size: 13px; color: #425c72; }
 .jargon-example-page { max-width: 1000px; }
 .jargon-example-page pre { max-height: none; }

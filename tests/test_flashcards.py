@@ -54,6 +54,15 @@ class FlashcardContentTests(unittest.TestCase):
                 self.assertTrue(example['language'].strip())
                 self.assertTrue(example['summary'].strip())
                 self.assertLessEqual(len(example['summary'].split()), 70)
+                if example.get('table'):
+                    table = example['table']
+                    self.assertTrue(table['caption'].strip())
+                    self.assertEqual(len(table['headers']), 2)
+                    self.assertTrue(all(label.strip() for label in table['headers']))
+                    self.assertTrue(table['rows'])
+                    for row in table['rows']:
+                        self.assertEqual(len(row), len(table['headers']))
+                        self.assertTrue(all(value.strip() for value in row))
                 if example['mode'] == 'scenario':
                     self.assertNotIn('code', example)
                     continue

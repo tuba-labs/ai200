@@ -1898,8 +1898,16 @@ This filter includes that complete event-type name. It is an array of selected t
 What can an Event Grid subject filter match?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: JSON · event-subscription filter
-    {"subjectBeginsWith":"/blobServices/default/containers/photos/blobs/","subjectEndsWith":".jpg"}
-For Storage events, this selects matching blob subjects in the photos container with the requested suffix. These fields inspect the event subject rather than opening each blob.
+    {"subjectBeginsWith":"/blobServices/default/containers/images/blobs/","subjectEndsWith":".jpg"}
+Common Event Grid subjects
+Event source | Example subject
+Blob Storage | /blobServices/default/containers/images/blobs/photo.jpg
+Service Bus | topics/orders/subscriptions/billing
+Container Registry | myapp:v1
+Event Hubs | eventhubs/myhub
+Resource Group events | /subscriptions/123/resourceGroups/production/providers/Microsoft.Compute/virtualMachines/vm1
+Custom application | /orders/customer-123/order-456
+These illustrative subjects vary by publisher and event type. The filter above selects .jpg blobs in images. The Event Hubs example is for a CaptureFileCreated event; custom applications choose their own subject paths. 123 is a placeholder subscription ID.
 
 350 | m-40-3-1 | Domain 3 | Event Grid
 Which Event Grid filter can inspect fields inside event data?

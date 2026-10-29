@@ -130,6 +130,13 @@ def render_example(example, prefix):
                 f'Se hele eksemplet i {escape(example["language"])} (ny fane) ↗</a>')
     else:
         body = ''
+    if example.get('table'):
+        table = example['table']
+        headers = ''.join(f'<th scope="col">{escape(label)}</th>' for label in table['headers'])
+        rows = ''.join(f'<tr><th scope="row">{escape(source)}</th><td><code>{escape(value)}</code></td></tr>'
+                       for source, value in table['rows'])
+        body += (f'<table class="jargon-example-table"><caption>{escape(table["caption"])}</caption>'
+                 f'<thead><tr>{headers}</tr></thead><tbody>{rows}</tbody></table>')
     return (f'<section class="jargon-example" data-no-jargon><h3>Eksempel · {escape(example["language"])}</h3>'
             + body + f'<p lang="en">{escape(example["summary"])}</p></section>')
 
