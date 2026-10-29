@@ -151,6 +151,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -185,6 +190,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -219,6 +229,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -259,6 +274,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -293,6 +313,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -327,6 +352,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -367,6 +397,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -407,6 +442,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -441,6 +481,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -481,6 +526,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -515,6 +565,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -549,6 +604,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -583,6 +643,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -623,6 +688,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -657,6 +727,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -691,6 +766,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -725,6 +805,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -759,6 +844,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -793,6 +883,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -833,6 +928,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -867,6 +967,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -901,6 +1006,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -935,6 +1045,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -969,6 +1084,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1009,6 +1129,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1043,6 +1168,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1077,6 +1207,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1111,6 +1246,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1145,6 +1285,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1179,6 +1324,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1213,6 +1363,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1247,6 +1402,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1281,6 +1441,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1321,6 +1486,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1355,6 +1525,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1389,6 +1564,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1423,6 +1603,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1457,6 +1642,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1491,6 +1681,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1525,6 +1720,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1559,6 +1759,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1593,6 +1798,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1627,6 +1837,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1667,6 +1882,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1701,6 +1921,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1735,6 +1960,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1769,6 +1999,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1803,6 +2038,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1837,6 +2077,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1871,6 +2116,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1905,6 +2155,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1939,6 +2194,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "GPU hardware terminology supports a specialized scheduling scenario; GPU-specific workloads are not a named task in the current guide.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -1973,6 +2233,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Identifying the network-plugin interface is secondary to the guide’s application deployment and end-to-end connectivity tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2007,6 +2272,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2041,6 +2311,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2082,6 +2357,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -2123,6 +2403,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2164,6 +2449,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2211,6 +2501,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2250,6 +2545,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting vocabulary for deployment and operations; less central than the service and application concepts named in the objectives.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -2297,6 +2597,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -2336,6 +2641,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -2374,6 +2684,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2412,6 +2727,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2450,6 +2770,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical ACR task configuration or invocation supporting the measured image-build workflow.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2488,6 +2813,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical ACR task configuration or invocation supporting the measured image-build workflow.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2526,6 +2856,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -2564,6 +2899,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -2602,6 +2942,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -2640,6 +2985,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2678,6 +3028,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical ACR task configuration or invocation supporting the measured image-build workflow.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2716,6 +3071,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical ACR task configuration or invocation supporting the measured image-build workflow.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2760,6 +3120,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2798,6 +3163,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical ACR task configuration or invocation supporting the measured image-build workflow.",
+        "objective": "d1-builds"
       }
     },
     {
@@ -2836,6 +3206,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-images"
       }
     },
     {
@@ -2874,6 +3249,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-images"
       }
     },
     {
@@ -2912,6 +3292,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core ACR build/image behavior needed to choose reproducible builds, identify an image and manage releases.",
+        "objective": "d1-images"
       }
     },
     {
@@ -2956,6 +3341,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -3000,6 +3390,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -3038,6 +3433,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -3082,6 +3482,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3126,6 +3531,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3164,6 +3574,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Service/container configuration supporting the measured hosting and secret-supply workflow.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3207,6 +3622,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3245,6 +3665,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Service/container configuration supporting the measured hosting and secret-supply workflow.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3283,6 +3708,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Service/container configuration supporting the measured hosting and secret-supply workflow.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3321,6 +3751,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3364,6 +3799,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Service/container configuration supporting the measured hosting and secret-supply workflow.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3407,6 +3847,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3445,6 +3890,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "A central hosting/security principle: applications need authorized image pulls and environment-specific configuration without embedded credentials.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3488,6 +3938,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls a polling or refresh interval; understand the scaling/secret-refresh mechanism first and look up its current timing when implementing.",
+        "objective": "d1-web-hosting"
       }
     },
     {
@@ -3526,6 +3981,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical scaler settings or behavior supporting the measured event-driven scaling task.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -3564,6 +4024,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical scaler settings or behavior supporting the measured event-driven scaling task.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -3602,6 +4067,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls a polling or refresh interval; understand the scaling/secret-refresh mechanism first and look up its current timing when implementing.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -3640,6 +4110,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical scaler settings or behavior supporting the measured event-driven scaling task.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -3678,6 +4153,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -3716,6 +4196,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -3754,6 +4239,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -3792,6 +4282,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -3830,6 +4325,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -3868,6 +4368,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -3906,6 +4411,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -3944,6 +4454,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -3982,6 +4497,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "A specialized node-agent or GPU placement detail is less central than deploying, scaling and troubleshooting the application itself.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -4020,6 +4540,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -4058,6 +4583,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -4107,6 +4637,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -4145,6 +4680,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4183,6 +4723,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4227,6 +4772,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "A preview or specialized feature is secondary to the guide’s core deployment and image-management tasks.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4271,6 +4821,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4309,6 +4864,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4347,6 +4907,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4385,6 +4950,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical scaler settings or behavior supporting the measured event-driven scaling task.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4429,6 +4999,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4473,6 +5048,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4511,6 +5091,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4549,6 +5134,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4593,6 +5183,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
+        "objective": "d1-keda"
       }
     },
     {
@@ -4631,6 +5226,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4669,6 +5269,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4707,6 +5312,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4745,6 +5355,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls a polling or refresh interval; understand the scaling/secret-refresh mechanism first and look up its current timing when implementing.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4789,6 +5404,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -4827,6 +5447,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -4871,6 +5496,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -4909,6 +5539,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -4953,6 +5588,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -4991,6 +5631,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5029,6 +5674,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5073,6 +5723,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core scaling reasoning for the explicitly measured Container Apps/KEDA task: demand, replica bounds, activation and cold-start trade-offs.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5111,6 +5766,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5155,6 +5815,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -5199,6 +5864,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -5243,6 +5913,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Explains the application routing, health and manifest relationships required to deploy and troubleshoot Kubernetes workloads.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -5281,6 +5956,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -5319,6 +5999,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -5355,6 +6040,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "This is a narrow service-tier/feature availability fact rather than one of the application skills named in the guide.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5397,6 +6087,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "This is a narrow service-tier/feature availability fact rather than one of the application skills named in the guide.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5433,6 +6128,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5469,6 +6169,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5505,6 +6210,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5545,6 +6255,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5589,6 +6304,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5629,6 +6349,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "A preview or specialized feature is secondary to the guide’s core deployment and image-management tasks.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5665,6 +6390,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical registry permissions, addressing or image-management detail supporting the measured ACR workflow.",
+        "objective": "d1-images"
       }
     },
     {
@@ -5717,6 +6447,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5753,6 +6488,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5789,6 +6529,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5825,6 +6570,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5861,6 +6611,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5907,6 +6662,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5943,6 +6703,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Kubernetes configuration or command supporting application deployment, rollout or workload management.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -5983,6 +6748,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "A specialized node-agent or GPU placement detail is less central than deploying, scaling and troubleshooting the application itself.",
+        "objective": "d1-aks-workloads"
       }
     },
     {
@@ -6023,6 +6793,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Container Apps deployment behavior: revision traffic, configuration scope and secure access must be understood before applying commands.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6069,6 +6844,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6105,6 +6885,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6141,6 +6926,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6181,6 +6971,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6223,6 +7018,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical log, event or connectivity investigation supporting the measured container troubleshooting task.",
+        "objective": "d1-container-troubleshooting"
       }
     },
     {
@@ -6259,6 +7059,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6295,6 +7100,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6331,6 +7141,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Container Apps release, ingress or environment configuration supporting the measured deployment task.",
+        "objective": "d1-container-apps"
       }
     },
     {
@@ -6371,6 +7186,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6411,6 +7231,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6451,6 +7276,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6485,6 +7315,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6525,6 +7360,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6565,6 +7405,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6599,6 +7444,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6639,6 +7489,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6679,6 +7534,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6719,6 +7579,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6753,6 +7618,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6787,6 +7657,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6821,6 +7696,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6861,6 +7741,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -6895,6 +7780,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -6929,6 +7819,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful specialized index or pooler term for PostgreSQL optimization; understand the main indexing and connection-reuse principles first.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -6963,6 +7858,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -6997,6 +7897,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -7031,6 +7936,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -7065,6 +7975,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7105,6 +8020,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7139,6 +8059,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7173,6 +8098,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -7213,6 +8143,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7247,6 +8182,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7281,6 +8221,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7315,6 +8260,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7349,6 +8299,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7383,6 +8338,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7417,6 +8377,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7451,6 +8416,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -7485,6 +8455,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -7519,6 +8494,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful specialized index or pooler term for PostgreSQL optimization; understand the main indexing and connection-reuse principles first.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -7553,6 +8533,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -7587,6 +8572,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -7625,6 +8615,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7663,6 +8658,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7701,6 +8701,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7739,6 +8744,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7777,6 +8787,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7815,6 +8830,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls an exact configuration minimum, throughput ratio or unit-cost baseline; the consistency/capacity concepts have higher study priority.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7853,6 +8873,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -7891,6 +8916,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -7929,6 +8959,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -7967,6 +9002,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8005,6 +9045,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls an index size/count threshold. Learn the index trade-off first, then check current supported limits for the actual embedding/workload.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8043,6 +9088,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8081,6 +9131,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8119,6 +9174,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls an exact configuration minimum, throughput ratio or unit-cost baseline; the consistency/capacity concepts have higher study priority.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8157,6 +9217,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls an exact configuration minimum, throughput ratio or unit-cost baseline; the consistency/capacity concepts have higher study priority.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8195,6 +9260,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8238,6 +9308,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8276,6 +9351,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -8314,6 +9394,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "The preview full-history feed’s prerequisites are secondary to the measured new/updated-item processing workflow.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -8357,6 +9442,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -8395,6 +9485,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical feed configuration, API usage or progress handling supporting the measured change-processing task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -8433,6 +9528,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8471,6 +9571,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8509,6 +9614,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8547,6 +9657,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -8585,6 +9700,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python SDK/client/query usage supporting the measured Cosmos DB access task.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -8629,6 +9749,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python SDK/client/query usage supporting the measured Cosmos DB access task.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -8673,6 +9798,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python SDK/client/query usage supporting the measured Cosmos DB access task.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -8717,6 +9847,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python SDK/client/query usage supporting the measured Cosmos DB access task.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -8755,6 +9890,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8799,6 +9939,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8843,6 +9988,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Cosmos DB performance reasoning: recognize throttling, the purpose/cost of indexing and index suitability for vector queries.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8881,6 +10031,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8925,6 +10080,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -8963,6 +10123,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical vector policy, representation or query configuration supporting Cosmos semantic retrieval.",
+        "objective": "d2-cosmos-vectors"
       }
     },
     {
@@ -9001,6 +10166,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -9039,6 +10209,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -9089,6 +10264,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -9139,6 +10319,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical feed configuration, API usage or progress handling supporting the measured change-processing task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -9183,6 +10368,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core change-feed correctness: progress/ownership, independent consumers, omitted changes and repeated batches directly affect the measured implementation task.",
+        "objective": "d2-cosmos-changes"
       }
     },
     {
@@ -9221,6 +10411,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9259,6 +10454,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9297,6 +10497,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9335,6 +10540,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9373,6 +10583,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls an index size/count threshold. Learn the index trade-off first, then check current supported limits for the actual embedding/workload.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9411,6 +10626,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9449,6 +10669,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9487,6 +10712,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Primarily recalls a built-in pooler port or default mode; understanding connection reuse and transaction/session constraints comes first.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9525,6 +10755,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical pool/authentication settings supporting the measured connection-optimization task.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9563,6 +10798,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Primarily recalls a built-in pooler port or default mode; understanding connection reuse and transaction/session constraints comes first.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9601,6 +10841,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "This is a narrow service-tier/feature availability fact rather than one of the application skills named in the guide.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9645,6 +10890,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9683,6 +10933,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical database authentication or SDK query usage supporting the measured PostgreSQL access task.",
+        "objective": "d2-postgres-access"
       }
     },
     {
@@ -9721,6 +10976,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9759,6 +11019,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9797,6 +11062,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
+        "objective": "d2-postgres-access"
       }
     },
     {
@@ -9841,6 +11111,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical pool/authentication settings supporting the measured connection-optimization task.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -9885,6 +11160,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical schema, data-type, loading or index choice supporting the measured PostgreSQL modeling task.",
+        "objective": "d2-postgres-model"
       }
     },
     {
@@ -9923,6 +11203,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -9967,6 +11252,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -10005,6 +11295,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -10049,6 +11344,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -10093,6 +11393,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
+        "objective": "d2-postgres-capacity"
       }
     },
     {
@@ -10137,6 +11442,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
+        "objective": "d2-postgres-capacity"
       }
     },
     {
@@ -10175,6 +11485,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful resource configuration or measurement detail supporting the measured vector-workload sizing task.",
+        "objective": "d2-postgres-capacity"
       }
     },
     {
@@ -10213,6 +11528,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful resource configuration or measurement detail supporting the measured vector-workload sizing task.",
+        "objective": "d2-postgres-capacity"
       }
     },
     {
@@ -10257,6 +11577,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
+        "objective": "d2-postgres-capacity"
       }
     },
     {
@@ -10301,6 +11626,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core database-connection correctness and efficiency: pooling, total capacity and safe parameter binding are central to usable SDK queries.",
+        "objective": "d2-postgres-connections"
       }
     },
     {
@@ -10345,6 +11675,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10389,6 +11724,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10427,6 +11767,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10477,6 +11822,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10515,6 +11865,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -10553,6 +11908,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -10591,6 +11951,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -10635,6 +12000,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -10673,6 +12043,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10717,6 +12092,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10773,6 +12153,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10817,6 +12202,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10861,6 +12251,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10899,6 +12294,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -10937,6 +12337,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -10981,6 +12386,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -11019,6 +12429,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -11063,6 +12478,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis index, data encoding or query configuration supporting the measured similarity-search task.",
+        "objective": "d2-redis-vectors"
       }
     },
     {
@@ -11099,6 +12519,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -11141,6 +12566,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -11185,6 +12615,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -11227,6 +12662,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Consistency guarantees and partition routing are central to the guide’s Cosmos DB performance and correctness decisions.",
+        "objective": "d2-cosmos-access"
       }
     },
     {
@@ -11267,6 +12707,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -11303,6 +12748,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Cosmos DB indexing, consistency or throughput detail supporting performance and RU optimization.",
+        "objective": "d2-cosmos-performance"
       }
     },
     {
@@ -11339,6 +12789,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central vector-retrieval concepts: choose exact versus approximate search and keep stored/query embeddings and distance metrics compatible.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11375,6 +12830,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11415,6 +12875,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11451,6 +12916,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11491,6 +12961,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11527,6 +13002,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11567,6 +13047,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -11603,6 +13088,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires vector-workload resource tuning; identify the bottleneck and verify a change instead of assuming more capacity helps.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11643,6 +13133,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical schema, data-type, loading or index choice supporting the measured PostgreSQL modeling task.",
+        "objective": "d2-postgres-model"
       }
     },
     {
@@ -11679,6 +13174,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -11721,6 +13221,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11761,6 +13266,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11797,6 +13307,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical index/planner/maintenance detail supporting latency and pgvector-compute optimization.",
+        "objective": "d2-postgres-indexes"
       }
     },
     {
@@ -11833,6 +13348,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -11875,6 +13395,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical SQL operator, index or retrieval configuration supporting the measured semantic/metadata query task.",
+        "objective": "d2-postgres-vectors"
       }
     },
     {
@@ -11921,6 +13446,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Redis cache/vector behavior: freshness, memory pressure, index trade-offs and invalidation determine whether the application returns correct reusable results.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -11961,6 +13491,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -12013,6 +13548,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -12055,6 +13595,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -12105,6 +13650,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Redis operations or caching safeguards supporting expiration, invalidation and useful cache performance.",
+        "objective": "d2-redis-cache"
       }
     },
     {
@@ -12139,6 +13689,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12173,6 +13728,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12213,6 +13773,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12247,6 +13812,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12287,6 +13857,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12327,6 +13902,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12361,6 +13941,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12395,6 +13980,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12429,6 +14019,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12463,6 +14058,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12503,6 +14103,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12537,6 +14142,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -12571,6 +14181,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12605,6 +14220,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12639,6 +14259,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12679,6 +14304,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12719,6 +14349,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -12753,6 +14388,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -12787,6 +14427,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -12827,6 +14472,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12861,6 +14511,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12895,6 +14550,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12929,6 +14589,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12963,6 +14628,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -12997,6 +14667,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting messaging vocabulary; the core objectives focus on messages, queues, topics, subscriptions and delivery handling.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13038,6 +14713,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Useful supporting messaging vocabulary; the core objectives focus on messages, queues, topics, subscriptions and delivery handling.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13079,6 +14759,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -13120,6 +14805,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -13159,6 +14849,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -13197,6 +14892,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13235,6 +14935,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls exact push-delivery timing or destination-specific HTTP status-code exceptions; retries, acknowledgments and idempotency remain higher priorities.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13273,6 +14978,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls exact push-delivery timing or destination-specific HTTP status-code exceptions; retries, acknowledgments and idempotency remain higher priorities.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13311,6 +15021,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls exact push-delivery timing or destination-specific HTTP status-code exceptions; retries, acknowledgments and idempotency remain higher priorities.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13349,6 +15064,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls exact push-delivery timing or destination-specific HTTP status-code exceptions; retries, acknowledgments and idempotency remain higher priorities.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13387,6 +15107,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls exact push-delivery timing or destination-specific HTTP status-code exceptions; retries, acknowledgments and idempotency remain higher priorities.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13425,6 +15150,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13463,6 +15193,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13501,6 +15236,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13539,6 +15279,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13577,6 +15322,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13615,6 +15365,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13653,6 +15408,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -13691,6 +15451,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13735,6 +15500,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13773,6 +15543,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13811,6 +15586,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13855,6 +15635,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13893,6 +15678,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls default/maximum lock or execution durations. Understand renewal, redelivery and asynchronous work first, then check the plan/entity limits.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13931,6 +15721,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -13969,6 +15764,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -14012,6 +15812,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -14056,6 +15861,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -14094,6 +15904,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -14138,6 +15953,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -14182,6 +16002,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -14226,6 +16051,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -14270,6 +16100,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -14308,6 +16143,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -14346,6 +16186,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -14390,6 +16235,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14428,6 +16278,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14466,6 +16321,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14510,6 +16370,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14548,6 +16413,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14586,6 +16456,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14624,6 +16499,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14662,6 +16542,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14700,6 +16585,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14738,6 +16628,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14782,6 +16677,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14820,6 +16720,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14858,6 +16763,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls default/maximum lock or execution durations. Understand renewal, redelivery and asynchronous work first, then check the plan/entity limits.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14902,6 +16812,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14940,6 +16855,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -14984,6 +16904,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -15022,6 +16947,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -15060,6 +16990,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -15104,6 +17039,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -15142,6 +17082,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -15180,6 +17125,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Functions API design: select the right trigger, understand binding/trigger relationships and move long work out of synchronous requests.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -15224,6 +17174,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -15268,6 +17223,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -15308,6 +17268,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15348,6 +17313,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15384,6 +17354,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "This is a narrow service-tier/feature availability fact rather than one of the application skills named in the guide.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15424,6 +17399,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15460,6 +17440,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15500,6 +17485,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15536,6 +17526,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15572,6 +17567,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15616,6 +17616,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15658,6 +17663,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Service Bus processing behavior: message ownership, acknowledgment, retries, independent consumers and dead-letter handling are explicitly measured.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15700,6 +17710,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15736,6 +17751,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15776,6 +17796,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15816,6 +17841,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15852,6 +17882,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Auto-deletion of idle messaging entities is a specialized administration feature, less central than sending, processing and recovering messages.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15888,6 +17923,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15934,6 +17974,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -15970,6 +18015,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A useful Service Bus API, property, role or reliability pattern supporting queued back-end processing.",
+        "objective": "d3-service-bus"
       }
     },
     {
@@ -16010,6 +18060,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16050,6 +18105,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16090,6 +18150,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16136,6 +18201,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16176,6 +18246,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16212,6 +18287,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16254,6 +18334,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16290,6 +18375,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical event schema, subscription, permission or delivery configuration supporting the measured Event Grid workflow.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16326,6 +18416,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core Event Grid workflow behavior: backoff, retry bounds, filtering, dead-lettering and duplicate/out-of-order delivery affect correctness.",
+        "objective": "d3-event-grid"
       }
     },
     {
@@ -16366,6 +18461,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -16406,6 +18506,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -16452,6 +18557,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Recalls default/maximum lock or execution durations. Understand renewal, redelivery and asynchronous work first, then check the plan/entity limits.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -16488,6 +18598,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -16524,6 +18639,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -16566,6 +18686,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Functions trigger/binding behavior or configuration supporting serverless API implementation.",
+        "objective": "d3-functions-code"
       }
     },
     {
@@ -16602,6 +18727,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -16638,6 +18768,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical hosting, identity, configuration or deployment detail supporting the measured Function App deployment task.",
+        "objective": "d3-functions-deploy"
       }
     },
     {
@@ -16672,6 +18807,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16706,6 +18846,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16746,6 +18891,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16780,6 +18930,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16820,6 +18975,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16854,6 +19014,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16894,6 +19059,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16928,6 +19098,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16962,6 +19137,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -16996,6 +19176,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17036,6 +19221,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17070,6 +19260,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17104,6 +19299,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17138,6 +19338,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17178,6 +19383,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17218,6 +19428,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17258,6 +19473,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17298,6 +19518,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -17332,6 +19557,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -17366,6 +19596,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17400,6 +19635,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17434,6 +19674,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17468,6 +19713,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17502,6 +19752,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17536,6 +19791,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -17570,6 +19830,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17610,6 +19875,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17644,6 +19914,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17684,6 +19959,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17724,6 +20004,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17764,6 +20049,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17798,6 +20088,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17838,6 +20133,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17872,6 +20172,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -17912,6 +20217,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17952,6 +20262,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -17986,6 +20301,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -18027,6 +20347,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -18074,6 +20399,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -18113,6 +20443,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Foundational vocabulary needed to understand the services, data or operations used by the measured tasks.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18152,6 +20487,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "A supporting security/configuration mechanism; learn identity, authorization, secret retrieval and dynamic refresh before this additional mechanism.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18195,6 +20535,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18254,6 +20599,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18292,6 +20642,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18330,6 +20685,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18368,6 +20728,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18406,6 +20771,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18450,6 +20820,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18488,6 +20863,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18526,6 +20906,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18564,6 +20949,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires secret rotation/retrieval; distinguish new versions from cached copies and update the real credential and its consumers.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18602,6 +20992,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires secret rotation/retrieval; distinguish new versions from cached copies and update the real credential and its consumers.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18640,6 +21035,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18684,6 +21084,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires secret rotation/retrieval; distinguish new versions from cached copies and update the real credential and its consumers.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18722,6 +21127,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Exact credential-chain ordering and version-gated chain-selection switches are secondary to understanding local versus deployed identity and permissions.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18766,6 +21176,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Understand which local/deployed identity is used and how role scope/inheritance governs access before debugging individual SDK settings.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18804,6 +21219,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Exact credential-chain ordering and version-gated chain-selection switches are secondary to understanding local versus deployed identity and permissions.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18848,6 +21268,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Understand which local/deployed identity is used and how role scope/inheritance governs access before debugging individual SDK settings.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -18891,6 +21316,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -18929,6 +21359,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Configuration permission, SDK or refresh configuration supporting the measured app-settings workflow.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -18973,6 +21408,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Core identity/secret separation and permission-model behavior are prerequisites for secure secret retrieval; successful authentication alone is insufficient.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19011,6 +21451,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19049,6 +21494,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19093,6 +21543,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires secret rotation/retrieval; distinguish new versions from cached copies and update the real credential and its consumers.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19149,6 +21604,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19187,6 +21647,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19225,6 +21690,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -19269,6 +21739,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Configuration permission, SDK or refresh configuration supporting the measured app-settings workflow.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19307,6 +21782,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Configuration permission, SDK or refresh configuration supporting the measured app-settings workflow.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19345,6 +21825,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Configuration permission, SDK or refresh configuration supporting the measured app-settings workflow.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19389,6 +21874,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19427,6 +21917,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical App Configuration permission, SDK or refresh configuration supporting the measured app-settings workflow.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19471,6 +21966,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19521,6 +22021,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central configuration behavior: key/label identity, client-side secret resolution, caching and refresh must be understood to retrieve current app settings.",
+        "objective": "d4-configuration"
       }
     },
     {
@@ -19559,6 +22064,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19602,6 +22112,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19640,6 +22155,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19678,6 +22198,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19722,6 +22247,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19760,6 +22290,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19804,6 +22339,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19842,6 +22382,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19886,6 +22431,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19930,6 +22480,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -19974,6 +22529,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20018,6 +22578,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20056,6 +22621,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20100,6 +22670,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20144,6 +22719,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20182,6 +22762,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20220,6 +22805,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20264,6 +22854,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20302,6 +22897,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Writing KQL is explicitly measured; these operators and query-shaping decisions are the core skills used to answer questions from logs.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -20346,6 +22946,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20384,6 +22989,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20422,6 +23032,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20466,6 +23081,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20509,6 +23129,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20553,6 +23178,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20597,6 +23227,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20635,6 +23270,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20679,6 +23319,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Vendor-specific sampler spellings/defaults are lower priority than tracing concepts, propagation and general sampling behavior.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20723,6 +23368,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20761,6 +23411,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20805,6 +23460,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "esoteric",
+        "reason": "Vendor-specific sampler spellings/defaults are lower priority than tracing concepts, propagation and general sampling behavior.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20849,6 +23509,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20893,6 +23558,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20937,6 +23607,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -20981,6 +23656,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -21019,6 +23699,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -21057,6 +23742,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -21095,6 +23785,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -21139,6 +23834,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -21179,6 +23879,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21223,6 +23928,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21263,6 +23973,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21299,6 +24014,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21339,6 +24059,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "The guide explicitly requires secret rotation/retrieval; distinguish new versions from cached copies and update the real credential and its consumers.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21379,6 +24104,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21415,6 +24145,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Understand which local/deployed identity is used and how role scope/inheritance governs access before debugging individual SDK settings.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21457,6 +24192,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Understand which local/deployed identity is used and how role scope/inheritance governs access before debugging individual SDK settings.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21493,6 +24233,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21533,6 +24278,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21569,6 +24319,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21605,6 +24360,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical role, lifecycle, retrieval or rotation mechanism supporting the measured secure-secret workflow.",
+        "objective": "d4-secrets"
       }
     },
     {
@@ -21641,6 +24401,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "critical",
+        "reason": "Central observability concepts: instrumentation/export, propagated context and the distinction between sampled traces and metrics make distributed troubleshooting possible.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -21681,6 +24446,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -21717,6 +24487,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -21753,6 +24528,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -21789,6 +24569,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     },
     {
@@ -21829,6 +24614,11 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "rewritten",
         "note": "Direct answer followed by a short explanation or useful example. Prose is the default; lists are retained only where order or comparison helps."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical Python tracing, sampler, instrumentation or export detail supporting the measured OpenTelemetry SDK task.",
+        "objective": "d4-traces"
       }
     },
     {
@@ -21865,7 +24655,32 @@ window.AI200_FLASHCARDS = {
         "date": "2026-10-29",
         "status": "retained",
         "note": "The existing answer is already direct, understandable and consistent with the checked primary material."
+      },
+      "importance": {
+        "level": "important",
+        "reason": "Practical telemetry schema, collection or query detail supporting log/metric analysis and troubleshooting.",
+        "objective": "d4-log-queries"
       }
     }
-  ]
+  ],
+  "importanceReview": {
+    "date": "2026-10-29",
+    "guideEffective": "2026-10-07",
+    "source": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200",
+    "method": "Editorial study priorities based on the measured tasks and their prerequisites. Rate what the question primarily tests, not merely whether its answer contains a command or a number. These are not official Microsoft weightings or predictions of individual exam questions.",
+    "levels": {
+      "critical": {
+        "label": "Critical knowledge",
+        "description": "Foundational vocabulary, central concepts and correctness/failure decisions needed across the measured tasks."
+      },
+      "important": {
+        "label": "Important",
+        "description": "Practical commands, SDK/query syntax, configuration and supporting features used to implement the measured tasks."
+      },
+      "esoteric": {
+        "label": "Esoteric knowledge",
+        "description": "Exact incidental defaults, ports, numeric limits and narrow, preview or vendor/version-specific details to learn after the foundations."
+      }
+    }
+  }
 };

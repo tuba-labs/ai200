@@ -153,6 +153,33 @@ class FlashcardContentTests(unittest.TestCase):
                     self.assertIn(card["coverageCategory"], self.categories)
                     self.assertNotEqual(card["coverageCategory"], card["category"])
 
+    def test_each_card_has_an_exam_priority_tied_to_a_reviewed_objective(self):
+        review = load_review()
+        priorities = self.deck['importanceReview']
+        self.assertEqual(priorities['source'], review['source'])
+        self.assertEqual(priorities['guideEffective'], review['guideEffective'])
+        self.assertEqual(set(priorities['levels']), {'critical', 'important', 'esoteric'})
+        for card in self.cards:
+            with self.subTest(card=card['id']):
+                importance = card['importance']
+                self.assertIn(importance['level'], priorities['levels'])
+                self.assertEqual(importance['objective'], review['retained'][card['id']]['objective'])
+                self.assertTrue(importance['reason'].strip())
+        # Question intent matters: core vocabulary and KQL are foundations,
+        # command syntax is practical, while an exact port/size is lower priority.
+        cards = {card['id']: card for card in self.cards}
+        examples = {
+            'term-d1-acr': 'critical',
+            'term-d4-authentication': 'critical',
+            'm-62-1-1': 'critical',
+            'm-15-2-1': 'important',
+            'm-27-1-1': 'esoteric',
+            'm-26-5-1': 'esoteric',
+            'term-d1-gpu': 'esoteric',
+        }
+        for identifier, expected in examples.items():
+            self.assertEqual(cards[identifier]['importance']['level'], expected)
+
 
 if __name__ == "__main__":
     unittest.main()

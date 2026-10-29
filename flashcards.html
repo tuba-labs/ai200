@@ -28,6 +28,13 @@
     .tools button:hover,.bar-btn:hover{background:#e3f0fd}.filter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.field.search-field{grid-column:1/-1}
     label.field{display:block;font-weight:700;color:#4f6178;font-size:12px}label.field select,label.field input{display:block;margin-top:5px;width:100%;border:1px solid #cbd8e6;padding:11px 13px;background:#fff;border-radius:9px;color:var(--ink);min-height:46px}
     .term-option{display:flex;align-items:flex-start;gap:10px;margin:16px 0 0;font-size:14px;font-weight:650;cursor:pointer}.term-option input{width:18px;height:18px;flex-shrink:0;margin:3px 0 0;accent-color:var(--accent)}.term-help{margin:5px 0 0 28px;color:var(--muted);font-size:12px}
+    [data-importance="critical"]{--importance-ink:#80500a;--importance-edge:#c28b23;--importance-border:#e7d4a7;--importance-soft:#fff0c8;--importance-surface:#fff9eb}
+    [data-importance="important"]{--importance-ink:#215c97;--importance-edge:#518bc4;--importance-border:#c8ddef;--importance-soft:#e9f3ff;--importance-surface:#f0f7ff}
+    [data-importance="esoteric"]{--importance-ink:#704799;--importance-edge:#9874ba;--importance-border:#ddd0ec;--importance-soft:#f0e7fa;--importance-surface:#f7f1fc}
+    .importance-filter{border:0;padding:0;margin:20px 0 0;min-width:0}.importance-filter legend{padding:0;margin-bottom:9px;font-size:14px;font-weight:750}.importance-options{display:flex;gap:10px;flex-wrap:wrap}
+    .importance-option{display:flex;align-items:center;gap:9px;cursor:pointer;border:1px solid var(--importance-border);background:var(--importance-surface);color:var(--importance-ink);padding:10px 13px;border-radius:10px;font-size:14px;font-weight:700}
+    .importance-option input{width:18px;height:18px;margin:0;accent-color:var(--importance-ink);flex-shrink:0}.importance-count{font-size:12px;font-variant-numeric:tabular-nums}.importance-help{font-size:12px;color:var(--muted);margin:9px 0 0;max-width:900px}
+    .importance-tag{display:inline-flex;align-items:center;gap:5px;background:var(--importance-soft);border:1px solid var(--importance-border);color:var(--importance-ink);border-radius:30px;padding:4px 10px;margin:0 0 16px;font-size:12px;font-weight:800;line-height:1.4}
     .progress-line{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:18px 0 8px;color:var(--muted);font-size:13px}
     .track{background:#e4edf8;overflow:hidden;height:9px;border-radius:20px}.fill{height:100%;width:0;background:#168268;border-radius:inherit;transition:width .2s ease}
     .study{margin-top:20px}.study-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
@@ -37,7 +44,7 @@
     .counter{font-size:14px;font-weight:750;color:#52657c;font-variant-numeric:tabular-nums}
     .counter-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.card-jump{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--muted)}.card-jump input{width:80px;min-height:40px;padding:6px 8px;border:1px solid #cbd8e6;border-radius:8px}.card-jump button{min-height:40px}.session-status{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 0;font-size:13px;color:var(--muted)}
     .session-status #undo-rating{margin-left:auto}
-    .flashcard{background:#fff;border:1px solid #d8e4f0;border-top:5px solid var(--domain);border-radius:18px;min-height:375px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);position:relative;cursor:text;user-select:text}
+    .flashcard{background:linear-gradient(120deg,var(--importance-surface,#fff),#fff 90%);border:1px solid var(--importance-border,#d8e4f0);border-top:5px solid var(--importance-edge,var(--domain));border-radius:18px;min-height:375px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);position:relative;cursor:text;user-select:text}
     .card-hint{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#687a90;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
     .card-title{font-size:clamp(24px,3.6vw,33px);line-height:1.24;letter-spacing:-.8px;margin:0 0 17px}.question{font-size:clamp(18px,2.5vw,23px);line-height:1.55;max-width:860px;margin:0}
     .answer-prose{white-space:pre-wrap;line-height:1.6;color:#26364a;overflow-wrap:anywhere}.flip-tip{margin-top:34px;color:#62768d;font-size:13px}
@@ -79,7 +86,7 @@
     <div class="wrap">
       <span class="eyebrow">AI-200 · Interaktiv øving</span>
       <h1 id="page-title">559 flashcards. Ett spørsmål per kort.</h1>
-      <p>Start med begrepene i hvert domene, eller hopp over dem hvis du kan ordforrådet. Vis svaret med knappen og marker det du kan. Filtrer på fagdomene, kategori eller kortsett.</p>
+      <p>Start med grunnlaget, og velg hvor dypt du vil gå. Kortene er prioritert etter læringsmålene i AI-200. Filtrer på viktighet, fagdomene eller kategori, vis svaret og marker det du kan.</p>
       <div class="hero-actions"><a href="index.html">← Til studieguiden</a><a href="https://www.mightybs.com/certifications/ai-200/flashcards/" target="_blank" rel="noopener noreferrer">Originalkort hos MightyBS ↗</a><a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Spørsmålsbank hos AI-200 Prep ↗</a></div>
     </div>
   </section>
@@ -118,6 +125,15 @@
           <input id="search" type="search" placeholder="For eksempel Cosmos DB eller KEDA" autocomplete="off">
         </label>
       </div>
+      <fieldset class="importance-filter" data-no-jargon aria-describedby="importance-help">
+        <legend>Viktighet til eksamen</legend>
+        <div class="importance-options" lang="en">
+          <label class="importance-option" data-importance="critical"><input id="include-critical" type="checkbox" checked><span aria-hidden="true">★</span><span>Critical knowledge <span class="importance-count">(<span id="importance-critical-count">294</span>)</span></span></label>
+          <label class="importance-option" data-importance="important"><input id="include-important" type="checkbox" checked><span aria-hidden="true">◆</span><span>Important <span class="importance-count">(<span id="importance-important-count">231</span>)</span></span></label>
+          <label class="importance-option" data-importance="esoteric"><input id="include-esoteric" type="checkbox" checked><span aria-hidden="true">◇</span><span>Esoteric knowledge <span class="importance-count">(<span id="importance-esoteric-count">34</span>)</span></span></label>
+        </div>
+        <p id="importance-help" class="importance-help">Critical: begreper, hovedprinsipper og sentrale valg. Important: praktiske kommandoer, kode og konfigurasjon. Esoteric: eksakte standardverdier, porter og smale detaljer. Prioriteringen er vår faglige vurdering ut fra <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">læringsmålene</a>. Valgene huskes på denne enheten.</p>
+      </fieldset>
       <label class="term-option" for="skip-terms"><input id="skip-terms" type="checkbox" aria-describedby="term-help"><span>Jeg kan begrepene – hopp over begrepskort</span></label>
       <p id="term-help" class="term-help">«Terms» ligger først i hvert domene. Valget huskes på denne enheten; kortenes markeringer beholdes.</p>
       <label class="term-option" for="disable-tooltips" data-no-jargon><input id="disable-tooltips" type="checkbox" aria-describedby="tooltip-help"><span>Disable tooltips</span></label>
@@ -132,6 +148,7 @@
       <p id="jump-help" class="term-help" data-no-jargon>Bruk kortets faste nummer, for eksempel 35. Hoppet viser kortet selv om det er vurdert eller skjult av et filter, og fortsetter i nummerrekkefølge.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
         <div class="card-hint"><span id="card-face-label">Spørsmål</span><span id="card-id">Kort #01</span></div>
+        <p id="importance-tag" class="importance-tag" lang="en" data-no-jargon></p>
         <h2 class="card-title" id="card-title"></h2>
         <div id="card-content"></div>
         <div id="card-example" data-no-jargon hidden></div>
@@ -162,6 +179,8 @@
     const CARD_NUMBERS = new Map(CARDS.map((card,index)=>[card.id,index+1]));
     const DOMAIN_NAMES = {1:'Containere',2:'AI-data',3:'Integrasjoner',4:'Sikkerhet'};
     const DOMAIN_COLORS = {1:['#1265bd','#eaf3ff'],2:['#824bb1','#f2eafd'],3:['#995c16','#fff1d9'],4:['#197451','#e4f7ec']};
+    const IMPORTANCE_LEVELS = DECK.importanceReview.levels;
+    const IMPORTANCE_SYMBOLS = {critical:'★',important:'◆',esoteric:'◇'};
     const STORAGE_KEY = 'ai-200-study-flashcards-progress-v2';
     const LEGACY_STORAGE_KEY = 'ai-200-study-flashcards-progress-v1';
     const PREFERENCES_KEY = 'ai-200-study-flashcards-preferences-v1';
@@ -198,16 +217,28 @@
       const preferences=parseState(localStorage.getItem(PREFERENCES_KEY));
       $('skip-terms').checked=preferences.skipTerms===true;
       $('skip-rated').checked=preferences.skipRated===true;
+      if(Array.isArray(preferences.importanceLevels)){
+        const selected=preferences.importanceLevels.filter(level=>Object.hasOwn(IMPORTANCE_LEVELS,level));
+        if(selected.length||preferences.importanceLevels.length===0){
+          for(const level of Object.keys(IMPORTANCE_LEVELS))$('include-'+level).checked=selected.includes(level);
+        }
+      }
     }catch{storageAvailable=false;}
     function isTerm(card){return card?.kind==='term';}
-    function studyCards(){return $('skip-terms').checked?CARDS.filter(card=>!isTerm(card)):CARDS;}
-    function savePreferences(){try{localStorage.setItem(PREFERENCES_KEY,JSON.stringify({skipTerms:$('skip-terms').checked,skipRated:$('skip-rated').checked}));}catch{storageAvailable=false;}}
+    function importanceLevel(card){return Object.hasOwn(IMPORTANCE_LEVELS,card.importance?.level)?card.importance.level:'important';}
+    function selectedImportance(){return Object.keys(IMPORTANCE_LEVELS).filter(level=>$('include-'+level).checked);}
+    function matchesImportance(card){return $('include-'+importanceLevel(card)).checked;}
+    function studyCards(){return CARDS.filter(card=>matchesImportance(card)&&(!$('skip-terms').checked||!isTerm(card)));}
+    function savePreferences(){try{localStorage.setItem(PREFERENCES_KEY,JSON.stringify({skipTerms:$('skip-terms').checked,skipRated:$('skip-rated').checked,importanceLevels:selectedImportance()}));}catch{storageAvailable=false;}}
     function current(){return list[position]||null;}
     function getStatus(card){return progress[card.id]||'new';}
     function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));storageAvailable=true;}catch{storageAvailable=false;}}
     function counts(){const result={known:0,review:0,new:0};for(const c of studyCards())result[getStatus(c)]++;return result;}
     function renderStats(){
       const total=studyCards().length;
+      const available=Object.fromEntries(Object.keys(IMPORTANCE_LEVELS).map(level=>[level,0]));
+      for(const card of filtered(true))available[importanceLevel(card)]++;
+      for(const level of Object.keys(IMPORTANCE_LEVELS))$('importance-'+level+'-count').textContent=available[level];
       $('total').textContent=total;
       $('storage-note').textContent=storageAvailable?'Fremdriften lagres lokalt i nettleseren på denne enheten.':'Nettleseren tillater ikke lagring. Markeringene gjelder bare til siden lukkes.';
       const c=counts();$('known-count').textContent=c.known;$('review-count').textContent=c.review;$('new-count').textContent=c.new;
@@ -215,10 +246,11 @@
       $('progress-description').textContent=`${assessed} av ${total} kort vurdert`;
       $('progress-percent').textContent=percent+' %';$('progress-fill').style.width=percent+'%';$('progress-track').setAttribute('aria-valuenow',String(percent));
     }
-    function filtered(){
+    function filtered(ignoreImportance=false){
       const domain=$('domain-filter').value,category=$('category-filter').value,source=$('source-filter').value,status=$('status-filter').value,workshop=$('workshop-filter').value,q=$('search').value.trim().toLocaleLowerCase();
       const order=shuffledIds?shuffledIds.map(id=>originalById.get(id)):CARDS;
-      return order.filter(c=> (!$('skip-terms').checked||!isTerm(c))
+      return order.filter(c=> (ignoreImportance||matchesImportance(c))
+        &&(!$('skip-terms').checked||!isTerm(c))
         &&(domain==='all'||String(c.domain)===domain)
         &&(category==='all'||c.category===category)
         &&(source==='all'||(source==='terms'?isTerm(c):c.origin===source))
@@ -235,9 +267,9 @@
       return entry.workshop===value;
     }
     function refresh(preferId){
-      list=filtered();position=Math.max(0,preferId?list.findIndex(c=>c.id===preferId):0);flipped=false;
+      list=filtered();const preferred=preferId?list.findIndex(c=>c.id===preferId):-1;position=Math.max(0,preferred);flipped=false;
       backStack=[];
-      if(!preferId&&shouldFastForward()){const first=list.findIndex(card=>getStatus(card)==='new');if(first>=0)position=first;}
+      if(preferred<0&&shouldFastForward()){const first=list.findIndex(card=>getStatus(card)==='new');if(first>=0)position=first;}
       renderStats();renderCard();
     }
     function renderCard(){
@@ -254,9 +286,14 @@
       $('workshop-tag').hidden=empty||!assignment;
       if(empty){
         $('counter').textContent='0 kort';
-        $('empty').textContent='Ingen kort matcher filtrene. Prøv et annet domene, en annen status eller et nytt søk.';
+        $('empty').textContent='Ingen kort matcher filtrene. Inkluder flere viktighetsnivåer, eller endre de andre filtrene.';
         return;
       }
+      const importance=importanceLevel(c);
+      $('card').dataset.importance=importance;
+      $('importance-tag').dataset.importance=importance;
+      const symbol=document.createElement('span');symbol.setAttribute('aria-hidden','true');symbol.textContent=IMPORTANCE_SYMBOLS[importance];
+      $('importance-tag').replaceChildren(symbol,document.createTextNode(IMPORTANCE_LEVELS[importance].label));
       $('counter').textContent=`Kort ${position+1} av ${list.length}`;
       $('domain-tag').textContent=`Domene ${c.domain} · ${DOMAIN_NAMES[c.domain]}`;
       const [color,light]=DOMAIN_COLORS[c.domain];$('card').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain-light',light);
@@ -316,12 +353,13 @@
     function revealCard(card){
       const previous=current()?.id;
       shuffledIds=null;$('shuffle').textContent='Bland kortene';
+      $('include-'+importanceLevel(card)).checked=true;
       if(isTerm(card)){$('skip-terms').checked=false;$('terms-source-option').disabled=false;}
       if(!filtered().some(item=>item.id===card.id)){
         for(const id of ['domain-filter','category-filter','source-filter','status-filter','workshop-filter'])$(id).value='all';
         $('search').value='';
       }
-      populateCategories();refresh(card.id);
+      populateCategories();savePreferences();refresh(card.id);
       if(previous&&previous!==card.id&&list.some(item=>item.id===previous))backStack.push(previous);
     }
     function undoRating(){
@@ -369,6 +407,10 @@
       savePreferences();
       if(shouldFastForward()&&current()&&getStatus(current())!=='new')move(1);
     });
+    for(const level of Object.keys(IMPORTANCE_LEVELS))$('include-'+level).addEventListener('change',()=>{
+      const preferred=current()?.id;
+      savePreferences();refresh(preferred);
+    });
     for(const id of ['category-filter','source-filter','status-filter','workshop-filter','search'])$(id).addEventListener(id==='search'?'input':'change',()=>refresh());
     $('shuffle').addEventListener('click',shuffle);
     $('reset').addEventListener('click',()=>{if(!confirm('Vil du fjerne alle markeringene dine på denne enheten?'))return;for(const key of Object.keys(progress))delete progress[key];lastRating=null;save();refresh();});
@@ -391,6 +433,11 @@
     const query=new URLSearchParams(location.search);
     // Explicit definition links take precedence over the saved skip preference for this visit.
     if(isTerm(originalById.get(query.get('card')))||TERM_CATEGORIES.has(query.get('category'))||query.get('source')==='terms')$('skip-terms').checked=false;
+    const linkedCard=originalById.get(query.get('card'));
+    if(linkedCard)$('include-'+importanceLevel(linkedCard)).checked=true;
+    if(TERM_CATEGORIES.has(query.get('category'))||query.get('source')==='terms'){
+      for(const card of CARDS.filter(card=>isTerm(card)&&(!query.get('category')||card.category===query.get('category'))))$('include-'+importanceLevel(card)).checked=true;
+    }
     $('terms-source-option').disabled=$('skip-terms').checked;
     for(const [id,param] of [['domain-filter','domain'],['source-filter','source'],['status-filter','status'],['workshop-filter','workshop']]){
       const value=query.get(param);if([...$(id).options].some(option=>option.value===value))$(id).value=value;
