@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Take a personal practice exam using only AI-200 Prep questions labelled Real Exam. Timed attempts, case studies and results by domain.">
+  <title>AI-200 | Practice exam</title>
+  <link rel="stylesheet" href="practice-exam.css">
+  <script src="practice-exam-core.js" defer></script>
+  <script src="practice-exam.js" defer></script>
+  <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
+  <script src="./jargon-data.js" defer></script>
+  <script src="./jargon.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">200</span> AI-200 Study group</a>
+    <nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="workshops/index.html">Workshops</a><a href="flashcards.html">Flashcards</a><a class="jargon-nav-link" href="./jargon.html">Terms</a></nav>
+  </div></header>
+  <main class="wrap" id="main">
+    <div class="intro"><span class="eyebrow">AI-200 Prep · Source questions only</span>
+      <h1>Practice exam</h1>
+      <p>Test yourself using only questions the source labels <strong>Real Exam</strong>. Answers stay hidden until you finish.</p>
+      <p class="small">This is the provider’s label, not verification that these questions appeared on Microsoft’s exam. Scores use the provider’s answer key.</p>
+    </div>
+    <p class="storage-note" id="storage-notice" role="status" hidden>Browser storage is unavailable. Keep this tab open: your attempt cannot be saved after a reload.</p>
+    <section class="panel bank-panel" aria-labelledby="bank-heading" id="bank-panel">
+      <div><span class="eyebrow">Your question bank</span><h2 id="bank-heading">Load your study copy</h2>
+        <p id="bank-status" role="status">Looking for the local download…</p></div>
+      <label class="file-button">Choose question file<input id="bank-file" type="file" accept=".json,application/json"></label>
+      <p class="small bank-help">Use <code>artifacts/ai200prep/real-exam.json</code>. The downloaded questions stay on this device and are kept out of the public site. <a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Source practice sets ↗</a> · <a href="https://ai200prep.com/terms/" target="_blank" rel="noopener noreferrer">Personal study terms ↗</a></p>
+      <p id="bank-error" class="error" role="alert" hidden></p>
+    </section>
+    <section class="panel" id="setup-panel" aria-labelledby="setup-heading" hidden>
+      <div class="section-top"><div><span class="eyebrow">Choose your session</span><h2 id="setup-heading" tabindex="-1">Ready when you are</h2></div><span class="badge">No flashcards added</span></div>
+      <form id="setup-form">
+        <fieldset class="domain-options"><legend>Include domains</legend>
+          <label><input type="checkbox" name="domain" value="1" checked><span><b>1 · Containers</b><small id="domain-1-count"></small></span></label>
+          <label><input type="checkbox" name="domain" value="2" checked><span><b>2 · AI data</b><small id="domain-2-count"></small></span></label>
+          <label><input type="checkbox" name="domain" value="3" checked><span><b>3 · Integrations</b><small id="domain-3-count"></small></span></label>
+          <label><input type="checkbox" name="domain" value="4" checked><span><b>4 · Security &amp; monitoring</b><small id="domain-4-count"></small></span></label>
+        </fieldset>
+        <div class="settings"><label>Questions<input id="question-count" type="number" min="1" value="45" required></label><label>Time limit in minutes<input id="time-limit" type="number" min="0" max="1440" value="100" required><small>0 = no timer</small></label><label class="check"><input id="random-order" type="checkbox" checked>Random selection and order</label></div>
+        <div class="setup-actions"><button class="primary" type="submit">Start exam →</button><button id="use-all" type="button">Use all included questions</button><span class="small" id="pool-status"></span></div>
+        <p class="small">Choose a duration that suits you. The default is a 45-question, 100-minute practice session; this is not a claim about the official exam format.</p>
+        <p class="error" id="setup-error" role="alert" hidden></p>
+      </form>
+    </section>
+    <section id="exam-panel" class="exam-panel" aria-labelledby="exam-heading" data-no-jargon hidden>
+      <div class="exam-toolbar panel"><div><h2 id="exam-heading" tabindex="-1">Exam in progress</h2><p id="attempt-progress"></p></div><div class="timer"><span>Time remaining</span><strong id="time-remaining" role="timer" aria-live="off"></strong></div><button id="finish-exam" class="primary" type="button">Finish exam</button></div>
+      <div class="exam-layout">
+        <article class="panel question-panel"><div class="question-meta"><span class="badge" id="question-domain"></span><span id="question-service"></span><span id="question-source-id"></span></div>
+          <div id="case-context"></div><form id="question-form"><fieldset id="question-fieldset"><legend id="question-prompt" tabindex="-1"></legend><p class="small" id="question-instructions"></p><div class="options" id="answer-options"></div></fieldset></form>
+          <div class="question-actions"><label class="check"><input id="flag-question" type="checkbox">Mark for review</label><button id="clear-answer" type="button">Clear answer</button></div>
+          <div class="previous-next"><button id="previous-question" type="button">← Previous</button><span id="question-position"></span><button id="next-question" type="button">Next →</button></div>
+        </article>
+        <aside class="panel navigator" aria-labelledby="navigator-heading"><h3 id="navigator-heading">Questions</h3><p class="small">Filled = answered · dot = marked for review</p><div id="question-navigation" class="question-grid"></div><p class="small">Your answers save automatically on this device. The timer continues when you leave this tab.</p></aside>
+      </div>
+    </section>
+    <section id="results-panel" class="panel" aria-labelledby="results-heading" data-no-jargon hidden>
+      <div class="section-top"><div><span class="eyebrow">Session complete</span><h2 id="results-heading" tabindex="-1">Your results</h2><p id="result-reason" class="small"></p></div><button id="new-exam" class="primary" type="button">Set up another exam</button></div>
+      <div class="score-grid"><div class="score"><strong id="result-percent"></strong><span>correct</span></div><div><strong id="result-correct"></strong><span>correct answers</span></div><div><strong id="result-incorrect"></strong><span>incorrect answers</span></div><div><strong id="result-unanswered"></strong><span>unanswered</span></div></div>
+      <p class="small">One point per question. For multiple-answer questions, select every correct option and no incorrect options. This percentage does not convert to Microsoft’s scaled exam score.</p>
+      <div id="domain-results" class="domain-results"></div>
+      <div class="review-heading"><h3>Review your answers</h3><label>Show<select id="review-filter"><option value="all">All questions</option><option value="incorrect">Incorrect or unanswered</option><option value="unanswered">Unanswered</option><option value="flagged">Marked for review</option></select></label></div>
+      <div id="answer-review"></div>
+      <p class="small source-credit">Question wording, answer choices and explanations © AI-200 Prep. <a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Read the original sets ↗</a></p>
+    </section>
+    <noscript><p class="panel">Enable JavaScript to load the questions and take an exam.</p></noscript>
+  </main>
+  <dialog id="finish-dialog" aria-labelledby="finish-title"><h2 id="finish-title">Finish this exam?</h2><p id="finish-summary"></p><p>Submitting ends the timer and reveals the answer key.</p><div class="dialog-actions"><button id="continue-exam" type="button" autofocus>Keep working</button><button id="submit-exam" class="primary" type="button">Submit exam</button></div></dialog>
+  <footer><div class="wrap">AI-200 Study group · Personal practice · <a href="index.html">Back to overview</a></div></footer>
+</body>
+</html>
