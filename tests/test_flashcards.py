@@ -142,8 +142,14 @@ class FlashcardContentTests(unittest.TestCase):
     def test_displayed_counts_match_card_data(self):
         html = (ROOT / "flashcards.html").read_text(encoding="utf-8")
         index = (ROOT / "index.html").read_text(encoding="utf-8")
-        self.assertEqual(int(re.search(r'id="total">(\d+)<', html)[1]), len(self.cards))
-        self.assertEqual(int(re.search(r'<strong>(\d+)</strong><span>Interaktive flashcards</span>', index)[1]), len(self.cards))
+        for page, content, pattern in [
+            ("flashcards.html", html, r'id="total">(\d+)<'),
+            ("index.html", index, r'id="flashcard-count">(\d+)</span>'),
+        ]:
+            with self.subTest(page=page):
+                match = re.search(pattern, content)
+                self.assertIsNotNone(match, f"Missing flashcard count in {page}")
+                self.assertEqual(int(match[1]), len(self.cards))
         domains = Counter(card["domain"] for card in self.cards)
         for number, count in domains.items():
             self.assertRegex(html, rf'<option value="{number}">{number} · [^<]+ \({count}\)</option>')
