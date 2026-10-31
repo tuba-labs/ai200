@@ -1,7 +1,7 @@
-Flashcard example review — 2026-10-29
+Flashcard example review — 2026-10-30
 
-All 559 cards reviewed individually.
-Added examples: 294. Already concrete: 215. No additional example needed: 50.
+All 560 cards reviewed individually.
+Added examples: 295. Already concrete: 215. No additional example needed: 50.
 
 Examples use short values, commands, configuration fragments or scenarios with a visible result.
 Existing clear commands, calculations, comparisons and shared term examples were retained.
@@ -2599,13 +2599,19 @@ Example: Example network-rule intent
     Allow TCP 443 from 10.20.1.0/24 to 10.20.2.4
 This describes a network-flow rule, not a data-access role. Matching traffic still depends on applicable rule priority/routing, and the receiving service still checks the caller’s access.
 
-469 | m-05-2-1 | Domain 4 | Identitet og RBAC
+469 | m-63-3-1 | Domain 4 | Terms · Sikkerhet
+What is a custom Azure Monitor workbook?
+Decision: added. Restored introductory vocabulary with a concrete service-health report example.
+Example: Scenario
+Create a “Repair service health” workbook with a failed-request chart, a response-time chart and a table of recent errors. Selecting “repairs-api” and “Last 24 hours” updates the connected views so an operator can investigate the same service and period.
+
+470 | m-05-2-1 | Domain 4 | Identitet og RBAC
 How do system-assigned and user-assigned identities differ in lifecycle?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An API is deleted and recreated during deployment. Its old system-assigned identity disappears with the old resource. A separately created user-assigned identity can be attached to the replacement API, keeping the identity that was already granted access.
 
-470 | m-07-5-1 | Domain 4 | Key Vault
+471 | m-07-5-1 | Domain 4 | Key Vault
 Where should non-secret configuration and credentials be stored?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Illustrative configuration entries
@@ -2613,68 +2619,68 @@ Example: Illustrative configuration entries
     PAYMENTS_KEY = "@Microsoft.KeyVault(SecretUri=https://study-vault.vault.azure.net/secrets/payments-api-key)"
 The first value is ordinary configuration. In App Service/Functions, the second is a reference used as an app-setting value, pointing to a separately stored secret. The platform needs an authorized identity and network access to resolve it.
 
-471 | m-14-6-1 | Domain 4 | Key Vault
+472 | m-14-6-1 | Domain 4 | Key Vault
 Which Key Vault object type should hold an API credential?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A payments API expects an opaque credential string in an HTTP header. Store that string as a Key Vault secret named payments-api-key. It is not a Key Vault cryptographic key used to sign or encrypt data.
 
-472 | m-52-1-1 | Domain 4 | Key Vault
+473 | m-52-1-1 | Domain 4 | Key Vault
 Can Key Vault Reader read secret values?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An operator with only Key Vault Reader can see that payments-api-key exists and inspect its metadata, but cannot retrieve its password/token value. Seeing the secret’s name is different from reading its contents.
 
-473 | m-52-2-1 | Domain 4 | Key Vault
+474 | m-52-2-1 | Domain 4 | Key Vault
 Which Key Vault RBAC role reads secret values?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A deployed payments app uses its managed identity to retrieve payments-api-key. Key Vault Secrets User authorizes reading that secret’s value in the assigned scope, while leaving secret creation and deletion unavailable through this role.
 
-474 | m-52-3-1 | Domain 4 | Key Vault
+475 | m-52-3-1 | Domain 4 | Key Vault
 Which Key Vault RBAC role manages secret versions and deletion?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A rotation worker must create a replacement secret version and read it for verification. Secrets Officer supplies secret-management permissions; the ordinary app that only consumes the credential can keep the narrower Secrets User role.
 
-475 | m-52-4-1 | Domain 4 | Key Vault
+476 | m-52-4-1 | Domain 4 | Key Vault
 What data-plane permissions does Key Vault Administrator grant?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A Key Vault Administrator can create a secret and perform permitted key/certificate data operations in its scope. That role alone cannot grant another app an Azure role or change the vault resource’s networking configuration.
 
-476 | m-52-6-1 | Domain 4 | Key Vault
+477 | m-52-6-1 | Domain 4 | Key Vault
 Does Key Vault Contributor grant access to secret contents?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-477 | m-52-7-1 | Domain 4 | Key Vault
+478 | m-52-7-1 | Domain 4 | Key Vault
 Which vault permission model makes Key Vault data-plane role assignments effective?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-478 | m-53-1-1 | Domain 4 | Key Vault
+479 | m-53-1-1 | Domain 4 | Key Vault
 How does a versionless Key Vault SDK read behave after rotation?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-479 | m-53-2-1 | Domain 4 | Key Vault
+480 | m-53-2-1 | Domain 4 | Key Vault
 How does a version-pinned Key Vault SDK read behave after rotation?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-480 | m-53-3-1 | Domain 4 | Key Vault
+481 | m-53-3-1 | Domain 4 | Key Vault
 How can Event Grid and Functions automate rotation of a Key Vault secret?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Rotation workflow
     SecretNearExpiry → Event Grid → rotation Function → target service + new Key Vault version
 For a database password, the function must update the database credential and store its matching new value in Key Vault. Applications then refresh their cached secret and affected connections. The event starts the work; it does not rotate the external password by itself.
 
-481 | m-53-4-1 | Domain 4 | Key Vault
+482 | m-53-4-1 | Domain 4 | Key Vault
 Do Key Vault secrets have the same built-in rotation policies as cryptographic keys?
 Decision: already concrete. The answer already contrasts automatic cryptographic-key policies with a concrete password/API-secret rotation workflow.
 
-482 | m-54-1-1 | Domain 4 | Identitet og RBAC
+483 | m-54-1-1 | Domain 4 | Identitet og RBAC
 In what order does Python DefaultAzureCredential try credential types?
 Decision: not needed. The answer already walks the complete credential chain in order, including concrete developer tools; another example would obscure that ordering.
 
-483 | m-54-2-1 | Domain 4 | Identitet og RBAC
+484 | m-54-2-1 | Domain 4 | Identitet og RBAC
 How can the same DefaultAzureCredential code run locally and on Azure?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2682,25 +2688,25 @@ Example: Python
     credential = DefaultAzureCredential()
 Pass this credential to the service client in both environments. Locally, sign in with an eligible developer tool such as az login; on Azure, enable a managed identity. Grant each selected identity the required data access.
 
-484 | m-54-3-1 | Domain 4 | Identitet og RBAC
+485 | m-54-3-1 | Domain 4 | Identitet og RBAC
 What does AZURE_TOKEN_CREDENTIALS control in Python DefaultAzureCredential?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-485 | m-54-4-1 | Domain 4 | Identitet og RBAC
+486 | m-54-4-1 | Domain 4 | Identitet og RBAC
 Why is ManagedIdentityCredential normally unavailable on a developer laptop?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-486 | m-55-1-1 | Domain 4 | App Configuration
+487 | m-55-1-1 | Domain 4 | App Configuration
 What uniquely identifies an App Configuration key-value?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-487 | m-55-4-1 | Domain 4 | App Configuration
+488 | m-55-4-1 | Domain 4 | App Configuration
 How do App Configuration Data Reader and Data Owner differ?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 The repairs API loads Search:ResultLimit using Data Reader. A separate configuration-management job uses Data Owner to change that value. The runtime app does not need write access merely to consume the setting.
 
-488 | m-56-1-1 | Domain 4 | Key Vault
+489 | m-56-1-1 | Domain 4 | Key Vault
 What is the setup order for reading Key Vault with an app identity?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2710,7 +2716,7 @@ Example: Python
     value = client.get_secret("payments-api-key").value
 This reads the named secret’s latest version using the identity selected by DefaultAzureCredential. value contains the returned credential; the vault URL and secret name identify where it lives. The caller needs permission and HTTPS reachability; a private network is optional.
 
-489 | m-56-3-1 | Domain 4 | Key Vault
+490 | m-56-3-1 | Domain 4 | Key Vault
 What scope should be preferred for an application's Key Vault permissions?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Example vault boundaries
@@ -2718,101 +2724,101 @@ Example: Example vault boundaries
     repairs-prod-vault
 Use separate vaults for this application’s development and production secrets. Grant the production app Secrets User on its production vault, avoiding a broad subscription-level grant that could include unrelated vaults.
 
-490 | m-56-4-1 | Domain 4 | Key Vault
+491 | m-56-4-1 | Domain 4 | Key Vault
 What happens to access policies when a vault switches to Azure RBAC?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An API currently reads secrets through a legacy access policy. If the vault switches to RBAC before the API identity has an equivalent data role, the old policy no longer authorizes its reads. Prepare the role assignments before switching.
 
-491 | m-56-6-1 | Domain 4 | Key Vault
+492 | m-56-6-1 | Domain 4 | Key Vault
 Why does copying a secret into app settings at deployment not implement rotation?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 Deployment copies password A into DB_PASSWORD. Later, the database and Key Vault move to password B. The running app still has A until its configuration and connections are updated; the original deployment-time copy does not follow Key Vault versions.
 
-492 | m-57-2-1 | Domain 4 | Key Vault
+493 | m-57-2-1 | Domain 4 | Key Vault
 Which secret lifecycle features does Key Vault provide?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A mistakenly deleted API secret can be recovered while soft-delete retention still applies. If it also has purge protection, an administrator cannot permanently purge it early to remove that recovery opportunity. These protections do not change the credential accepted by the API.
 
-493 | m-57-3-1 | Domain 4 | Key Vault
+494 | m-57-3-1 | Domain 4 | Key Vault
 Who resolves a Key Vault reference stored in App Configuration?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: JSON · App Configuration Key Vault reference value
     {"uri":"https://study-vault.vault.azure.net/secrets/payments-api-key"}
 Store this value with content type application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8. A configured application provider resolves it using vault permissions; App Configuration itself stores the reference rather than fetching the secret.
 
-494 | m-57-4-1 | Domain 4 | Key Vault
+495 | m-57-4-1 | Domain 4 | Key Vault
 How can AKS mount Key Vault secrets as files without creating Kubernetes Secret objects?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Example mounted path
     /mnt/secrets-store/payments-api-key
 An appropriately configured SecretProviderClass and pod volume can mount the Key Vault object’s value here. The file contains the credential; its pathname is not the credential itself. A Kubernetes Secret object is unnecessary unless optional synchronization is enabled.
 
-495 | m-58-1-1 | Domain 4 | App Configuration
+496 | m-58-1-1 | Domain 4 | App Configuration
 How is a Python AzureAppConfigurationClient authenticated?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-496 | m-58-2-1 | Domain 4 | App Configuration
+497 | m-58-2-1 | Domain 4 | App Configuration
 Which Python App Configuration call reads a single key and label?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-497 | m-58-3-1 | Domain 4 | App Configuration
+498 | m-58-3-1 | Domain 4 | App Configuration
 Which Python App Configuration calls enumerate settings or labels?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-498 | m-59-1-1 | Domain 4 | App Configuration
+499 | m-59-1-1 | Domain 4 | App Configuration
 How can a long-lived app refresh configuration without a remote call per request?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 With a 60-second interval, a successful check at 12:00:00 leaves Search:ResultLimit=5 cached. The remote value changes to 10 at 12:00:20. Calls before 12:01:00 keep using 5. The next refresh() call after the interval can detect the change and update the cache to 10.
 
-499 | m-59-2-1 | Domain 4 | App Configuration
+500 | m-59-2-1 | Domain 4 | App Configuration
 How does Python App Configuration refresh use a watch key and interval?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-500 | m-59-4-1 | Domain 4 | App Configuration
+501 | m-59-4-1 | Domain 4 | App Configuration
 What should an app do when a configuration refresh fails?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 The app successfully loaded a timeout of 30 seconds, then App Configuration becomes unreachable. Keep using the cached 30-second value while logging/retrying refresh. A newly starting instance has no such cached success and needs an explicit startup policy.
 
-501 | m-59-5-1 | Domain 4 | App Configuration
+502 | m-59-5-1 | Domain 4 | App Configuration
 Why are environment variables unsuitable for in-process dynamic refresh?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An already running process read SEARCH_LIMIT=5. Changing that setting in the hosting platform does not mutate the process’s environment in place. Use the platform’s restart/new revision behavior, or read a refresh-capable provider for updates within the process.
 
-502 | m-60-1-1 | Domain 4 | KQL
+503 | m-60-1-1 | Domain 4 | KQL
 What does KQL where do to its input rows?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-503 | m-60-2-1 | Domain 4 | KQL
+504 | m-60-2-1 | Domain 4 | KQL
 What rows does KQL summarize return?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-504 | m-60-3-1 | Domain 4 | KQL
+505 | m-60-3-1 | Domain 4 | KQL
 What does KQL project do to columns?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-505 | m-60-4-1 | Domain 4 | KQL
+506 | m-60-4-1 | Domain 4 | KQL
 What does KQL extend do to columns?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-506 | m-60-5-1 | Domain 4 | KQL
+507 | m-60-5-1 | Domain 4 | KQL
 What does KQL distinct return?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-507 | m-60-5-2 | Domain 4 | KQL
+508 | m-60-5-2 | Domain 4 | KQL
 What does KQL join do?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-508 | m-60-5-3 | Domain 4 | KQL
+509 | m-60-5-3 | Domain 4 | KQL
 What does KQL render do?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-509 | m-60-6-1 | Domain 4 | KQL
+510 | m-60-6-1 | Domain 4 | KQL
 In what order should time filters, joins and aggregation usually run in a KQL query?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: KQL
@@ -2822,59 +2828,59 @@ Example: KQL
     | summarize Failures=count() by AppRoleName
 This starts with request records, limits the time window, filters failed requests and only then groups them by service. Early filtering reduces the rows the aggregation must process without changing this question’s result.
 
-510 | m-61-1-1 | Domain 4 | KQL
+511 | m-61-1-1 | Domain 4 | KQL
 Which table and column names are used in the Application Insights query schema?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: KQL · Application Insights resource scope
     requests | where success == false | project timestamp, name, duration
 This scope uses the lowercase requests table and its case-sensitive field names. It returns the time, operation name and duration for failed requests; the equivalent workspace query uses AppRequests and differently named columns.
 
-511 | m-61-2-1 | Domain 4 | KQL
+512 | m-61-2-1 | Domain 4 | KQL
 Which table and column names are used in the workspace-based query schema?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: KQL · Log Analytics workspace scope
     AppRequests | where Success == false | project TimeGenerated, Name, DurationMs
 This is the workspace-schema form of a failed-request query. Use its capitalized table/field names together; do not mix in timestamp or duration from the Application Insights resource schema.
 
-512 | m-61-3-1 | Domain 4 | KQL
+513 | m-61-3-1 | Domain 4 | KQL
 What unit is used for request duration in Application Insights queries?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-513 | m-61-4-1 | Domain 4 | KQL
+514 | m-61-4-1 | Domain 4 | KQL
 Which telemetry field identifies the emitting service?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-514 | m-62-1-1 | Domain 4 | KQL
+515 | m-62-1-1 | Domain 4 | KQL
 How does KQL express the last 30 minutes?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-515 | m-62-3-1 | Domain 4 | KQL
+516 | m-62-3-1 | Domain 4 | KQL
 How does KQL bin assign timestamps to time buckets?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-516 | m-62-4-1 | Domain 4 | KQL
+517 | m-62-4-1 | Domain 4 | KQL
 Which KQL join kind is used when no kind is specified?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 The left table has two rows with key=42; the right table has one matching row. An inner join returns both matching pairs. The default innerunique join first keeps one left row for that key, so only one pair remains; do not depend on which duplicate is retained.
 
-517 | m-63-1-1 | Domain 4 | Azure Monitor og Application Insights
+518 | m-63-1-1 | Domain 4 | Azure Monitor og Application Insights
 Which tool supports an ad hoc investigation of Azure application logs?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-518 | m-63-2-1 | Domain 4 | Azure Monitor og Application Insights
+519 | m-63-2-1 | Domain 4 | Azure Monitor og Application Insights
 What type of operations does the Azure Activity Log record?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-519 | m-63-4-1 | Domain 4 | Azure Monitor og Application Insights
+520 | m-63-4-1 | Domain 4 | Azure Monitor og Application Insights
 Why start a KQL query with the relevant table?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-520 | m-63-4-2 | Domain 4 | Azure Monitor og Application Insights
+521 | m-63-4-2 | Domain 4 | Azure Monitor og Application Insights
 How do KQL == and =~ differ?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-521 | m-64-2-1 | Domain 4 | OpenTelemetry og sporing
+522 | m-64-2-1 | Domain 4 | OpenTelemetry og sporing
 What sends OpenTelemetry spans to Azure Monitor?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2883,7 +2889,7 @@ Example: Python
     exporter = AzureMonitorTraceExporter(connection_string=os.environ["APPLICATIONINSIGHTS_CONNECTION_STRING"])
 Set the environment variable to your Application Insights connection string. Attach this exporter through a span processor to a registered tracing provider; constructing the exporter alone does not create or send spans.
 
-522 | m-64-3-1 | Domain 4 | OpenTelemetry og sporing
+523 | m-64-3-1 | Domain 4 | OpenTelemetry og sporing
 How do BatchSpanProcessor and SimpleSpanProcessor export spans?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2891,17 +2897,17 @@ Example: Python
     provider.add_span_processor(BatchSpanProcessor(exporter))
 Here provider is your TracerProvider and exporter is the chosen destination exporter. Completed sampled spans are queued for batch export. Shut down/flush the provider when the process exits so buffered telemetry can leave.
 
-523 | m-64-4-1 | Domain 4 | OpenTelemetry og sporing
+524 | m-64-4-1 | Domain 4 | OpenTelemetry og sporing
 Which Python OpenTelemetry call starts an active span?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-524 | m-65-1-1 | Domain 4 | OpenTelemetry og sporing
+525 | m-65-1-1 | Domain 4 | OpenTelemetry og sporing
 What must an application do to produce visible OpenTelemetry traces?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 You configure the exporter but never run the instrumented checkout operation: no checkout span exists to display. Invoke it, then check span creation, sampling and export in that order if the trace is still missing.
 
-525 | m-65-2-1 | Domain 4 | OpenTelemetry og sporing
+526 | m-65-2-1 | Domain 4 | OpenTelemetry og sporing
 What does configure_azure_monitor configure automatically?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2909,7 +2915,7 @@ Example: Python
     configure_azure_monitor()
 With azure-monitor-opentelemetry installed and APPLICATIONINSIGHTS_CONNECTION_STRING set, call this once during startup before handling work. It sets up the supported Azure Monitor pipeline/instrumentations. Creating additional manual instrumentation for the same library can duplicate telemetry.
 
-526 | m-65-5-1 | Domain 4 | OpenTelemetry og sporing
+527 | m-65-5-1 | Domain 4 | OpenTelemetry og sporing
 How does the Azure Monitor Python exporter map span kinds to telemetry tables?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Example observed span kinds
@@ -2917,11 +2923,11 @@ Example: Example observed span kinds
     CLIENT: PostgreSQL query → AppDependencies
 The incoming HTTP handler is a server operation; its outgoing database call is a client operation. These are workspace table names; the Application Insights resource view calls them requests and dependencies.
 
-527 | m-66-2-1 | Domain 4 | OpenTelemetry og sporing
+528 | m-66-2-1 | Domain 4 | OpenTelemetry og sporing
 What are the Python names of common OpenTelemetry samplers?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-528 | m-66-3-1 | Domain 4 | OpenTelemetry og sporing
+529 | m-66-3-1 | Domain 4 | OpenTelemetry og sporing
 Which standard OTEL_TRACES_SAMPLER values select ratio sampling?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Environment variables
@@ -2929,7 +2935,7 @@ Example: Environment variables
     OTEL_TRACES_SAMPLER_ARG=0.1
 Set these before initializing a distribution that honors the standard settings. New root traces use a roughly 10% ratio; child spans follow the configured parent-based rules. The argument is a fraction, not the number 10.
 
-529 | m-66-4-1 | Domain 4 | OpenTelemetry og sporing
+530 | m-66-4-1 | Domain 4 | OpenTelemetry og sporing
 Which Azure Monitor-specific sampler environment settings are available?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Environment variables
@@ -2937,19 +2943,19 @@ Example: Environment variables
     OTEL_TRACES_SAMPLER_ARG=5.0
 In a supporting Azure Monitor distribution, this requests an approximate five-traces-per-second target. If you choose microsoft.fixed_percentage instead, an argument of 0.1 means about 10%; the argument’s interpretation depends on the selected sampler.
 
-530 | m-66-5-1 | Domain 4 | OpenTelemetry og sporing
+531 | m-66-5-1 | Domain 4 | OpenTelemetry og sporing
 Which OpenTelemetry sampler honors a parent's sampling decision?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-531 | m-66-5-2 | Domain 4 | OpenTelemetry og sporing
+532 | m-66-5-2 | Domain 4 | OpenTelemetry og sporing
 How does TraceIdRatioBased choose which traces to retain?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-532 | m-66-6-1 | Domain 4 | OpenTelemetry og sporing
+533 | m-66-6-1 | Domain 4 | OpenTelemetry og sporing
 What default sampling behavior should you check in the Azure Monitor Python distro?
 Decision: not needed. The answer is explicitly about a version-sensitive distribution default and already explains its unit; another example would repeat it.
 
-533 | m-67-1-1 | Domain 4 | OpenTelemetry og sporing
+534 | m-67-1-1 | Domain 4 | OpenTelemetry og sporing
 Which Python OpenTelemetry sampler records all spans during local testing?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2958,15 +2964,15 @@ Example: Python
     provider = TracerProvider(sampler=ALWAYS_ON)
 This provider samples every span it evaluates. Register it and attach processors/exporters to view telemetry; this is useful for local debugging and does not recover spans another process has already dropped.
 
-534 | m-67-2-1 | Domain 4 | OpenTelemetry og sporing
+535 | m-67-2-1 | Domain 4 | OpenTelemetry og sporing
 Which OpenTelemetry sampler keeps approximately 10% of traces?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-535 | m-67-3-1 | Domain 4 | OpenTelemetry og sporing
+536 | m-67-3-1 | Domain 4 | OpenTelemetry og sporing
 Where is an OpenTelemetry sampler configured?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-536 | m-67-4-1 | Domain 4 | OpenTelemetry og sporing
+537 | m-67-4-1 | Domain 4 | OpenTelemetry og sporing
 How does Azure Monitor fixed-percentage sampling help coordinate trace selection across services?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Python
@@ -2974,130 +2980,129 @@ Example: Python
     configure_azure_monitor(sampling_ratio=0.1)
 For a supporting Azure Monitor Python distro, initialize once with the same fixed ratio in cooperating services and propagate their trace context. This requests about 10%; incompatible strategies or sampler overrides can prevent coordinated selection.
 
-537 | m-67-5-1 | Domain 4 | OpenTelemetry og sporing
+538 | m-67-5-1 | Domain 4 | OpenTelemetry og sporing
 Are metrics reduced by trace sampling?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An application increments an independent request counter for all 100 requests, while ratio sampling retains traces for roughly 10 of them. The counter still records 100; trace sampling does not remove those metric measurements. Metrics derived from sampled spans are a different pipeline.
 
-538 | m-68-1-1 | Domain 4 | OpenTelemetry og sporing
+539 | m-68-1-1 | Domain 4 | OpenTelemetry og sporing
 Which W3C header carries trace context between HTTP services?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: HTTP header
     traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
 The parts are version 00, a 32-hex-digit trace ID, a 16-hex-digit sending span ID and flags 01 indicating sampled. The receiver continues that trace and creates its own span; it does not reuse the sender’s span ID.
 
-539 | m-68-2-1 | Domain 4 | OpenTelemetry og sporing
+540 | m-68-2-1 | Domain 4 | OpenTelemetry og sporing
 Does creating a span automatically propagate context to another process?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 Service A creates a span and calls B without sending trace context. B can record a separate trace, but cannot infer that A was its parent. Injecting traceparent and extracting it at B connects the two operations.
 
-540 | m-68-3-1 | Domain 4 | OpenTelemetry og sporing
+541 | m-68-3-1 | Domain 4 | OpenTelemetry og sporing
 How is OpenTelemetry context propagated through an outbound Python HTTP call?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-541 | prep-kv-002 | Domain 4 | Key Vault
+542 | prep-kv-002 | Domain 4 | Key Vault
 Which Key Vault capability retains deleted objects for possible recovery?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 With a configured 30-day retention period, deleting a secret leaves it recoverable during that period, subject to permissions and no earlier permanent purge. Soft delete is the recovery window; it is not a permanent backup.
 
-542 | prep-kv-009 | Domain 4 | Key Vault
+543 | prep-kv-009 | Domain 4 | Key Vault
 What does Key Vault purge protection prevent?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A vault has 30-day retention and purge protection. After a secret is deleted, even an administrator must wait for that retention period before permanently purging it. Authorized recovery is still possible during retention.
 
-543 | prep-kv-013 | Domain 4 | Key Vault
+544 | prep-kv-013 | Domain 4 | Key Vault
 Which Key Vault diagnostic category records data-plane access such as secret reads?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: KQL · resource-specific destination
     AZKVAuditLogs | where OperationName == "SecretGet"
 When Key Vault AuditEvent logs are routed to a workspace using resource-specific tables, this selects secret-read audit events. Inspect their result fields to investigate failures. With the legacy AzureDiagnostics destination, the table/schema is different.
 
-544 | prep-p-kv-023 | Domain 4 | Key Vault
+545 | prep-p-kv-023 | Domain 4 | Key Vault
 How should a private package-feed token be supplied during a container build?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-545 | prep-c-tw-003 | Domain 4 | Key Vault
+546 | prep-c-tw-003 | Domain 4 | Key Vault
 How can a credential rotation avoid immediately breaking clients that still hold the old value?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-546 | prep-rbac-001 | Domain 4 | Identitet og RBAC
+547 | prep-rbac-001 | Domain 4 | Identitet og RBAC
 How do Azure Owner and Contributor differ in access management?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 A Contributor can deploy an app in its resource group but cannot use that role alone to grant the app a data-access role. An Owner at the applicable scope can create that role assignment.
 
-547 | prep-rbac-003 | Domain 4 | Identitet og RBAC
+548 | prep-rbac-003 | Domain 4 | Identitet og RBAC
 What is the Azure RBAC scope hierarchy from broadest to narrowest?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-548 | prep-p-rbac-003 | Domain 4 | Identitet og RBAC
+549 | prep-p-rbac-003 | Domain 4 | Identitet og RBAC
 How do Azure RBAC allow assignments combine across scopes?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 Sam has Contributor on a resource group and Reader on one app inside it. The app-level Reader assignment does not downgrade the inherited Contributor grant; both applicable grants contribute permissions.
 
-549 | prep-p-rbac-007 | Domain 4 | Identitet og RBAC
+550 | prep-p-rbac-007 | Domain 4 | Identitet og RBAC
 Which Azure data-plane role permits an app identity to read Blob content?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An image-processing app needs to download photos from one blob container. Assign its identity Storage Blob Data Reader at that container, then use a token-authenticated Blob client. It can read those blobs without gaining write/delete permission from this role.
 
-550 | prep-p-rbac-023 | Domain 4 | Identitet og RBAC
+551 | prep-p-rbac-023 | Domain 4 | Identitet og RBAC
 How can a CI pipeline authenticate to Azure without storing a long-lived client secret?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: GitHub Actions federated subject example
     repo:contoso/repairs:ref:refs/heads/main
 A federated credential can trust this repository/branch subject from GitHub’s configured token issuer with the expected audience. A different branch has a different subject and does not match this trust entry.
 
-551 | prep-p-rbac-020 | Domain 4 | Identitet og RBAC
+552 | prep-p-rbac-020 | Domain 4 | Identitet og RBAC
 What can an Azure ABAC condition add to a supported role assignment?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-552 | prep-rbac-027 | Domain 4 | Identitet og RBAC
+553 | prep-rbac-027 | Domain 4 | Identitet og RBAC
 What does an Entra sign-in log reveal about an authentication attempt?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 An employee cannot sign in because a Conditional Access policy requires a compliant device. The sign-in log can identify the failed policy. If sign-in succeeds but a later blob read is forbidden, inspect that service’s access configuration and logs too.
 
-553 | prep-mon-003 | Domain 4 | Azure Monitor og Application Insights
+554 | prep-mon-003 | Domain 4 | Azure Monitor og Application Insights
 How do Azure Monitor metrics differ from logs?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-554 | prep-p-mon-009 | Domain 4 | Azure Monitor og Application Insights
+555 | prep-p-mon-009 | Domain 4 | Azure Monitor og Application Insights
 What routes supported Azure resource platform logs to Log Analytics, Storage or Event Hubs?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 Enable Key Vault’s supported audit category in a diagnostic setting and select a Log Analytics workspace as the destination. Secret-read audit records can then be queried there; this does not instrument the code of an app that calls the vault.
 
-555 | prep-mon-019 | Domain 4 | Azure Monitor og Application Insights
+556 | prep-mon-019 | Domain 4 | Azure Monitor og Application Insights
 Which Log Analytics table contains Azure Activity Log records when collected?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-556 | prep-p-mon-017 | Domain 4 | Azure Monitor og Application Insights
+557 | prep-p-mon-017 | Domain 4 | Azure Monitor og Application Insights
 Why can a telemetry ingestion daily cap hide later incidents?
 Decision: added. Added a short scenario with a visible result.
 Example: Scenario
 Eligible ingestion reaches the daily cap before an evening outage. The app can still fail while later diagnostic records are missing from the workspace. An empty query result during that gap does not prove the app was healthy.
 
-557 | prep-mon-021 | Domain 4 | Azure Monitor og Application Insights
+558 | prep-mon-021 | Domain 4 | Azure Monitor og Application Insights
 Which KQL function references another Log Analytics workspace?
 Decision: already concrete. The answer already contains a concrete example, command or clearly worked comparison.
 
-558 | prep-mon-028 | Domain 4 | Azure Monitor og Application Insights
+559 | prep-mon-028 | Domain 4 | Azure Monitor og Application Insights
 What does Application Insights Application Map visualize?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: Example application map
     web-frontend → repairs-api → PostgreSQL
 With appropriate instrumentation, service names and trace propagation, the map can show the frontend’s API dependency and the API’s database dependency, including available duration/failure information. An unobserved call may be absent from the map.
 
-559 | prep-p-mon-013 | Domain 4 | Azure Monitor og Application Insights
+560 | prep-p-mon-013 | Domain 4 | Azure Monitor og Application Insights
 Which Application Insights query table stores custom metric telemetry?
 Decision: added. Added a concrete value, command or small configuration example.
 Example: KQL · workspace custom metric
     AppMetrics | where Name == "repairs.queue.length"
 This selects standalone custom metric telemetry published with that name. It is not a query of request records’ custom measurement fields. In the Application Insights resource schema, use customMetrics with its corresponding lowercase field names.
-

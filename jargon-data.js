@@ -1182,15 +1182,27 @@ window.AI200_JARGON = {
       "aliases": [
         "workbook",
         "workbooks",
+        "Azure Monitor workbooks",
+        "custom Azure Monitor workbook",
+        "custom workbooks",
         "arbeidsbok",
         "arbeidsbøker"
       ],
-      "definition": "A reusable interactive report combining text, log queries, metrics, parameters and visualizations. For example, an operator can choose a service and time range, then view its failures, latency and relevant logs together.",
-      "domains": [],
+      "definition": "An Azure Monitor workbook is an interactive monitoring report in the Azure portal. A custom workbook is one you create or adapt for your own application.\n\nIt can put charts, tables and explanatory text on one page, using existing logs and metrics. You can add filters such as service name and time range, save the report and share it with your team. The workbook queries the data; sources such as Log Analytics still store it.",
+      "domains": [
+        4
+      ],
+      "sourceCard": "m-63-3-1",
       "sources": [
         "https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview"
       ],
-      "id": "azure-monitor-workbook"
+      "id": "azure-monitor-workbook",
+      "example": {
+        "id": "card-m-63-3-1",
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Create a “Repair service health” workbook with a failed-request chart, a response-time chart and a table of recent errors. Selecting “repairs-api” and “Last 24 hours” updates the connected views so an operator can investigate the same service and period."
+      }
     },
     {
       "primary": "Azure Monitor workspace",

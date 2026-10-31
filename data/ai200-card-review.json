@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-29",
+  "reviewed": "2026-10-30",
   "guideEffective": "2026-10-07",
   "source": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200",
   "sourceDeckSize": 691,
@@ -2909,6 +2909,11 @@
       "objective": "d4-log-queries",
       "level": "foundation",
       "fingerprint": "d0065ec444277a76f21e100ef86523777851f27db259db2d0ad4844c3ab45b00"
+    },
+    "m-63-3-1": {
+      "objective": "d4-log-queries",
+      "level": "foundation",
+      "fingerprint": "08b298c31ce43ad035d681426cb1fe2d8ef4cc559ac5ea4878da43473f295d07"
     }
   },
   "removed": [
@@ -3745,18 +3750,6 @@
       "reason": "Administrative governance, custom-role authoring, Graph permissions or organizational policy is beyond the application secret/configuration tasks. App identities and permissions needed by the retained SDK tasks remain."
     },
     {
-      "id": "m-63-3-1",
-      "previousNumber": 566,
-      "question": "What is an Azure Monitor workbook used for?",
-      "category": "monitor",
-      "domain": 4,
-      "legacyIds": [
-        63
-      ],
-      "group": "Monitoring configuration extensions",
-      "reason": "Dashboard authoring, alert configuration, availability tests, managed Prometheus storage or metric-View configuration extends beyond the stated OpenTelemetry tracing and KQL-query tasks."
-    },
-    {
       "id": "prep-rbac-006",
       "previousNumber": 568,
       "question": "Which Entra feature provides eligible, time-bound privileged role activation?",
@@ -4338,6 +4331,13 @@
       "legacyIds": [],
       "group": "PostgreSQL TLS parameter recall",
       "reason": "Removed from the focused deck: server-parameter name recall for a minimum TLS version is lower priority than secure application connections and connection optimization."
+    }
+  ],
+  "restored": [
+    {
+      "id": "m-63-3-1",
+      "date": "2026-10-30",
+      "reason": "User-requested basic workbook definition supporting KQL reporting; this does not promote advanced workbook authoring to a measured objective."
     }
   ]
 }

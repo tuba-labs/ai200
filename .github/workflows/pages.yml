@@ -53,6 +53,11 @@ jobs:
       - name: Kontroller nye workshops, arkiv og kortdekning
         run: python -m unittest discover -s tests -p test_new_workshops.py -v
 
+      - name: Kontroller prøveeksamen uten å hente spørsmålsbanken
+        run: |
+          python -m unittest discover -s tests -p test_practice_exam.py -v
+          node --test tests/practice-exam.test.cjs
+
       - name: Klargjør GitHub Pages
         uses: actions/configure-pages@v5
 

@@ -190,7 +190,7 @@ ALIASES = {
     'term-d4-latency': 'latencies|latens|svartid|svartider',
     'term-d4-p95': 'P95|95th percentile|95-persentil|95. persentil',
     'm-55-3-1': 'sentinel|sentinel keys|sentinel-nøkkel',
-    'm-63-3-1': 'workbook|workbooks|arbeidsbok|arbeidsbøker',
+    'm-63-3-1': 'workbook|workbooks|Azure Monitor workbooks|custom Azure Monitor workbook|custom workbooks|arbeidsbok|arbeidsbøker',
     'm-64-1-1': 'Tracer Provider|tracer providers',
     'prep-rbac-006': 'PIM|Privileged Identity Management',
     'prep-rbac-016': 'policy initiative|policy initiatives|initiativ',
@@ -720,13 +720,6 @@ EXTRA += [('Dapr',
   'addresses, ports and protocol.',
   'https://learn.microsoft.com/en-us/azure/application-gateway/ingress-controller-overview',
   'Web Application Firewall'),
- ('Azure Monitor workbook',
-  'workbook|workbooks|arbeidsbok|arbeidsbøker',
-  'A reusable interactive report combining text, log queries, metrics, parameters and visualizations. For '
-  'example, an operator can choose a service and time range, then view its failures, latency and relevant '
-  'logs together.',
-  'https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview',
-  ''),
  ('PIM',
   'Privileged Identity Management',
   'Microsoft Entra Privileged Identity Management (PIM). It lets an eligible user activate a privileged role '

@@ -21045,6 +21045,53 @@ window.AI200_FLASHCARDS = {
       }
     },
     {
+      "id": "m-63-3-1",
+      "domain": 4,
+      "category": "terms-4",
+      "title": "Azure Monitor workbooks",
+      "question": "What is a custom Azure Monitor workbook?",
+      "answers": [
+        "An Azure Monitor workbook is an interactive monitoring report in the Azure portal. A custom workbook is one you create or adapt for your own application.\n\nIt can put charts, tables and explanatory text on one page, using existing logs and metrics. You can add filters such as service name and time range, save the report and share it with your team. The workbook queries the data; sources such as Log Analytics still store it."
+      ],
+      "origin": "original",
+      "legacyIds": [
+        63
+      ],
+      "references": [
+        {
+          "label": "Microsoft Learn · Azure Workbooks overview",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview",
+          "kind": "primary"
+        }
+      ],
+      "review": {
+        "date": "2026-10-30",
+        "status": "clarified",
+        "note": "Restored as introductory vocabulary at the user’s request; verified report composition, parameters, templates and access to underlying data.",
+        "sources": [
+          "https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview"
+        ]
+      },
+      "coverageCategory": "monitor",
+      "kind": "term",
+      "term": "Azure Monitor workbook",
+      "clarityReview": {
+        "date": "2026-10-30",
+        "status": "rewritten",
+        "note": "Explains the report in everyday language and illustrates it with a service-health investigation."
+      },
+      "importance": {
+        "level": "terms",
+        "reason": "Supporting vocabulary for understanding how Azure Monitor presents KQL and metric results during an investigation.",
+        "objective": "d4-log-queries"
+      },
+      "example": {
+        "mode": "scenario",
+        "language": "Scenario",
+        "summary": "Create a “Repair service health” workbook with a failed-request chart, a response-time chart and a table of recent errors. Selecting “repairs-api” and “Last 24 hours” updates the connected views so an operator can investigate the same service and period."
+      }
+    },
+    {
       "id": "m-05-2-1",
       "domain": 4,
       "category": "identity-rbac",

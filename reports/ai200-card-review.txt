@@ -1,7 +1,7 @@
-AI-200 FLASHCARD SCOPE REVIEW — 29 OCTOBER 2026
+AI-200 FLASHCARD SCOPE REVIEW — 30 OCTOBER 2026
 Study guide: https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200
 Skills version: 7 October 2026.
-Reviewed 691 cards. Retained 559. Removed 132.
+Reviewed 691 cards. Retained 560. Removed 131.
 Remaining card IDs are unchanged. Display numbers follow the reduced deck.
 The guide names Python. A resource link alone is not a measured objective.
 General Docker, Kubernetes, SQL, networking and identity prerequisites remain.
@@ -127,9 +127,8 @@ Specialized purge, delegated role-management and recovery permissions are periph
   Previous #581 | m-52-5-2 | What does Key Vault Data Access Administrator manage?
   Previous #598 | m-56-5-1 | Does Key Vault's recover permission allow reading a secret value?
 
-Monitoring configuration extensions (9)
+Monitoring configuration extensions (8)
 Dashboard authoring, alert configuration, availability tests, managed Prometheus storage or metric-View configuration extends beyond the stated OpenTelemetry tracing and KQL-query tasks.
-  Previous #566 | m-63-3-1 | What is an Azure Monitor workbook used for?
   Previous #635 | m-65-3-1 | What does an OpenTelemetry metric View configure?
   Previous #679 | prep-mon-004 | Which Azure Monitor alert type evaluates a numeric metric against a threshold?
   Previous #680 | prep-p-mon-005 | Which Azure Monitor alert type evaluates a scheduled KQL query?
@@ -237,3 +236,7 @@ Removed from the focused deck: server-parameter name recall for a minimum TLS ve
 RETAINED OBJECTIVE MAPPINGS
 The JSON review records an objective, prerequisite/skill distinction and content fingerprint for every remaining card.
 Source: ../data/ai200-card-review.json
+
+RESTORED SUPPORTING VOCABULARY — 30 OCTOBER 2026
+m-63-3-1 | What is a custom Azure Monitor workbook?
+Restored as a Terms card at the user’s request to explain KQL-based operational reports. Advanced workbook authoring remains supplementary.

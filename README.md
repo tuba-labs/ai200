@@ -16,7 +16,7 @@ Den følgende oversikten beskriver også de tidligere workshopformatene, som for
 
 | Side | Innhold |
 | --- | --- |
-| [Oversikt](index.html) | Pensum, nye og tidligere workshops, studieløp og eksamensressurser |
+| [Oversikt](index.html) | Alle 27 delmål, flashcards, prøveeksamen og eksamensressurser |
 | [Nytt workshopløp](workshops/index.html) | To workshops per domene, med kategorier som kapitler |
 | [Kortdekning](workshops/coverage.html) | Hvert flashcard koblet til praktisk oppgave, analyse eller repetisjon |
 | [Tidligere workshops](old/index.html) | Bevart kopi av nettsted og labkilder før det nye løpet |
@@ -53,6 +53,7 @@ Den følgende oversikten beskriver også de tidligere workshopformatene, som for
 | [21. Spor et kall mellom to tjenester](workshop-tracing.html) | Domene 4 |
 | [22. Finn feil og målinger med KQL](workshop-kql.html) | Domene 4 |
 | [Flashcards](flashcards.html) | 523 kort med ett spørsmål, kategorier og lokal fremdrift |
+| [Prøveeksamen](practice-exam.html) | Tidsbegrenset prøve med bare AI200Preps «Real Exam»-merkede spørsmål fra en lokal studiekopi |
 
 Start med **[Før første workshop](getting-started.html#for-du-starter)**. Derfra følger du [oppskriften for å hente og åpne prosjektet i IntelliJ](getting-started.html#prosjekt), installerer verktøyene og klargjør Azure-kontoen. Begge kontovalgene bruker samme workshops, med lokal utvikling og testing som forberedelse til Azure-øvelsene. Praktisk konto- og verktøyoppsett er klargjøring; workshopenes læringsmål følger AI-200. Se [valgfri kostnadsveiledning](getting-started.html#kostnader) ved behov.
 
@@ -62,7 +63,7 @@ Det tidligere løpet består av 22 avgrensede workshops som kan tas i eget tempo
 
 Verktøy, [Python-pakker](getting-started.html#python-pakker) og [CLI-innlogging](getting-started.html#azure-cli) settes opp én gang i Kom i gang. Ressursgrupper og tjenester opprettes først i workshopene som bruker dem. Eksisterende labressurser gjenbrukes. Ved ny terminal følger du [terminaloppsettet](getting-started.html#terminal). Standardregionen er Norway East (`norwayeast`).
 
-Forsiden viser pensum først og deretter de åtte nye workshopene, to per domene. Domenelenkene går til det nye løpet. De tidligere workshopene og valget mellom korte og samlede økter er fjernet fra forsiden; arkivet nås gjennom én lenke i bunnteksten. I [old/](old/index.html) er den tidligere navigasjonen bevart.
+Forsiden viser alle 27 delmål, gruppert etter fire domener, samt flashcards, prøveeksamen og eksamensressurser. Lenker til workshops, studiedekning og Kom i gang er fjernet fra forsiden. Sidene og arkivet er bevart og kan fortsatt åpnes direkte; eldre domenelenker på forsiden peker til delmålsoversikten. I [old/](old/index.html) er den tidligere navigasjonen bevart.
 
 De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Ved push til `main` kjører [publiseringsworkflowen](.github/workflows/pages.yml) generatoren automatisk før GitHub Pages publiserer nettstedet. Fullfør engangsoppsettet under [Publiser med GitHub Pages](#publiser-med-github-pages) for å aktivere dette.
 
@@ -82,6 +83,23 @@ Hver workshop starter med **Dette lærer vi om nå**: en tabell med sentrale beg
 Forklar meningsbærende linjer i kodevinduene med kommentarer på norsk. Linjer som bare lukker blokker, parenteser eller lister, trenger ikke egen kommentar. JSON og rene innstillingsverdier får forklaringer inne i kodevinduet som holdes utenfor teksten som kopieres.
 
 ## Kjør nettstedet lokalt
+
+### Personlig prøveeksamen
+
+Åpne [Prøveeksamen](practice-exam.html) fra forsiden. Spørsmålene lastes fra din egen studiekopi og er ikke med i det publiserte nettstedet. Hent eller oppdater kopien fra prosjektroten:
+
+```powershell
+# Lagre oppgavesettene og hent ut bare spørsmål merket «Real Exam».
+python scripts/download_practice_exam.py
+```
+
+Nedlastingen 30. oktober 2026 fant 359 slike spørsmål i 16 sett, med fire caser og 20 spørsmål med flere riktige svar. «Real Exam» er kildens merking; den bekrefter ikke at Microsoft har brukt spørsmålene. Fasit og forklaringer beholdes fra kilden.
+
+Spørsmålsbanken ligger i `artifacts/ai200prep/real-exam.json`. Spilleren laster den lokale JavaScript-kopien automatisk ved åpning fra fil eller localhost. På den publiserte siden velger du JSON-filen med **Choose question file**. Importerte spørsmål og det siste forsøket lagres bare i nettleseren. Tiden fortsetter ved lukking eller oppdatering av siden. Du kan velge antall spørsmål, domener og tidsgrense; 0 minutter slår av tidtakingen. Svar vises etter levering, med resultat per domene. Prøven endrer ikke flashcard-vurderinger.
+
+En lesbar kopi med spørsmål og svar ligger i `artifacts/ai200prep/real-exam-questions-and-answers.txt`. Kilde-HTML og kontrollsummer beholdes sammen med et duplikatnotat i samme mappe. Hele `artifacts/` er Git-ignorert. Kildens [vilkår](https://ai200prep.com/terms/) tillater personlig, ikke-kommersiell bruk og lagring av studiesider. `--from-cache` bygger spørsmålsfilene på nytt fra lagret HTML uten nettverk.
+
+### Lokal server
 
 Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Kildefilene ligger i `labs/`.
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="559 AI-200-flashcards med ett spørsmål per kort, emnekategorier og lokal fremdrift. Gratis øvingsside for Microsoft AI-200.">
+  <meta name="description" content="560 AI-200-flashcards med ett spørsmål per kort, emnekategorier og lokal fremdrift. Gratis øvingsside for Microsoft AI-200.">
   <meta name="color-scheme" content="light">
   <title>AI-200 Flashcards | Studiegruppe</title>
   <style>
@@ -29,7 +29,7 @@
     .tools button:hover,.bar-btn:hover{background:#e3f0fd}.filter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field.search-field{grid-column:1/-1}
     label.field{display:block;font-weight:700;color:#4f6178;font-size:12px}label.field select,label.field input{display:block;margin-top:5px;width:100%;border:1px solid #cbd8e6;padding:11px 13px;background:#fff;border-radius:9px;color:var(--ink);min-height:46px}
     .term-option{display:flex;align-items:flex-start;gap:10px;margin:16px 0 0;font-size:14px;font-weight:650;cursor:pointer}.term-option input{width:18px;height:18px;flex-shrink:0;margin:3px 0 0;accent-color:var(--accent)}.term-help{margin:5px 0 0 28px;color:var(--muted);font-size:12px}
-    [data-importance="terms"]{--importance-ink:#176755;--importance-edge:#469b84;--importance-border:#b8ddcf;--importance-soft:#ddf3e9;--importance-surface:#eff9f4}
+    [data-importance="terms"]{--importance-ink:#475b70;--importance-edge:#8293a6;--importance-border:#ccd6e0;--importance-soft:#e7edf3;--importance-surface:#f1f4f8}
     [data-importance="critical"]{--importance-ink:#80500a;--importance-edge:#c28b23;--importance-border:#e7d4a7;--importance-soft:#fff0c8;--importance-surface:#fff9eb}
     [data-importance="important"]{--importance-ink:#215c97;--importance-edge:#518bc4;--importance-border:#c8ddef;--importance-soft:#e9f3ff;--importance-surface:#f0f7ff}
     [data-importance="esoteric"]{--importance-ink:#704799;--importance-edge:#9874ba;--importance-border:#ddd0ec;--importance-soft:#f0e7fa;--importance-surface:#f7f1fc}
@@ -51,7 +51,7 @@
     .counter{font-size:14px;font-weight:750;color:#52657c;font-variant-numeric:tabular-nums}
     .counter-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.card-jump{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--muted)}.card-jump input{width:80px;min-height:40px;padding:6px 8px;border:1px solid #cbd8e6;border-radius:8px}.card-jump button{min-height:40px}.session-status{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 0;font-size:13px;color:var(--muted)}
     .session-status #undo-rating{margin-left:auto}
-    .flashcard{background:linear-gradient(120deg,var(--importance-surface,#fff),#fff 90%);border:1px solid var(--importance-border,#d8e4f0);border-top:5px solid var(--importance-edge,var(--domain));border-radius:18px;min-height:375px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);position:relative;cursor:text;user-select:text}
+    .flashcard{background:linear-gradient(120deg,var(--domain-light,#eaf3ff) 0%,#fff 48%,var(--importance-surface,#f1f4f8) 100%) padding-box,linear-gradient(90deg,var(--domain,#1265bd),var(--importance-edge,#8293a6)) border-box;border:1px solid #d8e4f0;border-top:5px solid transparent;border-radius:18px;min-height:375px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);position:relative;cursor:text;user-select:text}
     .card-rating-marker{position:absolute;right:18px;bottom:18px;display:grid;place-items:center;width:38px;height:38px;border:1px solid #c7d1dc;border-radius:50%;background:#eef2f6;color:#68788b;font:800 25px/1 system-ui,sans-serif;pointer-events:none;user-select:none}
     .card-rating-marker[data-rating="known"]{border-color:#94d1af;background:#eaf8f0;color:#176b45}.card-rating-marker[data-rating="review"]{border-color:#e3bc58;background:#fff4cf;color:#a76e05}
     .card-hint{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#687a90;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px}
@@ -100,17 +100,17 @@
   <section class="hero" aria-labelledby="page-title">
     <div class="wrap">
       <span class="eyebrow">AI-200 · Interaktiv øving</span>
-      <h1 id="page-title">559 flashcards. Ett spørsmål per kort.</h1>
+      <h1 id="page-title">560 flashcards. Ett spørsmål per kort.</h1>
       <p>Start med grunnlaget, og velg hvor dypt du vil gå. Kortene er prioritert etter læringsmålene i AI-200. Filtrer på viktighet, fagdomene eller kategori, vis svaret og marker det du kan.</p>
       <div class="hero-actions"><a href="index.html">← Til studieguiden</a><a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Spørsmålsbank hos AI-200 Prep ↗</a></div>
     </div>
   </section>
   <main class="wrap" id="study">
     <section class="stats" aria-label="Fremdrift" aria-live="polite">
-      <div class="stat"><strong id="total">559</strong><span>Kort totalt</span></div>
+      <div class="stat"><strong id="total">560</strong><span>Kort totalt</span></div>
       <div class="stat"><strong id="known-count">0</strong><span>Kan dette</span><span class="stat-percent" id="known-percent">0 % av totalen</span></div>
       <div class="stat"><strong id="review-count">0</strong><span>Må repetere</span><span class="stat-percent" id="review-percent">0 % av totalen</span></div>
-      <div class="stat"><strong id="new-count">559</strong><span>Ikke vurdert</span><span class="stat-percent" id="new-percent">100 % av totalen</span></div>
+      <div class="stat"><strong id="new-count">560</strong><span>Ikke vurdert</span><span class="stat-percent" id="new-percent">100 % av totalen</span></div>
     </section>
     <section class="filter-panel" aria-label="Filtrer kort">
       <div class="panel-top"><h2>Velg hva du vil øve på</h2>
@@ -119,14 +119,14 @@
       <div class="filter-grid">
         <label class="field">Domene
           <select id="domain-filter">
-            <option value="all">Alle fire domener</option><option value="1">1 · Containere (163)</option><option value="2">2 · AI-data (147)</option><option value="3">3 · Integrasjoner (117)</option><option value="4">4 · Sikkerhet (132)</option>
+            <option value="all">Alle fire domener</option><option value="1">1 · Containere (163)</option><option value="2">2 · AI-data (147)</option><option value="3">3 · Integrasjoner (117)</option><option value="4">4 · Sikkerhet (133)</option>
           </select>
         </label>
         <label class="field">Kategori
           <select id="category-filter"><option value="all">Alle kategorier</option></select>
         </label>
         <label class="field">Kortsett
-          <select id="source-filter"><option value="all">Alle kortsett</option><option value="original">Opprinnelige, delt opp (294)</option><option value="prep">Fra spørsmålsbanken (113)</option><option value="terms" id="terms-source-option">Bare begrepskort</option></select>
+          <select id="source-filter"><option value="all">Alle kortsett</option><option value="original">Opprinnelige, delt opp (295)</option><option value="prep">Fra spørsmålsbanken (113)</option><option value="terms" id="terms-source-option">Bare begrepskort</option></select>
         </label>
         <label class="field">Workshopdekning
           <select id="workshop-filter"><option value="all">Alle kort</option><option value="covered">Dekket av en oppgave</option><option value="practical">Praktisk oppgave</option><option value="analysis">Analyseoppgave</option><option value="review">Kun repetisjon</option></select>
@@ -138,7 +138,7 @@
       <fieldset class="importance-filter" data-no-jargon aria-describedby="importance-help">
         <legend>Ta med kortgrupper</legend>
         <div class="importance-options" lang="en">
-          <label class="importance-option" data-importance="terms"><input id="include-terms" type="checkbox" checked><span aria-hidden="true">◉</span><span>Terms <span class="importance-count">(<span id="importance-terms-count">167</span>)</span></span></label>
+          <label class="importance-option" data-importance="terms"><input id="include-terms" type="checkbox" checked><span aria-hidden="true">◉</span><span>Terms <span class="importance-count">(<span id="importance-terms-count">168</span>)</span></span></label>
           <label class="importance-option" data-importance="critical"><input id="include-critical" type="checkbox" checked><span aria-hidden="true">★</span><span>Critical <span class="importance-count">(<span id="importance-critical-count">148</span>)</span></span></label>
           <label class="importance-option" data-importance="important"><input id="include-important" type="checkbox" checked><span aria-hidden="true">◆</span><span>Important <span class="importance-count">(<span id="importance-important-count">212</span>)</span></span></label>
           <label class="importance-option" data-importance="esoteric"><input id="include-esoteric" type="checkbox" checked><span aria-hidden="true">◇</span><span>Esoteric <span class="importance-count">(<span id="importance-esoteric-count">32</span>)</span></span></label>
@@ -148,7 +148,7 @@
       <fieldset class="rating-filter" data-no-jargon aria-describedby="rating-help">
         <legend>Ta med vurderinger</legend>
         <div class="rating-options" lang="en">
-          <label class="rating-option" data-rating="new"><input id="include-rating-new" type="checkbox" checked><span class="status-dot new" aria-hidden="true"></span><span>Unrated <span class="rating-count">(<span id="rating-new-count">559</span>)</span></span></label>
+          <label class="rating-option" data-rating="new"><input id="include-rating-new" type="checkbox" checked><span class="status-dot new" aria-hidden="true"></span><span>Unrated <span class="rating-count">(<span id="rating-new-count">560</span>)</span></span></label>
           <label class="rating-option" data-rating="review"><input id="include-rating-review" type="checkbox" checked><span class="status-dot review" aria-hidden="true"></span><span>Needs repeat <span class="rating-count">(<span id="rating-review-count">0</span>)</span></span></label>
           <label class="rating-option" data-rating="known"><input id="include-rating-known" type="checkbox" checked><span class="status-dot known" aria-hidden="true"></span><span>Know this <span class="rating-count">(<span id="rating-known-count">0</span>)</span></span></label>
         </div>
@@ -160,18 +160,18 @@
         <div class="progress-breakdown" id="progress-description" aria-live="polite" aria-atomic="true">
           <span class="progress-status"><span class="status-dot known" aria-hidden="true"></span><span>Kan dette: <strong id="progress-known">0 (0 %)</strong></span></span>
           <span class="progress-status"><span class="status-dot review" aria-hidden="true"></span><span>Må repetere: <strong id="progress-review">0 (0 %)</strong></span></span>
-          <span class="progress-status"><span class="status-dot new" aria-hidden="true"></span><span>Ikke vurdert: <strong id="progress-new">559 (100 %)</strong></span></span>
+          <span class="progress-status"><span class="status-dot new" aria-hidden="true"></span><span>Ikke vurdert: <strong id="progress-new">560 (100 %)</strong></span></span>
         </div>
-        <span class="progress-total" id="progress-total">Av 559 kort i valgte kortgrupper</span>
+        <span class="progress-total" id="progress-total">Av 560 kort i valgte kortgrupper</span>
       </div>
-      <div class="track" role="img" aria-label="Av 559 kort: Kan dette: 0 (0 %). Må repetere: 0 (0 %). Ikke vurdert: 559 (100 %)." id="progress-track">
+      <div class="track" role="img" aria-label="Av 560 kort: Kan dette: 0 (0 %). Må repetere: 0 (0 %). Ikke vurdert: 560 (100 %)." id="progress-track">
         <div class="fill known" id="progress-known-fill" aria-hidden="true"></div>
         <div class="fill review" id="progress-review-fill" aria-hidden="true"></div>
         <div class="fill new" id="progress-new-fill" style="width:100%" aria-hidden="true"></div>
       </div>
     </section>
     <section class="study" aria-label="Flashcard" lang="en">
-      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domain 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Unrated</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Position 1 of 559 in queue</span><form id="card-jump" class="card-jump" data-no-jargon novalidate><label for="card-number">Go to card #</label><input id="card-number" type="number" min="1" max="559" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Go</button></form></div></div>
+      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domain 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Unrated</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Position 1 of 560 in queue</span><form id="card-jump" class="card-jump" data-no-jargon novalidate><label for="card-number">Go to card #</label><input id="card-number" type="number" min="1" max="560" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Go</button></form></div></div>
       <p id="jump-help" class="term-help" data-no-jargon>Use the card’s fixed number, such as 35. Jumping reveals the card even if it is rated or hidden by a filter, then continues in number order.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
         <div class="card-hint"><span id="card-face-label">Question</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direct link to this card">Card #01</a><button id="copy-card-link" type="button">Copy link</button><button id="share-card" type="button" aria-haspopup="dialog" aria-controls="card-share-dialog">Share</button></div></div>
@@ -211,7 +211,7 @@
     </section>
     <div class="hint-box"><strong>Hurtigtaster:</strong> <span class="kbd">Mellomrom</span> snur kortet, også når en handlingsknapp har fokus · <span class="kbd">←</span>/<span class="kbd">→</span> bytt kort · <span class="kbd">1</span> må repetere · <span class="kbd">2</span> kan dette. I tekstfelt, avkrysningsbokser og begrepsforklaringer brukes vanlige tastaturkontroller. <span id="storage-note">Fremdriften lagres lokalt i nettleseren på denne enheten.</span> Markeringer fra de gamle kortene følger de oppdelte kortene.</div>
     <p class="source"><strong>Pensumkontroll:</strong> Kortene er avgrenset til oppgavene i AI-200-guiden og grunnlaget for å utføre dem. <a href="reports/ai200-card-review.txt">Se hvilke kort som ble fjernet og hvorfor</a>. Kort-ID-ene til gjenværende kort er beholdt, slik at lagrede vurderinger følger med.</p>
-    <p class="source"><strong>Kilder:</strong> 559 kort er beholdt etter pensumkontrollen 29. oktober 2026. Kortene er gjennomgått mot læringsmålene og har offisielle dokumentasjonslenker for hvert svar. Spørsmål og svar er på engelsk. Like læringspunkter er slått sammen; kortene har fagdomene, kategori og stabile ID-er. Dette er uoffisielt øvingsmateriell. <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Microsofts studieguide</a> er grunnlaget for avgrensningen.</p>
+    <p class="source"><strong>Kilder:</strong> 560 kort er tilgjengelige etter pensumkontrollen og oppdateringen 30. oktober 2026. Kortene er gjennomgått mot læringsmålene og har offisielle dokumentasjonslenker for hvert svar. Spørsmål og svar er på engelsk. Like læringspunkter er slått sammen; kortene har fagdomene, kategori og stabile ID-er. Dette er uoffisielt øvingsmateriell. <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Microsofts studieguide</a> er grunnlaget for avgrensningen.</p>
     <p class="source"><strong>Workshopmerket:</strong> Lenken på kortet går til den konkrete praktiske oppgaven eller analyseoppgaven i <a href="./workshops/index.html">det nye workshopløpet</a>. «Repetisjon» betyr at kortet foreløpig mangler en egen øvingsoppgave. Dette beskriver opplegget, ikke din personlige fremdrift. <a href="./workshops/coverage.html">Se full dekningsoversikt →</a></p>
   </main>
   <footer><div class="wrap footer-in"><span>AI-200 · Øvingskort for studiegruppen</span><span>Statisk HTML/JavaScript · GitHub Pages-kompatibel</span></div></footer>
@@ -230,7 +230,7 @@
       keda:'KEDA and event-driven scaling',aks:'AKS and Kubernetes',postgresql:'PostgreSQL and pgvector',
       opentelemetry:'OpenTelemetry and tracing',monitor:'Azure Monitor and Application Insights','identity-rbac':'Identity and RBAC'
     };
-    const DOMAIN_COLORS = {1:['#1265bd','#eaf3ff'],2:['#824bb1','#f2eafd'],3:['#995c16','#fff1d9'],4:['#197451','#e4f7ec']};
+    const DOMAIN_COLORS = {1:['#1265bd','#eaf3ff'],2:['#824bb1','#f2eafd'],3:['#995c16','#fff1d9'],4:['#a34672','#fff0f6']};
     const IMPORTANCE_LEVELS = DECK.importanceReview.levels;
     const IMPORTANCE_SYMBOLS = {terms:'◉',critical:'★',important:'◆',esoteric:'◇'};
     const STORAGE_KEY = 'ai-200-study-flashcards-progress-v2';
@@ -467,7 +467,7 @@
       $('importance-tag').replaceChildren(symbol,document.createTextNode(IMPORTANCE_LEVELS[importance].label));
       $('counter').textContent=`Position ${position+1} of ${list.length} in queue`;
       $('domain-tag').textContent=`Domain ${c.domain} · ${DOMAIN_NAMES[c.domain]}`;
-      const [color,light]=DOMAIN_COLORS[c.domain];$('card').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain-light',light);
+      const [color,light]=DOMAIN_COLORS[c.domain];$('card').style.setProperty('--domain',color);$('card').style.setProperty('--domain-light',light);$('domain-tag').style.setProperty('--domain',color);$('domain-tag').style.setProperty('--domain-light',light);
       const status=getStatus(c);$('state-tag').className='state-tag '+(status==='new'?'':status);
       $('state-tag').textContent=status==='known'?'Know this':status==='review'?'Needs repeat':'Unrated';
       const marker=$('card-rating-marker');

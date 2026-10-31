@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "deckSha256": "64a8dda9d90faafe218f6c2875b7e1949100c211d815b2c87cb3961c33ef3e04",
+  "deckSha256": "158e442b9939a904d5d7155c25dfba786d5c53e9a305456f6c2afb7322bdc23a",
   "kinds": {
     "practical": "Praktisk oppgave",
     "analysis": "Analyseoppgave",
@@ -3966,6 +3966,16 @@
       "activity": "kql-investigate",
       "activityTitle": "Finn feilrate, treghet og relaterte kall",
       "url": "workshops/d4b.html#kql-investigate"
+    },
+    "m-63-3-1": {
+      "workshop": "d4b",
+      "workshopTitle": "Finn en distribuert feil med OpenTelemetry og KQL",
+      "domain": 4,
+      "category": "monitor",
+      "kind": "analysis",
+      "activity": "monitor-design",
+      "activityTitle": "Lag en driftsvisning som ikke skjuler datatap",
+      "url": "workshops/d4b.html#monitor-design"
     },
     "m-63-1-1": {
       "workshop": "d4b",
