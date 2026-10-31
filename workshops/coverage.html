@@ -5,9 +5,23 @@
   <link rel="stylesheet" href="../jargon.css" data-ai200-jargon>
   <script src="../jargon-data.js" defer></script>
   <script src="../jargon.js" defer></script>
+  <link rel="stylesheet" href="../site-navigation.css" data-site-navigation>
 </head>
 <body><a class="skip" href="#innhold">Hopp til innhold</a>
-<header><div class="wrap header-inner"><a class="brand" href="./index.html">AI-200 <span>Nye workshops</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html">Domener</a><a href="./coverage.html" aria-current="page">Kortdekning</a><a href="../flashcards.html">Flashcards</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a><a class="jargon-nav-link" href="../jargon.html">Begreper</a></nav></div></header>
+<header class="site-header" data-site-header data-site-current="laerestoff.html" lang="nb" data-no-jargon>
+  <div class="site-header-inner">
+    <a class="site-brand" href="../index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav class="site-nav" aria-label="Hovednavigasjon">
+      <a href="../index.html">Oversikt</a>
+      <a href="../laerestoff.html" aria-current="page">Lærestoff</a>
+      <a href="../flashcards.html">Flashcards</a>
+      <a href="../practice-exam.html">Prøveeksamen</a>
+      <a class="jargon-nav-link" href="../jargon.html">Begreper</a>
+      <a href="../eksamen.html">Eksamen</a>
+    </nav>
+  </div>
+</header>
+<nav class="course-nav wrap" aria-label="Workshopnavigasjon"><a href="./index.html">Domener</a><a href="./coverage.html" aria-current="page">Kortdekning</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav>
 <div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>Flashcards og workshopdekning</h1><p class="lead">Se nøyaktig hvor hvert kort øves, og hvilke kort som foreløpig bare har repetisjon.</p></div></div>
 <main id="innhold" class="wrap "><div class="content"><section class="panel"><h2>Hva betyr dekningen?</h2><div class="stats" aria-label="Planlagt kortdekning"><div><strong>408</strong><span>Kort i utvalget</span></div><div class="practical"><strong>167</strong><span>Praktisk oppgave</span></div><div class="analysis"><strong>235</strong><span>Analyseoppgave</span></div><div class="review"><strong>6</strong><span>Repetisjon</span></div></div><p>Praktisk: temaet inngår i en konkret kode-, konfigurasjons- eller tjenesteøvelse. Analyse: en begrunnet løsning, tabell eller skisse. Repetisjon: kontrollspørsmål uten egen øvingsoppgave, og dermed et synlig øvingshull. Kategorien alene gir aldri merket «dekket».</p><p><a href="../flashcards.html?source=terms">Begrepskort</a> forklarer ordforrådet. Nye definisjoner er ikke lagt til som oppgavedekning; tidligere kort som er flyttet til Terms beholder sin konkrete oppgavekobling.</p><p>Dekningen er en faglig plan for oppgavene. Azure-øvelsene må gjennomføres i din konto; siden fører ikke bevis på at en tjenestetest har kjørt.</p>
 <form class="filters" data-coverage-filters><label>Domene<select name="domain"><option value="all">Alle domener</option><option value="1">1 · Containere</option><option value="2">2 · AI-data</option><option value="3">3 · Integrasjoner</option><option value="4">4 · Sikkerhet og observasjon</option></select></label><label>Kategori<select name="category"><option value="all">Alle kategorier</option><option value="acr">Azure Container Registry (ACR)</option><option value="app-service">App Service</option><option value="container-apps">Container Apps</option><option value="keda">KEDA og hendelsesstyrt skalering</option><option value="aks">AKS og Kubernetes</option><option value="cosmos">Cosmos DB</option><option value="postgresql">PostgreSQL og pgvector</option><option value="redis">Redis</option><option value="event-grid">Event Grid</option><option value="service-bus">Service Bus</option><option value="functions">Azure Functions</option><option value="event-hubs">Event Hubs</option><option value="key-vault">Key Vault</option><option value="app-configuration">App Configuration</option><option value="kql">KQL</option><option value="opentelemetry">OpenTelemetry og sporing</option><option value="monitor">Azure Monitor og Application Insights</option><option value="identity-rbac">Identitet og RBAC</option></select></label><label>Dekning<select name="kind"><option value="all">Alle typer</option><option value="practical">Praktisk oppgave</option><option value="analysis">Analyseoppgave</option><option value="review">Kun repetisjon</option></select></label><label>Søk<input name="search" type="search" placeholder="Spørsmål, kort-ID eller oppgave"></label></form><p data-coverage-count aria-live="polite">408 kort</p>

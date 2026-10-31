@@ -14,6 +14,7 @@ from jargon_catalog import ALIASES, DEFINITIONS, EXTRA, PRIMARY
 from jargon_examples import EXAMPLES, inline
 from jargon_relations import EXTRA_TERMS, PLATFORMS, RELATION_KINDS, RELATIONS
 from workshop_curriculum import GLOSSARY
+from build_navigation import attach_navigation, current_section
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAINS = {1: 'Containere', 2: 'AI-data', 3: 'Integrasjoner', 4: 'Sikkerhet og observabilitet'}
@@ -108,16 +109,13 @@ def load_catalog():
     return sorted(terms, key=lambda t: t['primary'].casefold())
 
 
-def attach_assets(html, prefix='./'):
+def attach_assets(html, prefix='./', current=None):
     if 'data-ai200-jargon' not in html:
         assets = (f'\n  <link rel="stylesheet" href="{prefix}jargon.css" data-ai200-jargon>\n'
                   f'  <script src="{prefix}jargon-data.js" defer></script>\n'
                   f'  <script src="{prefix}jargon.js" defer></script>\n')
         html = html.replace('</head>', assets + '</head>', 1)
-    if 'class="jargon-nav-link"' not in html:
-        link = f'<a class="jargon-nav-link" href="{prefix}jargon.html">Begreper</a>'
-        html = html.replace('</nav>', link + '</nav>', 1)
-    return html
+    return attach_navigation(html, prefix, current)
 
 
 def render_example(example, prefix):
@@ -180,7 +178,7 @@ def render_page(prefix='./', terms=None):
 <meta name="description" content="Alle fagbegreper med forklaringer, forkortelser, andre navn og offisielle kilder."><title>Begreper og forkortelser | AI-200</title>
 <link rel="stylesheet" href="{prefix}workshops/course.css"></head>
 <body><a class="skip" href="#innhold">Hopp til begrepene</a>
-<header><div class="wrap header-inner"><a class="brand" href="{prefix}index.html">AI-200 <span>Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="{prefix}index.html">Oversikt</a><a href="{prefix}workshops/index.html">Workshops</a><a href="{prefix}flashcards.html">Flashcards</a></nav></div></header>
+<!-- site-header -->
 <div class="hero"><div class="wrap"><p class="eyebrow">Ordforrådet i alle fire domener</p><h1>Begreper og forkortelser</h1><p class="lead">Slå opp et primærbegrep, en forkortelse eller et annet navn. Prikkede understrekinger på studiesidene gir samme forklaring.</p></div></div>
 <main class="wrap" id="innhold"><section class="panel jargon-directory" data-no-jargon>
 <p>Hold pekeren over et markert begrep eller bruk Tab for å lese forklaringen. Klikk, trykk eller bruk Enter for å åpne forklaringsboksen med lenke hit. Escape lukker boksen. Forklaringene er på engelsk, som flashcardene.</p>
@@ -190,7 +188,7 @@ def render_page(prefix='./', terms=None):
 <div class="jargon-entries">{''.join(entries)}</div></main>
 <footer><div class="wrap"><p>AI-200 studiegruppe · <a href="{prefix}flashcards.html?source=terms">Øv med begrepskort</a> · <a href="{prefix}index.html">Til oversikten</a></p></div></footer></body></html>
 '''
-    return attach_assets(html, prefix)
+    return attach_assets(html, prefix, 'jargon.html')
 
 
 def render_example_page(identifier, example, terms):
@@ -204,7 +202,7 @@ def render_example_page(identifier, example, terms):
 <meta name="description" content="{escape(example['summary'], quote=True)}"><title>{escape(example['language'])}: eksempel | AI-200</title>
 <link rel="stylesheet" href="../workshops/course.css"></head>
 <body><a class="skip" href="#innhold">Hopp til eksemplet</a>
-<header><div class="wrap header-inner"><a class="brand" href="../index.html">AI-200 <span>Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="../index.html">Oversikt</a><a href="../workshops/index.html">Workshops</a><a href="../flashcards.html">Flashcards</a></nav></div></header>
+<!-- site-header -->
 <div class="hero"><div class="wrap"><p class="eyebrow">Se hvordan det ser ut</p><h1>{escape(example['language'])}: eksempel</h1><p class="lead" lang="en">{escape(example['summary'])}</p></div></div>
 <main id="innhold" class="wrap jargon-example-page" data-jargon-exclude="{' '.join(example['terms'])}">
 <section class="panel"><h2><code>{escape(example['filename'])}</code></h2>
@@ -213,7 +211,7 @@ def render_example_page(identifier, example, terms):
 <h2>Hva viser eksemplet?</h2><ul lang="en">{notes}</ul><p>Til begrepene: {back_links}</p><p>{sources}</p></section></main>
 <footer><div class="wrap"><p>AI-200 studiegruppe · <a href="../jargon.html">Alle begreper og eksempler</a></p></div></footer></body></html>
 '''
-    return attach_assets(html, '../')
+    return attach_assets(html, '../', 'jargon.html')
 
 
 def outputs():
@@ -241,7 +239,7 @@ def main():
         name = path.relative_to(ROOT).as_posix()
         if name not in rendered:
             prefix = '../' * len(path.parent.relative_to(ROOT).parts) or './'
-            rendered[name] = attach_assets(path.read_text(encoding='utf-8'), prefix)
+            rendered[name] = attach_assets(path.read_text(encoding='utf-8'), prefix, current_section(name))
     stale = []
     for name, content in rendered.items():
         path = ROOT / name

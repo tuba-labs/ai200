@@ -141,10 +141,10 @@ class FlashcardContentTests(unittest.TestCase):
 
     def test_displayed_counts_match_card_data(self):
         html = (ROOT / "flashcards.html").read_text(encoding="utf-8")
-        index = (ROOT / "index.html").read_text(encoding="utf-8")
+        resources = (ROOT / "laerestoff.html").read_text(encoding="utf-8")
         for page, content, pattern in [
             ("flashcards.html", html, r'id="total">(\d+)<'),
-            ("index.html", index, r'id="flashcard-count">(\d+)</span>'),
+            ("laerestoff.html", resources, r'id="flashcard-count">(\d+)</span>'),
         ]:
             with self.subTest(page=page):
                 match = re.search(pattern, content)

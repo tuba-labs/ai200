@@ -12,13 +12,23 @@
   <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
   <script src="./jargon-data.js" defer></script>
   <script src="./jargon.js" defer></script>
+  <link rel="stylesheet" href="./site-navigation.css" data-site-navigation>
 </head>
 <body>
   <a class="skip" href="#innhold">Hopp til innhold</a>
-  <header class="header"><div class="wrap header-inner">
-    <a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
-    <nav aria-label="Hovednavigasjon"><a href="./index.html#workshops">Alle workshops</a><a href="./getting-started.html">Kom i gang</a><a href="./flashcards.html">Flashcards</a><a class="jargon-nav-link" href="./jargon.html">Begreper</a></nav>
-  </div></header>
+  <header class="site-header" data-site-header data-site-current="laerestoff.html" lang="nb" data-no-jargon>
+  <div class="site-header-inner">
+    <a class="site-brand" href="./index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav class="site-nav" aria-label="Hovednavigasjon">
+      <a href="./index.html">Oversikt</a>
+      <a href="./laerestoff.html" aria-current="page">Lærestoff</a>
+      <a href="./flashcards.html">Flashcards</a>
+      <a href="./practice-exam.html">Prøveeksamen</a>
+      <a class="jargon-nav-link" href="./jargon.html">Begreper</a>
+      <a href="./eksamen.html">Eksamen</a>
+    </nav>
+  </div>
+</header>
   <div class="hero"><div class="wrap">
     <p class="eyebrow">Workshop 15 / Domene 3 / Integrasjoner</p>
     <h1>Behandle kømeldinger og DLQ i kode</h1>

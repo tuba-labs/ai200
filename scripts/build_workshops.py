@@ -95,7 +95,8 @@ def page(title, intro, body, current="", toc=""):
 <meta name="description" content="{escape(intro, quote=True)}"><title>{escape(title)} | AI-200</title>
 <link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script></head>
 <body><a class="skip" href="#innhold">Hopp til innhold</a>
-<header><div class="wrap header-inner"><a class="brand" href="./index.html">AI-200 <span>Nye workshops</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html"{' aria-current="page"' if current=='home' else ''}>Domener</a><a href="./coverage.html"{' aria-current="page"' if current=='coverage' else ''}>Kortdekning</a><a href="../flashcards.html">Flashcards</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav></div></header>
+<!-- site-header -->
+<nav class="course-nav wrap" aria-label="Workshopnavigasjon"><a href="./index.html"{' aria-current="page"' if current=='home' else ''}>Domener</a><a href="./coverage.html"{' aria-current="page"' if current=='coverage' else ''}>Kortdekning</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav>
 <div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>{escape(title)}</h1><p class="lead">{escape(intro)}</p></div></div>
 <main id="innhold" class="wrap {'layout' if toc else ''}">{('<aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold">'+toc+'</nav></aside>') if toc else ''}<div class="content">{body}</div></main>
 <footer><div class="wrap"><p>AI-200 studiegruppe · Nytt løp · <a href="./glossary.html">Forkortelser og begreper</a> · <a href="../index.html">Hele studiesiden</a></p></div></footer></body></html>

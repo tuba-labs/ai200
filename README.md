@@ -16,7 +16,9 @@ Den følgende oversikten beskriver også de tidligere workshopformatene, som for
 
 | Side | Innhold |
 | --- | --- |
-| [Oversikt](index.html) | Alle 27 delmål, flashcards, prøveeksamen og eksamensressurser |
+| [Oversikt](index.html) | Alle 27 delmål og veier videre til lærestoff og eksamen |
+| [Lærestoff](laerestoff.html) | Læringsstier, pensum per domene, workshops, flashcards og prøveeksamener |
+| [Eksamen](eksamen.html) | Format, oppmelding, pris, språk, eksamensdagen, resultater, retake og fornyelse |
 | [Nytt workshopløp](workshops/index.html) | To workshops per domene, med kategorier som kapitler |
 | [Kortdekning](workshops/coverage.html) | Hvert flashcard koblet til praktisk oppgave, analyse eller repetisjon |
 | [Tidligere workshops](old/index.html) | Bevart kopi av nettsted og labkilder før det nye løpet |
@@ -63,7 +65,9 @@ Det tidligere løpet består av 22 avgrensede workshops som kan tas i eget tempo
 
 Verktøy, [Python-pakker](getting-started.html#python-pakker) og [CLI-innlogging](getting-started.html#azure-cli) settes opp én gang i Kom i gang. Ressursgrupper og tjenester opprettes først i workshopene som bruker dem. Eksisterende labressurser gjenbrukes. Ved ny terminal følger du [terminaloppsettet](getting-started.html#terminal). Standardregionen er Norway East (`norwayeast`).
 
-Forsiden viser alle 27 delmål, gruppert etter fire domener, samt flashcards, prøveeksamen og eksamensressurser. Lenker til workshops, studiedekning og Kom i gang er fjernet fra forsiden. Sidene og arkivet er bevart og kan fortsatt åpnes direkte; eldre domenelenker på forsiden peker til delmålsoversikten. I [old/](old/index.html) er den tidligere navigasjonen bevart.
+Forsiden viser alle 27 delmål, gruppert etter fire domener. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen. Eldre domenelenker på forsiden peker til delmålsoversikten. I [old/](old/index.html) er den tidligere navigasjonen bevart.
+
+Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build_navigation.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
 
 De korte HTML-sidene er kilden til oppgavene. Samlede sider bygges fra dem og bruker samme fremdriftsnøkler. Ved push til `main` kjører [publiseringsworkflowen](.github/workflows/pages.yml) generatoren automatisk før GitHub Pages publiserer nettstedet. Fullfør engangsoppsettet under [Publiser med GitHub Pages](#publiser-med-github-pages) for å aktivere dette.
 

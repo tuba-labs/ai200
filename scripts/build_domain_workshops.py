@@ -177,7 +177,7 @@ def render(domain, workshops):
 </head>
 <body>
   <a class="skip" href="#innhold">Hopp til innhold</a>
-  <header class="header"><div class="wrap header-inner"><a class="brand" href="./index.html"><span class="brand-mark">200</span><span>AI-200 Studiegruppe</span></a><nav aria-label="Hovednavigasjon"><a href="./index.html#domener">Pensum</a><a href="./index.html?format=domain#workshops-domene-{domain['number']}">Workshopformat</a><a href="./studiedekning.html">Studiedekning</a></nav></div></header>
+  <!-- site-header -->
   <div class="hero"><div class="wrap"><p class="eyebrow">Samlet workshop / Domene {domain['number']}</p><h1>{escape(domain['title'])}</h1><p class="lead">Gjennomfør del {first}–{last} som én sammenhengende workshop eller to samlinger. Du bruker de samme oppgavene som i de korte øktene.</p><div class="meta"><span class="tag">{last - first + 1} deler</span><span class="tag">Én eller to samlinger</span></div></div></div>
   <nav class="workshop-nav" aria-label="Samlede workshops"><div class="wrap">{links}</div></nav>
   <main id="innhold" class="wrap workshop-layout">
