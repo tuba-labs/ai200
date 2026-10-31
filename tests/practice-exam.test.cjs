@@ -76,3 +76,27 @@ test('the timer uses an absolute deadline and cannot reset on a reload or inacti
   assert.equal(rules.remainingSeconds(restored, 61000), 0);
   assert.equal(rules.remainingSeconds(restored, 999999), 0);
 });
+
+test('checked answers survive saving without finishing, changing the timer or awarding extra points', () => {
+  const source = bank(), attempt = rules.createAttempt(source, {count: 3}, 1000);
+  attempt.answers = {one: ['A'], two: ['A']};
+  const initialScore = rules.grade(source, attempt), deadline = attempt.deadline;
+  attempt.checked = ['one', 'two'];
+  const restored = JSON.parse(JSON.stringify(attempt));
+  assert(rules.validAttempt(restored, source));
+  assert.deepEqual(restored.checked, ['one', 'two']);
+  assert.equal(restored.submittedAt, null);
+  assert.equal(restored.deadline, deadline);
+  assert.deepEqual(rules.grade(source, restored), initialScore);
+});
+
+test('older saved attempts still load, while malformed or unanswered checks are rejected', () => {
+  const source = bank(), attempt = rules.createAttempt(source, {count: 3}, 1000);
+  delete attempt.checked;
+  assert(rules.validAttempt(attempt, source));
+  for (const checked of [['missing'], ['one'], ['one', 'one'], 'one', null]) {
+    assert(!rules.validAttempt({...attempt, checked}, source));
+  }
+  attempt.answers.one = ['A'];
+  assert(rules.validAttempt({...attempt, checked: ['one']}, source));
+});

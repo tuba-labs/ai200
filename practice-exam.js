@@ -42,6 +42,7 @@
     updatePool();
     const saved = read(ATTEMPT_KEY);
     attempt = rules.validAttempt(saved, bank) ? saved : null;
+    if (attempt) attempt.checked ||= [];
     if (attempt && attempt.submittedAt !== null) renderResults();
     else if (attempt) { showExam(); tick(); }
     else showSetup();
@@ -104,12 +105,41 @@
     $('question-position').textContent = `${attempt.index + 1} of ${attempt.ids.length}`;
     $('previous-question').disabled = attempt.index === 0;
     $('next-question').disabled = attempt.index === attempt.ids.length - 1;
+    renderFeedback();
     updateProgress();
+  }
+  function renderFeedback() {
+    const q = questions.get(attempt.ids[attempt.index]), answer = selected(q.id);
+    const checked = attempt.checked.includes(q.id);
+    $('answer-feedback').hidden = !checked;
+    for (const label of $('answer-options').children) {
+      const input = label.querySelector('input'), chosen = answer.includes(input.value), correct = q.correctAnswers.includes(input.value);
+      label.classList.toggle('correct-option', checked && correct);
+      label.classList.toggle('wrong-option', checked && chosen && !correct);
+      label.querySelectorAll('.option-note').forEach(el => el.remove());
+      if (checked && (correct || chosen)) label.querySelector('.option-text').append(node('span', 'option-note', [correct ? 'Correct answer' : '', chosen ? 'Your selection' : ''].filter(Boolean).join(' · ')));
+    }
+    $('feedback-correct-options').replaceChildren();
+    $('feedback-heading').textContent = '';
+    $('feedback-summary').textContent = '';
+    $('feedback-explanation').textContent = '';
+    $('feedback-source').removeAttribute('href');
+    if (!checked) return;
+    const correct = rules.isCorrect(q, answer);
+    $('answer-feedback').dataset.result = correct ? 'correct' : 'incorrect';
+    $('feedback-heading').textContent = correct ? 'Correct' : 'Incorrect';
+    $('feedback-summary').textContent = q.correctAnswers.length > 1
+      ? 'Correct answers are shown below. Select every correct option and no incorrect options.'
+      : 'Correct answer:';
+    for (const option of q.options.filter(o => q.correctAnswers.includes(o.id))) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${option.id}. ${option.text}`));
+    $('feedback-explanation').textContent = q.explanation;
+    $('feedback-source').href = q.setUrl;
   }
   function updateProgress() {
     const answered = attempt.ids.filter(id => selected(id).length).length;
     $('attempt-progress').textContent = `${answered} of ${attempt.ids.length} answered · ${attempt.flagged.length} marked for review`;
     $('clear-answer').disabled = !selected(attempt.ids[attempt.index]).length;
+    $('check-answer').disabled = !selected(attempt.ids[attempt.index]).length;
     $('question-navigation').replaceChildren();
     for (const [index, id] of attempt.ids.entries()) {
       const button = node('button', '', index + 1);
@@ -204,7 +234,8 @@
     if (expired() || attempt.submittedAt !== null) return;
     const id = attempt.ids[attempt.index];
     attempt.answers[id] = [...$('answer-options').querySelectorAll('input:checked')].map(input => input.value);
-    saveAttempt(); updateProgress();
+    attempt.checked = attempt.checked.filter(value => value !== id);
+    saveAttempt(); renderFeedback(); updateProgress();
   });
   $('flag-question').addEventListener('change', event => {
     if (expired() || attempt.submittedAt !== null) return;
@@ -216,7 +247,15 @@
   $('clear-answer').addEventListener('click', () => {
     if (expired() || attempt.submittedAt !== null) return;
     delete attempt.answers[attempt.ids[attempt.index]];
+    attempt.checked = attempt.checked.filter(id => id !== attempt.ids[attempt.index]);
     saveAttempt(); renderQuestion(); focus($('question-prompt'));
+  });
+  $('check-answer').addEventListener('click', () => {
+    if (!attempt || attempt.submittedAt !== null || expired()) return;
+    const id = attempt.ids[attempt.index];
+    if (!selected(id).length) return;
+    if (!attempt.checked.includes(id)) attempt.checked.push(id);
+    saveAttempt(); renderFeedback(); focus($('feedback-heading'));
   });
   $('previous-question').addEventListener('click', () => navigate(attempt.index - 1));
   $('next-question').addEventListener('click', () => navigate(attempt.index + 1));

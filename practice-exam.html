@@ -22,7 +22,7 @@
   <main class="wrap" id="main">
     <div class="intro"><span class="eyebrow">AI-200 Prep · Source questions only</span>
       <h1>Practice exam</h1>
-      <p>Test yourself using only questions the source labels <strong>Real Exam</strong>. Answers stay hidden until you finish.</p>
+      <p>Test yourself using only questions the source labels <strong>Real Exam</strong>. Use <strong>Check answer</strong> for instant feedback, or review everything when you finish.</p>
       <p class="small">This is the provider’s label, not verification that these questions appeared on Microsoft’s exam. Scores use the provider’s answer key.</p>
     </div>
     <p class="storage-note" id="storage-notice" role="status" hidden>Browser storage is unavailable. Keep this tab open: your attempt cannot be saved after a reload.</p>
@@ -53,7 +53,14 @@
       <div class="exam-layout">
         <article class="panel question-panel"><div class="question-meta"><span class="badge" id="question-domain"></span><span id="question-service"></span><span id="question-source-id"></span></div>
           <div id="case-context"></div><form id="question-form"><fieldset id="question-fieldset"><legend id="question-prompt" tabindex="-1"></legend><p class="small" id="question-instructions"></p><div class="options" id="answer-options"></div></fieldset></form>
-          <div class="question-actions"><label class="check"><input id="flag-question" type="checkbox">Mark for review</label><button id="clear-answer" type="button">Clear answer</button></div>
+          <div class="question-actions"><label class="check"><input id="flag-question" type="checkbox">Mark for review</label><div class="answer-actions"><button id="clear-answer" type="button">Clear answer</button><button id="check-answer" class="primary" type="button" disabled>Check answer</button></div></div>
+          <section id="answer-feedback" class="answer-feedback" aria-labelledby="feedback-heading" hidden>
+            <h3 id="feedback-heading" tabindex="-1"></h3>
+            <p class="small" id="feedback-summary"></p>
+            <div id="feedback-correct-options"></div>
+            <p class="source-explanation" id="feedback-explanation"></p>
+            <a id="feedback-source" target="_blank" rel="noopener noreferrer">Source question and explanation ↗</a>
+          </section>
           <div class="previous-next"><button id="previous-question" type="button">← Previous</button><span id="question-position"></span><button id="next-question" type="button">Next →</button></div>
         </article>
         <aside class="panel navigator" aria-labelledby="navigator-heading"><h3 id="navigator-heading">Questions</h3><p class="small">Filled = answered · dot = marked for review</p><div id="question-navigation" class="question-grid"></div><p class="small">Your answers save automatically on this device. The timer continues when you leave this tab.</p></aside>
@@ -70,7 +77,7 @@
     </section>
     <noscript><p class="panel">Enable JavaScript to load the questions and take an exam.</p></noscript>
   </main>
-  <dialog id="finish-dialog" aria-labelledby="finish-title"><h2 id="finish-title">Finish this exam?</h2><p id="finish-summary"></p><p>Submitting ends the timer and reveals the answer key.</p><div class="dialog-actions"><button id="continue-exam" type="button" autofocus>Keep working</button><button id="submit-exam" class="primary" type="button">Submit exam</button></div></dialog>
+  <dialog id="finish-dialog" aria-labelledby="finish-title"><h2 id="finish-title">Finish this exam?</h2><p id="finish-summary"></p><p>Submitting ends the timer and opens the full answer review.</p><div class="dialog-actions"><button id="continue-exam" type="button" autofocus>Keep working</button><button id="submit-exam" class="primary" type="button">Submit exam</button></div></dialog>
   <footer><div class="wrap">AI-200 Study group · Personal practice · <a href="index.html">Back to overview</a></div></footer>
 </body>
 </html>

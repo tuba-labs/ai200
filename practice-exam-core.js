@@ -55,7 +55,7 @@
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(q.id);
     }
-    return {version: 1, bankId: bank.bankId, ids: [...groups.values()].flat(), answers: {}, flagged: [],
+    return {version: 1, bankId: bank.bankId, ids: [...groups.values()].flat(), answers: {}, flagged: [], checked: [],
       index: 0, startedAt: now, deadline: minutes ? now + minutes * 60000 : null,
       submittedAt: null, timedOut: false};
   }
@@ -64,7 +64,9 @@
     const questions = new Map(bank.questions.map(q => [q.id, q]));
     if (!attempt.ids.every(id => questions.has(id)) || !Number.isInteger(attempt.index) || attempt.index < 0 || attempt.index >= attempt.ids.length || !isObject(attempt.answers) || !Array.isArray(attempt.flagged) || !unique(attempt.flagged) || !attempt.flagged.every(id => attempt.ids.includes(id))) return false;
     if (!Number.isFinite(attempt.startedAt) || (attempt.deadline !== null && (!Number.isFinite(attempt.deadline) || attempt.deadline <= attempt.startedAt)) || (attempt.submittedAt !== null && (!Number.isFinite(attempt.submittedAt) || attempt.submittedAt < attempt.startedAt)) || typeof attempt.timedOut !== 'boolean') return false;
-    return Object.entries(attempt.answers).every(([id, answer]) => attempt.ids.includes(id) && Array.isArray(answer) && unique(answer) && answer.every(option => questions.get(id).options.some(o => o.id === option)));
+    if (!Object.entries(attempt.answers).every(([id, answer]) => attempt.ids.includes(id) && Array.isArray(answer) && unique(answer) && answer.every(option => questions.get(id).options.some(o => o.id === option)))) return false;
+    // Older saved attempts do not have per-question answer checks.
+    return attempt.checked === undefined || Array.isArray(attempt.checked) && unique(attempt.checked) && attempt.checked.every(id => attempt.ids.includes(id) && Array.isArray(attempt.answers[id]) && attempt.answers[id].length > 0);
   }
   function isCorrect(question, selected = []) {
     return selected.length === question.correctAnswers.length && unique(selected) && selected.every(id => question.correctAnswers.includes(id));
