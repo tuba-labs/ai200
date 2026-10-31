@@ -1,14 +1,17 @@
 <!doctype html>
-<html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="nb"><head><meta charset="utf-8">
+  <script src="../site.js" data-site-preferences></script>
+  <script src="../site-translations.js" defer></script><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Dokumenter lagres som JSON, hentes med lavt unødvendig ressursforbruk og endringer sendes til en worker. Du må kunne forklare både dataflyten og grensene for det du faktisk målte."><title>Cosmos DB fra partisjon til endringsflyt | AI-200</title>
 <link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script>
   <link rel="stylesheet" href="../jargon.css" data-ai200-jargon>
   <script src="../jargon-data.js" defer></script>
   <script src="../jargon.js" defer></script>
   <link rel="stylesheet" href="../site-navigation.css" data-site-navigation>
+  <link rel="stylesheet" href="../site-theme.css" data-site-theme>
 </head>
 <body><a class="skip" href="#innhold">Hopp til innhold</a>
-<header class="site-header" data-site-header data-site-current="laerestoff.html" lang="nb" data-no-jargon>
+<header class="site-header" data-site-header data-site-current="laerestoff.html" data-no-jargon>
   <div class="site-header-inner">
     <a class="site-brand" href="../index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
     <nav class="site-nav" aria-label="Hovednavigasjon">
@@ -19,6 +22,10 @@
       <a class="jargon-nav-link" href="../jargon.html">Begreper</a>
       <a href="../eksamen.html">Eksamen</a>
     </nav>
+    <div class="site-preferences" aria-label="Visningsvalg">
+      <label><span>Språk</span><select id="site-language" aria-label="Språk"><option value="nb" lang="nb" translate="no">Norsk</option><option value="en" lang="en" translate="no">English</option></select></label>
+      <label><span>Tema</span><select id="site-theme" aria-label="Tema"><option value="system">System</option><option value="light">Lyst</option><option value="dark">Mørkt</option></select></label>
+    </div>
   </div>
 </header>
 <nav class="course-nav wrap" aria-label="Workshopnavigasjon"><a href="./index.html">Domener</a><a href="./coverage.html">Kortdekning</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav>

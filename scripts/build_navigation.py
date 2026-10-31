@@ -1,5 +1,6 @@
 """Embed the shared header in current pages; archived snapshots stay unchanged."""
 import argparse
+import json
 from pathlib import Path
 import re
 
@@ -32,6 +33,14 @@ def attach_navigation(html, prefix="./", current=None):
     html = HEADER.sub(lambda _: header, html, count=1)
     if "data-site-navigation" not in html:
         html = html.replace("</head>", f'  <link rel="stylesheet" href="{prefix}site-navigation.css" data-site-navigation>\n</head>', 1)
+    if "data-site-preferences" not in html:
+        # Read the saved theme before styles render to avoid a light-theme flash.
+        html = re.sub(r'(<meta charset="utf-8">)',
+                      lambda match: match[0] + f'\n  <script src="{prefix}site.js" data-site-preferences></script>' +
+                      f'\n  <script src="{prefix}site-translations.js" defer></script>', html, count=1)
+    if "data-site-theme" not in html:
+        html = html.replace("</head>", f'  <link rel="stylesheet" href="{prefix}site-theme.css" data-site-theme>\n</head>', 1)
+    html = html.replace('<meta name="color-scheme" content="light">', '<meta name="color-scheme" content="light dark">')
     return html
 
 
@@ -45,6 +54,14 @@ def main():
     parser.add_argument("--check", action="store_true", help="Check the embedded headers without writing")
     args = parser.parse_args()
     stale = []
+    catalog = json.loads((ROOT / "data/site-translations.json").read_text(encoding="utf-8"))
+    translations = "// Generated from data/site-translations.json by scripts/build_navigation.py.\nwindow.AI200_TRANSLATIONS = " + json.dumps(catalog, ensure_ascii=False, separators=(",", ":")) + ";\n"
+    destination = ROOT / "site-translations.js"
+    if args.check:
+        if not destination.exists() or destination.read_text(encoding="utf-8") != translations:
+            stale.append("site-translations.js")
+    else:
+        destination.write_text(translations, encoding="utf-8", newline="\n")
     for path in current_pages():
         relative = path.relative_to(ROOT)
         prefix = "../" * len(relative.parent.parts) or "./"

@@ -1,0 +1,53 @@
+/* Theme overrides are shared by study pages, interactive tools and workshops. */
+:root{color-scheme:light;--site-bg:#f5f8fc;--site-surface:#fff;--site-raised:#edf3fa;--site-ink:#17243b;--site-muted:#56657c;--site-line:#dce5f0;--site-link:#1265bd;--site-blue:#1c65ad;--site-green:#126e50;--site-amber:#85500d}
+:root[data-theme=dark]{color-scheme:dark;--site-bg:#0c1522;--site-surface:#162337;--site-raised:#213149;--site-ink:#e4edf8;--site-muted:#b3c2d4;--site-line:#35475e;--site-link:#8fc6ff;--site-blue:#235f9e;--site-green:#87dabc;--site-amber:#f0c27c;--ink:var(--site-ink);--muted:var(--site-muted);--subtle:#a8bbcf;--accent:var(--site-link);--accent-strong:#bbddff;--line:var(--site-line);--panel:var(--site-surface);--paper:var(--site-surface);--page:var(--site-bg);--light:var(--site-raised);--soft:var(--site-raised);--green:var(--site-green);--practical:var(--site-green);--analysis:var(--site-amber);--review:var(--site-muted);--shadow:0 12px 36px #0003}
+:root[data-theme=dark] body{background:var(--site-bg);color:var(--site-ink)}
+:root[data-theme=dark] :is(.site-header,footer,.panel,.info-panel,.resource,.domain,.stat,.step,.filter-panel,.hint-box,.empty,.notice,.jargon-entry,.jargon-popover,dialog,.domain-result,.review-card,.table-wrap){background:var(--site-surface);color:var(--site-ink);border-color:var(--site-line)}
+:root[data-theme=dark] :is(a,.jargon-popover a){color:var(--site-link)}
+:root[data-theme=dark] a:hover{color:#c3e1ff}
+:root[data-theme=dark] :is(h1,h2,h3,h4,.stat strong,.score-grid strong,.progress-status strong,.card-title,.jargon-entry .jargon-full-name,.jargon-popover h2,.jargon-example h3,.jargon-related h3,.jargon-relation dt,.jargon-example-table caption){color:var(--site-ink)}
+:root[data-theme=dark] :is(.small,small,.source,.counter,.answer-prose,.card-hint,.flip-tip,.hint-box,.domain p,.domain ol,.info-panel p,.info-panel ul,.info-panel ol,.resource p,label.field,.jargon-aliases,.jargon-relation-meta,.jargon-popover .jargon-popover-full,.jargon-popover .jargon-popover-aliases,.jargon-example p,.jargon-related-more){color:var(--site-muted)}
+:root[data-theme=dark] :is(.intro>p,.answer-prose){color:var(--site-ink)}
+:root[data-theme=dark] :is(.site-header .site-brand,.site-header .site-nav a,.site-header .site-preferences label){color:var(--site-ink)}
+:root[data-theme=dark] .site-header .site-nav a[aria-current=page]{color:var(--site-link);border-color:var(--site-link)}
+:root[data-theme=dark] :is(button:not(.jargon-term),.btn,.button,.bar-btn,.jargon-toggle,.site-header .site-preferences select,input:not([type=checkbox]):not([type=radio]),select,textarea,.share-dialog input,.share-dialog textarea,.card-link-tools button,.share-links a,.share-links button){background:var(--site-raised);color:var(--site-ink);border-color:#506882}
+:root[data-theme=dark] :is(button:not(.jargon-term),.btn,.button,.bar-btn,.jargon-toggle,.card-link-tools button,.share-links a):hover{background:#2b4160;color:#fff}
+:root[data-theme=dark] :is(button.primary,.btn.primary,.button){background:var(--site-blue);border-color:#4a8bc8;color:#fff}
+:root[data-theme=dark] :is(button.primary,.btn.primary,.button):hover{background:#2d76ba}
+:root[data-theme=dark] .hero .btn.secondary{background:#203e60;border-color:#7199c2;color:#f4f8ff}
+:root[data-theme=dark] :is(input,select,textarea)::placeholder{color:#a9bbcf;opacity:1}
+:root[data-theme=dark] :is(.badge,.tag,.resource .tag,.weight,.step-count,.category-tag,.state-tag,.domain-options label,.score-grid,.kbd,.track,.domain-bar,details,.source,.expected,.questions){background:var(--site-raised);color:var(--site-ink);border-color:var(--site-line)}
+:root[data-theme=dark] :is(.source,.questions,.expected){color:var(--site-ink)}
+:root[data-theme=dark] .source:not(details):not(.panel){background:transparent;color:var(--site-muted)}
+:root[data-theme=dark] :is(.resource .tag.community,.badge.practical,.btn.known,.rating-option[data-rating=known],.state-tag.known,.workshop-tag,.card-rating-marker[data-rating=known],.review-card.correct .review-status){background:#14382e;color:var(--site-green);border-color:#3e8b70}
+:root[data-theme=dark] :is(.btn.review,.rating-option[data-rating=review],.state-tag.review,.workshop-tag.analysis,.badge.analysis,.card-rating-marker[data-rating=review],.review-status,.storage-note,.error,.warning){background:#392b1a;color:var(--site-amber);border-color:#9f753e}
+:root[data-theme=dark] :is(.rating-option,.card-rating-marker,.workshop-tag.review,.review-card.unanswered .review-status){background:var(--site-raised);color:var(--site-muted);border-color:var(--site-line)}
+:root[data-theme=dark] [data-importance=terms]{--importance-ink:#c0d0e0;--importance-edge:#91aac2;--importance-border:#4b6077;--importance-soft:#233449;--importance-surface:#1b2b40}
+:root[data-theme=dark] [data-importance=critical]{--importance-ink:#f4cd8d;--importance-edge:#d4a047;--importance-border:#8e6f3f;--importance-soft:#3b2e1c;--importance-surface:#29251f}
+:root[data-theme=dark] [data-importance=important]{--importance-ink:#a7d1ff;--importance-edge:#6bace5;--importance-border:#46729b;--importance-soft:#1d3652;--importance-surface:#172b42}
+:root[data-theme=dark] [data-importance=esoteric]{--importance-ink:#d9baff;--importance-edge:#b38bdd;--importance-border:#795c97;--importance-soft:#352644;--importance-surface:#272238}
+:root[data-theme=dark] .flashcard{background:linear-gradient(115deg,var(--site-surface),var(--importance-surface)) padding-box,linear-gradient(90deg,var(--domain),var(--importance-edge)) border-box;border-color:transparent;color:var(--site-ink)}
+:root[data-theme=dark] .domain-tag{background:var(--site-raised);color:#a9d3ff}
+:root[data-theme=dark] .eyebrow{color:#a9cfff}
+:root[data-theme=dark] .stats>div{background:var(--site-raised);border-color:var(--site-line)}
+:root[data-theme=dark] :is(.skip,.workshop-nav,.format-options label,.page-nav a,.toc a,.recall){background:var(--site-surface);color:var(--site-ink);border-color:var(--site-line)}
+:root[data-theme=dark] :is(.check-item:hover,.format-options label:has(input:checked)){background:var(--site-raised)}
+:root[data-theme=dark] :is(.check-item:has(input:checked),.keyword-table tr:has(input:checked)>*){background:#14382e;color:var(--site-ink)}
+:root[data-theme=dark] code{background:#24374d;color:#dce9f8}
+:root[data-theme=dark] pre code{background:transparent;color:inherit}
+:root[data-theme=dark] :is(.case-context,.answer-feedback){background:#202b42;border-color:#566b8d;color:var(--site-ink)}
+:root[data-theme=dark] :is(.option,.review-option){background:var(--site-surface);border-color:var(--site-line);color:var(--site-ink)}
+:root[data-theme=dark] :is(.option:hover,.option:has(input:checked),.question-grid button.answered){background:#233e5b;border-color:#75a7d7;color:var(--site-ink)}
+:root[data-theme=dark] :is(.options .option.correct-option,.review-option.correct-option,.answer-feedback[data-result=correct]){background:#14382e;color:var(--site-ink);border-color:#4b9c7e}
+:root[data-theme=dark] :is(.options .option.wrong-option,.review-option.wrong-option,.answer-feedback[data-result=incorrect]){background:#3c2b21;color:var(--site-ink);border-color:#b88852}
+:root[data-theme=dark] .answer-feedback[data-result=correct] h3{color:var(--site-green)}
+:root[data-theme=dark] .answer-feedback[data-result=incorrect] h3{color:var(--site-amber)}
+:root[data-theme=dark] .timer.urgent{color:#ffc48a}
+:root[data-theme=dark] :is(table,.domain-table,th,td,caption){border-color:var(--site-line)}
+:root[data-theme=dark] :is(table,.domain-table){background:var(--site-surface);color:var(--site-ink)}
+:root[data-theme=dark] :is(thead,th,.domain-table th,caption){background:var(--site-raised);color:var(--site-ink)}
+:root[data-theme=dark] :is(pre,.jargon-example pre){background:#0a1321;color:#dce9f8;border-color:var(--site-line)}
+:root[data-theme=dark] :is(.jargon-example,.jargon-related,.jargon-relation+.jargon-relation,.review-heading,.question-actions,.previous-next){border-color:var(--site-line)}
+:root[data-theme=dark] :focus-visible{outline-color:#8ec9ff}
+:root[data-theme=dark] dialog::backdrop{background:#0009}
+@media print{:root[data-theme=dark] body,:root[data-theme=dark] :is(.panel,.resource,.domain,.stat,.info-panel,.jargon-entry){background:#fff;color:#17243b;box-shadow:none}:root[data-theme=dark] :is(h1,h2,h3,h4,p,li,a,th,td,strong){color:#17243b}}

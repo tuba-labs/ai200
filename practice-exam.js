@@ -7,6 +7,9 @@
   const node = (tag, className, value) => {
     const el = document.createElement(tag);
     if (className) el.className = className;
+    if (['case-context', 'review-title', 'review-option', 'source-explanation'].some(name => className?.split(' ').includes(name))) {
+      el.dataset.keepEnglish = ''; el.lang = 'en'; el.setAttribute('translate', 'no');
+    }
     if (value !== undefined) el.textContent = value;
     return el;
   };

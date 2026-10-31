@@ -1,4 +1,4 @@
-<header class="site-header" data-site-header data-site-current="{{current}}" lang="nb" data-no-jargon>
+<header class="site-header" data-site-header data-site-current="{{current}}" data-no-jargon>
   <div class="site-header-inner">
     <a class="site-brand" href="{{root}}index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
     <nav class="site-nav" aria-label="Hovednavigasjon">
@@ -9,5 +9,9 @@
       <a class="jargon-nav-link" href="{{root}}jargon.html"{{active:jargon.html}}>Begreper</a>
       <a href="{{root}}eksamen.html"{{active:eksamen.html}}>Eksamen</a>
     </nav>
+    <div class="site-preferences" aria-label="Visningsvalg">
+      <label><span>Språk</span><select id="site-language" aria-label="Språk"><option value="nb" lang="nb" translate="no">Norsk</option><option value="en" lang="en" translate="no">English</option></select></label>
+      <label><span>Tema</span><select id="site-theme" aria-label="Tema"><option value="system">System</option><option value="light">Lyst</option><option value="dark">Mørkt</option></select></label>
+    </div>
   </div>
 </header>

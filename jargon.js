@@ -61,6 +61,7 @@
   const definition = make('p', 'jargon-popover-definition');
   definition.id = 'jargon-explanation-description';
   definition.lang = 'en';
+  definition.dataset.keepEnglish = '';
   const aliases = make('p', 'jargon-popover-aliases');
   const exampleArea = make('section', 'jargon-example');
   exampleArea.dataset.noJargon = '';
@@ -404,18 +405,34 @@
     window.addEventListener('hashchange', followHash);
     filter(); followHash();
   }
-  annotate(document.body);
-  observer = new MutationObserver(records => {
-    if (active && !active.isConnected) hide();
-    if (!enabled) return;
-    const roots = new Set();
-    for (const record of records) {
-      if (record.type === 'characterData') roots.add(record.target);
-      else for (const node of record.addedNodes) roots.add(node);
+  function watch() {
+    annotate(document.body);
+    observer = new MutationObserver(records => {
+      if (active && !active.isConnected) hide();
+      if (!enabled) return;
+      const roots = new Set();
+      for (const record of records) {
+        if (record.type === 'characterData') roots.add(record.target);
+        else for (const node of record.addedNodes) roots.add(node);
+      }
+      for (const root of roots) annotate(root);
+    });
+    observer.observe(document.body, {subtree: true, childList: true, characterData: true});
+  }
+  // Translate whole prose nodes before glossary buttons split them into fragments.
+  if (window.AI200Site && document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch, {once: true});
+  else watch();
+  window.addEventListener('site:beforelanguagechange', () => {
+    if (!observer) return;
+    observer.disconnect(); hide();
+    const parents = new Set();
+    for (const trigger of document.querySelectorAll('.jargon-term')) {
+      parents.add(trigger.parentElement);
+      trigger.replaceWith(document.createTextNode(trigger.textContent));
     }
-    for (const root of roots) annotate(root);
+    parents.forEach(parent => parent.normalize());
   });
-  observer.observe(document.body, {subtree: true, childList: true, characterData: true});
+  window.addEventListener('site:languagechange', () => { if (observer) annotate(document.body); });
   window.AI200Jargon = {annotate, close: () => hide(), terms, renderCardExample};
   renderCardExample();
 })();

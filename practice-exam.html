@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="./site.js" data-site-preferences></script>
+  <script src="./site-translations.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <meta name="description" content="Take a practice exam directly on this site using AI-200 Prep questions labelled Real Exam. Timed attempts, case studies and results by domain.">
   <title>AI-200 | Practice exam</title>
   <link rel="stylesheet" href="practice-exam.css">
@@ -14,10 +16,11 @@
   <script src="./jargon-data.js" defer></script>
   <script src="./jargon.js" defer></script>
   <link rel="stylesheet" href="./site-navigation.css" data-site-navigation>
+  <link rel="stylesheet" href="./site-theme.css" data-site-theme>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header" data-site-header data-site-current="practice-exam.html" lang="nb" data-no-jargon>
+  <header class="site-header" data-site-header data-site-current="practice-exam.html" data-no-jargon>
   <div class="site-header-inner">
     <a class="site-brand" href="./index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
     <nav class="site-nav" aria-label="Hovednavigasjon">
@@ -28,6 +31,10 @@
       <a class="jargon-nav-link" href="./jargon.html">Begreper</a>
       <a href="./eksamen.html">Eksamen</a>
     </nav>
+    <div class="site-preferences" aria-label="Visningsvalg">
+      <label><span>Språk</span><select id="site-language" aria-label="Språk"><option value="nb" lang="nb" translate="no">Norsk</option><option value="en" lang="en" translate="no">English</option></select></label>
+      <label><span>Tema</span><select id="site-theme" aria-label="Tema"><option value="system">System</option><option value="light">Lyst</option><option value="dark">Mørkt</option></select></label>
+    </div>
   </div>
 </header>
   <main class="wrap" id="main">
@@ -58,13 +65,13 @@
       <div class="exam-toolbar panel"><div><h2 id="exam-heading" tabindex="-1">Exam in progress</h2><p id="attempt-progress"></p></div><div class="timer"><span>Time remaining</span><strong id="time-remaining" role="timer" aria-live="off"></strong></div><button id="finish-exam" class="primary" type="button">Finish exam</button></div>
       <div class="exam-layout">
         <article class="panel question-panel"><div class="question-meta"><span class="badge" id="question-domain"></span><span id="question-service"></span><span id="question-source-id"></span></div>
-          <div id="case-context"></div><form id="question-form"><fieldset id="question-fieldset"><legend id="question-prompt" tabindex="-1"></legend><p class="small" id="question-instructions"></p><div class="options" id="answer-options"></div></fieldset></form>
+          <div id="case-context" data-keep-english lang="en" translate="no"></div><form id="question-form"><fieldset id="question-fieldset" data-keep-english lang="en" translate="no"><legend id="question-prompt" tabindex="-1"></legend><p class="small" id="question-instructions"></p><div class="options" id="answer-options"></div></fieldset></form>
           <div class="question-actions"><label class="check"><input id="flag-question" type="checkbox">Mark for review</label><div class="answer-actions"><button id="clear-answer" type="button">Clear answer</button><button id="check-answer" class="primary" type="button" disabled>Check answer</button></div></div>
           <section id="answer-feedback" class="answer-feedback" aria-labelledby="feedback-heading" hidden>
             <h3 id="feedback-heading" tabindex="-1"></h3>
             <p class="small" id="feedback-summary"></p>
-            <div id="feedback-correct-options"></div>
-            <p class="source-explanation" id="feedback-explanation"></p>
+            <div id="feedback-correct-options" data-keep-english lang="en" translate="no"></div>
+            <p class="source-explanation" id="feedback-explanation" data-keep-english lang="en" translate="no"></p>
             <a id="feedback-source" target="_blank" rel="noopener noreferrer">Source question and explanation ↗</a>
           </section>
           <div class="previous-next"><button id="previous-question" type="button">← Previous</button><span id="question-position"></span><button id="next-question" type="button">Next →</button></div>

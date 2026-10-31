@@ -2,9 +2,11 @@
 <html lang="nb">
 <head>
   <meta charset="utf-8">
+  <script src="./site.js" data-site-preferences></script>
+  <script src="./site-translations.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="560 AI-200-flashcards med ett spørsmål per kort, emnekategorier og lokal fremdrift. Gratis øvingsside for Microsoft AI-200.">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <title>AI-200 Flashcards | Studiegruppe</title>
   <style>
     :root{--ink:#17243b;--muted:#52657c;--soft:#ebf2fa;--accent:#1265bd;--dark:#0a2445;--line:#dce5f0;--page:#f5f8fc;--shadow:0 14px 42px rgba(10,36,69,.08);--domain:#1265bd;--domain-light:#eaf3ff}
@@ -83,10 +85,11 @@
   <script src="./jargon-data.js" defer></script>
   <script src="./jargon.js" defer></script>
   <link rel="stylesheet" href="./site-navigation.css" data-site-navigation>
+  <link rel="stylesheet" href="./site-theme.css" data-site-theme>
 </head>
 <body>
   <a class="skip" href="#study">Hopp til kortene</a>
-  <header class="site-header" data-site-header data-site-current="flashcards.html" lang="nb" data-no-jargon>
+  <header class="site-header" data-site-header data-site-current="flashcards.html" data-no-jargon>
   <div class="site-header-inner">
     <a class="site-brand" href="./index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
     <nav class="site-nav" aria-label="Hovednavigasjon">
@@ -97,6 +100,10 @@
       <a class="jargon-nav-link" href="./jargon.html">Begreper</a>
       <a href="./eksamen.html">Eksamen</a>
     </nav>
+    <div class="site-preferences" aria-label="Visningsvalg">
+      <label><span>Språk</span><select id="site-language" aria-label="Språk"><option value="nb" lang="nb" translate="no">Norsk</option><option value="en" lang="en" translate="no">English</option></select></label>
+      <label><span>Tema</span><select id="site-theme" aria-label="Tema"><option value="system">System</option><option value="light">Lyst</option><option value="dark">Mørkt</option></select></label>
+    </div>
   </div>
 </header>
   <section class="hero" aria-labelledby="page-title">
@@ -139,7 +146,7 @@
       </div>
       <fieldset class="importance-filter" data-no-jargon aria-describedby="importance-help">
         <legend>Ta med kortgrupper</legend>
-        <div class="importance-options" lang="en">
+        <div class="importance-options" lang="en" translate="no">
           <label class="importance-option" data-importance="terms"><input id="include-terms" type="checkbox" checked><span aria-hidden="true">◉</span><span>Terms <span class="importance-count">(<span id="importance-terms-count">168</span>)</span></span></label>
           <label class="importance-option" data-importance="critical"><input id="include-critical" type="checkbox" checked><span aria-hidden="true">★</span><span>Critical <span class="importance-count">(<span id="importance-critical-count">148</span>)</span></span></label>
           <label class="importance-option" data-importance="important"><input id="include-important" type="checkbox" checked><span aria-hidden="true">◆</span><span>Important <span class="importance-count">(<span id="importance-important-count">212</span>)</span></span></label>
@@ -149,7 +156,7 @@
       </fieldset>
       <fieldset class="rating-filter" data-no-jargon aria-describedby="rating-help">
         <legend>Ta med vurderinger</legend>
-        <div class="rating-options" lang="en">
+        <div class="rating-options">
           <label class="rating-option" data-rating="new"><input id="include-rating-new" type="checkbox" checked><span class="status-dot new" aria-hidden="true"></span><span>Unrated <span class="rating-count">(<span id="rating-new-count">560</span>)</span></span></label>
           <label class="rating-option" data-rating="review"><input id="include-rating-review" type="checkbox" checked><span class="status-dot review" aria-hidden="true"></span><span>Needs repeat <span class="rating-count">(<span id="rating-review-count">0</span>)</span></span></label>
           <label class="rating-option" data-rating="known"><input id="include-rating-known" type="checkbox" checked><span class="status-dot known" aria-hidden="true"></span><span>Know this <span class="rating-count">(<span id="rating-known-count">0</span>)</span></span></label>
@@ -172,15 +179,15 @@
         <div class="fill new" id="progress-new-fill" style="width:100%" aria-hidden="true"></div>
       </div>
     </section>
-    <section class="study" aria-label="Flashcard" lang="en">
+    <section class="study" aria-label="Flashcard">
       <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domain 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Unrated</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Position 1 of 560 in queue</span><form id="card-jump" class="card-jump" data-no-jargon novalidate><label for="card-number">Go to card #</label><input id="card-number" type="number" min="1" max="560" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Go</button></form></div></div>
       <p id="jump-help" class="term-help" data-no-jargon>Use the card’s fixed number, such as 35. Jumping reveals the card even if it is rated or hidden by a filter, then continues in number order.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
         <div class="card-hint"><span id="card-face-label">Question</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direct link to this card">Card #01</a><button id="copy-card-link" type="button">Copy link</button><button id="share-card" type="button" aria-haspopup="dialog" aria-controls="card-share-dialog">Share</button></div></div>
-        <p id="importance-tag" class="importance-tag" lang="en" data-no-jargon></p>
-        <h2 class="card-title" id="card-title"></h2>
-        <div id="card-content"></div>
-        <div id="card-example" data-no-jargon hidden></div>
+        <p id="importance-tag" class="importance-tag" lang="en" translate="no" data-no-jargon></p>
+        <h2 class="card-title" id="card-title" data-keep-english lang="en" translate="no"></h2>
+        <div id="card-content" data-keep-english lang="en" translate="no"></div>
+        <div id="card-example" data-keep-english lang="en" translate="no" data-no-jargon hidden></div>
         <p class="flip-tip" id="flip-tip">Choose “Show answer” or press Space to reveal the answer.</p>
         <span id="card-rating-marker" class="card-rating-marker" data-rating="new" role="img" aria-label="Unrated" title="Unrated" data-no-jargon>?</span>
       </div>
@@ -189,7 +196,7 @@
       <div id="card-link-fallback" class="card-link-fallback" data-no-jargon hidden><label for="card-link-value">Direct link — copy the selected text</label><input id="card-link-value" type="text" readonly spellcheck="false"></div>
       <dialog id="card-share-dialog" class="share-dialog" aria-labelledby="card-share-title" data-no-jargon>
         <div class="share-dialog-head"><h2 id="card-share-title">Share card</h2><button id="card-share-close" class="bar-btn" type="button" autofocus>Close</button></div>
-        <p id="card-share-question" class="share-question" lang="en"></p>
+        <p id="card-share-question" class="share-question" lang="en" data-keep-english translate="no"></p>
         <label for="card-share-url">Direct link</label><input id="card-share-url" type="text" readonly spellcheck="false">
         <div class="share-copy-tools"><button id="card-share-copy-link" class="bar-btn" type="button">Copy link</button><button id="card-share-copy-text" class="bar-btn" type="button">Copy question and link</button></div>
         <div class="share-links">
@@ -591,7 +598,7 @@
     });
     for(const id of ['category-filter','source-filter','workshop-filter','search'])$(id).addEventListener(id==='search'?'input':'change',()=>refresh());
     $('shuffle').addEventListener('click',shuffle);
-    $('reset').addEventListener('click',()=>{if(!confirm('Vil du fjerne alle markeringene dine på denne enheten?'))return;for(const key of Object.keys(progress))delete progress[key];lastRating=null;save();refresh();});
+    $('reset').addEventListener('click',()=>{const message='Vil du fjerne alle markeringene dine på denne enheten?';if(!confirm(window.AI200Site?.t?.(message)||message))return;for(const key of Object.keys(progress))delete progress[key];lastRating=null;save();refresh();});
     document.addEventListener('keydown',e=>{
       const active=document.activeElement;
       if(e.altKey||e.ctrlKey||e.metaKey||$('card-share-dialog').open||active?.closest('[contenteditable]:not([contenteditable="false"]),.jargon-popover'))return;
