@@ -17,7 +17,29 @@ window.AI200_EXAM_BANK = {
     "totalQuestions": 759,
     "taggedQuestions": 359,
     "exactDuplicatesRemoved": 0,
-    "questionCount": 359
+    "questionCount": 359,
+    "uniqueQuestionCount": 341,
+    "reviewedDuplicatesExcluded": 18
+  },
+  "duplicateOf": {
+    "p-ca-021": "p-ca-003",
+    "p-ca-m01": "p-ca-002",
+    "p-acr-024": "p-ca-014",
+    "c-ct-004": "p-cos-005",
+    "p-fn-005": "p-fn-m01",
+    "c-fb-001": "p-sb-006",
+    "c-fb-002": "p-sb-002",
+    "c-fb-005": "p-eh-003",
+    "p-eh-024": "p-eh-001",
+    "c-fb-006": "p-eg-013",
+    "c-tw-006": "p-kv-006",
+    "c-tw-002": "p-kv-020",
+    "p-kv-021": "p-kv-m01",
+    "p-kv-025": "c-tw-003",
+    "p-mon-015": "p-mon-m01",
+    "c-tw-005": "p-mon-006",
+    "p-mon-014": "p-aks-012",
+    "p-rbac-023": "p-acr-005"
   },
   "sets": [
     {

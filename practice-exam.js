@@ -36,9 +36,10 @@
     questions = new Map(bank.questions.map(q => [q.id, q]));
     contexts = new Map(bank.contexts.map(c => [c.id, c]));
     const downloaded = new Date(bank.source.downloadedAt);
-    $('bank-status').textContent = `${bank.questions.length} questions · ${bank.contexts.length} case studies` +
+    const pool = rules.questionPool(bank), caseCount = new Set(pool.map(q => q.contextId).filter(Boolean)).size;
+    $('bank-status').textContent = `${pool.length} questions · ${caseCount} case studies` +
       (Number.isNaN(downloaded.getTime()) ? '' : ` · downloaded ${downloaded.toISOString().slice(0, 10)}`);
-    for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${bank.questions.filter(q => q.domain === domain).length} questions`;
+    for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${pool.filter(q => q.domain === domain).length} questions`;
     $('bank-error').hidden = true;
     updatePool();
     const saved = read(ATTEMPT_KEY);
@@ -50,7 +51,7 @@
   }
   function includedPool() {
     const domains = [...document.querySelectorAll('input[name=domain]:checked')].map(el => Number(el.value));
-    return {domains, count: bank ? bank.questions.filter(q => domains.includes(q.domain)).length : 0};
+    return {domains, count: bank ? rules.questionPool(bank).filter(q => domains.includes(q.domain)).length : 0};
   }
   function updatePool() {
     const count = includedPool().count;
@@ -255,8 +256,9 @@
     if (!attempt || attempt.submittedAt !== null || expired()) return;
     const id = attempt.ids[attempt.index];
     if (!selected(id).length) return;
-    if (!attempt.checked.includes(id)) attempt.checked.push(id);
-    saveAttempt(); renderFeedback(); focus($('feedback-heading'));
+    rules.checkAnswer(bank, attempt);
+    $('flag-question').checked = attempt.flagged.includes(id);
+    saveAttempt(); renderFeedback(); updateProgress(); focus($('feedback-heading'));
   });
   $('previous-question').addEventListener('click', () => navigate(attempt.index - 1));
   $('next-question').addEventListener('click', () => navigate(attempt.index + 1));

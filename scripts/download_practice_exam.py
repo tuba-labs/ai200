@@ -7,12 +7,13 @@ download without accessing the network. Uses the Python standard library.
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
-from difflib import SequenceMatcher
 from hashlib import sha256
 from html.parser import HTMLParser
 import json
+from math import log, sqrt
 from pathlib import Path
 import re
 from urllib.parse import urljoin, urlsplit
@@ -195,17 +196,67 @@ def deduplicate(questions, contexts):
 
 
 def near_duplicates(questions):
+    # Candidate generation only. Reviewed semantic matches, not scores, decide
+    # which questions are excluded from new attempts.
+    stop = set("a an and are as at be by for from how in is it its of on or that the their then this to what when which with you your".split())
+    tokens = lambda text: Counter(word for word in re.findall(r"[a-z0-9]+", normalized(text)) if word not in stop)
+    documents = [(tokens(q["prompt"]), tokens(" ".join(o["text"] for o in q["options"] if o["id"] in q["correctAnswers"]))) for q in questions]
+    frequency = Counter(word for prompt, answer in documents for word in (prompt | answer))
+    weights = {word: log((len(questions) + 1) / (count + 1)) + 1 for word, count in frequency.items()}
+
+    def vector(counts):
+        values = {word: count * weights[word] for word, count in counts.items()}
+        norm = sqrt(sum(value * value for value in values.values()))
+        return {word: value / norm for word, value in values.items()} if norm else {}
+
+    vectors = [(vector(prompt), vector(answer)) for prompt, answer in documents]
+    cosine = lambda left, right: sum(value * right.get(word, 0) for word, value in left.items())
     pairs = []
     for i, a in enumerate(questions):
-        left = normalized(a["prompt"])
-        for b in questions[i + 1:]:
-            right = normalized(b["prompt"])
-            if a["domain"] != b["domain"] or min(len(left), len(right)) / max(len(left), len(right)) < .85:
-                continue
-            matcher = SequenceMatcher(None, left, right, autojunk=False)
-            if matcher.quick_ratio() >= .92 and matcher.ratio() >= .92:
-                pairs.append({"ids": [a["id"], b["id"]], "similarity": round(matcher.ratio(), 3)})
+        for j in range(i + 1, len(questions)):
+            prompt_score = cosine(vectors[i][0], vectors[j][0])
+            answer_score = cosine(vectors[i][1], vectors[j][1])
+            score = (prompt_score + 2 * answer_score) / 3
+            if score >= .55:
+                pairs.append({"ids": [a["id"], questions[j]["id"]], "similarity": round(score, 3),
+                              "promptSimilarity": round(prompt_score, 3), "answerSimilarity": round(answer_score, 3)})
     return sorted(pairs, key=lambda pair: -pair["similarity"])
+
+
+def review_fingerprint(question, context=None):
+    content = {key: question[key] for key in ("id", "domain", "prompt", "instructions", "options", "correctAnswers", "explanation", "contextId")}
+    content["context"] = context
+    return sha256(json.dumps(content, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+
+
+def reviewed_duplicates(questions, contexts, review=None):
+    if review is None:
+        review = json.loads((ROOT / "data/practice-exam-review.json").read_text(encoding="utf-8"))
+    if review.get("schemaVersion") != 1 or not isinstance(review.get("groups"), list):
+        raise ValueError("Invalid practice exam duplicate review")
+    by_id, cases = {q["id"]: q for q in questions}, {c["id"]: c for c in contexts}
+    duplicate_of, audit = {}, []
+    for group in review["groups"]:
+        kept, duplicates = group["keep"], group["duplicates"]
+        if not duplicates or len(set(duplicates)) != len(duplicates) or kept in duplicates or not group.get("reason", "").strip():
+            raise ValueError(f"Invalid reviewed duplicate group: {kept}")
+        present = [identifier for identifier in duplicates if identifier in by_id]
+        if not present:
+            continue
+        if kept not in by_id:
+            raise ValueError(f"Missing retained question for reviewed duplicates: {kept}")
+        for identifier in [kept, *present]:
+            q = by_id[identifier]
+            if group.get("fingerprints", {}).get(identifier) != review_fingerprint(q, cases.get(q["contextId"])):
+                raise ValueError(f"Question changed since duplicate review: {identifier}")
+        for identifier in present:
+            if identifier in duplicate_of:
+                raise ValueError(f"Question excluded by multiple review groups: {identifier}")
+            duplicate_of[identifier] = kept
+            audit.append({"kept": kept, "duplicate": identifier, "reason": group["reason"], "setUrl": by_id[identifier]["setUrl"]})
+    if any(kept in duplicate_of for kept in duplicate_of.values()):
+        raise ValueError("A retained question cannot itself be a reviewed duplicate")
+    return duplicate_of, audit
 
 
 def export(parsed, destination, downloaded_at):
@@ -217,6 +268,10 @@ def export(parsed, destination, downloaded_at):
         raise ValueError("No questions carry the Real Exam label; source markup may have changed")
     used = {q["contextId"] for q in questions}
     contexts = [c for c in contexts if c["id"] in used]
+    duplicate_of, semantic_duplicates = reviewed_duplicates(questions, contexts)
+    pool = [q for q in questions if q["id"] not in duplicate_of]
+    # Keep source questions and their identity stable so saved attempts, including
+    # attempts containing an excluded paraphrase, can still resume and be graded.
     bank_id = sha256(json.dumps([questions, contexts], sort_keys=True).encode()).hexdigest()
     bank = {
         "schemaVersion": 1, "bankId": bank_id,
@@ -227,13 +282,15 @@ def export(parsed, destination, downloaded_at):
                    "labelNotice": "Real Exam is the provider's label, not verification that a question appeared on Microsoft's exam."},
         "download": {"setCount": len(sets), "totalQuestions": sum(s["totalCount"] for s in sets),
                      "taggedQuestions": len(tagged), "exactDuplicatesRemoved": len(duplicates),
-                     "questionCount": len(questions)},
+                     "questionCount": len(questions), "uniqueQuestionCount": len(pool),
+                     "reviewedDuplicatesExcluded": len(duplicate_of)},
+        "duplicateOf": duplicate_of,
         "sets": sets, "contexts": contexts, "questions": questions,
     }
     destination.mkdir(parents=True, exist_ok=True)
     content = json.dumps(bank, ensure_ascii=False, indent=2) + "\n"
     (destination / "real-exam.json").write_text(content, encoding="utf-8")
-    audit = {"exactDuplicates": duplicates, "similarQuestions": near_duplicates(questions),
+    audit = {"exactDuplicates": duplicates, "reviewedDuplicates": semantic_duplicates, "similarQuestions": near_duplicates(pool),
              "note": "Similar questions are reported for review, not merged automatically: changed constraints can change the answer."}
     (destination / "real-exam-audit.json").write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     cases = {c["id"]: c for c in contexts}
@@ -296,6 +353,7 @@ def main():
                                 json.dumps(bank, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
     print(json.dumps({**bank["download"], "caseStudies": len(bank["contexts"]),
                       "multiAnswerQuestions": sum(len(q["correctAnswers"]) > 1 for q in bank["questions"]),
+                      "uniqueMultiAnswerQuestions": sum(len(q["correctAnswers"]) > 1 for q in bank["questions"] if q["id"] not in bank["duplicateOf"]),
                       "similarPairs": len(audit["similarQuestions"]), "output": str(args.output)}, indent=2))
 
 

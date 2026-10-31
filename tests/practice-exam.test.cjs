@@ -26,8 +26,11 @@ test('the bundled bank supports complete exams in every domain without imported 
     const attempt = rules.createAttempt(source, {count: 1, domains: [domain]});
     assert.equal(source.questions.find(q => q.id === attempt.ids[0]).domain, domain);
   }
-  const attempt = rules.createAttempt(source, {count: source.questions.length, randomOrder: false});
-  attempt.answers = Object.fromEntries(source.questions.map(q => [q.id, q.correctAnswers]));
+  const pool = rules.questionPool(source);
+  assert.equal(pool.length, source.download.uniqueQuestionCount);
+  assert.equal(source.questions.length - pool.length, source.download.reviewedDuplicatesExcluded);
+  const attempt = rules.createAttempt(source, {count: pool.length, randomOrder: false});
+  attempt.answers = Object.fromEntries(pool.map(q => [q.id, q.correctAnswers]));
   assert.equal(rules.grade(source, attempt).percent, 100);
 });
 
@@ -48,6 +51,76 @@ test('multiple answers require an exact match, independent of option order', () 
   const q = bank().questions[1];
   assert(rules.isCorrect(q, ['C', 'A']));
   for (const selected of [[], ['A'], ['A', 'B', 'C'], ['A', 'A'], ['B', 'C']]) assert(!rules.isCorrect(q, selected));
+});
+
+test('checking a wrong answer adds one review flag and preserves it after correcting or clearing the answer', () => {
+  const source = bank(), attempt = rules.createAttempt(source, {count: 3, minutes: 100, randomOrder: false}, 1000);
+  attempt.answers.one = ['B'];
+  const deadline = attempt.deadline;
+  assert.equal(rules.checkAnswer(source, attempt, 2000), false);
+  assert.deepEqual(attempt.flagged, ['one']);
+  assert.deepEqual(attempt.checked, ['one']);
+  rules.checkAnswer(source, attempt, 3000);
+  assert.deepEqual(attempt.flagged, ['one']);
+  attempt.answers.one = ['A'];
+  assert.equal(rules.checkAnswer(source, attempt, 4000), true);
+  assert.deepEqual(attempt.flagged, ['one']);
+  delete attempt.answers.one;
+  attempt.checked = [];
+  assert.equal(rules.checkAnswer(source, attempt, 5000), null);
+  assert.deepEqual(attempt.flagged, ['one']);
+  assert.equal(attempt.deadline, deadline);
+  assert.equal(attempt.submittedAt, null);
+  assert.deepEqual(JSON.parse(JSON.stringify(attempt)).flagged, ['one']);
+});
+
+test('correct answers and unchecked, empty, submitted or expired attempts do not acquire review flags', () => {
+  const source = bank();
+  const correct = rules.createAttempt(source, {count: 1, randomOrder: false}, 1000);
+  correct.answers.one = ['A'];
+  assert.equal(rules.checkAnswer(source, correct, 2000), true);
+  assert.deepEqual(correct.flagged, []);
+  const empty = rules.createAttempt(source, {count: 1, randomOrder: false}, 1000);
+  assert.equal(rules.checkAnswer(source, empty, 2000), null);
+  assert.deepEqual(empty.checked, []);
+  for (const finish of [a => { a.submittedAt = 1500; }, a => { a.deadline = 1500; }]) {
+    const attempt = rules.createAttempt(source, {count: 1, randomOrder: false}, 1000);
+    attempt.answers.one = ['B']; finish(attempt);
+    const before = JSON.stringify(attempt);
+    assert.equal(rules.checkAnswer(source, attempt, 2000), null);
+    assert.equal(JSON.stringify(attempt), before);
+  }
+});
+
+test('incomplete or excessive multiple-answer selections are automatically marked for review', () => {
+  const source = bank();
+  for (const answer of [['A'], ['A', 'B', 'C']]) {
+    const attempt = rules.createAttempt(source, {count: 1, domains: [2]}, 1000);
+    attempt.answers.two = answer;
+    assert.equal(rules.checkAnswer(source, attempt, 2000), false);
+    assert.deepEqual(attempt.flagged, ['two']);
+  }
+});
+
+test('reviewed paraphrases are excluded from new exams while existing saved attempts remain valid', () => {
+  const source = bank();
+  const saved = rules.createAttempt(source, {count: 3, randomOrder: false}, 1000);
+  saved.answers.three = ['B']; saved.checked = ['three']; saved.flagged = ['three'];
+  source.duplicateOf = {three: 'one'};
+  rules.validateBank(source);
+  assert.deepEqual(rules.questionPool(source).map(q => q.id), ['one', 'two']);
+  for (const randomOrder of [false, true]) {
+    const attempt = rules.createAttempt(source, {count: 2, randomOrder}, 1000);
+    assert(!attempt.ids.includes('three'));
+    assert.equal(new Set(attempt.ids).size, 2);
+  }
+  assert.throws(() => rules.createAttempt(source, {count: 3}));
+  assert(rules.validAttempt(saved, source));
+  assert.equal(rules.grade(source, saved).correct, 1);
+  rules.validateBank({...source, duplicateOf: {three: 'two'}});
+  for (const duplicateOf of [null, [], {one: 'one'}, {missing: 'one'}, {three: 'missing'}, {three: 'one', one: 'three'}]) {
+    assert.throws(() => rules.validateBank({...source, duplicateOf}));
+  }
 });
 
 test('selection uses only included source questions, without repeats, and keeps cases together', () => {

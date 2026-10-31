@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-01",
+  "reviewedQuestionCount": 359,
+  "criteria": "Exclude paraphrases that ask for the same decision or rule, including case-study variants and single/multiple-answer variants with the same required facts. Keep related questions when a new constraint, operation, permission or additional required fact changes the answer.",
+  "groups": [
+    {
+      "keep": "p-ca-003",
+      "duplicates": [
+        "p-ca-021"
+      ],
+      "reason": "Both identify the Container Apps environment as the VNet boundary shared by all its apps.",
+      "fingerprints": {
+        "p-ca-003": "8a09510f17abf3c44a29fffa2f7bbff8f816437cb3953c176e7d958405dae112",
+        "p-ca-021": "ec6dc7fdb5c0ca353ecfaab5e085513a65a309cfc5e69a64c3e00042f860797a"
+      }
+    },
+    {
+      "keep": "p-ca-002",
+      "duplicates": [
+        "p-ca-m01"
+      ],
+      "reason": "Both require multiple-revision mode and percentage traffic weights for a canary release.",
+      "fingerprints": {
+        "p-ca-002": "c35c0b09365cefa7938acb1ddad30eff0c81232e6e2ad7398aba260030db93a5",
+        "p-ca-m01": "a0ba24c8e9c4458d1409ff0c42d96a4f28f3ae4577fd03172f5462eb40642174"
+      }
+    },
+    {
+      "keep": "p-ca-014",
+      "duplicates": [
+        "p-acr-024"
+      ],
+      "reason": "Both ask which identity lets a Container App pull from a private ACR: managed identity with AcrPull.",
+      "fingerprints": {
+        "p-ca-014": "83523b0800b147557a3ad3bc073bd3b45a429e068cfb0b50de23735cbafbf1b3",
+        "p-acr-024": "299b3c0e2d15ad5d24a2d7c5c2d83f5ea315c3bb83b70d84ec86a23f6271496f"
+      }
+    },
+    {
+      "keep": "p-cos-005",
+      "duplicates": [
+        "c-ct-004"
+      ],
+      "reason": "Both choose Session consistency for read-your-own-writes without Strong consistency's cost; the catalogue case does not change the decision.",
+      "fingerprints": {
+        "p-cos-005": "7c2bf65f2cbe2d606f8ff76f5721131b35d0ff19d0f62d3143bd22af1f7be6c7",
+        "c-ct-004": "066a069af33bd7ffe26a05b91809fcc26ee60fce8208600693e993d628913a3b"
+      }
+    },
+    {
+      "keep": "p-fn-m01",
+      "duplicates": [
+        "p-fn-005"
+      ],
+      "reason": "Both use WaitForExternalEvent for a multi-day human approval, with dehydration while waiting and an optional durable timeout. Retain the more explicit two-answer version.",
+      "fingerprints": {
+        "p-fn-m01": "cc573d3242bf3b79a9f8b749dc8f8260a44118a49ab2de3119ed43466d77aa3a",
+        "p-fn-005": "43efb189e83edab1298a168003d3052594bf868b94b88058490b427dd34366e7"
+      }
+    },
+    {
+      "keep": "p-sb-006",
+      "duplicates": [
+        "c-fb-001"
+      ],
+      "reason": "Both require a transactional outbox and relay to coordinate an external database write with message publication. The order case adds no different transaction constraint.",
+      "fingerprints": {
+        "p-sb-006": "5ddec4cd855f62e75f2496d21594f653af66df9adc2eae27e71a3e9acd8462e1",
+        "c-fb-001": "86bd7c03aea8a297a6c118547a42ee587e9699a77c6ed01be49bc6879c8fae09"
+      }
+    },
+    {
+      "keep": "p-sb-002",
+      "duplicates": [
+        "c-fb-002"
+      ],
+      "reason": "Both require Service Bus sessions to preserve FIFO processing for related messages sharing a SessionId; the customer case repeats this rule.",
+      "fingerprints": {
+        "p-sb-002": "87a58b03ecfc46c92bdd389a28cb64f9ac33b872c3f6d5926073aec49cabee23",
+        "c-fb-002": "11133cb39a9b96da41a5019d6fd135cb4a14d9251b857dee96dfc11b1cba21a0"
+      }
+    },
+    {
+      "keep": "p-eh-003",
+      "duplicates": [
+        "c-fb-005"
+      ],
+      "reason": "Both preserve per-device ordering by using the device or vehicle ID as the Event Hubs partition key.",
+      "fingerprints": {
+        "p-eh-003": "bcda38e41a2cbe8dc9a7f3f010cd5f8bf5fddabf53dab8e2c60ad844d89b5cb9",
+        "c-fb-005": "3eca8f3b8091a297f93ff61489fd3aaf0e79c3c362d075ad26fe1af1e34b9a51"
+      }
+    },
+    {
+      "keep": "p-eh-001",
+      "duplicates": [
+        "p-eh-024"
+      ],
+      "reason": "Both test the same bound: parallel consumers in one consumer group are limited by partition count. Eight consumers is only a numeric example.",
+      "fingerprints": {
+        "p-eh-001": "29a6ace9790ddc563249cddb5b78fcaf6a3843324b123ac3c1b91778cdf21c7a",
+        "p-eh-024": "8704d6d4c1678f60645a148deb79c6e142cfaef1ee9278d9c76f993e2527d129"
+      }
+    },
+    {
+      "keep": "p-eg-013",
+      "duplicates": [
+        "c-fb-006"
+      ],
+      "reason": "Both buffer notifications in a queue and throttle its consumer to protect a downstream API limited to ten requests per second.",
+      "fingerprints": {
+        "p-eg-013": "b56eaa751c8db3a06d5b001f5ab2ae65ded03a492d6ee2b555a6170c6d6a20f4",
+        "c-fb-006": "7225027dc3f781b47356f34202cf272ee351a52f5d6433e041639a2327a9ad50"
+      }
+    },
+    {
+      "keep": "p-kv-006",
+      "duplicates": [
+        "c-tw-006"
+      ],
+      "reason": "Both grant secret-value reads without management permissions through the Key Vault Secrets User role.",
+      "fingerprints": {
+        "p-kv-006": "929a3cfeb259282fe93c3b36ae05f05d2caadcba91e9f0e43d5be45294e773bf",
+        "c-tw-006": "fbfcc8be4a9006fbe61c6c52fec64ca4e26cbe1d13235f8bff89088f159e041c"
+      }
+    },
+    {
+      "keep": "p-kv-020",
+      "duplicates": [
+        "c-tw-002"
+      ],
+      "reason": "Both limit compromise blast radius with separate vaults per application/environment and narrowly scoped identity permissions.",
+      "fingerprints": {
+        "p-kv-020": "a2550f52cd9a31345b75c1e034e24ef46fc35bc5eb93d3cd9d06f328d0943cb5",
+        "c-tw-002": "55a4f81ea24021c37e44dae9d0188a525f1864f36381135669ef800f202b8391"
+      }
+    },
+    {
+      "keep": "p-kv-m01",
+      "duplicates": [
+        "p-kv-021"
+      ],
+      "reason": "Both require soft delete and purge protection before using a Key Vault key as a customer-managed key.",
+      "fingerprints": {
+        "p-kv-m01": "c415d411bb499bc67050383c6f7ff59af02e8d52a8aeaae2ebc560cbebb8cc18",
+        "p-kv-021": "1e69b305ff63b1958dc797d025bc45a2940c06a3c394a14d2d5d22fbdbe7bf81"
+      }
+    },
+    {
+      "keep": "c-tw-003",
+      "duplicates": [
+        "p-kv-025"
+      ],
+      "reason": "Both prevent rotation outages with overlapping credential sets and client-cache refresh on the rotation event. Retain the explicit two-answer case.",
+      "fingerprints": {
+        "c-tw-003": "0c4e14a9487883a80f9df6421eb8ee90f28c947f26aa0e111b58259974980fda",
+        "p-kv-025": "0ee0c485a9a23d543dfb98bf163a0258a47acf7234ae720c5600b1b9950fa635"
+      }
+    },
+    {
+      "keep": "p-mon-m01",
+      "duplicates": [
+        "p-mon-015"
+      ],
+      "reason": "Both contrast cheap, fast pre-aggregated metric alerts with more expressive but slower scheduled KQL log alerts.",
+      "fingerprints": {
+        "p-mon-m01": "e0bcf2a710aed885c3b6b9dd1fc39e665fd635b866c57dd6c09a0164d8b554da",
+        "p-mon-015": "cb83adf4172f1dab83dfade7f1def4ab3741d135eda6afc7c7e9283e49e999cb"
+      }
+    },
+    {
+      "keep": "p-mon-006",
+      "duplicates": [
+        "c-tw-005"
+      ],
+      "reason": "Both choose sampling to reduce ingestion cost while preserving continuous representative telemetry instead of daily-cap gaps.",
+      "fingerprints": {
+        "p-mon-006": "dce5c9704f237444d16aafec3688f1d5968aa4f14974df1b53579e180193e5a8",
+        "c-tw-005": "65bb1ad5fd790c02d6465cd603a321dafd7dad9a05f5b58f61cf2ce23ebc572b"
+      }
+    },
+    {
+      "keep": "p-aks-012",
+      "duplicates": [
+        "p-mon-014"
+      ],
+      "reason": "Both ask for Azure Monitor managed service for Prometheus to collect AKS metrics without operating a Prometheus server, despite appearing in different domains.",
+      "fingerprints": {
+        "p-aks-012": "f57c6cca60d2e19f1889e5134ce3cb674b4be3c4efd83877d365526c85a9f1b1",
+        "p-mon-014": "ff8eb665fc5c1805f4b3342cc9d22c08ee7aee5464b8d782c879342a36f3bd3a"
+      }
+    },
+    {
+      "keep": "p-acr-005",
+      "duplicates": [
+        "p-rbac-023"
+      ],
+      "reason": "Both authenticate CI/CD to Azure without a stored secret by federating the CI provider's identity to an Entra application; pushing to ACR does not change that flow.",
+      "fingerprints": {
+        "p-acr-005": "208adad0aa41329554ad990acefc0e4c8496ca36023ffcb7686f4aebe82dae5b",
+        "p-rbac-023": "110968dc6ab475a459f496051a1f5b5aad6a1e4e37689dd62b70666faa226ef9"
+      }
+    }
+  ],
+  "retainedExamples": [
+    {
+      "ids": ["p-red-007", "p-pg-008"],
+      "reason": "Redis and PostgreSQL require different service-specific authentication configuration; PostgreSQL also requires supplying the Entra token as the protocol password."
+    },
+    {
+      "ids": ["p-eh-001", "p-eh-008"],
+      "reason": "The consumer-parallelism bound and the inability to reduce a deployed partition count are different operational rules."
+    },
+    {
+      "ids": ["p-acr-004", "c-nw-003", "p-kv-009"],
+      "reason": "Diagnosing registry connectivity, designing a private registry and connecting privately to Key Vault have different service targets and configuration constraints."
+    },
+    {
+      "ids": [
+        "p-cos-003",
+        "c-ct-001"
+      ],
+      "reason": "Tenant-scoped query routing and evenly distributed product access require different partition keys."
+    },
+    {
+      "ids": [
+        "p-ca-001",
+        "c-nw-005"
+      ],
+      "reason": "Service Bus queue and HTTP scaling require different trigger rules, even though both can scale to zero."
+    },
+    {
+      "ids": [
+        "p-ca-003",
+        "p-ca-025"
+      ],
+      "reason": "The environment/VNet boundary and the console/system log destination are distinct attributes; the logging question also identifies the log categories."
+    },
+    {
+      "ids": [
+        "p-pg-002",
+        "p-pg-m01"
+      ],
+      "reason": "Diagnosing an existing HNSW index that is not used differs from choosing both an index and a compatible operator for an unindexed slow query."
+    },
+    {
+      "ids": [
+        "p-red-011",
+        "p-rd-m01"
+      ],
+      "reason": "The multiple-answer stampede question additionally requires TTL jitter, beyond the single-key locking remedy."
+    },
+    {
+      "ids": [
+        "p-eg-004",
+        "p-eg-m01"
+      ],
+      "reason": "The multiple-answer question adds dead-letter preservation to the delivery/idempotency guarantee."
+    },
+    {
+      "ids": [
+        "p-sb-003",
+        "p-sb-015",
+        "c-fb-003"
+      ],
+      "reason": "Publisher retry deduplication, consumer redelivery idempotency and the combined billing failure have different failure boundaries and required controls."
+    },
+    {
+      "ids": [
+        "p-sb-m01",
+        "p-sb-023"
+      ],
+      "reason": "The before-first-delivery constraint rules out MaxDeliveryCount, so the latter question requires TTL expiry alone."
+    },
+    {
+      "ids": [
+        "p-mon-002",
+        "p-mon-020",
+        "c-tw-004"
+      ],
+      "reason": "Request correlation and service attribution use different fields; the case requires both changes together."
+    },
+    {
+      "ids": [
+        "p-rbac-003",
+        "p-rbac-004",
+        "p-rbac-m01"
+      ],
+      "reason": "Computing inherited effective access, identifying a deny mechanism and evaluating both rules together have different required answers."
+    }
+  ]
+}

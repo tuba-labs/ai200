@@ -1,5 +1,7 @@
-"""Parser checks use invented questions; the downloaded source is not a fixture."""
+"""Check extraction with invented questions and validate the committed review."""
+import copy
 import importlib.util
+import json
 from pathlib import Path
 import unittest
 
@@ -29,6 +31,14 @@ URL = "https://ai200prep.com/practice-sets/set-01/"
 
 
 class PracticeExamTests(unittest.TestCase):
+    def reviewed_pair(self):
+        _, questions, _ = exam.parse_set(URL, card(1) + card(2))
+        questions[1]["prompt"] = "A paraphrase asking for the same decision."
+        review = {"schemaVersion": 1, "groups": [{"keep": "example-1", "duplicates": ["example-2"],
+                  "reason": "Both ask for the same decision.",
+                  "fingerprints": {q["id"]: exam.review_fingerprint(q) for q in questions}}]}
+        return questions, review
+
     def test_requires_real_exam_label_not_just_priority(self):
         summary, questions, _ = exam.parse_set(URL, card(1, "Priority") + card(2))
         self.assertEqual(summary["totalCount"], 2)
@@ -75,6 +85,57 @@ class PracticeExamTests(unittest.TestCase):
                                        '<a href="/questions/example/">Question</a>'
                                        '<a href="/practice-sets/set-01/">One</a>'),
                          [URL, "https://ai200prep.com/practice-sets/set-02/"])
+
+    def test_reviewed_paraphrases_are_excluded_without_mutating_source_questions(self):
+        questions, review = self.reviewed_pair()
+        before = copy.deepcopy(questions)
+        mapping, audit = exam.reviewed_duplicates(questions, [], review)
+        self.assertEqual(mapping, {"example-2": "example-1"})
+        self.assertEqual(audit[0]["reason"], review["groups"][0]["reason"])
+        self.assertEqual(questions, before)
+
+    def test_stale_reviews_and_missing_retained_questions_fail_instead_of_dropping_content(self):
+        questions, review = self.reviewed_pair()
+        for field, value in [("prompt", "A different requirement"), ("correctAnswers", ["A"]),
+                             ("explanation", "A different rule")]:
+            changed = copy.deepcopy(questions)
+            changed[1][field] = value
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, "changed since duplicate review"):
+                exam.reviewed_duplicates(changed, [], review)
+        with self.assertRaisesRegex(ValueError, "Missing retained question"):
+            exam.reviewed_duplicates(questions[1:], [], review)
+        self.assertEqual(exam.reviewed_duplicates(questions[:1], [], review), ({}, []))
+
+    def test_a_changed_case_invalidates_its_semantic_review(self):
+        questions, review = self.reviewed_pair()
+        case = {"id": "case-1", "title": "Example", "body": "One requirement", "requirements": ["One region"]}
+        questions[1]["contextId"] = case["id"]
+        review["groups"][0]["fingerprints"]["example-2"] = exam.review_fingerprint(questions[1], case)
+        exam.reviewed_duplicates(questions, [case], review)
+        changed = dict(case, requirements=["Two regions"])
+        with self.assertRaisesRegex(ValueError, "changed since duplicate review"):
+            exam.reviewed_duplicates(questions, [changed], review)
+
+    def test_the_committed_bank_matches_the_review_and_preserves_the_outbox_source(self):
+        script = (ROOT / "practice-exam-data.js").read_text(encoding="utf-8")
+        bank = json.loads(script.split("window.AI200_EXAM_BANK = ", 1)[1].strip().removesuffix(";"))
+        review = json.loads((ROOT / "data/practice-exam-review.json").read_text(encoding="utf-8"))
+        mapping, audit = exam.reviewed_duplicates(bank["questions"], bank["contexts"], review)
+        self.assertEqual(mapping, bank["duplicateOf"])
+        self.assertEqual(len(bank["questions"]), review["reviewedQuestionCount"])
+        self.assertEqual(len(audit), bank["download"]["reviewedDuplicatesExcluded"])
+        self.assertEqual(len(bank["questions"]) - len(mapping), bank["download"]["uniqueQuestionCount"])
+        self.assertEqual(mapping["c-fb-001"], "p-sb-006")
+        self.assertTrue({"c-fb-001", "p-sb-006"}.issubset({q["id"] for q in bank["questions"]}))
+        retained = {q["id"] for q in bank["questions"] if q["id"] not in mapping}
+        for example in review["retainedExamples"]:
+            self.assertTrue(set(example["ids"]).issubset(retained), example)
+
+    def test_similarity_candidates_find_the_reworded_outbox_questions(self):
+        script = (ROOT / "practice-exam-data.js").read_text(encoding="utf-8")
+        bank = json.loads(script.split("window.AI200_EXAM_BANK = ", 1)[1].strip().removesuffix(";"))
+        candidates = exam.near_duplicates(bank["questions"])
+        self.assertIn({"p-sb-006", "c-fb-001"}, [set(pair["ids"]) for pair in candidates])
 
 
 if __name__ == "__main__":

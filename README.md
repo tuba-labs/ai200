@@ -96,7 +96,7 @@ Forklar meningsbærende linjer i kodevinduene med kommentarer på norsk. Linjer 
 
 Åpne [Prøveeksamen](practice-exam.html) fra forsiden og start en prøve direkte. Spørsmålene følger med nettstedet i `practice-exam-data.js` og lastes automatisk både fra fil, localhost og den publiserte siden.
 
-Det siste forsøket lagres bare i nettleseren. Tiden fortsetter ved lukking eller oppdatering av siden. Du kan velge antall spørsmål, domener og tidsgrense; 0 minutter slår av tidtakingen. **Check answer** viser straks om det valgte svaret er riktig, markerer riktige alternativer og viser forklaringen uten å avslutte prøven. Tilbakemeldingen huskes når du går tilbake eller oppdaterer siden; endrer eller tømmer du svaret, må du sjekke det på nytt. Ved levering vises full svaroversikt og resultat per domene. Prøven endrer ikke flashcard-vurderinger.
+Det siste forsøket lagres bare i nettleseren. Tiden fortsetter ved lukking eller oppdatering av siden. Du kan velge antall spørsmål, domener og tidsgrense; 0 minutter slår av tidtakingen. **Sjekk svar / Check answer** viser straks om det valgte svaret er riktig, markerer riktige alternativer og viser forklaringen uten å avslutte prøven. Feil svar merkes automatisk for gjennomgang, også når bare noen av de riktige alternativene er valgt. Merket lagres sammen med forsøket og kan fjernes manuelt; et senere riktig svar fjerner det ikke automatisk. Tilbakemeldingen huskes når du går tilbake eller oppdaterer siden; endrer eller tømmer du svaret, må du sjekke det på nytt. Ved levering vises full svaroversikt og resultat per domene. Prøven endrer ikke flashcard-vurderinger.
 
 Vedlikeholdere kan oppdatere den medfølgende spørsmålsbanken fra prosjektroten:
 
@@ -107,7 +107,9 @@ python scripts/download_practice_exam.py
 
 Nedlastingen 30. oktober 2026 fant 359 slike spørsmål i 16 sett, med fire caser og 20 spørsmål med flere riktige svar. «Real Exam» er kildens merking; den bekrefter ikke at Microsoft har brukt spørsmålene. Fasit og forklaringer beholdes fra kilden.
 
-Skriptet oppdaterer `practice-exam-data.js`, som sjekkes inn sammen med nettstedet. Kilde-HTML, kontrollsummer, duplikatnotat og lesbare eksportfiler beholdes under Git-ignorerte `artifacts/ai200prep/`. `--from-cache` bygger spørsmålsbanken på nytt fra lagret HTML uten nettverk. Kildehenvisninger, fasit, forklaringer og caser følger med spørsmålene.
+Gjennomgangen 1. november 2026 utelukker 18 omformulerte duplikater fra nye forsøk, inkludert de to spørsmålene om transactional outbox. Nye prøver bruker dermed 341 spørsmål, hvorav 19 har flere riktige svar. [data/practice-exam-review.json](data/practice-exam-review.json) dokumenterer beholdte og utelatte spørsmål, begrunnelser og kontrollsummer. Beslektede spørsmål beholdes når vilkår eller nødvendige tiltak endrer svaret. Alle opprinnelige spørsmål og bankens identitet beholdes for at allerede lagrede forsøk kan fortsette og vurderes uten å miste svar eller tid.
+
+Skriptet oppdaterer `practice-exam-data.js`, som sjekkes inn sammen med nettstedet. Kilde-HTML, kontrollsummer, duplikatnotat og lesbare eksportfiler beholdes under Git-ignorerte `artifacts/ai200prep/`. `--from-cache` bygger spørsmålsbanken på nytt fra lagret HTML uten nettverk. Gjennomgåtte duplikater utelukkes ved ny generering også; endret spørsmål, fasit eller case krever ny vurdering av kontrollsummen. Nærtreff basert på både spørsmål og riktige svar rapporteres for manuell gjennomgang og fjernes ikke automatisk. Kildehenvisninger, fasit, forklaringer og caser følger med spørsmålene.
 
 ### Lokal server
 
