@@ -1,4 +1,7 @@
 :root{--ink:#17243b;--muted:#56657c;--accent:#1265bd;--navy:#0a2445;--line:#dce5f0;--page:#f5f8fc;--shadow:0 10px 32px rgba(17,48,84,.065)}
+.question-context{--context-bg:#eaf3ff;--context-line:#b7d0eb;--context-accent:#1265bd;--context-ink:#123e68;display:grid;gap:5px;margin:0 0 22px;padding:16px 20px;border:1px solid var(--context-line);border-left:5px solid var(--context-accent);border-radius:10px;background:var(--context-bg);color:var(--context-ink)}
+.question-context-label{font-size:12px;font-weight:800;letter-spacing:1px;line-height:1.5;text-transform:uppercase}
+.question-context #question-service{display:block;font-size:clamp(22px,3vw,27px);font-weight:800;line-height:1.25;overflow-wrap:anywhere}
 .question-actions{flex-wrap:wrap}
 .answer-actions{display:flex;align-items:center;gap:9px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
 .question-actions #check-answer{font-size:14px;padding:9px 13px}

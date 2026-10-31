@@ -43,6 +43,7 @@
 :root[data-theme=dark] .answer-feedback[data-result=correct] h3{color:var(--site-green)}
 :root[data-theme=dark] .answer-feedback[data-result=incorrect] h3{color:var(--site-amber)}
 :root[data-theme=dark] .timer.urgent{color:#ffc48a}
+:root[data-theme=dark] .question-context{--context-bg:#1b3651;--context-line:#527a9f;--context-accent:#8fc6ff;--context-ink:#e4edf8}
 :root[data-theme=dark] :is(table,.domain-table,th,td,caption){border-color:var(--site-line)}
 :root[data-theme=dark] :is(table,.domain-table){background:var(--site-surface);color:var(--site-ink)}
 :root[data-theme=dark] :is(thead,th,.domain-table th,caption){background:var(--site-raised);color:var(--site-ink)}

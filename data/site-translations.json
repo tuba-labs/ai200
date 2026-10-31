@@ -391,6 +391,7 @@
     ["Velg en varighet som passer deg. Standardvalget er en øvingsøkt med 45 spørsmål og 100 minutter; det beskriver ikke det offisielle eksamensformatet.", "Choose a duration that suits you. The default is a 45-question, 100-minute practice session; this is not a claim about the official exam format."],
     ["Prøven pågår", "Exam in progress"],
     ["Tid igjen", "Time remaining"],
+    ["Kontekst for spørsmålet", "Question context"],
     ["Fullfør prøven", "Finish exam"],
     ["Merk for gjennomgang", "Mark for review"],
     ["Tøm svar", "Clear answer"],

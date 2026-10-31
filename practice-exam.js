@@ -24,7 +24,7 @@
   };
   const saveAttempt = () => write(ATTEMPT_KEY, attempt);
   function showError(id, error) { $(id).textContent = error.message; $(id).hidden = false; }
-  function focus(el) { el.focus({preventScroll: true}); el.scrollIntoView({block: 'start', behavior: 'instant'}); }
+  function focus(el, scrollTarget = el) { el.focus({preventScroll: true}); scrollTarget.scrollIntoView({block: 'start', behavior: 'instant'}); }
   function externalLink(label, url) {
     const link = node('a', '', label);
     link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
@@ -156,7 +156,7 @@
   function navigate(index) {
     if (!attempt || attempt.submittedAt !== null || index < 0 || index >= attempt.ids.length) return;
     if (expired()) return;
-    attempt.index = index; saveAttempt(); renderQuestion(); focus($('question-prompt'));
+    attempt.index = index; saveAttempt(); renderQuestion(); focus($('question-prompt'), $('question-context'));
   }
   function expired() {
     if (attempt && attempt.submittedAt === null && rules.remainingSeconds(attempt) === 0) { submit(true); return true; }
@@ -250,7 +250,7 @@
     if (expired() || attempt.submittedAt !== null) return;
     delete attempt.answers[attempt.ids[attempt.index]];
     attempt.checked = attempt.checked.filter(id => id !== attempt.ids[attempt.index]);
-    saveAttempt(); renderQuestion(); focus($('question-prompt'));
+    saveAttempt(); renderQuestion(); focus($('question-prompt'), $('question-context'));
   });
   $('check-answer').addEventListener('click', () => {
     if (!attempt || attempt.submittedAt !== null || expired()) return;
