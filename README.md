@@ -53,7 +53,7 @@ Den følgende oversikten beskriver også de tidligere workshopformatene, som for
 | [21. Spor et kall mellom to tjenester](workshop-tracing.html) | Domene 4 |
 | [22. Finn feil og målinger med KQL](workshop-kql.html) | Domene 4 |
 | [Flashcards](flashcards.html) | 523 kort med ett spørsmål, kategorier og lokal fremdrift |
-| [Prøveeksamen](practice-exam.html) | Tidsbegrenset prøve med bare AI200Preps «Real Exam»-merkede spørsmål fra en lokal studiekopi |
+| [Prøveeksamen](practice-exam.html) | Tidsbegrenset prøve direkte på nettstedet med bare AI200Preps «Real Exam»-merkede spørsmål |
 
 Start med **[Før første workshop](getting-started.html#for-du-starter)**. Derfra følger du [oppskriften for å hente og åpne prosjektet i IntelliJ](getting-started.html#prosjekt), installerer verktøyene og klargjør Azure-kontoen. Begge kontovalgene bruker samme workshops, med lokal utvikling og testing som forberedelse til Azure-øvelsene. Praktisk konto- og verktøyoppsett er klargjøring; workshopenes læringsmål følger AI-200. Se [valgfri kostnadsveiledning](getting-started.html#kostnader) ved behov.
 
@@ -84,20 +84,22 @@ Forklar meningsbærende linjer i kodevinduene med kommentarer på norsk. Linjer 
 
 ## Kjør nettstedet lokalt
 
-### Personlig prøveeksamen
+### Prøveeksamen
 
-Åpne [Prøveeksamen](practice-exam.html) fra forsiden. Spørsmålene lastes fra din egen studiekopi og er ikke med i det publiserte nettstedet. Hent eller oppdater kopien fra prosjektroten:
+Åpne [Prøveeksamen](practice-exam.html) fra forsiden og start en prøve direkte. Spørsmålene følger med nettstedet i `practice-exam-data.js` og lastes automatisk både fra fil, localhost og den publiserte siden.
+
+Det siste forsøket lagres bare i nettleseren. Tiden fortsetter ved lukking eller oppdatering av siden. Du kan velge antall spørsmål, domener og tidsgrense; 0 minutter slår av tidtakingen. **Check answer** viser straks om det valgte svaret er riktig, markerer riktige alternativer og viser forklaringen uten å avslutte prøven. Tilbakemeldingen huskes når du går tilbake eller oppdaterer siden; endrer eller tømmer du svaret, må du sjekke det på nytt. Ved levering vises full svaroversikt og resultat per domene. Prøven endrer ikke flashcard-vurderinger.
+
+Vedlikeholdere kan oppdatere den medfølgende spørsmålsbanken fra prosjektroten:
 
 ```powershell
-# Lagre oppgavesettene og hent ut bare spørsmål merket «Real Exam».
+# Lagre oppgavesettene og oppdater nettstedets spørsmål merket «Real Exam».
 python scripts/download_practice_exam.py
 ```
 
 Nedlastingen 30. oktober 2026 fant 359 slike spørsmål i 16 sett, med fire caser og 20 spørsmål med flere riktige svar. «Real Exam» er kildens merking; den bekrefter ikke at Microsoft har brukt spørsmålene. Fasit og forklaringer beholdes fra kilden.
 
-Spørsmålsbanken ligger i `artifacts/ai200prep/real-exam.json`. Spilleren laster den lokale JavaScript-kopien automatisk ved åpning fra fil eller localhost. På den publiserte siden velger du JSON-filen med **Choose question file**. Importerte spørsmål og det siste forsøket lagres bare i nettleseren. Tiden fortsetter ved lukking eller oppdatering av siden. Du kan velge antall spørsmål, domener og tidsgrense; 0 minutter slår av tidtakingen. **Check answer** viser straks om det valgte svaret er riktig, markerer riktige alternativer og viser forklaringen uten å avslutte prøven. Tilbakemeldingen huskes når du går tilbake eller oppdaterer siden; endrer eller tømmer du svaret, må du sjekke det på nytt. Ved levering vises full svaroversikt og resultat per domene. Prøven endrer ikke flashcard-vurderinger.
-
-En lesbar kopi med spørsmål og svar ligger i `artifacts/ai200prep/real-exam-questions-and-answers.txt`. Kilde-HTML og kontrollsummer beholdes sammen med et duplikatnotat i samme mappe. Hele `artifacts/` er Git-ignorert. Kildens [vilkår](https://ai200prep.com/terms/) tillater personlig, ikke-kommersiell bruk og lagring av studiesider. `--from-cache` bygger spørsmålsfilene på nytt fra lagret HTML uten nettverk.
+Skriptet oppdaterer `practice-exam-data.js`, som sjekkes inn sammen med nettstedet. Kilde-HTML, kontrollsummer, duplikatnotat og lesbare eksportfiler beholdes under Git-ignorerte `artifacts/ai200prep/`. `--from-cache` bygger spørsmålsbanken på nytt fra lagret HTML uten nettverk. Kildehenvisninger, fasit, forklaringer og caser følger med spørsmålene.
 
 ### Lokal server
 

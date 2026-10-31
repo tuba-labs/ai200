@@ -1,5 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const {readFileSync} = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
 const rules = require('../practice-exam-core.js');
 
 function bank() {
@@ -13,6 +16,20 @@ function bank() {
     contexts: [{id: 'case-1', title: 'An example case', body: 'A team needs a service.', requirements: ['Keep the data private.']}],
     questions: [make('one', 1, ['A'], 'case-1'), make('two', 2, ['A', 'C']), make('three', 1, ['B'], 'case-1')]};
 }
+
+test('the bundled bank supports complete exams in every domain without imported questions', () => {
+  const context = {window: {}};
+  vm.runInNewContext(readFileSync(path.join(__dirname, '../practice-exam-data.js'), 'utf8'), context);
+  const source = rules.validateBank(context.window.AI200_EXAM_BANK);
+  assert.equal(source.questions.length, source.download.questionCount);
+  for (const domain of [1, 2, 3, 4]) {
+    const attempt = rules.createAttempt(source, {count: 1, domains: [domain]});
+    assert.equal(source.questions.find(q => q.id === attempt.ids[0]).domain, domain);
+  }
+  const attempt = rules.createAttempt(source, {count: source.questions.length, randomOrder: false});
+  attempt.answers = Object.fromEntries(source.questions.map(q => [q.id, q.correctAnswers]));
+  assert.equal(rules.grade(source, attempt).percent, 100);
+});
 
 test('only the labelled source bank is accepted, with complete and unique cases, questions and keys', () => {
   assert.equal(rules.validateBank(bank()).questions.length, 3);

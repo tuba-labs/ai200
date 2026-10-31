@@ -16,7 +16,7 @@
   };
   function validateBank(bank) {
     const fail = message => { throw new Error(message); };
-    if (!isObject(bank) || bank.schemaVersion !== 1 || !safeId(bank.bankId)) fail('Choose a real-exam.json file made by the practice exam downloader.');
+    if (!isObject(bank) || bank.schemaVersion !== 1 || !safeId(bank.bankId)) fail('The practice exam questions could not be loaded. Reload this page to try again.');
     if (!isObject(bank.source) || bank.source.filterLabel !== 'Real Exam' || !sourceUrl(bank.source.url)) fail('This bank must contain only AI-200 Prep questions labelled Real Exam.');
     if (!Array.isArray(bank.questions) || !bank.questions.length || bank.questions.length > 10000 || !Array.isArray(bank.contexts)) fail('The question bank is empty or invalid.');
     if (!unique(bank.questions.map(q => q?.id)) || !unique(bank.contexts.map(c => c?.id))) fail('The bank contains duplicate question or case IDs.');

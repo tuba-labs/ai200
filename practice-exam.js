@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   const rules = window.AI200Exam, $ = id => document.getElementById(id);
-  const BANK_KEY = 'ai200-practice-exam-bank-v1', ATTEMPT_KEY = 'ai200-practice-exam-attempt-v1';
+  const ATTEMPT_KEY = 'ai200-practice-exam-attempt-v1';
   const domainNames = {1: 'Containers', 2: 'AI data', 3: 'Integrations', 4: 'Security & monitoring'};
   let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null;
   const node = (tag, className, value) => {
@@ -32,8 +32,6 @@
     bank = value;
     questions = new Map(bank.questions.map(q => [q.id, q]));
     contexts = new Map(bank.contexts.map(c => [c.id, c]));
-    write(BANK_KEY, bank);
-    $('bank-heading').textContent = 'Real Exam-labelled questions';
     const downloaded = new Date(bank.source.downloadedAt);
     $('bank-status').textContent = `${bank.questions.length} questions · ${bank.contexts.length} case studies` +
       (Number.isNaN(downloaded.getTime()) ? '' : ` · downloaded ${downloaded.toISOString().slice(0, 10)}`);
@@ -61,11 +59,11 @@
   }
   function showSetup() {
     clearInterval(clock);
-    $('bank-panel').hidden = false; $('setup-panel').hidden = false;
+    $('setup-panel').hidden = false;
     $('exam-panel').hidden = true; $('results-panel').hidden = true;
   }
   function showExam() {
-    $('bank-panel').hidden = true; $('setup-panel').hidden = true;
+    $('setup-panel').hidden = true;
     $('exam-panel').hidden = false; $('results-panel').hidden = true;
     renderQuestion(); clearInterval(clock); clock = setInterval(tick, 1000);
   }
@@ -175,7 +173,7 @@
   }
   function renderResults() {
     clearInterval(clock);
-    $('bank-panel').hidden = true; $('setup-panel').hidden = true;
+    $('setup-panel').hidden = true;
     $('exam-panel').hidden = true; $('results-panel').hidden = false;
     const result = rules.grade(bank, attempt);
     $('result-percent').textContent = result.percent + '%';
@@ -275,31 +273,6 @@
   $('review-filter').addEventListener('change', renderReview);
   document.addEventListener('visibilitychange', tick);
   window.addEventListener('pageshow', tick);
-  $('bank-file').addEventListener('change', async event => {
-    const file = event.target.files[0];
-    if (!file) return;
-    try {
-      if (file.size > 15 * 1024 * 1024) throw new Error('Choose a question file smaller than 15 MB.');
-      const value = JSON.parse(await file.text()); rules.validateBank(value); setBank(value);
-    } catch (error) { showError('bank-error', error); }
-    event.target.value = '';
-  });
-  function missingBank() {
-    $('bank-status').textContent = 'Choose real-exam.json from your local study download to begin.';
-  }
-  const savedBank = read(BANK_KEY);
-  if (savedBank) {
-    try { setBank(savedBank); return; }
-    catch { /* A corrupt or obsolete copy must not prevent loading a new file. */ }
-  }
-  if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
-    const script = document.createElement('script');
-    script.src = 'artifacts/ai200prep/real-exam-data.js';
-    script.onload = () => {
-      try { setBank(window.AI200_EXAM_BANK); }
-      catch (error) { missingBank(); showError('bank-error', error); }
-    };
-    script.onerror = missingBank;
-    document.head.append(script);
-  } else missingBank();
+  try { setBank(window.AI200_EXAM_BANK); }
+  catch (error) { showError('bank-error', error); }
 })();

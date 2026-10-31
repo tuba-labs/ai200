@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Take a personal practice exam using only AI-200 Prep questions labelled Real Exam. Timed attempts, case studies and results by domain.">
+  <meta name="description" content="Take a practice exam directly on this site using AI-200 Prep questions labelled Real Exam. Timed attempts, case studies and results by domain.">
   <title>AI-200 | Practice exam</title>
   <link rel="stylesheet" href="practice-exam.css">
+  <script src="practice-exam-data.js" defer></script>
   <script src="practice-exam-core.js" defer></script>
   <script src="practice-exam.js" defer></script>
   <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
@@ -26,15 +27,10 @@
       <p class="small">This is the provider’s label, not verification that these questions appeared on Microsoft’s exam. Scores use the provider’s answer key.</p>
     </div>
     <p class="storage-note" id="storage-notice" role="status" hidden>Browser storage is unavailable. Keep this tab open: your attempt cannot be saved after a reload.</p>
-    <section class="panel bank-panel" aria-labelledby="bank-heading" id="bank-panel">
-      <div><span class="eyebrow">Your question bank</span><h2 id="bank-heading">Load your study copy</h2>
-        <p id="bank-status" role="status">Looking for the local download…</p></div>
-      <label class="file-button">Choose question file<input id="bank-file" type="file" accept=".json,application/json"></label>
-      <p class="small bank-help">Use <code>artifacts/ai200prep/real-exam.json</code>. The downloaded questions stay on this device and are kept out of the public site. <a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Source practice sets ↗</a> · <a href="https://ai200prep.com/terms/" target="_blank" rel="noopener noreferrer">Personal study terms ↗</a></p>
-      <p id="bank-error" class="error" role="alert" hidden></p>
-    </section>
+    <p id="bank-error" class="error" role="alert" hidden></p>
     <section class="panel" id="setup-panel" aria-labelledby="setup-heading" hidden>
       <div class="section-top"><div><span class="eyebrow">Choose your session</span><h2 id="setup-heading" tabindex="-1">Ready when you are</h2></div><span class="badge">No flashcards added</span></div>
+      <p id="bank-status" class="small" role="status"></p>
       <form id="setup-form">
         <fieldset class="domain-options"><legend>Include domains</legend>
           <label><input type="checkbox" name="domain" value="1" checked><span><b>1 · Containers</b><small id="domain-1-count"></small></span></label>
