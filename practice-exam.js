@@ -108,7 +108,6 @@
     $('question-service').textContent = q.service;
     $('question-source-id').textContent = `Source ID: ${q.id}`;
     renderQuestionObjectives(q, $('question-objectives'));
-    $('question-supporting').hidden = objectiveData.questions[q.id].objectives.length > 0;
     $('case-context').replaceChildren();
     const context = caseBlock(q.contextId);
     if (context) $('case-context').append(context);
