@@ -67,6 +67,7 @@ test('changing counts, progress, domains and exam results are localised in both 
     ['Domene 4 · Sikkerhet og overvåking', 'Domain 4 · Security & monitoring'],
     ['359 spørsmål · 4 caser · lastet ned 2026-10-30', '359 questions · 4 case studies · downloaded 2026-10-30'],
     ['2 av 45 besvart · 1 merket for gjennomgang', '2 of 45 answered · 1 marked for review'],
+    ['Besvarte spørsmål: 100. Ubesvarte spørsmål som ikke telles: 259.', 'Answered questions: 100. Unanswered questions excluded: 259.'],
     ['Plass 35 av 560 i køen', 'Position 35 of 560 in queue'],
     ['Spørsmål 4, besvart, merket for gjennomgang', 'Question 4, answered, marked for review'],
     ['Prøven er levert. 45 spørsmål · 12 min.', 'Exam submitted. 45 questions · 12 min.'],

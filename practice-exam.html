@@ -68,7 +68,7 @@
       </form>
     </section>
     <section id="exam-panel" class="exam-panel" aria-labelledby="exam-heading" data-no-jargon hidden>
-      <div class="exam-toolbar panel"><div><h2 id="exam-heading" tabindex="-1">Exam in progress</h2><p id="attempt-progress"></p></div><div class="timer"><span>Time remaining</span><strong id="time-remaining" role="timer" aria-live="off"></strong></div><button id="finish-exam" class="primary" type="button">Finish exam</button></div>
+      <div class="exam-toolbar panel"><div><h2 id="exam-heading" tabindex="-1">Exam in progress</h2><p id="attempt-progress"></p></div><div class="timer"><span>Time remaining</span><strong id="time-remaining" role="timer" aria-live="off"></strong></div><div class="exam-toolbar-actions"><button id="preview-score" type="button" aria-haspopup="dialog" aria-controls="score-preview-dialog">Preview score</button><button id="finish-exam" class="primary" type="button">Finish exam</button></div></div>
       <div class="exam-layout">
         <article class="panel question-panel"><div class="question-meta"><span class="badge" id="question-domain"></span><span id="question-source-id"></span></div>
           <div id="case-context" data-keep-english lang="en" translate="no"></div>
@@ -98,6 +98,15 @@
     </section>
     <noscript><p class="panel">Enable JavaScript to load the questions and take an exam.</p></noscript>
   </main>
+  <dialog class="score-preview" id="score-preview-dialog" aria-labelledby="score-preview-title" aria-describedby="score-preview-summary score-preview-note" data-no-jargon>
+    <h2 id="score-preview-title">Score preview</h2>
+    <p id="score-preview-summary" class="small"></p>
+    <p id="score-preview-empty" class="small" hidden>Answer at least one question to preview your score.</p>
+    <div class="score-grid"><div class="score"><strong id="preview-percent"></strong><span>correct</span></div><div><strong id="preview-correct"></strong><span>correct answers</span></div><div><strong id="preview-incorrect"></strong><span>incorrect answers</span></div><div><strong id="preview-answered"></strong><span>answered questions</span></div></div>
+    <div id="preview-domain-results" class="domain-results"></div>
+    <p class="small" id="score-preview-note">You can continue answering after closing this preview. Timed exams keep counting down.</p>
+    <div class="dialog-actions"><button id="close-score-preview" class="primary" type="button" autofocus>Keep working</button></div>
+  </dialog>
   <dialog id="finish-dialog" aria-labelledby="finish-title"><h2 id="finish-title">Finish this exam?</h2><p id="finish-summary"></p><p>Submitting ends the timer and opens the full answer review.</p><div class="dialog-actions"><button id="continue-exam" type="button" autofocus>Keep working</button><button id="submit-exam" class="primary" type="button">Submit exam</button></div></dialog>
   <footer><div class="wrap">AI-200 Study group · Personal practice · <a href="index.html">Back to overview</a></div></footer>
 </body>

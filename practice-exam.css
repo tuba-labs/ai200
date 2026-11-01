@@ -2,6 +2,9 @@
 .question-context{--context-bg:#eaf3ff;--context-line:#b7d0eb;--context-accent:#1265bd;--context-ink:#123e68;display:grid;gap:5px;margin:0 0 22px;padding:16px 20px;border:1px solid var(--context-line);border-left:5px solid var(--context-accent);border-radius:10px;background:var(--context-bg);color:var(--context-ink)}
 .question-context-label{font-size:12px;font-weight:800;letter-spacing:1px;line-height:1.5;text-transform:uppercase}
 .question-context #question-service{display:block;font-size:clamp(22px,3vw,27px);font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.exam-toolbar-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+dialog.score-preview{width:760px;max-width:calc(100% - 30px);max-height:calc(100vh - 30px);max-height:calc(100dvh - 30px);overflow:auto}
+@media(max-width:650px){.exam-toolbar-actions{width:100%}.exam-toolbar-actions>button{flex:1}}
 .question-actions{flex-wrap:wrap}
 .answer-actions{display:flex;align-items:center;gap:9px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
 .question-actions #check-answer{font-size:14px;padding:9px 13px}

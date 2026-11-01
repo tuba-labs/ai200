@@ -173,6 +173,7 @@
     attempt.submittedAt = Date.now(); attempt.timedOut = timedOut;
     clearInterval(clock); saveAttempt();
     if ($('finish-dialog').open) $('finish-dialog').close();
+    if ($('score-preview-dialog').open) $('score-preview-dialog').close();
     renderResults(); focus($('results-heading'));
   }
   function renderResults() {
@@ -186,15 +187,18 @@
     $('result-unanswered').textContent = result.unanswered;
     const elapsed = Math.max(0, Math.round(((attempt.timedOut ? attempt.deadline : attempt.submittedAt) - attempt.startedAt) / 60000));
     $('result-reason').textContent = `${attempt.timedOut ? 'Time expired. Your saved answers were submitted automatically.' : 'Exam submitted.'} ${result.total} questions · ${elapsed} min.`;
-    $('domain-results').replaceChildren();
+    renderDomainResults(result, $('domain-results'));
+    renderReview();
+  }
+  function renderDomainResults(result, container) {
+    container.replaceChildren();
     for (const [domain, score] of Object.entries(result.domains)) {
       const percent = Math.round(score.correct / score.total * 100), panel = node('div', 'domain-result');
       const bar = node('div', 'domain-bar'), fill = node('span'); fill.style.width = percent + '%'; bar.append(fill);
       bar.setAttribute('role', 'img'); bar.setAttribute('aria-label', `${percent}% correct in domain ${domain}`);
       panel.append(node('h3', '', `Domain ${domain} · ${domainNames[domain]}`), node('p', '', `${score.correct} / ${score.total} correct · ${percent}%`), bar);
-      $('domain-results').append(panel);
+      container.append(panel);
     }
-    renderReview();
   }
   function renderReview() {
     const filter = $('review-filter').value;
@@ -266,6 +270,19 @@
     const button = event.target.closest('button[data-index]');
     if (button) navigate(Number(button.dataset.index));
   });
+  $('preview-score').addEventListener('click', () => {
+    if (!attempt || attempt.submittedAt !== null || expired()) return;
+    const result = rules.grade(bank, attempt, {answeredOnly: true});
+    $('preview-percent').textContent = result.percent === null ? '—' : result.percent + '%';
+    $('preview-correct').textContent = result.correct;
+    $('preview-incorrect').textContent = result.total - result.correct;
+    $('preview-answered').textContent = result.total;
+    $('score-preview-summary').textContent = `Answered questions: ${result.total}. Unanswered questions excluded: ${attempt.ids.length - result.total}.`;
+    $('score-preview-empty').hidden = result.total > 0;
+    renderDomainResults(result, $('preview-domain-results'));
+    $('score-preview-dialog').showModal();
+  });
+  $('close-score-preview').addEventListener('click', () => $('score-preview-dialog').close());
   $('finish-exam').addEventListener('click', () => {
     if (expired()) return;
     const unanswered = attempt.ids.filter(id => !selected(id).length).length;

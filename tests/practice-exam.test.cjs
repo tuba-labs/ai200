@@ -146,6 +146,64 @@ test('grading includes unanswered questions in total and domain denominators', (
   assert.deepEqual(result.domains[2], {total: 1, correct: 0, unanswered: 0});
 });
 
+test('previewing 100 answered questions in a 359-question exam scores only those 100 without changing the attempt', () => {
+  const source = bank(), examples = source.questions;
+  source.questions = Array.from({length: 359}, (_, index) => ({...examples[index % examples.length], id: 'question-' + index}));
+  const attempt = rules.createAttempt(source, {count: 359, randomOrder: false}, 1000);
+  for (const [index, id] of attempt.ids.slice(0, 100).entries()) {
+    const question = source.questions.find(q => q.id === id);
+    attempt.answers[id] = index < 80 ? question.correctAnswers.slice() : [question.options.find(o => !question.correctAnswers.includes(o.id)).id];
+  }
+  attempt.flagged = [attempt.ids[90]];
+  attempt.checked = [attempt.ids[0]];
+  const before = JSON.stringify(attempt), beforeBank = JSON.stringify(source);
+  const preview = rules.grade(source, attempt, {answeredOnly: true});
+  assert.deepEqual([preview.total, preview.correct, preview.unanswered, preview.percent], [100, 80, 0, 80]);
+  assert.equal(preview.questions.length, 100);
+  assert.equal(Object.values(preview.domains).reduce((sum, score) => sum + score.total, 0), 100);
+  assert.equal(JSON.stringify(attempt), before);
+  assert.equal(JSON.stringify(source), beforeBank);
+  const final = rules.grade(source, attempt);
+  assert.deepEqual([final.total, final.correct, final.unanswered, final.percent], [359, 80, 259, 22]);
+});
+
+test('score previews ignore missing and cleared answers in both overall and domain denominators', () => {
+  const source = bank(), attempt = rules.createAttempt(source, {count: 3, randomOrder: false}, 1000);
+  attempt.answers = {one: ['A'], two: []};
+  const preview = rules.grade(source, attempt, {answeredOnly: true});
+  assert.deepEqual([preview.total, preview.correct, preview.percent], [1, 1, 100]);
+  assert.deepEqual(preview.domains, {1: {total: 1, correct: 1, unanswered: 0}});
+  assert.deepEqual(preview.questions, [{id: 'one', correct: true, unanswered: false}]);
+  attempt.answers.three = ['A'];
+  const changed = rules.grade(source, attempt, {answeredOnly: true});
+  assert.deepEqual([changed.total, changed.correct, changed.percent], [2, 1, 50]);
+  assert.deepEqual(changed.domains[1], {total: 2, correct: 1, unanswered: 0});
+  delete attempt.answers.three;
+  assert.deepEqual(rules.grade(source, attempt, {answeredOnly: true}), preview);
+});
+
+test('preview counts unchecked and partially answered multi-select questions as answered and uses exact-match scoring', () => {
+  const source = bank(), attempt = rules.createAttempt(source, {count: 3, randomOrder: false}, 1000);
+  for (const [answer, percent] of [[['A'], 0], [['A', 'B', 'C'], 0], [['C', 'A'], 100]]) {
+    attempt.answers.two = answer;
+    const preview = rules.grade(source, attempt, {answeredOnly: true});
+    assert.deepEqual([preview.total, preview.correct, preview.percent], [1, percent ? 1 : 0, percent]);
+    assert.equal(preview.domains[2].total, 1);
+    assert.deepEqual(attempt.checked, []);
+    assert.deepEqual(attempt.flagged, []);
+  }
+});
+
+test('an empty score preview has no percentage, and answering everything produces the regular exam score', () => {
+  const source = bank(), attempt = rules.createAttempt(source, {count: 3, randomOrder: false}, 1000);
+  attempt.answers.one = [];
+  assert.deepEqual(rules.grade(source, attempt, {answeredOnly: true}), {total: 0, correct: 0, unanswered: 0, domains: {}, questions: [], percent: null});
+  for (const allCorrect of [true, false]) {
+    for (const q of source.questions) attempt.answers[q.id] = allCorrect ? q.correctAnswers.slice() : [q.options.find(o => !q.correctAnswers.includes(o.id)).id];
+    assert.deepEqual(rules.grade(source, attempt, {answeredOnly: true}), rules.grade(source, attempt));
+  }
+});
+
 test('saved attempts reject unknown options, repeated questions and a different bank', () => {
   const source = bank();
   const attempt = rules.createAttempt(source, {count: 3}, 1000);

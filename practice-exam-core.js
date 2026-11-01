@@ -92,19 +92,21 @@
     if (!correct && !attempt.flagged.includes(id)) attempt.flagged.push(id);
     return correct;
   }
-  function grade(bank, attempt) {
+  function grade(bank, attempt, {answeredOnly = false} = {}) {
     if (!validAttempt(attempt, bank)) throw new Error('This attempt does not match the loaded bank.');
     const questions = new Map(bank.questions.map(q => [q.id, q]));
-    const result = {total: attempt.ids.length, correct: 0, unanswered: 0, domains: {}, questions: []};
+    const result = {total: 0, correct: 0, unanswered: 0, domains: {}, questions: []};
     for (const id of attempt.ids) {
-      const q = questions.get(id), selected = Array.isArray(attempt.answers[id]) ? attempt.answers[id] : [], correct = isCorrect(q, selected);
+      const q = questions.get(id), selected = Array.isArray(attempt.answers[id]) ? attempt.answers[id] : [];
+      if (answeredOnly && !selected.length) continue;
+      const correct = isCorrect(q, selected);
       const domain = result.domains[q.domain] ||= {total: 0, correct: 0, unanswered: 0};
-      domain.total++;
+      result.total++; domain.total++;
       if (correct) { result.correct++; domain.correct++; }
       if (!selected.length) { result.unanswered++; domain.unanswered++; }
       result.questions.push({id, correct, unanswered: !selected.length});
     }
-    result.percent = Math.round(result.correct / result.total * 100);
+    result.percent = result.total ? Math.round(result.correct / result.total * 100) : null;
     return result;
   }
   function remainingSeconds(attempt, now = Date.now()) {

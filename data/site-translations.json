@@ -390,6 +390,11 @@
     ["Velg en varighet som passer deg. Standardvalget er en øvingsøkt med 45 spørsmål og 100 minutter; det beskriver ikke det offisielle eksamensformatet.", "Choose a duration that suits you. The default is a 45-question, 100-minute practice session; this is not a claim about the official exam format."],
     ["Prøven pågår", "Exam in progress"],
     ["Tid igjen", "Time remaining"],
+    ["Forhåndsvis resultat", "Preview score"],
+    ["Forhåndsvisning av resultat", "Score preview"],
+    ["besvarte spørsmål", "answered questions"],
+    ["Svar på minst ett spørsmål for å forhåndsvise resultatet.", "Answer at least one question to preview your score."],
+    ["Du kan fortsette å svare når du lukker forhåndsvisningen. Tiden fortsetter å gå på prøver med tidtaking.", "You can continue answering after closing this preview. Timed exams keep counting down."],
     ["Kontekst for spørsmålet", "Question context"],
     ["Fullfør prøven", "Finish exam"],
     ["Merk for gjennomgang", "Mark for review"],
@@ -497,6 +502,7 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["Besvarte spørsmål: {answered}. Ubesvarte spørsmål som ikke telles: {unanswered}.", "Answered questions: {answered}. Unanswered questions excluded: {unanswered}."],
     ["{count} delmål", "{count} learning objectives"],
     ["{count} domener", "{count} domains"],
     ["{count} flashcards. Ett spørsmål per kort.", "{count} flashcards. One question per card."],
