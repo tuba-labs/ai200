@@ -1,4 +1,4 @@
-"""Embed the shared header in current pages; archived snapshots stay unchanged."""
+"""Embed the shared header in all study pages."""
 import argparse
 import json
 from pathlib import Path

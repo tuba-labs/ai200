@@ -1,4 +1,4 @@
-"""New workshop curriculum. Existing root workshops and old/ are never rewritten."""
+"""Curriculum for the eight workshops and their card-to-task links."""
 
 
 def activity(key, title, kind, cards, steps, expected, code="", files=()):
@@ -92,7 +92,7 @@ GLOSSARY = {
 WORKSHOPS = [
     workshop("d1a", 1, "Fra kildekode til en driftet container",
         "Studiegruppen skal levere et lite dokument-API. Bygg ett image, spor hvilken versjon som kjører, og sammenlign App Service med Container Apps.",
-        "Docker og felles Azure CLI-oppsett må være klart. Kjør fra prosjektroten. Bruk én ny ressursgruppe ai200-v2-d1a. Velg egne globalt unike navn for register og apper; gjenbruk ikke gruppene fra de gamle workshopene.",
+        "Docker og felles Azure CLI-oppsett må være klart. Kjør fra prosjektroten. Bruk én ny ressursgruppe ai200-v2-d1a. Velg egne globalt unike navn for register og apper; gjenbruk ikke gruppene fra andre prosjekter.",
         [("ACR", "Basic er nok til hovedøvelsen. Velg RBAC Registry Permissions; administratorbruker skal være av."),
          ("App Service", "Linux-plan med støtte for container; opprett app fra ACR-imaget. Aktiver system-assigned identity, gi AcrPull på registeret, sett containerport 8080 og kontroller loggene."),
          ("Container Apps", "Ett miljø og én app med ekstern HTTP-ingress til port 8080. Bruk autorisert pull-identitet til det private registeret.")],
@@ -225,7 +225,7 @@ WORKSHOPS += [
         "Bruk ny gruppe ai200-v2-d4a. Azure CLI-innlogging gjøres i fellesoppsettet. Den som oppretter rolletildelinger trenger nødvendig tilgang til dette scope-et. Bruk bare testhemmeligheter i laben.",
         [("Key Vault", "Aktiver Azure RBAC. Din labidentitet trenger Secrets Officer for testversjoner og en separat leseridentitet trenger Secrets User. Bruk demo-secret med verdiene workshop-only-v1/v2."),
          ("App Configuration", "Opprett Workshop:Mode med label lab og verdi initial, samt en sentinel uten label. Gi lokal leser App Configuration Data Reader. Sett KEY_VAULT_URL og APP_CONFIG_ENDPOINT."),
-         ("Valgfri driftet app", "Bruk en ny testapp med managed identity i denne gruppen for Key Vault-reference-forsøket. Gjenbruk ikke gamle workshopapper og deres rolletildelinger.")],
+         ("Valgfri driftet app", "Bruk en ny testapp med managed identity i denne gruppen for Key Vault-reference-forsøket. Gjenbruk ikke apper og rolletildelinger fra andre prosjekter.")],
         [chapter("identity-rbac", "Finn hvem som autentiseres og hvilken tillatelse et kall trenger.", ["RBAC", "ABAC", "SDK", "OIDC", "PIM", "MFA", "CI/CD", "VNet"], [
             activity("identity-read", "Koble et ekte oppslag til identitet, rolle og scope", "practical",
                 "m-54-4-1 prep-rbac-003",

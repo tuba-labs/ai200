@@ -1,7 +1,6 @@
 """Build one jargon catalog and its searchable pages; add shared site assets.
 
-Run after changing term cards, jargon_catalog.py or jargon_relations.py. Archived snapshots in old/
-are intentionally outside the set of current study pages.
+Run after changing term cards, jargon_catalog.py or jargon_relations.py.
 """
 import argparse
 from html import escape
@@ -233,8 +232,7 @@ def main():
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     rendered = outputs()
-    # Add loading and the glossary link to every current page, including legacy
-    # pages still reachable directly. The old/ archive stays byte-for-byte intact.
+    # Add the glossary assets and link to every study page.
     for path in sorted(list(ROOT.glob('*.html')) + list((ROOT / 'workshops').glob('*.html')) + list((ROOT / 'jargon-examples').glob('*.html'))):
         name = path.relative_to(ROOT).as_posix()
         if name not in rendered:

@@ -1,8 +1,4 @@
-"""Generate the new eight-workshop course and traceable flashcard coverage.
-
-Only files under workshops/ are generated. Root workshop pages and old/ are inputs
-to neither the content nor the renderer and are never modified.
-"""
+"""Generate the eight-workshop course and traceable flashcard coverage."""
 import argparse
 from collections import Counter
 from fnmatch import fnmatchcase
@@ -96,7 +92,7 @@ def page(title, intro, body, current="", toc=""):
 <link rel="stylesheet" href="./course.css"><script src="./course.js" defer></script></head>
 <body><a class="skip" href="#innhold">Hopp til innhold</a>
 <!-- site-header -->
-<nav class="course-nav wrap" aria-label="Workshopnavigasjon"><a href="./index.html"{' aria-current="page"' if current=='home' else ''}>Domener</a><a href="./coverage.html"{' aria-current="page"' if current=='coverage' else ''}>Kortdekning</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Tidligere workshops</a></nav>
+<nav class="course-nav wrap" aria-label="Workshopnavigasjon"><a href="./index.html"{' aria-current="page"' if current=='home' else ''}>Domener</a><a href="./coverage.html"{' aria-current="page"' if current=='coverage' else ''}>Kortdekning</a><a href="./setup.html">Felles oppsett</a></nav>
 <div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>{escape(title)}</h1><p class="lead">{escape(intro)}</p></div></div>
 <main id="innhold" class="wrap {'layout' if toc else ''}">{('<aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold">'+toc+'</nav></aside>') if toc else ''}<div class="content">{body}</div></main>
 <footer><div class="wrap"><p>AI-200 studiegruppe · Nytt løp · <a href="./glossary.html">Forkortelser og begreper</a> · <a href="../index.html">Hele studiesiden</a></p></div></footer></body></html>
@@ -186,7 +182,7 @@ def render_index(deck, coverage):
     body = '<section class="panel"><h2>To workshops per domene</h2><p>De åtte workshopene samler kategoriene i gjennomgående oppdrag. Velg domene først, deretter workshop og kategori. Hvert kontrollspørsmål har stabil kort-ID og en sporbar kobling til en oppgave der det finnes.</p>'
     body += stats(deck["cards"], coverage)
     body += '<p><a href="../flashcards.html?source=terms">Begynn med begrepskortene</a> hvis ord som node, slot eller provision er nye. Nye orddefinisjoner øver ordforrådet og er ikke tatt med som ekstra oppgavedekning.</p>'
-    body += '<p>Praktiske oppgaver og analyseoppgaver teller som oppgavedekning. Ren repetisjon vises som et gjenstående øvingshull. Dette er en planlagt kobling til kortene, ikke en garanti for eksamensdekning eller et bevis på gjennomført læring.</p><div class="actions"><a class="button" href="./coverage.html">Se alle kort og oppgaver</a><a href="./setup.html">Felles oppsett</a><a href="../old/index.html">Åpne tidligere workshops</a></div></section>'
+    body += '<p>Praktiske oppgaver og analyseoppgaver teller som oppgavedekning. Ren repetisjon vises som et gjenstående øvingshull. Dette er en planlagt kobling til kortene, ikke en garanti for eksamensdekning eller et bevis på gjennomført læring.</p><div class="actions"><a class="button" href="./coverage.html">Se alle kort og oppgaver</a><a href="./setup.html">Felles oppsett</a></div></section>'
     for domain, name in DOMAIN_NAMES.items():
         body += f'<section class="domain" id="domain-{domain}"><p class="eyebrow">Domene {domain}</p><h2>{escape(name)}</h2><p><a href="../flashcards.html?domain={domain}&amp;category=terms-{domain}">Lær domenets begreper først →</a></p><div class="workshop-grid">'
         for workshop in [item for item in WORKSHOPS if item["domain"] == domain]:
@@ -197,7 +193,6 @@ def render_index(deck, coverage):
             body += ''.join(f'<li><a href="./{workshop["id"]}.html#category-{chapter["category"]}">{escape(categories[chapter["category"]])}</a></li>' for chapter in workshop["chapters"])
             body += f'</ul><p class="small">{counts["practical"]} praktisk · {counts["analysis"]} analyse · {counts["review"]} repetisjon</p><a class="button" href="./{workshop["id"]}.html">Åpne workshop {workshop["id"].upper()} →</a></article>'
         body += '</div></section>'
-    body += '<section class="panel"><h2>Hva som er bevart</h2><p><a href="../old/index.html">old/</a> inneholder en kopi av nettstedet og labkildene før dette løpet ble laget. De eksisterende workshopfilene i prosjektroten ligger også urørt. Nye oppgaver og eventuelle øvingsendringer ligger under workshops/.</p><p><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200">Microsofts studieguide</a> er referansen for kompetansemålene. Flashcardene er avgrenset etter en <a href="../reports/ai200-card-review.txt">pensumkontroll</a>. Eksisterende fordypningsoppgaver er bevart; korttall og dekningsmerker viser bare de aktive kortene.</p></section>'
     return page("Åtte workshops, fire domener", "Arbeid praktisk og analytisk med flashcard-temaene, samlet i to workshops per domene og kategorier som kapitler.", body, current="home")
 
 
@@ -222,7 +217,7 @@ def render_glossary():
 
 
 def render_setup():
-    body = '''<section class="panel"><h2>Arbeid i det nye løpet</h2><p>Alle kommandoer kjøres fra prosjektroten C:\\java\\ai200 med mindre en oppgave sier noe annet. Rediger bare filer under workshops/labs/. Dagens øvrige workshops og old/ endres ikke av dette løpet.</p><ol><li>Bruk verktøy-, Python- og CLI-oppsettet fra <a href="../getting-started.html#for-du-starter">Kom i gang</a>. Behold prosjektets ene .venv.</li><li>Installer det nye løpets pakker i det aktive miljøet med kommandoen under. Det inkluderer Event Hubs, Blob-checkpoints og App Configuration-provider.</li><li>Opprett den nye ressursgruppen og ressursene fra hver workshop i din egen konto. Portalen er et fullverdig alternativ til egne IaC-filer. Bruk Norway East der tjeneste og SKU støttes; velg en støttet region når den aktuelle kombinasjonen ikke finnes der.</li><li>Fyll lokale miljøvariabler og ignorerte local.settings.json før skript/host startes. Variabler arves ikke automatisk til en ny terminal; sett dem der også.</li></ol>'''
+    body = '''<section class="panel"><h2>Arbeid i workshopene</h2><p>Alle kommandoer kjøres fra prosjektroten C:\\java\\ai200 med mindre en oppgave sier noe annet. Labkildene ligger under workshops/labs/.</p><ol><li>Bruk verktøy-, Python- og CLI-oppsettet fra <a href="../getting-started.html#for-du-starter">Kom i gang</a>. Behold prosjektets ene .venv.</li><li>Installer workshopenes pakker i det aktive miljøet med kommandoen under. Det inkluderer Event Hubs, Blob-checkpoints og App Configuration-provider.</li><li>Opprett ressursgruppen og ressursene fra hver workshop i din egen konto. Portalen er et fullverdig alternativ til egne IaC-filer. Bruk Norway East der tjeneste og SKU støttes; velg en støttet region når den aktuelle kombinasjonen ikke finnes der.</li><li>Fyll lokale miljøvariabler og ignorerte local.settings.json før skript/host startes. Variabler arves ikke automatisk til en ny terminal; sett dem der også.</li></ol>'''
     body += code_block('''# Installer bare i prosjektets aktiverte Python-miljø.
 python -m pip install -r workshops/labs/requirements.txt
 # Start selve studiesiden fra prosjektroten.
@@ -230,7 +225,7 @@ python -m http.server 8000 --bind 127.0.0.1''')
     body += '''<p>Åpne <a href="http://localhost:8000/workshops/">http://localhost:8000/workshops/</a>. Nettlesernotater og avkryssing bruker en egen lagringsnøkkel for det nye løpet. Eksporter notatene før lagring tømmes.</p></section>
 <section class="panel"><h2>Variabler og kildefiler</h2><p>Verdier skrevet i STORE BOKSTAVER eller med DITT-navn er plassholdere. Kopier endpoint/navn fra din egen ressurs. Nøkler og passord skal bare brukes lokalt i terminalen eller ignorert innstillingsfil, ikke i eksporterte notater.</p><p>En filvisning viser hele kildefilen og har nedlastingslenke. JSON må forbli gyldig: IsEncrypted beskriver lokal innstillingskryptering, Values inneholder hostens miljøinnstillinger, FUNCTIONS_WORKER_RUNTIME velger Python og AzureWebJobsStorage er Functions-hostens Storage-forbindelse. CosmosConnection og ServiceBusConnection er navngitte bindingstilkoblinger, ikke funksjonsnavn.</p><p>Kjør én langvarig prosess per terminal. Kommandoer merket «annen terminal» kjøres mens serveren eller hosten fortsatt kjører. HTTP 400/404/500 i en fremprovosert feiltest er et resultat du skal forklare.</p></section>
 <section class="panel"><h2>Kostnader og opprydding</h2><p>Azure-ressurser kan faktureres mens du leser eller tar pause. Følg <a href="../getting-started.html#kostnader">kostnadsveiledningen</a> og oppryddingen på hver workshopside. Analyseoppgaver gir bredde uten å kreve at alle dyre eller irreversible tjenestevalg prøves live. Slett bare dine egne nye labressurser etter å ha kontrollert gruppe og innhold.</p><p>Dette løpet er to omfattende workshops per domene, med flere naturlige pauser. «To workshops» er en organisering av innholdet, ikke et løfte om to korte møter.</p></section>'''
-    return page("Felles oppsett for de nye workshopene", "Gjør verktøyoppsettet én gang, og opprett bare ressursene oppgaven faktisk trenger.", body)
+    return page("Felles oppsett for workshopene", "Gjør verktøyoppsettet én gang, og opprett bare ressursene oppgaven faktisk trenger.", body)
 
 
 def outputs():

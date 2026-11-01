@@ -46,15 +46,15 @@
     <div class="wrap">
       <p class="eyebrow">Workshop / Før du møter opp</p>
       <h1>Kom i gang</h1>
-      <p class="lead">Hent prosjektet og klargjør verktøy og Azure-konto før workshopene. Velg 22 korte økter i eget tempo, eller samle oppgavene i én eller to samlinger per domene. <a href="./index.html#workshops">Velg workshopformat</a>.</p>
-      <div class="meta"><span class="tag">Felles klargjøring</span><span class="tag">2 kontovalg</span><span class="tag">22 korte workshops</span></div>
+      <p class="lead">Hent prosjektet og klargjør verktøy og Azure-konto før workshopene. De åtte workshopene er organisert som to workshops per domene, med kategorier som kapitler. <a href="./workshops/index.html">Velg workshop</a>.</p>
+      <div class="meta"><span class="tag">Felles klargjøring</span><span class="tag">2 kontovalg</span><span class="tag">8 workshops</span></div>
     </div>
   </div>
   <nav class="workshop-nav" aria-label="Workshopløp">
     <div class="wrap">
       <a href="./getting-started.html" aria-current="page">0. Kom i gang</a>
-      <a href="./index.html#workshops">Alle 22 workshops</a>
-      <a href="./workshop-containers.html">Start workshop 1 →</a>
+      <a href="./workshops/index.html">Alle workshops</a>
+      <a href="./workshops/d1a.html#category-acr">Start workshop D1A →</a>
     </div>
   </nav>
   <main id="innhold" class="wrap workshop-layout">
@@ -76,7 +76,7 @@
         <h2 id="for-du-starter">Dette må gjøres før første workshop</h2>
         <ol>
           <li><a href="#prosjekt">Hent labfilene og åpne mappen som prosjekt i IntelliJ.</a></li>
-          <li><a href="#arbeidsfiler">Bruk kildefilene i <code>labs/</code> og lagre resultater i <code>artifacts/</code>.</a></li>
+          <li><a href="#arbeidsfiler">Bruk kildefilene i <code>workshops/labs/</code> og lagre resultater i <code>artifacts/</code>.</a></li>
           <li><a href="#installer-verktoy">Installer verktøyene til domenet du skal arbeide med.</a> Python-øvelsene i domene 2–4 trenger også <a href="#intellij">prosjektets Python-miljø og SDK</a>.</li>
           <li>Før Azure-oppgavene: <a href="#azure">velg eller bruk en eksisterende Azure-konto</a>, <a href="#abonnement">kontroller abonnementet</a> og <a href="#azure-cli">logg inn med Azure CLI</a> når workshopen bruker <code>az</code>-kommandoer.</li>
         </ol>
@@ -158,11 +158,11 @@
         <p>Klon <a href="https://github.com/tuba-labs/ai200">labprosjektet fra GitHub</a> med <a href="https://git-scm.com/downloads">Git</a>, slik at du kan tilbakestille øvingsendringene med <code>git restore</code>. Åpne prosjektmappen i IntelliJ med <strong>File → Open</strong>.</p>
         <p>Åpne PowerShell i prosjektmappen, der <code>index.html</code> og <code>labs</code> ligger. Kommandoene tar utgangspunkt i denne mappen med mindre annet er angitt.</p>
         <h3 id="arbeidsfiler">Kildefiler og resultater</h3>
-        <p>Åpne og rediger kildefilene direkte i <code>labs/</code>. De er sporet av Git. Filpanelene på workshopsidene viser hele kildefilen med kommentarer og er lukket som standard.</p>
+        <p>Åpne og rediger kildefilene direkte i <code>workshops/labs/</code>. De er sporet av Git. Filpanelene på workshopsidene viser hele kildefilen med kommentarer og er lukket som standard.</p>
         <p>Lagre egne notater, spørringer, logger, sikkerhetskopier og eksporter under <code>artifacts/</code>, som er ignorert av Git. Opprett resultatmappen én gang fra prosjektmappen:</p>
         <pre data-language="PowerShell"><code># Opprett resultatmappen hvis den mangler, og skjul mappeobjektet i terminalen.
 New-Item -ItemType Directory -Path artifacts -Force | Out-Null</code></pre>
-        <p>Workshoppene oppgir <code>git restore --source=HEAD -- FIL</code> for å tilbakestille endrede kildefiler. Kommandoen forkaster lokale endringer i den angitte filen og henter siste committede versjon. Lokale <code>local.settings.json</code>-filer med labnøkler er også Git-ignorert.</p>
+        <p>Bruk <code>git restore --source=HEAD -- FIL</code> for å tilbakestille en endret kildefil. Kommandoen forkaster lokale endringer i den angitte filen og henter siste committede versjon. Lokale <code>local.settings.json</code>-filer med labnøkler er også Git-ignorert.</p>
         <h3 id="installer-verktoy">Installer verktøyene du trenger</h3>
         <p><strong>Til hele workshopløpet trenger du både Azure CLI (<code>az</code>) og Azure Functions Core Tools (<code>func</code>).</strong> Dette er to separate installasjoner. Tabellen viser riktig installasjonslenke og kontrollkommando for hvert verktøy.</p>
         <div class="table-wrap">
@@ -235,9 +235,9 @@ py -3.12 -m venv .venv</code></pre>
           <p>Oppsettet gjøres én gang før Python-øvelsene. SDK-valget gjelder IntelliJ; <a href="#terminal">terminaloppsettet</a> velger samme Python i PowerShell.</p>
         </details>
         <h3 id="python-pakker">Installer Python-pakkene én gang</h3>
-        <p>Fra prosjektroten installerer du pakkene for alle Python-øvelsene i det samme miljøet. <code>labs/requirements.txt</code> samler de enkelte labenes avhengigheter:</p>
+        <p>Fra prosjektroten installerer du pakkene for alle Python-øvelsene i det samme miljøet. <code>workshops/labs/requirements.txt</code> samler de enkelte labenes avhengigheter:</p>
         <pre data-language="PowerShell"><code># Installer alle labpakkene én gang i prosjektets Python-miljø.
-.\.venv\Scripts\python.exe -m pip install -r labs/requirements.txt</code></pre>
+.\.venv\Scripts\python.exe -m pip install -r workshops/labs/requirements.txt</code></pre>
         <h3 id="terminal">Når du åpner en ny terminal</h3>
         <p>Åpne PowerShell i prosjektroten. Før Python-kommandoer aktiverer du prosjektets eksisterende miljø i hver terminal som skal kjøre Python:</p>
         <pre data-language="PowerShell"><code># La denne terminalen bruke prosjektets eksisterende Python-miljø.
@@ -272,7 +272,7 @@ docker run --rm hello-world</code></pre>
           <li>Søk etter <strong>Subscriptions</strong>. Kontroller at tilbudet er kontotypen du valgte og at status er aktiv. Navnet alene er ikke nok hvis et abonnement er omdøpt.</li>
           <li><strong>Pay as you go:</strong> kontroller betalingsmåte, kostnader og budsjettvarsler. <strong>Free Trial:</strong> sjekk kreditt, utløpsdato og at utgiftsgrensen fortsatt er på.</li>
         </ol>
-        <p>Standardregionen i veiledningen er <strong>Norway East</strong> (<code>norwayeast</code>). Opprettelsen av ressursgruppene ligger i <a href="./workshop-acr.html#ressursgruppe">del 2</a>, <a href="./workshop-postgresql.html#ressursgruppe">del 8</a>, <a href="./workshop-integrations.html#ressursgruppe">del 14</a> og <a href="./workshop-security.html#ressursgruppe">del 19</a>. Har du allerede en labgruppe eller et labregistry, følger du gjenbrukssteget i den aktuelle delen.</p>
+        <p>Standardregionen i veiledningen er <strong>Norway East</strong> (<code>norwayeast</code>). Følg ressursplanen under «Ressurser og klargjøring» i hver workshop. Opprett bare ressursene oppgaven trenger, i din egen labgruppe.</p>
         <p>Bruk bare workshopressurser i gruppene. En ny ressursgruppe gir ikke ny prøvekreditt eller en ny gratiskvote. Hvis en tjeneste ikke er tilgjengelig, bruk en støttet konfigurasjon eller følg en pardemonstrasjon. En eventuell kontooppgradering er et eget valg, ikke et automatisk feilsøkingstrinn.</p>
         <h3 id="azure-cli">Installer Azure CLI og velg abonnement</h3>
         <p><strong>Azure CLI gir kommandoen <code>az</code>.</strong> Installer det med WinGet-kommandoen under, eller last ned <a href="https://aka.ms/installazurecliwindowsx64">Microsofts 64-biters MSI-installasjon for Azure CLI</a>. Se også <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows">installasjonsveiledningen</a>. Filen <code>func-cli-x64.msi</code> installerer det separate verktøyet Functions Core Tools og kommandoen <code>func</code>; du trenger begge verktøyene til workshopløpet. Etter installasjon: avslutt IntelliJ helt og åpne det og terminalen på nytt. Har du allerede Azure CLI, kontroller med <code>az version</code> før innlogging.</p>
@@ -325,8 +325,8 @@ kubectl version --client</code></pre>
               <tr><th scope="row">Event Grid</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/event-grid/">Basic</a> har en gratismengde operasjoner. Mottaker og Storage kan koste i tillegg.</td><td>Send noen få testhendelser til workshopens kø.</td></tr>
               <tr><th scope="row">Cosmos DB for NoSQL</th><td><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/free-tier">Free tier</a> kan dekke opptil 1 000 RU/s og 25 GB på én valgt konto per abonnement. Velges ved opprettelse; gjelder ikke serverless.</td><td>Én region og liten provisioned throughput. Velg free tier når tilgjengelig, og kontroller prisen før opprettelse.</td></tr>
               <tr><th scope="row">PostgreSQL</th><td><a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">Kontotilbudet</a> kan omfatte begrenset Flexible Server-bruk. Andre konfigurasjoner har ordinær pris.</td><td>Workshop 7 bruker Docker. Workshop 8 oppretter Azure PostgreSQL og sletter serveren etter bruk.</td></tr>
-              <tr><th scope="row">AKS</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/">Noder og tilknyttede ressurser</a> koster selv om cluster management er gratis.</td><td><a href="./workshop-aks.html#forberedelser">Workshop 6</a> viser egen labklynge eller tilgang til arrangørens delte klynge. Opprett den først når den trengs, og rydd etter bruk.</td></tr>
-              <tr><th scope="row">Container Registry (ACR)</th><td>Har ordinær pris, med eventuell <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">inkludert gratismengde</a> for riktig kontotilbud og nivå.</td><td><a href="./workshop-acr.html#forberedelser">Workshop 2</a> oppretter et Basic-registry. Behold det mens del 3–6 bruker imaget, og slett det etter siste bruk.</td></tr>
+              <tr><th scope="row">AKS</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/">Noder og tilknyttede ressurser</a> koster selv om cluster management er gratis.</td><td>Se <a href="./workshops/d1b.html#ressurser">ressursplanen for workshop D1B</a> for oppsett og opprydding.</td></tr>
+              <tr><th scope="row">Container Registry (ACR)</th><td>Har ordinær pris, med eventuell <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account">inkludert gratismengde</a> for riktig kontotilbud og nivå.</td><td>Se <a href="./workshops/d1a.html#ressurser">ressursplanen for workshop D1A</a> for oppsett og opprydding.</td></tr>
               <tr><th scope="row">Service Bus</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/service-bus/">Forbruk og nivåpris</a> faktureres på Pay as you go eller bruker tilgjengelig, gyldig prøvekreditt.</td><td>Ett Standard-namespace brukes gjennom workshop 15–17, slik at kø og topics bruker samme oppsett.</td></tr>
               <tr><th scope="row">Managed Redis</th><td><a href="https://azure.microsoft.com/en-us/pricing/details/managed-redis/">En administrert instans</a> har løpende pris.</td><td>Workshop 12–13 bruker samme Azure Managed Redis-instans. Velg RediSearch ved opprettelsen og slett instansen etter siste del.</td></tr>
               <tr><th scope="row">Key Vault, App Configuration og Monitor</th><td>Valgt plan og forbruk avgjør pris og eventuelle gratismengder. Sjekk <a href="https://azure.microsoft.com/en-us/pricing/calculator/">prisestimatet</a>.</td><td>Små testdata og bare ressursene øvelsen trenger. Slett dem etter økten.</td></tr>
@@ -364,7 +364,7 @@ kubectl version --client</code></pre>
       </section>
       <nav class="page-nav" aria-label="Forrige og neste side">
         <a href="./index.html">← Til studieoversikten</a>
-        <a href="./workshop-containers.html">Start workshop 1: Container-images →</a>
+        <a href="./workshops/d1a.html#category-acr">Start workshop D1A →</a>
       </nav>
     </article>
   </main>

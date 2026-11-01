@@ -8,7 +8,7 @@ const dictionary = site.translator(catalog);
 
 test('preferences accept supported values and recover from missing or invalid saved values', () => {
   for (const language of ['nb', 'en']) assert.equal(site.languageValue(language), language);
-  for (const value of [null, undefined, '', 'no', 'fr', '<script>']) assert.equal(site.languageValue(value), 'nb');
+  for (const value of [null, undefined, '', 'no', 'fr', '<script>']) assert.equal(site.languageValue(value), 'en');
   for (const theme of ['light', 'dark']) for (const systemDark of [false, true]) assert.equal(site.themeValue(theme, systemDark), theme);
   for (const value of [null, undefined, '', 'system', 'blue', '{}']) {
     assert.equal(site.themeValue(value, false), 'light');
@@ -16,16 +16,41 @@ test('preferences accept supported values and recover from missing or invalid sa
   }
 });
 
-function boot(values, systemDark, blocked = false) {
+function boot(values, systemDark, blocked = false, navigator = {language: 'nb-NO'}) {
   const html = {dataset: {}, style: {}};
   const media = new EventTarget();
   media.matches = systemDark;
   const win = {document: {documentElement: html, readyState: 'loading', addEventListener() {}},
     localStorage: {getItem(key) { if (blocked) throw new Error('blocked'); return values[key] ?? null; }},
-    matchMedia: () => media};
+    matchMedia: () => media, navigator};
   site.start(win);
   return {html, media};
 }
+
+test('use Norwegian for the preferred Norwegian browser locale and English for every other locale', () => {
+  for (const locale of ['nb', 'nb-NO', 'nn', 'nn-NO', 'no', 'no-NO', 'NB-no']) {
+    assert.equal(site.languageValue(null, locale), 'nb');
+    assert.equal(boot({}, false, false, {language: locale}).html.lang, 'nb');
+  }
+  for (const locale of ['en', 'en-GB', 'en-US', 'de-DE', 'sv-SE', 'fr-FR', 'not-a-language', '', undefined, null]) {
+    assert.equal(site.languageValue(null, locale), 'en');
+    assert.equal(boot({}, false, false, {language: locale}).html.lang, 'en');
+  }
+  assert.equal(boot({}, false, false, {languages: ['nb-NO', 'en-US'], language: 'en-US'}).html.lang, 'nb');
+  assert.equal(boot({}, false, false, {languages: ['en-US', 'nb-NO'], language: 'nb-NO'}).html.lang, 'en');
+  assert.equal(boot({}, false, false, {languages: [], language: 'nn-NO'}).html.lang, 'nb');
+});
+
+test('manual language choices override the browser, while invalid or unavailable preferences use the browser locale', () => {
+  assert.equal(boot({'ai200-site-language-v1': 'en'}, false, false, {language: 'nb-NO'}).html.lang, 'en');
+  assert.equal(boot({'ai200-site-language-v1': 'nb'}, false, false, {language: 'en-US'}).html.lang, 'nb');
+  for (const saved of [null, '', 'fr', 'invalid']) {
+    assert.equal(boot({'ai200-site-language-v1': saved}, false, false, {language: 'nn-NO'}).html.lang, 'nb');
+    assert.equal(boot({'ai200-site-language-v1': saved}, false, false, {language: 'de-DE'}).html.lang, 'en');
+  }
+  assert.equal(boot({}, false, true, {language: 'no-NO'}).html.lang, 'nb');
+  assert.equal(boot({}, false, true, {language: 'en-US'}).html.lang, 'en');
+});
 
 test('saved light/dark and language preferences apply before styles, overriding the system theme', () => {
   const saved = boot({'ai200-site-language-v1': 'en', 'ai200-site-theme-v1': 'dark'}, false);

@@ -8,7 +8,8 @@
   'use strict';
   const LANGUAGE_KEY = 'ai200-site-language-v1', THEME_KEY = 'ai200-site-theme-v1';
   const normalize = value => value.replace(/\s+/g, ' ').trim();
-  const languageValue = value => ['nb', 'en'].includes(value) ? value : 'nb';
+  const languageValue = (value, browserLanguage = '') => ['nb', 'en'].includes(value) ? value
+    : typeof browserLanguage === 'string' && /^(nb|nn|no)(?:-|$)/i.test(browserLanguage) ? 'nb' : 'en';
   const themeValue = (value, darkSystem = false) => ['light', 'dark'].includes(value) ? value : darkSystem ? 'dark' : 'light';
   const protectedSelector = 'script,style,pre,code,kbd,samp,textarea,.jargon-term,[contenteditable]:not([contenteditable="false"]),[translate="no"],[data-keep-english]';
 
@@ -57,7 +58,8 @@
     const read = key => { try { return win.localStorage.getItem(key); } catch { return null; } };
     const save = (key, value) => { try { win.localStorage.setItem(key, value); } catch { /* Preferences still work in this tab. */ } };
     const media = win.matchMedia?.('(prefers-color-scheme: dark)');
-    let language = languageValue(read(LANGUAGE_KEY)), theme = themeValue(read(THEME_KEY), media?.matches === true);
+    const browserLanguage = () => win.navigator?.languages?.[0] || win.navigator?.language || '';
+    let language = languageValue(read(LANGUAGE_KEY), browserLanguage()), theme = themeValue(read(THEME_KEY), media?.matches === true);
     let dictionary, languageButton, themeButton;
     const originals = new WeakMap(), attributeOriginals = new WeakMap();
     function updateControls() {
@@ -137,7 +139,7 @@
       observer.observe(doc.body, {subtree: true, childList: true, characterData: true, attributes: true,
         attributeFilter: ['aria-label', 'aria-valuetext', 'title', 'placeholder', 'alt']});
       win.addEventListener('storage', event => {
-        if (event.key === LANGUAGE_KEY) { language = languageValue(event.newValue); applyLanguage(); }
+        if (event.key === LANGUAGE_KEY) { language = languageValue(event.newValue, browserLanguage()); applyLanguage(); }
         if (event.key === THEME_KEY) { theme = themeValue(event.newValue, media?.matches === true); applyTheme(); }
       });
     }

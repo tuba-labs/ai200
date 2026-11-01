@@ -1,4 +1,4 @@
-"""Validate the new course, archived sources and exact card-to-task links offline."""
+"""Validate the course and exact card-to-task links offline."""
 from collections import Counter
 from hashlib import sha256
 import ast
@@ -91,15 +91,6 @@ class NewWorkshopTests(unittest.TestCase):
                         if target not in parsed:
                             parsed[target] = Page(target.read_text(encoding="utf-8"))
                         self.assertIn(unquote(url.fragment), parsed[target].ids)
-
-    def test_preserved_archive_matches_its_original_checksums(self):
-        manifest = json.loads((ROOT / "old/manifest.json").read_text(encoding="utf-8"))
-        self.assertTrue(manifest["files"])
-        for relative, expected in manifest["files"].items():
-            with self.subTest(file=relative):
-                path = (ROOT / "old" / relative).resolve()
-                self.assertTrue(path.is_relative_to(ROOT / "old"))
-                self.assertEqual(sha256(path.read_bytes()).hexdigest(), expected)
 
     def test_new_lab_sources_are_valid_python_and_json(self):
         for path in (ROOT / "workshops/labs").rglob("*"):

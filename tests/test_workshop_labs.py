@@ -39,9 +39,9 @@ def request(body):
 class FunctionBehaviorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.api_module = load_module("workshop_api", "labs/integrations/function_app.py")
+        cls.api_module = load_module("workshop_api", "workshops/labs/integrations/function_app.py")
         cls.api = functions(cls.api_module)
-        cls.binding_module = load_module("workshop_binding", "labs/bindings/function_app.py")
+        cls.binding_module = load_module("workshop_binding", "workshops/labs/bindings/function_app.py")
         cls.bindings = functions(cls.binding_module)
 
     def test_duplicate_and_invalid_document(self):
@@ -77,15 +77,15 @@ class FunctionBehaviorTests(unittest.TestCase):
             self.bindings["consume"](func.ServiceBusMessage(body=b'{"id":"fail"}'))
 
     def test_sdk_examples_import_without_cloud_access(self):
-        for name, path in [("pg_demo", "labs/data/postgres_client.py"),
-                           ("cosmos_demo", "labs/cosmos/demo.py"),
-                           ("redis_demo", "labs/redis/demo.py"),
-                           ("bus_demo", "labs/integrations/message_bus.py"),
-                           ("event_demo", "labs/integrations/publish_event.py"),
-                           ("settings_demo", "labs/security/read_settings.py")]:
+        for name, path in [("pg_demo", "workshops/labs/data/postgres_client.py"),
+                           ("cosmos_demo", "workshops/labs/cosmos/demo.py"),
+                           ("redis_demo", "workshops/labs/redis/demo.py"),
+                           ("bus_demo", "workshops/labs/integrations/message_bus.py"),
+                           ("event_demo", "workshops/labs/integrations/publish_event.py"),
+                           ("settings_demo", "workshops/labs/security/read_settings.py")]:
             with self.subTest(path=path):
                 load_module(name, path)
-        cosmos = load_module("change_feed_demo", "labs/cosmos/function_app.py")
+        cosmos = load_module("change_feed_demo", "workshops/labs/cosmos/function_app.py")
         self.assertIn("changed", functions(cosmos))
 
 
@@ -112,7 +112,7 @@ class DistributedTracingTests(unittest.TestCase):
                     log = open(Path(temporary) / f"{role}.log", "w+b")
                     logs.append(log)
                     # Bypass Windows' virtualenv launcher so terminate/wait owns the server process itself.
-                    command = [getattr(sys, "_base_executable", sys.executable), "-u", str(ROOT / "labs/observability/services.py"), role,
+                    command = [getattr(sys, "_base_executable", sys.executable), "-u", str(ROOT / "workshops/labs/observability/services.py"), role,
                                "--port", str(port), "--backend-url", f"http://127.0.0.1:{backend_port}/lookup"]
                     processes.append(subprocess.Popen(command, env=env, stdout=log, stderr=log,
                         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)))
