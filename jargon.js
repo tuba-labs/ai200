@@ -338,9 +338,15 @@
   controls.dataset.noJargon = '';
   const toggle = make('button', 'jargon-toggle');
   toggle.type = 'button';
-  function toggleLabel() {
-    toggle.textContent = enabled ? 'Begrepshjelp på' : 'Begrepshjelp av';
-    toggle.setAttribute('aria-pressed', String(enabled));
+  toggle.setAttribute('role', 'switch');
+  const toggleName = make('span', 'jargon-toggle-label', 'Begrepshjelp');
+  const toggleTrack = make('span', 'jargon-toggle-track');
+  toggleTrack.setAttribute('aria-hidden', 'true');
+  const toggleThumb = make('span', 'jargon-toggle-thumb');
+  toggleThumb.append(make('span', 'jargon-toggle-check', '✓'));
+  toggleTrack.append(toggleThumb); toggle.append(toggleName, toggleTrack);
+  function updateToggle() {
+    toggle.setAttribute('aria-checked', String(enabled));
     if (flashcardToggle) flashcardToggle.checked = !enabled;
   }
   function setEnabled(value) {
@@ -350,11 +356,11 @@
     else {
       for (const trigger of document.querySelectorAll('.jargon-term:not([data-jargon-explicit])')) trigger.replaceWith(document.createTextNode(trigger.textContent));
     }
-    toggleLabel();
+    updateToggle();
   }
   toggle.addEventListener('click', () => setEnabled(!enabled));
   flashcardToggle?.addEventListener('change', () => setEnabled(!flashcardToggle.checked));
-  toggleLabel(); controls.append(toggle);
+  updateToggle(); controls.append(toggle);
   const preferences = document.querySelector('.site-preferences');
   if (preferences) preferences.prepend(controls);
   else (document.querySelector('header nav') || document.body).append(controls);

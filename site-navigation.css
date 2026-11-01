@@ -12,7 +12,16 @@
 .site-header .site-preferences button:hover{background:#edf3fa;border-color:#7698bb}
 .site-header .site-preferences button:focus-visible{outline:3px solid #4599ef;outline-offset:3px}
 .site-header .site-preferences button:disabled{opacity:.55;cursor:default}
-.site-header .site-preferences .jargon-toggle{width:auto;padding:0 9px;font:600 12px/1.3 system-ui,sans-serif;white-space:nowrap}
+.site-header .site-preferences .jargon-toggle{width:auto;gap:8px;padding:0 9px;font:600 12px/1.3 system-ui,sans-serif;white-space:nowrap}
+.site-header .jargon-toggle-track{position:relative;box-sizing:border-box;display:block;flex:none;width:36px;height:20px;border:1px solid #718197;border-radius:999px;background:#718197}
+.site-header .jargon-toggle-thumb{position:absolute;display:grid;place-items:center;left:1px;top:1px;width:16px;height:16px;border-radius:50%;background:#fff;color:#1265bd;box-shadow:0 1px 3px #0003;transform:translateX(0);transition:transform 120ms ease}
+.site-header .jargon-toggle-check{font-size:12px;font-weight:900;line-height:1;opacity:0}
+.site-header .jargon-toggle[aria-checked=true] .jargon-toggle-track{border-color:#1265bd;background:#1265bd}
+.site-header .jargon-toggle[aria-checked=true] .jargon-toggle-thumb{transform:translateX(16px)}
+.site-header .jargon-toggle[aria-checked=true] .jargon-toggle-check{opacity:1}
+:root[data-theme=dark] .site-header .jargon-toggle-track{border-color:#9bb2cc;background:#506882}
+:root[data-theme=dark] .site-header .jargon-toggle[aria-checked=true] .jargon-toggle-track{border-color:#8fc6ff;background:#1c65ad}
+@media(prefers-reduced-motion:reduce){.site-header .jargon-toggle-thumb{transition:none}}
 .site-header .preference-icon{display:block;flex:none;width:22px;height:16px;margin:0;overflow:hidden;pointer-events:none}
 .site-header .theme-icon{width:18px;height:18px}
 .site-header .language-flag-en,.site-header .theme-icon-dark{display:none}
