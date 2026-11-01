@@ -32,7 +32,7 @@ Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `p
 
 Start med [Kom i gang](getting-started.html#for-du-starter) og [felles workshopoppsett](workshops/setup.html). Bruk én `.venv` i prosjektroten. Opprett ressursene fra ressursplanen i hver workshop og følg oppryddingen etterpå. Standardregionen er Norway East (`norwayeast`) der tjeneste og SKU støttes.
 
-Forsiden viser alle 27 delmål, gruppert etter fire domener. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen. Eldre domenelenker på forsiden peker til delmålsoversikten.
+Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen. Eldre domenelenker på forsiden peker til delmålsoversikten.
 
 Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build_navigation.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
 

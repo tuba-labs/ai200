@@ -25,6 +25,8 @@
     ["Pensum kontrollert 31. oktober 2026", "Syllabus checked on 31 October 2026"],
     ["Start med pensum", "Start with the syllabus"],
     ["Alle 27 delmål", "All 27 learning objectives"],
+    ["Fremdriften lagres i denne nettleseren.", "Progress is saved in this browser."],
+    ["Nettleseren kan ikke lagre fremdriften. Avkryssingene gjelder bare til siden lukkes.", "Browser storage is unavailable. Checkmarks will only last until this tab is closed."],
     ["Korte norske oppsummeringer av", "Short summaries of"],
     ["Microsofts studieveiledning", "Microsoft’s study guide"],
     [", gruppert etter domene og emne.", ", grouped by domain and topic."],
@@ -500,6 +502,7 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["{completed} av {total} delmål fullført.", "{completed} of {total} learning objectives completed."],
     ["Besvarte spørsmål: {answered}. Ubesvarte spørsmål som ikke telles: {unanswered}.", "Answered questions: {answered}. Unanswered questions excluded: {unanswered}."],
     ["{count} delmål", "{count} learning objectives"],
     ["{count} domener", "{count} domains"],

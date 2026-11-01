@@ -44,7 +44,7 @@ jobs:
       - name: Kontroller felles meny og egne innholdssider
         run: |
           python -m unittest discover -s tests -p test_navigation.py -v
-          node --test tests/site.test.cjs
+          node --test tests/site.test.cjs tests/learning-objectives.test.cjs
 
       - name: Kontroller workshopfiler og tilbakestilling
         run: python -m unittest discover -s tests -p test_workshop_docs.py -v
