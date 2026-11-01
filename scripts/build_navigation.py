@@ -12,6 +12,8 @@ HEADER = re.compile(r"<header\b[^>]*>.*?</header>|<!-- site-header -->", re.S)
 
 def current_section(relative):
     name = Path(relative).as_posix()
+    if name == 'practice-exam-results.html':
+        return 'practice-exam.html'
     if name in {"index.html", "laerestoff.html", "flashcards.html", "practice-exam.html", "jargon.html", "eksamen.html"}:
         return name
     if name.startswith("jargon-examples/") or name == "workshops/glossary.html":

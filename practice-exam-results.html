@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./site.js" data-site-preferences></script>
+  <script src="./site-translations.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="View and share AI-200 practice exam scores, learning objective results and selected answers.">
+  <title>AI-200 | Exam results</title>
+  <link rel="stylesheet" href="practice-exam.css">
+  <script src="practice-exam-data.js" defer></script>
+  <script src="practice-exam-interactive-data.js" defer></script>
+  <script src="practice-exam-objectives.js" defer></script>
+  <script src="objective-help.js" defer></script>
+  <link rel="stylesheet" href="objective-help.css">
+  <script src="practice-exam-core.js" defer></script>
+  <script src="practice-exam-share.js" defer></script>
+  <script src="practice-exam-interactions.js" defer></script>
+  <script src="practice-exam-results.js" defer></script>
+  <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
+  <script src="./jargon-data.js" defer></script>
+  <script src="./jargon-core.js" defer></script>
+  <script src="./jargon.js" defer></script>
+  <link rel="stylesheet" href="./site-navigation.css" data-site-navigation>
+  <link rel="stylesheet" href="./site-theme.css" data-site-theme>
+  <meta name="ai200-share-base" content="https://tuba-labs.github.io/ai200/">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header" data-site-header data-site-current="practice-exam.html" data-no-jargon>
+  <div class="site-header-inner">
+    <a class="site-brand" href="./index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
+    <nav class="site-nav" aria-label="Hovednavigasjon">
+      <a href="./index.html">Oversikt</a>
+      <a href="./laerestoff.html">Lærestoff</a>
+      <a href="./flashcards.html">Flashcards</a>
+      <a href="./practice-exam.html" aria-current="page">Prøveeksamen</a>
+      <a class="jargon-nav-link" href="./jargon.html">Begreper</a>
+      <a href="./eksamen.html">Eksamen</a>
+    </nav>
+    <div class="site-preferences" aria-label="Visningsvalg">
+      <button id="site-language" type="button" aria-label="Språk: Norsk. Bytt til engelsk." title="Språk: Norsk. Bytt til engelsk." disabled>
+        <svg class="preference-icon language-flag-nb" viewBox="0 0 22 16" aria-hidden="true" focusable="false"><path fill="#ba0c2f" d="M0 0h22v16H0z"/><path fill="#fff" d="M6 0h4v16H6zM0 6h22v4H0z"/><path fill="#00205b" d="M7 0h2v16H7zM0 7h22v2H0z"/></svg>
+        <svg class="preference-icon language-flag-en" viewBox="0 0 60 30" aria-hidden="true" focusable="false"><path fill="#012169" d="M0 0h60v30H0z"/><path stroke="#fff" stroke-width="6" d="m0 0 60 30M60 0 0 30"/><path stroke="#c8102e" stroke-width="2" d="m0 0 60 30M60 0 0 30"/><path stroke="#fff" stroke-width="10" d="M30 0v30M0 15h60"/><path stroke="#c8102e" stroke-width="6" d="M30 0v30M0 15h60"/></svg>
+      </button>
+      <button id="site-theme" type="button" aria-label="Lyst tema. Bytt til mørkt tema." title="Lyst tema. Bytt til mørkt tema." disabled>
+        <svg class="preference-icon theme-icon theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42m-11.3 11.3-1.42 1.42"/></svg>
+        <svg class="preference-icon theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+  <main class="wrap" id="main" tabindex="-1">
+    <section id="results-unavailable" class="panel" data-no-jargon hidden><h1>Exam results</h1><p id="results-message" role="status"></p><a id="practice-link" href="practice-exam.html?new=1">Take a practice exam →</a></section>
+    <section id="results-panel" class="panel" aria-labelledby="results-heading" data-no-jargon hidden>
+      <div class="section-top"><div><span class="eyebrow">Session complete</span><h1 id="results-heading" tabindex="-1">Your results</h1><p id="result-date" class="small"></p><p id="result-reason" class="small"></p></div><div class="result-actions"><button id="share-results" type="button" aria-haspopup="dialog" aria-controls="share-dialog">Share results</button><a id="new-exam" class="button primary" href="practice-exam.html?new=1">Set up another exam</a></div></div>
+      <p class="small">Results are self-reported.</p>
+      <p id="share-error" class="error" role="status" hidden></p>
+      <div class="score-grid"><div class="score"><strong id="result-percent"></strong><span>correct</span></div><div><strong id="result-correct"></strong><span>correct answers</span></div><div><strong id="result-incorrect"></strong><span>incorrect answers</span></div><div><strong id="result-unanswered"></strong><span>unanswered</span></div></div>
+      <p class="small">One point per question. Every selected option, ordered step and completed blank must be correct. There is no partial credit. This percentage does not convert to Microsoft’s scaled exam score.</p>
+      <div id="domain-results" class="domain-results"></div>
+      <section class="objective-results" aria-labelledby="objective-results-heading">
+        <h3 id="objective-results-heading">Learning objective results</h3>
+        <p class="small">Results for this attempt. Unanswered questions count as incorrect. A question covering several objectives counts once for each.</p>
+        <p class="small" id="objective-supporting-note" hidden>Supporting knowledge questions count towards the overall score only.</p>
+        <table class="objective-score-table"><caption class="small">All 27 learning objectives</caption><thead><tr><th scope="col">Learning objective</th><th scope="col">Result</th></tr></thead><tbody id="objective-results"></tbody></table>
+      </section>
+      <div class="review-heading"><h3>Review your answers</h3><label>Show<select id="review-filter"><option value="all">All questions</option><option value="incorrect">Incorrect or unanswered</option><option value="unanswered">Unanswered</option><option value="flagged">Marked for review</option></select></label></div>
+      <div id="answer-review"></div>
+      <p class="small source-credit">Question wording, answer choices and explanations © AI-200 Prep. <a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Read the original sets ↗</a></p>
+    </section>
+    <noscript><p class="panel">Enable JavaScript to view exam results.</p></noscript>
+  </main>
+  <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-heading" data-no-jargon>
+    <h2 id="share-heading">Share results</h2>
+    <p class="small">Anyone with this link can view your scores, selected answers and review marks.</p>
+    <label id="share-site-label" class="share-field" hidden>Published site address<input id="share-site" type="url" spellcheck="false" data-keep-english></label>
+    <label class="share-field">Result link<textarea id="share-link" rows="3" readonly spellcheck="false" data-keep-english lang="en" translate="no"></textarea></label>
+    <p id="share-status" class="small" role="status"></p>
+    <div class="dialog-actions"><button id="close-share" type="button">Close</button><button id="native-share" type="button" hidden>Share…</button><button id="copy-result-link" class="primary" type="button">Copy link</button></div>
+  </dialog>
+  <footer><div class="wrap">AI-200 Study group · Personal practice · <a href="index.html">Back to overview</a></div></footer>
+</body>
+</html>

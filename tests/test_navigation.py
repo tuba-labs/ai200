@@ -117,7 +117,7 @@ class NavigationTests(unittest.TestCase):
 
     def test_main_page_text_and_accessibility_labels_have_both_languages(self):
         pages = {name: sorted(InterfaceText((ROOT / name).read_text(encoding="utf-8")).text)
-                 for name in ("index.html", "laerestoff.html", "eksamen.html", "flashcards.html", "practice-exam.html")}
+                 for name in ("index.html", "laerestoff.html", "eksamen.html", "flashcards.html", "practice-exam.html", "practice-exam-results.html")}
         script = """const dictionary = require('./site.js').translator(require('./data/site-translations.json'));
 let input = ''; process.stdin.setEncoding('utf8'); process.stdin.on('data', chunk => input += chunk);
 process.stdin.on('end', () => { const missing = Object.fromEntries(Object.entries(JSON.parse(input))

@@ -60,7 +60,7 @@
       attempt = cleaned.attempt;
       if (cleaned.removed) saveAttempt();
     }
-    if (attempt && attempt.submittedAt !== null) renderResults();
+    if (attempt && attempt.submittedAt !== null) openResults(true);
     else if (attempt) { showExam(); tick(); focusQuestion(); }
     else showSetup();
   }
@@ -79,11 +79,11 @@
   function showSetup() {
     clearInterval(clock);
     $('setup-panel').hidden = false;
-    $('exam-panel').hidden = true; $('results-panel').hidden = true;
+    $('exam-panel').hidden = true;
   }
   function showExam() {
     $('setup-panel').hidden = true;
-    $('exam-panel').hidden = false; $('results-panel').hidden = true;
+    $('exam-panel').hidden = false;
     const skipped = attempt.duplicateArchive?.length || 0;
     $('duplicate-notice').hidden = skipped === 0;
     $('duplicate-notice').textContent = skipped ? `Skipped ${skipped} repeated question${skipped === 1 ? '' : 's'} in this saved exam.` : '';
@@ -219,28 +219,18 @@
     $('time-remaining').textContent = seconds === null ? 'No timer' : `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
     $('time-remaining').parentElement.classList.toggle('urgent', seconds !== null && seconds <= 300);
   }
+  function openResults(replace = false) {
+    const target = new URL('practice-exam-results.html', location.href);
+    target.hash = 'r=' + window.AI200ExamShare.encode(bank, attempt);
+    if (replace) location.replace(target.href); else location.assign(target.href);
+  }
   function submit(timedOut = false) {
     if (!attempt || attempt.submittedAt !== null) return;
     attempt.submittedAt = Date.now(); attempt.timedOut = timedOut;
     clearInterval(clock); saveAttempt();
     if ($('finish-dialog').open) $('finish-dialog').close();
     if ($('score-preview-dialog').open) $('score-preview-dialog').close();
-    renderResults(); focus($('results-heading'));
-  }
-  function renderResults() {
-    clearInterval(clock);
-    $('setup-panel').hidden = true;
-    $('exam-panel').hidden = true; $('results-panel').hidden = false;
-    const result = rules.grade(bank, attempt);
-    $('result-percent').textContent = result.percent + '%';
-    $('result-correct').textContent = result.correct;
-    $('result-incorrect').textContent = result.total - result.correct - result.unanswered;
-    $('result-unanswered').textContent = result.unanswered;
-    const elapsed = Math.max(0, Math.round(((attempt.timedOut ? attempt.deadline : attempt.submittedAt) - attempt.startedAt) / 60000));
-    $('result-reason').textContent = `${attempt.timedOut ? 'Time expired. Your saved answers were submitted automatically.' : 'Exam submitted.'} ${result.total} questions · ${elapsed} min.`;
-    renderDomainResults(result, $('domain-results'));
-    renderObjectiveResults();
-    renderReview();
+    openResults();
   }
   function renderQuestionObjectives(question, container) {
     container.replaceChildren();
@@ -248,25 +238,6 @@
       const item = node('li'); item.append(window.AI200ObjectiveHelp.tag(objectiveById.get(id))); container.append(item);
     }
     container.hidden = !container.children.length;
-  }
-  function renderObjectiveResults() {
-    const result = rules.gradeObjectives(bank, attempt, objectiveData);
-    $('objective-results').replaceChildren();
-    $('objective-supporting-note').hidden = result.supporting === 0;
-    let domain = null;
-    for (const score of result.objectives) {
-      if (score.domain !== domain) {
-        domain = score.domain;
-        const row = node('tr', 'objective-domain'), heading = node('th', '', `Domain ${domain} · ${domainNames[domain]}`);
-        heading.colSpan = 2; heading.scope = 'row'; row.append(heading); $('objective-results').append(row);
-      }
-      const row = node('tr'), title = node('th'), cell = node('td');
-      title.append(window.AI200ObjectiveHelp.tag(objectiveById.get(score.id)));
-      row.dataset.objectiveId = score.id; title.scope = 'row';
-      cell.append(node('span', score.total ? 'objective-score' : 'small', score.total ? `${score.percent}% · ${score.correct}/${score.total} questions correct` : 'Not assessed'));
-      if (score.unanswered) cell.append(node('span', 'small objective-unanswered', `${score.unanswered} unanswered`));
-      row.append(title, cell); $('objective-results').append(row);
-    }
   }
   function renderDomainResults(result, container) {
     container.replaceChildren();
@@ -278,56 +249,14 @@
       container.append(panel);
     }
   }
-  function renderReview() {
-    const filter = $('review-filter').value;
-    $('answer-review').replaceChildren();
-    const graded = rules.grade(bank, attempt).questions;
-    for (const [index, item] of graded.entries()) {
-      if (filter === 'incorrect' && item.correct || filter === 'unanswered' && !item.unanswered || filter === 'flagged' && !attempt.flagged.includes(item.id)) continue;
-      const q = questions.get(item.id), details = node('details', 'review-card ' + (item.correct ? 'correct' : item.unanswered ? 'unanswered' : 'incorrect'));
-      details.dataset.questionId = q.id;
-      const summary = node('summary'), body = node('div', 'review-body');
-      summary.append(node('span', 'review-status', item.correct ? 'Correct' : item.unanswered ? 'Unanswered' : 'Incorrect'), node('span', 'review-title', `${index + 1}. ${q.prompt}`));
-      const caseDetails = caseBlock(q.contextId, false);
-      if (caseDetails) body.append(caseDetails);
-      body.append(node('p', 'small', `Domain ${q.domain} · ${q.service} · Source ID: ${q.id}`));
-      const objectives = node('ul', 'review-objectives');
-      renderQuestionObjectives(q, objectives);
-      body.append(node('p', 'objective-review-heading', 'Learning objectives'), objectives);
-      if (!objectives.children.length) body.append(node('p', 'small', 'Supporting knowledge outside these 27 learning objectives.'));
-      if (isChoice(q)) for (const option of q.options) {
-        const chosen = selected(q.id).includes(option.id), correct = q.correctAnswers.includes(option.id);
-        const row = node('p', 'review-option' + (correct ? ' correct-option' : chosen ? ' wrong-option' : ''), `${option.id}. ${option.text}`);
-        if (correct || chosen) row.append(node('span', 'option-note', [correct ? 'Correct answer' : '', chosen ? 'Your selection' : ''].filter(Boolean).join(' · ')));
-        body.append(row);
-      }
-      else {
-        for (const part of window.AI200ExamInteractions.describe(q, selected(q.id))) {
-          const row = node('div', 'review-option ' + (part.correct ? 'correct-option' : 'wrong-option'));
-          row.append(node('strong', '', part.label), node('p', '', part.selected || '—'), node('p', 'option-note', 'Correct answer: ' + part.expected));
-          body.append(row);
-        }
-        if (q.code) {
-          const pre = node('pre', 'code-completion');
-          pre.textContent = q.code.join('\n').replace(/\{\{([a-zA-Z0-9-]+)\}\}/g, (_, id) => {
-            const index = q.slots.findIndex(slot => slot.id === id);
-            return q.slots[index].options.find(option => option.id === selected(q.id)[index])?.text || '[unanswered]';
-          }); body.append(pre);
-        }
-      }
-      if (item.unanswered) body.append(node('p', 'small', 'You did not answer this question.'));
-      body.append(node('p', 'source-explanation', q.explanation), externalLink(referenceLabel(), q.setUrl));
-      details.append(summary, body); $('answer-review').append(details);
-    }
-    if (!$('answer-review').children.length) $('answer-review').append(node('p', 'small', 'No questions match this filter.'));
-  }
-
   $('setup-form').addEventListener('submit', event => {
     event.preventDefault(); $('setup-error').hidden = true;
     try {
       attempt = rules.createAttempt(bank, {count: Number($('question-count').value), minutes: Number($('time-limit').value), domains: includedPool().domains, randomOrder: $('random-order').checked});
       seenContexts.clear();
-      saveAttempt(); $('review-filter').value = 'all'; showExam(); tick(); focusQuestion();
+      const address=new URL(location.href);
+      if(address.searchParams.has('new')){address.searchParams.delete('new');history.replaceState(null,'',address.href);}
+      saveAttempt(); showExam(); tick(); focusQuestion();
     } catch (error) { showError('setup-error', error); }
   });
   document.querySelectorAll('input[name=domain]').forEach(el => el.addEventListener('change', updatePool));
@@ -394,8 +323,6 @@
   });
   $('continue-exam').addEventListener('click', () => $('finish-dialog').close());
   $('submit-exam').addEventListener('click', () => { if (!expired()) submit(); });
-  $('new-exam').addEventListener('click', () => { showSetup(); focus($('setup-heading')); });
-  $('review-filter').addEventListener('change', renderReview);
   document.addEventListener('visibilitychange', tick);
   window.addEventListener('pageshow', tick);
   window.addEventListener('jargon:ready', () => { if (attempt && attempt.submittedAt === null) renderGlossary(questions.get(attempt.ids[attempt.index])); });
@@ -406,7 +333,7 @@
     rules.validateObjectives(objectiveData, banks);
     banks.forEach(value => { const option = node('option', '', value.source.kind === 'original' ? 'Interactive practice' : 'AI-200 Prep'); option.value = value.bankId; $('bank-select').append(option); });
     const saved = read(ATTEMPT_KEY);
-    setBank(banks.find(value => rules.validAttempt(saved, value)) || banks[0], true);
+    setBank(banks.find(value => rules.validAttempt(saved, value)) || banks[0], !new URLSearchParams(location.search).has('new'));
   }
   catch (error) { showError('bank-error', error); }
 })();

@@ -15,6 +15,7 @@
   <script src="objective-help.js" defer></script>
   <link rel="stylesheet" href="objective-help.css">
   <script src="practice-exam-core.js" defer></script>
+  <script src="practice-exam-share.js" defer></script>
   <script src="practice-exam-interactions.js" defer></script>
   <script src="practice-exam.js" defer></script>
   <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
@@ -100,21 +101,6 @@
         </article>
         <aside class="panel navigator" aria-labelledby="navigator-heading"><h3 id="navigator-heading">Questions</h3><p class="small">Filled = answered · dot = marked for review</p><div id="question-navigation" class="question-grid"></div><p class="small">Your answers save automatically on this device. The timer continues when you leave this tab.</p></aside>
       </div>
-    </section>
-    <section id="results-panel" class="panel" aria-labelledby="results-heading" data-no-jargon hidden>
-      <div class="section-top"><div><span class="eyebrow">Session complete</span><h2 id="results-heading" tabindex="-1">Your results</h2><p id="result-reason" class="small"></p></div><button id="new-exam" class="primary" type="button">Set up another exam</button></div>
-      <div class="score-grid"><div class="score"><strong id="result-percent"></strong><span>correct</span></div><div><strong id="result-correct"></strong><span>correct answers</span></div><div><strong id="result-incorrect"></strong><span>incorrect answers</span></div><div><strong id="result-unanswered"></strong><span>unanswered</span></div></div>
-      <p class="small">One point per question. Every selected option, ordered step and completed blank must be correct. There is no partial credit. This percentage does not convert to Microsoft’s scaled exam score.</p>
-      <div id="domain-results" class="domain-results"></div>
-      <section class="objective-results" aria-labelledby="objective-results-heading">
-        <h3 id="objective-results-heading">Learning objective results</h3>
-        <p class="small">Results for this attempt. Unanswered questions count as incorrect. A question covering several objectives counts once for each.</p>
-        <p class="small" id="objective-supporting-note" hidden>Supporting knowledge questions count towards the overall score only.</p>
-        <table class="objective-score-table"><caption class="small">All 27 learning objectives</caption><thead><tr><th scope="col">Learning objective</th><th scope="col">Result</th></tr></thead><tbody id="objective-results"></tbody></table>
-      </section>
-      <div class="review-heading"><h3>Review your answers</h3><label>Show<select id="review-filter"><option value="all">All questions</option><option value="incorrect">Incorrect or unanswered</option><option value="unanswered">Unanswered</option><option value="flagged">Marked for review</option></select></label></div>
-      <div id="answer-review"></div>
-      <p class="small source-credit">Question wording, answer choices and explanations © AI-200 Prep. <a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Read the original sets ↗</a></p>
     </section>
     <noscript><p class="panel">Enable JavaScript to load the questions and take an exam.</p></noscript>
   </main>
