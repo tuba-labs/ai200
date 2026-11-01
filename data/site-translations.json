@@ -1,5 +1,9 @@
 {
   "messages": [
+    ["Spørsmålsbanker", "Question banks"],
+    ["Velg minst én spørsmålsbank.", "Select at least one question bank."],
+    ["Spørsmål, svaralternativer og forklaringer fra AI-200 Prep © AI-200 Prep.", "AI-200 Prep questions, choices and explanations © AI-200 Prep."],
+    ["De interaktive øvingsspørsmålene er skrevet for dette nettstedet.", "Interactive practice questions were independently written for this site."],
     ["AI-200 | Prøveresultat", "AI-200 | Exam results"],
     ["Prøveresultat", "Exam results"],
     ["Del resultat", "Share results"],

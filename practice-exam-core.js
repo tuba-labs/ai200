@@ -18,6 +18,14 @@
     const fail = message => { throw new Error(message); };
     if (!isObject(bank) || bank.schemaVersion !== 1 || !safeId(bank.bankId)) fail('The practice exam questions could not be loaded. Reload this page to try again.');
     if (!isObject(bank.source)) fail('The question source is missing.');
+    if (bank.source.kind === 'combined') {
+      if (!Array.isArray(bank.members) || bank.members.length < 2 || bank.members.some(member => member?.source?.kind === 'combined')) fail('The combined question banks are invalid.');
+      const expected = combineBanks(bank.members);
+      for (const key of ['bankId', 'source', 'questions', 'contexts', 'duplicateOf']) {
+        if (JSON.stringify(bank[key]) !== JSON.stringify(expected[key])) fail('The combined question banks are inconsistent.');
+      }
+      return bank;
+    }
     const sourceKind = bank.source.kind || 'ai200prep';
     const sources = {ai200prep: {host: 'ai200prep.com', label: 'Real Exam'},
       original: {host: 'learn.microsoft.com', label: 'Original practice'}};
@@ -66,6 +74,27 @@
   }
   function questionPool(bank) {
     return bank.questions.filter(q => !Object.hasOwn(bank.duplicateOf || {}, q.id));
+  }
+  function combineBanks(values) {
+    if (!Array.isArray(values)) throw new Error('The question bank selection is invalid.');
+    if (!values.length) return null;
+    if (values.some(bank => bank?.source?.kind === 'combined')) throw new Error('Select individual question banks to combine.');
+    values.forEach(validateBank);
+    if (!unique(values.map(bank => bank.bankId))) throw new Error('A question bank was selected more than once.');
+    if (values.length === 1) return values[0];
+    const key = bank => (bank.source.kind || 'ai200prep') + ':' + bank.bankId;
+    const members = values.slice().sort((a,b) => key(a)<key(b)?-1:1);
+    const questions = members.flatMap(bank => bank.questions), contexts = members.flatMap(bank => bank.contexts);
+    if (questions.length > 10000 || !unique(questions.map(q => q.id)) || !unique(contexts.map(c => c.id))) throw new Error('The selected banks contain conflicting question or case IDs.');
+    return {schemaVersion:1, bankId:'combined-' + members.map(bank => bank.bankId.length + '-' + bank.bankId).join('-'),
+      source:{kind:'combined', name:'Selected question banks', filterLabel:'Combined'}, members, questions, contexts,
+      duplicateOf:Object.assign({},...members.map(bank => bank.duplicateOf || {}))};
+  }
+  function questionSource(bank, id) {
+    if (bank.source.kind !== 'combined') return bank.source;
+    const member = bank.members.find(value => value.questions.some(question => question.id === id));
+    if (!member) throw new Error('The question source is missing.');
+    return member.source;
   }
   function shuffle(values, random = Math.random) {
     const result = values.slice();
@@ -210,5 +239,5 @@
     for (const score of scores.values()) if (score.total) score.percent = Math.round(score.correct / score.total * 100);
     return {objectives: [...scores.values()], supporting};
   }
-  return {validateBank, questionPool, createAttempt, validAttempt, questionType, removeAttemptDuplicates, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
+  return {validateBank, questionPool, combineBanks, questionSource, createAttempt, validAttempt, questionType, removeAttemptDuplicates, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
 });

@@ -1,7 +1,8 @@
 (function () {
   'use strict';
   const rules=window.AI200Exam, share=window.AI200ExamShare, $=id=>document.getElementById(id);
-  const banks=[window.AI200_EXAM_BANK,window.AI200_INTERACTIVE_BANK];
+  const sourceBanks=[window.AI200_EXAM_BANK,window.AI200_INTERACTIVE_BANK];
+  const banks=sourceBanks.slice();
   const objectiveData=window.AI200_EXAM_OBJECTIVES;
   const objectiveById=new Map(objectiveData.objectives.map(objective=>[objective.id,objective]));
   const domainNames={1:'Containers',2:'AI data',3:'Integrations',4:'Security & monitoring'};
@@ -22,7 +23,7 @@
     return link;
   }
   const isChoice = question => rules.questionType(question) === 'choice';
-  const referenceLabel = () => bank.source.kind === 'original' ? 'Reference documentation ↗' : 'Source question and explanation ↗';
+  const referenceLabel = question => rules.questionSource(bank,question.id).kind === 'original' ? 'Reference documentation ↗' : 'Source question and explanation ↗';
   function caseBlock(id, open = true) {
     const c = contexts.get(id);
     if (!c) return null;
@@ -122,7 +123,7 @@
         }
       }
       if (item.unanswered) body.append(node('p', 'small', 'You did not answer this question.'));
-      body.append(node('p', 'source-explanation', q.explanation), externalLink(referenceLabel(), q.setUrl));
+      body.append(node('p', 'source-explanation', q.explanation), externalLink(referenceLabel(q), q.setUrl));
       details.append(summary, body); $('answer-review').append(details);
     }
     if (!$('answer-review').children.length) $('answer-review').append(node('p', 'small', 'No questions match this filter.'));
@@ -186,7 +187,8 @@
   window.addEventListener('site:languagechange',renderDate);
   window.addEventListener('hashchange',()=>location.reload());
   try {
-    banks.forEach(value=>rules.validateBank(value));rules.validateObjectives(objectiveData,banks);
+    banks.push(rules.combineBanks(sourceBanks));
+    banks.forEach(value=>rules.validateBank(value));rules.validateObjectives(objectiveData,sourceBanks);
     if(location.hash){
       const params=new URLSearchParams(location.hash.slice(1));
       if(params.size!==1||!params.has('r'))throw new Error('This result link is invalid or incomplete.');
@@ -199,7 +201,9 @@
       attempt=saved;
     }
     questions=new Map(bank.questions.map(question=>[question.id,question]));contexts=new Map(bank.contexts.map(context=>[context.id,context]));
-    document.querySelectorAll('.source-credit').forEach(element=>{element.hidden=bank.source.kind==='original';});
+    const sources=attempt.ids.map(id=>rules.questionSource(bank,id));
+    document.querySelectorAll('.source-credit').forEach(element=>{element.hidden=!sources.some(source=>source.kind!=='original');});
+    document.querySelectorAll('.original-credit').forEach(element=>{element.hidden=!sources.some(source=>source.kind==='original');});
     renderResults();renderDate();
   } catch(error){unavailable(error.message);}
 })();

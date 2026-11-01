@@ -4,7 +4,8 @@
   const ATTEMPT_KEY = 'ai200-practice-exam-attempt-v1';
   const domainNames = {1: 'Containers', 2: 'AI data', 3: 'Integrations', 4: 'Security & monitoring'};
   let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null, interaction = null;
-  const banks = [window.AI200_EXAM_BANK, window.AI200_INTERACTIVE_BANK];
+  const sourceBanks = [window.AI200_EXAM_BANK, window.AI200_INTERACTIVE_BANK];
+  const banks = sourceBanks.slice();
   const objectiveData = window.AI200_EXAM_OBJECTIVES;
   const objectiveById = new Map((objectiveData?.objectives || []).map(objective => [objective.id, objective]));
   const seenContexts = new Set();
@@ -35,25 +36,26 @@
     return link;
   }
   const isChoice = question => rules.questionType(question) === 'choice';
-  const referenceLabel = () => bank.source.kind === 'original' ? 'Reference documentation ↗' : 'Source question and explanation ↗';
+  const referenceLabel = question => rules.questionSource(bank, question.id).kind === 'original' ? 'Reference documentation ↗' : 'Source question and explanation ↗';
   function setBank(value, restore = false) {
-    rules.validateBank(value);
+    if (value) rules.validateBank(value);
     bank = value;
-    questions = new Map(bank.questions.map(q => [q.id, q]));
-    contexts = new Map(bank.contexts.map(c => [c.id, c]));
-    const downloaded = new Date(bank.source.downloadedAt);
-    const pool = rules.questionPool(bank), caseCount = new Set(pool.map(q => q.contextId).filter(Boolean)).size;
+    questions = new Map((bank?.questions || []).map(q => [q.id, q]));
+    contexts = new Map((bank?.contexts || []).map(c => [c.id, c]));
+    const downloaded = new Date(bank?.source.downloadedAt);
+    const pool = bank ? rules.questionPool(bank) : [], caseCount = new Set(pool.map(q => q.contextId).filter(Boolean)).size;
     $('bank-status').textContent = `${pool.length} questions · ${caseCount} case studies` +
       (Number.isNaN(downloaded.getTime()) ? '' : ` · downloaded ${downloaded.toISOString().slice(0, 10)}`);
     for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${pool.filter(q => q.domain === domain).length} questions`;
     $('bank-error').hidden = true;
     updatePool();
-    $('bank-select').value = bank.bankId;
-    $('source-details').hidden = bank.source.kind === 'original';
-    $('original-details').hidden = bank.source.kind !== 'original';
-    document.querySelectorAll('.source-credit').forEach(el => { el.hidden = bank.source.kind === 'original'; });
+    const members = bank ? bank.members || [bank] : [];
+    document.querySelectorAll('input[name=bank]').forEach(input => {input.checked = members.some(member => member.bankId === input.value);});
+    $('bank-selection-note').hidden = members.length > 0;
+    $('source-details').hidden = !members.some(member => member.source.kind !== 'original');
+    $('original-details').hidden = !members.some(member => member.source.kind === 'original');
     const saved = restore ? read(ATTEMPT_KEY) : null;
-    attempt = rules.validAttempt(saved, bank) ? saved : null;
+    attempt = bank && rules.validAttempt(saved, bank) ? saved : null;
     if (attempt) attempt.checked ||= [];
     if (attempt) {
       const cleaned = rules.removeAttemptDuplicates(bank, attempt);
@@ -72,7 +74,7 @@
     const count = includedPool().count;
     $('pool-status').textContent = `${count} available questions`;
     $('question-count').max = count;
-    if (Number($('question-count').value) > count && count > 0) $('question-count').value = Math.min(45, count);
+    if (Number($('question-count').value) > count && count > 0) $('question-count').value = count;
     $('setup-form').querySelector('[type=submit]').disabled = count === 0;
     $('use-all').disabled = count === 0;
   }
@@ -175,7 +177,7 @@
     else for (const part of window.AI200ExamInteractions.describe(q)) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${part.label} → ${part.expected}`));
     $('feedback-explanation').textContent = q.explanation;
     $('feedback-source').href = q.setUrl;
-    $('feedback-source').textContent = referenceLabel();
+    $('feedback-source').textContent = referenceLabel(q);
   }
   function renderGlossary(question, checked = attempt?.checked.includes(question.id)) {
     const container = $('feedback-terms');
@@ -327,11 +329,20 @@
   window.addEventListener('pageshow', tick);
   window.addEventListener('jargon:ready', () => { if (attempt && attempt.submittedAt === null) renderGlossary(questions.get(attempt.ids[attempt.index])); });
   window.addEventListener('site:languagechange', () => { if (attempt && attempt.submittedAt === null) renderQuestion(); });
-  $('bank-select').addEventListener('change', event => setBank(banks.find(value => value.bankId === event.target.value)));
+  $('bank-select').addEventListener('change', () => {
+    const ids = [...document.querySelectorAll('input[name=bank]:checked')].map(input => input.value);
+    setBank(rules.combineBanks(sourceBanks.filter(value => ids.includes(value.bankId))));
+  });
   try {
+    banks.push(rules.combineBanks(sourceBanks));
     banks.forEach(value => rules.validateBank(value));
-    rules.validateObjectives(objectiveData, banks);
-    banks.forEach(value => { const option = node('option', '', value.source.kind === 'original' ? 'Interactive practice' : 'AI-200 Prep'); option.value = value.bankId; $('bank-select').append(option); });
+    rules.validateObjectives(objectiveData, sourceBanks);
+    sourceBanks.forEach(value => {
+      const label = node('label', 'bank-option'), input = node('input'), text = node('span');
+      input.type = 'checkbox'; input.name = 'bank'; input.value = value.bankId;
+      text.append(node('b', '', value.source.kind === 'original' ? 'Interactive practice' : 'AI-200 Prep'), node('small', '', `${rules.questionPool(value).length} questions`));
+      label.append(input, text); $('bank-choices').append(label);
+    });
     const saved = read(ATTEMPT_KEY);
     setBank(banks.find(value => rules.validAttempt(saved, value)) || banks[0], !new URLSearchParams(location.search).has('new'));
   }

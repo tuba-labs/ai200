@@ -63,7 +63,8 @@
       <div class="section-top"><div><span class="eyebrow">Choose your session</span><h2 id="setup-heading" tabindex="-1">Ready when you are</h2></div><span class="badge">No flashcards added</span></div>
       <p id="bank-status" class="small" role="status"></p>
       <form id="setup-form">
-        <div class="settings"><label>Question bank<select id="bank-select"></select></label></div>
+        <fieldset class="bank-options" id="bank-select"><legend>Question banks</legend><div id="bank-choices"></div></fieldset>
+        <p class="small" id="bank-selection-note" role="status" hidden>Select at least one question bank.</p>
         <fieldset class="domain-options"><legend>Include domains</legend>
           <label><input type="checkbox" name="domain" value="1" checked><span><b>1 · Containers</b><small id="domain-1-count"></small></span></label>
           <label><input type="checkbox" name="domain" value="2" checked><span><b>2 · AI data</b><small id="domain-2-count"></small></span></label>
