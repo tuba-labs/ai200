@@ -106,7 +106,7 @@
     return result;
   }
   function seededRandom(seed) {
-    // This sequence is part of result-link version 2; keep it stable.
+    // This sequence is part of the result-link format; keep it stable.
     let state = seed >>> 0;
     return () => {
       state = (state + 0x6d2b79f5) >>> 0;
@@ -126,7 +126,7 @@
   }
   // Shuffle the complete bank before filtering, so a saved seed and selected IDs
   // reproduce the order even after the active pool's exclusions change. This
-  // case-grouping algorithm is also part of result-link version 2.
+  // case-grouping algorithm is also part of the result-link format.
   function questionOrder(bank, ids, seed = null) {
     const included = new Set(ids);
     const ordered = seed === null ? bank.questions : shuffle(bank.questions, seededRandom(seed));
@@ -190,7 +190,8 @@
   function validAnswer(question, answer) {
     if (!Array.isArray(answer)) return false;
     const type = questionType(question);
-    if (type === 'choice' || type === 'order') return unique(answer) && answer.every(id => question.options.some(o => o.id === id)) && (type !== 'order' || answer.length <= question.correctAnswers.length);
+    if (type === 'choice') return unique(answer) && answer.every(id => question.options.some(o => o.id === id));
+    if (type === 'order') return answer.length <= question.correctAnswers.length && unique(answer.filter(Boolean)) && answer.every(id => id === '' || question.options.some(o => o.id === id));
     if (!answer.length) return true;
     return answer.length === question.slots.length && answer.every((id, i) => id === '' || (type === 'dropdown' ? question.slots[i].options : question.options).some(o => o.id === id))
       && (type !== 'match' || question.reuse || unique(answer.filter(Boolean)));

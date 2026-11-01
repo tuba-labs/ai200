@@ -1,5 +1,9 @@
 {
   "messages": [
+    ["Velg trinn", "Select step"],
+    ["Velg plass for trinnet", "Choose step position"],
+    ["Slipp et trinn her", "Drop a step here"],
+    ["Plasser hver handling i sitt nummererte trinn. Dra en handling, eller velg den og deretter et trinn.", "Place each action in its numbered step. Drag an action, or select it and then select a step."],
     ["Ikke ta med spørsmål som allerede er besvart riktig", "Don't include questions already answered correctly"],
     ["Riktige svar huskes på tvers av prøver. Senere feil svar gjør spørsmålet tilgjengelig igjen.", "Correct answers are remembered across exams. Later incorrect answers make a question available again."],
     ["Ingen spørsmål gjenstår. Fjern avkryssingen eller velg andre banker eller domener.", "No questions remain. Uncheck this option or choose other banks or domains."],
@@ -73,11 +77,9 @@
     ["Ett poeng per spørsmål. Alle valgte alternativer, trinn og utfylte felt må være riktige. Det gis ikke delpoeng. Denne prosenten kan ikke omregnes til Microsofts skalerte eksamenspoeng.", "One point per question. Every selected option, ordered step and completed blank must be correct. There is no partial credit. This percentage does not convert to Microsoft’s scaled exam score."],
     ["Tilgjengelige trinn", "Available steps"],
     ["Din rekkefølge", "Your order"],
-    ["Legg til trinn", "Add step"],
     ["Flytt opp", "Move up"],
     ["Flytt ned", "Move down"],
     ["Fjern trinn", "Remove step"],
-    ["Legg til trinn her og sett dem i riktig rekkefølge.", "Add steps here, then arrange them in order."],
     ["Velg et alternativ og deretter et målfelt. Du kan også dra alternativer.", "Choose an option, then choose a target. You can also drag options."],
     ["Svaralternativer", "Answer choices"],
     ["Velg alternativ", "Select option"],
@@ -585,6 +587,7 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["Trinn {number}", "Step {number}"],
     ["{count} spørsmål er allerede besvart riktig i de valgte domenene.", "{count} questions already answered correctly in the selected domains."],
     ["Fullført: {date}", "Completed: {date}"],
     ["Hoppet over {count} gjentatt spørsmål i denne lagrede prøven.", "Skipped {count} repeated question in this saved exam."],

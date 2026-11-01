@@ -139,7 +139,7 @@
     $('question-prompt').textContent = q.prompt;
     const multi = q.correctAnswers.length > 1, type = rules.questionType(q);
     const instruction = isChoice(q) ? (multi ? `Select ${q.correctAnswers.length} answers.` : 'Select one answer.')
-      : type === 'order' ? `Arrange ${q.correctAnswers.length} steps in order. Drag steps or use the add, move and remove buttons.`
+      : type === 'order' ? 'Place each action in its numbered step. Drag an action, or select it and then select a step.'
       : type === 'match' ? 'Match every target. Drag an option or select it and then select its target.'
       : 'Complete every blank using its dropdown.';
     $('question-instructions').textContent = instruction +

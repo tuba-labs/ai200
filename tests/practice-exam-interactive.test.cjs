@@ -27,6 +27,37 @@ test('order is significant, accepted alternatives work, and repeated or excessiv
   assert.equal(rules.validAnswer(q,[q.correctAnswers[0],q.correctAnswers[0]]),false);
   assert.equal(rules.isCorrect(q,q.correctAnswers.slice(0,-1)),false);
 });
+
+test('numbered order slots can be filled out of sequence without moving other steps',()=>{
+  const q=bank().questions.find(q=>q.id==='i-pg-order'),empty=['','','',''];
+  let answer=interactions.placeOrderStep(q,empty,'index',3);
+  assert.deepEqual(answer,['','','','index']);assert.deepEqual(empty,['','','','']);
+  answer=interactions.placeOrderStep(q,answer,'extension',0);
+  answer=interactions.placeOrderStep(q,answer,'load',2);
+  assert.deepEqual(answer,['extension','','load','index']);
+  assert.ok(rules.validAnswer(q,answer));assert.ok(rules.hasAnswer(answer));assert.equal(rules.isCorrect(q,answer),false);
+  assert.deepEqual(interactions.describe(q,answer).map(part=>part.selected),[q.options.find(o=>o.id==='extension').text,'',q.options.find(o=>o.id==='load').text,q.options.find(o=>o.id==='index').text]);
+  answer=interactions.placeOrderStep(q,answer,'table',1);assert.ok(rules.isCorrect(q,answer));
+});
+
+test('moving an ordered action swaps occupied slots and replaces a target without inserting or shifting steps',()=>{
+  const q=bank().questions.find(q=>q.id==='i-pg-order');
+  assert.deepEqual(interactions.placeOrderStep(q,q.correctAnswers,'load',0),['load','table','extension','index']);
+  const answer=interactions.placeOrderStep(q,['extension','','load','index'],'index',1);
+  assert.deepEqual(answer,['extension','index','load','']);
+  assert.deepEqual(interactions.placeOrderStep(q,answer,'table',0),['table','index','load','']);
+  assert.throws(()=>interactions.placeOrderStep(q,answer,'unknown',0));
+  assert.throws(()=>interactions.placeOrderStep(q,answer,'table',4));
+  assert.throws(()=>interactions.placeOrderStep(q,answer,'table',-1));
+});
+
+test('empty numbered order slots remain unanswered and repeated actions are rejected around gaps',()=>{
+  const q=bank().questions.find(q=>q.id==='i-pg-order');
+  assert.ok(rules.validAnswer(q,['','','','']));assert.equal(rules.hasAnswer(['','','','']),false);
+  assert.equal(rules.validAnswer(q,['extension','','extension','']),false);
+  assert.equal(rules.validAnswer(q,['extension',null,'load','index']),false);
+  assert.equal(rules.validAnswer(q,['extension','','load','index','table']),false);
+});
 test('slot answers retain blanks, validate per-slot choices, and enforce the matching reuse rule', () => {
   const b = bank(), match = b.questions.find(q=>q.type==='match' && q.reuse), unique = b.questions.find(q=>q.type==='match' && !q.reuse), drop = b.questions.find(q=>q.type==='dropdown');
   assert.equal(rules.isCorrect(match,match.correctAnswers),true);

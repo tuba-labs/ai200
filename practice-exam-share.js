@@ -6,7 +6,7 @@
   else root.AI200ExamShare = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (rules) {
   'use strict';
-  const VERSION = 2, MAX_LENGTH = 8192, fingerprints = new WeakMap();
+  const VERSION = 3, MAX_LENGTH = 8192, fingerprints = new WeakMap();
   const invalid = () => { throw new Error('This result link is invalid or incomplete.'); };
   const bitsFor = count => Math.max(1, Math.ceil(Math.log2(count)));
   function fingerprint(bank) {
@@ -73,8 +73,7 @@
       question.options.forEach((option,i)=>{if(answer.includes(option.id))mask += 2**i;});
       writer.write(mask,question.options.length);
     } else if (type === 'order') {
-      writer.write(answer.length,bitsFor(question.correctAnswers.length+1));
-      answer.forEach(id=>writer.write(question.options.findIndex(option=>option.id===id),bitsFor(question.options.length)));
+      question.correctAnswers.forEach((_,i)=>writer.write(answer[i]?question.options.findIndex(option=>option.id===answer[i])+1:0,bitsFor(question.options.length+1)));
     } else question.slots.forEach((slot,i)=>{
       const options = type === 'dropdown' ? slot.options : question.options;
       writer.write(answer[i] ? options.findIndex(option=>option.id===answer[i])+1 : 0,bitsFor(options.length+1));
@@ -88,10 +87,10 @@
       const mask=reader.read(question.options.length);
       answer=question.options.filter((_,i)=>mask & 2**i).map(option=>option.id);
     } else if (type === 'order') {
-      const count=reader.read(bitsFor(question.correctAnswers.length+1));
-      if (count>question.correctAnswers.length) invalid();
-      answer=Array.from({length:count},()=>{
-        const option=question.options[reader.read(bitsFor(question.options.length))];
+      answer=question.correctAnswers.map(()=>{
+        const index=reader.read(bitsFor(question.options.length+1));
+        if(!index)return '';
+        const option=question.options[index-1];
         if(!option)invalid(); return option.id;
       });
     } else answer=question.slots.map(slot=>{

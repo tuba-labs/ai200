@@ -16,11 +16,19 @@
         selected: value(answer[i]), expected: value(expected), correct: accepted || answer[i] === expected};
     });
   }
+  function placeOrderStep(question, answer, id, index) {
+    if (!Number.isInteger(index) || index < 0 || index >= question.correctAnswers.length || !question.options.some(option => option.id === id)) throw new Error('Invalid step placement.');
+    const next = Array.from({length:question.correctAnswers.length}, (_, i) => answer[i] || '');
+    const previous = next.indexOf(id), displaced = next[index];
+    if (previous >= 0) next[previous] = displaced;
+    next[index] = id;
+    return next;
+  }
   function render(container, question, answer, onChange) {
     const doc = container.ownerDocument, win = doc.defaultView;
     const ui = text => win.AI200Site?.t ? win.AI200Site.t(text) : text;
     const type = question.type;
-    let state = type === 'order' ? answer.slice() : question.slots.map((_, i) => answer[i] || '');
+    let state = type === 'order' ? Array.from({length:question.correctAnswers.length}, (_, i) => answer[i] || '') : question.slots.map((_, i) => answer[i] || '');
     let chosen = null, checked = false;
     const make = (tag, className, text) => {
       const element = doc.createElement(tag);
@@ -43,7 +51,7 @@
     function draggable(element, id) {
       element.draggable = true;
       element.addEventListener('dragstart', event => {
-        event.dataTransfer.effectAllowed = 'copyMove';
+        event.dataTransfer.effectAllowed = type === 'order' ? 'move' : 'copyMove';
         event.dataTransfer.setData('application/x-ai200-answer', JSON.stringify({question:question.id, id}));
         event.dataTransfer.setData('text/plain', id);
       });
@@ -51,6 +59,7 @@
     function target(element, accept) {
       element.addEventListener('dragover', event => {
         if (!event.dataTransfer.types.includes('application/x-ai200-answer')) return;
+        if (type === 'order') event.dataTransfer.dropEffect = 'move';
         event.preventDefault(); element.classList.add('drag-target');
       });
       element.addEventListener('dragleave', () => element.classList.remove('drag-target'));
@@ -62,46 +71,60 @@
         event.preventDefault(); event.stopPropagation(); accept(data.id);
       });
     }
-    function moveStep(id, index) {
-      const old = state.indexOf(id);
-      if (old < 0 && state.length >= question.correctAnswers.length) return;
-      const next = state.filter(value => value !== id);
-      const position = Math.min(next.length, Math.max(0, index - (old >= 0 && old < index ? 1 : 0)));
-      next.splice(position, 0, id); commit(next, 'up-' + id);
+    function placeStep(id, index) {
+      chosen = null;
+      if (state[index] === id) {
+        refresh();
+        [...container.querySelectorAll('[data-focus]')].find(element => element.dataset.focus === 'step-' + index)?.focus({preventScroll:true});
+        return;
+      }
+      commit(placeOrderStep(question, state, id, index), 'step-' + index);
     }
     function orderAnswer() {
       const layout = make('div', 'order-layout'), available = make('section', 'answer-pool'), selected = make('section', 'ordered-answer');
       available.append(make('h4', '', ui('Available steps')));
       const pool = make('div', 'step-pool');
       for (const option of question.options.filter(option => !state.includes(option.id))) {
-        const add = button('Add step', 'add-' + option.id, () => moveStep(option.id, state.length), option.text + ' +');
-        add.setAttribute('aria-label', ui('Add step') + ': ' + option.text);
-        add.classList.add('step-choice'); add.disabled = state.length >= question.correctAnswers.length;
+        const add = button('Select step', 'choice-' + option.id, () => {
+          chosen = chosen === option.id ? null : option.id; refresh();
+          [...container.querySelectorAll('[data-focus]')].find(element => element.dataset.focus === 'choice-' + option.id)?.focus({preventScroll:true});
+        }, option.text);
+        add.setAttribute('aria-label', ui('Select step') + ': ' + option.text);
+        add.setAttribute('aria-pressed', String(chosen === option.id)); add.classList.add('step-choice');
         draggable(add, option.id); pool.append(add);
       }
       available.append(pool);
-      target(available, id => { if (state.includes(id)) commit(state.filter(value => value !== id), 'add-' + id); });
-      selected.append(make('h4', '', ui('Your order') + ` (${state.length}/${question.correctAnswers.length})`));
+      selected.append(make('h4', '', ui('Your order') + ` (${state.filter(Boolean).length}/${question.correctAnswers.length})`));
       const list = make('ol', 'step-answer');
       list.setAttribute('aria-label', ui('Your order'));
       state.forEach((id, index) => {
-        const row = make('li', 'interactive-step'); row.dataset.answerPart = index;
-        const text = make('span', 'step-text', question.options.find(option => option.id === id).text);
-        text.id = question.id + '-step-' + id; row.append(text);
-        draggable(row, id); target(row, value => moveStep(value, index));
+        const row = make('li', 'interactive-step order-slot' + (id ? '' : ' empty-step')); row.dataset.answerPart = index;
+        const position = make('span', 'step-position', ui('Step ' + (index + 1)));
+        const option = question.options.find(option => option.id === id);
+        const area = button('Choose step position', 'step-' + index, () => {
+          if (chosen) placeStep(chosen, index);
+          else if (id) {
+            chosen = id; refresh();
+            [...container.querySelectorAll('[data-focus]')].find(element => element.dataset.focus === 'step-' + index)?.focus({preventScroll:true});
+          }
+        }, option?.text || ui('Drop a step here'));
+        area.classList.add('step-target'); area.id = question.id + '-step-' + index;
+        area.setAttribute('aria-label', ui('Step ' + (index + 1)) + ': ' + (option?.text || ui('Drop a step here')));
+        area.setAttribute('aria-pressed', String(Boolean(id) && chosen === id));
+        if (id) draggable(area, id);
+        target(row, value => placeStep(value, index)); row.append(position, area);
+        if (!id) { list.append(row); return; }
         const controls = make('span', 'step-controls');
         const up = button('Move up', 'up-' + id, () => {
-          const next = state.slice(); [next[index-1], next[index]] = [next[index], next[index-1]]; commit(next, 'up-' + id);
+          placeStep(id, index-1);
         }, '↑'); up.disabled = index === 0;
         const down = button('Move down', 'down-' + id, () => {
-          const next = state.slice(); [next[index+1], next[index]] = [next[index], next[index+1]]; commit(next, 'down-' + id);
+          placeStep(id, index+1);
         }, '↓'); down.disabled = index === state.length - 1;
-        controls.append(up, down, button('Remove step', 'remove-' + id, () => commit(state.filter(value => value !== id), 'add-' + id), '×'));
-        controls.querySelectorAll('button').forEach(control => control.setAttribute('aria-describedby', text.id));
+        controls.append(up, down, button('Remove step', 'remove-' + id, () => {const next = state.slice(); next[index] = ''; chosen = null; commit(next, 'step-' + index);}, '×'));
+        controls.querySelectorAll('button').forEach(control => control.setAttribute('aria-describedby', area.id));
         row.append(controls); list.append(row);
       });
-      target(list, id => moveStep(id, state.length));
-      if (!state.length) list.append(make('li', 'answer-placeholder', ui('Add steps here, then arrange them in order.')));
       selected.append(list); layout.append(available, selected); container.append(layout);
     }
     function place(id, index) {
@@ -181,5 +204,5 @@
     refresh();
     return {feedback};
   }
-  return {render, describe};
+  return {render, describe, placeOrderStep};
 });

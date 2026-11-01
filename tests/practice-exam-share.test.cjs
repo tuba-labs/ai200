@@ -32,6 +32,15 @@ test('all interactive formats retain partial answers and ordering, including rep
   for(const q of bank.questions){if(q.type==='order')a.answers[q.id]=q.correctAnswers.slice().reverse();else a.answers[q.id]=q.correctAnswers.map((id,i)=>i%2?'':id);}
   const{decoded}=roundtrip(bank,a);assert.deepEqual(decoded.answers,a.answers);
 });
+
+test('partially filled numbered order slots retain their exact positions in saved and shared results',()=>{
+  const [,bank]=banks(),q=bank.questions.find(q=>q.id==='i-pg-order'),a=attempt(bank,[q.id]);
+  a.answers[q.id]=['extension','','','index'];a.flagged=[q.id];
+  assert.ok(rules.validAttempt(JSON.parse(JSON.stringify(a)),bank));
+  assert.equal(rules.grade(bank,a,{answeredOnly:true}).total,1);assert.equal(rules.grade(bank,a).correct,0);
+  const {decoded}=roundtrip(bank,a);assert.deepEqual(decoded.answers[q.id],['extension','','','index']);
+  assert.equal(rules.grade(bank,decoded).unanswered,0);
+});
 test('accepted alternative orders and timed-out durations survive sharing',()=>{
   const [,bank]=banks(),q=bank.questions.find(q=>q.type==='order');q.acceptedOrders=[q.correctAnswers.slice().reverse()];
   const a=attempt(bank,[q.id]);a.answers[q.id]=q.acceptedOrders[0].slice();a.submittedAt=a.deadline+30000;a.timedOut=true;
@@ -53,13 +62,13 @@ test('malformed, truncated, corrupted, oversized and wrong-bank links fail clear
 });
 test('valid checksums still reject unsupported flags, invalid counts and out-of-range question IDs',()=>{
   const [bank]=banks(),a=attempt(bank,[bank.questions[0].id]);const token=share.encode(bank,a);
-  for(const version of [0,1,3,255])assert.throws(()=>share.decode(forged(token,bytes=>{bytes[0]=version;}),[bank]),/unsupported/);
+  for(const version of [0,1,2,4,255])assert.throws(()=>share.decode(forged(token,bytes=>{bytes[0]=version;}),[bank]),/unsupported/);
   assert.throws(()=>share.decode(forged(token,bytes=>{bytes[1]=128;}),[bank]),/invalid/);
   assert.throws(()=>share.decode(forged(token,bytes=>{bytes[18]=255;bytes[19]=255;}),[bank]),/invalid/);
   assert.throws(()=>share.decode(forged(token,bytes=>{bytes[20]=255;bytes[21]|=128;}),[bank]),/invalid/);
 });
 
-test('version-two subset ranks and sparse state counts reject out-of-range values even with a valid checksum',()=>{
+test('subset ranks and sparse state counts reject out-of-range values even with a valid checksum',()=>{
   const [,bank]=banks(),a=rules.createAttempt(bank,{count:8,minutes:0,randomOrder:false},Date.UTC(2026,10,1));
   a.submittedAt=a.startedAt+1000;const token=share.encode(bank,a);
   assert.equal(Buffer.from(token,'base64url')[1]>>1,1);
@@ -75,9 +84,9 @@ test('seeded full exams preserve their exact order after saving and sharing, wit
   for(const q of rules.questionPool(bank))a.answers[q.id]=q.correctAnswers.slice();
   assert.deepEqual(rules.questionOrder(bank,a.ids,a.orderSeed),a.ids);
   const {token,decoded}=roundtrip(bank,JSON.parse(JSON.stringify(a)));
-  assert.equal(token,'Agapq2vAFigYj2rmg1gAAAJYAU9cKPXCG4VVqrb9CIBHBILK53geDtOpPYgAlkMj0Q');
+  assert.equal(token,'Awapq2vAFigYj2rmg1gAAAJYAU9cKPXCG4VVqrb9CIBHBILK53geDtOpPYgANdULnQ');
   assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(decoded.ids)).digest('hex'),'194cfc466a45d66cdd033e29de992647ed90833e38adfbe676f5c6a1d449eb3b');
-  assert.equal(Buffer.from(token,'base64url')[0],2);assert.equal(decoded.orderSeed,a.orderSeed);
+  assert.equal(Buffer.from(token,'base64url')[0],3);assert.equal(decoded.orderSeed,a.orderSeed);
   assert.ok(token.length<80);
   const changed=structuredClone(bank);changed.duplicateOf={};
   assert.deepEqual(share.decode(token,[changed]).attempt.ids,a.ids);
