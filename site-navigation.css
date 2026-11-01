@@ -2,13 +2,13 @@
 .site-header .site-header-inner{box-sizing:border-box;width:min(1240px,calc(100% - 44px));margin:0 auto;padding:17px 0;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .site-header .site-brand{display:flex;align-items:center;gap:11px;color:#0a2445;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;letter-spacing:normal}
 .site-header .site-brand-mark{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:11px;background:#0a2445;color:#fff;font-size:13px;letter-spacing:-.4px}
-.site-header .site-nav{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-start;gap:8px 18px;margin:0;padding:0;border:0;background:transparent}
+.site-header .site-nav{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-start;gap:8px 18px;margin:0;padding:0;border:0;background:transparent;font:inherit}
 .site-header .site-nav a{display:inline-block;margin:0;padding:5px 0;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:#455771;font-size:14px;font-weight:650;line-height:1.5;text-decoration:none;white-space:nowrap}
 .site-header .site-nav a:hover{color:#1265bd}
 .site-header .site-nav a[aria-current=page]{color:#06488b;border-bottom-color:#1265bd;font-weight:800}
 .site-header a:focus-visible{outline:3px solid #4599ef;outline-offset:4px;border-radius:3px}
 .site-header .site-preferences{display:flex;align-items:center;gap:10px;flex:none}
-.site-header .site-preferences button{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px;margin:0;padding:0;border:1px solid #bdcfe2;border-radius:7px;background:#fff;color:#17243b;line-height:1;box-shadow:none;cursor:pointer}
+.site-header .site-preferences button{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px;margin:0;padding:0;border:1px solid #bdcfe2;border-radius:7px;background:#fff;color:#17243b;font:inherit;line-height:1;box-shadow:none;cursor:pointer}
 .site-header .site-preferences button:hover{background:#edf3fa;border-color:#7698bb}
 .site-header .site-preferences button:focus-visible{outline:3px solid #4599ef;outline-offset:3px}
 .site-header .site-preferences button:disabled{opacity:.55;cursor:default}
