@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="practice-exam.css">
   <script src="practice-exam-data.js" defer></script>
   <script src="practice-exam-interactive-data.js" defer></script>
+  <script src="practice-exam-objectives.js" defer></script>
   <script src="practice-exam-core.js" defer></script>
   <script src="practice-exam-interactions.js" defer></script>
   <script src="practice-exam.js" defer></script>
@@ -78,6 +79,7 @@
         <article class="panel question-panel"><div class="question-meta"><span class="badge" id="question-domain"></span><span id="question-source-id"></span></div>
           <div id="case-context" data-keep-english lang="en" translate="no"></div>
           <div class="question-context" id="question-context"><span class="question-context-label">Question context</span><strong id="question-service" data-keep-english lang="en" translate="no"></strong></div>
+          <section class="question-objectives" aria-labelledby="question-objectives-heading"><h3 id="question-objectives-heading">Learning objectives</h3><ul id="question-objectives"></ul><p id="question-supporting" class="small" hidden>Supporting knowledge outside these 27 learning objectives.</p></section>
           <form id="question-form"><fieldset id="question-fieldset" aria-describedby="question-service" data-keep-english lang="en" translate="no"><legend id="question-prompt" tabindex="-1" aria-describedby="question-service"></legend><p class="small" id="question-instructions"></p><div class="options" id="answer-options"></div></fieldset></form>
           <div class="question-actions"><label class="check"><input id="flag-question" type="checkbox">Mark for review</label><div class="answer-actions"><button id="clear-answer" type="button">Clear answer</button><button id="check-answer" class="primary" type="button" disabled>Check answer</button></div></div>
           <section id="answer-feedback" class="answer-feedback" aria-labelledby="feedback-heading" hidden>
@@ -102,6 +104,12 @@
       <div class="score-grid"><div class="score"><strong id="result-percent"></strong><span>correct</span></div><div><strong id="result-correct"></strong><span>correct answers</span></div><div><strong id="result-incorrect"></strong><span>incorrect answers</span></div><div><strong id="result-unanswered"></strong><span>unanswered</span></div></div>
       <p class="small">One point per question. Every selected option, ordered step and completed blank must be correct. There is no partial credit. This percentage does not convert to Microsoft’s scaled exam score.</p>
       <div id="domain-results" class="domain-results"></div>
+      <section class="objective-results" aria-labelledby="objective-results-heading">
+        <h3 id="objective-results-heading">Learning objective results</h3>
+        <p class="small">Results for this attempt. Unanswered questions count as incorrect. A question covering several objectives counts once for each.</p>
+        <p class="small" id="objective-supporting-note" hidden>Supporting knowledge questions count towards the overall score only.</p>
+        <table class="objective-score-table"><caption class="small">All 27 learning objectives</caption><thead><tr><th scope="col">Learning objective</th><th scope="col">Result</th></tr></thead><tbody id="objective-results"></tbody></table>
+      </section>
       <div class="review-heading"><h3>Review your answers</h3><label>Show<select id="review-filter"><option value="all">All questions</option><option value="incorrect">Incorrect or unanswered</option><option value="unanswered">Unanswered</option><option value="flagged">Marked for review</option></select></label></div>
       <div id="answer-review"></div>
       <p class="small source-credit">Question wording, answer choices and explanations © AI-200 Prep. <a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Read the original sets ↗</a></p>

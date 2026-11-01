@@ -5,6 +5,8 @@
   const domainNames = {1: 'Containers', 2: 'AI data', 3: 'Integrations', 4: 'Security & monitoring'};
   let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null, interaction = null;
   const banks = [window.AI200_EXAM_BANK, window.AI200_INTERACTIVE_BANK];
+  const objectiveData = window.AI200_EXAM_OBJECTIVES;
+  const objectiveById = new Map((objectiveData?.objectives || []).map(objective => [objective.id, objective]));
   const seenContexts = new Set();
   const node = (tag, className, value) => {
     const el = document.createElement(tag);
@@ -105,6 +107,8 @@
     $('question-domain').textContent = `Domain ${q.domain} · ${domainNames[q.domain]}`;
     $('question-service').textContent = q.service;
     $('question-source-id').textContent = `Source ID: ${q.id}`;
+    renderQuestionObjectives(q, $('question-objectives'));
+    $('question-supporting').hidden = objectiveData.questions[q.id].objectives.length > 0;
     $('case-context').replaceChildren();
     const context = caseBlock(q.contextId);
     if (context) $('case-context').append(context);
@@ -226,7 +230,31 @@
     const elapsed = Math.max(0, Math.round(((attempt.timedOut ? attempt.deadline : attempt.submittedAt) - attempt.startedAt) / 60000));
     $('result-reason').textContent = `${attempt.timedOut ? 'Time expired. Your saved answers were submitted automatically.' : 'Exam submitted.'} ${result.total} questions · ${elapsed} min.`;
     renderDomainResults(result, $('domain-results'));
+    renderObjectiveResults();
     renderReview();
+  }
+  function renderQuestionObjectives(question, container) {
+    container.replaceChildren();
+    for (const id of objectiveData.questions[question.id].objectives) container.append(node('li', '', objectiveById.get(id).label.en));
+    container.hidden = !container.children.length;
+  }
+  function renderObjectiveResults() {
+    const result = rules.gradeObjectives(bank, attempt, objectiveData);
+    $('objective-results').replaceChildren();
+    $('objective-supporting-note').hidden = result.supporting === 0;
+    let domain = null;
+    for (const score of result.objectives) {
+      if (score.domain !== domain) {
+        domain = score.domain;
+        const row = node('tr', 'objective-domain'), heading = node('th', '', `Domain ${domain} · ${domainNames[domain]}`);
+        heading.colSpan = 2; heading.scope = 'row'; row.append(heading); $('objective-results').append(row);
+      }
+      const row = node('tr'), title = node('th', '', objectiveById.get(score.id).label.en), cell = node('td');
+      row.dataset.objectiveId = score.id; title.scope = 'row';
+      cell.append(node('span', score.total ? 'objective-score' : 'small', score.total ? `${score.percent}% · ${score.correct}/${score.total} questions correct` : 'Not assessed'));
+      if (score.unanswered) cell.append(node('span', 'small objective-unanswered', `${score.unanswered} unanswered`));
+      row.append(title, cell); $('objective-results').append(row);
+    }
   }
   function renderDomainResults(result, container) {
     container.replaceChildren();
@@ -251,6 +279,10 @@
       const caseDetails = caseBlock(q.contextId, false);
       if (caseDetails) body.append(caseDetails);
       body.append(node('p', 'small', `Domain ${q.domain} · ${q.service} · Source ID: ${q.id}`));
+      const objectives = node('ul', 'review-objectives');
+      renderQuestionObjectives(q, objectives);
+      body.append(node('p', 'objective-review-heading', 'Learning objectives'), objectives);
+      if (!objectives.children.length) body.append(node('p', 'small', 'Supporting knowledge outside these 27 learning objectives.'));
       if (isChoice(q)) for (const option of q.options) {
         const chosen = selected(q.id).includes(option.id), correct = q.correctAnswers.includes(option.id);
         const row = node('p', 'review-option' + (correct ? ' correct-option' : chosen ? ' wrong-option' : ''), `${option.id}. ${option.text}`);
@@ -359,6 +391,7 @@
   $('bank-select').addEventListener('change', event => setBank(banks.find(value => value.bankId === event.target.value)));
   try {
     banks.forEach(value => rules.validateBank(value));
+    rules.validateObjectives(objectiveData, banks);
     banks.forEach(value => { const option = node('option', '', value.source.kind === 'original' ? 'Interactive practice' : 'AI-200 Prep'); option.value = value.bankId; $('bank-select').append(option); });
     const saved = read(ATTEMPT_KEY);
     setBank(banks.find(value => rules.validAttempt(saved, value)) || banks[0], true);

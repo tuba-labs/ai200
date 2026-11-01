@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-01",
+  "method": "Question-level study mappings to the 27 homepage objectives. Multiple objectives are used only when the required answer tests multiple skills. Supporting questions with no direct match remain in the overall exam score only. These mappings are study guidance, not official Microsoft question classifications.",
+  "bankHashes": {
+    "practice-exam-data.js": "0482d449b6121a0e700bec7678c763f97a09f6f18584d21cb2819d1311bd1a94",
+    "practice-exam-interactive-data.js": "89816c6f2a377ace0acf064e518740d9232e506927d48c4bfa8d58406671f14b"
+  },
+  "groups": [
+    {
+      "objectives": [
+        "containers-acr-images"
+      ],
+      "questions": [
+        "c-nw-001",
+        "p-acr-001",
+        "p-acr-002",
+        "p-acr-005",
+        "p-acr-007",
+        "p-acr-008",
+        "p-acr-010",
+        "p-acr-012",
+        "p-acr-013",
+        "p-acr-016",
+        "p-acr-018",
+        "p-acr-019",
+        "p-acr-020",
+        "p-acr-021",
+        "p-acr-023",
+        "p-acr-024",
+        "p-acr-m01"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-acr-tasks",
+        "security-key-vault"
+      ],
+      "questions": [
+        "p-acr-003"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-acr-images",
+        "containers-troubleshooting"
+      ],
+      "questions": [
+        "c-nw-003",
+        "p-acr-004",
+        "p-acr-017",
+        "p-acr-025"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-acr-images",
+        "containers-acr-tasks"
+      ],
+      "questions": [
+        "p-acr-006",
+        "p-acr-009"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-acr-tasks"
+      ],
+      "questions": [
+        "p-acr-011",
+        "p-acr-015",
+        "p-acr-022",
+        "p-kv-023"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-acr-014"
+      ],
+      "reason": "Customer-managed encryption keys are outside the listed secret retrieval and rotation tasks."
+    },
+    {
+      "objectives": [
+        "containers-aks-manifests",
+        "security-key-vault"
+      ],
+      "questions": [
+        "c-nw-002",
+        "p-aks-001",
+        "p-kv-010"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-troubleshooting"
+      ],
+      "questions": [
+        "p-aks-002",
+        "p-aks-024",
+        "p-ca-012",
+        "p-ca-025"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-aks-manifests",
+        "containers-troubleshooting"
+      ],
+      "questions": [
+        "i-aks-order",
+        "p-aks-003",
+        "p-aks-007",
+        "p-aks-013"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-aks-004",
+        "p-aks-009",
+        "p-aks-012",
+        "p-aks-014",
+        "p-aks-015",
+        "p-aks-016",
+        "p-aks-017",
+        "p-aks-021",
+        "p-aks-025"
+      ],
+      "reason": "Cluster infrastructure, add-ons and administration extend beyond the listed application manifest and troubleshooting objectives."
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "c-nw-004"
+      ],
+      "reason": "Node pool infrastructure is outside the listed application manifest objectives."
+    },
+    {
+      "objectives": [
+        "containers-aks-manifests"
+      ],
+      "questions": [
+        "i-aks-match",
+        "p-aks-005",
+        "p-aks-006",
+        "p-aks-008",
+        "p-aks-010",
+        "p-aks-011",
+        "p-aks-018",
+        "p-aks-019",
+        "p-aks-020",
+        "p-aks-022",
+        "p-aks-023",
+        "p-aks-m01"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-keda"
+      ],
+      "questions": [
+        "c-nw-005",
+        "p-ca-001",
+        "p-ca-008",
+        "p-ca-015"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-container-apps-revisions"
+      ],
+      "questions": [
+        "p-ca-002",
+        "p-ca-003",
+        "p-ca-004",
+        "p-ca-006",
+        "p-ca-007",
+        "p-ca-010",
+        "p-ca-011",
+        "p-ca-013",
+        "p-ca-014",
+        "p-ca-016",
+        "p-ca-017",
+        "p-ca-018",
+        "p-ca-019",
+        "p-ca-021",
+        "p-ca-022",
+        "p-ca-024",
+        "p-ca-m01",
+        "p-rbac-011"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-container-apps-revisions",
+        "security-key-vault"
+      ],
+      "questions": [
+        "p-ca-005"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-ca-009"
+      ],
+      "reason": "Dapr service invocation is outside the listed deployment, revision and scaling objectives."
+    },
+    {
+      "objectives": [
+        "containers-keda",
+        "containers-troubleshooting"
+      ],
+      "questions": [
+        "p-ca-020",
+        "p-ca-023"
+      ]
+    },
+    {
+      "objectives": [
+        "data-cosmos-sdk",
+        "data-cosmos-vectors"
+      ],
+      "questions": [
+        "p-cos-001"
+      ]
+    },
+    {
+      "objectives": [
+        "data-cosmos-indexes",
+        "data-cosmos-vectors"
+      ],
+      "questions": [
+        "p-cos-002",
+        "p-cos-016"
+      ]
+    },
+    {
+      "objectives": [
+        "data-cosmos-indexes"
+      ],
+      "questions": [
+        "c-ct-001",
+        "c-ct-002",
+        "c-ct-004",
+        "p-cos-003",
+        "p-cos-004",
+        "p-cos-005",
+        "p-cos-009",
+        "p-cos-010",
+        "p-cos-012",
+        "p-cos-014",
+        "p-cos-018",
+        "p-cos-020",
+        "p-cos-021",
+        "p-cos-024"
+      ]
+    },
+    {
+      "objectives": [
+        "data-cosmos-vectors"
+      ],
+      "questions": [
+        "p-cos-022",
+        "p-cos-m01"
+      ]
+    },
+    {
+      "objectives": [
+        "data-cosmos-change-feed"
+      ],
+      "questions": [
+        "c-ct-005",
+        "p-cos-006",
+        "p-cos-007"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-cos-008",
+        "p-cos-011"
+      ],
+      "reason": "Data retention and analytical-store administration are outside the listed SDK, query, vector and change-feed tasks."
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "c-ct-003"
+      ],
+      "reason": "Regional disaster recovery is not one of the listed Cosmos DB objectives."
+    },
+    {
+      "objectives": [
+        "data-cosmos-sdk"
+      ],
+      "questions": [
+        "p-cos-013",
+        "p-cos-015",
+        "p-cos-017"
+      ]
+    },
+    {
+      "objectives": [
+        "data-cosmos-sdk",
+        "data-cosmos-indexes"
+      ],
+      "questions": [
+        "p-cos-019",
+        "p-cos-023",
+        "p-cos-025"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-vector-indexes"
+      ],
+      "questions": [
+        "p-pg-001",
+        "p-pg-002",
+        "p-pg-003",
+        "p-pg-004",
+        "p-pg-005",
+        "p-pg-012",
+        "p-pg-020",
+        "p-pg-m01"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-pg-006",
+        "p-pg-013",
+        "p-pg-014",
+        "p-pg-018"
+      ],
+      "reason": "General database replication, maintenance and recovery extend beyond the listed vector and application-access objectives."
+    },
+    {
+      "objectives": [
+        "data-postgresql-connections"
+      ],
+      "questions": [
+        "p-pg-007"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-sdk"
+      ],
+      "questions": [
+        "i-pg-code",
+        "p-pg-008",
+        "p-pg-015",
+        "p-pg-023"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-modeling"
+      ],
+      "questions": [
+        "p-pg-009",
+        "p-pg-016"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-rag"
+      ],
+      "questions": [
+        "p-pg-010",
+        "p-pg-019"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-capacity"
+      ],
+      "questions": [
+        "p-pg-011",
+        "p-pg-024"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-vector-indexes",
+        "data-postgresql-capacity"
+      ],
+      "questions": [
+        "p-pg-017"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-modeling",
+        "data-postgresql-capacity"
+      ],
+      "questions": [
+        "p-pg-021"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-vector-indexes",
+        "data-postgresql-rag"
+      ],
+      "questions": [
+        "p-pg-022"
+      ]
+    },
+    {
+      "objectives": [
+        "data-postgresql-sdk",
+        "data-postgresql-vector-indexes"
+      ],
+      "questions": [
+        "p-pg-025"
+      ]
+    },
+    {
+      "objectives": [
+        "data-redis-vectors"
+      ],
+      "questions": [
+        "p-red-001",
+        "p-red-002",
+        "p-red-005",
+        "p-red-009",
+        "p-red-017",
+        "p-red-021",
+        "p-red-024"
+      ]
+    },
+    {
+      "objectives": [
+        "data-redis-cache",
+        "data-redis-vectors"
+      ],
+      "questions": [
+        "p-red-003"
+      ]
+    },
+    {
+      "objectives": [
+        "data-redis-cache"
+      ],
+      "questions": [
+        "p-rd-m01",
+        "p-red-004",
+        "p-red-006",
+        "p-red-007",
+        "p-red-008",
+        "p-red-010",
+        "p-red-011",
+        "p-red-013",
+        "p-red-014",
+        "p-red-015",
+        "p-red-016",
+        "p-red-018",
+        "p-red-019",
+        "p-red-020",
+        "p-red-022",
+        "p-red-023",
+        "p-red-025"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-red-012"
+      ],
+      "reason": "Redis Streams messaging is outside the listed caching and vector-search tasks."
+    },
+    {
+      "objectives": [
+        "integrations-service-bus"
+      ],
+      "questions": [
+        "c-fb-001",
+        "c-fb-002",
+        "c-fb-003",
+        "c-fb-006",
+        "i-sb-match",
+        "p-rbac-024",
+        "p-sb-001",
+        "p-sb-002",
+        "p-sb-003",
+        "p-sb-004",
+        "p-sb-005",
+        "p-sb-006",
+        "p-sb-007",
+        "p-sb-008",
+        "p-sb-009",
+        "p-sb-010",
+        "p-sb-011",
+        "p-sb-012",
+        "p-sb-013",
+        "p-sb-014",
+        "p-sb-015",
+        "p-sb-016",
+        "p-sb-018",
+        "p-sb-019",
+        "p-sb-020",
+        "p-sb-021",
+        "p-sb-022",
+        "p-sb-023",
+        "p-sb-025",
+        "p-sb-m01"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-service-bus",
+        "integrations-functions-deploy"
+      ],
+      "questions": [
+        "p-sb-017"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-service-bus",
+        "containers-keda"
+      ],
+      "questions": [
+        "p-sb-024"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "c-fb-004",
+        "c-fb-005",
+        "p-eh-001",
+        "p-eh-002",
+        "p-eh-003",
+        "p-eh-004",
+        "p-eh-005",
+        "p-eh-006",
+        "p-eh-007",
+        "p-eh-008",
+        "p-eh-009",
+        "p-eh-010",
+        "p-eh-011",
+        "p-eh-012",
+        "p-eh-013",
+        "p-eh-014",
+        "p-eh-015",
+        "p-eh-016",
+        "p-eh-017",
+        "p-eh-018",
+        "p-eh-019",
+        "p-eh-020",
+        "p-eh-021",
+        "p-eh-022",
+        "p-eh-023",
+        "p-eh-024",
+        "p-eh-025"
+      ],
+      "reason": "Standalone Event Hubs streaming is not among the 27 listed objectives."
+    },
+    {
+      "objectives": [
+        "integrations-event-grid"
+      ],
+      "questions": [
+        "p-eg-001",
+        "p-eg-002",
+        "p-eg-003",
+        "p-eg-004",
+        "p-eg-005",
+        "p-eg-006",
+        "p-eg-008",
+        "p-eg-009",
+        "p-eg-010",
+        "p-eg-011",
+        "p-eg-012",
+        "p-eg-014",
+        "p-eg-015",
+        "p-eg-016",
+        "p-eg-017",
+        "p-eg-019",
+        "p-eg-020",
+        "p-eg-021",
+        "p-eg-022",
+        "p-eg-023",
+        "p-eg-024",
+        "p-eg-m01"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-event-grid",
+        "integrations-service-bus"
+      ],
+      "questions": [
+        "p-eg-007",
+        "p-eg-013"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-event-grid",
+        "integrations-functions-deploy"
+      ],
+      "questions": [
+        "p-eg-018"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-eg-025"
+      ],
+      "reason": "MQTT broker functionality is outside the listed Event Grid event-routing tasks."
+    },
+    {
+      "objectives": [
+        "integrations-functions-deploy"
+      ],
+      "questions": [
+        "p-fn-001",
+        "p-fn-002",
+        "p-fn-008",
+        "p-fn-009",
+        "p-fn-011",
+        "p-fn-015",
+        "p-fn-019",
+        "p-fn-022",
+        "p-fn-025"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-functions-api"
+      ],
+      "questions": [
+        "i-fn-code",
+        "p-fn-003",
+        "p-fn-004",
+        "p-fn-005",
+        "p-fn-006",
+        "p-fn-007",
+        "p-fn-010",
+        "p-fn-012",
+        "p-fn-013",
+        "p-fn-016",
+        "p-fn-017",
+        "p-fn-018",
+        "p-fn-021",
+        "p-fn-023",
+        "p-fn-m01"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-functions-api",
+        "integrations-event-grid"
+      ],
+      "questions": [
+        "p-fn-014"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-functions-deploy",
+        "security-key-vault"
+      ],
+      "questions": [
+        "p-fn-020",
+        "p-rbac-021"
+      ]
+    },
+    {
+      "objectives": [
+        "integrations-functions-deploy",
+        "security-opentelemetry"
+      ],
+      "questions": [
+        "p-fn-024"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-app-service",
+        "security-key-vault"
+      ],
+      "questions": [
+        "p-kv-001",
+        "p-kv-018"
+      ]
+    },
+    {
+      "objectives": [
+        "security-key-vault"
+      ],
+      "questions": [
+        "c-tw-002",
+        "c-tw-003",
+        "c-tw-006",
+        "p-kv-002",
+        "p-kv-003",
+        "p-kv-004",
+        "p-kv-006",
+        "p-kv-008",
+        "p-kv-009",
+        "p-kv-012",
+        "p-kv-014",
+        "p-kv-015",
+        "p-kv-017",
+        "p-kv-019",
+        "p-kv-020",
+        "p-kv-025"
+      ]
+    },
+    {
+      "objectives": [
+        "security-key-vault",
+        "integrations-event-grid",
+        "integrations-functions-api"
+      ],
+      "questions": [
+        "p-kv-005"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-kv-007",
+        "p-kv-011",
+        "p-kv-016",
+        "p-kv-021",
+        "p-kv-024",
+        "p-kv-m01"
+      ],
+      "reason": "Key encryption, signing, certificates and HSM administration are outside the listed application-secret tasks."
+    },
+    {
+      "objectives": [
+        "security-app-configuration"
+      ],
+      "questions": [
+        "p-kv-013"
+      ]
+    },
+    {
+      "objectives": [
+        "security-key-vault",
+        "security-kql"
+      ],
+      "questions": [
+        "p-kv-022"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-rbac-001",
+        "p-rbac-002",
+        "p-rbac-003",
+        "p-rbac-004",
+        "p-rbac-005",
+        "p-rbac-006",
+        "p-rbac-007",
+        "p-rbac-008",
+        "p-rbac-009",
+        "p-rbac-010",
+        "p-rbac-012",
+        "p-rbac-013",
+        "p-rbac-014",
+        "p-rbac-015",
+        "p-rbac-017",
+        "p-rbac-018",
+        "p-rbac-020",
+        "p-rbac-022",
+        "p-rbac-023",
+        "p-rbac-025",
+        "p-rbac-m01"
+      ],
+      "reason": "General Azure identity, access and governance knowledge is not a standalone objective in the 27-item list."
+    },
+    {
+      "objectives": [
+        "containers-aks-manifests",
+        "data-cosmos-sdk"
+      ],
+      "questions": [
+        "p-rbac-016"
+      ]
+    },
+    {
+      "objectives": [
+        "security-kql"
+      ],
+      "questions": [
+        "i-kql-code",
+        "i-kql-order",
+        "i-monitor-match",
+        "p-mon-001",
+        "p-mon-003",
+        "p-mon-005",
+        "p-mon-008",
+        "p-mon-009",
+        "p-mon-011",
+        "p-mon-013",
+        "p-mon-015",
+        "p-mon-016",
+        "p-mon-018",
+        "p-mon-019",
+        "p-mon-022",
+        "p-mon-025",
+        "p-mon-m01",
+        "p-rbac-019"
+      ]
+    },
+    {
+      "objectives": [
+        "containers-app-service",
+        "containers-aks-manifests",
+        "integrations-functions-deploy",
+        "security-key-vault"
+      ],
+      "questions": [
+        "c-tw-001"
+      ]
+    },
+    {
+      "objectives": [
+        "security-opentelemetry"
+      ],
+      "questions": [
+        "c-tw-004",
+        "c-tw-005",
+        "p-mon-002",
+        "p-mon-006",
+        "p-mon-010",
+        "p-mon-020",
+        "p-mon-024"
+      ]
+    },
+    {
+      "objectives": [],
+      "questions": [
+        "p-mon-004",
+        "p-mon-007",
+        "p-mon-012",
+        "p-mon-014",
+        "p-mon-017",
+        "p-mon-021",
+        "p-mon-023"
+      ],
+      "reason": "Platform monitoring administration and product features are outside the listed SDK tracing and KQL analysis tasks."
+    },
+    {
+      "objectives": [
+        "data-postgresql-modeling",
+        "data-postgresql-vector-indexes"
+      ],
+      "questions": [
+        "i-pg-order"
+      ]
+    }
+  ]
+}

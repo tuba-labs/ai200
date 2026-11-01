@@ -148,5 +148,35 @@
   function remainingSeconds(attempt, now = Date.now()) {
     return attempt.deadline === null ? null : Math.max(0, Math.ceil((attempt.deadline - now) / 1000));
   }
-  return {validateBank, questionPool, createAttempt, validAttempt, questionType, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, remainingSeconds, shuffle};
+  function validateObjectives(catalog, banks) {
+    const fail = () => { throw new Error('The learning objective mappings are incomplete. Reload this page to try again.'); };
+    if (!isObject(catalog) || catalog.schemaVersion !== 1 || !Array.isArray(catalog.objectives) || catalog.objectives.length !== 27 || !isObject(catalog.questions)) fail();
+    const ids = catalog.objectives.map(o => o?.id);
+    if (!unique(ids) || !catalog.objectives.every(o => isObject(o) && safeId(o.id) && [1, 2, 3, 4].includes(o.domain) && isObject(o.label) && text(o.label.en) && text(o.label.nb))) fail();
+    const questions = new Set(banks.flatMap(bank => bank.questions.map(q => q.id)));
+    if (Object.keys(catalog.questions).length !== questions.size) fail();
+    for (const [id, mapping] of Object.entries(catalog.questions)) {
+      if (!questions.has(id) || !isObject(mapping) || !Array.isArray(mapping.objectives) || !unique(mapping.objectives) || !mapping.objectives.every(id => ids.includes(id)) || !mapping.objectives.length && !text(mapping.reason)) fail();
+    }
+    return catalog;
+  }
+  function gradeObjectives(bank, attempt, catalog, options = {}) {
+    const scores = new Map(catalog.objectives.map(o => [o.id, {id: o.id, domain: o.domain, total: 0, correct: 0, unanswered: 0, percent: null}]));
+    let supporting = 0;
+    for (const item of grade(bank, attempt, options).questions) {
+      const mapping = catalog.questions[item.id];
+      if (!mapping) throw new Error('Missing learning objective mapping: ' + item.id);
+      if (!mapping.objectives.length) supporting++;
+      for (const id of mapping.objectives) {
+        const score = scores.get(id);
+        if (!score) throw new Error('Unknown learning objective: ' + id);
+        score.total++;
+        if (item.correct) score.correct++;
+        if (item.unanswered) score.unanswered++;
+      }
+    }
+    for (const score of scores.values()) if (score.total) score.percent = Math.round(score.correct / score.total * 100);
+    return {objectives: [...scores.values()], supporting};
+  }
+  return {validateBank, questionPool, createAttempt, validAttempt, questionType, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
 });

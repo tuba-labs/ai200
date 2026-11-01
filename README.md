@@ -8,7 +8,7 @@ Studieside med norsk og engelsk grensesnitt for **Developing AI Cloud Solutions 
 
 Labkildene ligger i `workshops/labs/`. Praktisk/analytisk dekning beskriver opplegget; den bekrefter ikke gjennomføring eller full eksamensdekning. Azure-øvelsene krever egen konto og kontrolleres ved gjennomføring.
 
-Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `python scripts/build.py`. Dette tømmer `.tmp/` og genererer begreper, workshopsider, kortdekning og felles hovedmeny. Tilpasninger av begreper og eksempler vedlikeholdes i `scripts/jargon_catalog.py`, `scripts/jargon_examples.py` og `scripts/jargon_relations.py`.
+Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `python scripts/build.py`. Dette tømmer `.tmp/` og genererer begreper, workshopsider, kortdekning, delmål for prøveeksamen og felles hovedmeny. Tilpasninger av begreper og eksempler vedlikeholdes i `scripts/jargon_catalog.py`, `scripts/jargon_examples.py` og `scripts/jargon_relations.py`.
 
 | Side | Innhold |
 | --- | --- |
@@ -61,6 +61,10 @@ Vanlige bygg tømmer `.tmp/` først og beholder en tom mappe som lokale tester k
 Åpne [Prøveeksamen](practice-exam.html) fra forsiden og start en prøve direkte. Spørsmålene følger med nettstedet i `practice-exam-data.js` og lastes automatisk både fra fil, localhost og den publiserte siden.
 
 Det siste forsøket lagres bare i nettleseren. Tiden fortsetter ved lukking eller oppdatering av siden. Du kan velge antall spørsmål, domener og tidsgrense; 0 minutter slår av tidtakingen. **Sjekk svar / Check answer** viser straks om det valgte svaret er riktig, markerer riktige alternativer og viser forklaringen uten å avslutte prøven. Feil svar merkes automatisk for gjennomgang, også når bare noen av de riktige alternativene er valgt. Merket lagres sammen med forsøket og kan fjernes manuelt; et senere riktig svar fjerner det ikke automatisk. Tilbakemeldingen huskes når du går tilbake eller oppdaterer siden; endrer eller tømmer du svaret, må du sjekke det på nytt. **Forhåndsvis resultat / Preview score** beregner prosent, riktige og feil svar og resultat per domene bare fra spørsmål med minst ett valgt svar. Har du svart på 100 av 359 spørsmål, beregnes forhåndsvisningen som en prøve med 100 spørsmål; de 259 ubesvarte holdes utenfor. Forhåndsvisning endrer ikke forsøket, og tiden fortsetter å gå. Ved levering vises full svaroversikt og resultat per domene, med alle spørsmål i forsøket med i poengberegningen. Prøven endrer ikke flashcard-vurderinger.
+
+Hvert spørsmål viser hvilke av forsidens 27 delmål det dekker. Etter levering vises alle delmål med prosent og antall riktige, for eksempel **75% · 3/4 spørsmål riktige**. Ubesvarte spørsmål regnes som feil; delmål uten spørsmål i forsøket vises som «Ikke testet». Spørsmål som dekker flere delmål, teller én gang for hvert av dem. Spørsmål uten direkte kobling vises som støttestoff og teller bare i samlet eksamensresultat. Forsidens manuelle avkryssinger endres ikke av prøven.
+
+Koblingene for alle 368 spørsmål i begge banker vedlikeholdes i `data/practice-exam-objectives.json`. Bygget henter de samme delmåls-ID-ene og tekstene som forsiden og lager `practice-exam-objectives.js`. Endres spørsmålsbankene, må koblingene gjennomgås og kontrollsummene oppdateres før bygget godtas. Dette er nettstedets studiekoblinger, ikke offisielle Microsoft-klassifiseringer.
 
 Vedlikeholdere kan oppdatere den medfølgende spørsmålsbanken fra prosjektroten:
 

@@ -100,7 +100,7 @@ class BuildTests(unittest.TestCase):
         with patch.object(build.subprocess, "run") as run, contextlib.redirect_stdout(io.StringIO()):
             build.build(check=True)
         self.assertEqual(marker.read_text(encoding="utf-8"), "keep")
-        self.assertEqual(run.call_count, 3)
+        self.assertEqual(run.call_count, len(build.GENERATORS))
         self.assertTrue(all(call.args[0][-1] == "--check" for call in run.call_args_list))
 
     def test_cleanup_failure_stops_the_build_before_generating_files(self):

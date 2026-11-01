@@ -1,5 +1,14 @@
 {
   "messages": [
+    ["Delmål som dekkes", "Learning objectives"],
+    ["Delmål", "Learning objective"],
+    ["Resultat per delmål", "Learning objective results"],
+    ["Resultat for denne prøven. Ubesvarte spørsmål regnes som feil. Et spørsmål som dekker flere delmål, teller én gang for hvert delmål.", "Results for this attempt. Unanswered questions count as incorrect. A question covering several objectives counts once for each."],
+    ["Støttestoff utenfor disse 27 delmålene.", "Supporting knowledge outside these 27 learning objectives."],
+    ["Spørsmål om støttestoff teller bare med i det samlede resultatet.", "Supporting knowledge questions count towards the overall score only."],
+    ["Ikke testet", "Not assessed"],
+    ["Resultat", "Result"],
+    ["1 ubesvart", "1 unanswered"],
     ["AI-200 · Egenøving", "AI-200 · Personal practice"],
     ["Velg en spørsmålsbank nedenfor. Bruk", "Choose a question bank below. Use"],
     ["for tilbakemelding og begrepshjelp, eller se gjennom alt når du er ferdig.", "for feedback and term help, or review everything when you finish."],
@@ -527,6 +536,8 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["{percent}% · {correct}/{total} spørsmål riktige", "{percent}% · {correct}/{total} questions correct"],
+    ["{count} ubesvarte", "{count} unanswered"],
     ["{completed} av {total} delmål fullført.", "{completed} of {total} learning objectives completed."],
     ["Besvarte spørsmål: {answered}. Ubesvarte spørsmål som ikke telles: {unanswered}.", "Answered questions: {answered}. Unanswered questions excluded: {unanswered}."],
     ["{count} delmål", "{count} learning objectives"],
