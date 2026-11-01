@@ -32,14 +32,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generer begreper og eksempler
-        run: python scripts/build_jargon.py
+      - name: Kontroller bygg og opprydding
+        run: python -m unittest discover -s tests -p test_build.py -v
 
-      - name: Generer det nye workshopløpet og kortkoblingene
-        run: python scripts/build_workshops.py
-
-      - name: Oppdater felles hovedmeny
-        run: python scripts/build_navigation.py
+      - name: Bygg nettstedet og tøm midlertidige filer
+        run: python scripts/build.py
 
       - name: Kontroller felles meny og egne innholdssider
         run: |

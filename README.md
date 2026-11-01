@@ -8,7 +8,7 @@ Studieside med norsk og engelsk grensesnitt for **Developing AI Cloud Solutions 
 
 Labkildene ligger i `workshops/labs/`. Praktisk/analytisk dekning beskriver opplegget; den bekrefter ikke gjennomføring eller full eksamensdekning. Azure-øvelsene krever egen konto og kontrolleres ved gjennomføring.
 
-Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `python scripts/build_workshops.py`. Dette genererer workshopsidene og kortdekningen. Tilpasninger av begreper og eksempler vedlikeholdes i `scripts/jargon_catalog.py`, `scripts/jargon_examples.py` og `scripts/jargon_relations.py`.
+Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `python scripts/build.py`. Dette tømmer `.tmp/` og genererer begreper, workshopsider, kortdekning og felles hovedmeny. Tilpasninger av begreper og eksempler vedlikeholdes i `scripts/jargon_catalog.py`, `scripts/jargon_examples.py` og `scripts/jargon_relations.py`.
 
 | Side | Innhold |
 | --- | --- |
@@ -34,20 +34,25 @@ Start med [Kom i gang](getting-started.html#for-du-starter) og [felles workshopo
 
 Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen. Eldre domenelenker på forsiden peker til delmålsoversikten.
 
-Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build_navigation.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
+Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert, uten å tømme `.tmp/` eller skrive filer. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
 
 Språk og tema byttes med flagg- og sol/måneknappene i den felles hovedmenyen. Uten et lagret språkvalg brukes norsk når nettleserens foretrukne språk er norsk (`nb`, `nn` eller `no`), ellers engelsk. Et manuelt språkvalg har prioritet og huskes mellom sidene. Norsk/engelsk gjelder hovedsidene og grensesnittet; de lengre workshoptekstene beholdes som skrevet. Spørsmål, svaralternativer, forklaringer og selve flashcardene er alltid på engelsk. Språkbytte oppdaterer teksten på stedet og bevarer pågående eksamen, svar, filtervalg og kortvurderinger. Valgene lagres lokalt i nettleseren. Uten et lagret temavalg velges lyst eller mørkt fra systeminnstillingen ved sidelasting; et manuelt valg huskes og brukes før siden tegnes. Et tidligere lagret «system»-valg behandles som automatisk valg ved sidelasting. Uten nettleserlagring virker begge knappene i den åpne fanen.
 
 Oversettelser vedlikeholdes i `data/site-translations.json`; `python scripts/build_navigation.py` lager nettleserfilen `site-translations.js`. `site.js` håndterer innstillinger og oversettelse av tekst og tilgjengelighetsetiketter. Merk innhold som skal beholde engelsk med `data-keep-english`, `lang="en"` og `translate="no"`. Kode og brukerens notater oversettes ikke. Fargene ligger i `site-theme.css`. Kontroller endringer med `node --test tests/site.test.cjs` og `python -m unittest discover -s tests -p test_navigation.py -v`.
 
-Workshopinnholdet vedlikeholdes i `scripts/workshop_curriculum.py`, mens kodeeksemplene ligger i `workshops/labs/`. Kjør generatoren etter endringer:
+## Bygg nettstedet
+
+Workshopinnholdet vedlikeholdes i `scripts/workshop_curriculum.py`, mens kodeeksemplene ligger i `workshops/labs/`. Bygg hele nettstedet etter endringer:
 
 ```powershell
-# Generer workshopsidene, filvisningene og kortdekningen.
-python scripts/build_workshops.py
+# Tøm .tmp og generer begreper, workshops, kortdekning og hovedmeny.
+python scripts/build.py
+
+# Kontroller genererte filer uten å tømme .tmp eller skrive endringer.
+python scripts/build.py --check
 ```
 
-Filpanelene viser de tilsvarende labkildene med kommentarer og har nedlastingslenker. Notater, avkryssinger og eksport håndteres av `workshops/course.js`. Git-ignorerte resultater ligger i `artifacts/`, og lokale innstillingsfiler skal fortsatt være ignorert.
+Vanlige bygg tømmer `.tmp/` først og beholder en tom mappe som lokale tester kan bruke. Byggekommandoen kan kjøres fra en annen arbeidsmappe også; oppryddingen gjelder alltid prosjektets egen `.tmp/`. GitHub Pages bruker samme byggekommando. Filpanelene viser de tilsvarende labkildene med kommentarer og har nedlastingslenker. Notater, avkryssinger og eksport håndteres av `workshops/course.js`. Git-ignorerte resultater ligger i `artifacts/`, og lokale innstillingsfiler skal fortsatt være ignorert.
 
 ## Kjør nettstedet lokalt
 
