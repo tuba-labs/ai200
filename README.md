@@ -13,7 +13,7 @@ Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `p
 | Side | Innhold |
 | --- | --- |
 | [Oversikt](index.html) | Alle 27 delmål i fire domener |
-| [Lærestoff](laerestoff.html) | Teori, pensumsider og øving |
+| [Lærestoff](laerestoff.html) | Offisielle kilder, flashcards og prøveeksamener |
 | [Eksamen](eksamen.html) | Eksamensformat, oppmelding og gjennomføring |
 | [Kom i gang](getting-started.html) | Verktøy, Python-miljø og Azure-konto |
 | [Felles workshopoppsett](workshops/setup.html) | Pakker, variabler, labfiler og opprydding |
