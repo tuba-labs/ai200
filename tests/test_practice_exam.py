@@ -1,5 +1,6 @@
 """Check extraction with invented questions and validate the committed review."""
 import copy
+from hashlib import sha256
 import importlib.util
 import json
 from pathlib import Path
@@ -123,9 +124,15 @@ class PracticeExamTests(unittest.TestCase):
         mapping, audit = exam.reviewed_duplicates(bank["questions"], bank["contexts"], review)
         self.assertEqual(mapping, bank["duplicateOf"])
         self.assertEqual(len(bank["questions"]), review["reviewedQuestionCount"])
+        self.assertEqual(bank['bankId'], sha256(json.dumps([bank['questions'], bank['contexts']], sort_keys=True).encode()).hexdigest())
         self.assertEqual(len(audit), bank["download"]["reviewedDuplicatesExcluded"])
         self.assertEqual(len(bank["questions"]) - len(mapping), bank["download"]["uniqueQuestionCount"])
         self.assertEqual(mapping["c-fb-001"], "p-sb-006")
+        self.assertEqual(mapping['p-kv-021'], 'p-kv-m01')
+        self.assertEqual(len(mapping), 33)
+        self.assertEqual(bank['download']['uniqueQuestionCount'], 326)
+        self.assertEqual(mapping['p-mon-002'], 'c-tw-004')
+        self.assertEqual(mapping['p-mon-020'], 'c-tw-004')
         self.assertTrue({"c-fb-001", "p-sb-006"}.issubset({q["id"] for q in bank["questions"]}))
         retained = {q["id"] for q in bank["questions"] if q["id"] not in mapping}
         for example in review["retainedExamples"]:
@@ -136,6 +143,26 @@ class PracticeExamTests(unittest.TestCase):
         bank = json.loads(script.split("window.AI200_EXAM_BANK = ", 1)[1].strip().removesuffix(";"))
         candidates = exam.near_duplicates(bank["questions"])
         self.assertIn({"p-sb-006", "c-fb-001"}, [set(pair["ids"]) for pair in candidates])
+
+    def test_answer_containment_finds_narrow_variants_inside_longer_answers(self):
+        questions = [
+            {'id': 'short', 'service': 'Example broker', 'prompt': 'How is successful work acknowledged?',
+             'options': [{'id': 'A', 'text': 'Complete removes a processed message.'}], 'correctAnswers': ['A']},
+            {'id': 'combined', 'service': 'Example broker', 'prompt': 'Match all processing outcomes to their settlement actions.',
+             'options': [{'id': 'A', 'text': 'Complete removes a processed message. Abandon releases a lock for redelivery. Defer retains pending work for later retrieval. Dead-letter isolates unusable payloads for investigation.'}], 'correctAnswers': ['A']},
+        ]
+        candidates = exam.near_duplicates(questions)
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]['answerContainment'], 1)
+        self.assertLess(candidates[0]['similarity'], .55)
+
+    def test_field_names_and_case_variants_are_candidates_but_never_removed_without_review(self):
+        script = (ROOT / 'practice-exam-data.js').read_text(encoding='utf-8')
+        bank = json.loads(script.split('window.AI200_EXAM_BANK = ', 1)[1].strip().removesuffix(';'))
+        pairs = [set(pair['ids']) for pair in exam.near_duplicates(bank['questions'])]
+        self.assertIn({'p-mon-002', 'c-tw-004'}, pairs)
+        # Identical answer terms can still represent different operational rules.
+        self.assertNotIn('p-eh-008', bank['duplicateOf'])
 
 
 if __name__ == "__main__":

@@ -123,6 +123,60 @@ test('reviewed paraphrases are excluded from new exams while existing saved atte
   }
 });
 
+test('resuming a full legacy exam removes repeated groups without changing its bank identity or timer', () => {
+  const context={window:{}};
+  vm.runInNewContext(readFileSync(path.join(__dirname,'../practice-exam-data.js'),'utf8'),context);
+  const source=rules.validateBank(context.window.AI200_EXAM_BANK);
+  const saved=rules.createAttempt(source,{count:1,minutes:100},1000);
+  saved.ids=source.questions.map(q=>q.id);
+  for(const q of source.questions) saved.answers[q.id]=Array.from(q.correctAnswers);
+  saved.index=saved.ids.indexOf('p-kv-021');
+  const before=JSON.stringify(saved),cleaned=rules.removeAttemptDuplicates(source,saved);
+  assert.equal(cleaned.removed,33); assert.equal(cleaned.attempt.ids.length,326);
+  assert.equal(cleaned.attempt.bankId,saved.bankId);assert.equal(cleaned.attempt.deadline,saved.deadline);
+  assert.equal(cleaned.attempt.startedAt,saved.startedAt);assert.equal(JSON.stringify(saved),before);
+  assert.ok(cleaned.attempt.ids.includes('p-kv-m01'));assert.ok(!cleaned.attempt.ids.includes('p-kv-021'));
+  assert.equal(cleaned.attempt.duplicateArchive.length,33);
+  assert.equal(rules.grade(source,cleaned.attempt).percent,100);
+  assert.equal(rules.validAttempt(JSON.parse(JSON.stringify(cleaned.attempt)),source),true);
+  for(const [duplicate,canonical] of Object.entries(source.duplicateOf))assert.ok(!cleaned.attempt.ids.includes(duplicate)||!cleaned.attempt.ids.includes(canonical));
+  assert.equal(rules.removeAttemptDuplicates(source,cleaned.attempt).removed,0);
+});
+
+test('resume keeps an answered variant with its own option letters and carries review flags across its group', () => {
+  const source=bank(),saved=rules.createAttempt(source,{count:3,randomOrder:false},1000);
+  source.duplicateOf={three:'one'};
+  saved.answers.three=['B'];saved.checked=['three'];saved.flagged=['one'];saved.index=saved.ids.indexOf('one');
+  const {attempt,removed}=rules.removeAttemptDuplicates(source,saved);
+  assert.equal(removed,1);assert.ok(attempt.ids.includes('three'));assert.ok(!attempt.ids.includes('one'));
+  assert.deepEqual(attempt.answers,{three:['B']});assert.deepEqual(attempt.checked,['three']);
+  assert.deepEqual(attempt.flagged,['three']);assert.equal(attempt.ids[attempt.index],'three');
+  assert.equal(rules.grade(source,attempt).correct,1);assert.ok(rules.validAttempt(attempt,source));
+  assert.deepEqual(attempt.duplicateArchive,[{id:'one',keptId:'three',answer:[],checked:false,flagged:true}]);
+});
+
+test('when both variants were answered, canonical scoring is retained and the other answer is archived', () => {
+  const source=bank(),saved=rules.createAttempt(source,{count:3,randomOrder:false},1000);
+  source.duplicateOf={three:'one'};
+  saved.answers={one:['A'],three:['B']};saved.checked=['one','three'];saved.flagged=['three'];
+  saved.index=saved.ids.indexOf('three');
+  const {attempt}=rules.removeAttemptDuplicates(source,saved);
+  assert.deepEqual(attempt.answers,{one:['A']});assert.deepEqual(attempt.checked,['one']);
+  assert.deepEqual(attempt.flagged,['one']);assert.equal(attempt.ids[attempt.index],'two');
+  assert.deepEqual(attempt.duplicateArchive,[{id:'three',keptId:'one',answer:['B'],checked:true,flagged:true}]);
+});
+
+test('completed results and a lone variant without its peer are preserved exactly', () => {
+  const source=bank(),saved=rules.createAttempt(source,{count:3,randomOrder:false},1000);
+  source.duplicateOf={three:'one'};
+  saved.submittedAt=2000;
+  assert.equal(rules.removeAttemptDuplicates(source,saved).attempt,saved);
+  assert.equal(rules.removeAttemptDuplicates(source,saved).removed,0);
+  const lone={...saved,ids:['three'],index:0,submittedAt:null};
+  assert.equal(rules.removeAttemptDuplicates(source,lone).attempt,lone);
+  assert.equal(rules.removeAttemptDuplicates(source,lone).removed,0);
+});
+
 test('selection uses only included source questions, without repeats, and keeps cases together', () => {
   const source = bank(), before = JSON.stringify(source);
   const attempt = rules.createAttempt(source, {count: 3, minutes: 0, randomOrder: false}, 1000);

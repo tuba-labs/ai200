@@ -2,17 +2,19 @@
   "schemaVersion": 1,
   "reviewedAt": "2026-11-01",
   "reviewedQuestionCount": 359,
-  "criteria": "Exclude paraphrases that ask for the same decision or rule, including case-study variants and single/multiple-answer variants with the same required facts. Keep related questions when a new constraint, operation, permission or additional required fact changes the answer.",
+  "criteria": "Exclude paraphrases that ask for the same decision or rule. Also consolidate narrower questions when a retained question explicitly tests all their required facts, including single/multiple-answer and case variants. Keep related questions when a different product configuration, operation, rule, permission or material constraint changes the required decision. Similarity scores produce review candidates only; never merge automatically.",
   "groups": [
     {
       "keep": "p-ca-003",
       "duplicates": [
-        "p-ca-021"
+        "p-ca-021",
+        "p-ca-025"
       ],
-      "reason": "Both identify the Container Apps environment as the VNet boundary shared by all its apps.",
+      "reason": "Both identify the Container Apps environment as the VNet boundary shared by all its apps. The environment question already identifies its Log Analytics workspace. The separate destination question repeats that same configuration fact; naming console/system logs does not change the destination.",
       "fingerprints": {
         "p-ca-003": "8a09510f17abf3c44a29fffa2f7bbff8f816437cb3953c176e7d958405dae112",
-        "p-ca-021": "ec6dc7fdb5c0ca353ecfaab5e085513a65a309cfc5e69a64c3e00042f860797a"
+        "p-ca-021": "ec6dc7fdb5c0ca353ecfaab5e085513a65a309cfc5e69a64c3e00042f860797a",
+        "p-ca-025": "0689097d4f9198004782f293831ae76e14872aa1f9a53f1d7469317962763cb9"
       }
     },
     {
@@ -84,12 +86,14 @@
     {
       "keep": "p-eh-003",
       "duplicates": [
-        "c-fb-005"
+        "c-fb-005",
+        "p-eh-002"
       ],
-      "reason": "Both preserve per-device ordering by using the device or vehicle ID as the Event Hubs partition key.",
+      "reason": "Both preserve per-device ordering by using the device or vehicle ID as the Event Hubs partition key. The per-device item requires events to share a partition to preserve ordering. The standalone within-partition ordering item repeats that underlying guarantee; retain the applied partition-key question.",
       "fingerprints": {
         "p-eh-003": "bcda38e41a2cbe8dc9a7f3f010cd5f8bf5fddabf53dab8e2c60ad844d89b5cb9",
-        "c-fb-005": "3eca8f3b8091a297f93ff61489fd3aaf0e79c3c362d075ad26fe1af1e34b9a51"
+        "c-fb-005": "3eca8f3b8091a297f93ff61489fd3aaf0e79c3c362d075ad26fe1af1e34b9a51",
+        "p-eh-002": "d24d525214b2184b978debb860de2cbe45abe8f648b7bfb38085328a60696c75"
       }
     },
     {
@@ -161,12 +165,14 @@
     {
       "keep": "p-mon-m01",
       "duplicates": [
-        "p-mon-015"
+        "p-mon-015",
+        "p-mon-005"
       ],
-      "reason": "Both contrast cheap, fast pre-aggregated metric alerts with more expressive but slower scheduled KQL log alerts.",
+      "reason": "Both contrast cheap, fast pre-aggregated metric alerts with more expressive but slower scheduled KQL log alerts. The alert comparison already explicitly identifies scheduled KQL evaluation as a log search alert. The standalone alert-type question repeats that fact without a new alert condition or query.",
       "fingerprints": {
         "p-mon-m01": "e0bcf2a710aed885c3b6b9dd1fc39e665fd635b866c57dd6c09a0164d8b554da",
-        "p-mon-015": "cb83adf4172f1dab83dfade7f1def4ab3741d135eda6afc7c7e9283e49e999cb"
+        "p-mon-015": "cb83adf4172f1dab83dfade7f1def4ab3741d135eda6afc7c7e9283e49e999cb",
+        "p-mon-005": "60e9e1bbb205fab606c33e103b9848ef060bef37f74028a0591dfeb10f486d6c"
       }
     },
     {
@@ -201,19 +207,134 @@
         "p-acr-005": "208adad0aa41329554ad990acefc0e4c8496ca36023ffcb7686f4aebe82dae5b",
         "p-rbac-023": "110968dc6ab475a459f496051a1f5b5aad6a1e4e37689dd62b70666faa226ef9"
       }
+    },
+    {
+      "keep": "p-rd-m01",
+      "duplicates": [
+        "p-red-011"
+      ],
+      "reason": "Both address a cache stampede when a hot key expires by locking while one caller repopulates it. Keep the fuller question, which also tests TTL jitter.",
+      "fingerprints": {
+        "p-rd-m01": "5871c47985f72649d75ac0812f359df406a2ed46edf8764987324c677c98c78f",
+        "p-red-011": "2dccd83460064ac22d66410a67cb6d90c12f4a90e7772c1ec13ac968c99cc22d"
+      }
+    },
+    {
+      "keep": "p-eg-m01",
+      "duplicates": [
+        "p-eg-004"
+      ],
+      "reason": "The two-answer item includes the complete at-least-once/idempotent-handler fact tested by the delivery-guarantee item, and additionally tests dead-letter preservation.",
+      "fingerprints": {
+        "p-eg-m01": "cc03610faa1969830f5453d2d5c0872b068e6770657df7d8646b70b77bfe4072",
+        "p-eg-004": "787bc1a3d354d9e8611f7414db2ab19bed58e8f1ca89e0adf0fad01351e7b8f7"
+      }
+    },
+    {
+      "keep": "p-sb-m01",
+      "duplicates": [
+        "p-sb-023"
+      ],
+      "reason": "The comprehensive item tests both automatic dead-letter conditions. The before-first-delivery variant narrows the answer to its TTL-expiry condition without adding a new configuration rule.",
+      "fingerprints": {
+        "p-sb-m01": "d140be77279bd142e5d2ccceca58cc35c512457c785a63351546a940b5ec174a",
+        "p-sb-023": "93ee2b6fde2939d8089cfc57b1ffcdd7c23fc5b8290a98295553456ad318d8e2"
+      }
+    },
+    {
+      "keep": "c-fb-003",
+      "duplicates": [
+        "p-sb-003",
+        "p-sb-015"
+      ],
+      "reason": "The billing case explicitly requires both publisher duplicate detection and consumer idempotency using processed MessageIds. The individual questions repeat those same controls; keep the combined case.",
+      "fingerprints": {
+        "c-fb-003": "40c82ee4a7ee9f577b1cb169ad2cc76a1ae8493c1500f73ba586ba17caaf50b3",
+        "p-sb-003": "a40ba530349e621fee71b72c1866b3b638ddea9ecc8375fc866c513234a6d9af",
+        "p-sb-015": "9e2edc8775504755f4b86ca456853d1165b2189bdea19a04ed51020af90b08b4"
+      }
+    },
+    {
+      "keep": "p-rbac-m01",
+      "duplicates": [
+        "p-rbac-003",
+        "p-rbac-004"
+      ],
+      "reason": "The two-answer item explicitly tests additive/inherited allow permissions and deny precedence. The Reader/Contributor example and the deny-mechanism question repeat those rules without adding a new scope or evaluation rule.",
+      "fingerprints": {
+        "p-rbac-m01": "5c549e43e3c8a28441413eb80612778fa61368f963323b814f75b94b32885d56",
+        "p-rbac-003": "c00d955a3186cf37f57c849bb8579c81f14c7caca6d8218b765f28c79e4a2853",
+        "p-rbac-004": "ae122dd268b76a6f1b8d10feb0cb05f0d1daf78a4ef90d7e17dd57b0773825bf"
+      }
+    },
+    {
+      "keep": "c-tw-004",
+      "duplicates": [
+        "p-mon-002",
+        "p-mon-020"
+      ],
+      "reason": "The tracing case explicitly requires cloud_RoleName for service attribution and operation_Id for request correlation. The individual field questions repeat exactly these two facts.",
+      "fingerprints": {
+        "c-tw-004": "119cab0f38820b15e1a24b6f4e3649ee7bee68702749c72d733e799f2ddf16fa",
+        "p-mon-002": "bc4f2c443f95d1931a6e67f2b465680ba0d175f371ce89f5e7ca52495eccc8f8",
+        "p-mon-020": "b1ae02fd64e06a21022e0c287a4dab381733fab3143773fe967d55a5364639b7"
+      }
+    },
+    {
+      "keep": "p-aks-m01",
+      "duplicates": [
+        "p-aks-013"
+      ],
+      "reason": "The two-probe item already requires readiness to stop routing traffic to an unhealthy pod. The rolling-update/502 variant repeats that readiness role, while the retained item also tests startup behavior.",
+      "fingerprints": {
+        "p-aks-m01": "37eee127cbae31d9662ee26ac1bda8c142cb6ea2762508dddf84aac7596f19bd",
+        "p-aks-013": "1fdf50a199a8b1512a2306e0cef929500d1b7bc6a3c6fffeced3e1ebe96a79e1"
+      }
+    },
+    {
+      "keep": "c-nw-002",
+      "duplicates": [
+        "p-kv-010"
+      ],
+      "reason": "The case already explicitly requires mounting Key Vault secrets with the Secrets Store CSI Driver. The standalone mounted-files question adds no different delivery mechanism; the case additionally tests workload identity.",
+      "fingerprints": {
+        "c-nw-002": "d2a8d0ecabc0689cad044545aa87a3132e8f1c55642b07464b719146b5666c51",
+        "p-kv-010": "fba5af82a6815bb7646839999d545e5ac619f791730cc9ab90d0dd872ac2b93d"
+      }
+    },
+    {
+      "keep": "c-fb-004",
+      "duplicates": [
+        "p-eh-005"
+      ],
+      "reason": "Both give independent consumers separate consumer groups so each reads the stream. The case includes that exact decision and also tests replay retention.",
+      "fingerprints": {
+        "c-fb-004": "b865eaf72d85b80233b7470b51c707792d436c40ac370765d193369e930d7e1e",
+        "p-eh-005": "f2c144d758d380bf75a4e2986d8c2738c0eb4a5f7f02857a7494feb821581f54"
+      }
     }
   ],
   "retainedExamples": [
     {
-      "ids": ["p-red-007", "p-pg-008"],
+      "ids": [
+        "p-red-007",
+        "p-pg-008"
+      ],
       "reason": "Redis and PostgreSQL require different service-specific authentication configuration; PostgreSQL also requires supplying the Entra token as the protocol password."
     },
     {
-      "ids": ["p-eh-001", "p-eh-008"],
+      "ids": [
+        "p-eh-001",
+        "p-eh-008"
+      ],
       "reason": "The consumer-parallelism bound and the inability to reduce a deployed partition count are different operational rules."
     },
     {
-      "ids": ["p-acr-004", "c-nw-003", "p-kv-009"],
+      "ids": [
+        "p-acr-004",
+        "c-nw-003",
+        "p-kv-009"
+      ],
       "reason": "Diagnosing registry connectivity, designing a private registry and connecting privately to Key Vault have different service targets and configuration constraints."
     },
     {
@@ -232,13 +353,6 @@
     },
     {
       "ids": [
-        "p-ca-003",
-        "p-ca-025"
-      ],
-      "reason": "The environment/VNet boundary and the console/system log destination are distinct attributes; the logging question also identifies the log categories."
-    },
-    {
-      "ids": [
         "p-pg-002",
         "p-pg-m01"
       ],
@@ -246,48 +360,68 @@
     },
     {
       "ids": [
-        "p-red-011",
-        "p-rd-m01"
+        "p-kv-m01",
+        "p-kv-003",
+        "p-kv-004"
       ],
-      "reason": "The multiple-answer stampede question additionally requires TTL jitter, beyond the single-key locking remedy."
+      "reason": "Customer-managed-key prerequisites, deleted-secret recovery and the effect of purge protection test different rules even though they name the same settings."
     },
     {
       "ids": [
-        "p-eg-004",
-        "p-eg-m01"
+        "p-eh-007",
+        "p-eh-009"
       ],
-      "reason": "The multiple-answer question adds dead-letter preservation to the delivery/idempotency guarantee."
+      "reason": "Naming the automatic Standard-tier scaling setting differs from diagnosing throughput-unit capacity from throttling metrics."
     },
     {
       "ids": [
-        "p-sb-003",
-        "p-sb-015",
-        "c-fb-003"
+        "p-aks-011",
+        "p-ca-011"
       ],
-      "reason": "Publisher retry deduplication, consumer redelivery idempotency and the combined billing failure have different failure boundaries and required controls."
+      "reason": "An AKS storage class and a Container Apps environment storage mount require different platform configuration, even though both use Azure Files."
     },
     {
       "ids": [
-        "p-sb-m01",
-        "p-sb-023"
+        "p-kv-001",
+        "p-kv-006"
       ],
-      "reason": "The before-first-delivery constraint rules out MaxDeliveryCount, so the latter question requires TTL expiry alone."
+      "reason": "Diagnosing secret-reference authorization can require Get access under an access policy; choosing a least-privilege RBAC data role is a different configuration decision."
     },
     {
       "ids": [
-        "p-mon-002",
-        "p-mon-020",
-        "c-tw-004"
+        "p-pg-004",
+        "p-pg-022"
       ],
-      "reason": "Request correlation and service attribution use different fields; the case requires both changes together."
+      "reason": "Tuning a query-time HNSW search parameter differs from designing indexes for tenant-filtered similarity queries."
     },
     {
       "ids": [
-        "p-rbac-003",
-        "p-rbac-004",
-        "p-rbac-m01"
+        "p-aks-003",
+        "p-aks-009",
+        "c-nw-004"
       ],
-      "reason": "Computing inherited effective access, identifying a deny mechanism and evaluating both rules together have different required answers."
+      "reason": "Correcting a Pending pod can involve lowering its resource request. Identifying the node autoscaler and designing Spot versus regular node pools test additional operational decisions."
+    },
+    {
+      "ids": [
+        "p-eg-002",
+        "p-eg-017"
+      ],
+      "reason": "Native delivery destinations that skip validation are different from the source service producing blob lifecycle events."
+    },
+    {
+      "ids": [
+        "p-rd-m01",
+        "p-red-025"
+      ],
+      "reason": "Stampede prevention using TTL jitter and locking is different from the command that reads a remaining expiry."
     }
-  ]
+  ],
+  "expandedReview": {
+    "reason": "Additional answer-subset and same-concept checks after a repeated Key Vault customer-managed-key question was reported. That exact variant was already excluded from new exams; old saved attempts could still contain it.",
+    "previousExcluded": 18,
+    "additionalExcluded": 15,
+    "preservedSourceQuestions": 359,
+    "remainingCandidatesReviewed": 11
+  }
 }

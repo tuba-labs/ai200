@@ -101,6 +101,38 @@
     return attempt.checked === undefined || Array.isArray(attempt.checked) && unique(attempt.checked) && attempt.checked.every(id => attempt.ids.includes(id) && hasAnswer(attempt.answers[id]));
   }
   function questionType(question) { return question.type || 'choice'; }
+  function removeAttemptDuplicates(bank, attempt) {
+    if (!validAttempt(attempt, bank)) throw new Error('This attempt does not match the loaded bank.');
+    // Submitted results remain a record of the original exam.
+    if (attempt.submittedAt !== null) return {attempt, removed: 0};
+    const groups = new Map();
+    for (const id of attempt.ids) {
+      const key = bank.duplicateOf?.[id] || id;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(id);
+    }
+    const retained = new Set(), replacements = new Map();
+    for (const [canonical, ids] of groups) {
+      // Keep an actual answered variant, rather than copying option letters
+      // between paraphrases whose option order and answer count can differ.
+      const answered = ids.filter(id => hasAnswer(attempt.answers[id]));
+      const keep = answered.includes(canonical) ? canonical : answered[0] || (ids.includes(canonical) ? canonical : ids[0]);
+      retained.add(keep);
+      ids.filter(id => id !== keep).forEach(id => replacements.set(id, keep));
+    }
+    if (!replacements.size) return {attempt, removed: 0};
+    const ids = attempt.ids.filter(id => retained.has(id)), oldIndex = attempt.index;
+    const current = attempt.ids[oldIndex];
+    const nextId = retained.has(current) ? current : attempt.ids.slice(oldIndex).find(id => retained.has(id)) || ids[ids.length - 1];
+    const next = {...attempt, ids, index: ids.indexOf(nextId), answers: {},
+      checked: (attempt.checked || []).filter(id => retained.has(id)), flagged: [],
+      duplicateArchive: [...(Array.isArray(attempt.duplicateArchive) ? attempt.duplicateArchive : [])]};
+    for (const [id, answer] of Object.entries(attempt.answers)) if (retained.has(id)) next.answers[id] = answer.slice();
+    next.flagged = [...new Set(attempt.flagged.map(id => replacements.get(id) || id))];
+    for (const [id, keptId] of replacements) next.duplicateArchive.push({id, keptId,
+      answer: (attempt.answers[id] || []).slice(), checked: (attempt.checked || []).includes(id), flagged: attempt.flagged.includes(id)});
+    return {attempt: next, removed: replacements.size};
+  }
   function hasAnswer(answer) { return Array.isArray(answer) && answer.some(value => Boolean(value)); }
   function validAnswer(question, answer) {
     if (!Array.isArray(answer)) return false;
@@ -178,5 +210,5 @@
     for (const score of scores.values()) if (score.total) score.percent = Math.round(score.correct / score.total * 100);
     return {objectives: [...scores.values()], supporting};
   }
-  return {validateBank, questionPool, createAttempt, validAttempt, questionType, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
+  return {validateBank, questionPool, createAttempt, validAttempt, questionType, removeAttemptDuplicates, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
 });

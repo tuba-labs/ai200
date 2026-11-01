@@ -18,11 +18,12 @@ window.AI200_EXAM_BANK = {
     "taggedQuestions": 359,
     "exactDuplicatesRemoved": 0,
     "questionCount": 359,
-    "uniqueQuestionCount": 341,
-    "reviewedDuplicatesExcluded": 18
+    "uniqueQuestionCount": 326,
+    "reviewedDuplicatesExcluded": 33
   },
   "duplicateOf": {
     "p-ca-021": "p-ca-003",
+    "p-ca-025": "p-ca-003",
     "p-ca-m01": "p-ca-002",
     "p-acr-024": "p-ca-014",
     "c-ct-004": "p-cos-005",
@@ -30,6 +31,7 @@ window.AI200_EXAM_BANK = {
     "c-fb-001": "p-sb-006",
     "c-fb-002": "p-sb-002",
     "c-fb-005": "p-eh-003",
+    "p-eh-002": "p-eh-003",
     "p-eh-024": "p-eh-001",
     "c-fb-006": "p-eg-013",
     "c-tw-006": "p-kv-006",
@@ -37,9 +39,22 @@ window.AI200_EXAM_BANK = {
     "p-kv-021": "p-kv-m01",
     "p-kv-025": "c-tw-003",
     "p-mon-015": "p-mon-m01",
+    "p-mon-005": "p-mon-m01",
     "c-tw-005": "p-mon-006",
     "p-mon-014": "p-aks-012",
-    "p-rbac-023": "p-acr-005"
+    "p-rbac-023": "p-acr-005",
+    "p-red-011": "p-rd-m01",
+    "p-eg-004": "p-eg-m01",
+    "p-sb-023": "p-sb-m01",
+    "p-sb-003": "c-fb-003",
+    "p-sb-015": "c-fb-003",
+    "p-rbac-003": "p-rbac-m01",
+    "p-rbac-004": "p-rbac-m01",
+    "p-mon-002": "c-tw-004",
+    "p-mon-020": "c-tw-004",
+    "p-aks-013": "p-aks-m01",
+    "p-kv-010": "c-nw-002",
+    "p-eh-005": "c-fb-004"
   },
   "sets": [
     {

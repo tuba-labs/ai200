@@ -563,6 +563,8 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["Hoppet over {count} gjentatt spørsmål i denne lagrede prøven.", "Skipped {count} repeated question in this saved exam."],
+    ["Hoppet over {count} gjentatte spørsmål i denne lagrede prøven.", "Skipped {count} repeated questions in this saved exam."],
     ["Hele delmål {number}", "Full wording for objective {number}"],
     ["{percent}% · {correct}/{total} spørsmål riktige", "{percent}% · {correct}/{total} questions correct"],
     ["{count} ubesvarte", "{count} unanswered"],

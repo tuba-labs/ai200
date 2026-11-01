@@ -1,7 +1,7 @@
 {
   "reviewedAt": "2026-11-01",
   "source": "https://www.mightybs.com/certifications/ai-200/exam/",
-  "scope": "43 interactive items: 10 build lists, 16 matching items and 17 dropdown items; compared with all 359 local source questions, including the 341 active questions.",
+  "scope": "43 interactive items: 10 build lists, 16 matching items and 17 dropdown items; compared with all 359 local source questions, including the 326 active questions.",
   "method": "Lexical candidate ranking followed by manual comparison of required decisions, answer keys and case constraints. Similarity alone is not treated as a duplicate. Source IDs are stable data IDs, not shuffled screen numbers.",
   "nearDuplicates": [
     {
@@ -139,7 +139,12 @@
   "result": "No verbatim duplicates found. Four near-duplicates and nine partial overlaps are reported separately. No MightyBS question text was imported; reuse permission was not established. The new local interactive bank is independently authored.",
   "limitations": "A manual semantic review is not a mathematical guarantee. Shared terminology alone does not imply equivalent questions. Recheck if either source bank changes.",
   "snapshots": {
-    "localBankSha256": "0482d449b6121a0e700bec7678c763f97a09f6f18584d21cb2819d1311bd1a94",
+    "localBankSha256": "bd07ffb6e126d98281d9429610689f79588b6d75e0741f7342b5e894c0e01b6e",
     "sourceDataSha256": "a38ab9c483f63b6a3182cccf6fdc92e4456eab31c4211f6726e2796120c9b348"
+  },
+  "localPoolUpdate": {
+    "activeQuestionCount": 326,
+    "excludedDuplicates": 33,
+    "note": "Source questions, answer keys and cases are unchanged. The snapshot hash was refreshed after updating only duplicate exclusions and pool counts."
   }
 }

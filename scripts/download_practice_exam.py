@@ -199,7 +199,13 @@ def near_duplicates(questions):
     # Candidate generation only. Reviewed semantic matches, not scores, decide
     # which questions are excluded from new attempts.
     stop = set("a an and are as at be by for from how in is it its of on or that the their then this to what when which with you your".split())
-    tokens = lambda text: Counter(word for word in re.findall(r"[a-z0-9]+", normalized(text)) if word not in stop)
+    def tokens(text):
+        # Keep field names comparable to prose (readinessProbe / readiness probe,
+        # MessageId / Message IDs), including narrower single-answer variants.
+        text = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', text)
+        words = re.findall(r"[a-z0-9]+", normalized(text))
+        return Counter(word[:-1] if len(word) > 3 and word.endswith('s') and not word.endswith('ss') else word
+                       for word in words if word not in stop)
     documents = [(tokens(q["prompt"]), tokens(" ".join(o["text"] for o in q["options"] if o["id"] in q["correctAnswers"]))) for q in questions]
     frequency = Counter(word for prompt, answer in documents for word in (prompt | answer))
     weights = {word: log((len(questions) + 1) / (count + 1)) + 1 for word, count in frequency.items()}
@@ -217,9 +223,18 @@ def near_duplicates(questions):
             prompt_score = cosine(vectors[i][0], vectors[j][0])
             answer_score = cosine(vectors[i][1], vectors[j][1])
             score = (prompt_score + 2 * answer_score) / 3
-            if score >= .55:
+            left, right = documents[i][1], documents[j][1]
+            shared = sum(weights[word] for word in left.keys() & right.keys())
+            shorter = min(sum(weights[word] for word in left), sum(weights[word] for word in right))
+            containment = shared / shorter if shorter else 0
+            # A long combined answer can contain all of a short answer's facts
+            # while having low cosine similarity. Product and length guards
+            # avoid treating generic one-word answers as automatic matches.
+            subset = containment >= .8 and a.get('service') == questions[j].get('service') and min(len(left), len(right)) >= 2
+            if score >= .55 or subset:
                 pairs.append({"ids": [a["id"], questions[j]["id"]], "similarity": round(score, 3),
-                              "promptSimilarity": round(prompt_score, 3), "answerSimilarity": round(answer_score, 3)})
+                              "promptSimilarity": round(prompt_score, 3), "answerSimilarity": round(answer_score, 3),
+                              "answerContainment": round(containment, 3)})
     return sorted(pairs, key=lambda pair: -pair["similarity"])
 
 

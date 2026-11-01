@@ -3,7 +3,7 @@
   "reviewedAt": "2026-11-01",
   "method": "Question-level study mappings to the 27 homepage objectives. Multiple objectives are used only when the required answer tests multiple skills. Supporting questions with no direct match remain in the overall exam score only. These mappings are study guidance, not official Microsoft question classifications.",
   "bankHashes": {
-    "practice-exam-data.js": "0482d449b6121a0e700bec7678c763f97a09f6f18584d21cb2819d1311bd1a94",
+    "practice-exam-data.js": "bd07ffb6e126d98281d9429610689f79588b6d75e0741f7342b5e894c0e01b6e",
     "practice-exam-interactive-data.js": "89816c6f2a377ace0acf064e518740d9232e506927d48c4bfa8d58406671f14b"
   },
   "groups": [

@@ -55,6 +55,11 @@
     const saved = restore ? read(ATTEMPT_KEY) : null;
     attempt = rules.validAttempt(saved, bank) ? saved : null;
     if (attempt) attempt.checked ||= [];
+    if (attempt) {
+      const cleaned = rules.removeAttemptDuplicates(bank, attempt);
+      attempt = cleaned.attempt;
+      if (cleaned.removed) saveAttempt();
+    }
     if (attempt && attempt.submittedAt !== null) renderResults();
     else if (attempt) { showExam(); tick(); focusQuestion(); }
     else showSetup();
@@ -79,6 +84,9 @@
   function showExam() {
     $('setup-panel').hidden = true;
     $('exam-panel').hidden = false; $('results-panel').hidden = true;
+    const skipped = attempt.duplicateArchive?.length || 0;
+    $('duplicate-notice').hidden = skipped === 0;
+    $('duplicate-notice').textContent = skipped ? `Skipped ${skipped} repeated question${skipped === 1 ? '' : 's'} in this saved exam.` : '';
     renderQuestion(); clearInterval(clock); clock = setInterval(tick, 1000);
   }
   function caseBlock(id, open = true) {
