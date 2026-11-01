@@ -42,6 +42,8 @@ def attach_navigation(html, prefix="./", current=None):
                       f'\n  <script src="{prefix}site-translations.js" defer></script>', html, count=1)
     if "data-site-theme" not in html:
         html = html.replace("</head>", f'  <link rel="stylesheet" href="{prefix}site-theme.css" data-site-theme>\n</head>', 1)
+    if "data-site-analytics" not in html:
+        html = html.replace("</head>", f'  <script src="{prefix}site-analytics.js" data-site-analytics></script>\n</head>', 1)
     html = html.replace('<meta name="color-scheme" content="light">', '<meta name="color-scheme" content="light dark">')
     return html
 

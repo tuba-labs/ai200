@@ -30,6 +30,7 @@
     catch { $('storage-notice').hidden = false; }
   };
   const saveAttempt = () => write(ATTEMPT_KEY, attempt);
+  const recordAnswer = (id, method) => window.AI200Analytics?.questionAnswered(bank, attempt, questions.get(id), method) || false;
   function rememberAnswers(value, sourceBank, ids = Object.keys(value.answers)) {
     const byId = new Map(sourceBank.questions.map(question => [question.id, question]));
     let changed = false;
@@ -224,6 +225,7 @@
   function navigate(index) {
     if (!attempt || attempt.submittedAt !== null || index < 0 || index >= attempt.ids.length) return;
     if (expired()) return;
+    if (index !== attempt.index) recordAnswer(attempt.ids[attempt.index], 'navigation');
     attempt.index = index; saveAttempt(); renderQuestion(); focusQuestion();
   }
   function expired() {
@@ -243,6 +245,7 @@
   }
   function submit(timedOut = false) {
     if (!attempt || attempt.submittedAt !== null) return;
+    for (const id of attempt.ids) recordAnswer(id, timedOut ? 'timeout' : 'finish');
     attempt.submittedAt = Date.now(); attempt.timedOut = timedOut;
     clearInterval(clock); saveAttempt();
     if ($('finish-dialog').open) $('finish-dialog').close();
@@ -312,6 +315,7 @@
     if (!attempt || attempt.submittedAt !== null || expired()) return;
     const id = attempt.ids[attempt.index];
     if (!rules.hasAnswer(selected(id))) return;
+    recordAnswer(id, 'check_answer');
     rules.checkAnswer(bank, attempt);
     $('flag-question').checked = attempt.flagged.includes(id);
     saveAttempt(); renderFeedback(); updateProgress(); focus($('feedback-heading'));
@@ -345,6 +349,9 @@
   $('submit-exam').addEventListener('click', () => { if (!expired()) submit(); });
   document.addEventListener('visibilitychange', tick);
   window.addEventListener('pageshow', tick);
+  window.addEventListener('pagehide', () => {
+    if (attempt && attempt.submittedAt === null && recordAnswer(attempt.ids[attempt.index], 'page_exit')) saveAttempt();
+  });
   window.addEventListener('jargon:ready', () => { if (attempt && attempt.submittedAt === null) renderGlossary(questions.get(attempt.ids[attempt.index])); });
   window.addEventListener('site:languagechange', () => { if (attempt && attempt.submittedAt === null) renderQuestion(); });
   $('bank-select').addEventListener('change', () => {

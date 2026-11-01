@@ -55,6 +55,20 @@ python scripts/build.py --check
 
 Vanlige bygg tømmer `.tmp/` først og beholder en tom mappe som lokale tester kan bruke. Byggekommandoen kan kjøres fra en annen arbeidsmappe også; oppryddingen gjelder alltid prosjektets egen `.tmp/`. GitHub Pages bruker samme byggekommando. Filpanelene viser de tilsvarende labkildene med kommentarer og har nedlastingslenker. Notater, avkryssinger og eksport håndteres av `workshops/course.js`. Git-ignorerte resultater ligger i `artifacts/`, og lokale innstillingsfiler skal fortsatt være ignorert.
 
+## Google Analytics
+
+Alle 28 nåværende sider bruker `site-analytics.js` med GA4-måle-ID **G-T4V86T1NFD**. Den felles byggingen legger inn skriptet også på genererte workshop- og begrepssider. Åpning fra fil, localhost og loopback-adresser laster ikke Google-taggen og sender ingen hendelser.
+
+| Hendelse | Når | Parametere |
+| --- | --- | --- |
+| `page_view` | Standard sidevisning fra Google-taggen, konfigurert én gang per dokument. | Sidens adresse og henviser uten spørringsstreng eller fragment. |
+| `question_answered` | Første gang et besvart spørsmål sjekkes, forlates eller leveres i et forsøk. Utløpt tid og lukking av siden tas med. | `question_id`, `question_type`, `question_bank`, `domain`, `correct` (0/1), `method`. |
+| `flashcard_view` | Minst halvparten av kortets overskrift er synlig i en aktiv fane. | `card_id`, `card_number`, `domain`, `category`. |
+
+Svarhendelsen teller første svarvurdering per spørsmål og forsøk; endring av svar eller gjentatt «Sjekk svar» øker ikke antallet. Markeringen lagres med forsøket slik at oppdatering og gjenopptakelse ikke teller samme svar på nytt. Ubesvarte spørsmål telles ikke. Delvis besvarte spørsmål følger prøvens vanlige definisjon av «besvart» og gir `correct: 0`. Flashcards som bare er lastet utenfor skjermen, telles ikke. Å snu et kort eller endre språk/tema teller ikke en ny visning; å gå til et annet kort og tilbake teller en ny visning. Spørsmålstekst, valgte svar, fullstendige resultater og lokale notater legges ikke i våre hendelsesparametere. Studien fungerer også dersom Google-taggen blokkeres.
+
+Hendelser kan kontrolleres i GA4s [Realtime/DebugView](https://developers.google.com/analytics/devguides/collection/ga4/events). For rapporter gruppert per spørsmål eller kort registreres blant annet `question_id` og `card_id` som hendelsesbaserte egendefinerte dimensjoner i GA4. Hvis sidevisninger bare skal telle dokumentlasting, slå av **Page changes based on browser history events** i datastrømmens Enhanced Measurement-innstillinger; Google kan ellers også telle endringer i kortenes URL-er. Dette er en [innstilling i GA4-egenskapen](https://developers.google.com/analytics/devguides/collection/ga4/views#disable_page_changes_based_on_browser_history_events), uavhengig av nettstedets egen hendelsestelling.
+
 ## Kjør nettstedet lokalt
 
 ### Prøveeksamen

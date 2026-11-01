@@ -87,6 +87,7 @@
   <script src="./jargon.js" defer></script>
   <link rel="stylesheet" href="./site-navigation.css" data-site-navigation>
   <link rel="stylesheet" href="./site-theme.css" data-site-theme>
+  <script src="./site-analytics.js" data-site-analytics></script>
 </head>
 <body>
   <a class="skip" href="#study">Hopp til kortene</a>
@@ -460,6 +461,7 @@
     }
     function renderCard(){
       const c=current(),empty=!c;
+      window.AI200Analytics?.flashcardView($('card-title'),c,c?CARD_NUMBERS.get(c.id):null);
       syncCardLink(c);
       $('card-example').dataset.cardId=c?.id||'';
       $('card-example').dataset.answer=String(flipped&&!empty);

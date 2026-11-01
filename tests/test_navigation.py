@@ -109,9 +109,10 @@ class NavigationTests(unittest.TestCase):
                 for identifier in ("site-language", "site-theme"):
                     self.assertEqual(html.count(f'id="{identifier}"'), 1)
                 prefix = "../" * len(path.parent.relative_to(ROOT).parts) or "./"
-                for filename in ("site.js", "site-translations.js", "site-theme.css"):
+                for filename in ("site.js", "site-translations.js", "site-theme.css", "site-analytics.js"):
                     self.assertEqual(html.count(f'"{prefix}{filename}"'), 1)
                     self.assertTrue((path.parent / (prefix + filename)).resolve().is_file())
+                self.assertEqual(html.count('data-site-analytics'), 1)
                 styles = [match.start() for match in re.finditer(r'<style\b|<link rel="stylesheet"', html)]
                 self.assertLess(html.index('data-site-preferences'), min(styles))
 
