@@ -30,6 +30,9 @@ test('local files and loopback hosts never load the tag or send study events',()
   for(const href of ['file:///C:/java/ai200/index.html','http://localhost:8000/','http://127.0.0.1:8000/','http://127.0.0.2/','http://[::1]/','http://demo.localhost/','http://0.0.0.0/']){
     const app=boot(href);assert.equal(app.win.AI200Analytics.enabled,false);assert.equal(app.scripts.length,0);
     assert.equal(app.win.AI200Analytics.questionAnswered(null,null,null,'check_answer'),false);
+    assert.equal(app.win.AI200Analytics.questionView(null,null,null),false);
+    assert.equal(app.win.AI200Analytics.questionAction('next',null,null,null),false);
+    assert.equal(app.win.AI200Analytics.flashcardAction('next',{id:'example'},1),false);
     app.win.AI200Analytics.flashcardView(null,{id:'example'},1);assert.equal(app.win.dataLayer,undefined);
   }
 });
@@ -80,4 +83,68 @@ test('flashcard visibility falls back to scroll and resize without IntersectionO
   const heading={getBoundingClientRect:()=>({left:0,right:400,top,bottom:top+100,width:400,height:100}),closest:()=>null};
   app.win.AI200Analytics.flashcardView(heading,{id:'one',domain:1,category:'acr'},1);app.frame();assert.equal(app.events().length,0);
   top=100;app.listeners.scroll();app.listeners.resize();assert.equal(app.events().length,1);
+});
+
+test('flashcard navigation and flips send an event for every action without depending on heading visibility',()=>{
+  const app=boot(),card={id:'one',domain:1,category:'acr',question:'Private question',answers:['Private answer']};
+  const api=app.win.AI200Analytics;
+  for(const action of ['next','previous','show_answer','show_question','show_answer'])assert.equal(api.flashcardAction(action,card,1,action==='next'?'other':undefined),true);
+  const events=app.events();
+  assert.deepEqual(events.map(e=>e[1]),Array(5).fill('flashcard_interaction'));
+  assert.deepEqual(events.map(e=>e[2].action),['next','previous','show_answer','show_question','show_answer']);
+  assert.equal(events[0][2].from_card_id,'other');
+  assert.ok(events.every(e=>e[2].card_id==='one'&&e[2].card_number===1));
+  assert.ok(!JSON.stringify(events).includes('Private'));
+  assert.equal(api.flashcardAction('unknown',card,1),false);
+  assert.equal(api.flashcardAction('next',null,1),false);
+});
+
+test('question views count visits and revisits without counting answer checks or language rerenders',()=>{
+  const [bank]=banks(),a=rules.createAttempt(bank,{count:2,minutes:0,randomOrder:false}),[one,two]=a.ids.map(id=>bank.questions.find(q=>q.id===id)),app=boot(),api=app.win.AI200Analytics;
+  assert.equal(api.questionView(bank,a,one),true);
+  assert.equal(api.questionView(bank,a,one),false);
+  assert.equal(api.questionView(bank,a,two),true);
+  assert.equal(api.questionView(bank,a,one),true);
+  assert.equal(api.questionView(bank,JSON.parse(JSON.stringify(a)),one),true);
+  assert.deepEqual(app.events().map(e=>e[2].question_number),[1,2,1,1]);
+  assert.ok(app.events().every(e=>e[1]==='question_view'&&e[2].total_questions===2));
+  assert.equal(a.analyticsAnswered,undefined);
+});
+
+test('exam actions log unanswered navigation, changes and repeated checks separately from first-pass answers',()=>{
+  const bank=rules.combineBanks(banks()),a=rules.createAttempt(bank,{count:335,minutes:0}),q=bank.questions.find(q=>q.id==='i-kql-code'),app=boot(),api=app.win.AI200Analytics;
+  assert.equal(api.questionAction('next',bank,a,q,'p-acr-001'),true);
+  a.answers[q.id]=q.correctAnswers.map((value,i)=>i?'':value);
+  assert.equal(api.questionAction('answer_change',bank,a,q),true);
+  assert.equal(api.questionAction('check_answer',bank,a,q),true);
+  assert.equal(api.questionAction('check_answer',bank,a,q),true);
+  a.answers[q.id]=q.correctAnswers.slice();
+  assert.equal(api.questionAction('answer_change',bank,a,q),true);
+  assert.equal(api.questionAction('check_answer',bank,a,q),true);
+  delete a.answers[q.id];assert.equal(api.questionAction('clear_answer',bank,a,q),true);
+  for(const action of ['previous','jump'])assert.equal(api.questionAction(action,bank,a,q,'p-acr-002'),true);
+  const events=app.events();
+  assert.ok(events.every(e=>e[1]==='question_interaction'&&e[2].question_id===q.id&&e[2].question_type==='dropdown'));
+  assert.deepEqual(events.filter(e=>e[2].action==='check_answer').map(e=>e[2].correct),[0,0,1]);
+  assert.equal(events[0][2].answered,0);assert.equal(events[0][2].from_question_id,'p-acr-001');
+  assert.ok(events.every(e=>!('answer' in e[2])&&!('prompt' in e[2])));
+  assert.equal(a.analyticsAnswered,undefined);
+});
+
+test('temporarily hidden flashcard text is counted after language initialization reveals it',()=>{
+  const app=boot(),heading={getBoundingClientRect:()=>({left:0,right:400,top:100,bottom:200,width:400,height:100}),closest:()=>null};
+  let visibility='hidden';app.win.getComputedStyle=()=>({visibility});
+  app.win.AI200Analytics.flashcardView(heading,{id:'one',domain:1,category:'acr'},1);app.frame();
+  assert.equal(app.events().length,0);
+  app.listeners['site:languagechange']();visibility='visible';app.frame();
+  assert.equal(app.events().length,1);
+});
+
+test('blocked event delivery does not interrupt action handlers or suppress future view retries',()=>{
+  const [bank]=banks(),a=rules.createAttempt(bank,{count:1,minutes:0}),q=bank.questions.find(q=>q.id===a.ids[0]),app=boot(),api=app.win.AI200Analytics;
+  const gtag=app.win.gtag;app.win.gtag=()=>{throw Error('Blocked');};
+  assert.equal(api.flashcardAction('show_answer',{id:'one'},1),false);
+  assert.equal(api.questionView(bank,a,q),false);
+  assert.equal(api.questionAction('next',bank,a,q),false);
+  app.win.gtag=gtag;assert.equal(api.questionView(bank,a,q),true);
 });

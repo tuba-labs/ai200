@@ -507,17 +507,24 @@
       $('mark-new').hidden=status==='new';
       $('mark-review').setAttribute('aria-pressed',String(status==='review'));$('mark-known').setAttribute('aria-pressed',String(status==='known'));
     }
-    function flip(){if(!current())return;flipped=!flipped;renderCard();}
+    function flip(){
+      const card=current();if(!card)return;
+      flipped=!flipped;renderCard();
+      window.AI200Analytics?.flashcardAction(flipped?'show_answer':'show_question',card,CARD_NUMBERS.get(card.id));
+    }
     function visit(index){if(index!==position&&current())backStack.push(current().id);position=index;flipped=false;renderCard();}
     function move(step){
-      if(!current())return;
+      const previous=current();if(!previous)return;
       if(step<0){
         let index=-1;
         while(backStack.length&&index<0){const id=backStack.pop();if(id!==current().id)index=list.findIndex(card=>card.id===id);}
-        position=index>=0?index:Math.max(0,position-1);flipped=false;renderCard();return;
+        position=index>=0?index:Math.max(0,position-1);flipped=false;renderCard();
+      }else{
+        let index=position+1;
+        visit(Math.min(list.length-1,index));
       }
-      let index=position+1;
-      visit(Math.min(list.length-1,index));
+      const card=current();
+      if(card&&card.id!==previous.id)window.AI200Analytics?.flashcardAction(step<0?'previous':'next',card,CARD_NUMBERS.get(card.id),previous.id);
     }
     function mark(status){
       const c=current();if(!c)return;const priorIndex=position;

@@ -160,6 +160,7 @@
     $('next-question').disabled = attempt.index === attempt.ids.length - 1;
     renderFeedback();
     updateProgress();
+    window.AI200Analytics?.questionView(bank, attempt, q);
   }
   function renderFeedback() {
     const q = questions.get(attempt.ids[attempt.index]), answer = selected(q.id);
@@ -222,11 +223,13 @@
       $('question-navigation').append(button);
     }
   }
-  function navigate(index) {
+  function navigate(index, action = 'jump') {
     if (!attempt || attempt.submittedAt !== null || index < 0 || index >= attempt.ids.length) return;
     if (expired()) return;
-    if (index !== attempt.index) recordAnswer(attempt.ids[attempt.index], 'navigation');
+    const previousId = attempt.ids[attempt.index], changed = index !== attempt.index;
+    if (changed) recordAnswer(previousId, 'navigation');
     attempt.index = index; saveAttempt(); renderQuestion(); focusQuestion();
+    if (changed) window.AI200Analytics?.questionAction(action, bank, attempt, questions.get(attempt.ids[index]), previousId);
   }
   function expired() {
     if (attempt && attempt.submittedAt === null && rules.remainingSeconds(attempt) === 0) { submit(true); return true; }
@@ -286,11 +289,13 @@
   function storeAnswer(answer) {
     if (!attempt || expired() || attempt.submittedAt !== null) return false;
     const id = attempt.ids[attempt.index];
+    const changed = JSON.stringify(selected(id)) !== JSON.stringify(answer);
     if (rules.hasAnswer(answer)) attempt.answers[id] = answer.slice();
     else delete attempt.answers[id];
     rememberAnswers(attempt, bank, [id]);
     attempt.checked = attempt.checked.filter(value => value !== id);
     saveAttempt(); renderFeedback(); updateProgress();
+    if (changed) window.AI200Analytics?.questionAction('answer_change', bank, attempt, questions.get(id));
     return true;
   }
   $('answer-options').addEventListener('change', () => {
@@ -307,6 +312,7 @@
   $('clear-answer').addEventListener('click', () => {
     if (expired() || attempt.submittedAt !== null) return;
     delete attempt.answers[attempt.ids[attempt.index]];
+    window.AI200Analytics?.questionAction('clear_answer', bank, attempt, questions.get(attempt.ids[attempt.index]));
     rememberAnswers(attempt, bank, [attempt.ids[attempt.index]]);
     attempt.checked = attempt.checked.filter(id => id !== attempt.ids[attempt.index]);
     saveAttempt(); renderQuestion(); focus($('question-prompt'), $('question-context'));
@@ -316,12 +322,13 @@
     const id = attempt.ids[attempt.index];
     if (!rules.hasAnswer(selected(id))) return;
     recordAnswer(id, 'check_answer');
+    window.AI200Analytics?.questionAction('check_answer', bank, attempt, questions.get(id));
     rules.checkAnswer(bank, attempt);
     $('flag-question').checked = attempt.flagged.includes(id);
     saveAttempt(); renderFeedback(); updateProgress(); focus($('feedback-heading'));
   });
-  $('previous-question').addEventListener('click', () => navigate(attempt.index - 1));
-  $('next-question').addEventListener('click', () => navigate(attempt.index + 1));
+  $('previous-question').addEventListener('click', () => navigate(attempt.index - 1, 'previous'));
+  $('next-question').addEventListener('click', () => navigate(attempt.index + 1, 'next'));
   $('question-navigation').addEventListener('click', event => {
     const button = event.target.closest('button[data-index]');
     if (button) navigate(Number(button.dataset.index));
