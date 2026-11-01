@@ -1,5 +1,8 @@
 {
   "messages": [
+    ["Ikke ta med spørsmål som allerede er besvart riktig", "Don't include questions already answered correctly"],
+    ["Riktige svar huskes på tvers av prøver. Senere feil svar gjør spørsmålet tilgjengelig igjen.", "Correct answers are remembered across exams. Later incorrect answers make a question available again."],
+    ["Ingen spørsmål gjenstår. Fjern avkryssingen eller velg andre banker eller domener.", "No questions remain. Uncheck this option or choose other banks or domains."],
     ["Spørsmålsbanker", "Question banks"],
     ["Velg minst én spørsmålsbank.", "Select at least one question bank."],
     ["AI-200 | Prøveresultat", "AI-200 | Exam results"],
@@ -582,6 +585,7 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["{count} spørsmål er allerede besvart riktig i de valgte domenene.", "{count} questions already answered correctly in the selected domains."],
     ["Fullført: {date}", "Completed: {date}"],
     ["Hoppet over {count} gjentatt spørsmål i denne lagrede prøven.", "Skipped {count} repeated question in this saved exam."],
     ["Hoppet over {count} gjentatte spørsmål i denne lagrede prøven.", "Skipped {count} repeated questions in this saved exam."],

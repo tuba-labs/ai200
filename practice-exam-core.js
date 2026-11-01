@@ -72,8 +72,9 @@
     }
     return bank;
   }
-  function questionPool(bank) {
-    return bank.questions.filter(q => !Object.hasOwn(bank.duplicateOf || {}, q.id));
+  function questionPool(bank, excludeIds = []) {
+    const excluded = new Set(excludeIds);
+    return bank.questions.filter(q => !Object.hasOwn(bank.duplicateOf || {}, q.id) && !excluded.has(q.id));
   }
   function combineBanks(values) {
     if (!Array.isArray(values)) throw new Error('The question bank selection is invalid.');
@@ -131,8 +132,8 @@
     const ordered = seed === null ? bank.questions : shuffle(bank.questions, seededRandom(seed));
     return groupQuestions(ordered.filter(question => included.has(question.id)));
   }
-  function createAttempt(bank, {count = 45, minutes = 100, domains = [1, 2, 3, 4], randomOrder = true} = {}, now = Date.now(), random = Math.random) {
-    const pool = questionPool(bank).filter(q => domains.includes(q.domain));
+  function createAttempt(bank, {count = 45, minutes = 100, domains = [1, 2, 3, 4], randomOrder = true, excludeIds = []} = {}, now = Date.now(), random = Math.random) {
+    const pool = questionPool(bank, excludeIds).filter(q => domains.includes(q.domain));
     if (!Number.isInteger(count) || count < 1 || count > pool.length) throw new Error(`Choose between 1 and ${pool.length} questions.`);
     if (!Number.isInteger(minutes) || minutes < 0 || minutes > 1440) throw new Error('Choose a time limit from 0 to 1440 minutes. Use 0 for no timer.');
     const orderSeed = randomOrder ? Math.floor(random() * 4294967296) >>> 0 : null, included = new Set(pool.map(q => q.id));

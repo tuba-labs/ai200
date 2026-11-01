@@ -48,3 +48,38 @@ test('mixed links preserve wrong choices and partial interactive answers within 
   assert.deepEqual(decoded.attempt.answers,a.answers);assert.deepEqual(rules.grade(mixed,decoded.attempt),rules.grade(mixed,a));
   assert.ok(('https://example.com/ai200/practice-exam-results.html#r='+token).length<2000);
 });
+
+test('question pools exclude remembered correct IDs alongside duplicate exclusions without changing either bank',()=>{
+  const mixed=rules.combineBanks(banks()),before=JSON.stringify(mixed);
+  const excluded=['p-acr-001','i-aks-order','i-kql-code','unknown','p-kv-021'];
+  const pool=rules.questionPool(mixed,excluded);
+  assert.equal(pool.length,332);assert.ok(pool.every(q=>!excluded.includes(q.id)));
+  assert.ok(pool.every(q=>!Object.hasOwn(mixed.duplicateOf,q.id)));
+  assert.equal(rules.questionPool(mixed).length,335);assert.equal(JSON.stringify(mixed),before);
+});
+
+test('filtered exams use the requested banks, domains, count, timer and order with fresh answer state',()=>{
+  const sources=banks(),registry=[...sources,rules.combineBanks(sources)],now=Date.UTC(2026,10,1);
+  for(const bank of registry)for(const randomOrder of [false,true]){
+    const excluded=rules.questionPool(bank).filter((_,i)=>i%3===0).map(q=>q.id);
+    const pool=rules.questionPool(bank,excluded).filter(q=>[1,4].includes(q.domain));
+    const a=rules.createAttempt(bank,{count:pool.length,minutes:15,domains:[1,4],randomOrder,excludeIds:excluded},now,()=>.42);
+    assert.deepEqual(new Set(a.ids),new Set(pool.map(q=>q.id)));assert.ok(rules.validAttempt(a,bank));
+    assert.deepEqual(a.answers,{});assert.deepEqual(a.checked,[]);assert.deepEqual(a.flagged,[]);
+    assert.equal(a.deadline,now+900000);assert.equal(a.submittedAt,null);
+    assert.deepEqual(rules.questionOrder(bank,a.ids,a.orderSeed??null),a.ids);
+    assert.throws(()=>rules.createAttempt(bank,{count:pool.length+1,domains:[1,4],excludeIds:excluded}),/Choose between/);
+  }
+});
+
+test('wrong, partial and unanswered questions remain eligible and an entirely excluded pool cannot start an exam',()=>{
+  const bank=rules.combineBanks(banks()),a=rules.createAttempt(bank,{count:335,minutes:0,randomOrder:false});
+  a.answers['p-acr-001']=bank.questions.find(q=>q.id==='p-acr-001').correctAnswers.slice();
+  a.answers['i-aks-order']=bank.questions.find(q=>q.id==='i-aks-order').correctAnswers.slice().reverse();
+  a.answers['i-kql-code']=bank.questions.find(q=>q.id==='i-kql-code').correctAnswers.map((id,i)=>i?'':id);
+  const correct=rules.grade(bank,a).questions.filter(q=>q.correct).map(q=>q.id),pool=rules.questionPool(bank,correct);
+  assert.deepEqual(correct,['p-acr-001']);
+  for(const id of ['i-aks-order','i-kql-code','p-acr-002'])assert.ok(pool.some(q=>q.id===id));
+  const all=rules.questionPool(bank).map(q=>q.id);
+  assert.deepEqual(rules.questionPool(bank,all),[]);assert.throws(()=>rules.createAttempt(bank,{count:1,excludeIds:all}),/Choose between/);
+});

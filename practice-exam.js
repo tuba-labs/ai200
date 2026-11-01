@@ -2,6 +2,7 @@
   'use strict';
   const rules = window.AI200Exam, $ = id => document.getElementById(id);
   const ATTEMPT_KEY = 'ai200-practice-exam-attempt-v1';
+  const PROGRESS_KEY = 'ai200-practice-exam-correct-v1', FILTER_KEY = 'ai200-practice-exam-exclude-correct-v1';
   const domainNames = {1: 'Containers', 2: 'AI data', 3: 'Integrations', 4: 'Security & monitoring'};
   let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null, interaction = null;
   const sourceBanks = [window.AI200_EXAM_BANK, window.AI200_INTERACTIVE_BANK];
@@ -9,6 +10,7 @@
   const objectiveData = window.AI200_EXAM_OBJECTIVES;
   const objectiveById = new Map((objectiveData?.objectives || []).map(objective => [objective.id, objective]));
   const seenContexts = new Set();
+  let correctIds = new Set();
   const node = (tag, className, value) => {
     const el = document.createElement(tag);
     if (className) el.className = className;
@@ -28,6 +30,19 @@
     catch { $('storage-notice').hidden = false; }
   };
   const saveAttempt = () => write(ATTEMPT_KEY, attempt);
+  function rememberAnswers(value, sourceBank, ids = Object.keys(value.answers)) {
+    const byId = new Map(sourceBank.questions.map(question => [question.id, question]));
+    let changed = false;
+    for (const id of ids) {
+      const answer = value.answers[id] || [], correct = rules.hasAnswer(answer) && rules.isCorrect(byId.get(id), answer);
+      if (correct !== correctIds.has(id)) {
+        changed = true;
+        if (correct) correctIds.add(id); else correctIds.delete(id);
+      }
+    }
+    if (changed) write(PROGRESS_KEY, [...correctIds]);
+  }
+  const excludedIds = () => $('exclude-correct').checked ? [...correctIds] : [];
   function showError(id, error) { $(id).textContent = error.message; $(id).hidden = false; }
   function focus(el, scrollTarget = el) { el.focus({preventScroll: true}); scrollTarget.scrollIntoView({block: 'start', behavior: 'instant'}); }
   function externalLink(label, url) {
@@ -44,7 +59,6 @@
     contexts = new Map((bank?.contexts || []).map(c => [c.id, c]));
     const pool = bank ? rules.questionPool(bank) : [], caseCount = new Set(pool.map(q => q.contextId).filter(Boolean)).size;
     $('bank-status').textContent = `${pool.length} questions · ${caseCount} case studies`;
-    for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${pool.filter(q => q.domain === domain).length} questions`;
     $('bank-error').hidden = true;
     updatePool();
     const members = bank ? bank.members || [bank] : [];
@@ -64,10 +78,15 @@
   }
   function includedPool() {
     const domains = [...document.querySelectorAll('input[name=domain]:checked')].map(el => Number(el.value));
-    return {domains, count: bank ? rules.questionPool(bank).filter(q => domains.includes(q.domain)).length : 0};
+    const pool = bank ? rules.questionPool(bank, excludedIds()) : [];
+    return {domains, pool, count: pool.filter(q => domains.includes(q.domain)).length};
   }
   function updatePool() {
-    const count = includedPool().count;
+    const {count, pool, domains} = includedPool();
+    for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${pool.filter(q => q.domain === domain).length} questions`;
+    const correctCount = bank ? rules.questionPool(bank).filter(q => domains.includes(q.domain) && correctIds.has(q.id)).length : 0;
+    $('correct-progress').textContent = `${correctCount} questions already answered correctly in the selected domains.`;
+    $('filtered-empty').hidden = count > 0 || !bank || !$('exclude-correct').checked;
     $('pool-status').textContent = `${count} available questions`;
     $('question-count').max = count;
     if (Number($('question-count').value) > count && count > 0) $('question-count').value = count;
@@ -250,7 +269,7 @@
   $('setup-form').addEventListener('submit', event => {
     event.preventDefault(); $('setup-error').hidden = true;
     try {
-      attempt = rules.createAttempt(bank, {count: Number($('question-count').value), minutes: Number($('time-limit').value), domains: includedPool().domains, randomOrder: $('random-order').checked});
+      attempt = rules.createAttempt(bank, {count: Number($('question-count').value), minutes: Number($('time-limit').value), domains: includedPool().domains, randomOrder: $('random-order').checked, excludeIds: excludedIds()});
       seenContexts.clear();
       const address=new URL(location.href);
       if(address.searchParams.has('new')){address.searchParams.delete('new');history.replaceState(null,'',address.href);}
@@ -258,6 +277,7 @@
     } catch (error) { showError('setup-error', error); }
   });
   document.querySelectorAll('input[name=domain]').forEach(el => el.addEventListener('change', updatePool));
+  $('exclude-correct').addEventListener('change', () => { write(FILTER_KEY, $('exclude-correct').checked); updatePool(); });
   $('use-all').addEventListener('click', () => { $('question-count').value = includedPool().count; });
   $('question-form').addEventListener('submit', event => event.preventDefault());
   function storeAnswer(answer) {
@@ -265,6 +285,7 @@
     const id = attempt.ids[attempt.index];
     if (rules.hasAnswer(answer)) attempt.answers[id] = answer.slice();
     else delete attempt.answers[id];
+    rememberAnswers(attempt, bank, [id]);
     attempt.checked = attempt.checked.filter(value => value !== id);
     saveAttempt(); renderFeedback(); updateProgress();
     return true;
@@ -283,6 +304,7 @@
   $('clear-answer').addEventListener('click', () => {
     if (expired() || attempt.submittedAt !== null) return;
     delete attempt.answers[attempt.ids[attempt.index]];
+    rememberAnswers(attempt, bank, [attempt.ids[attempt.index]]);
     attempt.checked = attempt.checked.filter(id => id !== attempt.ids[attempt.index]);
     saveAttempt(); renderQuestion(); focus($('question-prompt'), $('question-context'));
   });
@@ -340,7 +362,13 @@
       label.append(input, text); $('bank-choices').append(label);
     });
     const saved = read(ATTEMPT_KEY);
-    setBank(banks.find(value => rules.validAttempt(saved, value)) || banks[0], !new URLSearchParams(location.search).has('new'));
+    const knownIds = new Set(sourceBanks.flatMap(value => value.questions.map(question => question.id)));
+    const progress = read(PROGRESS_KEY);
+    correctIds = new Set(Array.isArray(progress) ? progress.filter(id => knownIds.has(id)) : []);
+    $('exclude-correct').checked = read(FILTER_KEY) === true;
+    const savedBank = banks.find(value => rules.validAttempt(saved, value));
+    if (savedBank) rememberAnswers(saved, savedBank);
+    setBank(savedBank || banks[0], !new URLSearchParams(location.search).has('new'));
   }
   catch (error) { showError('bank-error', error); }
 })();
