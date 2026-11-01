@@ -4,6 +4,7 @@
   const ATTEMPT_KEY = 'ai200-practice-exam-attempt-v1';
   const domainNames = {1: 'Containers', 2: 'AI data', 3: 'Integrations', 4: 'Security & monitoring'};
   let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null;
+  const seenContexts = new Set();
   const node = (tag, className, value) => {
     const el = document.createElement(tag);
     if (className) el.className = className;
@@ -46,7 +47,7 @@
     attempt = rules.validAttempt(saved, bank) ? saved : null;
     if (attempt) attempt.checked ||= [];
     if (attempt && attempt.submittedAt !== null) renderResults();
-    else if (attempt) { showExam(); tick(); }
+    else if (attempt) { showExam(); tick(); focusQuestion(); }
     else showSetup();
   }
   function includedPool() {
@@ -82,6 +83,15 @@
       details.append(list);
     }
     return details;
+  }
+  function focusQuestion() {
+    if (!attempt || attempt.submittedAt !== null) return;
+    const id = questions.get(attempt.ids[attempt.index]).contextId;
+    const context = $('case-context').firstElementChild;
+    if (context && !seenContexts.has(id)) {
+      seenContexts.add(id);
+      focus(context.querySelector('summary'), context);
+    } else focus($('question-prompt'), $('question-context'));
   }
   function renderQuestion() {
     const q = questions.get(attempt.ids[attempt.index]);
@@ -156,7 +166,7 @@
   function navigate(index) {
     if (!attempt || attempt.submittedAt !== null || index < 0 || index >= attempt.ids.length) return;
     if (expired()) return;
-    attempt.index = index; saveAttempt(); renderQuestion(); focus($('question-prompt'), $('question-context'));
+    attempt.index = index; saveAttempt(); renderQuestion(); focusQuestion();
   }
   function expired() {
     if (attempt && attempt.submittedAt === null && rules.remainingSeconds(attempt) === 0) { submit(true); return true; }
@@ -230,7 +240,8 @@
     event.preventDefault(); $('setup-error').hidden = true;
     try {
       attempt = rules.createAttempt(bank, {count: Number($('question-count').value), minutes: Number($('time-limit').value), domains: includedPool().domains, randomOrder: $('random-order').checked});
-      saveAttempt(); $('review-filter').value = 'all'; showExam(); tick(); focus($('exam-heading'));
+      seenContexts.clear();
+      saveAttempt(); $('review-filter').value = 'all'; showExam(); tick(); focusQuestion();
     } catch (error) { showError('setup-error', error); }
   });
   document.querySelectorAll('input[name=domain]').forEach(el => el.addEventListener('change', updatePool));

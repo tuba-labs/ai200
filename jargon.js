@@ -371,8 +371,8 @@
   toggle.addEventListener('click', () => setEnabled(!enabled));
   flashcardToggle?.addEventListener('change', () => setEnabled(!flashcardToggle.checked));
   toggleLabel(); controls.append(toggle);
-  const navLink = document.querySelector('.jargon-nav-link');
-  if (navLink) navLink.after(controls);
+  const preferences = document.querySelector('.site-preferences');
+  if (preferences) preferences.prepend(controls);
   else (document.querySelector('header nav') || document.body).append(controls);
 
   const form = document.querySelector('[data-jargon-search]');
