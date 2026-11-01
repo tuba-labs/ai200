@@ -32,7 +32,7 @@ test('conflicting IDs, repeated selections and inconsistent merged data are reje
   const contextConflict=banks();contextConflict[1].contexts.push(contextConflict[0].contexts[0]);assert.throws(()=>rules.combineBanks(contextConflict));
   const bad=JSON.parse(JSON.stringify(rules.combineBanks(sources)));bad.questions[0].prompt+=' different';assert.throws(()=>rules.validateBank(bad));
 });
-test('new mixed share links and existing single-bank links all resolve against the bank registry',()=>{
+test('mixed and single-bank share links resolve against the bank registry',()=>{
   const sources=banks(),mixed=rules.combineBanks(sources),registry=[...sources,mixed];
   for(const bank of registry){
     const a=rules.createAttempt(bank,{count:Math.min(12,rules.questionPool(bank).length),minutes:0,randomOrder:false});a.submittedAt=a.startedAt+1000;

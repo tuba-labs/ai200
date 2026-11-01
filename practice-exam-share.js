@@ -215,15 +215,14 @@
     const bytes=unbase64(token),body=bytes.slice(0,-4),tail=new Reader(bytes.slice(-4));
     if(checksum(body)!==tail.read(32))invalid();
     const reader=new Reader(body);
-    const version=reader.read(8);
-    if(version!==1&&version!==VERSION)throw new Error('This result link uses an unsupported format.');
-    const flags=reader.read(8);if(flags & ~(version===1?3:7))invalid();
+    if(reader.read(8)!==VERSION)throw new Error('This result link uses an unsupported format.');
+    const flags=reader.read(8);if(flags & ~7)invalid();
     const signature=Array.from({length:8},()=>reader.read(8));
     const bank=banks.find(candidate=>fingerprint(candidate).every((byte,i)=>byte===signature[i]));
     if(!bank)throw new Error('This result uses a different question bank version.');
     const completed=reader.read(32),elapsed=reader.read(32),count=reader.read(16);
     if(!count||count>bank.questions.length||elapsed>completed||(flags&1)&&!elapsed)invalid();
-    const order=version===1?0:flags>>1;
+    const order=flags>>1;
     let orderSeed, questions;
     if(order){
       if(order===3)orderSeed=reader.read(32);
@@ -234,19 +233,14 @@
       const question=bank.questions[reader.read(bitsFor(bank.questions.length))];if(!question)invalid();return question;
     });
     if(new Set(questions.map(q=>q.id)).size!==count)invalid();
-    const unanswered=new Set(version===1?questions.flatMap((_,i)=>reader.read(1)?[i]:[]):readSet(reader,count));
-    const marked=new Set(version===1?(flags&2?questions.flatMap((_,i)=>reader.read(1)?[i]:[]):[]):readSet(reader,count));
+    const unanswered=new Set(readSet(reader,count)),marked=new Set(readSet(reader,count));
     const submittedAt=completed*1000;
     const attempt={version:1,bankId:bank.bankId,ids:questions.map(q=>q.id),answers:{},flagged:questions.filter((_,i)=>marked.has(i)).map(q=>q.id),checked:[],index:0,
       ...(order===3?{orderSeed}:{}),
       startedAt:submittedAt-elapsed*1000,deadline:flags&1?submittedAt:null,submittedAt,timedOut:Boolean(flags&1)};
     questions.forEach((question,i)=>{if(!unanswered.has(i))attempt.answers[question.id]=question.correctAnswers.slice();});
-    const exceptionIndices=version===1?null:readSet(reader,count);
-    const exceptions=version===1?reader.read(16):exceptionIndices.length;if(exceptions>count)invalid();
-    let previous=-1;
-    for(let i=0;i<exceptions;i++){
-      const index=version===1?reader.read(bitsFor(count)):exceptionIndices[i];
-      if(index>=count||index<=previous||unanswered.has(index))invalid();previous=index;
+    for(const index of readSet(reader,count)){
+      if(unanswered.has(index))invalid();
       attempt.answers[questions[index].id]=readAnswer(reader,questions[index]);
     }
     reader.finish();

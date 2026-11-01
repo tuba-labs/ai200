@@ -161,7 +161,7 @@
   $('review-filter').addEventListener('change',renderReview);
   document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();$('main').focus();$('main').scrollIntoView({block:'start'});});
   $('share-results').addEventListener('click',()=>{
-    try {token = share.encode(bank,attempt);}
+    try {token ||= share.encode(bank,attempt);}
     catch(error){$('share-error').textContent=error.message;$('share-error').hidden=false;return;}
     $('share-site-label').hidden=location.protocol!=='file:';
     $('share-site').value ||= document.querySelector('meta[name="ai200-share-base"]').content;

@@ -16,15 +16,15 @@ test('full exams reconstruct correct answers, wrong selections, unanswered quest
   for(const [id,answer] of Object.entries(a.answers))if(!rules.isCorrect(bank.questions.find(q=>q.id===id),answer))assert.deepEqual(decoded.answers[id],answer);
   assert.equal(JSON.stringify(a),before);assert.match(token,/^[A-Za-z0-9_-]+$/);assert.ok(token.length<2000);
 });
-test('all-correct exams are compact and legacy results retain excluded question IDs',()=>{
-  const [bank]=banks(),a=attempt(bank,bank.questions.map(q=>q.id));
-  for(const q of bank.questions)a.answers[q.id]=q.correctAnswers.slice();
+test('all-correct full exams stay compact',()=>{
+  const [bank]=banks(),a=attempt(bank);
+  for(const q of rules.questionPool(bank))a.answers[q.id]=q.correctAnswers.slice();
   const {token,decoded}=roundtrip(bank,a);
-  assert.equal(decoded.ids.length,359);assert.ok(decoded.ids.includes('p-kv-021'));assert.ok(token.length<700);
+  assert.equal(decoded.ids.length,326);assert.ok(token.length<80);
 });
-test('all-wrong legacy exams with every review mark stay below 2000 URL characters',()=>{
-  const [bank]=banks(),a=attempt(bank,bank.questions.map(q=>q.id));
-  for(const q of bank.questions)a.answers[q.id]=q.options.map(o=>o.id);
+test('all-wrong full exams with every review mark stay below 2000 URL characters',()=>{
+  const [bank]=banks(),a=attempt(bank);
+  for(const q of rules.questionPool(bank))a.answers[q.id]=q.options.map(o=>o.id);
   a.flagged=a.ids.slice();const{token}=roundtrip(bank,a);assert.ok(('https://example.com/ai200/practice-exam-results.html#r='+token).length<2000);
 });
 test('all interactive formats retain partial answers and ordering, including repeated matching choices',()=>{
@@ -53,7 +53,7 @@ test('malformed, truncated, corrupted, oversized and wrong-bank links fail clear
 });
 test('valid checksums still reject unsupported flags, invalid counts and out-of-range question IDs',()=>{
   const [bank]=banks(),a=attempt(bank,[bank.questions[0].id]);const token=share.encode(bank,a);
-  assert.throws(()=>share.decode(forged(token,bytes=>{bytes[0]=3;}),[bank]),/unsupported/);
+  for(const version of [0,1,3,255])assert.throws(()=>share.decode(forged(token,bytes=>{bytes[0]=version;}),[bank]),/unsupported/);
   assert.throws(()=>share.decode(forged(token,bytes=>{bytes[1]=128;}),[bank]),/invalid/);
   assert.throws(()=>share.decode(forged(token,bytes=>{bytes[18]=255;bytes[19]=255;}),[bank]),/invalid/);
   assert.throws(()=>share.decode(forged(token,bytes=>{bytes[20]=255;bytes[21]|=128;}),[bank]),/invalid/);
@@ -67,19 +67,6 @@ test('version-two subset ranks and sparse state counts reject out-of-range value
   a.ids=bank.questions.map(q=>q.id);for(const q of bank.questions)a.answers[q.id]=q.correctAnswers.slice();
   const full=share.encode(bank,a);
   assert.throws(()=>share.decode(forged(full,bytes=>{bytes[20]=0xde;}),[bank]),/invalid/);
-});
-
-test('published version-one links still reconstruct both banks and mixed results without changing their answers',()=>{
-  const sources=banks(),registry=[...sources,rules.combineBanks(sources)];
-  const fixtures=require('./fixtures/practice-exam-share-v1.json');
-  for(const fixture of fixtures){
-    const bank=registry[fixture.bank],decoded=share.decode(fixture.token,registry).attempt;
-    assert.deepEqual(decoded.ids,fixture.attempt.ids);assert.deepEqual(decoded.answers,fixture.attempt.answers);
-    assert.deepEqual(decoded.flagged,fixture.attempt.flagged);assert.equal(decoded.timedOut,true);
-    assert.deepEqual(rules.grade(bank,decoded),rules.grade(bank,fixture.attempt));
-    assert.equal(decoded.deadline-decoded.startedAt,fixture.attempt.deadline-fixture.attempt.startedAt);
-    assert.ok(share.encode(bank,decoded).length<fixture.token.length);
-  }
 });
 
 test('seeded full exams preserve their exact order after saving and sharing, with much shorter links',()=>{
@@ -118,7 +105,7 @@ test('dense and sparse wrong answers, unanswered questions and flags use compact
   }
 });
 
-test('old shuffled attempts and stale seed hints fall back to explicit ordering without losing the original review order',()=>{
+test('explicit ordering retains the question sequence when a seed cannot describe it',()=>{
   const [bank]=banks(),a=attempt(bank);a.ids.reverse();delete a.orderSeed;
   a.flagged=a.ids.slice(0,3);roundtrip(bank,a);
   a.orderSeed=12;roundtrip(bank,a);
