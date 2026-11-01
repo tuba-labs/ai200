@@ -6,14 +6,17 @@
   <script src="./site-translations.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Take a practice exam directly on this site using AI-200 Prep questions labelled Real Exam. Timed attempts, case studies and results by domain.">
+  <meta name="description" content="AI-200 practice with multiple-choice, ordering, matching and code-completion questions, glossary help, timed attempts and results by domain.">
   <title>AI-200 | Practice exam</title>
   <link rel="stylesheet" href="practice-exam.css">
   <script src="practice-exam-data.js" defer></script>
+  <script src="practice-exam-interactive-data.js" defer></script>
   <script src="practice-exam-core.js" defer></script>
+  <script src="practice-exam-interactions.js" defer></script>
   <script src="practice-exam.js" defer></script>
   <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
   <script src="./jargon-data.js" defer></script>
+  <script src="./jargon-core.js" defer></script>
   <script src="./jargon.js" defer></script>
   <link rel="stylesheet" href="./site-navigation.css" data-site-navigation>
   <link rel="stylesheet" href="./site-theme.css" data-site-theme>
@@ -44,10 +47,11 @@
   </div>
 </header>
   <main class="wrap" id="main">
-    <div class="intro"><span class="eyebrow">AI-200 Prep · Source questions only</span>
+    <div class="intro"><span class="eyebrow">AI-200 · Personal practice</span>
       <h1>Practice exam</h1>
-      <p>Test yourself using only questions the source labels <strong>Real Exam</strong>. Use <strong>Check answer</strong> for instant feedback, or review everything when you finish.</p>
-      <p class="small">This is the provider’s label, not verification that these questions appeared on Microsoft’s exam. Scores use the provider’s answer key.</p>
+      <p>Choose a question bank below. Use <strong>Check answer</strong> for feedback and term help, or review everything when you finish.</p>
+      <p class="small" id="source-details">AI-200 Prep questions carry the provider’s Real Exam label. This is not verification that they appeared on Microsoft’s exam. Scores use the provider’s answer key.</p>
+      <p class="small" id="original-details" hidden>Original practice questions with ordering, matching and code completion. Based on official documentation; independently written for this site.</p>
     </div>
     <p class="storage-note" id="storage-notice" role="status" hidden>Browser storage is unavailable. Keep this tab open: your attempt cannot be saved after a reload.</p>
     <p id="bank-error" class="error" role="alert" hidden></p>
@@ -55,6 +59,7 @@
       <div class="section-top"><div><span class="eyebrow">Choose your session</span><h2 id="setup-heading" tabindex="-1">Ready when you are</h2></div><span class="badge">No flashcards added</span></div>
       <p id="bank-status" class="small" role="status"></p>
       <form id="setup-form">
+        <div class="settings"><label>Question bank<select id="bank-select"></select></label></div>
         <fieldset class="domain-options"><legend>Include domains</legend>
           <label><input type="checkbox" name="domain" value="1" checked><span><b>1 · Containers</b><small id="domain-1-count"></small></span></label>
           <label><input type="checkbox" name="domain" value="2" checked><span><b>2 · AI data</b><small id="domain-2-count"></small></span></label>
@@ -80,6 +85,11 @@
             <p class="small" id="feedback-summary"></p>
             <div id="feedback-correct-options" data-keep-english lang="en" translate="no"></div>
             <p class="source-explanation" id="feedback-explanation" data-keep-english lang="en" translate="no"></p>
+            <section class="question-glossary" id="feedback-glossary" hidden>
+              <h4>Terms in this question</h4>
+              <p class="small">Select a term to see its meaning and examples.</p>
+              <div class="exam-terms" id="feedback-terms" data-keep-english lang="en" translate="no"></div>
+            </section>
             <a id="feedback-source" target="_blank" rel="noopener noreferrer">Source question and explanation ↗</a>
           </section>
           <div class="previous-next"><button id="previous-question" type="button">← Previous</button><span id="question-position"></span><button id="next-question" type="button">Next →</button></div>
@@ -90,7 +100,7 @@
     <section id="results-panel" class="panel" aria-labelledby="results-heading" data-no-jargon hidden>
       <div class="section-top"><div><span class="eyebrow">Session complete</span><h2 id="results-heading" tabindex="-1">Your results</h2><p id="result-reason" class="small"></p></div><button id="new-exam" class="primary" type="button">Set up another exam</button></div>
       <div class="score-grid"><div class="score"><strong id="result-percent"></strong><span>correct</span></div><div><strong id="result-correct"></strong><span>correct answers</span></div><div><strong id="result-incorrect"></strong><span>incorrect answers</span></div><div><strong id="result-unanswered"></strong><span>unanswered</span></div></div>
-      <p class="small">One point per question. For multiple-answer questions, select every correct option and no incorrect options. This percentage does not convert to Microsoft’s scaled exam score.</p>
+      <p class="small">One point per question. Every selected option, ordered step and completed blank must be correct. There is no partial credit. This percentage does not convert to Microsoft’s scaled exam score.</p>
       <div id="domain-results" class="domain-results"></div>
       <div class="review-heading"><h3>Review your answers</h3><label>Show<select id="review-filter"><option value="all">All questions</option><option value="incorrect">Incorrect or unanswered</option><option value="unanswered">Unanswered</option><option value="flagged">Marked for review</option></select></label></div>
       <div id="answer-review"></div>

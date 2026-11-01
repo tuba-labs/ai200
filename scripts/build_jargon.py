@@ -114,6 +114,9 @@ def attach_assets(html, prefix='./', current=None):
                   f'  <script src="{prefix}jargon-data.js" defer></script>\n'
                   f'  <script src="{prefix}jargon.js" defer></script>\n')
         html = html.replace('</head>', assets + '</head>', 1)
+    if f'src="{prefix}jargon-core.js"' not in html:
+        html = html.replace(f'<script src="{prefix}jargon.js"',
+                            f'<script src="{prefix}jargon-core.js" defer></script>\n  <script src="{prefix}jargon.js"', 1)
     return attach_navigation(html, prefix, current)
 
 

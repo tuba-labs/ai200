@@ -1,0 +1,145 @@
+{
+  "reviewedAt": "2026-11-01",
+  "source": "https://www.mightybs.com/certifications/ai-200/exam/",
+  "scope": "43 interactive items: 10 build lists, 16 matching items and 17 dropdown items; compared with all 359 local source questions, including the 341 active questions.",
+  "method": "Lexical candidate ranking followed by manual comparison of required decisions, answer keys and case constraints. Similarity alone is not treated as a duplicate. Source IDs are stable data IDs, not shuffled screen numbers.",
+  "nearDuplicates": [
+    {
+      "sourceId": "abe",
+      "localIds": [
+        "p-ca-002"
+      ],
+      "reason": "Revision mode and weighted traffic repeat the same deployment decision."
+    },
+    {
+      "sourceId": "abf",
+      "localIds": [
+        "p-ca-005"
+      ],
+      "reason": "Both choose Key Vault with managed identity for Container Apps secrets."
+    },
+    {
+      "sourceId": "bbg",
+      "localIds": [
+        "p-pg-007"
+      ],
+      "reason": "Same connection exhaustion scenario and PgBouncer remedy; adds its port."
+    },
+    {
+      "sourceId": "dae",
+      "localIds": [
+        "p-kv-013"
+      ],
+      "reason": "Same separation of ordinary configuration and secrets; adds examples."
+    }
+  ],
+  "partialOverlaps": [
+    {
+      "sourceId": "aaj",
+      "localIds": [
+        "p-ca-014",
+        "p-acr-024"
+      ],
+      "reason": "Same identity and AcrPull pattern, different hosting platform."
+    },
+    {
+      "sourceId": "aba",
+      "localIds": [
+        "p-ca-001"
+      ],
+      "reason": "Repeats queue-driven scale-to-zero; adds a replica ceiling and case constraints."
+    },
+    {
+      "sourceId": "bab",
+      "localIds": [
+        "p-cos-006",
+        "c-ct-005"
+      ],
+      "reason": "Change feed overlap; additionally tests processor coordination."
+    },
+    {
+      "sourceId": "bah",
+      "localIds": [
+        "p-cos-006",
+        "c-ct-005"
+      ],
+      "reason": "Adds component responsibilities and feed mode."
+    },
+    {
+      "sourceId": "bch",
+      "localIds": [
+        "p-red-001"
+      ],
+      "reason": "Overlapping vector schema knowledge, different answer granularity."
+    },
+    {
+      "sourceId": "cac",
+      "localIds": [
+        "p-eg-005",
+        "p-eg-006",
+        "p-eg-m01"
+      ],
+      "reason": "Combines filtering and failed-delivery decisions."
+    },
+    {
+      "sourceId": "cae",
+      "localIds": [
+        "p-eg-006",
+        "p-eg-003"
+      ],
+      "reason": "Combines payload filtering, retention and retry limits."
+    },
+    {
+      "sourceId": "dbe",
+      "localIds": [
+        "p-mon-018"
+      ],
+      "reason": "Adds time filtering and grouped aggregation to failure filtering."
+    },
+    {
+      "sourceId": "dbh",
+      "localIds": [
+        "p-mon-001"
+      ],
+      "reason": "Similar aggregation pipeline, different grouping and output requirements."
+    }
+  ],
+  "noEquivalentWholeQuestionFound": [
+    "aab",
+    "aag",
+    "aai",
+    "abb",
+    "abd",
+    "abj",
+    "abm",
+    "bac",
+    "bae",
+    "baf",
+    "bbb",
+    "bbc",
+    "bbe",
+    "bbf",
+    "bbi",
+    "bbj",
+    "bca",
+    "bcg",
+    "caa",
+    "caf",
+    "caj",
+    "cbk",
+    "cbl",
+    "dac",
+    "dai",
+    "dak",
+    "dba",
+    "dbd",
+    "dbf",
+    "dbg"
+  ],
+  "result": "No verbatim duplicates found. Four near-duplicates and nine partial overlaps are reported separately. No MightyBS question text was imported; reuse permission was not established. The new local interactive bank is independently authored.",
+  "limitations": "A manual semantic review is not a mathematical guarantee. Shared terminology alone does not imply equivalent questions. Recheck if either source bank changes.",
+  "snapshots": {
+    "localBankSha256": "0482d449b6121a0e700bec7678c763f97a09f6f18584d21cb2819d1311bd1a94",
+    "sourceDataSha256": "a38ab9c483f63b6a3182cccf6fdc92e4456eab31c4211f6726e2796120c9b348"
+  }
+}

@@ -40,6 +40,9 @@
 :root[data-theme=dark] :is(.option:hover,.option:has(input:checked),.question-grid button.answered){background:#233e5b;border-color:#75a7d7;color:var(--site-ink)}
 :root[data-theme=dark] :is(.options .option.correct-option,.review-option.correct-option,.answer-feedback[data-result=correct]){background:#14382e;color:var(--site-ink);border-color:#4b9c7e}
 :root[data-theme=dark] :is(.options .option.wrong-option,.review-option.wrong-option,.answer-feedback[data-result=incorrect]){background:#3c2b21;color:var(--site-ink);border-color:#b88852}
+:root[data-theme=dark] .code-completion{background:#111e30;color:var(--site-ink)}
+:root[data-theme=dark] :is(.answer-slot,.interactive-step).correct-option{background:#14382e;color:var(--site-ink);border-color:#4b9c7e}
+:root[data-theme=dark] :is(.answer-slot,.interactive-step).wrong-option{background:#3c2b21;color:var(--site-ink);border-color:#b88852}
 :root[data-theme=dark] .answer-feedback[data-result=correct] h3{color:var(--site-green)}
 :root[data-theme=dark] .answer-feedback[data-result=incorrect] h3{color:var(--site-amber)}
 :root[data-theme=dark] .timer.urgent{color:#ffc48a}

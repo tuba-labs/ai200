@@ -1,20 +1,12 @@
 /* Shared explanations for static pages and dynamically rendered flashcards. */
 (() => {
   'use strict';
-  if (!window.AI200_JARGON || window.AI200Jargon) return;
+  if (!window.AI200_JARGON || !window.AI200JargonCore || window.AI200Jargon) return;
   const glossaryURL = new URL('./jargon.html', document.currentScript.src).href;
-  const terms = new Map(window.AI200_JARGON.terms.map(term => [term.id, term]));
+  const matcher = window.AI200JargonCore.createMatcher(window.AI200_JARGON.terms);
+  const terms = matcher.terms;
   const platforms = window.AI200_JARGON.platforms || {};
   const relationKinds = window.AI200_JARGON.relationKinds || {};
-  const names = new Map();
-  const key = value => value.replace(/[\t \u00a0]+/g, ' ').toLocaleLowerCase();
-  for (const term of terms.values()) {
-    for (const name of [term.primary, ...term.aliases]) names.set(key(name), term.id);
-  }
-  const escapeRegex = value => value.replace(/[.*+?^$()|[\]{}\\]/g, '\\$&');
-  const alternatives = [...names.keys()].sort((a, b) => b.length - a.length)
-    .map(name => escapeRegex(name).replace(/ /g, '[\\t \\u00a0]+'));
-  const pattern = new RegExp('(?<![\\p{L}\\p{N}_])(?:' + alternatives.join('|') + ')(?![\\p{L}\\p{N}_])', 'giu');
   const skip = 'script,style,pre,code,kbd,samp,textarea,input,select,option,svg,math,[contenteditable]:not([contenteditable="false"]),[data-no-jargon],.jargon-term,.jargon-popover,.jargon-tools';
   const flashcardToggle = document.getElementById('disable-tooltips');
   const uiText = (english, norwegian) => flashcardToggle ? english : norwegian;
@@ -193,7 +185,7 @@
   }
   function show(trigger, pin = false) {
     clearTimeout(openTimer); clearTimeout(closeTimer);
-    if (!enabled || !trigger?.isConnected || dismissed === trigger) return;
+    if ((!enabled && !trigger?.hasAttribute('data-jargon-explicit')) || !trigger?.isConnected || dismissed === trigger) return;
     if (pinned && active !== trigger && !pin) return;
     const term = terms.get(trigger.dataset.jargonId);
     if (!term) return;
@@ -250,21 +242,13 @@
       }
       for (const node of nodes) {
         const text = node.nodeValue;
-        const blocked = [...text.matchAll(/(?:https?:\/\/|file:\/\/|www\.)[^\s<>]+/giu)]
-          .map(match => [match.index, match.index + match[0].length]);
         const self = new Set((node.parentElement.closest('[data-jargon-exclude]')?.dataset.jargonExclude || '').split(' '));
         const passive = !!node.parentElement.closest('a,button,label,summary,[role="button"]');
         const fragment = document.createDocumentFragment();
         let cursor = 0, changed = false;
-        pattern.lastIndex = 0;
-        for (const match of text.matchAll(pattern)) {
-          const start = match.index, end = start + match[0].length;
-          const id = names.get(key(match[0]));
-          if (!id || self.has(id) || text[start - 1] === '.'
-              || (text[end] === '.' && /[\p{L}\p{N}_]/u.test(text[end + 1] || ''))
-              || blocked.some(([a, b]) => start < b && end > a)) continue;
+        for (const {start, end, id, text: matched} of matcher.matches(text, self)) {
           fragment.append(document.createTextNode(text.slice(cursor, start)));
-          const trigger = make(passive ? 'span' : 'button', 'jargon-term', match[0]);
+          const trigger = make(passive ? 'span' : 'button', 'jargon-term', matched);
           trigger.dataset.jargonId = id;
           if (passive) trigger.dataset.jargonPassive = '';
           else {
@@ -364,7 +348,7 @@
     try { localStorage.setItem(preference, String(enabled)); } catch {}
     if (enabled) annotate(document.body);
     else {
-      for (const trigger of document.querySelectorAll('.jargon-term')) trigger.replaceWith(document.createTextNode(trigger.textContent));
+      for (const trigger of document.querySelectorAll('.jargon-term:not([data-jargon-explicit])')) trigger.replaceWith(document.createTextNode(trigger.textContent));
     }
     toggleLabel();
   }
@@ -426,13 +410,26 @@
     if (!observer) return;
     observer.disconnect(); hide();
     const parents = new Set();
-    for (const trigger of document.querySelectorAll('.jargon-term')) {
+    for (const trigger of document.querySelectorAll('.jargon-term:not([data-jargon-explicit])')) {
       parents.add(trigger.parentElement);
       trigger.replaceWith(document.createTextNode(trigger.textContent));
     }
     parents.forEach(parent => parent.normalize());
   });
   window.addEventListener('site:languagechange', () => { if (observer) annotate(document.body); });
-  window.AI200Jargon = {annotate, close: () => hide(), terms, renderCardExample};
+  function renderTerms(container, text) {
+    const found = matcher.findTerms(text);
+    container.replaceChildren();
+    for (const term of found) {
+      const button = make('button', 'jargon-term exam-term', term.primary);
+      button.type = 'button'; button.dataset.jargonId = term.id; button.dataset.jargonExplicit = '';
+      button.setAttribute('aria-haspopup', 'dialog'); button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-controls', popup.id);
+      container.append(button);
+    }
+    return found.length;
+  }
+  window.AI200Jargon = {annotate, close: () => hide(), terms, renderCardExample, renderTerms, findTerms: matcher.findTerms};
+  window.dispatchEvent(new CustomEvent('jargon:ready'));
   renderCardExample();
 })();

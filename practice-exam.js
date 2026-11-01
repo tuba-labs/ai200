@@ -3,7 +3,8 @@
   const rules = window.AI200Exam, $ = id => document.getElementById(id);
   const ATTEMPT_KEY = 'ai200-practice-exam-attempt-v1';
   const domainNames = {1: 'Containers', 2: 'AI data', 3: 'Integrations', 4: 'Security & monitoring'};
-  let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null;
+  let bank = null, attempt = null, questions = new Map(), contexts = new Map(), clock = null, interaction = null;
+  const banks = [window.AI200_EXAM_BANK, window.AI200_INTERACTIVE_BANK];
   const seenContexts = new Set();
   const node = (tag, className, value) => {
     const el = document.createElement(tag);
@@ -31,7 +32,9 @@
     link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
     return link;
   }
-  function setBank(value) {
+  const isChoice = question => rules.questionType(question) === 'choice';
+  const referenceLabel = () => bank.source.kind === 'original' ? 'Reference documentation ↗' : 'Source question and explanation ↗';
+  function setBank(value, restore = false) {
     rules.validateBank(value);
     bank = value;
     questions = new Map(bank.questions.map(q => [q.id, q]));
@@ -43,7 +46,11 @@
     for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${pool.filter(q => q.domain === domain).length} questions`;
     $('bank-error').hidden = true;
     updatePool();
-    const saved = read(ATTEMPT_KEY);
+    $('bank-select').value = bank.bankId;
+    $('source-details').hidden = bank.source.kind === 'original';
+    $('original-details').hidden = bank.source.kind !== 'original';
+    document.querySelectorAll('.source-credit').forEach(el => { el.hidden = bank.source.kind === 'original'; });
+    const saved = restore ? read(ATTEMPT_KEY) : null;
     attempt = rules.validAttempt(saved, bank) ? saved : null;
     if (attempt) attempt.checked ||= [];
     if (attempt && attempt.submittedAt !== null) renderResults();
@@ -102,11 +109,17 @@
     const context = caseBlock(q.contextId);
     if (context) $('case-context').append(context);
     $('question-prompt').textContent = q.prompt;
-    const multi = q.correctAnswers.length > 1;
-    $('question-instructions').textContent = `${multi ? `Select ${q.correctAnswers.length} answers.` : 'Select one answer.'}` +
+    const multi = q.correctAnswers.length > 1, type = rules.questionType(q);
+    const instruction = isChoice(q) ? (multi ? `Select ${q.correctAnswers.length} answers.` : 'Select one answer.')
+      : type === 'order' ? `Arrange ${q.correctAnswers.length} steps in order. Drag steps or use the add, move and remove buttons.`
+      : type === 'match' ? 'Match every target. Drag an option or select it and then select its target.'
+      : 'Complete every blank using its dropdown.';
+    $('question-instructions').textContent = instruction +
       (q.instructions.length ? ' ' + q.instructions.join(' ') : '');
     $('answer-options').replaceChildren();
-    for (const option of q.options) {
+    interaction = null;
+    if (!isChoice(q)) interaction = window.AI200ExamInteractions.render($('answer-options'), q, selected(q.id), storeAnswer);
+    else for (const option of q.options) {
       const label = node('label', 'option'), input = node('input');
       input.type = multi ? 'checkbox' : 'radio'; input.name = 'answer'; input.value = option.id;
       input.checked = selected(q.id).includes(option.id);
@@ -124,7 +137,8 @@
     const q = questions.get(attempt.ids[attempt.index]), answer = selected(q.id);
     const checked = attempt.checked.includes(q.id);
     $('answer-feedback').hidden = !checked;
-    for (const label of $('answer-options').children) {
+    interaction?.feedback(checked);
+    if (isChoice(q)) for (const label of $('answer-options').children) {
       const input = label.querySelector('input'), chosen = answer.includes(input.value), correct = q.correctAnswers.includes(input.value);
       label.classList.toggle('correct-option', checked && correct);
       label.classList.toggle('wrong-option', checked && chosen && !correct);
@@ -136,30 +150,44 @@
     $('feedback-summary').textContent = '';
     $('feedback-explanation').textContent = '';
     $('feedback-source').removeAttribute('href');
+    renderGlossary(q, checked);
     if (!checked) return;
     const correct = rules.isCorrect(q, answer);
     $('answer-feedback').dataset.result = correct ? 'correct' : 'incorrect';
     $('feedback-heading').textContent = correct ? 'Correct' : 'Incorrect';
-    $('feedback-summary').textContent = q.correctAnswers.length > 1
+    $('feedback-summary').textContent = !isChoice(q) ? 'Every part must be correct to earn the point. Correct solution:' : q.correctAnswers.length > 1
       ? 'Correct answers are shown below. Select every correct option and no incorrect options.'
       : 'Correct answer:';
-    for (const option of q.options.filter(o => q.correctAnswers.includes(o.id))) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${option.id}. ${option.text}`));
+    if (isChoice(q)) for (const option of q.options.filter(o => q.correctAnswers.includes(o.id))) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${option.id}. ${option.text}`));
+    else for (const part of window.AI200ExamInteractions.describe(q)) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${part.label} → ${part.expected}`));
     $('feedback-explanation').textContent = q.explanation;
     $('feedback-source').href = q.setUrl;
+    $('feedback-source').textContent = referenceLabel();
+  }
+  function renderGlossary(question, checked = attempt?.checked.includes(question.id)) {
+    const container = $('feedback-terms');
+    container.replaceChildren(); $('feedback-glossary').hidden = true;
+    if (!checked || !window.AI200Jargon) return;
+    const context = contexts.get(question.contextId);
+    const text = [question.service, question.prompt, ...question.instructions,
+      ...(question.options || []).map(option => option.text), ...(question.code || []),
+      ...(question.slots || []).flatMap(slot => [slot.label, ...(slot.options || []).map(option => option.text)]),
+      ...(context ? [context.title, context.body, ...context.requirements] : [])].join('\n');
+    $('feedback-glossary').hidden = window.AI200Jargon.renderTerms(container, text) === 0;
   }
   function updateProgress() {
-    const answered = attempt.ids.filter(id => selected(id).length).length;
+    const answered = attempt.ids.filter(id => rules.hasAnswer(selected(id))).length;
     $('attempt-progress').textContent = `${answered} of ${attempt.ids.length} answered · ${attempt.flagged.length} marked for review`;
-    $('clear-answer').disabled = !selected(attempt.ids[attempt.index]).length;
-    $('check-answer').disabled = !selected(attempt.ids[attempt.index]).length;
+    $('clear-answer').disabled = !rules.hasAnswer(selected(attempt.ids[attempt.index]));
+    $('check-answer').disabled = !rules.hasAnswer(selected(attempt.ids[attempt.index]));
     $('question-navigation').replaceChildren();
     for (const [index, id] of attempt.ids.entries()) {
       const button = node('button', '', index + 1);
       button.type = 'button'; button.dataset.index = index;
-      button.classList.toggle('answered', selected(id).length > 0);
+      button.classList.toggle('answered', rules.hasAnswer(selected(id)));
       button.classList.toggle('flagged', attempt.flagged.includes(id));
       button.setAttribute('aria-current', index === attempt.index ? 'true' : 'false');
-      button.setAttribute('aria-label', `Question ${index + 1}, ${selected(id).length ? 'answered' : 'unanswered'}${attempt.flagged.includes(id) ? ', marked for review' : ''}`);
+      button.setAttribute('aria-label', `Question ${index + 1}, ${rules.hasAnswer(selected(id)) ? 'answered' : 'unanswered'}${attempt.flagged.includes(id) ? ', marked for review' : ''}`);
       $('question-navigation').append(button);
     }
   }
@@ -223,14 +251,28 @@
       const caseDetails = caseBlock(q.contextId, false);
       if (caseDetails) body.append(caseDetails);
       body.append(node('p', 'small', `Domain ${q.domain} · ${q.service} · Source ID: ${q.id}`));
-      for (const option of q.options) {
+      if (isChoice(q)) for (const option of q.options) {
         const chosen = selected(q.id).includes(option.id), correct = q.correctAnswers.includes(option.id);
         const row = node('p', 'review-option' + (correct ? ' correct-option' : chosen ? ' wrong-option' : ''), `${option.id}. ${option.text}`);
         if (correct || chosen) row.append(node('span', 'option-note', [correct ? 'Correct answer' : '', chosen ? 'Your selection' : ''].filter(Boolean).join(' · ')));
         body.append(row);
       }
+      else {
+        for (const part of window.AI200ExamInteractions.describe(q, selected(q.id))) {
+          const row = node('div', 'review-option ' + (part.correct ? 'correct-option' : 'wrong-option'));
+          row.append(node('strong', '', part.label), node('p', '', part.selected || '—'), node('p', 'option-note', 'Correct answer: ' + part.expected));
+          body.append(row);
+        }
+        if (q.code) {
+          const pre = node('pre', 'code-completion');
+          pre.textContent = q.code.join('\n').replace(/\{\{([a-zA-Z0-9-]+)\}\}/g, (_, id) => {
+            const index = q.slots.findIndex(slot => slot.id === id);
+            return q.slots[index].options.find(option => option.id === selected(q.id)[index])?.text || '[unanswered]';
+          }); body.append(pre);
+        }
+      }
       if (item.unanswered) body.append(node('p', 'small', 'You did not answer this question.'));
-      body.append(node('p', 'source-explanation', q.explanation), externalLink('Source question and explanation ↗', q.setUrl));
+      body.append(node('p', 'source-explanation', q.explanation), externalLink(referenceLabel(), q.setUrl));
       details.append(summary, body); $('answer-review').append(details);
     }
     if (!$('answer-review').children.length) $('answer-review').append(node('p', 'small', 'No questions match this filter.'));
@@ -247,12 +289,18 @@
   document.querySelectorAll('input[name=domain]').forEach(el => el.addEventListener('change', updatePool));
   $('use-all').addEventListener('click', () => { $('question-count').value = includedPool().count; });
   $('question-form').addEventListener('submit', event => event.preventDefault());
-  $('answer-options').addEventListener('change', () => {
-    if (expired() || attempt.submittedAt !== null) return;
+  function storeAnswer(answer) {
+    if (!attempt || expired() || attempt.submittedAt !== null) return false;
     const id = attempt.ids[attempt.index];
-    attempt.answers[id] = [...$('answer-options').querySelectorAll('input:checked')].map(input => input.value);
+    if (rules.hasAnswer(answer)) attempt.answers[id] = answer.slice();
+    else delete attempt.answers[id];
     attempt.checked = attempt.checked.filter(value => value !== id);
     saveAttempt(); renderFeedback(); updateProgress();
+    return true;
+  }
+  $('answer-options').addEventListener('change', () => {
+    if (!isChoice(questions.get(attempt.ids[attempt.index]))) return;
+    storeAnswer([...$('answer-options').querySelectorAll('input:checked')].map(input => input.value));
   });
   $('flag-question').addEventListener('change', event => {
     if (expired() || attempt.submittedAt !== null) return;
@@ -270,7 +318,7 @@
   $('check-answer').addEventListener('click', () => {
     if (!attempt || attempt.submittedAt !== null || expired()) return;
     const id = attempt.ids[attempt.index];
-    if (!selected(id).length) return;
+    if (!rules.hasAnswer(selected(id))) return;
     rules.checkAnswer(bank, attempt);
     $('flag-question').checked = attempt.flagged.includes(id);
     saveAttempt(); renderFeedback(); updateProgress(); focus($('feedback-heading'));
@@ -296,7 +344,7 @@
   $('close-score-preview').addEventListener('click', () => $('score-preview-dialog').close());
   $('finish-exam').addEventListener('click', () => {
     if (expired()) return;
-    const unanswered = attempt.ids.filter(id => !selected(id).length).length;
+    const unanswered = attempt.ids.filter(id => !rules.hasAnswer(selected(id))).length;
     $('finish-summary').textContent = `${unanswered} unanswered question${unanswered === 1 ? '' : 's'} · ${attempt.flagged.length} marked for review.`;
     $('finish-dialog').showModal();
   });
@@ -306,6 +354,14 @@
   $('review-filter').addEventListener('change', renderReview);
   document.addEventListener('visibilitychange', tick);
   window.addEventListener('pageshow', tick);
-  try { setBank(window.AI200_EXAM_BANK); }
+  window.addEventListener('jargon:ready', () => { if (attempt && attempt.submittedAt === null) renderGlossary(questions.get(attempt.ids[attempt.index])); });
+  window.addEventListener('site:languagechange', () => { if (attempt && attempt.submittedAt === null) renderQuestion(); });
+  $('bank-select').addEventListener('change', event => setBank(banks.find(value => value.bankId === event.target.value)));
+  try {
+    banks.forEach(value => rules.validateBank(value));
+    banks.forEach(value => { const option = node('option', '', value.source.kind === 'original' ? 'Interactive practice' : 'AI-200 Prep'); option.value = value.bankId; $('bank-select').append(option); });
+    const saved = read(ATTEMPT_KEY);
+    setBank(banks.find(value => rules.validAttempt(saved, value)) || banks[0], true);
+  }
   catch (error) { showError('bank-error', error); }
 })();

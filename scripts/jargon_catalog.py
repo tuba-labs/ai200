@@ -750,3 +750,10 @@ EXTRA += [('Sorted set',
   'WITHSCORES lists members from lowest to highest score.',
   'https://redis.io/docs/latest/develop/data-types/sorted-sets/',
   '')]
+
+# Code-completion vocabulary used by the interactive practice exam.
+EXTRA += [
+    ('arg_max', 'arg_max()',
+     'A KQL aggregation that selects the row with the greatest value of an expression and returns specified columns from that row. For example, summarize arg_max(TimeGenerated, Version) by Service returns the latest Version for each Service.',
+     'https://learn.microsoft.com/en-us/kusto/query/arg-max-aggregation-function'),
+]

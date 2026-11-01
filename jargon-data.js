@@ -842,6 +842,19 @@ window.AI200_JARGON = {
       "id": "apptraces"
     },
     {
+      "primary": "arg_max",
+      "fullName": "",
+      "aliases": [
+        "arg_max()"
+      ],
+      "definition": "A KQL aggregation that selects the row with the greatest value of an expression and returns specified columns from that row. For example, summarize arg_max(TimeGenerated, Version) by Service returns the latest Version for each Service.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/kusto/query/arg-max-aggregation-function"
+      ],
+      "id": "arg-max"
+    },
+    {
       "primary": "At-least-once delivery",
       "fullName": "",
       "aliases": [
