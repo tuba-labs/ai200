@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  document.querySelectorAll('[data-tabs], [data-account-tabs]').forEach(group => {
+  document.querySelectorAll('[data-account-tabs]').forEach(group => {
     const tablist = group.querySelector('[data-tab-list]');
     const tabs = [...group.querySelectorAll('[data-tab]')];
     const panels = tabs.map(tab => document.getElementById(tab.dataset.tab));
@@ -66,50 +66,14 @@
     const revealHashTarget = () => {
       const target = selectFromHash();
       if (!target) return;
-      const scrollTarget = group.hasAttribute('data-tabs') && target.matches('[data-tab-panel]')
-        ? group.closest('section') || group
-        : target;
-      if (group.hasAttribute('data-tabs') && target.matches('[data-tab-panel]')) {
-        tabs.find(tab => tab.dataset.tab === target.id)?.focus({ preventScroll: true });
-      }
-      window.requestAnimationFrame(() => scrollTarget.scrollIntoView({ block: 'start' }));
+      window.requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
     };
     revealHashTarget();
     window.addEventListener('load', revealHashTarget, { once: true });
     window.addEventListener('hashchange', revealHashTarget);
   });
 
-  const formatOptions = document.querySelector('[data-workshop-format-options]');
-  if (formatOptions) {
-    const choices = [...formatOptions.querySelectorAll('input[name="workshop-format"]')];
-    const views = [...document.querySelectorAll('[data-workshop-format]')];
-    let preferred = new URL(location.href).searchParams.get('format');
-    if (!['short', 'domain'].includes(preferred)) {
-      try { preferred = localStorage.getItem('ai200-workshop-format'); } catch { /* Use the default. */ }
-    }
-    const selectFormat = (value, save = false) => {
-      const selected = value === 'domain' ? 'domain' : 'short';
-      choices.forEach(choice => { choice.checked = choice.value === selected; });
-      views.forEach(view => { view.hidden = view.dataset.workshopFormat !== selected; });
-      if (save) {
-        try { localStorage.setItem('ai200-workshop-format', selected); } catch { /* Selection still works. */ }
-        try {
-          const url = new URL(location.href);
-          url.searchParams.set('format', selected);
-          history.replaceState(null, '', url);
-        } catch { /* Local-file history can be restricted. */ }
-      }
-    };
-    choices.forEach(choice => choice.addEventListener('change', () => selectFormat(choice.value, true)));
-    selectFormat(preferred);
-    formatOptions.hidden = false;
-  }
-
   const checks = [...document.querySelectorAll('input[type="checkbox"][data-check]')];
-  const keywordSummaries = [...document.querySelectorAll('[data-keyword-progress]')].map(summary => ({
-    summary,
-    items: [...summary.closest('section').querySelectorAll('input[data-check-kind="keyword"]')]
-  }));
   const checkKeys = new Map();
   const checkGroups = new Map();
   let storageAvailable = true;
@@ -123,11 +87,7 @@
     return {};
   };
   checks.forEach(check => {
-    let sourcePath = location.pathname;
-    if (check.dataset.progressSource) {
-      try { sourcePath = new URL(check.dataset.progressSource, location.href).pathname; } catch { /* Use this page. */ }
-    }
-    const key = `ai200-workshop-v1:${sourcePath}`;
+    const key = `ai200-workshop-v1:${location.pathname}`;
     checkKeys.set(check, key);
     if (!checkGroups.has(key)) checkGroups.set(key, []);
     checkGroups.get(key).push(check);
@@ -145,21 +105,9 @@
     (last.closest('.check-item') || last.parentElement).after(progress);
   }
   const updateProgress = () => {
-    keywordSummaries.forEach(({ summary, items }) => {
-      const known = items.filter(check => check.checked).length;
-      summary.textContent = `${known} av ${items.length} begreper avkrysset. ` + (storageAvailable
-        ? 'Lagres bare i denne nettleseren.'
-        : 'Nettleseren kan ikke lagre avhuking; den gjelder bare til siden lukkes.');
-    });
     if (!progress) return;
-    const active = checks.filter(check => !check.closest('[data-domain-chapter]')?.hidden);
-    const exercises = active.filter(check => check.dataset.checkKind !== 'keyword');
-    const keywords = active.filter(check => check.dataset.checkKind === 'keyword');
-    const done = exercises.filter(check => check.checked).length;
-    progress.textContent = `${done} av ${exercises.length} øvelsessjekkpunkter fullført. `;
-    if (keywords.length) {
-      progress.textContent += `${keywords.filter(check => check.checked).length} av ${keywords.length} begreper avkrysset. `;
-    }
+    const done = checks.filter(check => check.checked).length;
+    progress.textContent = `${done} av ${checks.length} øvelsessjekkpunkter fullført. `;
     const note = document.createElement('span');
     note.className = 'progress-note';
     note.textContent = storageAvailable
@@ -186,44 +134,6 @@
     updateProgress();
   });
   updateProgress();
-
-  const domainWorkshop = document.querySelector('[data-domain-workshop]');
-  if (domainWorkshop) {
-    const options = domainWorkshop.querySelector('[data-domain-session-options]');
-    const choices = [...options.querySelectorAll('input[name="domain-session"]')];
-    const chapters = [...domainWorkshop.querySelectorAll('[data-domain-chapter]')];
-    const selectSession = (value, updateUrl = false) => {
-      const selected = ['1', '2'].includes(value) ? value : 'all';
-      choices.forEach(choice => { choice.checked = choice.value === selected; });
-      chapters.forEach(chapter => { chapter.hidden = selected !== 'all' && chapter.dataset.session !== selected; });
-      if (updateUrl) {
-        try {
-          const url = new URL(location.href);
-          if (selected === 'all') url.searchParams.delete('samling');
-          else url.searchParams.set('samling', selected);
-          const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
-          if (target?.closest('[data-domain-chapter]')?.hidden) url.hash = 'agenda';
-          history.replaceState(null, '', url);
-        } catch { /* The session selector still works without history access. */ }
-      }
-      updateProgress();
-    };
-    const revealChapter = () => {
-      let target;
-      try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
-      const chapter = target?.closest('[data-domain-chapter]');
-      if (!chapter || !domainWorkshop.contains(chapter)) return;
-      if (chapter.hidden) selectSession(chapter.dataset.session, true);
-      chapter.open = true;
-      window.requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
-    };
-    choices.forEach(choice => choice.addEventListener('change', () => selectSession(choice.value, true)));
-    selectSession(new URL(location.href).searchParams.get('samling'));
-    options.hidden = false;
-    revealChapter();
-    window.addEventListener('hashchange', revealChapter);
-    window.addEventListener('load', revealChapter, { once: true });
-  }
 
   const status = document.createElement('div');
   status.className = 'sr-only';

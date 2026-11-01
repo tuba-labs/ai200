@@ -19,7 +19,8 @@ class NewWorkshopTests(unittest.TestCase):
     def setUpClass(cls):
         cls.full_deck = builder.load_deck()
         cls.deck = builder.course_deck(cls.full_deck)
-        cls.metadata = json.loads((ROOT / "workshops/coverage.json").read_text(encoding="utf-8"))
+        script = (ROOT / "workshops/flashcard-coverage.js").read_text(encoding="utf-8")
+        cls.metadata = json.loads(script.split("window.AI200_WORKSHOP_COVERAGE = ", 1)[1].strip().removesuffix(";"))
         cls.pages = {path.resolve(): Page(path.read_text(encoding="utf-8")) for path in (ROOT / "workshops").glob("*.html")}
 
     def test_exactly_two_workshops_per_domain_and_one_home_per_category(self):

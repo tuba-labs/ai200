@@ -89,7 +89,7 @@ class JargonTests(unittest.TestCase):
     def test_glossary_renders_every_primary_alias_and_stable_link(self):
         for name, expected in jargon.outputs().items():
             self.assertEqual((ROOT / name).read_text(encoding='utf-8'), expected, name)
-        for path in [ROOT / 'jargon.html', ROOT / 'workshops/glossary.html']:
+        for path in [ROOT / 'jargon.html']:
             html = path.read_text(encoding='utf-8')
             page = Page(html)
             self.assertEqual(len(page.ids), len(set(page.ids)))

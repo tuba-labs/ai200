@@ -43,8 +43,10 @@ jobs:
           python -m unittest discover -s tests -p test_navigation.py -v
           node --test tests/site.test.cjs tests/learning-objectives.test.cjs tests/site-analytics.test.cjs tests/site-sharing.test.cjs
 
-      - name: Kontroller workshopfiler og tilbakestilling
-        run: python -m unittest discover -s tests -p test_workshop_docs.py -v
+      - name: Kontroller lenker og tilgjengelige sider
+        run: |
+          python -m unittest discover -s tests -p test_workshop_docs.py -v
+          python -m unittest discover -s tests -p test_site_reachability.py -v
 
       - name: Kontroller flashcards og kategorier
         run: |

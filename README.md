@@ -2,6 +2,8 @@
 
 Studieside med norsk og engelsk grensesnitt for **Developing AI Cloud Solutions on Azure**, med pensumoversikt, flashcards og praktiske workshops. Nettstedet består av statiske HTML-, CSS- og JavaScript-filer og kan publiseres direkte med GitHub Pages.
 
+Alle publiserte sider, nettleserskript og kodeeksempler skal kunne nås fra forsiden eller en aktiv funksjon. Det inkluderer workshopmerkene på flashcards, begrepenes kodeeksempler og deling av kort og resultater. `tests/test_site_reachability.py` oppdager foreldreløse filer og manglende lokale mål. Byggeskript, datakilder og tester er vedlikeholdsfiler.
+
 ## Workshops
 
 [workshops/index.html](workshops/index.html) samler 408 aktive kort i to workshops per domene, med emnekategorier som kapitler. Hvert kort er koblet til en konkret praktisk oppgave eller analyseoppgave der en slik finnes. Kort uten egen oppgave vises som repetisjon i [dekningsoversikten](workshops/coverage.html), og teller ikke som oppgavedekning. Flashcardsiden viser typen som et klikkbart merke og kan filtrere på dekning eller workshop.
@@ -33,7 +35,7 @@ Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `p
 
 Start med [Kom i gang](getting-started.html#for-du-starter) og [felles workshopoppsett](workshops/setup.html). Bruk én `.venv` i prosjektroten. Opprett ressursene fra ressursplanen i hver workshop og følg oppryddingen etterpå. Standardregionen er Norway East (`norwayeast`) der tjeneste og SKU støttes.
 
-Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen. Eldre domenelenker på forsiden peker til delmålsoversikten.
+Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen.
 
 Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert, uten å tømme `.tmp/` eller skrive filer. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
 
@@ -57,7 +59,7 @@ Vanlige bygg tømmer `.tmp/` først og beholder en tom mappe som lokale tester k
 
 ## Google Analytics
 
-Alle 28 nåværende sider bruker `site-analytics.js` med GA4-måle-ID **G-T4V86T1NFD**. Den felles byggingen legger inn skriptet også på genererte workshop- og begrepssider. Åpning fra fil, localhost og loopback-adresser laster ikke Google-taggen og sender ingen hendelser.
+Alle 23 nåværende studiesider bruker `site-analytics.js` med GA4-måle-ID **G-T4V86T1NFD**. Den felles byggingen legger inn skriptet også på genererte workshop- og begrepssider. Åpning fra fil, localhost og loopback-adresser laster ikke Google-taggen og sender ingen hendelser.
 
 | Hendelse | Når | Parametere |
 | --- | --- | --- |

@@ -9,7 +9,6 @@ import subprocess
 import sys
 import tempfile
 import time
-from types import SimpleNamespace
 import unittest
 import urllib.error
 import urllib.request
@@ -41,8 +40,6 @@ class FunctionBehaviorTests(unittest.TestCase):
     def setUpClass(cls):
         cls.api_module = load_module("workshop_api", "workshops/labs/integrations/function_app.py")
         cls.api = functions(cls.api_module)
-        cls.binding_module = load_module("workshop_binding", "workshops/labs/bindings/function_app.py")
-        cls.bindings = functions(cls.binding_module)
 
     def test_duplicate_and_invalid_document(self):
         self.api_module.processed.clear()
@@ -63,18 +60,17 @@ class FunctionBehaviorTests(unittest.TestCase):
         with patch.dict(os.environ, {"FAIL_EVENTS": "false"}):
             self.assertEqual(200, handler(request([{"id": "e1"}])).status_code)
 
-    def test_output_binding_forwards_body_and_consumer_fails_deliberately(self):
+    def test_output_binding_forwards_body_and_background_fails_deliberately(self):
         class Output:
             def set(self, value):
                 self.value = value
         output = Output()
-        result = self.bindings["enqueue"](request({"id": "ok"}), output)
+        result = self.api["enqueue"](request({"id": "ok"}), output)
         self.assertEqual(202, result.status_code)
         self.assertEqual({"id": "ok"}, json.loads(output.value))
-        message = SimpleNamespace(get_body=lambda: b'{"id":"ok"}', message_id="m1", delivery_count=1)
-        self.bindings["consume"](message)
+        self.api["background"](func.QueueMessage(body=b'{"id":"ok"}'))
         with self.assertRaises(ValueError):
-            self.bindings["consume"](func.ServiceBusMessage(body=b'{"id":"fail"}'))
+            self.api["background"](func.QueueMessage(body=b'{"id":"fail"}'))
 
     def test_sdk_examples_import_without_cloud_access(self):
         for name, path in [("pg_demo", "workshops/labs/data/postgres_client.py"),

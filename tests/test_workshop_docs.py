@@ -201,7 +201,7 @@ class WorkshopDocumentationTests(unittest.TestCase):
         paths = ["artifacts/queries.sql", "artifacts/deployment.before-faults.yaml",
                  "artifacts/notes-indexing-policy.original.json", "artifacts/kql-results.csv",
                  "workshops/labs/cosmos/local.settings.json", "workshops/labs/integrations/local.settings.json",
-                 "workshops/labs/bindings/local.settings.json", "workshops/labs/integrations/.python_packages/lib/example.py"]
+                 "workshops/labs/integrations/.python_packages/lib/example.py"]
         for path in paths:
             with self.subTest(path=path):
                 self.assertEqual(git(ROOT, "check-ignore", path).strip(), path)

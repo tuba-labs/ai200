@@ -16,7 +16,7 @@ def current_section(relative):
         return 'practice-exam.html'
     if name in {"index.html", "laerestoff.html", "flashcards.html", "practice-exam.html", "jargon.html", "eksamen.html"}:
         return name
-    if name.startswith("jargon-examples/") or name == "workshops/glossary.html":
+    if name.startswith("jargon-examples/"):
         return "jargon.html"
     return "laerestoff.html"
 

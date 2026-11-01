@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 from workshop_curriculum import WORKSHOPS, GLOSSARY, CATEGORY_DOCS
-from build_jargon import attach_assets, render_page as render_jargon_page, render_example
+from build_jargon import attach_assets, render_example
 from flashcard_scope import load_review
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -95,7 +95,7 @@ def page(title, intro, body, current="", toc=""):
 <nav class="course-nav wrap" aria-label="Workshopnavigasjon"><a href="./index.html"{' aria-current="page"' if current=='home' else ''}>Domener</a><a href="./coverage.html"{' aria-current="page"' if current=='coverage' else ''}>Kortdekning</a><a href="./setup.html">Felles oppsett</a></nav>
 <div class="hero"><div class="wrap"><p class="eyebrow">Domene → workshop → kategori → oppgave</p><h1>{escape(title)}</h1><p class="lead">{escape(intro)}</p></div></div>
 <main id="innhold" class="wrap {'layout' if toc else ''}">{('<aside class="toc"><h2>På denne siden</h2><nav aria-label="Innhold">'+toc+'</nav></aside>') if toc else ''}<div class="content">{body}</div></main>
-<footer><div class="wrap"><p>AI-200 studiegruppe · Nytt løp · <a href="./glossary.html">Forkortelser og begreper</a> · <a href="../index.html">Hele studiesiden</a></p></div></footer></body></html>
+<footer><div class="wrap"><p>AI-200 studiegruppe · Nytt løp · <a href="../jargon.html">Forkortelser og begreper</a> · <a href="../index.html">Hele studiesiden</a></p></div></footer></body></html>
 ''', '../')
 
 
@@ -140,7 +140,7 @@ def render_workshop(workshop, deck, coverage):
 <p>Praktisk betyr at kortets tema undersøkes i kode, konfigurasjon eller en kjørende tjeneste. Analyse krever en begrunnet løsning, tabell eller skisse. Repetisjonskort har foreløpig ingen egen oppgave og teller ikke som oppgavedekning. Tallene beskriver opplegget; de bekrefter ikke at du har gjennomført det.</p>
 <p>{escape(workshop['preparation'])}</p><p>Dette er omfattende workshops med flere kapitler. Gjennomføringstid er ikke målt; ta pauser mellom kategoriene og lagre observasjonene før ressurser slettes.</p>
 <div class="study-tools"><button data-export="{key}" type="button">Eksporter notater</button><span data-progress-summary aria-live="polite"></span></div><p class="small" data-storage-note>Notater og avkryssing lagres lokalt i denne nettleseren. Flashcardenes «kan/må repetere» vurderes separat.</p></section>
-<section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2><p>Kryss av når du kan forklare begrepet og koble det til en observasjon eller et begrunnet valg.</p><div class="table-wrap"><table><caption>Begreper, fulle navn og leselenker</caption><thead><tr><th scope="col">Begrep</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead><tbody>{keyword_rows}</tbody></table></div><p><a href="./glossary.html">Hele begrepslisten</a></p></section>
+<section class="panel" id="begreper"><h2>Dette lærer vi om nå</h2><p>Kryss av når du kan forklare begrepet og koble det til en observasjon eller et begrunnet valg.</p><div class="table-wrap"><table><caption>Begreper, fulle navn og leselenker</caption><thead><tr><th scope="col">Begrep</th><th scope="col">Forklaring</th><th scope="col">Les mer</th></tr></thead><tbody>{keyword_rows}</tbody></table></div><p><a href="../jargon.html">Hele begrepslisten</a></p></section>
 <section class="panel" id="ressurser"><h2>Ressurser og klargjøring</h2><p><a href="./setup.html">Gjør fellesoppsettet først</a>. Opprett ressursene i den nye labgruppen fra oppdraget. Bruk egne unike navn og kontroller abonnementet før oppretting.</p><div class="table-wrap"><table><caption>Oppsett i Azure Portal eller egne IaC-filer</caption><thead><tr><th scope="col">Ressurs</th><th scope="col">Valg som øvelsen forutsetter</th></tr></thead><tbody>{''.join(f'<tr><th scope="row">{escape(name)}</th><td>{escape(settings)}</td></tr>' for name, settings in workshop['resources'])}</tbody></table></div><p>Oppsett, rollepropagering og tjenestestøtte må kontrolleres i din konto. Analyseoppgavene krever ikke at alle avanserte eller dyrere tjenestevalg opprettes.</p></section>'''
     for chapter in workshop["chapters"]:
         category = chapter["category"]
@@ -212,10 +212,6 @@ def render_coverage(deck, coverage):
     return page("Flashcards og workshopdekning", "Se nøyaktig hvor hvert kort øves, og hvilke kort som foreløpig bare har repetisjon.", body, current="coverage")
 
 
-def render_glossary():
-    return render_jargon_page('../')
-
-
 def render_setup():
     body = '''<section class="panel"><h2>Arbeid i workshopene</h2><p>Alle kommandoer kjøres fra prosjektroten C:\\java\\ai200 med mindre en oppgave sier noe annet. Labkildene ligger under workshops/labs/.</p><ol><li>Bruk verktøy-, Python- og CLI-oppsettet fra <a href="../getting-started.html#for-du-starter">Kom i gang</a>. Behold prosjektets ene .venv.</li><li>Installer workshopenes pakker i det aktive miljøet med kommandoen under. Det inkluderer Event Hubs, Blob-checkpoints og App Configuration-provider.</li><li>Opprett ressursgruppen og ressursene fra hver workshop i din egen konto. Portalen er et fullverdig alternativ til egne IaC-filer. Bruk Norway East der tjeneste og SKU støttes; velg en støttet region når den aktuelle kombinasjonen ikke finnes der.</li><li>Fyll lokale miljøvariabler og ignorerte local.settings.json før skript/host startes. Variabler arves ikke automatisk til en ny terminal; sett dem der også.</li></ol>'''
     body += code_block('''# Installer bare i prosjektets aktiverte Python-miljø.
@@ -235,8 +231,7 @@ def outputs():
     metadata = dict(version=1, deckSha256=sha256((ROOT / "flashcards-data.js").read_text(encoding="utf-8").encode("utf-8")).hexdigest(),
         kinds=KINDS, cards=coverage, workshops={item["id"]: dict(title=item["title"], domain=item["domain"]) for item in WORKSHOPS})
     result = {"index.html": render_index(deck, coverage), "coverage.html": render_coverage(deck, coverage),
-        "glossary.html": render_glossary(), "setup.html": render_setup(),
-        "coverage.json": json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
+        "setup.html": render_setup(),
         "flashcard-coverage.js": "// Generated by scripts/build_workshops.py; edit curriculum and card mappings there.\nwindow.AI200_WORKSHOP_COVERAGE = " + json.dumps(metadata, ensure_ascii=False, separators=(',', ':')) + ";\n"}
     result.update({item["id"]+".html": render_workshop(item, deck, coverage) for item in WORKSHOPS})
     return result
