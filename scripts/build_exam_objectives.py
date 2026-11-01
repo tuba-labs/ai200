@@ -39,10 +39,9 @@ def render_homepage(html, objectives):
         objective = by_id[match[1]]
         identifier, number = objective['id'], objective['number']
         return (f'<li class="objective-item" id="objective-{number}" data-no-jargon>'
-                f'<label class="check-item objective-check"><input type="checkbox" data-objective="{identifier}">'
-                f'<span><span class="objective-number">{number}.</span> <span>{escape(objective["short"]["nb"])}</span></span></label>'
-                f'<button class="objective-info" type="button" data-objective-help="{identifier}" '
-                f'aria-label="Hele delmål {number}" title="{escape(objective["label"]["nb"], quote=True)}">ⓘ</button></li>')
+                f'<label class="check-item objective-check" data-objective-help="{identifier}" '
+                f'title="{escape(objective["label"]["nb"], quote=True)}"><input type="checkbox" data-objective="{identifier}">'
+                f'<span><span class="objective-number">{number}.</span> <span>{escape(objective["short"]["nb"])}</span></span></label></li>')
     pattern = r'<li\b[^>]*>\s*<label class="check-item objective-check"[^>]*><input\b[^>]*data-objective="([a-z0-9-]+)"[^>]*>.*?</label>(?:\s*<button\b[^>]*data-objective-help[^>]*>.*?</button>)?\s*</li>'
     rendered, count = re.subn(pattern, item, html, flags=re.S)
     if count != 27:

@@ -78,6 +78,59 @@ test('without a manual preference, choose the system theme once per page load, i
   assert.equal(boot({}, false, true).html.dataset.theme, 'light');
 });
 
+function loadingPage() {
+  const element = (text, protectedContent = false) => {
+    const attributes = new Map(), el = Object.assign(new EventTarget(), {nodeType: 1, childNodes: [],
+      closest: () => protectedContent ? el : null,
+      getAttribute: name => attributes.get(name), setAttribute: (name, value) => attributes.set(name, value)});
+    if (text) el.childNodes.push({nodeType: 3, nodeValue: text, parentElement: el});
+    return el;
+  };
+  const body = element('Oversikt'), title = element('Lærestoff'), english = element('Oversikt', true);
+  body.childNodes.push(english);
+  const controls = {'site-language': element(), 'site-theme': element()};
+  let observers = 0, changes = 0;
+  const document = Object.assign(new EventTarget(), {documentElement: {dataset: {}, style: {}}, body, readyState: 'loading',
+    getElementById: id => controls[id], querySelector: () => title, querySelectorAll: () => [english]});
+  const values = new Map([['ai200-site-language-v1', 'en']]);
+  const window = Object.assign(new EventTarget(), {document, AI200Site: {}, navigator: {language: 'nb-NO'},
+    localStorage: {getItem: key => values.get(key), setItem: (key, value) => values.set(key, value)},
+    CustomEvent: class extends Event {}, MutationObserver: class {observe() { observers++; }}});
+  window.addEventListener('site:languagechange', () => changes++);
+  site.start(window);
+  return {window, document, body, title, english, controls, observers: () => observers, changes: () => changes};
+}
+
+test('a parsed page translates before other deferred scripts finish and initializes only once', () => {
+  const page = loadingPage(), html = page.document.documentElement;
+  assert.ok(Object.hasOwn(html.dataset, 'languagePending'));
+  assert.equal(page.body.childNodes[0].nodeValue, 'Oversikt');
+  page.document.readyState = 'interactive';
+  page.window.AI200_TRANSLATIONS = catalog;
+  page.document.dispatchEvent(new Event('site:translationsready'));
+  assert.equal(page.body.childNodes[0].nodeValue, 'Overview');
+  assert.equal(page.title.childNodes[0].nodeValue, 'Study resources');
+  assert.equal(page.english.childNodes[0].nodeValue, 'Oversikt');
+  assert.equal(html.lang, 'en');
+  assert.ok(!Object.hasOwn(html.dataset, 'languagePending'));
+  assert.equal(page.changes(), 1);
+  page.document.dispatchEvent(new Event('DOMContentLoaded'));
+  assert.equal(page.changes(), 1);
+  assert.equal(page.observers(), 1);
+  page.controls['site-language'].dispatchEvent(new Event('click'));
+  assert.equal(html.lang, 'nb');
+  assert.equal(page.body.childNodes[0].nodeValue, 'Oversikt');
+});
+
+test('DOMContentLoaded reveals the authored page if the translation file fails to load', () => {
+  const page = loadingPage();
+  page.document.readyState = 'interactive';
+  page.document.dispatchEvent(new Event('DOMContentLoaded'));
+  assert.ok(!Object.hasOwn(page.document.documentElement.dataset, 'languagePending'));
+  assert.equal(page.body.childNodes[0].nodeValue, 'Oversikt');
+  assert.equal(page.controls['site-language'].disabled, false);
+});
+
 test('translation preserves inline spacing, technical text and unknown user content', () => {
   assert.equal(dictionary.translate(' \nTa prøveeksamen →  ', 'en'), ' \nTake a practice exam →  ');
   assert.equal(dictionary.translate('Take a practice exam →', 'nb'), 'Ta en prøveeksamen →');

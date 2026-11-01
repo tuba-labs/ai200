@@ -1,4 +1,5 @@
 /* Theme overrides are shared by study pages, interactive tools and workshops. */
+:root[data-language-pending] body{visibility:hidden}
 :root{color-scheme:light;--site-bg:#f5f8fc;--site-surface:#fff;--site-raised:#edf3fa;--site-ink:#17243b;--site-muted:#56657c;--site-line:#dce5f0;--site-link:#1265bd;--site-blue:#1c65ad;--site-green:#126e50;--site-amber:#85500d}
 :root[data-theme=dark]{color-scheme:dark;--site-bg:#0c1522;--site-surface:#162337;--site-raised:#213149;--site-ink:#e4edf8;--site-muted:#b3c2d4;--site-line:#35475e;--site-link:#8fc6ff;--site-blue:#235f9e;--site-green:#87dabc;--site-amber:#f0c27c;--ink:var(--site-ink);--muted:var(--site-muted);--subtle:#a8bbcf;--accent:var(--site-link);--accent-strong:#bbddff;--line:var(--site-line);--panel:var(--site-surface);--paper:var(--site-surface);--page:var(--site-bg);--light:var(--site-raised);--soft:var(--site-raised);--green:var(--site-green);--practical:var(--site-green);--analysis:var(--site-amber);--review:var(--site-muted);--shadow:0 12px 36px #0003}
 :root[data-theme=dark] body{background:var(--site-bg);color:var(--site-ink)}

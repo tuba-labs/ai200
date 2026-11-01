@@ -60,7 +60,7 @@
     const media = win.matchMedia?.('(prefers-color-scheme: dark)');
     const browserLanguage = () => win.navigator?.languages?.[0] || win.navigator?.language || '';
     let language = languageValue(read(LANGUAGE_KEY), browserLanguage()), theme = themeValue(read(THEME_KEY), media?.matches === true);
-    let dictionary, languageButton, themeButton;
+    let dictionary, languageButton, themeButton, initialized = false;
     const originals = new WeakMap(), attributeOriginals = new WeakMap();
     function updateControls() {
       if (!dictionary) return;
@@ -82,6 +82,7 @@
     }
     html.lang = language;
     applyTheme();
+    html.dataset.languagePending = '';
 
     function protectedContent(element) { return !element || Boolean(element.closest(protectedSelector)); }
     function translated(value) { return dictionary.translate(value, language); }
@@ -122,13 +123,16 @@
       win.dispatchEvent(new win.CustomEvent('site:languagechange', {detail: {language}}));
     }
     function ready() {
+      if (initialized || doc.readyState === 'loading') return;
+      initialized = true;
       dictionary = translator(win.AI200_TRANSLATIONS);
       win.AI200Site.t = translated;
       languageButton = doc.getElementById('site-language');
       themeButton = doc.getElementById('site-theme');
       languageButton?.addEventListener('click', () => { language = language === 'nb' ? 'en' : 'nb'; save(LANGUAGE_KEY, language); applyLanguage(); });
       themeButton?.addEventListener('click', () => { theme = theme === 'light' ? 'dark' : 'light'; save(THEME_KEY, theme); applyTheme(); });
-      applyLanguage();
+      try { applyLanguage(); }
+      finally { delete html.dataset.languagePending; }
       const observer = new win.MutationObserver(records => {
         for (const record of records) {
           if (record.type === 'characterData') textNode(record.target);
@@ -143,6 +147,9 @@
         if (event.key === THEME_KEY) { theme = themeValue(event.newValue, media?.matches === true); applyTheme(); }
       });
     }
+    // The deferred catalog can translate the parsed page before larger deferred
+    // question/glossary scripts finish. DOMContentLoaded is also a failure fallback.
+    doc.addEventListener('site:translationsready', ready, {once: true});
     if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', ready, {once: true});
     else ready();
   }

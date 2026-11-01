@@ -11,6 +11,8 @@
   const heading = document.createElement('strong'), description = document.createElement('p');
   popup.append(heading, description); document.body.append(popup);
   let active = null, pinned = false, closeTimer;
+  const descriptionTarget = trigger => trigger?.querySelector('input[data-objective]') || trigger;
+  const expanded = (trigger, value) => {if (trigger?.tagName === 'BUTTON') trigger.setAttribute('aria-expanded', String(value));};
   function tag(objective) {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'objective-tag'; button.dataset.objectiveHelp = objective.id; button.dataset.noJargon = '';
@@ -30,7 +32,7 @@
   }
   function hide() {
     clearTimeout(closeTimer);
-    if (active) {active.setAttribute('aria-expanded', 'false'); active.removeAttribute('aria-describedby');}
+    if (active) {expanded(active, false); descriptionTarget(active).removeAttribute('aria-describedby');}
     active = null; pinned = false; popup.hidden = true;
   }
   function show(trigger, pin = false) {
@@ -39,13 +41,13 @@
     clearTimeout(closeTimer);
     if (active !== trigger) hide();
     active = trigger; pinned = pin || pinned;
-    trigger.removeAttribute('title'); trigger.setAttribute('aria-expanded', 'true'); trigger.setAttribute('aria-describedby', popup.id);
+    trigger.removeAttribute('title'); expanded(trigger, true); descriptionTarget(trigger).setAttribute('aria-describedby', popup.id);
     heading.textContent = objective.number + '. ' + ui(objective.short.en);
     description.textContent = ui(objective.label.en);
     popup.hidden = false; position();
   }
   const trigger = target => target.closest?.('[data-objective-help]');
-  const scheduleClose = () => {clearTimeout(closeTimer); if (!pinned && document.activeElement !== active) closeTimer = setTimeout(hide, 180);};
+  const scheduleClose = () => {clearTimeout(closeTimer); if (!pinned && document.activeElement !== descriptionTarget(active)) closeTimer = setTimeout(hide, 180);};
   document.addEventListener('pointerover', event => {const button = trigger(event.target); if (button && !button.contains(event.relatedTarget)) show(button);});
   document.addEventListener('pointerout', event => {const button = trigger(event.target); if (button && !button.contains(event.relatedTarget)) scheduleClose();});
   popup.addEventListener('pointerenter', () => clearTimeout(closeTimer));
@@ -54,18 +56,21 @@
   document.addEventListener('focusout', event => {if (trigger(event.target) && !event.target.contains(event.relatedTarget)) hide();});
   document.addEventListener('click', event => {
     const button = trigger(event.target);
-    if (button) {if (active === button && pinned) hide(); else show(button, true);}
+    if (button) {if (button.tagName === 'LABEL') show(button); else if (active === button && pinned) hide(); else show(button, true);}
     else if (!popup.contains(event.target)) hide();
   });
   document.addEventListener('keydown', event => {if (event.key === 'Escape' && active) {hide(); event.stopPropagation();}});
   window.addEventListener('scroll', () => {
     if (!active) return;
     const rect = active.getBoundingClientRect();
-    if ((rect.bottom < 0 || rect.top > innerHeight) && document.activeElement !== active) hide(); else position();
+    if ((rect.bottom < 0 || rect.top > innerHeight) && document.activeElement !== descriptionTarget(active)) hide(); else position();
   }, true);
   window.addEventListener('resize', hide);
   window.addEventListener('site:beforelanguagechange', hide);
   new MutationObserver(() => {if (active && (!active.isConnected || active.closest('[hidden]'))) hide();}).observe(document.body, {childList:true, subtree:true, attributes:true, attributeFilter:['hidden']});
-  document.querySelectorAll('[data-objective-help]').forEach(button => {button.removeAttribute('title'); button.setAttribute('aria-expanded', 'false'); button.setAttribute('aria-controls', popup.id);});
+  document.querySelectorAll('[data-objective-help]').forEach(trigger => {
+    trigger.removeAttribute('title'); expanded(trigger, false);
+    if (trigger.tagName === 'BUTTON') trigger.setAttribute('aria-controls', popup.id);
+  });
   window.AI200ObjectiveHelp = {tag};
 })();

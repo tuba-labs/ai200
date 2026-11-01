@@ -59,7 +59,9 @@ def main():
     args = parser.parse_args()
     stale = []
     catalog = json.loads((ROOT / "data/site-translations.json").read_text(encoding="utf-8"))
-    translations = "// Generated from data/site-translations.json by scripts/build_navigation.py.\nwindow.AI200_TRANSLATIONS = " + json.dumps(catalog, ensure_ascii=False, separators=(",", ":")) + ";\n"
+    translations = ("// Generated from data/site-translations.json by scripts/build_navigation.py.\nwindow.AI200_TRANSLATIONS = "
+                    + json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
+                    + ";\ndocument.dispatchEvent(new Event('site:translationsready'));\n")
     destination = ROOT / "site-translations.js"
     if args.check:
         if not destination.exists() or destination.read_text(encoding="utf-8") != translations:
