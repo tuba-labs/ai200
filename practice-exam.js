@@ -42,18 +42,14 @@
     bank = value;
     questions = new Map((bank?.questions || []).map(q => [q.id, q]));
     contexts = new Map((bank?.contexts || []).map(c => [c.id, c]));
-    const downloaded = new Date(bank?.source.downloadedAt);
     const pool = bank ? rules.questionPool(bank) : [], caseCount = new Set(pool.map(q => q.contextId).filter(Boolean)).size;
-    $('bank-status').textContent = `${pool.length} questions · ${caseCount} case studies` +
-      (Number.isNaN(downloaded.getTime()) ? '' : ` · downloaded ${downloaded.toISOString().slice(0, 10)}`);
+    $('bank-status').textContent = `${pool.length} questions · ${caseCount} case studies`;
     for (const domain of [1, 2, 3, 4]) $('domain-' + domain + '-count').textContent = `${pool.filter(q => q.domain === domain).length} questions`;
     $('bank-error').hidden = true;
     updatePool();
     const members = bank ? bank.members || [bank] : [];
     document.querySelectorAll('input[name=bank]').forEach(input => {input.checked = members.some(member => member.bankId === input.value);});
     $('bank-selection-note').hidden = members.length > 0;
-    $('source-details').hidden = !members.some(member => member.source.kind !== 'original');
-    $('original-details').hidden = !members.some(member => member.source.kind === 'original');
     const saved = restore ? read(ATTEMPT_KEY) : null;
     attempt = bank && rules.validAttempt(saved, bank) ? saved : null;
     if (attempt) attempt.checked ||= [];

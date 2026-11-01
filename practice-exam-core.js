@@ -104,19 +104,42 @@
     }
     return result;
   }
-  function createAttempt(bank, {count = 45, minutes = 100, domains = [1, 2, 3, 4], randomOrder = true} = {}, now = Date.now(), random = Math.random) {
-    const pool = questionPool(bank).filter(q => domains.includes(q.domain));
-    if (!Number.isInteger(count) || count < 1 || count > pool.length) throw new Error(`Choose between 1 and ${pool.length} questions.`);
-    if (!Number.isInteger(minutes) || minutes < 0 || minutes > 1440) throw new Error('Choose a time limit from 0 to 1440 minutes. Use 0 for no timer.');
-    const selected = (randomOrder ? shuffle(pool, random) : pool).slice(0, count);
-    // Keep selected questions belonging to the same case together.
+  function seededRandom(seed) {
+    // This sequence is part of result-link version 2; keep it stable.
+    let state = seed >>> 0;
+    return () => {
+      state = (state + 0x6d2b79f5) >>> 0;
+      let value = Math.imul(state ^ state >>> 15, state | 1);
+      value ^= value + Math.imul(value ^ value >>> 7, value | 61);
+      return ((value ^ value >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function groupQuestions(selected) {
     const groups = new Map();
     for (const q of selected) {
       const key = q.contextId ? 'case:' + q.contextId : 'question:' + q.id;
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(q.id);
     }
-    return {version: 1, bankId: bank.bankId, ids: [...groups.values()].flat(), answers: {}, flagged: [], checked: [],
+    return [...groups.values()].flat();
+  }
+  // Shuffle the complete bank before filtering, so a saved seed and selected IDs
+  // reproduce the order even after the active pool's exclusions change. This
+  // case-grouping algorithm is also part of result-link version 2.
+  function questionOrder(bank, ids, seed = null) {
+    const included = new Set(ids);
+    const ordered = seed === null ? bank.questions : shuffle(bank.questions, seededRandom(seed));
+    return groupQuestions(ordered.filter(question => included.has(question.id)));
+  }
+  function createAttempt(bank, {count = 45, minutes = 100, domains = [1, 2, 3, 4], randomOrder = true} = {}, now = Date.now(), random = Math.random) {
+    const pool = questionPool(bank).filter(q => domains.includes(q.domain));
+    if (!Number.isInteger(count) || count < 1 || count > pool.length) throw new Error(`Choose between 1 and ${pool.length} questions.`);
+    if (!Number.isInteger(minutes) || minutes < 0 || minutes > 1440) throw new Error('Choose a time limit from 0 to 1440 minutes. Use 0 for no timer.');
+    const orderSeed = randomOrder ? Math.floor(random() * 4294967296) >>> 0 : null, included = new Set(pool.map(q => q.id));
+    const selected = (randomOrder ? shuffle(bank.questions, seededRandom(orderSeed)).filter(q => included.has(q.id)) : pool).slice(0, count);
+    // Keep selected questions belonging to the same case together.
+    return {version: 1, bankId: bank.bankId, ids: groupQuestions(selected), answers: {}, flagged: [], checked: [],
+      ...(randomOrder ? {orderSeed} : {}),
       index: 0, startedAt: now, deadline: minutes ? now + minutes * 60000 : null,
       submittedAt: null, timedOut: false};
   }
@@ -239,5 +262,5 @@
     for (const score of scores.values()) if (score.total) score.percent = Math.round(score.correct / score.total * 100);
     return {objectives: [...scores.values()], supporting};
   }
-  return {validateBank, questionPool, combineBanks, questionSource, createAttempt, validAttempt, questionType, removeAttemptDuplicates, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
+  return {validateBank, questionPool, combineBanks, questionSource, questionOrder, createAttempt, validAttempt, questionType, removeAttemptDuplicates, hasAnswer, validAnswer, isCorrect, checkAnswer, grade, validateObjectives, gradeObjectives, remainingSeconds, shuffle};
 });

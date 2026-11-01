@@ -161,7 +161,7 @@
   $('review-filter').addEventListener('change',renderReview);
   document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();$('main').focus();$('main').scrollIntoView({block:'start'});});
   $('share-results').addEventListener('click',()=>{
-    try {token ||= share.encode(bank,attempt);}
+    try {token = share.encode(bank,attempt);}
     catch(error){$('share-error').textContent=error.message;$('share-error').hidden=false;return;}
     $('share-site-label').hidden=location.protocol!=='file:';
     $('share-site').value ||= document.querySelector('meta[name="ai200-share-base"]').content;
@@ -201,9 +201,6 @@
       attempt=saved;
     }
     questions=new Map(bank.questions.map(question=>[question.id,question]));contexts=new Map(bank.contexts.map(context=>[context.id,context]));
-    const sources=attempt.ids.map(id=>rules.questionSource(bank,id));
-    document.querySelectorAll('.source-credit').forEach(element=>{element.hidden=!sources.some(source=>source.kind!=='original');});
-    document.querySelectorAll('.original-credit').forEach(element=>{element.hidden=!sources.some(source=>source.kind==='original');});
     renderResults();renderDate();
   } catch(error){unavailable(error.message);}
 })();

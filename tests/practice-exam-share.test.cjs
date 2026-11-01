@@ -3,6 +3,11 @@ const rules=require('../practice-exam-core.js'),share=require('../practice-exam-
 function banks(){const context={window:{}};for(const name of ['practice-exam-data.js','practice-exam-interactive-data.js'])vm.runInNewContext(fs.readFileSync(require.resolve('../'+name),'utf8'),context);return JSON.parse(JSON.stringify([context.window.AI200_EXAM_BANK,context.window.AI200_INTERACTIVE_BANK]));}
 function attempt(bank,ids){const a=rules.createAttempt(bank,{count:1,minutes:100},Date.UTC(2026,10,1,10));a.ids=ids||rules.questionPool(bank).map(q=>q.id);a.submittedAt=a.startedAt+600000;return a;}
 function roundtrip(bank,a){const token=share.encode(bank,a),result=share.decode(token,[bank]);assert.ok(rules.validAttempt(result.attempt,bank));assert.deepEqual(rules.grade(bank,result.attempt),rules.grade(bank,a));assert.deepEqual(result.attempt.ids,a.ids);assert.deepEqual(result.attempt.flagged,a.flagged);return{token,decoded:result.attempt};}
+function forged(token,change){
+  const bytes=Buffer.from(token,'base64url').subarray(0,-4);change(bytes);
+  let crc=0xffffffff;for(const byte of bytes){crc^=byte;for(let bit=0;bit<8;bit++)crc=crc&1?0xedb88320^(crc>>>1):crc>>>1;}
+  const tail=Buffer.alloc(4);tail.writeUInt32BE((crc^0xffffffff)>>>0);return Buffer.concat([bytes,tail]).toString('base64url');
+}
 test('full exams reconstruct correct answers, wrong selections, unanswered questions and review marks in order',()=>{
   const [bank]=banks(),a=attempt(bank);
   a.ids.reverse();a.ids.forEach((id,i)=>{const q=bank.questions.find(q=>q.id===id);if(i%4===0)return;a.answers[id]=i%4===1?[q.options.find(o=>!q.correctAnswers.includes(o.id)).id]:q.correctAnswers.slice();});
@@ -48,13 +53,74 @@ test('malformed, truncated, corrupted, oversized and wrong-bank links fail clear
 });
 test('valid checksums still reject unsupported flags, invalid counts and out-of-range question IDs',()=>{
   const [bank]=banks(),a=attempt(bank,[bank.questions[0].id]);const token=share.encode(bank,a);
-  function forged(change){
-    const bytes=Buffer.from(token,'base64url').subarray(0,-4);change(bytes);
-    let crc=0xffffffff;for(const byte of bytes){crc^=byte;for(let bit=0;bit<8;bit++)crc=crc&1?0xedb88320^(crc>>>1):crc>>>1;}
-    const tail=Buffer.alloc(4);tail.writeUInt32BE((crc^0xffffffff)>>>0);return Buffer.concat([bytes,tail]).toString('base64url');
+  assert.throws(()=>share.decode(forged(token,bytes=>{bytes[0]=3;}),[bank]),/unsupported/);
+  assert.throws(()=>share.decode(forged(token,bytes=>{bytes[1]=128;}),[bank]),/invalid/);
+  assert.throws(()=>share.decode(forged(token,bytes=>{bytes[18]=255;bytes[19]=255;}),[bank]),/invalid/);
+  assert.throws(()=>share.decode(forged(token,bytes=>{bytes[20]=255;bytes[21]|=128;}),[bank]),/invalid/);
+});
+
+test('version-two subset ranks and sparse state counts reject out-of-range values even with a valid checksum',()=>{
+  const [,bank]=banks(),a=rules.createAttempt(bank,{count:8,minutes:0,randomOrder:false},Date.UTC(2026,10,1));
+  a.submittedAt=a.startedAt+1000;const token=share.encode(bank,a);
+  assert.equal(Buffer.from(token,'base64url')[1]>>1,1);
+  assert.throws(()=>share.decode(forged(token,bytes=>{bytes[20]|=0xf0;}),[bank]),/invalid/);
+  a.ids=bank.questions.map(q=>q.id);for(const q of bank.questions)a.answers[q.id]=q.correctAnswers.slice();
+  const full=share.encode(bank,a);
+  assert.throws(()=>share.decode(forged(full,bytes=>{bytes[20]=0xde;}),[bank]),/invalid/);
+});
+
+test('published version-one links still reconstruct both banks and mixed results without changing their answers',()=>{
+  const sources=banks(),registry=[...sources,rules.combineBanks(sources)];
+  const fixtures=require('./fixtures/practice-exam-share-v1.json');
+  for(const fixture of fixtures){
+    const bank=registry[fixture.bank],decoded=share.decode(fixture.token,registry).attempt;
+    assert.deepEqual(decoded.ids,fixture.attempt.ids);assert.deepEqual(decoded.answers,fixture.attempt.answers);
+    assert.deepEqual(decoded.flagged,fixture.attempt.flagged);assert.equal(decoded.timedOut,true);
+    assert.deepEqual(rules.grade(bank,decoded),rules.grade(bank,fixture.attempt));
+    assert.equal(decoded.deadline-decoded.startedAt,fixture.attempt.deadline-fixture.attempt.startedAt);
+    assert.ok(share.encode(bank,decoded).length<fixture.token.length);
   }
-  assert.throws(()=>share.decode(forged(bytes=>{bytes[0]=2;}),[bank]),/unsupported/);
-  assert.throws(()=>share.decode(forged(bytes=>{bytes[1]=128;}),[bank]),/invalid/);
-  assert.throws(()=>share.decode(forged(bytes=>{bytes[18]=255;bytes[19]=255;}),[bank]),/invalid/);
-  assert.throws(()=>share.decode(forged(bytes=>{bytes[20]=255;bytes[21]|=128;}),[bank]),/invalid/);
+});
+
+test('seeded full exams preserve their exact order after saving and sharing, with much shorter links',()=>{
+  const bank=rules.combineBanks(banks()),a=rules.createAttempt(bank,{count:335,minutes:0},Date.UTC(2026,10,1),()=>.36);
+  a.submittedAt=a.startedAt+600000;
+  for(const q of rules.questionPool(bank))a.answers[q.id]=q.correctAnswers.slice();
+  assert.deepEqual(rules.questionOrder(bank,a.ids,a.orderSeed),a.ids);
+  const {token,decoded}=roundtrip(bank,JSON.parse(JSON.stringify(a)));
+  assert.equal(token,'Agapq2vAFigYj2rmg1gAAAJYAU9cKPXCG4VVqrb9CIBHBILK53geDtOpPYgAlkMj0Q');
+  assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(decoded.ids)).digest('hex'),'194cfc466a45d66cdd033e29de992647ed90833e38adfbe676f5c6a1d449eb3b');
+  assert.equal(Buffer.from(token,'base64url')[0],2);assert.equal(decoded.orderSeed,a.orderSeed);
+  assert.ok(token.length<80);
+  const changed=structuredClone(bank);changed.duplicateOf={};
+  assert.deepEqual(share.decode(token,[changed]).attempt.ids,a.ids);
+});
+
+test('subset ranks preserve varied counts, domain filters, case groups and both seeded and ordinary ordering',()=>{
+  const bank=rules.combineBanks(banks());
+  for(const count of [1,2,9,45,167,334,335])for(const randomOrder of [false,true]){
+    const a=rules.createAttempt(bank,{count,randomOrder,minutes:0},Date.UTC(2026,10,1),()=>count/400);a.submittedAt=a.startedAt+1000;
+    a.ids.forEach((id,i)=>{if(i%3)a.answers[id]=bank.questions.find(q=>q.id===id).correctAnswers.slice();});
+    roundtrip(bank,a);
+  }
+  const a=rules.createAttempt(bank,{count:60,domains:[4],minutes:0},Date.UTC(2026,10,1),()=>.9);a.submittedAt=a.startedAt+1000;
+  assert.ok(a.ids.every(id=>bank.questions.find(q=>q.id===id).domain===4));roundtrip(bank,a);
+});
+
+test('dense and sparse wrong answers, unanswered questions and flags use compact sets without losing selections',()=>{
+  const bank=rules.combineBanks(banks());
+  for(const every of [1,2,7,167,335]){
+    const a=rules.createAttempt(bank,{count:335,minutes:0},Date.UTC(2026,10,1),()=>.4);a.submittedAt=a.startedAt+1000;
+    a.ids.forEach((id,i)=>{const q=bank.questions.find(q=>q.id===id);a.answers[id]=i%every?q.correctAnswers.slice():q.type==='order'?q.correctAnswers.slice().reverse():q.type?q.correctAnswers.map((id,j)=>j?'':id):[q.options.find(o=>!q.correctAnswers.includes(o.id)).id];if(i%every===0)a.flagged.push(id);});
+    const {token,decoded}=roundtrip(bank,a);assert.deepEqual(decoded.answers,a.answers);assert.ok(token.length<450);
+    a.ids.forEach((id,i)=>{if(i%every===0)delete a.answers[id];});
+    roundtrip(bank,a);
+  }
+});
+
+test('old shuffled attempts and stale seed hints fall back to explicit ordering without losing the original review order',()=>{
+  const [bank]=banks(),a=attempt(bank);a.ids.reverse();delete a.orderSeed;
+  a.flagged=a.ids.slice(0,3);roundtrip(bank,a);
+  a.orderSeed=12;roundtrip(bank,a);
+  a.orderSeed='invalid';roundtrip(bank,a);
 });
