@@ -41,13 +41,15 @@ jobs:
       - name: Kontroller felles meny og egne innholdssider
         run: |
           python -m unittest discover -s tests -p test_navigation.py -v
-          node --test tests/site.test.cjs tests/learning-objectives.test.cjs tests/site-analytics.test.cjs
+          node --test tests/site.test.cjs tests/learning-objectives.test.cjs tests/site-analytics.test.cjs tests/site-sharing.test.cjs
 
       - name: Kontroller workshopfiler og tilbakestilling
         run: python -m unittest discover -s tests -p test_workshop_docs.py -v
 
       - name: Kontroller flashcards og kategorier
-        run: python -m unittest discover -s tests -p test_flashcards.py -v
+        run: |
+          python -m unittest discover -s tests -p test_flashcards.py -v
+          python -m unittest discover -s tests -p test_share_previews.py -v
 
       - name: Kontroller begreper og eksempler
         run: |

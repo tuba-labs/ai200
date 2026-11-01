@@ -1,5 +1,9 @@
 {
   "messages": [
+    ["Kopier sammendrag og lenke", "Copy summary and link"],
+    ["Sammendrag og lenke er kopiert.", "Summary and link copied."],
+    ["Velg en tjeneste eller kopier lenken for å dele resultatet.", "Choose a service or copy the link to share this result."],
+    ["Velg en mottaker og fullfør delingen i appen du åpner. Bruk «Kopier sammendrag og lenke» for å lime resultatet inn i en samtale.", "Choose a recipient and finish sharing in the app you open. Use “Copy summary and link” to paste the result into a chat."],
     ["Velg trinn", "Select step"],
     ["Velg plass for trinnet", "Choose step position"],
     ["Slipp et trinn her", "Drop a step here"],
@@ -586,6 +590,8 @@
     ["Åpne alle", "Open all"]
   ],
   "templates": [
+    ["AI-200-prøveeksamen: {percent}% ({correct}/{total} riktige)", "AI-200 practice exam: {percent}% ({correct}/{total} correct)"],
+    ["{incorrect} feil · {unanswered} ubesvarte.", "{incorrect} incorrect · {unanswered} unanswered."],
     ["Trinn {number}", "Step {number}"],
     ["{count} spørsmål er allerede besvart riktig i de valgte domenene.", "{count} questions already answered correctly in the selected domains."],
     ["Fullført: {date}", "Completed: {date}"],

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><linearGradient id="background" x2="1" y2="1"><stop stop-color="#071c37"/><stop offset="1" stop-color="#103961"/></linearGradient></defs>
+  <path fill="url(#background)" d="M0 0h1200v630H0z"/>
+  <circle cx="1110" cy="40" r="320" fill="#245a95" opacity=".45"/>
+  <circle cx="1130" cy="590" r="190" fill="#4599ef" opacity=".13"/>
+  <rect x="76" y="76" width="100" height="100" rx="26" fill="#fff"/>
+  <text x="126" y="139" fill="#0a2445" font-family="Segoe UI,Arial,sans-serif" font-size="38" font-weight="800" text-anchor="middle">200</text>
+  <text x="76" y="309" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="94" font-weight="800">AI-200</text>
+  <text x="80" y="379" fill="#dce9f8" font-family="Segoe UI,Arial,sans-serif" font-size="42" font-weight="600">Study group</text>
+  <path d="M80 434h94" stroke="#8fc6ff" stroke-width="6" stroke-linecap="round"/>
+  <text x="80" y="507" fill="#9fcdff" font-family="Segoe UI,Arial,sans-serif" font-size="29">Flashcards · Practice exams</text>
+</svg>

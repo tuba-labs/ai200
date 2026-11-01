@@ -6,7 +6,7 @@
   const objectiveData=window.AI200_EXAM_OBJECTIVES;
   const objectiveById=new Map(objectiveData.objectives.map(objective=>[objective.id,objective]));
   const domainNames={1:'Containers',2:'AI data',3:'Integrations',4:'Security & monitoring'};
-  let bank,attempt,questions,contexts,token;
+  let bank,attempt,questions,contexts,token,nativeShareBusy=false;
   const node = (tag, className, value) => {
     const el = document.createElement(tag);
     if (className) el.className = className;
@@ -39,6 +39,7 @@
   function renderResults() {
     $('results-panel').hidden = false;
     const result = rules.grade(bank, attempt);
+    document.title=resultShareData().title;
     $('result-percent').textContent = result.percent + '%';
     $('result-correct').textContent = result.correct;
     $('result-incorrect').textContent = result.total - result.correct - result.unanswered;
@@ -131,6 +132,11 @@
 
 
   const ui=text=>window.AI200Site?.t?window.AI200Site.t(text):text;
+  function resultShareData() {
+    const result=rules.grade(bank,attempt);
+    return {title:ui(`AI-200 practice exam: ${result.percent}% (${result.correct}/${result.total} correct)`),
+      text:ui(`${result.total-result.correct-result.unanswered} incorrect · ${result.unanswered} unanswered.`),url:$('share-link').value};
+  }
   function renderDate() {
     if (!attempt) return;
     const date=new Intl.DateTimeFormat(document.documentElement.lang==='nb'?'nb-NO':'en-GB',{dateStyle:'medium',timeStyle:'short'}).format(new Date(attempt.submittedAt));
@@ -144,17 +150,24 @@
   }
   function updateShareLink() {
     const isFile=location.protocol==='file:';
+    const data=resultShareData();
+    $('share-heading').textContent=data.title;$('share-summary').textContent=data.text;
+    $('result-share-copy-fallback').hidden=true;
     try {
       const base=isFile?new URL($('share-site').value):new URL(location.href);
       if(!['https:','http:'].includes(base.protocol)||base.username||base.password)throw new Error('Enter a valid site address.');
       if(isFile&&!base.pathname.endsWith('/')&&!/\.html?$/i.test(base.pathname))base.pathname+='/';
-      const target=new URL('practice-exam-results.html',base);
+      const target=new URL('share/results/'+rules.grade(bank,attempt).percent+'.html',base);
       target.search='';target.hash='r='+token;
       $('share-link').value=target.href;
-      $('copy-result-link').disabled=false;$('native-share').disabled=false;
+      for(const [service,href] of Object.entries(window.AI200Sharing.links({...data,url:target.href}))){
+        const link=$('result-share-'+service);link.href=href;link.removeAttribute('aria-disabled');link.tabIndex=0;
+      }
+      $('copy-result-link').disabled=false;$('copy-result-summary').disabled=false;$('native-share').disabled=nativeShareBusy;
       $('share-status').textContent='';
     } catch {
-      $('share-link').value='';$('copy-result-link').disabled=true;$('native-share').disabled=true;
+      $('share-link').value='';$('copy-result-link').disabled=true;$('copy-result-summary').disabled=true;$('native-share').disabled=true;
+      document.querySelectorAll('#share-dialog .share-links a').forEach(link=>{link.removeAttribute('href');link.setAttribute('aria-disabled','true');link.tabIndex=-1;});
       $('share-status').textContent='Enter a valid site address.';
     }
   }
@@ -170,19 +183,28 @@
   });
   $('share-site').addEventListener('input',updateShareLink);
   $('close-share').addEventListener('click',()=>$('share-dialog').close());
-  $('copy-result-link').addEventListener('click',async()=>{
+  $('share-dialog').addEventListener('close',()=>$('share-results').focus());
+  async function copyResult(summary=false) {
+    const value=summary?window.AI200Sharing.message(resultShareData()):$('share-link').value;
     try {
       if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
-      await navigator.clipboard.writeText($('share-link').value);
-      $('share-status').textContent=ui('Link copied.');
+      await navigator.clipboard.writeText(value);
+      $('share-status').textContent=ui(summary?'Summary and link copied.':'Link copied.');
     } catch {
-      $('share-link').focus();$('share-link').select();
-      $('share-status').textContent=ui('Select and copy the link.');
+      const field=summary?$('result-share-copy-value'):$('share-link');
+      if(summary)$('result-share-copy-fallback').hidden=false;
+      field.value=value;field.focus();field.select();
+      $('share-status').textContent=ui(summary?'Copy the selected text.':'Select and copy the link.');
     }
-  });
+  }
+  $('copy-result-link').addEventListener('click',()=>copyResult());
+  $('copy-result-summary').addEventListener('click',()=>copyResult(true));
   $('native-share').addEventListener('click',async()=>{
-    try {await navigator.share({title:ui('AI-200 practice exam results'),url:$('share-link').value});}
-    catch(error){if(error.name!=='AbortError')$('share-status').textContent=ui('Copy the link to share this result.');}
+    nativeShareBusy=true;$('native-share').disabled=true;
+    $('share-status').textContent='';
+    try {await navigator.share(resultShareData());$('share-status').textContent=ui('Link passed to the selected app.');}
+    catch(error){if(error.name!=='AbortError')$('share-status').textContent=ui('Choose a service or copy the link to share this result.');}
+    finally {nativeShareBusy=false;$('native-share').disabled=!$('share-link').value;}
   });
   window.addEventListener('site:languagechange',renderDate);
   window.addEventListener('hashchange',()=>location.reload());

@@ -108,6 +108,10 @@ Skriptet oppdaterer `practice-exam-data.js`, som sjekkes inn sammen med nettsted
 
 Rekkefølgeoppgaver viser ett eget, nummerert slippfelt per trinn fra starten. Fyll feltene i valgfri rekkefølge ved å dra en handling, eller velg handlingen og deretter et trinn med mus, berøring eller tastatur. Flytting mellom fylte felt bytter handlingene. «Fjern trinn» tømmer bare det aktuelle feltet. Tomme felt beholder posisjonen ved lagring, poengberegning og deling av resultatet.
 
+Kort og prøveresultater har samme delingsvalg: e-post, LinkedIn, WhatsApp, Telegram, X og enhetens delingsmeny, samt kopiering av lenke eller tekst med lenke. Kortets tittel brukes i dialogen, nettleserfanen og delingsmeldingene; resultater viser prosent og antall riktige. Sperret utklippstavle gir markert tekst som kan kopieres manuelt. Avbrutt deling viser ingen feilmelding.
+
+Bygget lager lette forhåndsvisningssider i `share/cards/` for hvert kort og `share/results/` for hver prosent fra 0 til 100. De har Open Graph- og Twitter-metadata som kan leses uten JavaScript. Nettleseren sendes videre til riktig kort eller resultatside; hele resultatet beholdes i URL-fragmentet. Disse genererte mappene er ignorert av Git, men opprettes av `python scripts/build.py` før publisering og kontrolleres av `--check`. Domenet i forhåndsvisningsmetadata vedlikeholdes i `PUBLIC_BASE` i `scripts/build_share_previews.py`; det følger kortdelingens eksisterende lokale standard `https://www.tubalabs.org/ai200/`. `share-preview.svg` er kilden til det felles forhåndsvisningsbildet `share-preview.png`.
+
 ### Lokal server
 
 Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Kildefilene ligger i `workshops/labs/`.

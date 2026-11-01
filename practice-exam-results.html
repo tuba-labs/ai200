@@ -8,6 +8,11 @@
   <meta name="color-scheme" content="light dark">
   <meta name="description" content="View and share AI-200 practice exam scores, learning objective results and selected answers.">
   <title>AI-200 | Exam results</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI-200 practice exam results">
+  <meta property="og:description" content="View practice exam scores, learning objective results and answer reviews.">
+  <meta property="og:image" content="https://www.tubalabs.org/ai200/share-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="practice-exam.css">
   <script src="practice-exam-data.js" defer></script>
   <script src="practice-exam-interactive-data.js" defer></script>
@@ -17,6 +22,7 @@
   <script src="practice-exam-core.js" defer></script>
   <script src="practice-exam-share.js" defer></script>
   <script src="practice-exam-interactions.js" defer></script>
+  <script src="site-sharing.js" defer></script>
   <script src="practice-exam-results.js" defer></script>
   <link rel="stylesheet" href="./jargon.css" data-ai200-jargon>
   <script src="./jargon-data.js" defer></script>
@@ -26,6 +32,7 @@
   <link rel="stylesheet" href="./site-theme.css" data-site-theme>
   <meta name="ai200-share-base" content="https://tuba-labs.github.io/ai200/">
   <script src="./site-analytics.js" data-site-analytics></script>
+  <link rel="stylesheet" href="./site-sharing.css">
 </head>
 <body class="exam-page">
   <a class="skip" href="#main">Skip to content</a>
@@ -73,12 +80,16 @@
     <noscript><p class="panel">Enable JavaScript to view exam results.</p></noscript>
   </main>
   <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-heading" data-no-jargon>
-    <h2 id="share-heading">Share results</h2>
+    <div class="share-dialog-head"><h2 id="share-heading">Share results</h2><button id="close-share" type="button" autofocus>Close</button></div>
+    <p id="share-summary" class="share-question"></p>
     <p class="small">Anyone with this link can view your scores, selected answers and review marks.</p>
     <label id="share-site-label" class="share-field" hidden>Published site address<input id="share-site" type="url" spellcheck="false" data-keep-english></label>
     <label class="share-field">Result link<textarea id="share-link" rows="3" readonly spellcheck="false" data-keep-english lang="en" translate="no"></textarea></label>
-    <p id="share-status" class="small" role="status"></p>
-    <div class="dialog-actions"><button id="close-share" type="button">Close</button><button id="native-share" type="button" hidden>Share…</button><button id="copy-result-link" class="primary" type="button">Copy link</button></div>
+    <div class="share-copy-tools"><button id="copy-result-link" type="button">Copy link</button><button id="copy-result-summary" type="button">Copy summary and link</button></div>
+    <div class="share-links"><a id="result-share-email">Email</a><a id="result-share-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a id="result-share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a id="result-share-telegram" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a id="result-share-x" target="_blank" rel="noopener noreferrer">X ↗</a><button id="native-share" type="button" hidden>More apps…</button></div>
+    <p class="share-help">Choose a recipient and finish sharing in the app you open. Use “Copy summary and link” to paste the result into a chat.</p>
+    <div id="result-share-copy-fallback" class="share-copy-fallback" hidden><label for="result-share-copy-value">Copy the selected text</label><textarea id="result-share-copy-value" rows="4" readonly spellcheck="false" data-keep-english></textarea></div>
+    <p id="share-status" class="share-status" role="status"></p>
   </dialog>
   <footer><div class="wrap">AI-200 Study group · Personal practice · <a href="index.html">Back to overview</a></div></footer>
 </body>
