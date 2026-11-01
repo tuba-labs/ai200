@@ -1,0 +1,11 @@
+.objective-number{font-weight:800;font-variant-numeric:tabular-nums}
+.domain ol:has(.objective-item){list-style:none;padding-left:0}
+.objective-item{display:flex;align-items:flex-start;gap:5px}
+.objective-item .objective-check{flex:1;min-width:0}
+.objective-info{flex:none;display:grid;place-items:center;width:28px;height:28px;margin-top:4px;padding:0;border:1px solid var(--site-line);border-radius:50%;background:var(--site-surface);color:var(--site-link);font:700 16px/1 system-ui;cursor:help}
+.objective-tag{display:inline-flex;align-items:baseline;gap:5px;max-width:100%;padding:5px 9px;border:1px solid var(--site-line);border-radius:7px;background:var(--site-surface);color:var(--site-link);font:inherit;font-size:13px;font-weight:500;text-align:left;white-space:normal;overflow-wrap:anywhere;cursor:help}
+.objective-tag:hover,.objective-info:hover{background:var(--site-raised)}
+.objective-tag:focus-visible,.objective-info:focus-visible{outline:3px solid var(--site-link);outline-offset:3px}
+.objective-tag .objective-number{flex:none}
+.objective-tooltip{position:fixed;z-index:50;box-sizing:border-box;width:min(400px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;padding:15px 17px;border:1px solid var(--site-line);border-radius:10px;background:var(--site-surface);color:var(--site-ink);box-shadow:0 8px 30px #0003;font:14px/1.5 system-ui;overflow-wrap:anywhere}
+.objective-tooltip strong{display:block;font-size:14px}.objective-tooltip p{margin:8px 0 0}

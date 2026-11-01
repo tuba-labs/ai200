@@ -152,7 +152,7 @@
     const fail = () => { throw new Error('The learning objective mappings are incomplete. Reload this page to try again.'); };
     if (!isObject(catalog) || catalog.schemaVersion !== 1 || !Array.isArray(catalog.objectives) || catalog.objectives.length !== 27 || !isObject(catalog.questions)) fail();
     const ids = catalog.objectives.map(o => o?.id);
-    if (!unique(ids) || !catalog.objectives.every(o => isObject(o) && safeId(o.id) && [1, 2, 3, 4].includes(o.domain) && isObject(o.label) && text(o.label.en) && text(o.label.nb))) fail();
+    if (!unique(ids) || !catalog.objectives.every(o => isObject(o) && safeId(o.id) && Number.isInteger(o.number) && o.number >= 1 && o.number <= 27 && [1, 2, 3, 4].includes(o.domain) && isObject(o.label) && text(o.label.en) && text(o.label.nb) && isObject(o.short) && text(o.short.en) && text(o.short.nb)) || !unique(catalog.objectives.map(o => o.number))) fail();
     const questions = new Set(banks.flatMap(bank => bank.questions.map(q => q.id)));
     if (Object.keys(catalog.questions).length !== questions.size) fail();
     for (const [id, mapping] of Object.entries(catalog.questions)) {

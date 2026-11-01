@@ -21,11 +21,35 @@ class ExamObjectivesTests(unittest.TestCase):
         self.assertEqual(len(catalog), 27)
         self.assertEqual([len([o for o in catalog if o['domain'] == d]) for d in range(1, 5)], [7, 12, 4, 4])
         self.assertEqual(len(built['questions']), 368)
+        self.assertEqual([o['number'] for o in catalog], list(range(1, 28)))
+        self.assertEqual(catalog[19]['id'], 'integrations-service-bus')
+        self.assertEqual(catalog[19]['short']['en'], 'Message processing in Service Bus')
+        self.assertIn('dead-letter', catalog[19]['label']['en'])
+        html = (ROOT / 'index.html').read_text(encoding='utf-8')
+        self.assertEqual(html, objectives.render_homepage(html, catalog))
+        self.assertEqual(html.count('data-objective-help='), 27)
+        translations = json.loads((ROOT / 'data/site-translations.json').read_text(encoding='utf-8'))['messages']
+        for objective in catalog:
+            self.assertIn([objective['short']['nb'], objective['short']['en']], translations)
+            self.assertIn(f'id="objective-{objective["number"]}"', html)
         # A query's service context, not just its generic wording, determines the mapping.
         self.assertEqual(built['questions']['p-pg-023']['objectives'], ['data-postgresql-sdk'])
         self.assertEqual(built['questions']['i-kql-code']['objectives'], ['security-kql'])
         self.assertEqual(built['questions']['p-eh-001']['objectives'], [])
         self.assertTrue(built['questions']['p-eh-001']['reason'])
+
+    def test_numbered_objectives_reject_duplicate_numbers_and_incomplete_tooltip_labels(self):
+        original = json.loads((ROOT / 'data/learning-objectives.json').read_text(encoding='utf-8'))
+        for change in [
+            lambda data: data['objectives'][1].update(number=1),
+            lambda data: data['objectives'][0].update(number=28),
+            lambda data: data['objectives'][0]['short'].pop('en'),
+            lambda data: data['objectives'][0]['label'].update(nb=''),
+        ]:
+            changed = copy.deepcopy(original)
+            change(changed)
+            with self.assertRaises(ValueError):
+                objectives.load_objectives(changed)
 
     def test_missing_repeated_and_unknown_question_mappings_fail_instead_of_silently_skewing_scores(self):
         catalog = [{'id': 'one'}, {'id': 'two'}]

@@ -8,6 +8,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Bygg, lagre, versjoner og administrer images i ACR.",
         "en": "Build, store, version and manage images in ACR."
+      },
+      "number": 1,
+      "short": {
+        "nb": "Image-administrasjon i ACR",
+        "en": "Image management in ACR"
       }
     },
     {
@@ -16,6 +21,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Bygg og kjør images med ACR Tasks.",
         "en": "Build and run images with ACR Tasks."
+      },
+      "number": 2,
+      "short": {
+        "nb": "Image-bygging med ACR Tasks",
+        "en": "Image builds with ACR Tasks"
       }
     },
     {
@@ -24,6 +34,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Deploy App Service-containere med miljøvariabler og hemmeligheter.",
         "en": "Deploy App Service containers with environment variables and secrets."
+      },
+      "number": 3,
+      "short": {
+        "nb": "Containere i App Service",
+        "en": "Containers in App Service"
       }
     },
     {
@@ -32,6 +47,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Administrer Container Apps-miljøer og revisjoner.",
         "en": "Manage Container Apps environments and revisions."
+      },
+      "number": 4,
+      "short": {
+        "nb": "Miljøer og revisjoner i Container Apps",
+        "en": "Container Apps environments and revisions"
       }
     },
     {
@@ -40,6 +60,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Skaler Container Apps hendelsesstyrt med KEDA.",
         "en": "Scale Container Apps in response to events with KEDA."
+      },
+      "number": 5,
+      "short": {
+        "nb": "Skalering med KEDA",
+        "en": "Scaling with KEDA"
       }
     },
     {
@@ -48,6 +73,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Deploy og administrer AKS-applikasjoner med manifester.",
         "en": "Deploy and manage AKS applications using manifests."
+      },
+      "number": 6,
+      "short": {
+        "nb": "Applikasjonsmanifester i AKS",
+        "en": "Application manifests in AKS"
       }
     },
     {
@@ -56,6 +86,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Feilsøk AKS/Container Apps: logger, hendelser og forbindelser.",
         "en": "Troubleshoot AKS/Container Apps: logs, events and connectivity."
+      },
+      "number": 7,
+      "short": {
+        "nb": "Feilsøking av containere",
+        "en": "Container troubleshooting"
       }
     },
     {
@@ -64,6 +99,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Koble til Cosmos DB og kjør SDK-spørringer.",
         "en": "Connect to Cosmos DB and run SDK queries."
+      },
+      "number": 8,
+      "short": {
+        "nb": "SDK-spørringer i Cosmos DB",
+        "en": "SDK queries in Cosmos DB"
       }
     },
     {
@@ -72,6 +112,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Optimaliser spørringer og RU-forbruk med indeks- og konsistensvalg.",
         "en": "Optimise queries and RU consumption through indexing and consistency choices."
+      },
+      "number": 9,
+      "short": {
+        "nb": "Spørringsoptimalisering i Cosmos DB",
+        "en": "Query optimization in Cosmos DB"
       }
     },
     {
@@ -80,6 +125,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Lagre/hent embeddings og utfør semantisk vektorsøk.",
         "en": "Store and retrieve embeddings and perform semantic vector searches."
+      },
+      "number": 10,
+      "short": {
+        "nb": "Vektorsøk i Cosmos DB",
+        "en": "Vector search in Cosmos DB"
       }
     },
     {
@@ -88,6 +138,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Behandle nye/endrede dokumenter med change feed-prosessor.",
         "en": "Process new or updated documents using a change feed processor."
+      },
+      "number": 11,
+      "short": {
+        "nb": "Change feed i Cosmos DB",
+        "en": "Change feed in Cosmos DB"
       }
     },
     {
@@ -96,6 +151,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Koble til PostgreSQL og kjør SDK-spørringer.",
         "en": "Connect to PostgreSQL and run SDK queries."
+      },
+      "number": 12,
+      "short": {
+        "nb": "SDK-spørringer i PostgreSQL",
+        "en": "SDK queries in PostgreSQL"
       }
     },
     {
@@ -104,6 +164,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Modeller tabeller, datatyper og indekser.",
         "en": "Design tables, data types and indexes."
+      },
+      "number": 13,
+      "short": {
+        "nb": "Datamodellering i PostgreSQL",
+        "en": "Data modeling in PostgreSQL"
       }
     },
     {
@@ -112,6 +177,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Optimaliser spørringslatens og pgvector-ressursbruk med indekser.",
         "en": "Optimise query latency and pgvector resource usage with indexes."
+      },
+      "number": 14,
+      "short": {
+        "nb": "Optimalisering av pgvector-indekser",
+        "en": "pgvector index optimization"
       }
     },
     {
@@ -120,6 +190,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Dimensjoner CPU, minne og lagring for vektorer.",
         "en": "Size CPU, memory and storage for vector workloads."
+      },
+      "number": 15,
+      "short": {
+        "nb": "Ressursdimensjonering i PostgreSQL",
+        "en": "Resource sizing in PostgreSQL"
       }
     },
     {
@@ -128,6 +203,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Bruk embeddings, metadatafiltre og vektorsøk i RAG.",
         "en": "Use embeddings, metadata filters and vector searches in RAG."
+      },
+      "number": 16,
+      "short": {
+        "nb": "RAG-søk i PostgreSQL",
+        "en": "RAG retrieval in PostgreSQL"
       }
     },
     {
@@ -136,6 +216,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Optimaliser forbindelser for kapasitet og responstid.",
         "en": "Optimise connections for throughput and response time."
+      },
+      "number": 17,
+      "short": {
+        "nb": "Forbindelser i PostgreSQL",
+        "en": "Connections in PostgreSQL"
       }
     },
     {
@@ -144,6 +229,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Implementer Redis-caching, utløp og invalidering.",
         "en": "Implement Redis caching, expiration and invalidation."
+      },
+      "number": 18,
+      "short": {
+        "nb": "Caching i Redis",
+        "en": "Caching in Redis"
       }
     },
     {
@@ -152,6 +242,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Indekser Redis-vektorer for likhetssøk.",
         "en": "Index Redis vectors for similarity searches."
+      },
+      "number": 19,
+      "short": {
+        "nb": "Vektorsøk i Redis",
+        "en": "Vector search in Redis"
       }
     },
     {
@@ -160,6 +255,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Behandle meldinger, topics, subscriptions og dødbrevskø i Service Bus.",
         "en": "Process messages, topics, subscriptions and dead-letter queues in Service Bus."
+      },
+      "number": 20,
+      "short": {
+        "nb": "Meldingsbehandling i Service Bus",
+        "en": "Message processing in Service Bus"
       }
     },
     {
@@ -168,6 +268,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Bygg Event Grid-flyter med filtre, egendefinerte hendelser og nye leveringsforsøk.",
         "en": "Build Event Grid workflows with filters, custom events and retries."
+      },
+      "number": 21,
+      "short": {
+        "nb": "Hendelsesruting i Event Grid",
+        "en": "Event routing in Event Grid"
       }
     },
     {
@@ -176,6 +281,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Bygg serverless-API-er med Functions-triggere og bindings.",
         "en": "Build serverless APIs with Functions triggers and bindings."
+      },
+      "number": 22,
+      "short": {
+        "nb": "API-er og bindings i Functions",
+        "en": "APIs and bindings in Functions"
       }
     },
     {
@@ -184,6 +294,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Konfigurer og deploy Function-apper.",
         "en": "Configure and deploy Function apps."
+      },
+      "number": 23,
+      "short": {
+        "nb": "Konfigurasjon og utrulling av Functions",
+        "en": "Functions configuration and deployment"
       }
     },
     {
@@ -192,6 +307,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Hent og roter hemmeligheter i Key Vault.",
         "en": "Retrieve and rotate secrets in Key Vault."
+      },
+      "number": 24,
+      "short": {
+        "nb": "Hemmeligheter i Key Vault",
+        "en": "Secrets in Key Vault"
       }
     },
     {
@@ -200,6 +320,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Lagre/hent innstillinger med App Configuration.",
         "en": "Store and retrieve settings with App Configuration."
+      },
+      "number": 25,
+      "short": {
+        "nb": "Innstillinger i App Configuration",
+        "en": "Settings in App Configuration"
       }
     },
     {
@@ -208,6 +333,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Spor distribuerte systemer med OpenTelemetry-SDK-er.",
         "en": "Trace distributed systems with OpenTelemetry SDKs."
+      },
+      "number": 26,
+      "short": {
+        "nb": "Distribuert sporing med OpenTelemetry",
+        "en": "Distributed tracing with OpenTelemetry"
       }
     },
     {
@@ -216,6 +346,11 @@ window.AI200_EXAM_OBJECTIVES = {
       "label": {
         "nb": "Analyser logger og metrics med KQL.",
         "en": "Analyse logs and metrics with KQL."
+      },
+      "number": 27,
+      "short": {
+        "nb": "Logg- og metrikkanalyse med KQL",
+        "en": "Log and metric analysis with KQL"
       }
     }
   ],

@@ -107,7 +107,6 @@
     $('question-domain').textContent = `Domain ${q.domain} · ${domainNames[q.domain]}`;
     $('question-service').textContent = q.service;
     $('question-source-id').textContent = `Source ID: ${q.id}`;
-    renderQuestionObjectives(q, $('question-objectives'));
     $('case-context').replaceChildren();
     const context = caseBlock(q.contextId);
     if (context) $('case-context').append(context);
@@ -153,8 +152,11 @@
     $('feedback-summary').textContent = '';
     $('feedback-explanation').textContent = '';
     $('feedback-source').removeAttribute('href');
+    $('question-objectives').replaceChildren(); $('feedback-objectives').hidden = true;
     renderGlossary(q, checked);
     if (!checked) return;
+    renderQuestionObjectives(q, $('question-objectives'));
+    $('feedback-objectives').hidden = !$('question-objectives').children.length;
     const correct = rules.isCorrect(q, answer);
     $('answer-feedback').dataset.result = correct ? 'correct' : 'incorrect';
     $('feedback-heading').textContent = correct ? 'Correct' : 'Incorrect';
@@ -234,7 +236,9 @@
   }
   function renderQuestionObjectives(question, container) {
     container.replaceChildren();
-    for (const id of objectiveData.questions[question.id].objectives) container.append(node('li', '', objectiveById.get(id).label.en));
+    for (const id of objectiveData.questions[question.id].objectives) {
+      const item = node('li'); item.append(window.AI200ObjectiveHelp.tag(objectiveById.get(id))); container.append(item);
+    }
     container.hidden = !container.children.length;
   }
   function renderObjectiveResults() {
@@ -248,7 +252,8 @@
         const row = node('tr', 'objective-domain'), heading = node('th', '', `Domain ${domain} · ${domainNames[domain]}`);
         heading.colSpan = 2; heading.scope = 'row'; row.append(heading); $('objective-results').append(row);
       }
-      const row = node('tr'), title = node('th', '', objectiveById.get(score.id).label.en), cell = node('td');
+      const row = node('tr'), title = node('th'), cell = node('td');
+      title.append(window.AI200ObjectiveHelp.tag(objectiveById.get(score.id)));
       row.dataset.objectiveId = score.id; title.scope = 'row';
       cell.append(node('span', score.total ? 'objective-score' : 'small', score.total ? `${score.percent}% · ${score.correct}/${score.total} questions correct` : 'Not assessed'));
       if (score.unanswered) cell.append(node('span', 'small objective-unanswered', `${score.unanswered} unanswered`));

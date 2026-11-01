@@ -25,6 +25,8 @@ test('every question in both banks has a reviewed mapping and all 27 objectives 
     c=>{c.questions['p-acr-001'].objectives=['invalid'];},
     c=>{c.questions['p-acr-001'].objectives=['containers-acr-images','containers-acr-images'];},
     c=>{c.objectives.push(c.objectives[0]);},
+    c=>{c.objectives[1].number=c.objectives[0].number;},
+    c=>{delete c.objectives[0].short.en;},
     c=>{delete c.questions['p-eh-001'].reason;},
   ]) {const c=structuredClone(catalog);change(c);assert.throws(()=>rules.validateObjectives(c,banks));}
 });
