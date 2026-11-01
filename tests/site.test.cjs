@@ -9,33 +9,48 @@ const dictionary = site.translator(catalog);
 test('preferences accept supported values and recover from missing or invalid saved values', () => {
   for (const language of ['nb', 'en']) assert.equal(site.languageValue(language), language);
   for (const value of [null, undefined, '', 'no', 'fr', '<script>']) assert.equal(site.languageValue(value), 'nb');
-  for (const theme of ['light', 'dark', 'system']) assert.equal(site.themeValue(theme), theme);
-  for (const value of [null, undefined, '', 'blue', '{}']) assert.equal(site.themeValue(value), 'system');
+  for (const theme of ['light', 'dark']) for (const systemDark of [false, true]) assert.equal(site.themeValue(theme, systemDark), theme);
+  for (const value of [null, undefined, '', 'system', 'blue', '{}']) {
+    assert.equal(site.themeValue(value, false), 'light');
+    assert.equal(site.themeValue(value, true), 'dark');
+  }
 });
 
-test('the saved theme and language apply before DOM content is loaded, even without storage', () => {
-  function boot(values, systemDark, blocked = false) {
-    const html = {dataset: {}, style: {}};
-    const media = {matches: systemDark, addEventListener(name, listener) { this.listener = listener; }};
-    const win = {document: {documentElement: html, readyState: 'loading', addEventListener() {}},
-      localStorage: {getItem(key) { if (blocked) throw new Error('blocked'); return values[key] ?? null; }},
-      matchMedia: () => media};
-    site.start(win);
-    return {html, media};
-  }
+function boot(values, systemDark, blocked = false) {
+  const html = {dataset: {}, style: {}};
+  const media = new EventTarget();
+  media.matches = systemDark;
+  const win = {document: {documentElement: html, readyState: 'loading', addEventListener() {}},
+    localStorage: {getItem(key) { if (blocked) throw new Error('blocked'); return values[key] ?? null; }},
+    matchMedia: () => media};
+  site.start(win);
+  return {html, media};
+}
+
+test('saved light/dark and language preferences apply before styles, overriding the system theme', () => {
   const saved = boot({'ai200-site-language-v1': 'en', 'ai200-site-theme-v1': 'dark'}, false);
   assert.equal(saved.html.lang, 'en');
   assert.equal(saved.html.dataset.theme, 'dark');
   assert.equal(saved.html.style.colorScheme, 'dark');
-  const system = boot({}, true, true);
-  assert.equal(system.html.lang, 'nb');
-  assert.equal(system.html.dataset.theme, 'dark');
-  system.media.matches = false;
-  system.media.listener();
-  assert.equal(system.html.dataset.theme, 'light');
-  saved.media.matches = true;
-  saved.media.listener();
-  assert.equal(saved.html.dataset.theme, 'dark');
+  const light = boot({'ai200-site-theme-v1': 'light'}, true);
+  assert.equal(light.html.dataset.theme, 'light');
+  assert.equal(light.html.style.colorScheme, 'light');
+});
+
+test('without a manual preference, choose the system theme once per page load, including legacy system and blocked storage', () => {
+  for (const preferences of [{}, {'ai200-site-theme-v1': 'system'}, {'ai200-site-theme-v1': 'invalid'}]) {
+    for (const dark of [false, true]) {
+      const page = boot(preferences, dark);
+      assert.equal(page.html.lang, 'nb');
+      assert.equal(page.html.dataset.theme, dark ? 'dark' : 'light');
+      page.media.matches = !dark;
+      page.media.dispatchEvent(new Event('change'));
+      assert.equal(page.html.dataset.theme, dark ? 'dark' : 'light');
+      assert.equal(boot(preferences, !dark).html.dataset.theme, dark ? 'light' : 'dark');
+    }
+  }
+  assert.equal(boot({}, true, true).html.dataset.theme, 'dark');
+  assert.equal(boot({}, false, true).html.dataset.theme, 'light');
 });
 
 test('translation preserves inline spacing, technical text and unknown user content', () => {

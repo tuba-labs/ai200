@@ -8,9 +8,9 @@
 :root[data-theme=dark] :is(h1,h2,h3,h4,.stat strong,.score-grid strong,.progress-status strong,.card-title,.jargon-entry .jargon-full-name,.jargon-popover h2,.jargon-example h3,.jargon-related h3,.jargon-relation dt,.jargon-example-table caption){color:var(--site-ink)}
 :root[data-theme=dark] :is(.small,small,.source,.counter,.answer-prose,.card-hint,.flip-tip,.hint-box,.domain p,.domain ol,.info-panel p,.info-panel ul,.info-panel ol,.resource p,label.field,.jargon-aliases,.jargon-relation-meta,.jargon-popover .jargon-popover-full,.jargon-popover .jargon-popover-aliases,.jargon-example p,.jargon-related-more){color:var(--site-muted)}
 :root[data-theme=dark] :is(.intro>p,.answer-prose){color:var(--site-ink)}
-:root[data-theme=dark] :is(.site-header .site-brand,.site-header .site-nav a,.site-header .site-preferences label){color:var(--site-ink)}
+:root[data-theme=dark] :is(.site-header .site-brand,.site-header .site-nav a){color:var(--site-ink)}
 :root[data-theme=dark] .site-header .site-nav a[aria-current=page]{color:var(--site-link);border-color:var(--site-link)}
-:root[data-theme=dark] :is(button:not(.jargon-term),.btn,.button,.bar-btn,.jargon-toggle,.site-header .site-preferences select,input:not([type=checkbox]):not([type=radio]),select,textarea,.share-dialog input,.share-dialog textarea,.card-link-tools button,.share-links a,.share-links button){background:var(--site-raised);color:var(--site-ink);border-color:#506882}
+:root[data-theme=dark] :is(button:not(.jargon-term),.btn,.button,.bar-btn,.jargon-toggle,input:not([type=checkbox]):not([type=radio]),select,textarea,.share-dialog input,.share-dialog textarea,.card-link-tools button,.share-links a,.share-links button){background:var(--site-raised);color:var(--site-ink);border-color:#506882}
 :root[data-theme=dark] :is(button:not(.jargon-term),.btn,.button,.bar-btn,.jargon-toggle,.card-link-tools button,.share-links a):hover{background:#2b4160;color:#fff}
 :root[data-theme=dark] :is(button.primary,.btn.primary,.button){background:var(--site-blue);border-color:#4a8bc8;color:#fff}
 :root[data-theme=dark] :is(button.primary,.btn.primary,.button):hover{background:#2d76ba}

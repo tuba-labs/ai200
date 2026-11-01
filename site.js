@@ -9,8 +9,7 @@
   const LANGUAGE_KEY = 'ai200-site-language-v1', THEME_KEY = 'ai200-site-theme-v1';
   const normalize = value => value.replace(/\s+/g, ' ').trim();
   const languageValue = value => ['nb', 'en'].includes(value) ? value : 'nb';
-  const themeValue = value => ['system', 'light', 'dark'].includes(value) ? value : 'system';
-  const resolvedTheme = (choice, darkSystem) => choice === 'system' ? darkSystem ? 'dark' : 'light' : choice;
+  const themeValue = (value, darkSystem = false) => ['light', 'dark'].includes(value) ? value : darkSystem ? 'dark' : 'light';
   const protectedSelector = 'script,style,pre,code,kbd,samp,textarea,.jargon-term,[contenteditable]:not([contenteditable="false"]),[translate="no"],[data-keep-english]';
 
   function translator(catalog = {}) {
@@ -58,16 +57,29 @@
     const read = key => { try { return win.localStorage.getItem(key); } catch { return null; } };
     const save = (key, value) => { try { win.localStorage.setItem(key, value); } catch { /* Preferences still work in this tab. */ } };
     const media = win.matchMedia?.('(prefers-color-scheme: dark)');
-    let language = languageValue(read(LANGUAGE_KEY)), theme = themeValue(read(THEME_KEY));
-    let dictionary;
+    let language = languageValue(read(LANGUAGE_KEY)), theme = themeValue(read(THEME_KEY), media?.matches === true);
+    let dictionary, languageButton, themeButton;
     const originals = new WeakMap(), attributeOriginals = new WeakMap();
+    function updateControls() {
+      if (!dictionary) return;
+      const labels = [
+        [languageButton, language === 'nb' ? 'Språk: Norsk. Bytt til engelsk.' : 'Språk: Engelsk. Bytt til norsk.'],
+        [themeButton, theme === 'light' ? 'Lyst tema. Bytt til mørkt tema.' : 'Mørkt tema. Bytt til lyst tema.'],
+      ];
+      for (const [button, source] of labels) {
+        if (!button) continue;
+        const label = translated(source);
+        for (const name of ['aria-label', 'title']) if (button.getAttribute(name) !== label) button.setAttribute(name, label);
+        button.disabled = false;
+      }
+    }
     function applyTheme() {
-      html.dataset.theme = resolvedTheme(theme, media?.matches === true);
-      html.style.colorScheme = html.dataset.theme;
+      html.dataset.theme = theme;
+      html.style.colorScheme = theme;
+      updateControls();
     }
     html.lang = language;
     applyTheme();
-    media?.addEventListener('change', () => { if (theme === 'system') applyTheme(); });
 
     function protectedContent(element) { return !element || Boolean(element.closest(protectedSelector)); }
     function translated(value) { return dictionary.translate(value, language); }
@@ -104,20 +116,16 @@
       const title = doc.querySelector('title');
       if (title) translateTree(title);
       doc.querySelectorAll('[data-keep-english]').forEach(element => { element.lang = 'en'; element.setAttribute('translate', 'no'); });
+      updateControls();
       win.dispatchEvent(new win.CustomEvent('site:languagechange', {detail: {language}}));
     }
     function ready() {
       dictionary = translator(win.AI200_TRANSLATIONS);
       win.AI200Site.t = translated;
-      const languages = doc.getElementById('site-language'), themes = doc.getElementById('site-theme');
-      if (languages) {
-        languages.value = language;
-        languages.addEventListener('change', () => { language = languageValue(languages.value); save(LANGUAGE_KEY, language); applyLanguage(); });
-      }
-      if (themes) {
-        themes.value = theme;
-        themes.addEventListener('change', () => { theme = themeValue(themes.value); save(THEME_KEY, theme); applyTheme(); });
-      }
+      languageButton = doc.getElementById('site-language');
+      themeButton = doc.getElementById('site-theme');
+      languageButton?.addEventListener('click', () => { language = language === 'nb' ? 'en' : 'nb'; save(LANGUAGE_KEY, language); applyLanguage(); });
+      themeButton?.addEventListener('click', () => { theme = theme === 'light' ? 'dark' : 'light'; save(THEME_KEY, theme); applyTheme(); });
       applyLanguage();
       const observer = new win.MutationObserver(records => {
         for (const record of records) {
@@ -129,12 +137,12 @@
       observer.observe(doc.body, {subtree: true, childList: true, characterData: true, attributes: true,
         attributeFilter: ['aria-label', 'aria-valuetext', 'title', 'placeholder', 'alt']});
       win.addEventListener('storage', event => {
-        if (event.key === LANGUAGE_KEY) { language = languageValue(event.newValue); if (languages) languages.value = language; applyLanguage(); }
-        if (event.key === THEME_KEY) { theme = themeValue(event.newValue); if (themes) themes.value = theme; applyTheme(); }
+        if (event.key === LANGUAGE_KEY) { language = languageValue(event.newValue); applyLanguage(); }
+        if (event.key === THEME_KEY) { theme = themeValue(event.newValue, media?.matches === true); applyTheme(); }
       });
     }
     if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', ready, {once: true});
     else ready();
   }
-  return {languageValue, themeValue, resolvedTheme, translator, protectedSelector, start};
+  return {languageValue, themeValue, translator, protectedSelector, start};
 });
