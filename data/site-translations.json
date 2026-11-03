@@ -168,7 +168,8 @@
     ["Finn lærestoff og øving →", "Find study resources and exercises →"],
     ["Format, varighet, oppmelding, pris, eksamensdagen, resultat og nye forsøk.", "Format, duration, registration, cost, exam day, results and retakes."],
     ["Se alle eksamensdetaljene →", "View all exam details →"],
-    ["AI-200 · Felles startside for sertifiseringsgruppen", "AI-200 · Home for the certification study group"],
+    ["AI-200 · Felles startside for", "AI-200 · Home for the"],
+    ["sin sertifiseringsgruppe", "certification study group"],
     ["Oppdatert 31. oktober 2026 · Microsofts studieguide er fasit ved endringer.", "Updated on 31 October 2026 · Refer to Microsoft’s study guide for changes."],
     ["Lærestoff og øving | AI-200", "Study resources and practice | AI-200"],
     ["Studer og øv", "Study and practise"],
@@ -647,5 +648,5 @@
     ["Terms · {name}", "Terms · {name}"],
     ["{count} av {total} kort", "{count} of {total} cards"]
   ],
-  "unchanged": ["AI-200", "Flashcards", "Flashcard", "Microsoft Certification · Azure", "Microsoft Certification · AI-200", "Developing AI Cloud Solutions on Azure", "Azure AI Cloud Developer Associate", "Cosmos DB for NoSQL", "PostgreSQL", "Azure Managed Redis", "Azure Functions", "Microsoft AI-200 Study Guide", "Microsoft Learn: AI-200T00", "Microsoft Exam Sandbox", "AI200Prep", "MightyBS – hands-on labs", "Pearson VUE – Microsoft ↗", "120 min", "Real Exam", "LinkedIn ↗", "WhatsApp ↗", "Telegram ↗", "X ↗"]
+  "unchanged": ["AI-200", "Tubalabs", "Flashcards", "Flashcard", "Microsoft Certification · Azure", "Microsoft Certification · AI-200", "Developing AI Cloud Solutions on Azure", "Azure AI Cloud Developer Associate", "Cosmos DB for NoSQL", "PostgreSQL", "Azure Managed Redis", "Azure Functions", "Microsoft AI-200 Study Guide", "Microsoft Learn: AI-200T00", "Microsoft Exam Sandbox", "AI200Prep", "MightyBS – hands-on labs", "Pearson VUE – Microsoft ↗", "120 min", "Real Exam", "LinkedIn ↗", "WhatsApp ↗", "Telegram ↗", "X ↗"]
 }
