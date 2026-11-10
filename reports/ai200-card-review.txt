@@ -6,7 +6,7 @@ Remaining card IDs are unchanged. Display numbers follow the reduced deck.
 The guide names Python. A resource link alone is not a measured objective.
 General Docker, Kubernetes, SQL, networking and identity prerequisites remain.
 These are our scope decisions. Microsoft notes that related topics can appear.
-Existing workshops and the requested broad jargon reference remain available.
+The broad jargon reference remains available.
 
 REMOVED FROM THE ACTIVE DECK
 

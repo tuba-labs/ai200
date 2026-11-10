@@ -10,14 +10,14 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import build_jargon as jargon
-from test_workshop_docs import Page
+from site_html import Page
 
 
 class JargonTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.terms = jargon.load_catalog()
-        cls.pages = list(ROOT.glob('*.html')) + list((ROOT / 'workshops').glob('*.html')) + list((ROOT / 'jargon-examples').glob('*.html'))
+        cls.pages = jargon.current_pages()
 
     def test_each_reviewed_term_has_one_matching_glossary_entry(self):
         deck = json.loads((ROOT / 'flashcards-data.js').read_text(encoding='utf-8')

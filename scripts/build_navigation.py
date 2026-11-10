@@ -49,7 +49,7 @@ def attach_navigation(html, prefix="./", current=None):
 
 
 def current_pages():
-    return sorted([*ROOT.glob("*.html"), *(ROOT / "workshops").glob("*.html"),
+    return sorted([*ROOT.glob("*.html"),
                    *(ROOT / "jargon-examples").glob("*.html")])
 
 

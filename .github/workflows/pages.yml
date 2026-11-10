@@ -44,9 +44,7 @@ jobs:
           node --test tests/site.test.cjs tests/learning-objectives.test.cjs tests/site-analytics.test.cjs tests/site-sharing.test.cjs
 
       - name: Kontroller lenker og tilgjengelige sider
-        run: |
-          python -m unittest discover -s tests -p test_workshop_docs.py -v
-          python -m unittest discover -s tests -p test_site_reachability.py -v
+        run: python -m unittest discover -s tests -p test_site_reachability.py -v
 
       - name: Kontroller flashcards og kategorier
         run: |
@@ -57,9 +55,6 @@ jobs:
         run: |
           python -m unittest discover -s tests -p test_jargon.py -v
           node --test tests/jargon-core.test.cjs
-
-      - name: Kontroller workshops og kortdekning
-        run: python -m unittest discover -s tests -p test_new_workshops.py -v
 
       - name: Kontroller prøveeksamen og spørsmålsbank
         run: |

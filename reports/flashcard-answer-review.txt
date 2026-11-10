@@ -43,7 +43,7 @@ Primary material: https://learn.microsoft.com/en-us/azure/azure-resource-manager
 
 003 | term-d1-resource-group | Domain 1 | terms-1 | clarified
 Q: What is an Azure resource group?
-A: A resource group is a named collection of related Azure resources. Putting a workshop app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together.
+A: A resource group is a named collection of related Azure resources. Putting an app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together.
 Review: Container deployment vocabulary, resource boundaries and the practical role of each component.
 Primary material: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
 
@@ -97,7 +97,7 @@ Primary material: https://learn.microsoft.com/en-us/azure/azure-resource-manager
 
 012 | term-d1-bicep | Domain 1 | terms-1 | clarified
 Q: What is Bicep in Azure?
-A: Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by a workshop.
+A: Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by an application.
 Review: Container deployment vocabulary, resource boundaries and the practical role of each component.
 Primary material: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview
 
@@ -562,7 +562,7 @@ Primary material: https://learn.microsoft.com/en-us/azure/app-service/configure-
 
 084 | m-06-1-1 | Domain 1 | app-service | clarified
 Q: How do App Service and Functions expose app settings to application code?
-A: They expose app settings as environment variables. For example, setting WORKSHOP_MODE to production lets Python read it through os.environ["WORKSHOP_MODE"]. This supplies environment-specific configuration without rebuilding the image.
+A: They expose app settings as environment variables. For example, setting APP_MODE to production lets Python read it through os.environ["APP_MODE"]. This supplies environment-specific configuration without rebuilding the image.
 Review: App Service container configuration, identity-based pulls, slot behavior and Key Vault reference refresh.
 Primary material: https://learn.microsoft.com/en-us/azure/app-service/configure-common
 

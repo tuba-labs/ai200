@@ -1,0 +1,38 @@
+/* Page layout for the glossary and its downloadable code examples. */
+:root{--ink:#17283d;--muted:#53677b;--line:#d5e2eb;--paper:#fff;--page:#f4f7fa;--accent:#125ca3}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;color:var(--ink);background:var(--page);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:#093c6c}
+button,input,select{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #277bcc;outline-offset:3px}
+.wrap{width:min(1240px,calc(100% - 40px));margin:auto}
+.skip{position:absolute;top:-100px;background:#fff;padding:10px;z-index:10}
+.skip:focus{top:0}
+.hero{background:linear-gradient(115deg,#0b233e,#154d75);color:#fff;padding:46px 0 50px}
+.hero h1{font-size:clamp(30px,4.5vw,48px);max-width:980px;letter-spacing:-1px;line-height:1.15;margin:10px 0 18px}
+.eyebrow{font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.2px;margin:0;color:#466889}
+.hero .eyebrow{color:#a4d2f6}
+.lead{max-width:930px;font-size:18px;color:#deebf6;margin-bottom:0}
+main{padding:28px 0 60px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:20px}
+.panel h2:first-child{margin-top:0}
+h2{line-height:1.25;letter-spacing:-.35px;font-size:27px}
+h3{font-size:21px;line-height:1.3;letter-spacing:-.2px}
+p{margin:12px 0}
+li{margin-bottom:12px}
+li:last-child{margin-bottom:0}
+ol,ul{padding-left:24px}
+pre{margin:18px 0;padding:18px;border-radius:10px;background:#102438;color:#edf5fc;overflow:auto;font:13px/1.7 ui-monospace,Consolas,monospace;tab-size:4;max-height:620px}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;overflow-wrap:anywhere}
+pre code{font-size:inherit;overflow-wrap:normal}
+.filters{display:grid;gap:12px}
+.filters label{font-size:12px;font-weight:700}
+.filters select,.filters input{display:block;width:100%;padding:10px;background:#fff;border:1px solid #b9cddc;border-radius:8px;margin-top:5px;min-width:0;font-size:14px}
+footer{background:#fff;border-top:1px solid var(--line);padding:20px 0;color:var(--muted);font-size:13px}
+@media(max-width:650px){.wrap{width:calc(100% - 26px)}.panel{padding:19px}.hero{padding:32px 0 38px}h2{font-size:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{header,footer{display:none}.hero{background:none;color:#000}.hero .lead{color:#222}.panel{box-shadow:none;break-inside:avoid}.wrap{width:100%}pre{white-space:pre-wrap;max-height:none}}

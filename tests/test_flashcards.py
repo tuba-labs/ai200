@@ -190,11 +190,6 @@ class FlashcardContentTests(unittest.TestCase):
         for card in terms:
             with self.subTest(card=card["id"]):
                 self.assertTrue(card["term"].strip())
-                if card["origin"] == "terms":
-                    self.assertNotIn("coverageCategory", card)
-                else:
-                    self.assertIn(card["coverageCategory"], self.categories)
-                    self.assertNotEqual(card["coverageCategory"], card["category"])
 
     def test_each_card_has_a_study_group_tied_to_a_reviewed_objective(self):
         review = load_review()

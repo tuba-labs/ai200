@@ -9,11 +9,10 @@ from pathlib import Path
 import re
 import unicodedata
 
-from jargon_catalog import ALIASES, DEFINITIONS, EXTRA, PRIMARY
+from jargon_catalog import ALIASES, DEFINITIONS, EXTRA, FULL_NAMES, PRIMARY
 from jargon_examples import EXAMPLES, inline
 from jargon_relations import EXTRA_TERMS, PLATFORMS, RELATION_KINDS, RELATIONS
-from workshop_curriculum import GLOSSARY
-from build_navigation import attach_navigation, current_section
+from build_navigation import attach_navigation, current_pages, current_section
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAINS = {1: 'Containere', 2: 'AI-data', 3: 'Integrasjoner', 4: 'Sikkerhet og observabilitet'}
@@ -33,9 +32,9 @@ def load_catalog():
         if match:
             aliases.append(match[1])
         full = ''
-        abbreviation = name if name in GLOSSARY else (match[1] if match else '')
-        if abbreviation in GLOSSARY and (abbreviation.isupper() or abbreviation in {'Dapr', 'VNet', 'IaC', 'IVFFlat', 'DiskANN', 'OTel'}):
-            full = GLOSSARY[abbreviation][0]
+        abbreviation = name if name in FULL_NAMES else (match[1] if match else '')
+        if abbreviation in FULL_NAMES:
+            full = FULL_NAMES[abbreviation]
             if full.casefold() != name.casefold():
                 aliases.append(full)
             else:
@@ -178,7 +177,7 @@ def render_page(prefix='./', terms=None):
     html = f'''<!doctype html>
 <html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Alle fagbegreper med forklaringer, forkortelser, andre navn og offisielle kilder."><title>Begreper og forkortelser | AI-200</title>
-<link rel="stylesheet" href="{prefix}workshops/course.css"></head>
+<link rel="stylesheet" href="{prefix}jargon-page.css"></head>
 <body><a class="skip" href="#innhold">Hopp til begrepene</a>
 <!-- site-header -->
 <div class="hero"><div class="wrap"><p class="eyebrow">Ordforrådet i alle fire domener</p><h1>Begreper og forkortelser</h1><p class="lead">Slå opp et primærbegrep, en forkortelse eller et annet navn. Prikkede understrekinger på studiesidene gir samme forklaring.</p></div></div>
@@ -202,7 +201,7 @@ def render_example_page(identifier, example, terms):
     html = f'''<!doctype html>
 <html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{escape(example['summary'], quote=True)}"><title>{escape(example['language'])}: eksempel | AI-200</title>
-<link rel="stylesheet" href="../workshops/course.css"></head>
+<link rel="stylesheet" href="../jargon-page.css"></head>
 <body><a class="skip" href="#innhold">Hopp til eksemplet</a>
 <!-- site-header -->
 <div class="hero"><div class="wrap"><p class="eyebrow">Se hvordan det ser ut</p><h1>{escape(example['language'])}: eksempel</h1><p class="lead" lang="en">{escape(example['summary'])}</p></div></div>
@@ -236,7 +235,7 @@ def main():
     args = parser.parse_args()
     rendered = outputs()
     # Add the glossary assets and link to every study page.
-    for path in sorted(list(ROOT.glob('*.html')) + list((ROOT / 'workshops').glob('*.html')) + list((ROOT / 'jargon-examples').glob('*.html'))):
+    for path in current_pages():
         name = path.relative_to(ROOT).as_posix()
         if name not in rendered:
             prefix = '../' * len(path.parent.relative_to(ROOT).parts) or './'

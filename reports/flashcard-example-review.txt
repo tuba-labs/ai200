@@ -9,8 +9,8 @@ Exact recall facts and already clear definitions were not padded with repetitive
 Questions, answer text, stable card IDs, categories and importance ratings were preserved.
 
 Edit each new example directly in the example property beside its answer in flashcards-data.js.
-Term examples are reused in the glossary/tooltips. Current workshop answer panels also include examples.
-Run scripts/build_jargon.py and scripts/build_workshops.py after editing to update generated copies.
+Term examples are reused in the glossary/tooltips.
+Run scripts/build_jargon.py after editing to update generated copies.
 
 Validation: reviewed against primary documentation linked on the cards; JSON/Python syntax and
 rendering are checked locally. Fragments identify their surrounding context in the explanation.

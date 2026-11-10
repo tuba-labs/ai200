@@ -128,7 +128,7 @@
     "term-d1-resource-group": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "bd8a37f50520484a5f8e4c0583fc9f5b6e9ddf2e0e19a766553c9e1df9ec49c9"
+      "fingerprint": "68cde5dfee64ab930195adca26bcf3fad6bc0f53cdea8be74c8b056e4ec10d71"
     },
     "term-d1-subscription": {
       "objective": "d1-aks-workloads",
@@ -173,7 +173,7 @@
     "term-d1-bicep": {
       "objective": "d1-aks-workloads",
       "level": "foundation",
-      "fingerprint": "a82e556ec6d58f480511d939919d7515572289fbc0b261c89ada7c21f87f88a1"
+      "fingerprint": "97eb36946410cd8c37ec5db410ca51bf800bab97c183e100030684ca9a3fdf67"
     },
     "term-d1-cicd": {
       "objective": "d1-aks-workloads",
@@ -533,7 +533,7 @@
     "m-06-1-1": {
       "objective": "d1-web-hosting",
       "level": "objective",
-      "fingerprint": "1011a058c17272c3c82caef9883f24ad30c9ea91bc2caa9fdf3d4204cfee896c"
+      "fingerprint": "e399aa34e6eb067f18c973c54af12703d1abf2d1f84a00899e354895852523ea"
     },
     "m-06-3-1": {
       "objective": "d1-web-hosting",

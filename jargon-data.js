@@ -201,7 +201,7 @@ window.AI200_JARGON = {
         "Artificial Intelligence",
         "kunstig intelligens"
       ],
-      "definition": "Artificial Intelligence: methods and systems performing tasks such as understanding language, recognizing patterns or generating content. In these workshops, AI workloads rely on ordinary cloud infrastructure, data access and monitoring too.",
+      "definition": "Artificial Intelligence: methods and systems performing tasks such as understanding language, recognizing patterns or generating content. AI workloads rely on ordinary cloud infrastructure, data access and monitoring too.",
       "domains": [],
       "sources": [
         "https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services"
@@ -1439,7 +1439,7 @@ window.AI200_JARGON = {
         "Bicep-filer",
         "Bicep-fil"
       ],
-      "definition": "Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by a workshop.",
+      "definition": "Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by an application.",
       "domains": [
         1
       ],
@@ -6194,7 +6194,7 @@ window.AI200_JARGON = {
       "aliases": [
         "pwsh"
       ],
-      "definition": "A command shell and scripting language. These workshops use its syntax for variables and commands, such as $name and $env:SETTING. Shell syntax differs, so a Bash command may need adaptation before running in PowerShell.",
+      "definition": "A command shell and scripting language. Its syntax supports variables and commands, such as $name and $env:SETTING. Shell syntax differs, so a Bash command may need adaptation before running in PowerShell.",
       "domains": [],
       "sources": [
         "https://learn.microsoft.com/en-us/powershell/scripting/overview"
@@ -6756,7 +6756,7 @@ window.AI200_JARGON = {
         "ressursgruppe",
         "ressursgrupper"
       ],
-      "definition": "A resource group is a named collection of related Azure resources. Putting a workshop app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together.",
+      "definition": "A resource group is a named collection of related Azure resources. Putting an app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together.",
       "domains": [
         1
       ],

@@ -28,7 +28,7 @@
     .filter-panel{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin-top:20px;box-shadow:var(--shadow)}
     .panel-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}.panel-top h2{font-size:20px;margin:0;letter-spacing:-.4px}
     .tools{display:flex;gap:9px;flex-wrap:wrap}.tools button,.bar-btn{border:1px solid #b9d1e6;border-radius:9px;background:#f4f8fc;color:#1d466d;font-weight:700;padding:8px 12px;font-size:13px}
-    .tools button:hover,.bar-btn:hover{background:#e3f0fd}.filter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field.search-field{grid-column:1/-1}
+    .tools button:hover,.bar-btn:hover{background:#e3f0fd}.filter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field.search-field{grid-column:1/-1}
     label.field{display:block;font-weight:700;color:#4f6178;font-size:12px}label.field select,label.field input{display:block;margin-top:5px;width:100%;border:1px solid #cbd8e6;padding:11px 13px;background:#fff;border-radius:9px;color:var(--ink);min-height:46px}
     .term-option{display:flex;align-items:flex-start;gap:10px;margin:16px 0 0;font-size:14px;font-weight:650;cursor:pointer}.term-option input{width:18px;height:18px;flex-shrink:0;margin:3px 0 0;accent-color:var(--accent)}.term-help{margin:5px 0 0 28px;color:var(--muted);font-size:12px}
     [data-importance="terms"]{--importance-ink:#475b70;--importance-edge:#8293a6;--importance-border:#ccd6e0;--importance-soft:#e7edf3;--importance-surface:#f1f4f8}
@@ -49,7 +49,6 @@
     .study{margin-top:20px}.study-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
     .meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.domain-tag{display:inline-block;background:var(--domain-light);color:var(--domain);border-radius:30px;font-weight:850;padding:5px 11px;font-size:12px}
     .category-tag{display:inline-block;background:#edf2f8;color:#344d67;border-radius:30px;font-weight:750;padding:5px 11px;font-size:12px}.card-reference{margin:12px 2px;color:var(--muted);font-size:13px}.card-reference a{margin-right:12px}.state-tag{display:inline-block;background:#edf2f8;color:#596a80;border-radius:30px;font-weight:750;padding:5px 11px;font-size:12px}.state-tag.review{background:#fff1dc;color:#89541c}.state-tag.known{background:#e5f6ed;color:#12633e}
-    .workshop-tag{display:inline-block;border:1px solid #a7cebd;background:#eef8f3;color:#165c45;border-radius:30px;font-size:12px;font-weight:750;padding:4px 11px;text-decoration:none}.workshop-tag.analysis{border-color:#dfc08d;background:#fff6e7;color:#80520d}.workshop-tag.review{border-color:#ccd5df;background:#f2f4f7;color:#536174}
     .counter{font-size:14px;font-weight:750;color:#52657c;font-variant-numeric:tabular-nums}
     .counter-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.card-jump{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--muted)}.card-jump input{width:80px;min-height:40px;padding:6px 8px;border:1px solid #cbd8e6;border-radius:8px}.card-jump button{min-height:40px}.session-status{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 0;font-size:13px;color:var(--muted)}
     .session-status #undo-rating{margin-left:auto}
@@ -143,9 +142,6 @@
         <label class="field">Kortsett
           <select id="source-filter"><option value="all">Alle kortsett</option><option value="original">Opprinnelige, delt opp (295)</option><option value="prep">Fra spørsmålsbanken (113)</option><option value="terms" id="terms-source-option">Bare begrepskort</option></select>
         </label>
-        <label class="field">Workshopdekning
-          <select id="workshop-filter"><option value="all">Alle kort</option><option value="covered">Dekket av en oppgave</option><option value="practical">Praktisk oppgave</option><option value="analysis">Analyseoppgave</option><option value="review">Kun repetisjon</option></select>
-        </label>
         <label class="field search-field">Søk i alle kort
           <input id="search" type="search" placeholder="For eksempel Cosmos DB eller KEDA" autocomplete="off">
         </label>
@@ -186,7 +182,7 @@
       </div>
     </section>
     <section class="study" aria-label="Flashcard">
-      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domain 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Unrated</span><a id="workshop-tag" class="workshop-tag" hidden></a></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Position 1 of 560 in queue</span><form id="card-jump" class="card-jump" data-no-jargon novalidate><label for="card-number">Go to card #</label><input id="card-number" type="number" min="1" max="560" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Go</button></form></div></div>
+      <div class="study-top"><div class="meta"><span id="domain-tag" class="domain-tag">Domain 1</span><span id="category-tag" class="category-tag"></span><span id="state-tag" class="state-tag">Unrated</span></div><div class="counter-tools"><span id="counter" class="counter" aria-live="polite">Position 1 of 560 in queue</span><form id="card-jump" class="card-jump" data-no-jargon novalidate><label for="card-number">Go to card #</label><input id="card-number" type="number" min="1" max="560" step="1" inputmode="numeric" required aria-describedby="jump-help"><button type="submit" class="bar-btn">Go</button></form></div></div>
       <p id="jump-help" class="term-help" data-no-jargon>Use the card’s fixed number, such as 35. Jumping reveals the card even if it is rated or hidden by a filter, then continues in number order.</p>
       <div id="card" class="flashcard" role="group" aria-labelledby="card-title">
         <div class="card-hint"><span id="card-face-label">Question</span><div class="card-link-tools" data-no-jargon><a id="card-id" href="./flashcards.html" aria-label="Direct link to this card">Card #01</a><button id="copy-card-link" type="button">Copy link</button><button id="share-card" type="button" aria-haspopup="dialog" aria-controls="card-share-dialog">Share</button></div></div>
@@ -227,16 +223,13 @@
     <div class="hint-box"><strong>Hurtigtaster:</strong> <span class="kbd">Mellomrom</span> snur kortet, også når en handlingsknapp har fokus · <span class="kbd">←</span>/<span class="kbd">→</span> bytt kort · <span class="kbd">1</span> må repetere · <span class="kbd">2</span> kan dette. I tekstfelt, avkrysningsbokser og begrepsforklaringer brukes vanlige tastaturkontroller. <span id="storage-note">Fremdriften lagres lokalt i nettleseren på denne enheten.</span> Markeringer fra de gamle kortene følger de oppdelte kortene.</div>
     <p class="source"><strong>Pensumkontroll:</strong> Kortene er avgrenset til oppgavene i AI-200-guiden og grunnlaget for å utføre dem. <a href="reports/ai200-card-review.txt">Se hvilke kort som ble fjernet og hvorfor</a>. Kort-ID-ene til gjenværende kort er beholdt, slik at lagrede vurderinger følger med.</p>
     <p class="source"><strong>Kilder:</strong> 560 kort er tilgjengelige etter pensumkontrollen og oppdateringen 30. oktober 2026. Kortene er gjennomgått mot læringsmålene og har offisielle dokumentasjonslenker for hvert svar. Spørsmål og svar er på engelsk. Like læringspunkter er slått sammen; kortene har fagdomene, kategori og stabile ID-er. Dette er uoffisielt øvingsmateriell. <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-200" target="_blank" rel="noopener noreferrer">Microsofts studieguide</a> er grunnlaget for avgrensningen.</p>
-    <p class="source"><strong>Workshopmerket:</strong> Lenken på kortet går til den konkrete praktiske oppgaven eller analyseoppgaven i <a href="./workshops/index.html">det nye workshopløpet</a>. «Repetisjon» betyr at kortet foreløpig mangler en egen øvingsoppgave. Dette beskriver opplegget, ikke din personlige fremdrift. <a href="./workshops/coverage.html">Se full dekningsoversikt →</a></p>
   </main>
   <footer><div class="wrap footer-in"><span>AI-200 · Øvingskort for studiegruppen</span><span>Statisk HTML/JavaScript · GitHub Pages-kompatibel</span></div></footer>
   <script src="./flashcards-data.js"></script>
-  <script src="./workshops/flashcard-coverage.js"></script>
   <script>
     'use strict';
     const DECK = window.AI200_FLASHCARDS;
     const CARDS = DECK.cards;
-    const WORKSHOP_COVERAGE = window.AI200_WORKSHOP_COVERAGE || {cards:{},workshops:{}};
     const CATEGORY_BY_ID = new Map(DECK.categories.map(category=>[category.id,category]));
     const CARD_NUMBERS = new Map(CARDS.map((card,index)=>[card.id,index+1]));
     const DOMAIN_NAMES = {1:'Containers',2:'AI data',3:'Integrations',4:'Security'};
@@ -341,23 +334,14 @@
       $('progress-track').setAttribute('aria-label',`Av ${total} kort: ${description.join('. ')}.`);
     }
     function filtered(ignoreImportance=false,ignoreRating=false){
-      const domain=$('domain-filter').value,category=$('category-filter').value,source=$('source-filter').value,workshop=$('workshop-filter').value,q=$('search').value.trim().toLocaleLowerCase();
+      const domain=$('domain-filter').value,category=$('category-filter').value,source=$('source-filter').value,q=$('search').value.trim().toLocaleLowerCase();
       const order=shuffledIds?shuffledIds.map(id=>originalById.get(id)):CARDS;
       return order.filter(c=> (ignoreImportance||matchesImportance(c))
         &&(domain==='all'||String(c.domain)===domain)
         &&(category==='all'||c.category===category)
         &&(source==='all'||(source==='terms'?isTerm(c):c.origin===source))
         &&(ignoreRating||matchesRating(c))
-        &&matchesWorkshop(c,workshop)
         &&(!q||[CATEGORY_BY_ID.get(c.category).label,c.title,c.question,...c.answers].join(' ').toLocaleLowerCase().includes(q)));
-    }
-    function matchesWorkshop(card,value){
-      if(value==='all')return true;
-      const entry=WORKSHOP_COVERAGE.cards[card.id];
-      if(!entry)return false;
-      if(value==='covered')return ['practical','analysis'].includes(entry.kind);
-      if(['practical','analysis','review'].includes(value))return entry.kind===value;
-      return entry.workshop===value;
     }
     function cardURL(card,anchor=false){
       const url=new URL(location.href);
@@ -459,8 +443,6 @@
       $('undo-rating').hidden=!lastRating;
       if(lastRating)$('undo-rating').textContent='Undo rating of card #'+String(CARD_NUMBERS.get(lastRating.id)).padStart(3,'0');
       $('session-message').textContent=list.length&&list.every(card=>getStatus(card)!=='new')?'All cards in this selection are rated. You can still browse, go back and change ratings.':'';
-      const assignment=c&&WORKSHOP_COVERAGE.cards[c.id];
-      $('workshop-tag').hidden=empty||!assignment;
       if(empty){
         document.title='AI-200 Flashcards';
         $('counter').textContent='0 cards in queue';
@@ -483,14 +465,6 @@
       $('card-id').textContent='Card #'+String(CARD_NUMBERS.get(c.id)).padStart(3,'0');
       $('card-number').value=CARD_NUMBERS.get(c.id);
       $('category-tag').textContent=CARD_CATEGORY_NAMES[c.category]||CATEGORY_BY_ID.get(c.category).label;
-      if(assignment){
-        const label={practical:'Practical activity',analysis:'Analysis activity',review:'Review only'}[assignment.kind];
-        $('workshop-tag').className='workshop-tag '+assignment.kind;
-        $('workshop-tag').href='./'+assignment.url;
-        $('workshop-tag').textContent=assignment.workshop.toUpperCase()+' · '+label;
-        $('workshop-tag').title=label+' in workshop '+assignment.workshop.toUpperCase();
-        $('workshop-tag').setAttribute('aria-label',label+' in workshop '+assignment.workshop.toUpperCase());
-      }
       $('card-reference').replaceChildren();
       for(const ref of new Map(c.references.map(ref=>[ref.url,ref])).values()){const link=document.createElement('a');link.href=ref.url;link.textContent=ref.label+' ↗';link.target='_blank';link.rel='noopener noreferrer';$('card-reference').append(link);}
 
@@ -543,7 +517,7 @@
       $('include-'+importanceLevel(card)).checked=true;
       $('include-rating-'+getStatus(card)).checked=true;
       if(!filtered().some(item=>item.id===card.id)){
-        for(const id of ['domain-filter','category-filter','source-filter','workshop-filter'])$(id).value='all';
+        for(const id of ['domain-filter','category-filter','source-filter'])$(id).value='all';
         $('search').value='';
       }
       populateCategories();savePreferences();refresh(card.id);
@@ -602,7 +576,7 @@
       const preferred=current()?.id;
       savePreferences();refresh(preferred);
     });
-    for(const id of ['category-filter','source-filter','workshop-filter','search'])$(id).addEventListener(id==='search'?'input':'change',()=>refresh());
+    for(const id of ['category-filter','source-filter','search'])$(id).addEventListener(id==='search'?'input':'change',()=>refresh());
     $('shuffle').addEventListener('click',shuffle);
     $('reset').addEventListener('click',()=>{const message='Vil du fjerne alle markeringene dine på denne enheten?';if(!confirm(window.AI200Site?.t?.(message)||message))return;for(const key of Object.keys(progress))delete progress[key];lastRating=null;save();refresh();});
     document.addEventListener('keydown',e=>{
@@ -618,9 +592,6 @@
       else if(e.key==='1'){e.preventDefault();mark('review');}
       else if(e.key==='2'){e.preventDefault();mark('known');}
     });
-    const workshopGroup=document.createElement('optgroup');workshopGroup.label='Én workshop';
-    for(const [id,workshop] of Object.entries(WORKSHOP_COVERAGE.workshops))workshopGroup.append(new Option(id.toUpperCase()+' · '+workshop.title,id));
-    if(workshopGroup.children.length)$('workshop-filter').append(workshopGroup);
     const query=new URLSearchParams(location.search);
     // Explicit card or definition links reveal their group for this visit.
     const linkedCard=originalById.get(query.get('card'));
@@ -633,12 +604,11 @@
       for(const status of RATING_STATUSES)$('include-rating-'+status).checked=linkedStatus==='all'||status===linkedStatus;
       if(linkedCard)$('include-rating-'+getStatus(linkedCard)).checked=true;
     }
-    for(const [id,param] of [['domain-filter','domain'],['source-filter','source'],['workshop-filter','workshop']]){
+    for(const [id,param] of [['domain-filter','domain'],['source-filter','source']]){
       const value=query.get(param);if([...$(id).options].some(option=>option.value===value))$(id).value=value;
     }
     populateCategories();
     const category=query.get('category');if([...$('category-filter').options].some(option=>option.value===category))$('category-filter').value=category;
-    const coverage=query.get('coverage');if(['covered','practical','analysis','review'].includes(coverage))$('workshop-filter').value=coverage;
     refresh(query.get('card'));
     if(linkedCard&&current()?.id===linkedCard.id&&!location.hash)$('card').scrollIntoView?.({block:'start',behavior:'instant'});
   </script>

@@ -1,65 +1,47 @@
 # AI-200 studiegruppe
 
-Studieside med norsk og engelsk grensesnitt for **Developing AI Cloud Solutions on Azure**, med pensumoversikt, flashcards og praktiske workshops. Nettstedet består av statiske HTML-, CSS- og JavaScript-filer og kan publiseres direkte med GitHub Pages.
+Studieside med norsk og engelsk grensesnitt for **Developing AI Cloud Solutions on Azure**, med pensumoversikt, flashcards, begreper og prøveeksamener. Nettstedet består av statiske HTML-, CSS- og JavaScript-filer og kan publiseres direkte med GitHub Pages.
 
-Alle publiserte sider, nettleserskript og kodeeksempler skal kunne nås fra forsiden eller en aktiv funksjon. Det inkluderer workshopmerkene på flashcards, begrepenes kodeeksempler og deling av kort og resultater. `tests/test_site_reachability.py` oppdager foreldreløse filer og manglende lokale mål. Byggeskript, datakilder og tester er vedlikeholdsfiler.
+Alle publiserte sider, nettleserskript og kodeeksempler skal kunne nås fra forsiden eller en aktiv funksjon. Det inkluderer begrepenes kodeeksempler og deling av kort og resultater. `tests/test_site_reachability.py` oppdager foreldreløse filer og manglende lokale mål. Byggeskript, datakilder og tester er vedlikeholdsfiler.
 
-## Workshops
+## Innhold
 
-[workshops/index.html](workshops/index.html) samler 408 aktive kort i to workshops per domene, med emnekategorier som kapitler. Hvert kort er koblet til en konkret praktisk oppgave eller analyseoppgave der en slik finnes. Kort uten egen oppgave vises som repetisjon i [dekningsoversikten](workshops/coverage.html), og teller ikke som oppgavedekning. Flashcardsiden viser typen som et klikkbart merke og kan filtrere på dekning eller workshop.
-
-Labkildene ligger i `workshops/labs/`. Praktisk/analytisk dekning beskriver opplegget; den bekrefter ikke gjennomføring eller full eksamensdekning. Azure-øvelsene krever egen konto og kontrolleres ved gjennomføring.
-
-Rediger innhold og kortkoblinger i `scripts/workshop_curriculum.py`, og kjør `python scripts/build.py`. Dette tømmer `.tmp/` og genererer begreper, workshopsider, kortdekning, delmål for prøveeksamen og felles hovedmeny. Tilpasninger av begreper og eksempler vedlikeholdes i `scripts/jargon_catalog.py`, `scripts/jargon_examples.py` og `scripts/jargon_relations.py`.
+Tilpasninger av begreper, forkortelser og eksempler vedlikeholdes i `scripts/jargon_catalog.py`, `scripts/jargon_examples.py` og `scripts/jargon_relations.py`. Kjør `python scripts/build.py` etter endringer. Begrepssidene bruker `jargon-page.css` for sideoppsett og `jargon.css` for begrepshjelp.
 
 | Side | Innhold |
 | --- | --- |
 | [Oversikt](index.html) | Alle 27 delmål i fire domener |
 | [Lærestoff](laerestoff.html) | Offisielle kilder, flashcards og prøveeksamener |
 | [Eksamen](eksamen.html) | Eksamensformat, oppmelding og gjennomføring |
-| [Kom i gang](getting-started.html) | Verktøy, Python-miljø og Azure-konto |
-| [Felles workshopoppsett](workshops/setup.html) | Pakker, variabler, labfiler og opprydding |
-| [Workshopoversikt](workshops/index.html) | To workshops per domene |
-| [D1A · Fra kildekode til en driftet container](workshops/d1a.html) | Domene 1 |
-| [D1B · Hendelsesstyrt skalering og Kubernetes-drift](workshops/d1b.html) | Domene 1 |
-| [D2A · Hent riktige dokumenter med PostgreSQL og Redis](workshops/d2a.html) | Domene 2 |
-| [D2B · Cosmos DB fra partisjon til endringsflyt](workshops/d2b.html) | Domene 2 |
-| [D3A · Fra HTTP-kall til bakgrunnsarbeid og hendelser](workshops/d3a.html) | Domene 3 |
-| [D3B · Pålitelig køarbeid og gjenlesbare hendelsesstrømmer](workshops/d3b.html) | Domene 3 |
-| [D4A · Identitet, hemmeligheter og dynamisk konfigurasjon](workshops/d4a.html) | Domene 4 |
-| [D4B · Finn en distribuert feil med OpenTelemetry og KQL](workshops/d4b.html) | Domene 4 |
-| [Kortdekning](workshops/coverage.html) | Sporbare koblinger fra kort til oppgaver |
 | [Flashcards](flashcards.html) | Spørsmål, kategorier og lokal fremdrift |
 | [Prøveeksamen](practice-exam.html) | Prøve direkte på nettstedet med kildens «Real Exam»-merkede spørsmål |
 | [Prøveresultater](practice-exam-results.html) | Poeng, svaroversikt og deling av en fullført prøve |
-
-Start med [Kom i gang](getting-started.html#for-du-starter) og [felles workshopoppsett](workshops/setup.html). Bruk én `.venv` i prosjektroten. Opprett ressursene fra ressursplanen i hver workshop og følg oppryddingen etterpå. Standardregionen er Norway East (`norwayeast`) der tjeneste og SKU støttes.
 
 Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen.
 
 Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert, uten å tømme `.tmp/` eller skrive filer. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
 
-Språk og tema byttes med flagg- og sol/måneknappene i den felles hovedmenyen. Uten et lagret språkvalg brukes norsk når nettleserens foretrukne språk er norsk (`nb`, `nn` eller `no`), ellers engelsk. Et manuelt språkvalg har prioritet og huskes mellom sidene. Norsk/engelsk gjelder hovedsidene og grensesnittet; de lengre workshoptekstene beholdes som skrevet. Spørsmål, svaralternativer, forklaringer og selve flashcardene er alltid på engelsk. Språkbytte oppdaterer teksten på stedet og bevarer pågående eksamen, svar, filtervalg og kortvurderinger. Valgene lagres lokalt i nettleseren. Uten et lagret temavalg velges lyst eller mørkt fra systeminnstillingen ved sidelasting; et manuelt valg huskes og brukes før siden tegnes. Et tidligere lagret «system»-valg behandles som automatisk valg ved sidelasting. Uten nettleserlagring virker begge knappene i den åpne fanen.
+Språk og tema byttes med flagg- og sol/måneknappene i den felles hovedmenyen. Uten et lagret språkvalg brukes norsk når nettleserens foretrukne språk er norsk (`nb`, `nn` eller `no`), ellers engelsk. Et manuelt språkvalg har prioritet og huskes mellom sidene. Norsk/engelsk gjelder hovedsidene og grensesnittet. Spørsmål, svaralternativer, forklaringer og selve flashcardene er alltid på engelsk. Språkbytte oppdaterer teksten på stedet og bevarer pågående eksamen, svar, filtervalg og kortvurderinger. Valgene lagres lokalt i nettleseren. Uten et lagret temavalg velges lyst eller mørkt fra systeminnstillingen ved sidelasting; et manuelt valg huskes og brukes før siden tegnes. Et tidligere lagret «system»-valg behandles som automatisk valg ved sidelasting. Uten nettleserlagring virker begge knappene i den åpne fanen.
 
 Oversettelser vedlikeholdes i `data/site-translations.json`; `python scripts/build_navigation.py` lager nettleserfilen `site-translations.js`. `site.js` håndterer innstillinger og oversettelse av tekst og tilgjengelighetsetiketter. Ved sidelasting vises teksten først når språkfilen har oversatt den ferdig innleste siden; store spørsmåls- og begrepsfiler trenger ikke være ferdige. Uten JavaScript vises innholdet som skrevet, og en manglende språkfil hindrer ikke at siden åpnes. Merk innhold som skal beholde engelsk med `data-keep-english`, `lang="en"` og `translate="no"`. Kode og brukerens notater oversettes ikke. Fargene ligger i `site-theme.css`. Kontroller endringer med `node --test tests/site.test.cjs` og `python -m unittest discover -s tests -p test_navigation.py -v`.
 
 ## Bygg nettstedet
 
-Workshopinnholdet vedlikeholdes i `scripts/workshop_curriculum.py`, mens kodeeksemplene ligger i `workshops/labs/`. Bygg hele nettstedet etter endringer:
+Bygg hele nettstedet etter endringer i generatorer, datakilder eller felles meny:
 
 ```powershell
-# Tøm .tmp og generer begreper, workshops, kortdekning og hovedmeny.
+# Tøm .tmp og generer begreper, delmål, hovedmeny og delingsforhåndsvisninger.
 python scripts/build.py
 
 # Kontroller genererte filer uten å tømme .tmp eller skrive endringer.
 python scripts/build.py --check
 ```
 
-Vanlige bygg tømmer `.tmp/` først og beholder en tom mappe som lokale tester kan bruke. Byggekommandoen kan kjøres fra en annen arbeidsmappe også; oppryddingen gjelder alltid prosjektets egen `.tmp/`. GitHub Pages bruker samme byggekommando. Filpanelene viser de tilsvarende labkildene med kommentarer og har nedlastingslenker. Notater, avkryssinger og eksport håndteres av `workshops/course.js`. Git-ignorerte resultater ligger i `artifacts/`, og lokale innstillingsfiler skal fortsatt være ignorert.
+Vanlige bygg tømmer `.tmp/` først og beholder en tom mappe som lokale tester kan bruke. Byggekommandoen kan kjøres fra en annen arbeidsmappe også; oppryddingen gjelder alltid prosjektets egen `.tmp/`. GitHub Pages bruker samme byggekommando. Git-ignorerte kildecacher, rapporter og eksporter ligger i `artifacts/`.
 
 ## Google Analytics
 
-Alle 23 nåværende studiesider bruker `site-analytics.js` med GA4-måle-ID **G-T4V86T1NFD**. Den felles byggingen legger inn skriptet også på genererte workshop- og begrepssider. Åpning fra fil, localhost og loopback-adresser laster ikke Google-taggen og sender ingen hendelser.
+Alle 11 nåværende studiesider bruker `site-analytics.js` med GA4-måle-ID **G-T4V86T1NFD**. Den felles byggingen legger inn skriptet også på genererte begrepssider. Åpning fra fil, localhost og loopback-adresser laster ikke Google-taggen og sender ingen hendelser.
 
 | Hendelse | Når | Parametere |
 | --- | --- | --- |
@@ -119,10 +101,6 @@ Bygget lager lette forhåndsvisningssider i `share/cards/` for hvert kort og `sh
 
 ### Lokal server
 
-Hent [labprosjektet](getting-started.html#prosjekt), og åpne PowerShell i prosjektmappen. Kildefilene ligger i `workshops/labs/`.
-
-Følg [oppsettet for kildefiler og resultater](getting-started.html#arbeidsfiler). Rediger og kjør kildefilene direkte i `workshops/labs/`. Bruk `git restore --source=HEAD -- FIL` til å forkaste lokale øvingsendringer og hente siste committede versjon av den angitte filen. Notater, spørringer, sikkerhetskopier, logger og eksporter lagres under den Git-ignorerte mappen `artifacts/`. Lokale `local.settings.json`- og `.env`-filer med labnøkler er også ignorert. Prosjektets felles Python-miljø ligger i `.venv/`.
-
 Fra rotmappen med Python installert:
 
 ```powershell
@@ -130,29 +108,7 @@ Fra rotmappen med Python installert:
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Åpne <http://localhost:8000>. Stopp serveren med `Ctrl+C`. Ingen pakkeinstallasjon eller byggesteg er nødvendig for nettstedet. Verktøy og avhengigheter for selve labøvelsene installeres i Kom i gang.
-
-Workshopinnholdet kan leses uten JavaScript. Workshopene bruker JavaScript til notater, avkryssing og eksport. Domenene finnes på `workshops/index.html#domain-1` til `#domain-4`. Siden har ingen innlogging, serverlagret fremdrift eller påmeldingsskjema. Fremdriften deles ikke mellom enheter eller nettlesere; blokkert nettleserlagring hindrer ikke lesing av øvelsene.
-
-## Kontroller labkoden lokalt
-
-Kontroller lenker, filstier, kodevisninger og felles oppsett uten ekstrapakker:
-
-```powershell
-# Kjør dokumentasjonskontrollene og vis resultatet for hver test.
-python -m unittest discover -s tests -p test_workshop_docs.py -v
-```
-
-Publiseringsworkflowen kjører disse kontrollene før nettstedet publiseres.
-
-Med [felles Python-oppsett](getting-started.html#python-pakker) klart og prosjektets `.venv` aktivert, fra prosjektroten:
-
-```powershell
-# Kjør labtestene lokalt og vis resultatet for hver test.
-python -m unittest discover -s tests -p 'test_*workshop_labs.py' -v
-```
-
-Testene kontrollerer HTTP-funksjoner, webhook-validering, bindingenes kode og trace-kontekst mellom to lokale prosesser. De bruker ingen Azure-konto. Ressursoppretting og de faktiske Azure-integrasjonene verifiseres i workshopene.
+Åpne <http://localhost:8000>. Stopp serveren med `Ctrl+C`. Ingen pakkeinstallasjon eller byggesteg er nødvendig for nettstedet.
 
 ## Publiser med GitHub Pages
 
@@ -163,15 +119,9 @@ Engangsoppsett for repositoryet:
 3. Commit og push endringene, inkludert workflow-filen, til `main`.
 4. Åpne **Actions → Publiser AI-200** og kontroller at kjøringen lykkes. Finn nettadressen via **Settings → Pages → Visit site** når publiseringen er ferdig.
 
-Deretter holder det å pushe til `main`: GitHub henter koden, setter opp Python 3.12, genererer workshopene, kortdekningen og begrepssidene, oppdaterer hovedmenyen og publiserer nettstedet. Generatoren krever ingen pakkeinstallasjon. Hvis genereringen feiler, stopper kjøringen før publisering. Du kan også starte den manuelt under **Actions → Publiser AI-200 → Run workflow**, med `main` valgt.
+Deretter holder det å pushe til `main`: GitHub henter koden, setter opp Python 3.12, genererer begrepssider, delmål og delingsforhåndsvisninger, oppdaterer hovedmenyen og publiserer nettstedet. Generatoren krever ingen pakkeinstallasjon. Hvis genereringen feiler, stopper kjøringen før publisering. Du kan også starte den manuelt under **Actions → Publiser AI-200 → Run workflow**, med `main` valgt.
 
-Vanlig adresse er `https://<brukernavn>.github.io/<repository>/`. Relative lenker sørger for at sidene og labfilene fungerer også under repository-stien. Se [GitHubs veiledning for publiseringskilde](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) og [egne Pages-workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). For et offentlig repository kan GitHub Pages brukes med GitHub Free; private repositories krever en plan som støtter Pages.
-
-## Kostnader og vedlikehold
-
-Azure-forbruk utover gjeldende gratiskvoter bruker tilgjengelig prøvekreditt eller faktureres på Pay as you go. Kontroller kostnader, eventuell gjenværende kreditt og tjenestevilkår før hver økt. Samlet labforbruk er ikke målt, så det gis ingen garanti for at prøvekreditten dekker alle øvelsene. Slett workshopressursene etter bruk. På Free Trial avslutter du skyarbeidet før prøveperioden eller kreditten er brukt opp; på Pay as you go følger du med på forbruket og rydder opp manuelt. Se [startguidens kostnadskontroll](getting-started.html#kostnader).
-
-Kildelenker og dato står på workshopsidene. Kontroller priser, kvoter og pensum på nytt før en ny workshoprunde. Workshopene bruker `workshops/course.css` og `workshops/course.js`; tekst og oppgaver vedlikeholdes i `scripts/workshop_curriculum.py`, med tilhørende filer under `workshops/labs/`.
+Vanlig adresse er `https://<brukernavn>.github.io/<repository>/`. Relative lenker sørger for at sidene og kodeeksemplene fungerer også under repository-stien. Se [GitHubs veiledning for publiseringskilde](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) og [egne Pages-workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). For et offentlig repository kan GitHub Pages brukes med GitHub Free; private repositories krever en plan som støtter Pages.
 
 ## Flashcards
 

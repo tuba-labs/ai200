@@ -206,7 +206,7 @@ window.AI200_FLASHCARDS = {
       "title": "Resource group",
       "question": "What is an Azure resource group?",
       "answers": [
-        "A resource group is a named collection of related Azure resources. Putting a workshop app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together."
+        "A resource group is a named collection of related Azure resources. Putting an app, database and storage account in one group makes it easier to manage their permissions, costs and eventual cleanup together."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -591,7 +591,7 @@ window.AI200_FLASHCARDS = {
       "title": "Bicep",
       "question": "What is Bicep in Azure?",
       "answers": [
-        "Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by a workshop."
+        "Bicep is a language for declaring Azure resources and their settings. Azure Resource Manager uses the declaration to create or update the environment. A Bicep file might define the storage account and Function App required by an application."
       ],
       "origin": "terms",
       "legacyIds": [],
@@ -2460,7 +2460,6 @@ window.AI200_FLASHCARDS = {
           "https://kubernetes.io/docs/concepts/workloads/pods/probes/"
         ]
       },
-      "coverageCategory": "aks",
       "kind": "term",
       "term": "Startup probe",
       "clarityReview": {
@@ -2508,7 +2507,6 @@ window.AI200_FLASHCARDS = {
           "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
         ]
       },
-      "coverageCategory": "aks",
       "kind": "term",
       "term": "HPA · Horizontal Pod Autoscaler",
       "clarityReview": {
@@ -2555,7 +2553,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/aks/use-vertical-pod-autoscaler"
         ]
       },
-      "coverageCategory": "aks",
       "kind": "term",
       "term": "VPA · Vertical Pod Autoscaler",
       "clarityReview": {
@@ -2612,7 +2609,6 @@ window.AI200_FLASHCARDS = {
           "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
         ]
       },
-      "coverageCategory": "aks",
       "kind": "term",
       "term": "PDB · PodDisruptionBudget",
       "clarityReview": {
@@ -2661,7 +2657,6 @@ window.AI200_FLASHCARDS = {
           "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
         ]
       },
-      "coverageCategory": "aks",
       "kind": "term",
       "term": "StatefulSet",
       "clarityReview": {
@@ -2719,7 +2714,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/container-apps/environment"
         ]
       },
-      "coverageCategory": "container-apps",
       "kind": "term",
       "term": "Container Apps environment",
       "clarityReview": {
@@ -2768,7 +2762,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/container-apps/revisions"
         ]
       },
-      "coverageCategory": "container-apps",
       "kind": "term",
       "term": "Container Apps revision",
       "clarityReview": {
@@ -3690,7 +3683,7 @@ window.AI200_FLASHCARDS = {
       "title": "App Service app settings",
       "question": "How do App Service and Functions expose app settings to application code?",
       "answers": [
-        "They expose app settings as environment variables. For example, setting WORKSHOP_MODE to production lets Python read it through os.environ[\"WORKSHOP_MODE\"]. This supplies environment-specific configuration without rebuilding the image."
+        "They expose app settings as environment variables. For example, setting APP_MODE to production lets Python read it through os.environ[\"APP_MODE\"]. This supplies environment-specific configuration without rebuilding the image."
       ],
       "origin": "original",
       "legacyIds": [
@@ -14951,7 +14944,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-auto-forwarding"
         ]
       },
-      "coverageCategory": "service-bus",
       "kind": "term",
       "term": "Service Bus auto-forwarding",
       "clarityReview": {
@@ -14999,7 +14991,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings"
         ]
       },
-      "coverageCategory": "functions",
       "kind": "term",
       "term": "Output binding",
       "clarityReview": {
@@ -15041,7 +15032,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local"
         ]
       },
-      "coverageCategory": "functions",
       "kind": "term",
       "term": "local.settings.json",
       "clarityReview": {
@@ -15085,7 +15075,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json"
         ]
       },
-      "coverageCategory": "functions",
       "kind": "term",
       "term": "host.json",
       "clarityReview": {
@@ -20871,7 +20860,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider"
         ]
       },
-      "coverageCategory": "app-configuration",
       "kind": "term",
       "term": "Sentinel key",
       "clarityReview": {
@@ -20925,7 +20913,6 @@ window.AI200_FLASHCARDS = {
           "https://opentelemetry.io/docs/languages/python/instrumentation/"
         ]
       },
-      "coverageCategory": "opentelemetry",
       "kind": "term",
       "term": "TracerProvider",
       "clarityReview": {
@@ -20975,7 +20962,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals"
         ]
       },
-      "coverageCategory": "identity-rbac",
       "kind": "term",
       "term": "Service principal",
       "clarityReview": {
@@ -21024,7 +21010,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview"
         ]
       },
-      "coverageCategory": "identity-rbac",
       "kind": "term",
       "term": "NSG · Network Security Group",
       "clarityReview": {
@@ -21072,7 +21057,6 @@ window.AI200_FLASHCARDS = {
           "https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview"
         ]
       },
-      "coverageCategory": "monitor",
       "kind": "term",
       "term": "Azure Monitor workbook",
       "clarityReview": {
