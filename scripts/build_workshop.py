@@ -33,8 +33,8 @@ def source_path(name):
 
 
 def source_link(name):
-    source_path(name)
-    return f'<a href="./source.html#{escape(name, quote=True)}"><code>{escape(name)}</code></a>'
+    path = source_path(name)
+    return f'<a href="./source.html#{escape(name, quote=True)}" title="{escape(name, quote=True)}"><code>{escape(path.name)}</code></a>'
 
 
 def code_block(text, kind='bash', title='Bash · repository root'):
@@ -82,7 +82,7 @@ def navigation(current):
 def page(identifier, title, summary, content, number=None, minutes=None):
     headings = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', content)
     toc = '<aside class="toc" aria-label="On this page"><strong>On this page</strong>' + ''.join(f'<a href="#{anchor}">{label}</a>' for anchor, label in headings) + '</aside>'
-    meta = (f'<span>~{minutes} minutes · estimate</span><span>Bash · repository root</span><span>Core path</span>' if minutes else '<span>Reference · use as needed</span>')
+    meta = (f'<span>~{minutes} min</span><span>Bash · repository root</span>' if minutes else '<span>Reference · use as needed</span>')
     continuation = ''
     if number:
         index = number - 1
@@ -90,7 +90,7 @@ def page(identifier, title, summary, content, number=None, minutes=None):
         following = CHAPTERS[index + 1] if index + 1 < len(CHAPTERS) else None
         prev_link = f'<a rel="prev" href="./{previous["file"]}"><small>← Previous</small>{previous["title"]}</a>' if previous else '<span></span>'
         next_link = f'<a rel="next" href="./{following["file"]}"><small>Continue →</small>{following["title"]}</a>' if following else '<a href="./maintainer.html"><small>Next steps →</small>Maintainer walkthrough checklist</a>'
-        continuation = f'<section class="chapter-end" aria-label="Chapter completion"><button type="button" class="complete-button" data-complete-chapter="{identifier}" aria-pressed="false">Mark chapter complete</button><p class="completion-note">A reading checklist, not proof of a successful Azure deployment.</p><nav class="previous-next" aria-label="Previous and next chapters">{prev_link}{next_link}</nav></section>'
+        continuation = f'<section class="chapter-end" aria-label="Chapter completion"><button type="button" class="complete-button" data-complete-chapter="{identifier}" aria-pressed="false">Mark chapter complete</button><nav class="previous-next" aria-label="Previous and next chapters">{prev_link}{next_link}</nav></section>'
     crumb = f'Chapter {number:02} of 10' if number else 'Workshop reference'
     html = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -99,7 +99,7 @@ def page(identifier, title, summary, content, number=None, minutes=None):
 <body><a class="skip" href="#content" data-keep-english>Skip to chapter content</a>
 <!-- site-header -->
 <nav class="workshop-toolbar" aria-label="Workshop tools" data-keep-english lang="en"><a class="workshop-title" href="./index.html">Azure RAG workshop</a><div class="workshop-actions"><button class="plain-button" type="button" id="open-search">Search <kbd>/</kbd></button><button class="plain-button mobile-menu" id="chapter-menu" aria-controls="chapter-navigation" aria-expanded="false">Chapters</button></div></nav>
-<div class="docs-layout" data-keep-english lang="en">{navigation(identifier)}<div class="reading-grid"><main class="article" id="content"><p class="breadcrumb">Self-paced / {crumb}</p><h1>{escape(title)}</h1><p class="chapter-summary">{escape(summary)}</p><div class="chapter-meta">{meta}</div>{content}{continuation}<footer class="site-footnote">AI-200 · Selected objectives, not complete exam coverage. Sources checked 11 November 2026. <a href="./validation.html">What has actually been verified?</a></footer></main>{toc}</div></div>
+<div class="docs-layout" data-keep-english lang="en">{navigation(identifier)}<div class="reading-grid"><main class="article" id="content"><p class="breadcrumb">{crumb}</p><h1>{escape(title)}</h1><p class="chapter-summary">{escape(summary)}</p><div class="chapter-meta">{meta}</div>{content}{continuation}<footer class="site-footnote"><a href="./reference.html#exam">AI-200 objectives</a> · <a href="./validation.html">Validation</a></footer></main>{toc}</div></div>
 <dialog class="search-dialog" id="docs-search" aria-labelledby="search-heading" data-keep-english lang="en" data-no-jargon><div class="search-top"><strong id="search-heading">Search the workshop</strong><button type="button" id="close-search" class="plain-button">Close</button></div><label for="search-input">Find a chapter, concept or diagnostic</label><input id="search-input" type="search" autocomplete="off" placeholder="For example: KEDA identity or duplicate event"><p id="search-status" role="status"></p><ul class="search-results" id="search-results"></ul></dialog></body></html>
 '''
     return attach_assets(html, '../', 'laerestoff.html')

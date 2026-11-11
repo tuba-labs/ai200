@@ -57,7 +57,7 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
     expect(page.locator('[data-complete-chapter]')).to_have_attribute('aria-pressed', 'true')
     page.get_by_role('link', name='Continue → Check your starting point').click()
     expect(page).to_have_url(website + 'prerequisites.html')
-    command = page.locator('.code-block').first
+    command = page.locator('.code-block:visible').first
     original = command.locator('code').inner_text()
     command.get_by_role('button', name='Copy code').click()
     expect(command.locator('[data-copy]')).to_have_text('Copied')
@@ -163,5 +163,13 @@ def test_shared_header_tooltips_theme_and_installer_downloads(browser, website):
     assert Path(download.value.path()).read_bytes() == (ROOT / 'workshop/scripts/setup-windows.ps1').read_bytes()
     assert context.request.get(website + 'scripts/setup-ubuntu.sh').status == 200
     assert context.request.get(website + 'glossary.html').status == 404
+    page.goto(website + 'prerequisites.html#permissions')
+    expect(page.locator('#permissions')).to_have_attribute('open', '')
+    expect(page.locator('#permissions .code-block')).to_be_visible()
+    page.goto(website + 'prerequisites.html')
+    setup = page.locator('details').filter(has=page.get_by_text('Windows / Ubuntu installation steps', exact=True))
+    expect(setup).not_to_have_attribute('open', '')
+    setup.locator('summary').click()
+    expect(setup.locator('code[data-language="powershell"]')).to_be_visible()
     assert not errors
     context.close()

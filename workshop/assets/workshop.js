@@ -31,6 +31,14 @@
   });
   addEventListener('resize', positionMenu);
   addEventListener('scroll', positionMenu, {passive: true});
+  function revealSection() {
+    let target;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
+    let section = target?.closest('details');
+    while (section) { section.open = true; section = section.parentElement?.closest('details'); }
+  }
+  revealSection();
+  addEventListener('hashchange', revealSection);
   const escape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   function highlight(code) {
     if (code.dataset.highlighted) return;

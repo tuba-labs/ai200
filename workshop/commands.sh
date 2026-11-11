@@ -44,6 +44,24 @@ docker run --rm --name products-inspect -p 127.0.0.1:8080:8080 \
   "$registry/products:$tag" --spring.profiles.active=inspect
 # endregion
     ;;
+  inspect-check)
+# region inspect-check
+curl --fail http://127.0.0.1:8080/
+curl --fail http://127.0.0.1:8080/actuator/health/liveness
+docker ps
+docker logs products-inspect --tail=30
+# endregion
+    ;;
+  inspect-rollout)
+# region inspect-rollout
+export KUBECONFIG="$PWD/workshop/.state/kubeconfig"
+kubectl get deployment,pods,service -n products
+kubectl logs deployment/products -n products --tail=50
+kubectl describe pod -n products -l app=products
+kubectl rollout restart deployment/products -n products
+kubectl rollout status deployment/products -n products --timeout=300s
+# endregion
+    ;;
   configure)
 # region configure
 bash workshop/scripts/03-ready.sh
@@ -125,5 +143,5 @@ bash workshop/scripts/diagnostics.sh
 bash workshop/scripts/cleanup.sh
 # endregion
     ;;
-  *) echo 'Sections: setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
+  *) echo 'Sections: setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, inspect-check, inspect-rollout, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
 esac

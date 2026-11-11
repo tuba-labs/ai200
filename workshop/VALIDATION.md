@@ -22,6 +22,8 @@ This report separates observations from expectations. Local model fixtures are d
 
 Java tests were executed with `TEST_DATABASE_URL` set; Python database tests used `TEST_DATABASE_DSN`. They were not skipped. The fixture password is deliberately test-only, bound to loopback, and never reused for Azure.
 
+Content revision: the ten core chapters were shortened from 9,529 to 3,300 authored words (65%); text outside collapsed details dropped 77%. Counts exclude HTML and do not expand code snippets. All original command regions remain. Eleven documentation/browser cases, 58 existing Python tests, 91 JavaScript tests, the production build, Bash syntax and ShellCheck pass. Desktop/mobile screenshots were inspected. Application/infrastructure code was unchanged; cloud verification remains as below.
+
 ## Cloud boundary
 
 The user explicitly chose **“Leave Azure testing for my walkthrough.”** No Azure providers were registered and no paid cloud resources were created. Read-only checks found Azure sign-in available, but Microsoft.Compute, Microsoft.ContainerService and Microsoft.CognitiveServices are NotRegistered. VM/model usage queries for Sweden Central returned empty arrays; that is not proof of insufficient quota. Register providers and rerun the supplied checks in the intended subscription before drawing a quota conclusion.

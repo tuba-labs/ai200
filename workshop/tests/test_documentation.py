@@ -60,14 +60,13 @@ def test_every_workshop_link_anchor_asset_and_source_exists():
                 assert unquote(url.fragment) in pages[target].ids, (path.name, link)
 
 
-def test_commands_are_imported_exactly_and_core_sections_have_substance():
+def test_commands_are_imported_exactly_and_chapters_have_actions_and_checks():
     for chapter in docs.CHAPTERS:
         source = (WORKSHOP / f'content/{chapter["id"]}.inc').read_text(encoding='utf-8')
-        text = re.sub('<[^>]+>', ' ', source)
-        assert len(text.split()) >= 350, chapter['id']
-        assert 'Starting requirements' in source and 'Shell and directory' in source or chapter['id'] == 'overview'
+        assert 'Requires:' in source or chapter['id'] in {'overview', 'prerequisites'}
         assert 'Verification:' in source, chapter['id']
-        assert 'common' in source.lower() or chapter['id'] == 'finish'
+        assert 'Bash · repository root' in (WORKSHOP / chapter['file']).read_text(encoding='utf-8')
+        assert '<summary>' in source or chapter['id'] == 'overview'
         for name, section in re.findall(r'\{\{snippet:([^:}]+):([^}]+)\}\}', source):
             canonical = (WORKSHOP / name).read_text(encoding='utf-8')
             value = re.search(r'^# region ' + section + r'\n(.*?)^# endregion', canonical, re.S | re.M)[1].rstrip()
