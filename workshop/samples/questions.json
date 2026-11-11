@@ -1,0 +1,6 @@
+[
+  {"manual": "aurora-trail-lamp.txt", "product": "Aurora Trail Lamp", "question": "What is the operating temperature of the Aurora Trail Lamp?", "support": "Its operating temperature is -10 to 40 degrees Celsius."},
+  {"manual": "cedar-desk-fan.txt", "product": "Cedar Desk Fan", "question": "How do I enable the Cedar Desk Fan timer and how long does it run?", "support": "Hold the leaf button for 2 seconds to enable a 45-minute shutoff timer"},
+  {"manual": "harbor-travel-kettle.txt", "product": "Harbor Travel Kettle", "question": "Can I use the Harbor Travel Kettle on a 110 V supply?", "support": "It operates only on 220–240 V AC, 50 Hz"},
+  {"question": "What is the CEO's private telephone number?", "support": null, "expected": "insufficient information"}
+]

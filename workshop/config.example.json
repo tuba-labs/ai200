@@ -1,0 +1,16 @@
+{
+  "subscription": "",
+  "location": "swedencentral",
+  "prefix": "raglab",
+  "aksVmSize": "Standard_D4ds_v5",
+  "aksNodes": 1,
+  "postgresSku": "Standard_B2s",
+  "chatModel": "gpt-5-mini",
+  "chatVersion": "2025-08-07",
+  "chatCapacity": 60,
+  "embeddingModel": "text-embedding-3-small",
+  "embeddingVersion": "1",
+  "embeddingCapacity": 30,
+  "modelSku": "GlobalStandard",
+  "allowedCidr": ""
+}

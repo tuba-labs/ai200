@@ -1,0 +1,4 @@
+# The packaging script appends the canonical workshop/requirements.txt here.
+# This file is also usable for local development from this directory.
+-r ../../requirements.txt
+azure-functions==1.24.0

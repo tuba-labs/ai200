@@ -1,0 +1,14 @@
+# The repository-root Docker context is only for ProductsChat.
+**
+!workshop/
+!workshop/requirements.txt
+!workshop/constraints.txt
+!workshop/tools/
+!workshop/tools/inspect_db.py
+!workshop/apps/
+!workshop/apps/shared/
+!workshop/apps/shared/rag_core/
+!workshop/apps/shared/rag_core/*.py
+!workshop/apps/products-chat/
+!workshop/apps/products-chat/worker.py
+!workshop/apps/products-chat/Dockerfile

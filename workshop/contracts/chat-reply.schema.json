@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Products chat reply v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "type", "requestId", "correlationId", "status", "answer", "sources", "errorCode"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "type": {"const": "chat.reply"},
+    "requestId": {"type": "string", "format": "uuid"},
+    "correlationId": {"type": "string", "format": "uuid"},
+    "status": {"enum": ["completed", "failed"]},
+    "answer": {"type": "string", "maxLength": 20000},
+    "errorCode": {"type": ["string", "null"], "maxLength": 80},
+    "sources": {
+      "type": "array", "maxItems": 8,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["reference", "productId", "productName", "manualId", "chunkIndex", "excerpt", "similarity"],
+        "properties": {
+          "reference": {"type": "integer", "minimum": 1},
+          "productId": {"type": "string", "format": "uuid"},
+          "productName": {"type": "string"},
+          "manualId": {"type": "string", "format": "uuid"},
+          "chunkIndex": {"type": "integer", "minimum": 0},
+          "excerpt": {"type": "string"},
+          "similarity": {"type": "number"}
+        }
+      }
+    }
+  }
+}

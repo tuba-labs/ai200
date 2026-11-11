@@ -1,5 +1,18 @@
 # AI-200 studiegruppe
 
+## Ny selvstyrt RAG-workshop
+
+Den komplette [Azure RAG-workshopen](workshop/index.html) har ti kapitler, tre referanseapplikasjoner, trinnvise infrastrukturskript, eksempelmanualer og verifikasjonsverktøy. Se [workshop/README.md](workshop/README.md), [versjoner](workshop/VERSIONS.md) og [valideringsrapporten](workshop/VALIDATION.md). Kjernen er estimert til omtrent fire timer etter at verktøy og Azure-tilgang er klare; tidsbruken er ikke bekreftet av en deltaker.
+
+Start hele dokumentasjonsnettstedet fra prosjektroten, uten Azure-pålogging:
+
+```bash
+python3 scripts/build.py
+python3 scripts/serve.py --port 8000
+```
+
+Åpne **http://127.0.0.1:8000/workshop/**. På Windows kan `python` brukes hvis `python3` ikke er tilgjengelig. Selve Azure-øvelsen bruker Bash, fortrinnsvis Ubuntu i WSL2 med Docker Desktop-integrasjon.
+
 Studieside med norsk og engelsk grensesnitt for **Developing AI Cloud Solutions on Azure**, med pensumoversikt, flashcards, begreper og prøveeksamener. Nettstedet består av statiske HTML-, CSS- og JavaScript-filer og kan publiseres direkte med GitHub Pages.
 
 Alle publiserte sider, nettleserskript og kodeeksempler skal kunne nås fra forsiden eller en aktiv funksjon. Det inkluderer begrepenes kodeeksempler og deling av kort og resultater. `tests/test_site_reachability.py` oppdager foreldreløse filer og manglende lokale mål. Byggeskript, datakilder og tester er vedlikeholdsfiler.
@@ -105,7 +118,7 @@ Fra rotmappen med Python installert:
 
 ```powershell
 # Start nettstedet lokalt på port 8000, bare tilgjengelig på denne maskinen.
-python -m http.server 8000 --bind 127.0.0.1
+python scripts/serve.py --port 8000
 ```
 
 Åpne <http://localhost:8000>. Stopp serveren med `Ctrl+C`. Ingen pakkeinstallasjon eller byggesteg er nødvendig for nettstedet.

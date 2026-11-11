@@ -1,0 +1,7 @@
+// Application Insights Logs. Replace the optional manual filter with the ID
+// displayed by Products; do not put passwords or manual text in log queries.
+traces
+| where timestamp > ago(1h)
+| where message contains "manual=" or severityLevel >= 2
+| project timestamp, severityLevel, message, operation_Id
+| order by timestamp desc

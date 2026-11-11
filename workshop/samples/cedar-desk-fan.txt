@@ -1,0 +1,13 @@
+Cedar Desk Fan — fictional product manual, revision A
+
+Specifications
+The Cedar Desk Fan has three speeds: 800, 1200, and 1600 RPM. Its supply must be USB-C 5 V, 3 A. It has no battery. Maximum power consumption is 12 W. The base diameter is 140 mm and the head tilts up to 35 degrees. Use indoors between 5 and 35 degrees Celsius.
+
+Controls and timer
+Tap the leaf button to cycle through low, medium, high, and off. Hold the leaf button for 2 seconds to enable a 45-minute shutoff timer; the blue timer light comes on. Hold it again for 2 seconds to cancel the timer. Unplugging the fan clears the timer setting.
+
+Cleaning and placement
+Disconnect power and wait until the blades stop before cleaning. Turn the front grille counterclockwise to remove it. Use a dry brush on the blades. Keep at least 15 cm of clearance behind the fan. Never spray liquid into the motor or use the fan outdoors.
+
+Troubleshooting
+If the fan pulses on high speed, verify that the USB supply supports 3 A and use a cable shorter than 1.5 m. This fan does not cool the room below ambient temperature and has no thermostat.

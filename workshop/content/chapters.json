@@ -1,0 +1,12 @@
+[
+  {"id":"overview","file":"index.html","title":"A small system, end to end","summary":"Deploy an event-driven product-manual assistant. Follow uploads, indexing, questions and answers through the whole system.","minutes":15},
+  {"id":"prerequisites","file":"prerequisites.html","title":"Check your starting point","summary":"Use one Bash environment and catch permissions, quota and model-access blockers early.","minutes":10},
+  {"id":"provision","file":"provision.html","title":"Start the Azure resources","summary":"Prove model access, create the shared network, then start AKS and PostgreSQL while you work on Docker.","minutes":20},
+  {"id":"products","file":"products.html","title":"Read, build and run Products","summary":"Understand the supplied Spring Boot application and turn its source into a versioned container image.","minutes":35},
+  {"id":"data","file":"data.html","title":"Connect data, settings and identity","summary":"Configure private PostgreSQL, Flyway, private blobs, Key Vault secrets and App Configuration settings.","minutes":30},
+  {"id":"deploy","file":"deploy.html","title":"Deploy Products to AKS","summary":"Read a Deployment, Pod and Service; then open a restricted HTTPS endpoint and inspect its rollout.","minutes":20},
+  {"id":"embedder","file":"embedder.html","title":"Turn a manual into vectors","summary":"Deploy a Python Function whose Event Grid-backed Blob trigger chunks and indexes an immutable manual safely.","minutes":30},
+  {"id":"chat","file":"chat.html","title":"Ask a grounded question","summary":"Follow a persistent question through Service Bus, vector retrieval, the model and a correlated reply.","minutes":35},
+  {"id":"keda","file":"keda.html","title":"Make the queue drive scaling","summary":"Observe zero workers, a bounded backlog, multiple workers, completed answers and a return to zero.","minutes":30},
+  {"id":"finish","file":"finish.html","title":"Verify, diagnose and clean up","summary":"Run the real-deployment smoke test, diagnose failures and deliberately remove only workshop resources.","minutes":15}
+]

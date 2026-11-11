@@ -1,0 +1,13 @@
+Aurora Trail Lamp — fictional product manual, revision A
+
+Specifications
+The Aurora Trail Lamp outputs 420 lumens in high mode and 65 lumens in reading mode. Its operating temperature is -10 to 40 degrees Celsius. The sealed battery is 4800 mAh. It weighs 310 grams. The enclosure is IP54 splash resistant, not waterproof for immersion.
+
+Charging
+Charge the Aurora Trail Lamp through its USB-C port with a 5 V, 2 A supply. A full charge takes 3 hours. The amber indicator means charging; a steady green indicator means fully charged. Do not charge below 0 degrees Celsius. Unplug the supply before closing the weather cover.
+
+Controls
+Press the round button once for reading mode, twice for high mode, and three times to turn the lamp off. Hold the button for 3 seconds to lock the controls for transport. Repeat the 3-second hold to unlock them. A double blink confirms the lock changed.
+
+Runtime and care
+Typical runtime is 6 hours in high mode and 28 hours in reading mode. Clean with a damp cloth. Never immerse the lamp or open the sealed battery compartment. There is no Bluetooth, Wi-Fi, or remote-control feature.

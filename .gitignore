@@ -27,3 +27,12 @@ local.settings.json
 .env
 .env.*
 !.env.example
+
+# RAG workshop runtime state, build outputs and local tooling
+/workshop/.state/
+/workshop/.tools/
+**/target/
+**/.pytest_cache/
+**/*.egg-info/
+/workshop/dist/
+/.site/

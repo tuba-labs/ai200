@@ -1,5 +1,6 @@
 {
   "messages": [
+    ["RAG-workshop på Azure →", "Azure RAG workshop →"],
     ["Kopier sammendrag og lenke", "Copy summary and link"],
     ["Sammendrag og lenke er kopiert.", "Summary and link copied."],
     ["Velg en tjeneste eller kopier lenken for å dele resultatet.", "Choose a service or copy the link to share this result."],

@@ -1,0 +1,13 @@
+Harbor Travel Kettle — fictional product manual, revision A
+
+Specifications
+The Harbor Travel Kettle has a maximum fill volume of 600 mL and a minimum fill volume of 200 mL. It operates only on 220–240 V AC, 50 Hz and draws 900 W. It is not a dual-voltage product. Its dry weight is 720 grams.
+
+Boiling
+Place the kettle on a level, dry surface. Open the lid and add water between the 200 mL and 600 mL marks. Close the lid fully, connect power, and press the square boil button. The orange light turns off when boiling finishes. The kettle switches off automatically after boiling.
+
+Safety
+Use only water, never milk or soup. Do not operate below the minimum fill mark. If boil-dry protection activates, unplug the kettle and let it cool for 20 minutes before refilling. Hot surfaces and steam can burn; keep the handle and lid latch dry.
+
+Descaling
+After every 30 uses, add 200 mL water and 100 mL white vinegar. Leave unplugged for 25 minutes. Empty, rinse twice, then boil and discard one full kettle of clean water. Do not use abrasive pads. There is no temperature-selection or keep-warm function.

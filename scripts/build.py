@@ -9,7 +9,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-GENERATORS = ("build_jargon.py", "build_exam_objectives.py", "build_navigation.py", "build_share_previews.py")
+GENERATORS = ("build_jargon.py", "build_exam_objectives.py", "build_navigation.py", "build_share_previews.py", "build_workshop.py", "export_site.py")
 
 
 def clean_tmp():

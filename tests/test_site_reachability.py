@@ -62,6 +62,8 @@ class SiteReachabilityTests(unittest.TestCase):
         reachable = reachable_files()
         public = [*ROOT.glob('*.html'), *ROOT.glob('*.js'), *ROOT.glob('*.css'),
                   *(ROOT / 'jargon-examples').glob('*.html'),
+                  *(ROOT / 'workshop').glob('*.html'), *(ROOT / 'workshop/assets').glob('*.js'),
+                  *(ROOT / 'workshop/assets').glob('*.css'),
                   *(ROOT / 'share/cards').glob('*.html'), *(ROOT / 'share/results').glob('*.html')]
         unreachable = {path.relative_to(ROOT).as_posix() for path in public
                        if path.resolve() not in reachable}

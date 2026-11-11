@@ -1,0 +1,4 @@
+workshop/**/*.sh text eol=lf
+workshop/**/mvnw text eol=lf
+workshop/**/*.py text eol=lf
+workshop/**/Dockerfile text eol=lf
