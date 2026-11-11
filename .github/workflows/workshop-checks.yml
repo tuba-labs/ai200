@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   local-verification:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: pgvector/pgvector:0.8.1-pg17
@@ -46,7 +46,9 @@ jobs:
       - name: Python and browser tooling
         run: |
           python -m pip install -r workshop/requirements-test.txt
-          python -m playwright install --with-deps chromium
+          # The hosted image has Chromium's runtime libraries. Avoid invoking
+          # apt for optional fonts and depending on its package mirror's DNS.
+          python -m playwright install chromium
       - name: Production site and deterministic integration/browser tests
         run: |
           python scripts/build.py
