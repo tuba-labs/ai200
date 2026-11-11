@@ -1,6 +1,7 @@
 """Keep published pages, browser code and downloadable examples reachable."""
 from collections import deque
 from pathlib import Path
+import json
 import re
 import sys
 import unittest
@@ -45,6 +46,8 @@ def reachable_files():
 class SiteReachabilityTests(unittest.TestCase):
     def test_local_links_and_ids(self):
         pages = {path.resolve(): Page(path.read_text(encoding='utf-8')) for path in current_pages()}
+        source_page = (ROOT / 'workshop/source.html').resolve()
+        source_paths = {item['path'] for item in json.loads((ROOT / 'workshop/source-index.json').read_text(encoding='utf-8'))}
         for path, page in pages.items():
             with self.subTest(page=path.relative_to(ROOT)):
                 self.assertEqual(len(page.ids), len(set(page.ids)), 'Duplicate HTML IDs')
@@ -56,7 +59,10 @@ class SiteReachabilityTests(unittest.TestCase):
                     self.assertTrue(target.is_relative_to(ROOT), href)
                     self.assertTrue(target.is_file(), href)
                     if url.fragment and target in pages:
-                        self.assertIn(unquote(url.fragment), pages[target].ids, href)
+                        # The source explorer's fragment selects a canonical file,
+                        # rather than an HTML heading; check its real catalog.
+                        expected = source_paths if target == source_page and unquote(url.fragment) in source_paths else pages[target].ids
+                        self.assertIn(unquote(url.fragment), expected, href)
 
     def test_every_published_page_script_and_stylesheet_is_used_by_a_site_flow(self):
         reachable = reachable_files()

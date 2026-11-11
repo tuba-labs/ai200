@@ -4,6 +4,16 @@
 set -Eeuo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
 case "${1:-help}" in
+  setup-ubuntu)
+# region setup-ubuntu
+bash workshop/scripts/setup-ubuntu.sh
+# endregion
+    ;;
+  local-check)
+# region local-check
+python3 workshop/tools/preflight.py --local-only
+# endregion
+    ;;
   bootstrap)
 # region bootstrap
 python3 workshop/tools/bootstrap.py
@@ -115,5 +125,5 @@ bash workshop/scripts/diagnostics.sh
 bash workshop/scripts/cleanup.sh
 # endregion
     ;;
-  *) echo 'Sections: bootstrap, providers, provision, build, inspect-container, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
+  *) echo 'Sections: setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
 esac

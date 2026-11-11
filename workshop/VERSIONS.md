@@ -29,4 +29,6 @@ Selected and checked on 2026-11-11. These are pinned baselines, not a promise th
 
 Model/deployment offers and quota are checked again before creation; the actual model-only probe is the access gate. Different embedding models require reindexing and a reviewed schema change if dimensions change. Do not change only the App Configuration deployment name and assume old vectors remain compatible.
 
+The optional local installers target x64 Windows 11 + Ubuntu 24.04 WSL2, or native x86-64 Ubuntu 24.04 for the Bash stage. WinGet installs the currently offered Docker Desktop; apt installs supported Ubuntu packages and Azure CLI (minimum 2.91 checked). Bicep is pinned to 0.49.2 and kubectl to 1.34.1 with SHA-256 verification. Check the client/server minor-version difference after AKS creation. These installation flows require a real first-run machine check; syntax/preview validation does not prove a clean OS installation succeeded.
+
 Kubernetes and Functions platform/extension patch releases are managed rather than pretending to pin Azure's service host. Application dependencies and container references are explicit; no application image is called latest. For a longer-lived release, upgrade Java/Python base images to current patched tags/digests and rerun the complete validation set.

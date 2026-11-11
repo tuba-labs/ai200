@@ -60,7 +60,7 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
     command = page.locator('.code-block').first
     original = command.locator('code').inner_text()
     command.get_by_role('button', name='Copy code').click()
-    expect(command.locator('button')).to_have_text('Copied')
+    expect(command.locator('[data-copy]')).to_have_text('Copied')
     # Windows clipboard APIs normalize LF to CRLF; the executable text is the
     # same after platform newline normalization.
     assert page.evaluate('navigator.clipboard.readText()').replace('\r\n', '\n') == original
@@ -75,7 +75,8 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
     assert not errors
     destination = ROOT / 'workshop/.tools/screenshots'
     destination.mkdir(parents=True, exist_ok=True)
-    page.evaluate("document.documentElement.dataset.docsTheme='light'")
+    page.evaluate("document.documentElement.dataset.theme='light'")
+    page.goto(website)
     page.screenshot(path=str(destination / 'desktop.png'))
     context.close()
 
@@ -89,10 +90,11 @@ def test_source_explorer_and_mobile_navigation_have_no_overflow(browser, website
     assert page.locator('#source-download').get_attribute('href') == './apps/products/pom.xml'
     page.locator('#chapter-menu').click()
     expect(page.locator('.sidebar')).to_be_visible()
+    assert page.locator('.sidebar').bounding_box()['y'] >= page.locator('.workshop-toolbar').bounding_box()['y'] + page.locator('.workshop-toolbar').bounding_box()['height'] - 1
     page.locator('[data-chapter-link="embedder"]').click()
     expect(page.get_by_role('heading', name='Turn a manual into vectors')).to_be_visible()
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
-    assert page.locator('.docs-brand').bounding_box()['y'] >= 0
+    assert page.locator('.workshop-toolbar').bounding_box()['y'] >= 0
     page.screenshot(path=str(ROOT / 'workshop/.tools/screenshots/mobile.png'))
     context.close()
 
@@ -124,3 +126,42 @@ def test_static_server_refuses_a_real_private_state_file(browser, website):
     finally:
         private.unlink()
         context.close()
+
+
+def test_shared_header_tooltips_theme_and_installer_downloads(browser, website):
+    context = browser.new_context(locale='en-GB', color_scheme='light', viewport={'width':1440,'height':1000})
+    page = context.new_page()
+    errors = []
+    page.on('pageerror', lambda error: errors.append(str(error)))
+    page.goto(website + 'data.html')
+    expect(page.locator('header[data-site-header]')).to_have_count(1)
+    expect(page.locator('.site-header .site-brand')).to_have_attribute('href', '../index.html')
+    expect(page.locator('.site-header .site-nav a')).to_have_count(6)
+    expect(page.locator('#site-theme')).to_be_enabled()
+    page.locator('#site-theme').click()
+    expect(page.locator('html')).to_have_attribute('data-theme', 'dark')
+    page.reload()
+    expect(page.locator('html')).to_have_attribute('data-theme', 'dark')
+    term = page.locator('.article button[data-jargon-id="flyway"]').first
+    term.focus()
+    expect(page.locator('#jargon-explanation')).to_be_visible()
+    expect(page.locator('#jargon-explanation-description')).to_contain_text('versioned SQL')
+    expect(page.locator('.jargon-entry-link')).to_have_attribute('href', website.replace('workshop/', '') + 'jargon.html#flyway')
+    page.keyboard.press('Escape')
+    page.locator('.site-header .jargon-toggle').click()
+    expect(page.locator('.article .jargon-term')).to_have_count(0)
+    page.locator('.site-header .jargon-toggle').click()
+    expect(page.locator('.article button[data-jargon-id="flyway"]').first).to_be_visible()
+    page.locator('#site-language').click()
+    expect(page.locator('.article h1')).to_have_text('Connect data, settings and identity')
+    page.goto(website + 'prerequisites.html')
+    link = page.locator('a[download="setup-windows.ps1"]')
+    expect(link).to_be_visible()
+    with page.expect_download() as download:
+        link.click()
+    assert download.value.suggested_filename == 'setup-windows.ps1'
+    assert Path(download.value.path()).read_bytes() == (ROOT / 'workshop/scripts/setup-windows.ps1').read_bytes()
+    assert context.request.get(website + 'scripts/setup-ubuntu.sh').status == 200
+    assert context.request.get(website + 'glossary.html').status == 404
+    assert not errors
+    context.close()

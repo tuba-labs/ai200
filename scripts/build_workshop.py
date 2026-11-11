@@ -5,11 +5,12 @@ import json
 from pathlib import Path
 import re
 
+from build_jargon import attach_assets
+
 ROOT = Path(__file__).resolve().parents[1]
 WORKSHOP = ROOT / 'workshop'
 CHAPTERS = json.loads((WORKSHOP / 'content/chapters.json').read_text(encoding='utf-8'))
 EXTRAS = [
-    ('glossary', 'Glossary', 'Short definitions for the terminology used in the core path.'),
     ('reference', 'Versions, decisions and sources', 'Architecture decisions, selected exam objectives, costs and official documentation.'),
     ('maintainer', 'First-run walkthrough checklist', 'A maintainer acceptance path with expected outcomes and diagnostics.'),
     ('validation', 'Validation report', 'Observed local checks and Azure-specific checks still required.'),
@@ -20,7 +21,7 @@ EXTRAS = [
 def language(path):
     if path.name in {'Dockerfile', 'mvnw'}:
         return 'bash'
-    return {'.sh':'bash', '.py':'python', '.java':'java', '.sql':'sql', '.bicep':'bicep', '.yaml':'yaml', '.yml':'yaml',
+    return {'.sh':'bash', '.ps1':'powershell', '.py':'python', '.java':'java', '.sql':'sql', '.bicep':'bicep', '.yaml':'yaml', '.yml':'yaml',
             '.json':'json', '.html':'html', '.xml':'xml'}.get(path.suffix, 'text')
 
 
@@ -49,7 +50,9 @@ def expand(content):
         found = re.search(r'^# region ' + re.escape(section) + r'\n(.*?)^# endregion', source, re.S | re.M)
         if not found:
             raise ValueError(f'Missing command region {name}:{section}')
-        return code_block(found[1]) + '<p class="source-caption">Canonical commands: ' + source_link(name) + '</p>'
+        kind = language(source_path(name))
+        title = 'PowerShell · Windows Downloads folder' if kind == 'powershell' else 'Bash · repository root'
+        return code_block(found[1], kind, title) + '<p class="source-caption">Canonical commands: ' + source_link(name) + '</p>'
     content = re.sub(r'\{\{snippet:([^:}]+):([^}]+)\}\}', snippet, content)
     def code(match):
         name = match[1]
@@ -68,7 +71,7 @@ def navigation(current):
         active = ' aria-current="page"' if chapter['id'] == current else ''
         links.append(f'<li><a href="./{chapter["file"]}" data-chapter-link="{chapter["id"]}" data-number="{number:02}"{active}>'
                      f'<span class="chapter-number">{number:02}</span><span>{chapter["title"]}<small class="chapter-time">~{chapter["minutes"]} min</small></span></a></li>')
-    extras = ''.join(f'<a href="./{identifier}.html">{escape(title)}</a>' for identifier, title, _ in EXTRAS)
+    extras = '<a href="../jargon.html">Shared jargon and definitions</a>' + ''.join(f'<a href="./{identifier}.html">{escape(title)}</a>' for identifier, title, _ in EXTRAS)
     return ('<aside class="sidebar" id="chapter-navigation"><p class="sidebar-label">The core path · ~4 hours</p>'
             '<nav aria-label="Workshop chapters"><ol class="chapter-list">' + ''.join(links) + '</ol></nav>'
             '<div class="progress-panel"><span id="progress-count">0 of 10 chapters completed</span><progress id="docs-progress" max="10" value="0" aria-label="Completed chapters"></progress>'
@@ -89,20 +92,22 @@ def page(identifier, title, summary, content, number=None, minutes=None):
         next_link = f'<a rel="next" href="./{following["file"]}"><small>Continue →</small>{following["title"]}</a>' if following else '<a href="./maintainer.html"><small>Next steps →</small>Maintainer walkthrough checklist</a>'
         continuation = f'<section class="chapter-end" aria-label="Chapter completion"><button type="button" class="complete-button" data-complete-chapter="{identifier}" aria-pressed="false">Mark chapter complete</button><p class="completion-note">A reading checklist, not proof of a successful Azure deployment.</p><nav class="previous-next" aria-label="Previous and next chapters">{prev_link}{next_link}</nav></section>'
     crumb = f'Chapter {number:02} of 10' if number else 'Workshop reference'
-    return f'''<!doctype html>
+    html = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{escape(summary, quote=True)}"><meta name="color-scheme" content="light dark">
-<title>{escape(title)} · Azure RAG workshop</title><link rel="stylesheet" href="./assets/workshop.css"><script src="./assets/workshop.js" defer></script></head>
-<body><a class="skip" href="#content">Skip to chapter content</a>
-<header class="docs-header"><a class="docs-brand" href="./index.html"><span class="brand-symbol" aria-hidden="true">P</span><span>Azure RAG workshop<small>Products · an event-driven application</small></span></a><div class="header-actions"><a href="../index.html">AI-200 study group ↗</a><button class="plain-button" type="button" id="open-search">Search <kbd>/</kbd></button><button class="plain-button" type="button" id="docs-theme" aria-label="Toggle light or dark theme">Theme</button><button class="plain-button mobile-menu" id="chapter-menu" aria-controls="chapter-navigation" aria-expanded="false">Chapters</button></div></header>
-<div class="docs-layout">{navigation(identifier)}<div class="reading-grid"><main class="article" id="content"><p class="breadcrumb">Self-paced / {crumb}</p><h1>{escape(title)}</h1><p class="chapter-summary">{escape(summary)}</p><div class="chapter-meta">{meta}</div>{content}{continuation}<footer class="site-footnote">AI-200 · Selected objectives, not complete exam coverage. Sources checked 11 November 2026. <a href="./validation.html">What has actually been verified?</a></footer></main>{toc}</div></div>
-<dialog class="search-dialog" id="docs-search" aria-labelledby="search-heading"><div class="search-top"><strong id="search-heading">Search the workshop</strong><button type="button" id="close-search" class="plain-button">Close</button></div><label for="search-input">Find a chapter, concept or diagnostic</label><input id="search-input" type="search" autocomplete="off" placeholder="For example: KEDA identity or duplicate event"><p id="search-status" role="status"></p><ul class="search-results" id="search-results"></ul></dialog></body></html>
+<title data-keep-english>{escape(title)} · Azure RAG workshop</title><link rel="stylesheet" href="./assets/workshop.css"><script src="./assets/workshop.js" defer></script></head>
+<body><a class="skip" href="#content" data-keep-english>Skip to chapter content</a>
+<!-- site-header -->
+<nav class="workshop-toolbar" aria-label="Workshop tools" data-keep-english lang="en"><a class="workshop-title" href="./index.html">Azure RAG workshop</a><div class="workshop-actions"><button class="plain-button" type="button" id="open-search">Search <kbd>/</kbd></button><button class="plain-button mobile-menu" id="chapter-menu" aria-controls="chapter-navigation" aria-expanded="false">Chapters</button></div></nav>
+<div class="docs-layout" data-keep-english lang="en">{navigation(identifier)}<div class="reading-grid"><main class="article" id="content"><p class="breadcrumb">Self-paced / {crumb}</p><h1>{escape(title)}</h1><p class="chapter-summary">{escape(summary)}</p><div class="chapter-meta">{meta}</div>{content}{continuation}<footer class="site-footnote">AI-200 · Selected objectives, not complete exam coverage. Sources checked 11 November 2026. <a href="./validation.html">What has actually been verified?</a></footer></main>{toc}</div></div>
+<dialog class="search-dialog" id="docs-search" aria-labelledby="search-heading" data-keep-english lang="en" data-no-jargon><div class="search-top"><strong id="search-heading">Search the workshop</strong><button type="button" id="close-search" class="plain-button">Close</button></div><label for="search-input">Find a chapter, concept or diagnostic</label><input id="search-input" type="search" autocomplete="off" placeholder="For example: KEDA identity or duplicate event"><p id="search-status" role="status"></p><ul class="search-results" id="search-results"></ul></dialog></body></html>
 '''
+    return attach_assets(html, '../', 'laerestoff.html')
 
 
 def source_files():
     roots = ['apps', 'contracts', 'infra', 'k8s', 'samples', 'scripts', 'tools', 'tests']
-    suffixes = {'.java', '.py', '.xml', '.properties', '.html', '.css', '.js', '.json', '.yaml', '.yml', '.sql', '.bicep', '.txt', '.sh', '.kql', '.toml', '.md'}
+    suffixes = {'.java', '.py', '.xml', '.properties', '.html', '.css', '.js', '.json', '.yaml', '.yml', '.sql', '.bicep', '.txt', '.sh', '.ps1', '.kql', '.toml', '.md'}
     paths = [path for folder in roots for path in (WORKSHOP / folder).rglob('*')
              if path.is_file() and not {'target', '__pycache__', '.pytest_cache'}.intersection(path.parts)
              and (path.suffix in suffixes or path.name in {'Dockerfile', 'mvnw', 'mvnw.cmd', '.dockerignore', '.funcignore'})]

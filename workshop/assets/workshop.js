@@ -22,21 +22,21 @@
   });
   document.getElementById('reset-progress')?.addEventListener('click', () => { if (confirm('Reset completion progress for this workshop on this browser?')) { completed.clear(); save(); paint(); } });
   paint();
-  const root = document.documentElement;
-  try { root.dataset.docsTheme = localStorage.getItem('products-rag-workshop:theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'); } catch { root.dataset.docsTheme = 'light'; }
-  document.getElementById('docs-theme')?.addEventListener('click', () => {
-    root.dataset.docsTheme = root.dataset.docsTheme === 'dark' ? 'light' : 'dark';
-    try { localStorage.setItem('products-rag-workshop:theme', root.dataset.docsTheme); } catch { /* In-tab theme still works. */ }
-  });
+  function positionMenu() {
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar?.dataset.open === 'true') sidebar.style.setProperty('--menu-top', document.querySelector('.workshop-toolbar').getBoundingClientRect().bottom + 'px');
+  }
   document.getElementById('chapter-menu')?.addEventListener('click', event => {
-    const sidebar = document.querySelector('.sidebar'), open = sidebar.dataset.open !== 'true'; sidebar.dataset.open = String(open); event.currentTarget.setAttribute('aria-expanded', String(open));
+    const sidebar = document.querySelector('.sidebar'), open = sidebar.dataset.open !== 'true'; sidebar.dataset.open = String(open); event.currentTarget.setAttribute('aria-expanded', String(open)); positionMenu();
   });
+  addEventListener('resize', positionMenu);
+  addEventListener('scroll', positionMenu, {passive: true});
   const escape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   function highlight(code) {
     if (code.dataset.highlighted) return;
     const text = code.textContent, language = code.dataset.language || 'text';
     if (language === 'text') return;
-    const comments = language === 'sql' ? '--[^\\n]*' : ['bash', 'python', 'yaml'].includes(language) ? '#[^\\n]*' : '//[^\\n]*';
+    const comments = language === 'sql' ? '--[^\\n]*' : ['bash', 'powershell', 'python', 'yaml'].includes(language) ? '#[^\\n]*' : '//[^\\n]*';
     const expression = new RegExp('(' + comments + ')|("(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\')|\\b(if|else|then|fi|for|while|do|done|def|class|return|import|from|with|try|except|raise|public|private|static|void|new|var|param|resource|output|SELECT|FROM|WHERE|INSERT|UPDATE|CREATE|TABLE|VALUES|PRIMARY|KEY|NOT|NULL|true|false|null)\\b|\\b(\\d+(?:\\.\\d+)?)\\b', 'gm');
     let html = '', position = 0;
     for (const match of text.matchAll(expression)) {

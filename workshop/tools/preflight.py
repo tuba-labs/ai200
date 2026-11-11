@@ -1,4 +1,5 @@
 """Read-only checks. Unknown critical quota/permission results fail closed."""
+import argparse
 import fnmatch
 import json
 from pathlib import Path
@@ -22,9 +23,9 @@ def run(*args, raw=False):
 
 
 def main():
-    config = json.loads((ROOT / '.state/config.json').read_text())
-    from bootstrap import validate
-    validate(config)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--local-only', action='store_true', help='Check local tools/Docker without Azure sign-in or bootstrap state')
+    args = parser.parse_args()
     problems = []
 
     def check(label, action):
@@ -36,7 +37,7 @@ def main():
             print('FAIL ' + label + ': ' + str(error))
 
     def tools():
-        for tool in ['bash', 'python3', 'az', 'docker', 'kubectl', 'java', 'jq', 'openssl', 'curl', 'git']:
+        for tool in ['bash', 'python3', 'az', 'docker', 'kubectl', 'java', 'jq', 'openssl', 'curl', 'git', 'zip', 'unzip']:
             if not shutil.which(tool):
                 raise RuntimeError(f'Missing {tool}; see prerequisite chapter. Use Bash in WSL2 on Windows.')
         if sys.version_info < (3, 12):
@@ -53,6 +54,9 @@ def main():
             raise RuntimeError('Use kubectl 1.32+ and stay within one minor of the AKS server version')
         engine = run('docker', 'info', '--format', '{{json .ServerVersion}}')
         require(int(engine.split('.')[0]) >= 24, 'Use Docker Engine/Desktop with Engine 24 or newer')
+        require(run('docker', 'info', '--format', '{{json .OSType}}') == 'linux',
+                'Switch Docker Desktop to Linux containers and enable integration for your WSL distribution')
+        run('docker', 'buildx', 'version', raw=True)
         shell = run('bash', '--version', raw=True)
         require(int(re.search(r'version (\d+)', shell)[1]) >= 4, 'Use Bash 4+; on macOS install a recent Bash')
         openssl = run('openssl', 'version', raw=True)
@@ -61,6 +65,14 @@ def main():
         jq = run('jq', '--version', raw=True)
         require(tuple(int(part) for part in jq.removeprefix('jq-').split('.')[:2]) >= (1, 6), 'Use jq 1.6 or newer')
     check('Local tools, versions and Docker daemon', tools)
+    if args.local_only:
+        if problems:
+            raise SystemExit('Local prerequisites failed. Fix the reported tools or Docker WSL integration and rerun.')
+        print('All local gates passed. Azure account, permissions, regional capacity and quotas still need the full checker.')
+        return
+    config = json.loads((ROOT / '.state/config.json').read_text())
+    from bootstrap import validate
+    validate(config)
     subscription, location = config['subscription'], config['location']
 
     def az(*args):

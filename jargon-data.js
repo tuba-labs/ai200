@@ -1407,6 +1407,17 @@ window.AI200_JARGON = {
       "id": "base-image"
     },
     {
+      "primary": "Bash",
+      "fullName": "",
+      "aliases": [],
+      "definition": "A command shell and scripting language used by the workshop deployment scripts. Run these commands inside the same Linux or macOS environment; PowerShell and Windows Command Prompt have different syntax.",
+      "domains": [],
+      "sources": [
+        "https://www.gnu.org/software/bash/manual/"
+      ],
+      "id": "bash"
+    },
+    {
       "primary": "Batching",
       "fullName": "",
       "aliases": [
@@ -1506,6 +1517,21 @@ window.AI200_JARGON = {
         "code": "https://studystore.blob.core.windows.net/photos/repair-42.jpg",
         "summary": "In this illustrative address, studystore is the storage account, photos is the blob container and repair-42.jpg is the blob name. The URL alone does not grant read permission."
       }
+    },
+    {
+      "primary": "Blob container",
+      "fullName": "",
+      "aliases": [
+        "blob containers",
+        "storage container",
+        "storage containers"
+      ],
+      "definition": "A logical grouping of blobs in an Azure Storage account. A blob is an object such as a text file. A Blob container has access policies and is different from a running Docker container.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction"
+      ],
+      "id": "blob-container"
     },
     {
       "primary": "Build context",
@@ -1723,6 +1749,22 @@ window.AI200_JARGON = {
           "term": "apache-kafka"
         }
       ]
+    },
+    {
+      "primary": "Chunk",
+      "fullName": "",
+      "aliases": [
+        "chunks",
+        "chunking",
+        "text chunk",
+        "text chunks"
+      ],
+      "definition": "A bounded piece of source text used for retrieval. Chunking splits a document while keeping useful context together; product, manual and chunk identifiers let an answer cite the original passage.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide"
+      ],
+      "id": "chunk"
     },
     {
       "primary": "CI",
@@ -2171,7 +2213,9 @@ window.AI200_JARGON = {
       "primary": "CorrelationId",
       "fullName": "",
       "aliases": [
-        "correlation-id"
+        "correlation-id",
+        "correlation ID",
+        "correlation identifiers"
       ],
       "definition": "A message property applications use to associate related operations, such as a reply with its request. A common convention copies the request MessageId into the reply's CorrelationId; the applications must implement that convention.",
       "domains": [],
@@ -2845,6 +2889,17 @@ window.AI200_JARGON = {
       }
     },
     {
+      "primary": "Docker Desktop",
+      "fullName": "",
+      "aliases": [],
+      "definition": "A desktop application providing a local Docker engine and tools. On Windows its WSL2 backend and distribution integration let Ubuntu Bash build and run Linux containers. Review the license terms for organizational use.",
+      "domains": [],
+      "sources": [
+        "https://docs.docker.com/desktop/features/wsl/"
+      ],
+      "id": "docker-desktop"
+    },
+    {
       "primary": "Dockerfile",
       "fullName": "",
       "aliases": [
@@ -3464,6 +3519,17 @@ window.AI200_JARGON = {
       "id": "flat-vector-index"
     },
     {
+      "primary": "Flyway",
+      "fullName": "",
+      "aliases": [],
+      "definition": "A database migration tool that applies versioned SQL files and records which changes have run. It changes the schema of an existing database; it is not an ORM and does not provision an Azure database server.",
+      "domains": [],
+      "sources": [
+        "https://documentation.red-gate.com/flyway"
+      ],
+      "id": "flyway"
+    },
+    {
       "primary": "Function app",
       "fullName": "",
       "aliases": [
@@ -3698,6 +3764,20 @@ window.AI200_JARGON = {
       "id": "gpu"
     },
     {
+      "primary": "Grounding",
+      "fullName": "",
+      "aliases": [
+        "grounded answer",
+        "grounded answers"
+      ],
+      "definition": "Supporting a model response with supplied evidence, such as retrieved manual passages. References let a reader inspect that evidence; their presence alone does not guarantee a correct answer.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide"
+      ],
+      "id": "grounding"
+    },
+    {
       "primary": "gRPC",
       "fullName": "",
       "aliases": [
@@ -3709,6 +3789,21 @@ window.AI200_JARGON = {
         "https://grpc.io/docs/what-is-grpc/introduction/"
       ],
       "id": "grpc"
+    },
+    {
+      "primary": "Health probe",
+      "fullName": "",
+      "aliases": [
+        "probe",
+        "probes",
+        "health probes"
+      ],
+      "definition": "A container health check. A startup probe allows initialization, readiness determines whether a Pod receives Service traffic, and liveness determines whether Kubernetes restarts an unhealthy container.",
+      "domains": [],
+      "sources": [
+        "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
+      ],
+      "id": "health-probe"
     },
     {
       "primary": "Histogram",
@@ -5718,6 +5813,19 @@ window.AI200_JARGON = {
       "id": "namespace"
     },
     {
+      "primary": "NAT gateway",
+      "fullName": "",
+      "aliases": [
+        "Azure NAT Gateway"
+      ],
+      "definition": "An Azure networking service that supplies explicit outbound connectivity from a subnet using public IP addresses. It does not create an inbound application endpoint or replace network access controls.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview"
+      ],
+      "id": "nat-gateway"
+    },
+    {
       "primary": "NCRONTAB",
       "fullName": "",
       "aliases": [
@@ -6165,6 +6273,19 @@ window.AI200_JARGON = {
       "id": "point-read"
     },
     {
+      "primary": "Poison queue",
+      "fullName": "",
+      "aliases": [
+        "poison queues"
+      ],
+      "definition": "A failure queue used by some triggers for items that repeatedly fail processing. The Azure Functions Blob extension uses webjobs-blobtrigger-poison. Service Bus dead-letter queues and Event Grid dead-letter blobs are separate mechanisms.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-trigger"
+      ],
+      "id": "poison-queue"
+    },
+    {
       "primary": "PostgreSQL",
       "fullName": "",
       "aliases": [
@@ -6207,6 +6328,17 @@ window.AI200_JARGON = {
         "mode": "inline",
         "code": "$service = \"orders\"\nWrite-Output \"Starting $service\""
       }
+    },
+    {
+      "primary": "Private DNS",
+      "fullName": "",
+      "aliases": [],
+      "definition": "Name resolution for private network addresses. A linked Azure Private DNS zone lets workloads in a virtual network resolve a private database hostname to its private address.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/dns/private-dns-overview"
+      ],
+      "id": "private-dns"
     },
     {
       "primary": "Private endpoint",
@@ -6413,6 +6545,17 @@ window.AI200_JARGON = {
         "https://kubernetes.io/docs/concepts/storage/persistent-volumes/"
       ],
       "id": "pvc"
+    },
+    {
+      "primary": "Python",
+      "fullName": "",
+      "aliases": [],
+      "definition": "A programming language used here for Functions, workers and verification tools. def defines a function, dictionaries hold named values, and with manages the lifetime of resources such as database connections.",
+      "domains": [],
+      "sources": [
+        "https://docs.python.org/3/tutorial/"
+      ],
+      "id": "python"
     },
     {
       "primary": "Quantization",
@@ -6708,6 +6851,20 @@ window.AI200_JARGON = {
         "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
       ],
       "id": "replica"
+    },
+    {
+      "primary": "Request ID",
+      "fullName": "",
+      "aliases": [
+        "request identifier",
+        "request identifiers"
+      ],
+      "definition": "A stable application identifier for one operation, such as a queued chat question. Persisting it connects database state, message correlation, logs and browser polling even when a process restarts.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads"
+      ],
+      "id": "request-id"
     },
     {
       "primary": "Request unit",
@@ -7012,6 +7169,21 @@ window.AI200_JARGON = {
         "https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/"
       ],
       "id": "scheduler"
+    },
+    {
+      "primary": "Schema migration",
+      "fullName": "",
+      "aliases": [
+        "database migration",
+        "database migrations",
+        "schema migrations"
+      ],
+      "definition": "A versioned change to database structures or data, for example creating a table or adding a column. A migration tool records applied versions so deployments can update the schema deliberately.",
+      "domains": [],
+      "sources": [
+        "https://documentation.red-gate.com/flyway"
+      ],
+      "id": "schema-migration"
     },
     {
       "primary": "SDK",
@@ -8406,6 +8578,19 @@ window.AI200_JARGON = {
       }
     },
     {
+      "primary": "WinGet",
+      "fullName": "",
+      "aliases": [
+        "Windows Package Manager"
+      ],
+      "definition": "The Windows command-line package manager. It installs Windows applications from package manifests; it does not install Linux packages inside a WSL distribution.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/windows/package-manager/winget/"
+      ],
+      "id": "winget"
+    },
+    {
       "primary": "Worker",
       "fullName": "",
       "aliases": [
@@ -8421,6 +8606,35 @@ window.AI200_JARGON = {
         "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-processor"
       ],
       "id": "worker"
+    },
+    {
+      "primary": "Workload identity",
+      "fullName": "",
+      "aliases": [
+        "AKS workload identity",
+        "Microsoft Entra Workload ID"
+      ],
+      "definition": "Federated authentication that lets an AKS Pod exchange its Kubernetes service-account token for Azure access tokens. The service account, Pod label and federated credential must agree, and Azure roles grant access separately.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview"
+      ],
+      "id": "workload-identity"
+    },
+    {
+      "primary": "WSL2",
+      "fullName": "",
+      "aliases": [
+        "WSL 2",
+        "Windows Subsystem for Linux",
+        "Windows Subsystem for Linux 2"
+      ],
+      "definition": "The Windows Subsystem for Linux version that runs a Linux kernel in a managed virtual machine. Tools installed inside Ubuntu in WSL are separate from Windows installations of Java, Python or Azure CLI.",
+      "domains": [],
+      "sources": [
+        "https://learn.microsoft.com/en-us/windows/wsl/about"
+      ],
+      "id": "wsl2"
     },
     {
       "primary": "YAML",

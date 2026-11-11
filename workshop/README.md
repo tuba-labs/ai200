@@ -15,6 +15,10 @@ The production build exports a clean `.site/` tree. GitHub Pages publishes that 
 
 The tutorial's primary shell is **Bash**. Windows participants use WSL2 Ubuntu with Docker Desktop integration. The reference system is a separate deployable Azure application, not the documentation server.
 
+Before the core workshop, follow the [prerequisite checklist](content/prerequisites.inc): an active Azure subscription, resource/role-assignment permissions, regional model/VM quota and a local Linux-container engine are required. Windows participants can download [setup-windows.ps1](scripts/setup-windows.ps1) from the website and run it in an Administrator PowerShell window; `-WhatIf` previews actions. It uses WinGet for Docker Desktop and the WSL installer for Ubuntu 24.04. After restarting/initializing Ubuntu and enabling Docker Desktop integration, run `bash workshop/scripts/setup-ubuntu.sh` **from the repository root inside Ubuntu** for Azure CLI, Bicep, Java, Python, kubectl and supporting tools. Installation and account/quota approvals are outside the four-hour estimate. Check tools alone with `python3 workshop/tools/preflight.py --local-only`; this does not require sign-in or `.state/config.json`.
+
+Workshop pages reuse the default site header, language/theme controls and shared jargon tooltips. Workshop instructions remain in English; definitions and sources belong to the root jargon catalog rather than a second glossary.
+
 ## Layout
 
 | Path | Purpose |
