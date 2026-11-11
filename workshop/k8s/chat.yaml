@@ -12,7 +12,7 @@ metadata:
   name: products-chat
   namespace: products
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels: {app: products-chat}
   template:
@@ -28,7 +28,6 @@ spec:
         - name: worker
           image: ${ACR_HOST}/products-chat:${IMAGE_TAG}
           envFrom: [{configMapRef: {name: bootstrap}}]
-          env: [{name: DEMO_DELAY_SECONDS, value: "0"}]
           resources:
             requests: {cpu: 250m, memory: 384Mi}
             limits: {cpu: "1", memory: 768Mi}

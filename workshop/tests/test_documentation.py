@@ -73,19 +73,27 @@ def test_commands_are_imported_exactly_and_chapters_have_actions_and_checks():
             value = re.search(r'^# region ' + section + r'\n(.*?)^# endregion', canonical, re.S | re.M)[1].rstrip()
             generated = (WORKSHOP / chapter['file']).read_text(encoding='utf-8')
             assert value in unescape(generated)
-    assert sum(chapter['minutes'] for chapter in docs.CHAPTERS) == 240
+    assert sum(chapter['minutes'] for chapter in docs.CHAPTERS) == 210
 
 
 def test_manifest_renderer_requires_every_value_and_never_renders_secret_settings():
     from render_manifests import render
+    import yaml
+
+    resources = []
     values = {'PRODUCTS_CLIENT_ID':'11111111-1111-1111-1111-111111111111',
-              'CHAT_CLIENT_ID':'22222222-2222-2222-2222-222222222222', 'KEDA_CLIENT_ID':'33333333-3333-3333-3333-333333333333',
+              'CHAT_CLIENT_ID':'22222222-2222-2222-2222-222222222222',
               'APP_CONFIG_ENDPOINT':'https://fixture.azconfig.io', 'ACR_HOST':'fixture.azurecr.io',
-              'IMAGE_TAG':'w1-fixture', 'ALLOWED_CIDR':'198.51.100.2/32', 'SERVICEBUS_NAME':'fixture-bus'}
+              'IMAGE_TAG':'w1-fixture', 'ALLOWED_CIDR':'198.51.100.2/32'}
     for path in (WORKSHOP / 'k8s').glob('*.yaml'):
         output = render(path.read_text(), values)
+        resources.extend(yaml.safe_load_all(output))
         assert '${' not in output
         assert 'postgres-password' not in output and 'products-password' not in output
+    assert all(item['apiVersion'] in {'v1', 'apps/v1', 'batch/v1'} for item in resources)
+    deployments = {item['metadata']['name']: item for item in resources if item['kind'] == 'Deployment'}
+    assert deployments['products']['spec']['replicas'] == 1
+    assert deployments['products-chat']['spec']['replicas'] == 1
     with pytest.raises(ValueError, match='Missing manifest'):
         render('${PRODUCTS_CLIENT_ID}', {})
 

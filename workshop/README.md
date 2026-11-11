@@ -1,6 +1,6 @@
 # Products: a self-paced Azure RAG workshop
 
-This directory contains documentation, staged infrastructure and verification tools for an estimated four-hour core path **after tools/access are ready**. Application source is maintained in the three separate repositories below. The estimate has not been confirmed by a timed participant walkthrough.
+This directory contains documentation, staged infrastructure and verification tools for an estimated 3½-hour core path **after tools/access are ready**. Application source is maintained in the three separate repositories below. The estimate has not been confirmed by a timed participant walkthrough.
 
 From the repository root, with Python 3.12+:
 
@@ -15,7 +15,7 @@ The production build exports a clean `.site/` tree. GitHub Pages publishes that 
 
 The tutorial's primary shell is **Bash**. Windows participants use WSL2 Ubuntu with Docker Desktop integration. The reference system is a separate deployable Azure application, not the documentation server.
 
-Before the core workshop, follow the [prerequisite checklist](content/prerequisites.inc): an active Azure subscription, resource/role-assignment permissions, regional model/VM quota and a local Linux-container engine are required. Windows participants can download [setup-windows.ps1](scripts/setup-windows.ps1) from the website and run it in an Administrator PowerShell window; `-WhatIf` previews actions. It uses WinGet for Docker Desktop and the WSL installer for Ubuntu 24.04. After restarting/initializing Ubuntu and enabling Docker Desktop integration, run `bash workshop/scripts/setup-ubuntu.sh` **from the repository root inside Ubuntu** for Azure CLI, Bicep, Java, Python, kubectl and supporting tools. Installation and account/quota approvals are outside the four-hour estimate. Check tools alone with `python3 workshop/tools/preflight.py --local-only`; this does not require sign-in or `.state/config.json`.
+Before the core workshop, follow the [prerequisite checklist](content/prerequisites.inc): an active Azure subscription, resource/role-assignment permissions, regional model/VM quota and a local Linux-container engine are required. Windows participants can download [setup-windows.ps1](scripts/setup-windows.ps1) from the website and run it in an Administrator PowerShell window; `-WhatIf` previews actions. It uses WinGet for Docker Desktop and the WSL installer for Ubuntu 24.04. After restarting/initializing Ubuntu and enabling Docker Desktop integration, run `bash workshop/scripts/setup-ubuntu.sh` **from the repository root inside Ubuntu** for Azure CLI, Bicep, Java, Python, kubectl and supporting tools. Installation and account/quota approvals are outside the 3½-hour estimate. Check tools alone with `python3 workshop/tools/preflight.py --local-only`; this does not require sign-in or `.state/config.json`.
 
 Workshop pages reuse the default site header, language/theme controls and shared jargon tooltips. Workshop instructions remain in English; definitions and sources belong to the root jargon catalog rather than a second glossary.
 
@@ -27,7 +27,7 @@ Workshop pages reuse the default site header, language/theme controls and shared
 | [ProductsEmbedder](https://github.com/tuba-labs/ai200-workshop1-products-embedder) | Separate Python Function repository |
 | [ProductsChat](https://github.com/tuba-labs/ai-200-products-chat) | Separate Python worker repository |
 | `infra/` | Model gate, shared network/data foundation, private PostgreSQL, AKS/Functions templates |
-| `k8s/` | Products, worker, Service, inspection Job and KEDA resources |
+| `k8s/` | Products, one chat worker, Service and inspection Job |
 | `scripts/` | Ordered Bash setup, readiness, deployment, observation and confirmed cleanup stages |
 | `tools/` | Prerequisite checks, canonical render/package tools, real-deployment smoke/load/replay |
 | `samples/` | Three fictional UTF-8 manuals and objectively checkable supporting passages |
@@ -41,7 +41,7 @@ Follow the website in order. It explains the commands before executing stages. S
 
 The first paid stage creates only the model resource/deployments and proves actual inference access. AKS and PostgreSQL start only after that gate passes. Your source IPv4 /32 restricts the Products load balancer; PostgreSQL uses private VNet networking. Products uses self-signed HTTPS with a certificate pinned by the smoke client and a random sign-in password stored in Key Vault.
 
-**Selected exam objectives only:** AKS, ACR images, PostgreSQL/RAG filters, Service Bus, Event Grid/Functions, Key Vault and App Configuration. The study guide's Container Apps-specific KEDA objective is not claimed as an AKS-specific objective. See `reference.html` for the dated mapping and official sources.
+**Selected exam objectives only:** AKS, ACR images, PostgreSQL/RAG filters, Service Bus, Event Grid/Functions, Key Vault and App Configuration. See `reference.html` for the dated mapping and official sources.
 
 ## Local checks and Azure acceptance
 

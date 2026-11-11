@@ -7,6 +7,5 @@
   {"id":"deploy","file":"deploy.html","title":"Deploy Products to AKS","summary":"Deploy Products; inspect probes, logs and a rollout.","minutes":20},
   {"id":"embedder","file":"embedder.html","title":"Turn a manual into vectors","summary":"Trigger Python indexing from a Blob upload; verify stored chunks.","minutes":30},
   {"id":"chat","file":"chat.html","title":"Ask a grounded question","summary":"Retrieve evidence, generate a cited answer and inspect asynchronous replies.","minutes":35},
-  {"id":"keda","file":"keda.html","title":"Make the queue drive scaling","summary":"Scale the worker from zero with a bounded queue backlog.","minutes":30},
   {"id":"finish","file":"finish.html","title":"Verify, diagnose and clean up","summary":"Smoke-test the deployment, diagnose failures and remove resources.","minutes":15}
 ]

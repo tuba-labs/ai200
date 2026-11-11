@@ -10,7 +10,8 @@ done
 kubectl get nodes
 kubectl rollout status deployment/products -n products --timeout=120s
 kubectl get deployment,pods,service -n products
-kubectl wait --for=condition=Ready scaledobject/products-chat -n products --timeout=120s
+kubectl rollout status deployment/products-chat -n products --timeout=120s
+[[ $(kubectl get deployment products-chat -n products -o jsonpath='{.spec.replicas}') == 1 ]] || { echo 'Expected one chat worker replica.' >&2; exit 1; }
 azx postgres flexible-server show -g "$GROUP" -n "$STEM-pg" --query '{state:state,host:fullyQualifiedDomainName}' -o json
 azx functionapp function list -g "$GROUP" -n "$STEM-embedder" --query '[].name' -o tsv
 function_count=$(azx functionapp function list -g "$GROUP" -n "$STEM-embedder" --query "length([?contains(name,'IndexManual')])" -o tsv)
@@ -24,7 +25,6 @@ done
 if [[ ${1:-} != --check ]]; then
   kubectl get events -n products --sort-by=.lastTimestamp
   kubectl logs deployment/products -n products --tail=40
-  kubectl logs -n kube-system deployment/keda-operator --tail=30
-  echo 'Worker may be at zero. View its last request logs while running: kubectl --kubeconfig workshop/.state/kubeconfig logs -n products -l app=products-chat --tail=40'
+  kubectl logs -n products deployment/products-chat --tail=40
   echo 'Function runtime logs: Application Insights → Logs, then run the query linked in the troubleshooting chapter.'
 fi

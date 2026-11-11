@@ -50,9 +50,9 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto(website)
     expect(page.get_by_role('heading', name='What we will build and learn')).to_be_visible()
-    expect(page.locator('[data-chapter-link]')).to_have_count(10)
+    expect(page.locator('[data-chapter-link]')).to_have_count(9)
     page.locator('[data-complete-chapter]').click()
-    expect(page.locator('#progress-count')).to_have_text('1 of 10 chapters completed')
+    expect(page.locator('#progress-count')).to_have_text('1 of 9 chapters completed')
     page.reload()
     expect(page.locator('[data-complete-chapter]')).to_have_attribute('aria-pressed', 'true')
     page.get_by_role('link', name='Continue → Check your starting point').click()
@@ -65,13 +65,13 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
     # same after platform newline normalization.
     assert page.evaluate('navigator.clipboard.readText()').replace('\r\n', '\n') == original
     page.get_by_role('button', name='Search /').click()
-    page.locator('#search-input').fill('KEDA')
+    page.locator('#search-input').fill('identity')
     expect(page.locator('#search-results a').first).to_be_visible()
-    page.locator('#search-results a').filter(has_text='Make the queue drive scaling').click()
-    expect(page).to_have_url(website + 'keda.html')
+    page.locator('#search-results a').filter(has_text='Connect data, settings and identity').click()
+    expect(page).to_have_url(website + 'data.html')
     page.once('dialog', lambda dialog: dialog.accept())
     page.locator('#reset-progress').click()
-    expect(page.locator('#progress-count')).to_have_text('0 of 10 chapters completed')
+    expect(page.locator('#progress-count')).to_have_text('0 of 9 chapters completed')
     assert not errors
     destination = ROOT / 'workshop/.tools/screenshots'
     destination.mkdir(parents=True, exist_ok=True)
@@ -106,9 +106,9 @@ def test_blocked_storage_keeps_reading_and_completion_usable(browser, website):
     page.goto(website)
     expect(page.locator('#storage-note')).to_contain_text('temporary')
     page.locator('[data-complete-chapter]').click()
-    expect(page.locator('#progress-count')).to_have_text('1 of 10 chapters completed')
+    expect(page.locator('#progress-count')).to_have_text('1 of 9 chapters completed')
     page.reload()
-    expect(page.locator('#progress-count')).to_have_text('0 of 10 chapters completed')
+    expect(page.locator('#progress-count')).to_have_text('0 of 9 chapters completed')
     context.close()
 
 

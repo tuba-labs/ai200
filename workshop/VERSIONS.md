@@ -19,8 +19,8 @@ Selected and checked on 2026-11-11. These are pinned baselines, not a promise th
 | Embeddings | text-embedding-3-small version 1; deployment embedding; 1536 dimensions | config.example.json / migration / models.py |
 | Chat | gpt-5-mini version 2025-08-07; deployment chat; low reasoning effort | config.example.json / models.py |
 | Model API | Azure OpenAI GA /openai/v1/embeddings and /openai/v1/chat/completions | models.py / model_probe.py |
-| AKS/KEDA | AKS-supported default Kubernetes at creation, patch upgrades; managed KEDA add-on | compute.bicep |
-| Kubernetes API resources | apps/v1, v1, batch/v1, keda.sh/v1alpha1 | k8s/ |
+| AKS | AKS-supported default Kubernetes at creation, patch upgrades; one node, fixed worker replica | compute.bicep |
+| Kubernetes API resources | apps/v1, v1, batch/v1 | k8s/ |
 | ARM APIs | Network 2024-05-01; Web 2024-04-01; AKS 2025-01-01; PostgreSQL 2024-08-01; Cognitive Services 2024-10-01 | infra/ |
 | Test tools | pytest 8.4.2; jsonschema 4.25.1; Playwright 1.56.0; ShellCheck image v0.11.0 | requirements-test.txt / verify-local.sh |
 | Local Bicep compiler | 0.49.2 | Validation environment; templates also validated against its resource schemas |

@@ -13,6 +13,7 @@ WORKSHOP = ROOT / 'workshop'
 REPOSITORIES = json.loads((WORKSHOP / 'repositories.json').read_text(encoding='utf-8'))
 APP_PREFIXES = {'apps/products/':'products', 'apps/products-embedder/':'embedder', 'apps/products-chat/':'chat'}
 CHAPTERS = json.loads((WORKSHOP / 'content/chapters.json').read_text(encoding='utf-8'))
+CORE_HOURS = sum(chapter['minutes'] for chapter in CHAPTERS) / 60
 EXTRAS = [
     ('reference', 'Versions, decisions and sources', 'Architecture decisions, selected exam objectives, costs and official documentation.'),
     ('maintainer', 'First-run walkthrough checklist', 'A maintainer acceptance path with expected outcomes and diagnostics.'),
@@ -84,9 +85,9 @@ def navigation(current):
         links.append(f'<li><a href="./{chapter["file"]}" data-chapter-link="{chapter["id"]}" data-number="{number:02}"{active}>'
                      f'<span class="chapter-number">{number:02}</span><span>{chapter["title"]}<small class="chapter-time">~{chapter["minutes"]} min</small></span></a></li>')
     extras = ''.join(f'<a href="./{identifier}.html">{escape(title)}</a>' for identifier, title, _ in EXTRAS)
-    return ('<aside class="sidebar" id="chapter-navigation"><p class="sidebar-label">The core path · ~4 hours</p>'
+    return (f'<aside class="sidebar" id="chapter-navigation"><p class="sidebar-label">The core path · ~{CORE_HOURS:g} hours</p>'
             '<nav aria-label="Workshop chapters"><ol class="chapter-list">' + ''.join(links) + '</ol></nav>'
-            '<div class="progress-panel"><span id="progress-count">0 of 10 chapters completed</span><progress id="docs-progress" max="10" value="0" aria-label="Completed chapters"></progress>'
+            f'<div class="progress-panel"><span id="progress-count">0 of {len(CHAPTERS)} chapters completed</span><progress id="docs-progress" max="{len(CHAPTERS)}" value="0" aria-label="Completed chapters"></progress>'
             '<p id="storage-note">Saved only in this browser.</p><button id="reset-progress" type="button">Reset progress</button></div>'
             '<nav class="sidebar-links" aria-label="Workshop reference">' + extras + '</nav></aside>')
 
@@ -104,7 +105,7 @@ def page(identifier, title, summary, content, number=None, minutes=None):
         prev_link = f'<a rel="prev" href="./{previous["file"]}"><small>← Previous</small>{previous["title"]}</a>' if previous else '<span></span>'
         next_link = f'<a rel="next" href="./{following["file"]}"><small>Continue →</small>{following["title"]}</a>' if following else '<a href="./maintainer.html"><small>Next steps →</small>Maintainer walkthrough checklist</a>'
         continuation = f'<section class="chapter-end" aria-label="Chapter completion"><button type="button" class="complete-button" data-complete-chapter="{identifier}" aria-pressed="false">Mark chapter complete</button><nav class="previous-next" aria-label="Previous and next chapters">{prev_link}{next_link}</nav></section>'
-    crumb = f'Chapter {number:02} of 10' if number else 'Workshop reference'
+    crumb = f'Chapter {number:02} of {len(CHAPTERS)}' if number else 'Workshop reference'
     html = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{escape(summary, quote=True)}"><meta name="color-scheme" content="light dark">
@@ -113,7 +114,7 @@ def page(identifier, title, summary, content, number=None, minutes=None):
 <!-- site-header -->
 <nav class="workshop-toolbar" aria-label="Workshop tools" data-keep-english lang="en"><a class="workshop-title" href="./index.html">Azure RAG workshop</a><div class="workshop-actions"><button class="plain-button" type="button" id="open-search">Search <kbd>/</kbd></button><button class="plain-button mobile-menu" id="chapter-menu" aria-controls="chapter-navigation" aria-expanded="false">Chapters</button></div></nav>
 <div class="docs-layout" data-keep-english lang="en">{navigation(identifier)}<div class="reading-grid"><main class="article" id="content"><p class="breadcrumb">{crumb}</p><h1>{escape(title)}</h1><p class="chapter-summary">{escape(summary)}</p><div class="chapter-meta">{meta}</div>{content}{continuation}<footer class="site-footnote"><a href="./reference.html#exam">AI-200 objectives</a> · <a href="./validation.html">Validation</a></footer></main>{toc}</div></div>
-<dialog class="search-dialog" id="docs-search" aria-labelledby="search-heading" data-keep-english lang="en" data-no-jargon><div class="search-top"><strong id="search-heading">Search the workshop</strong><button type="button" id="close-search" class="plain-button">Close</button></div><label for="search-input">Find a chapter, concept or diagnostic</label><input id="search-input" type="search" autocomplete="off" placeholder="For example: KEDA identity or duplicate event"><p id="search-status" role="status"></p><ul class="search-results" id="search-results"></ul></dialog></body></html>
+<dialog class="search-dialog" id="docs-search" aria-labelledby="search-heading" data-keep-english lang="en" data-no-jargon><div class="search-top"><strong id="search-heading">Search the workshop</strong><button type="button" id="close-search" class="plain-button">Close</button></div><label for="search-input">Find a chapter, concept or diagnostic</label><input id="search-input" type="search" autocomplete="off" placeholder="For example: workload identity or duplicate event"><p id="search-status" role="status"></p><ul class="search-results" id="search-results"></ul></dialog></body></html>
 '''
     return attach_assets(html, '../', 'workshop/index.html')
 

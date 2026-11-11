@@ -19,7 +19,7 @@ def wait(label, read, done, timeout):
         if done(value):
             return value
         time.sleep(3)
-    raise TimeoutError(label + f' exceeded {timeout}s. Check Event Grid/poison queue for indexing; KEDA, request/reply queues and worker logs for chat.')
+    raise TimeoutError(label + f' exceeded {timeout}s. Check Event Grid/poison queue for indexing; request/reply queues and worker logs for chat.')
 
 
 def main():
@@ -48,7 +48,7 @@ def main():
     report = {'manualId': product['manualId'], 'requestId': result['id'], 'correlationId': result['correlationId'],
               'status': result['status'], 'supportingReferences': len(supporting), 'checkedAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     (ROOT / '.state/smoke-result.json').write_text(json.dumps(report, indent=2) + '\n')
-    print('PASS: real upload → Event Grid/Function indexing → Service Bus/KEDA worker → persisted correlated answer with relevant manual references.')
+    print('PASS: real upload → Event Grid/Function indexing → Service Bus worker → persisted correlated answer with relevant manual references.')
     print('This checks evidence presence, not exact LLM wording or general factual accuracy.')
 
 

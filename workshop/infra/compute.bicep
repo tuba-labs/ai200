@@ -26,7 +26,6 @@ resource aks 'Microsoft.ContainerService/managedClusters@2025-01-01' = {
     enableRBAC: true
     oidcIssuerProfile: { enabled: true }
     securityProfile: { workloadIdentity: { enabled: true } }
-    workloadAutoScalerProfile: { keda: { enabled: true } }
     autoUpgradeProfile: { upgradeChannel: 'patch', nodeOSUpgradeChannel: 'NodeImage' }
     agentPoolProfiles: [{
       name: 'system'

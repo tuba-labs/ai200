@@ -1,6 +1,6 @@
 <div class="start-card"><p><strong>Requires:</strong> prerequisite checks pass; subscription, region and source IP reviewed.</p></div>
 <h2 id="cost">Cost check</h2>
-<p>This creates paid resources. Allow roughly <strong>US$5–15</strong> for four hours with prompt cleanup (11 November 2026 estimate, not a measured bill). VM, PostgreSQL, NAT and service tiers continue billing while the worker is idle. <a href="./reference.html#costs">Cost details</a>.</p>
+<p>This creates paid resources. Allow roughly <strong>US$5–15</strong> for 3½ hours with prompt cleanup (11 November 2026 estimate, not a measured bill). VM, PostgreSQL, NAT and service tiers continue billing while the worker is idle. <a href="./reference.html#costs">Cost details</a>.</p>
 <h2 id="stages">Start provisioning</h2>
 {{snippet:commands.sh:provision}}
 <ul><li><strong>01 → models:</strong> creates the tagged resource group and model deployments, then makes identity-based embedding/chat calls. AKS/database creation waits for this gate.</li><li><strong>02 → infrastructure:</strong> creates networking, ACR, Storage, queues, Key Vault, App Configuration, identities and telemetry; starts PostgreSQL and AKS/Functions deployments asynchronously.</li></ul>

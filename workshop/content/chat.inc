@@ -1,7 +1,7 @@
 <div class="start-card"><p><strong>Requires:</strong> Products ready and the three manuals indexed.</p></div>
 <h2 id="worker">Deploy one worker</h2>
 {{snippet:commands.sh:chat}}
-<p>Starts one worker from {{file:k8s/chat.yaml}}. {{file:apps/products-chat/worker.py}} receives Service Bus requests serially, with prefetch zero. KEDA takes over next.</p>
+<p>Starts one worker from {{file:k8s/chat.yaml}}. {{file:apps/products-chat/worker.py}} receives Service Bus requests serially, with prefetch zero. It stays at one replica throughout this workshop.</p>
 <h2 id="questions">Ask and inspect the evidence</h2>
 <p>In Products → Chat, select the matching product. Compare returned passages, not exact LLM wording.</p>
 <table><thead><tr><th>Product / question</th><th>Expected evidence</th></tr></thead><tbody><tr><td>Aurora: operating temperature?</td><td>-10 to 40 degrees Celsius</td></tr><tr><td>Cedar: how to enable the timer?</td><td>Hold two seconds; runs for 45 minutes</td></tr><tr><td>Harbor: does it work on 110 V?</td><td>220–240 V only; not dual voltage</td></tr><tr><td>Any: what is the CEO's private telephone number?</td><td>Insufficient information</td></tr></tbody></table>

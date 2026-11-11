@@ -15,12 +15,10 @@ def values():
     return {
         'PRODUCTS_CLIENT_ID': identities['products']['clientId'],
         'CHAT_CLIENT_ID': identities['chat']['clientId'],
-        'KEDA_CLIENT_ID': identities['keda']['clientId'],
         'APP_CONFIG_ENDPOINT': foundation['configEndpoint']['value'],
         'ACR_HOST': config['stem'] + 'acr.azurecr.io',
         'IMAGE_TAG': json.loads((ROOT / '.state/images.json').read_text())['tag'],
         'ALLOWED_CIDR': config['allowedCidr'],
-        'SERVICEBUS_NAME': config['stem'] + '-bus',
     }
 
 
@@ -33,6 +31,6 @@ def render(source, substitutions):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('name', choices=['products', 'service', 'chat', 'keda', 'inspect'])
+    parser.add_argument('name', choices=['products', 'service', 'chat', 'inspect'])
     args = parser.parse_args()
     print(render((ROOT / f'k8s/{args.name}.yaml').read_text(), values()), end='')

@@ -82,7 +82,7 @@
       const row = document.createElement('li'), link = document.createElement('a'), detail = document.createElement('small');
       link.href = './' + item.url; link.textContent = item.title; detail.textContent = item.summary; link.append(detail); row.append(link); return row;
     }));
-    document.getElementById('search-status').textContent = matches.length ? matches.length + ' matching pages' : 'No matches. Try “KEDA”, “identity”, “timeout”, or “chunk”.';
+    document.getElementById('search-status').textContent = matches.length ? matches.length + ' matching pages' : 'No matches. Try “retrieval”, “identity”, “timeout”, or “chunk”.';
   }
   document.getElementById('open-search')?.addEventListener('click', openSearch);
   document.getElementById('close-search')?.addEventListener('click', () => dialog.close());

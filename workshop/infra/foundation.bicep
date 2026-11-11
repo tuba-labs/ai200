@@ -54,16 +54,16 @@ resource link 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01'
   location: 'global'
   properties: { registrationEnabled: false, virtualNetwork: { id: network.id } }
 }
-resource identities 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = [for suffix in ['products', 'embedder', 'chat', 'keda', 'cluster']: {
+resource identities 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = [for suffix in ['products', 'embedder', 'chat', 'cluster']: {
   name: '${stem}-${suffix}'
   location: location
 }]
 resource networkRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   // AKS must read/use both the VNet and its separate NAT/public-IP resources.
   // Keep this network-management role inside the workshop resource group.
-  name: guid(resourceGroup().id, identities[4].id, 'network')
+  name: guid(resourceGroup().id, identities[3].id, 'network')
   properties: {
-    principalId: identities[4].properties.principalId
+    principalId: identities[3].properties.principalId
     principalType: 'ServicePrincipal'
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4d97b98b-1d4f-4787-a291-c67834d212e7')
   }
@@ -195,7 +195,7 @@ resource queueInspector 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '19e7f393-937e-4f77-808e-94535e297925')
   }
 }
-output identities array = [for (suffix, i) in ['products', 'embedder', 'chat', 'keda', 'cluster']: {
+output identities array = [for (suffix, i) in ['products', 'embedder', 'chat', 'cluster']: {
   name: suffix
   id: identities[i].id
   clientId: identities[i].properties.clientId

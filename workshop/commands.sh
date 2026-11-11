@@ -98,37 +98,12 @@ bash workshop/scripts/08-chat.sh
 bash workshop/scripts/change-retrieval.sh 1
 # endregion
     ;;
-  keda)
-# region keda
-bash workshop/scripts/09-keda.sh
-bash workshop/scripts/demo-scaling.sh start
-# endregion
-    ;;
-  observe)
-# region observe
-bash workshop/scripts/watch-scaling.sh
-# endregion
-    ;;
   tools)
 # region tools
 python3 -m venv workshop/.tools/venv
 # shellcheck source=/dev/null
 source workshop/.tools/venv/bin/activate
 python -m pip install -r workshop/requirements-test.txt
-# endregion
-    ;;
-  load)
-# region load
-# shellcheck source=/dev/null
-source workshop/.tools/venv/bin/activate
-python workshop/tools/load.py --count 8
-# endregion
-    ;;
-  threshold)
-# region threshold
-bash workshop/scripts/demo-scaling.sh threshold 4
-python workshop/tools/load.py --count 8
-bash workshop/scripts/demo-scaling.sh stop
 # endregion
     ;;
   smoke)
@@ -148,5 +123,5 @@ bash workshop/scripts/diagnostics.sh
 bash workshop/scripts/cleanup.sh
 # endregion
     ;;
-  *) echo 'Sections: get-apps, setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, inspect-check, inspect-rollout, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
+  *) echo 'Sections: get-apps, setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, inspect-check, inspect-rollout, configure, products, embedder, inspect-data, chat, retrieval, tools, smoke, diagnose, cleanup' ;;
 esac

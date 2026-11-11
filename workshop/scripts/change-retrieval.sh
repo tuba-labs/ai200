@@ -7,6 +7,6 @@ value=${1:-1}
 azx appconfig kv set --name "$STEM-cfg" --auth-mode login --key rag:retrieval-count --label workshop --value "$value" --yes -o none
 # Settings are read ON STARTUP, not refreshed automatically.
 # Changing a pod-template annotation causes any existing pods to restart and
-# ensures future pods created by KEDA also read the new value.
+# ensures the replacement worker reads the new value.
 kubectl rollout restart deployment/products-chat -n products
 echo "Retrieval count set to $value. New workers will report retrieval_count=$value in startup logs. Ask a NEW question; existing cached results do not change."
