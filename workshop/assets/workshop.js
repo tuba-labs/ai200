@@ -31,14 +31,20 @@
   });
   addEventListener('resize', positionMenu);
   addEventListener('scroll', positionMenu, {passive: true});
-  function revealSection() {
+  function revealSection(hash = location.hash) {
     let target;
-    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
+    try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch { return; }
     let section = target?.closest('details');
     while (section) { section.open = true; section = section.parentElement?.closest('details'); }
   }
   revealSection();
-  addEventListener('hashchange', revealSection);
+  addEventListener('hashchange', () => revealSection());
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const target = new URL(link.href, location.href);
+    if (target.origin === location.origin && target.pathname === location.pathname && target.hash) revealSection(target.hash);
+  });
   const escape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   function highlight(code) {
     if (code.dataset.highlighted) return;

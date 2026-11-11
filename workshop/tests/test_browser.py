@@ -173,3 +173,34 @@ def test_shared_header_tooltips_theme_and_installer_downloads(browser, website):
     expect(setup.locator('code[data-language="powershell"]')).to_be_visible()
     assert not errors
     context.close()
+
+
+def test_background_panels_and_repeated_toc_links_keep_actions_visible(browser, website):
+    context = browser.new_context(locale='en-GB', viewport={'width':1440,'height':1000})
+    page = context.new_page()
+    errors = []
+    page.on('pageerror', lambda error: errors.append(str(error)))
+    page.goto(website + 'data.html')
+    panel = page.locator('details#identity')
+    expect(panel).not_to_have_attribute('open', '')
+    expect(panel.locator('figure')).not_to_be_visible()
+    expect(page.locator('.article .code-block:visible').first).to_contain_text('03-ready.sh')
+    expect(page.locator('.verification')).to_be_visible()
+    topic = page.locator('.toc').get_by_role('link', name='How identity, settings and secrets connect')
+    topic.click()
+    expect(panel).to_have_attribute('open', '')
+    expect(panel.locator('figure')).to_be_visible()
+    panel.locator('summary').focus()
+    page.keyboard.press('Enter')
+    expect(panel).not_to_have_attribute('open', '')
+    # Clicking the same fragment must reopen it even without a hashchange.
+    topic.click()
+    expect(panel).to_have_attribute('open', '')
+    page.goto(website + 'reference.html')
+    expect(page.locator('.article details[open]')).to_have_count(0)
+    page.goto(website + 'reference.html#costs')
+    expect(page.locator('details#costs')).to_have_attribute('open', '')
+    expect(page.locator('details#costs')).to_contain_text('US$5')
+    expect(page.locator('details#decisions')).not_to_have_attribute('open', '')
+    assert not errors
+    context.close()

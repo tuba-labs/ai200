@@ -1,6 +1,7 @@
 <div class="start-card"><p><strong>Requires:</strong> Products ready, Flyway applied and model probe passed.</p></div>
-<h2 id="trigger">Read the trigger</h2>
+<details class="optional" id="trigger"><summary>How the Event Grid Blob trigger works</summary>
 <p>{{file:apps/products-embedder/function_app.py}} declares a Blob trigger with <code>source='EventGrid'</code>. A BlobCreated notification reaches the Blob-extension webhook; the extension reads the private blob and passes an InputStream to Python. The path carries product/manual IDs.</p>
+</details>
 <h2 id="publish">Publish</h2>
 {{snippet:commands.sh:embedder}}
 <p>The stage builds the Python package remotely on Linux, publishes it, then registers the filtered Event Grid subscription. Flex Consumption supplies server-managed execution; the template supplies VNet access, identity-based host/deployment storage and telemetry.</p>

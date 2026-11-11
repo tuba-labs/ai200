@@ -80,7 +80,8 @@ def navigation(current):
 
 
 def page(identifier, title, summary, content, number=None, minutes=None):
-    headings = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', content)
+    sections = re.finditer(r'<h2 id="([^"]+)">(.*?)</h2>|<details\b[^>]*\bid="([^"]+)"[^>]*>\s*<summary>(.*?)</summary>', content, re.S)
+    headings = [(section[1] or section[3], section[2] or section[4]) for section in sections]
     toc = '<aside class="toc" aria-label="On this page"><strong>On this page</strong>' + ''.join(f'<a href="#{anchor}">{label}</a>' for anchor, label in headings) + '</aside>'
     meta = (f'<span>~{minutes} min</span><span>Bash · repository root</span>' if minutes else '<span>Reference · use as needed</span>')
     continuation = ''

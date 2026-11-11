@@ -1,6 +1,7 @@
 <div class="start-card"><p><strong>Requires:</strong> stages 03–05 pass; images are in ACR.</p></div>
-<h2 id="manifests">Read the manifests</h2>
+<details class="optional" id="manifests"><summary>Deployment, Service and probe basics</summary>
 <ul><li>{{file:k8s/products.yaml}}: Deployment keeps one Java Pod running; service account + Pod labels enable identity. Startup permits initialization; readiness checks the database; liveness checks the process.</li><li>{{file:k8s/service.yaml}}: LoadBalancer Service selects ready Products Pods and forwards 443 → 8443. Access is restricted to your public IPv4 /32.</li></ul>
+</details>
 <h2 id="apply">Deploy and sign in</h2>
 {{snippet:commands.sh:products}}
 <p>The stage creates the Service, waits for an IP, installs a TLS Secret and deploys Products. Open the printed URL; username <code>participant</code>, password from <code>bash workshop/scripts/credentials.sh</code> in your terminal.</p>

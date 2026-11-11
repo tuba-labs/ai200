@@ -1,7 +1,7 @@
 <div class="start-card"><p><strong>Requires:</strong> chat works, demo tools are installed and all manuals are ready.</p></div>
 <h2 id="configure">Enable queue-driven scaling</h2>
 {{snippet:commands.sh:keda}}
-<p>{{file:k8s/keda.yaml}} scales only ProductsChat: <strong>0–3 replicas</strong>, two active messages per worker, 10-second polling, 60-second cooldown. KEDA reads metrics; workers process messages. Its scaler uses a separate identity.</p>
+<p>KEDA scales ProductsChat from zero to three workers. Products stays at one.</p>
 <p>The demo temporarily adds a <strong>20-second delay per request</strong> to make backlog visible. Normal operation has no delay.</p>
 <h2 id="observe">Terminal A: observe</h2>
 {{snippet:commands.sh:observe}}
@@ -15,5 +15,5 @@
 {{snippet:commands.sh:threshold}}
 <p>Targeting four messages per worker should scale less aggressively under similar backlog. The final command restores normal settings and disables the delay.</p>
 <div class="verification"><strong>Verification:</strong> both cycles complete, the first exceeds one worker, no new dead letters, and chat returns to zero. Products stays at one; demo delay is off.</div>
-<details class="optional" id="capacity"><summary>What affects scaling?</summary><p>Queue depth drives desired replicas; worker concurrency is one and prefetch zero. Model quota can throttle extra workers. Polling, cold starts, cooldown and HPA stabilization affect timing.</p><p>The single D4ds_v5 node has four vCPUs/16 GiB before reservations. Products requests 500m/768 MiB; each worker 250m/384 MiB. Maximum three workers fits without node autoscaling.</p></details>
+<details class="optional" id="capacity"><summary>What affects scaling?</summary><p>{{file:k8s/keda.yaml}} scales only ProductsChat: <strong>0–3 replicas</strong>, two active messages per worker, 10-second polling, 60-second cooldown. KEDA reads metrics; workers process messages. Its scaler uses a separate identity.</p><p>Queue depth drives desired replicas; worker concurrency is one and prefetch zero. Model quota can throttle extra workers. Polling, cold starts, cooldown and HPA stabilization affect timing.</p><p>The single D4ds_v5 node has four vCPUs/16 GiB before reservations. Products requests 500m/768 MiB; each worker 250m/384 MiB. Maximum three workers fits without node autoscaling.</p></details>
 <details class="optional"><summary>Troubleshooting</summary><ul><li><strong>ScaledObject not Ready / 403:</strong> inspect its conditions and <code>kube-system/keda-operator</code> logs; check the scaler's federation/Receiver role, not only the worker's.</li><li><strong>Only one worker:</strong> confirm delay=20, threshold=2 and prefetch=0; inspect HPA metrics. Repeat bounded load only after diagnosis.</li><li><strong>Never zero:</strong> check backlog, cooldown/stabilization and competing manual scaling.</li><li><strong>Pending / model 429:</strong> inspect Pod capacity or reduce max replicas/load; more replicas cannot overcome model quota.</li></ul></details>

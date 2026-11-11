@@ -12,7 +12,7 @@
 <h2 id="cleanup">Clean up</h2>
 {{snippet:commands.sh:cleanup}}
 <p>The tool verifies the tagged workshop group, lists resources and requires <code>DELETE</code> plus its full name. After submission, run the printed <code>az group exists</code> check until false; confirm AKS's managed node group is also gone. Deletion may be blocked by locks/policy.</p>
-<p>Key Vault has seven-day soft-delete retention; App Configuration one day. No purge is performed, so names may remain reserved. Provider registrations remain. Remove local <code>workshop/.state</code> only after Azure cleanup is confirmed.</p>
+<details class="optional" id="retention"><summary>Soft delete and local cleanup</summary><p>Key Vault has seven-day soft-delete retention; App Configuration one day. No purge is performed, so names may remain reserved. Provider registrations remain. Remove local <code>workshop/.state</code> only after Azure cleanup is confirmed.</p></details>
 <h2 id="recap">You have exercised</h2>
 <p>Docker/ACR, AKS manifests/probes/rollouts, Flyway + pgvector, Blob/Event Grid/Functions, Service Bus request/reply, identity/configuration/secrets, grounded RAG and KEDA scaling.</p>
 <p>For your first run: <a href="./maintainer.html">walkthrough checklist</a>. For production changes, indexing or additional exam coverage: <a href="./reference.html">reference notes</a>.</p>

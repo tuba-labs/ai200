@@ -18,7 +18,8 @@
 <h2 id="bootstrap">Sign in and check Azure</h2>
 <p>Run <code>az login</code>, deliberately select your development subscription with <code>az account set --subscription SUBSCRIPTION_ID</code>, then confirm <code>az account show</code>.</p>
 {{snippet:commands.sh:bootstrap}}
-<p>Bootstrap saves non-secret config in <code>workshop/.state/config.json</code>: Sweden Central, prefix <code>raglab</code>, selected subscription and your public IPv4 /32. Review it. Shared subscription? Give each participant a different <code>--prefix</code>. Other overrides: {{file:tools/bootstrap.py}}.</p>
+<p>Review <code>workshop/.state/config.json</code>. Use a distinct <code>--prefix</code> per participant in a shared subscription, before provisioning.</p>
+<details class="optional" id="bootstrap-settings"><summary>Bootstrap defaults and overrides</summary><p>Bootstrap saves non-secret config in <code>workshop/.state/config.json</code>: Sweden Central, prefix <code>raglab</code>, selected subscription and your public IPv4 /32. Review it. Shared subscription? Give each participant a different <code>--prefix</code>. Other overrides: {{file:tools/bootstrap.py}}.</p></details>
 <details class="optional" id="permissions"><summary>Checker failures and provider registration</summary>
 <p>If providers are unregistered, register them and rerun the checks:</p>
 {{snippet:commands.sh:providers}}
