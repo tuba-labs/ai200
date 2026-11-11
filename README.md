@@ -4,6 +4,8 @@
 
 Den komplette [Azure RAG-workshopen](workshop/index.html) har ti kapitler, tre referanseapplikasjoner, trinnvise infrastrukturskript, eksempelmanualer og verifikasjonsverktøy. Se [workshop/README.md](workshop/README.md), [versjoner](workshop/VERSIONS.md) og [valideringsrapporten](workshop/VALIDATION.md). Kjernen er estimert til omtrent fire timer etter at verktøy og Azure-tilgang er klare; tidsbruken er ikke bekreftet av en deltaker.
 
+Applikasjonskoden ligger i egne repoer: [Products](https://github.com/tuba-labs/ai200-workshop1-products), [ProductsEmbedder](https://github.com/tuba-labs/ai200-workshop1-products-embedder) og [ProductsChat](https://github.com/tuba-labs/ai-200-products-chat). Nettstedet lenker til dem og bygger uten lokale appkopier eller submoduler.
+
 Start hele dokumentasjonsnettstedet fra prosjektroten, uten Azure-pålogging:
 
 ```bash

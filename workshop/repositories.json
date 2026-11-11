@@ -1,0 +1,20 @@
+{
+  "products": {
+    "name": "Products",
+    "directory": "ai200-workshop1-products",
+    "url": "https://github.com/tuba-labs/ai200-workshop1-products.git",
+    "ref": "096fab1aae7a5597b0c3a8f6a90391b349f6c821"
+  },
+  "embedder": {
+    "name": "ProductsEmbedder",
+    "directory": "ai200-workshop1-products-embedder",
+    "url": "https://github.com/tuba-labs/ai200-workshop1-products-embedder.git",
+    "ref": "a8153895a013b741cb56e3447d3d1313b7374f77"
+  },
+  "chat": {
+    "name": "ProductsChat",
+    "directory": "ai-200-products-chat",
+    "url": "https://github.com/tuba-labs/ai-200-products-chat.git",
+    "ref": "e5c8f684977190ef2062c250adec8563e6be2e58"
+  }
+}

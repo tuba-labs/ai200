@@ -38,6 +38,7 @@ def test_generated_docs_and_source_index_match_canonical_files():
     assert len(sources) > 50
     for item in sources:
         assert not {'.state', '.tools', 'target'}.intersection(Path(item['path']).parts)
+        assert not item['path'].startswith('apps/')
         assert (WORKSHOP / item['path']).read_text(encoding='utf-8') == item['text']
 
 

@@ -4,6 +4,7 @@ set -Eeuo pipefail
 WORKSHOP_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 REPO_DIR=$(cd -- "$WORKSHOP_DIR/.." && pwd)
 cd -- "$REPO_DIR"
+products_dir=$(python3 "$WORKSHOP_DIR/tools/repositories.py" path products)
 container="products-rag-test-$$"
 created=false
 cleanup() {
@@ -24,7 +25,7 @@ done
 port=$(docker port "$container" 5432/tcp | head -1 | awk -F: '{print $NF}')
 export TEST_DATABASE_URL="jdbc:postgresql://127.0.0.1:$port/products?sslmode=disable"
 export TEST_DATABASE_DSN="host=127.0.0.1 port=$port dbname=products user=workshopadmin password=local-test-only sslmode=disable"
-(cd workshop/apps/products && bash mvnw -B test)
+(cd "$products_dir" && bash mvnw -B test)
 [[ -d workshop/.tools/venv ]] || python3 -m venv workshop/.tools/venv
 # The virtualenv is generated locally and not repository source.
 # shellcheck source=/dev/null

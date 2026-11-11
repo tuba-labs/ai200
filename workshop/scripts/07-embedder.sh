@@ -2,7 +2,8 @@
 set -Eeuo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/common.sh"
 assert_group
-python3 "$WORKSHOP_DIR/tools/package_function.py"
+embedder_dir=$(python3 "$WORKSHOP_DIR/tools/repositories.py" path embedder)
+python3 "$embedder_dir/package.py" --output "$STATE/embedder.zip"
 azx functionapp deployment source config-zip -g "$GROUP" -n "$STEM-embedder" \
   --src "$STATE/embedder.zip" --build-remote true -o none
 storage_id="/subscriptions/$SUBSCRIPTION/resourceGroups/$GROUP/providers/Microsoft.Storage/storageAccounts/${STEM}st"

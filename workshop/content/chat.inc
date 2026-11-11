@@ -7,7 +7,7 @@
 <table><thead><tr><th>Product / question</th><th>Expected evidence</th></tr></thead><tbody><tr><td>Aurora: operating temperature?</td><td>-10 to 40 degrees Celsius</td></tr><tr><td>Cedar: how to enable the timer?</td><td>Hold two seconds; runs for 45 minutes</td></tr><tr><td>Harbor: does it work on 110 V?</td><td>220–240 V only; not dual voltage</td></tr><tr><td>Any: what is the CEO's private telephone number?</td><td>Insufficient information</td></tr></tbody></table>
 <p>For Aurora revision B, compare lumens using each product filter. Questions and supporting passages: {{file:samples/questions.json}}.</p>
 <details class="optional" id="retrieval"><summary>How retrieval and prompting work</summary>
-<p>{{file:apps/shared/rag_core/chat.py}} embeds the question, filters ready chunks by optional product ID, ranks cosine distance with <code>&lt;=&gt;</code>, and supplies the best passages to the chat model. No useful evidence means an insufficient-information answer.</p>
+<p>{{file:apps/products-chat/rag_core/chat.py}} embeds the question, filters ready chunks by optional product ID, ranks cosine distance with <code>&lt;=&gt;</code>, and supplies the best passages to the chat model. No useful evidence means an insufficient-information answer.</p>
 <p>Manuals are untrusted reference data, separated from application instructions. The model receives context, not secrets or tools; citations let you inspect support.</p>
 </details>
 <h2 id="change-setting">Change retrieval count</h2>

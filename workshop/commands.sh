@@ -4,6 +4,11 @@
 set -Eeuo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
 case "${1:-help}" in
+  get-apps)
+# region get-apps
+bash workshop/scripts/get-apps.sh
+# endregion
+    ;;
   setup-ubuntu)
 # region setup-ubuntu
 bash workshop/scripts/setup-ubuntu.sh
@@ -143,5 +148,5 @@ bash workshop/scripts/diagnostics.sh
 bash workshop/scripts/cleanup.sh
 # endregion
     ;;
-  *) echo 'Sections: setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, inspect-check, inspect-rollout, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
+  *) echo 'Sections: get-apps, setup-ubuntu, local-check, bootstrap, providers, provision, build, inspect-container, inspect-check, inspect-rollout, configure, products, embedder, inspect-data, chat, retrieval, keda, observe, tools, load, threshold, smoke, diagnose, cleanup' ;;
 esac

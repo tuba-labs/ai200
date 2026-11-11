@@ -57,6 +57,9 @@
 <div class="code-block"><div class="code-toolbar"><span>Bash · repository root</span><button class="copy-button" type="button" data-copy aria-label="Copy code">Copy</button></div><pre><code data-language="bash">python3 workshop/tools/preflight.py --local-only
 </code></pre></div><p class="source-caption">Canonical commands: <a href="./source.html#commands.sh" title="commands.sh"><code>commands.sh</code></a></p>
 <h2 id="bootstrap">Sign in and check Azure</h2>
+<p>Clone the three application repos into sibling folders (or set <code>AI200_APPS_DIR</code> to their parent). Existing checkouts are preserved:</p>
+<div class="code-block"><div class="code-toolbar"><span>Bash · repository root</span><button class="copy-button" type="button" data-copy aria-label="Copy code">Copy</button></div><pre><code data-language="bash">bash workshop/scripts/get-apps.sh
+</code></pre></div><p class="source-caption">Canonical commands: <a href="./source.html#commands.sh" title="commands.sh"><code>commands.sh</code></a></p>
 <p>Run <code>az login</code>, deliberately select your development subscription with <code>az account set --subscription SUBSCRIPTION_ID</code>, then confirm <code>az account show</code>.</p>
 <div class="code-block"><div class="code-toolbar"><span>Bash · repository root</span><button class="copy-button" type="button" data-copy aria-label="Copy code">Copy</button></div><pre><code data-language="bash">python3 workshop/tools/bootstrap.py
 bash workshop/scripts/00-check.sh

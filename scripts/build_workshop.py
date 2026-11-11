@@ -4,11 +4,14 @@ from html import escape, unescape
 import json
 from pathlib import Path
 import re
+from urllib.parse import quote
 
 from build_jargon import attach_assets
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSHOP = ROOT / 'workshop'
+REPOSITORIES = json.loads((WORKSHOP / 'repositories.json').read_text(encoding='utf-8'))
+APP_PREFIXES = {'apps/products/':'products', 'apps/products-embedder/':'embedder', 'apps/products-chat/':'chat'}
 CHAPTERS = json.loads((WORKSHOP / 'content/chapters.json').read_text(encoding='utf-8'))
 EXTRAS = [
     ('reference', 'Versions, decisions and sources', 'Architecture decisions, selected exam objectives, costs and official documentation.'),
@@ -33,6 +36,14 @@ def source_path(name):
 
 
 def source_link(name):
+    for prefix, key in APP_PREFIXES.items():
+        if name.startswith(prefix):
+            relative = name[len(prefix):]
+            if '..' in Path(relative).parts or not relative:
+                raise ValueError('Unsafe application source reference: ' + name)
+            repo = REPOSITORIES[key]
+            url = repo['url'].removesuffix('.git') + '/blob/' + repo['ref'] + '/' + quote(relative, safe='/')
+            return f'<a href="{escape(url, quote=True)}" title="{escape(name, quote=True)}"><code>{escape(Path(relative).name)}</code></a>'
     path = source_path(name)
     return f'<a href="./source.html#{escape(name, quote=True)}" title="{escape(name, quote=True)}"><code>{escape(path.name)}</code></a>'
 
@@ -60,6 +71,7 @@ def expand(content):
         return code_block(path.read_text(encoding='utf-8'), language(path), name) + '<p class="source-caption">Source: ' + source_link(name) + '</p>'
     content = re.sub(r'\{\{code:([^}]+)\}\}', code, content)
     content = re.sub(r'\{\{file:([^}]+)\}\}', lambda match: source_link(match[1]), content)
+    content = re.sub(r'\{\{repo:([^}]+)\}\}', lambda match: '<a href="' + REPOSITORIES[match[1]]['url'].removesuffix('.git') + '">' + REPOSITORIES[match[1]]['name'] + '</a>', content)
     if '{{' in content:
         raise ValueError('Unexpanded workshop directive')
     return content
@@ -107,12 +119,12 @@ def page(identifier, title, summary, content, number=None, minutes=None):
 
 
 def source_files():
-    roots = ['apps', 'contracts', 'infra', 'k8s', 'samples', 'scripts', 'tools', 'tests']
+    roots = ['contracts', 'infra', 'k8s', 'samples', 'scripts', 'tools', 'tests']
     suffixes = {'.java', '.py', '.xml', '.properties', '.html', '.css', '.js', '.json', '.yaml', '.yml', '.sql', '.bicep', '.txt', '.sh', '.ps1', '.kql', '.toml', '.md'}
     paths = [path for folder in roots for path in (WORKSHOP / folder).rglob('*')
              if path.is_file() and not {'target', '__pycache__', '.pytest_cache'}.intersection(path.parts)
              and (path.suffix in suffixes or path.name in {'Dockerfile', 'mvnw', 'mvnw.cmd', '.dockerignore', '.funcignore'})]
-    paths.extend(WORKSHOP / name for name in ['commands.sh', 'config.example.json', 'requirements.txt', 'requirements-test.txt', 'constraints.txt', 'README.md', 'VERSIONS.md', 'VALIDATION.md'])
+    paths.extend(WORKSHOP / name for name in ['commands.sh', 'repositories.json', 'config.example.json', 'requirements.txt', 'requirements-test.txt', 'constraints.txt', 'README.md', 'VERSIONS.md', 'VALIDATION.md'])
     return sorted(set(paths))
 
 

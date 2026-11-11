@@ -14,6 +14,7 @@ from rag_core.chunks import chunk_text
 from rag_core.embedding import index_manual
 from rag_core.models import DIMENSIONS, INSUFFICIENT, vector_literal
 from rag_core.chat import validate_request, process_question, reply, apply_reply, retrieve, InvalidRequest
+from repositories import application_dir
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -157,7 +158,7 @@ def test_message_contract_headers_uuid_deadline_and_schema():
 
 
 def test_real_functions_decorator_discovers_event_grid_blob_trigger():
-    path = ROOT / 'apps/products-embedder/function_app.py'
+    path = application_dir('embedder') / 'function_app.py'
     spec = importlib.util.spec_from_file_location('test_embedder_function', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

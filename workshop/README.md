@@ -1,6 +1,6 @@
 # Products: a self-paced Azure RAG workshop
 
-This directory contains the documentation, complete reference applications, staged infrastructure and verification tools for an estimated four-hour core path **after tools/access are ready**. The estimate has not been confirmed by a timed participant walkthrough.
+This directory contains documentation, staged infrastructure and verification tools for an estimated four-hour core path **after tools/access are ready**. Application source is maintained in the three separate repositories below. The estimate has not been confirmed by a timed participant walkthrough.
 
 From the repository root, with Python 3.12+:
 
@@ -23,10 +23,9 @@ Workshop pages reuse the default site header, language/theme controls and shared
 
 | Path | Purpose |
 | --- | --- |
-| `apps/products/` | Java 21, Spring Boot, Maven Wrapper, JDBC/SQL, Thymeleaf, Flyway, Dockerfile |
-| `apps/products-embedder/` | Python Blob-triggered Azure Function and Functions host config |
-| `apps/products-chat/` | Python Service Bus worker, RAG calls and Dockerfile |
-| `apps/shared/rag_core/` | Small canonical Python configuration, chunking, model and SQL helpers |
+| [Products](https://github.com/tuba-labs/ai200-workshop1-products) | Separate Java / Flyway application repository |
+| [ProductsEmbedder](https://github.com/tuba-labs/ai200-workshop1-products-embedder) | Separate Python Function repository |
+| [ProductsChat](https://github.com/tuba-labs/ai-200-products-chat) | Separate Python worker repository |
 | `infra/` | Model gate, shared network/data foundation, private PostgreSQL, AKS/Functions templates |
 | `k8s/` | Products, worker, Service, inspection Job and KEDA resources |
 | `scripts/` | Ordered Bash setup, readiness, deployment, observation and confirmed cleanup stages |
@@ -62,8 +61,12 @@ Install the local test browser with `python -m playwright install chromium`, or 
 
 See [VALIDATION.md](VALIDATION.md) for observed checks versus remaining Azure validation, and [VERSIONS.md](VERSIONS.md) for versions. Never treat a static chapter's expected output as an observed Azure success.
 
-## Maintaining or splitting the applications
+## Application repositories
 
-Edit the executable files and `content/*.inc`, then run `python3 scripts/build.py`. `commands.sh` contains the canonical copyable command regions. The documentation generator validates includes and builds a source explorer from the actual files; `--check` detects drift. Do not edit the generated chapter HTML/index JSON directly.
+Application code is maintained only in the three GitHub repositories above. This website links to their files; it does not contain submodules or app-source copies. The documentation builds without app checkouts or Azure credentials.
 
-`apps/products` can become an independent Maven repository. For each Python repository, include a released `products-rag-core` wheel (from `apps/shared`) or vendor that same reviewed package, flatten its pinned requirements/constraints, and retain its tests. The supplied packaging tool does this assembly for the Function today; the worker Dockerfile copies the same canonical package. No fictional URLs for future repositories are used.
+Before deployment or cross-application tests, run `bash workshop/scripts/get-apps.sh`. It clones the pinned revisions from `repositories.json` into sibling folders. Set `AI200_APPS_DIR` to a different parent directory when needed. Existing checkouts are never reset or overwritten. To advance the workshop baseline, update the manifest after validating the three apps together.
+
+Both Python repos vendor `rag_core/` and include flattened requirements/constraints. Integration checks verify their shared runtime code agrees. The chat image includes its own database inspection tool; Function packaging lives in its own repository.
+
+Edit `content/*.inc` and the local executable files, then run `python3 scripts/build.py`. `commands.sh` provides the canonical command snippets. Do not edit generated HTML or JSON indexes directly.

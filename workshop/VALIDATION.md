@@ -24,6 +24,12 @@ Java tests were executed with `TEST_DATABASE_URL` set; Python database tests use
 
 Documentation updates condensed the core text by about 65% and moved background/reference material into closed details panels. All original command regions retain their visibility and source references. Fourteen documentation/browser cases, 58 existing Python tests, 91 JavaScript tests, the production build and JavaScript syntax pass. Application/infrastructure code is unchanged; cloud verification remains as below.
 
+## Separate application repositories
+
+Application code was moved to three standalone repositories and pushed to the GitHub URLs in `repositories.json`; remote main SHAs were verified. The website contains links only, and its build passes with no app checkouts. Deployment tools use sibling checkouts at the pinned revisions; no Git submodules are used.
+
+Post-split checks: both linux/amd64 container builds pass; four Java/HTTP/pgvector tests pass; the Function has five standalone tests including ZIP completeness/binding metadata, and the worker has three standalone model-contract tests. All 37 workshop tests pass against the real PostgreSQL fixture, including cross-repo code consistency and website independence. Existing site checks (58 Python, 91 JavaScript), Bash syntax and ShellCheck pass. No live Azure deployment was performed.
+
 ## Cloud boundary
 
 The user explicitly chose **“Leave Azure testing for my walkthrough.”** No Azure providers were registered and no paid cloud resources were created. Read-only checks found Azure sign-in available, but Microsoft.Compute, Microsoft.ContainerService and Microsoft.CognitiveServices are NotRegistered. VM/model usage queries for Sweden Central returned empty arrays; that is not proof of insufficient quota. Register providers and rerun the supplied checks in the intended subscription before drawing a quota conclusion.

@@ -16,6 +16,8 @@
 <p>Already set up? Check local tools without Azure sign-in:</p>
 {{snippet:commands.sh:local-check}}
 <h2 id="bootstrap">Sign in and check Azure</h2>
+<p>Clone the three application repos into sibling folders (or set <code>AI200_APPS_DIR</code> to their parent). Existing checkouts are preserved:</p>
+{{snippet:commands.sh:get-apps}}
 <p>Run <code>az login</code>, deliberately select your development subscription with <code>az account set --subscription SUBSCRIPTION_ID</code>, then confirm <code>az account show</code>.</p>
 {{snippet:commands.sh:bootstrap}}
 <p>Review <code>workshop/.state/config.json</code>. Use a distinct <code>--prefix</code> per participant in a shared subscription, before provisioning.</p>

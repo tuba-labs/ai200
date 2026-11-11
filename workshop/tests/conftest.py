@@ -6,8 +6,9 @@ import pytest
 import psycopg
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / 'apps/shared'))
 sys.path.insert(0, str(ROOT / 'tools'))
+from repositories import application_dir
+sys.path.insert(0, str(application_dir('chat')))
 
 
 @pytest.fixture

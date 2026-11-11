@@ -1,17 +1,20 @@
-"""A version tag from build inputs, independent of uncommitted Git changes."""
+"""Version both images from the actual separate application build inputs."""
 import hashlib
 import json
 from pathlib import Path
+from repositories import application_dir
 
 ROOT = Path(__file__).resolve().parents[1]
-paths = [ROOT / 'requirements.txt', ROOT / 'constraints.txt', ROOT / 'tools/inspect_db.py']
-for directory in ['apps/products', 'apps/products-chat', 'apps/shared/rag_core']:
-    paths.extend(path for path in (ROOT / directory).rglob('*') if path.is_file()
-                 and not {'target', '__pycache__', '.pytest_cache'}.intersection(path.parts)
-                 and path.suffix not in {'.log', '.pyc'})
 digest = hashlib.sha256()
-for path in sorted(paths):
-    digest.update(path.relative_to(ROOT).as_posix().encode() + b'\0' + path.read_bytes())
+for name in ['products', 'chat']:
+    app = application_dir(name)
+    for path in sorted(app.rglob('*')):
+        if not path.is_file() or {'.git','target','__pycache__','.pytest_cache','.venv','dist'}.intersection(path.relative_to(app).parts):
+            continue
+        if path.name.startswith('.env') or path.name == 'local.settings.json' or path.suffix in {'.log','.pyc','.pem','.key'}:
+            continue
+        digest.update((name + '/' + path.relative_to(app).as_posix()).encode() + b'\0' + path.read_bytes())
 tag = 'w1-' + digest.hexdigest()[:12]
+(ROOT / '.state').mkdir(exist_ok=True)
 (ROOT / '.state/images.json').write_text(json.dumps({'tag': tag}) + '\n')
 print(tag)

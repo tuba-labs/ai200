@@ -23,6 +23,7 @@ jobs:
           --health-cmd "pg_isready -U workshopadmin -d products"
           --health-interval 5s --health-timeout 3s --health-retries 20
     env:
+      AI200_APPS_DIR: ${{ runner.temp }}/ai200-apps
       TEST_DATABASE_URL: jdbc:postgresql://127.0.0.1:5432/products?sslmode=disable
       TEST_DATABASE_DSN: host=127.0.0.1 port=5432 dbname=products user=workshopadmin password=local-test-only sslmode=disable
     steps:
@@ -34,9 +35,13 @@ jobs:
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v6
         with: {node-version: '22'}
+      - name: Clone pinned application repositories
+        run: python workshop/tools/repositories.py clone
       - name: Java and real Flyway/pgvector integration
-        working-directory: workshop/apps/products
-        run: bash mvnw -B test
+        run: |
+          products_dir=$(python workshop/tools/repositories.py path products)
+          cd "$products_dir"
+          bash mvnw -B test
       - name: Python and browser tooling
         run: |
           python -m pip install -r workshop/requirements-test.txt
@@ -60,5 +65,5 @@ jobs:
           docker run --rm -v "$PWD:/src:ro" -w /src ghcr.io/yannh/kubeconform:v0.7.0 -strict -summary -kubernetes-version 1.34.0 -skip ScaledObject,TriggerAuthentication workshop/.tools/rendered.yaml
       - name: Build both reference containers
         run: |
-          docker build --platform linux/amd64 -t products:ci workshop/apps/products
-          docker build --platform linux/amd64 -f workshop/apps/products-chat/Dockerfile -t products-chat:ci .
+          docker build --platform linux/amd64 -t products:ci "$(python workshop/tools/repositories.py path products)"
+          docker build --platform linux/amd64 -t products-chat:ci "$(python workshop/tools/repositories.py path chat)"

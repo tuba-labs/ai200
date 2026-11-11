@@ -84,10 +84,10 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
 def test_source_explorer_and_mobile_navigation_have_no_overflow(browser, website):
     context = browser.new_context(viewport={'width':390,'height':844}, is_mobile=True)
     page = context.new_page()
-    page.goto(website + 'source.html#apps/products/pom.xml')
-    expect(page.locator('#source-heading')).to_have_text('apps/products/pom.xml')
-    expect(page.locator('#source-code')).to_contain_text('<artifactId>products</artifactId>')
-    assert page.locator('#source-download').get_attribute('href') == './apps/products/pom.xml'
+    page.goto(website + 'source.html#commands.sh')
+    expect(page.locator('#source-heading')).to_have_text('commands.sh')
+    expect(page.locator('#source-code')).to_contain_text('bash workshop/scripts/01-models.sh')
+    assert page.locator('#source-download').get_attribute('href') == './commands.sh'
     page.locator('#chapter-menu').click()
     expect(page.locator('.sidebar')).to_be_visible()
     assert page.locator('.sidebar').bounding_box()['y'] >= page.locator('.workshop-toolbar').bounding_box()['y'] + page.locator('.workshop-toolbar').bounding_box()['height'] - 1
