@@ -71,7 +71,7 @@ def navigation(current):
         active = ' aria-current="page"' if chapter['id'] == current else ''
         links.append(f'<li><a href="./{chapter["file"]}" data-chapter-link="{chapter["id"]}" data-number="{number:02}"{active}>'
                      f'<span class="chapter-number">{number:02}</span><span>{chapter["title"]}<small class="chapter-time">~{chapter["minutes"]} min</small></span></a></li>')
-    extras = '<a href="../jargon.html">Shared jargon and definitions</a>' + ''.join(f'<a href="./{identifier}.html">{escape(title)}</a>' for identifier, title, _ in EXTRAS)
+    extras = ''.join(f'<a href="./{identifier}.html">{escape(title)}</a>' for identifier, title, _ in EXTRAS)
     return ('<aside class="sidebar" id="chapter-navigation"><p class="sidebar-label">The core path · ~4 hours</p>'
             '<nav aria-label="Workshop chapters"><ol class="chapter-list">' + ''.join(links) + '</ol></nav>'
             '<div class="progress-panel"><span id="progress-count">0 of 10 chapters completed</span><progress id="docs-progress" max="10" value="0" aria-label="Completed chapters"></progress>'
@@ -103,7 +103,7 @@ def page(identifier, title, summary, content, number=None, minutes=None):
 <div class="docs-layout" data-keep-english lang="en">{navigation(identifier)}<div class="reading-grid"><main class="article" id="content"><p class="breadcrumb">{crumb}</p><h1>{escape(title)}</h1><p class="chapter-summary">{escape(summary)}</p><div class="chapter-meta">{meta}</div>{content}{continuation}<footer class="site-footnote"><a href="./reference.html#exam">AI-200 objectives</a> · <a href="./validation.html">Validation</a></footer></main>{toc}</div></div>
 <dialog class="search-dialog" id="docs-search" aria-labelledby="search-heading" data-keep-english lang="en" data-no-jargon><div class="search-top"><strong id="search-heading">Search the workshop</strong><button type="button" id="close-search" class="plain-button">Close</button></div><label for="search-input">Find a chapter, concept or diagnostic</label><input id="search-input" type="search" autocomplete="off" placeholder="For example: KEDA identity or duplicate event"><p id="search-status" role="status"></p><ul class="search-results" id="search-results"></ul></dialog></body></html>
 '''
-    return attach_assets(html, '../', 'laerestoff.html')
+    return attach_assets(html, '../', 'workshop/index.html')
 
 
 def source_files():

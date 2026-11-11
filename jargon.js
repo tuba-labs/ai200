@@ -174,7 +174,7 @@
       const before = descriptions.get(previous);
       if (before) previous.setAttribute('aria-describedby', before);
       else previous.removeAttribute('aria-describedby');
-      if (previous.tagName === 'BUTTON') previous.setAttribute('aria-expanded', 'false');
+      if (previous.matches('button.jargon-term')) previous.setAttribute('aria-expanded', 'false');
     }
     active = null; pinned = false; overPopup = false; popup.hidden = true;
     if (restoreFocus && previous?.isConnected && previous.tagName === 'BUTTON') {
@@ -185,9 +185,11 @@
   }
   function show(trigger, pin = false) {
     clearTimeout(openTimer); clearTimeout(closeTimer);
-    if ((!enabled && !trigger?.hasAttribute('data-jargon-explicit')) || !trigger?.isConnected || dismissed === trigger) return;
+    const help = trigger?.classList.contains('jargon-toggle');
+    if ((!enabled && !help && !trigger?.hasAttribute('data-jargon-explicit')) || !trigger?.isConnected || dismissed === trigger) return;
     if (pinned && active !== trigger && !pin) return;
-    const term = terms.get(trigger.dataset.jargonId);
+    const term = help ? {primary: uiText('Term help', 'Begrepshjelp'), fullName: '', aliases: [],
+      definition: 'Hover or focus an underlined term for its definition. The switch turns term help on or off. Press Arrow Down to reach the terms link.'} : terms.get(trigger.dataset.jargonId);
     if (!term) return;
     const changed = active !== trigger;
     if (changed) hide();
@@ -202,14 +204,14 @@
     aliases.textContent = !flashcardToggle && otherNames.length ? 'Andre navn: ' + otherNames.slice(0, 5).join(', ') + (otherNames.length > 5 ? ' …' : '') : '';
     // Full multilingual aliases are available through the glossary link.
     aliases.hidden = !!flashcardToggle || !otherNames.length;
-    entryLink.href = glossaryURL + '#' + term.id;
-    entryLink.textContent = term.related?.length
+    entryLink.href = help ? glossaryURL : glossaryURL + '#' + term.id;
+    entryLink.textContent = help ? uiText('Browse all terms →', 'Se alle begreper →') : term.related?.length
       ? uiText('All comparisons, names and sources →', 'Alle sammenligninger, navn og kilder →')
       : uiText('All names and sources in the glossary →', 'Alle navn og kilder i begrepslisten →');
     if (!descriptions.has(trigger)) descriptions.set(trigger, trigger.getAttribute('aria-describedby') || '');
     const before = descriptions.get(trigger);
     trigger.setAttribute('aria-describedby', [before, term.fullName ? fullName.id : '', definition.id].filter(Boolean).join(' '));
-    if (trigger.tagName === 'BUTTON') trigger.setAttribute('aria-expanded', 'true');
+    if (trigger.matches('button.jargon-term')) trigger.setAttribute('aria-expanded', 'true');
     popup.hidden = false;
     if (changed) popup.scrollTop = 0;
     position();
@@ -221,7 +223,7 @@
     }, 220);
   }
   function triggerFrom(node) {
-    return node instanceof Element ? node.closest('.jargon-term') : null;
+    return node instanceof Element ? node.closest('.jargon-term,.jargon-toggle') : null;
   }
   function excluded(node) {
     return !node.parentElement || node.parentElement.closest(skip);
@@ -307,7 +309,7 @@
   window.addEventListener('blur', () => { pointerDown = false; });
   document.addEventListener('click', event => {
     const trigger = triggerFrom(event.target);
-    if (!trigger || trigger.tagName !== 'BUTTON' || window.getSelection()?.toString()) return;
+    if (!trigger || trigger.classList.contains('jargon-toggle') || trigger.tagName !== 'BUTTON' || window.getSelection()?.toString()) return;
     event.preventDefault(); event.stopPropagation();
     if (active === trigger && pinned) { dismissed = trigger; hide(); return; }
     dismissed = null;
@@ -339,6 +341,7 @@
   const toggle = make('button', 'jargon-toggle');
   toggle.type = 'button';
   toggle.setAttribute('role', 'switch');
+  toggle.setAttribute('aria-keyshortcuts', 'ArrowDown');
   const toggleName = make('span', 'jargon-toggle-label', 'Begrepshjelp');
   const toggleTrack = make('span', 'jargon-toggle-track');
   toggleTrack.setAttribute('aria-hidden', 'true');

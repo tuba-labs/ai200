@@ -52,7 +52,6 @@
     return link;
   }
   const isChoice = question => rules.questionType(question) === 'choice';
-  const referenceLabel = question => rules.questionSource(bank, question.id).kind === 'original' ? 'Reference documentation ↗' : 'Source question and explanation ↗';
   function setBank(value, restore = false) {
     if (value) rules.validateBank(value);
     bank = value;
@@ -178,7 +177,7 @@
     $('feedback-heading').textContent = '';
     $('feedback-summary').textContent = '';
     $('feedback-explanation').textContent = '';
-    $('feedback-source').removeAttribute('href');
+    $('feedback-source').replaceChildren();
     $('question-objectives').replaceChildren(); $('feedback-objectives').hidden = true;
     renderGlossary(q, checked);
     if (!checked) return;
@@ -193,8 +192,9 @@
     if (isChoice(q)) for (const option of q.options.filter(o => q.correctAnswers.includes(o.id))) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${option.id}. ${option.text}`));
     else for (const part of window.AI200ExamInteractions.describe(q)) $('feedback-correct-options').append(node('p', 'feedback-correct-option', `${part.label} → ${part.expected}`));
     $('feedback-explanation').textContent = q.explanation;
-    $('feedback-source').href = q.setUrl;
-    $('feedback-source').textContent = referenceLabel(q);
+    $('feedback-source').replaceChildren(rules.questionSource(bank, q.id).kind === 'original'
+      ? externalLink('Reference documentation ↗', q.setUrl)
+      : node('span', '', 'AI-200 Prep'));
   }
   function renderGlossary(question, checked = attempt?.checked.includes(question.id)) {
     const container = $('feedback-terms');

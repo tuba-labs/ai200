@@ -17,7 +17,7 @@ import build_navigation as navigation
 class Menu(HTMLParser):
     def __init__(self, html):
         super().__init__()
-        self.headers, self.links = 0, []
+        self.headers, self.links, self.brand = 0, [], None
         self.in_header = self.in_nav = False
         self.link = None
         self.feed(html)
@@ -32,6 +32,8 @@ class Menu(HTMLParser):
         if tag == "a" and self.in_nav:
             self.link = dict(attrs, text="")
             self.links.append(self.link)
+        elif tag == "a" and self.in_header and 'site-brand' in attrs.get('class', '').split():
+            self.brand = attrs
 
     def handle_data(self, text):
         if self.link is not None:
@@ -80,9 +82,9 @@ class InterfaceText(HTMLParser):
 
 class NavigationTests(unittest.TestCase):
     def test_every_current_page_has_the_same_complete_working_main_menu(self):
-        expected = [("Oversikt", "index.html"), ("Lærestoff", "laerestoff.html"),
-                    ("Flashcards", "flashcards.html"), ("Prøveeksamen", "practice-exam.html"),
-                    ("Begreper", "jargon.html"), ("Eksamen", "eksamen.html")]
+        expected = [("Flashcards", "flashcards.html"), ("Workshops", "workshop/index.html"),
+                    ("Prøveeksamen", "practice-exam.html"), ("Lærestoff", "laerestoff.html"),
+                    ("Eksamen", "eksamen.html")]
         for path in navigation.current_pages():
             with self.subTest(page=path.relative_to(ROOT)):
                 html = path.read_text(encoding="utf-8")
@@ -96,10 +98,13 @@ class NavigationTests(unittest.TestCase):
                     self.assertTrue(target.is_file(), link["href"])
                     actual.append((link["text"], target.relative_to(ROOT).as_posix()))
                 self.assertEqual(actual, expected)
+                self.assertEqual((path.parent / menu.brand['href']).resolve(), ROOT / 'index.html')
+                section = navigation.current_section(path.relative_to(ROOT))
+                self.assertEqual(menu.brand.get('aria-current') == 'page', section == 'index.html')
                 current = [link for link in menu.links if link.get("aria-current") == "page"]
-                self.assertEqual(len(current), 1)
-                self.assertEqual(Path(urlsplit(current[0]["href"]).path).name,
-                                 navigation.current_section(path.relative_to(ROOT)))
+                self.assertEqual(len(current), 0 if section in {'index.html', 'jargon.html'} else 1)
+                if current:
+                    self.assertEqual((path.parent / current[0]['href']).resolve().relative_to(ROOT).as_posix(), section)
                 self.assertEqual(html.count("data-site-navigation"), 1)
 
     def test_preferences_and_theme_assets_are_available_on_root_and_nested_pages(self):

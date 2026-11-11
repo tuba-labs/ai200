@@ -83,7 +83,7 @@ class JargonTests(unittest.TestCase):
                 for name in ['jargon.css', 'jargon-data.js', 'jargon.js']:
                     self.assertEqual(html.count(f'"{prefix}{name}"'), 1)
                     self.assertTrue((path.parent / (prefix + name)).resolve().is_file())
-                self.assertIn(f'class="jargon-nav-link" href="{prefix}jargon.html"', html)
+                self.assertNotIn('class="jargon-nav-link"', html)
                 self.assertEqual(jargon.attach_assets(html, prefix), html)
 
     def test_glossary_renders_every_primary_alias_and_stable_link(self):

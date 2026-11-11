@@ -14,6 +14,8 @@ def current_section(relative):
     name = Path(relative).as_posix()
     if name == 'practice-exam-results.html':
         return 'practice-exam.html'
+    if name.startswith('workshop/'):
+        return 'workshop/index.html'
     if name in {"index.html", "laerestoff.html", "flashcards.html", "practice-exam.html", "jargon.html", "eksamen.html"}:
         return name
     if name.startswith("jargon-examples/"):
@@ -24,11 +26,11 @@ def current_section(relative):
 def attach_navigation(html, prefix="./", current=None):
     # Preserve the active section when another generator refreshes shared assets.
     if current is None:
-        saved = re.search(r'data-site-current="([a-z.-]+)"', html)
+        saved = re.search(r'data-site-current="([a-z0-9/.-]+)"', html)
         current = saved[1] if saved else "laerestoff.html"
     header = FRAGMENT.read_text(encoding="utf-8").strip()
     header = header.replace("{{root}}", prefix).replace("{{current}}", current)
-    header = re.sub(r"\{\{active:([a-z.-]+)\}\}",
+    header = re.sub(r"\{\{active:([a-z0-9/.-]+)\}\}",
                     lambda match: ' aria-current="page"' if match[1] == current else "", header)
     if not HEADER.search(html):
         raise ValueError("Page has no site header or header placeholder")

@@ -92,11 +92,10 @@
   <div class="site-header-inner">
     <a class="site-brand" href="./index.html"><span class="site-brand-mark">200</span><span>AI-200 Studiegruppe</span></a>
     <nav class="site-nav" aria-label="Hovednavigasjon">
-      <a href="./index.html">Oversikt</a>
-      <a href="./laerestoff.html">Lærestoff</a>
       <a href="./flashcards.html" aria-current="page">Flashcards</a>
+      <a href="./workshop/index.html">Workshops</a>
       <a href="./practice-exam.html">Prøveeksamen</a>
-      <a class="jargon-nav-link" href="./jargon.html">Begreper</a>
+      <a href="./laerestoff.html">Lærestoff</a>
       <a href="./eksamen.html">Eksamen</a>
     </nav>
     <div class="site-preferences" aria-label="Visningsvalg">
@@ -116,7 +115,7 @@
       <span class="eyebrow">AI-200 · Interaktiv øving</span>
       <h1 id="page-title">560 flashcards. Ett spørsmål per kort.</h1>
       <p>Start med grunnlaget, og velg hvor dypt du vil gå. Kortene er prioritert etter læringsmålene i AI-200. Filtrer på viktighet, fagdomene eller kategori, vis svaret og marker det du kan.</p>
-      <div class="hero-actions"><a href="index.html">← Til studieguiden</a><a href="https://ai200prep.com/practice-sets/" target="_blank" rel="noopener noreferrer">Spørsmålsbank hos AI-200 Prep ↗</a></div>
+      <div class="hero-actions"><a href="index.html">← Til studieguiden</a></div>
     </div>
   </section>
   <main class="wrap" id="study">
@@ -466,7 +465,12 @@
       $('card-number').value=CARD_NUMBERS.get(c.id);
       $('category-tag').textContent=CARD_CATEGORY_NAMES[c.category]||CATEGORY_BY_ID.get(c.category).label;
       $('card-reference').replaceChildren();
-      for(const ref of new Map(c.references.map(ref=>[ref.url,ref])).values()){const link=document.createElement('a');link.href=ref.url;link.textContent=ref.label+' ↗';link.target='_blank';link.rel='noopener noreferrer';$('card-reference').append(link);}
+      for(const ref of new Map(c.references.map(ref=>[ref.url,ref])).values()){
+        const credit=new URL(ref.url).hostname==='ai200prep.com',link=document.createElement(credit?'span':'a');
+        link.textContent=ref.label+(credit?'':' ↗');
+        if(!credit){link.href=ref.url;link.target='_blank';link.rel='noopener noreferrer';}
+        $('card-reference').append(link);
+      }
 
       document.title=shareData(c).title;
       $('card-title').textContent=c.title;$('card-face-label').textContent=flipped?'Answer':'Question';

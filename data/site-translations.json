@@ -1,5 +1,7 @@
 {
   "messages": [
+    ["Workshops", "Workshops"],
+    ["Se alle begreper →", "Browse all terms →"],
     ["RAG-workshop på Azure →", "Azure RAG workshop →"],
     ["Kopier sammendrag og lenke", "Copy summary and link"],
     ["Sammendrag og lenke er kopiert.", "Summary and link copied."],
@@ -95,7 +97,7 @@
     ["Hovednavigasjon", "Main navigation"],
     ["Oversikt", "Overview"],
     ["Lærestoff", "Study resources"],
-    ["Prøveeksamen", "Practice exam"],
+    ["Prøveeksamen", "Practice Exam"],
     ["Begreper", "Terms"],
     ["Eksamen", "Exam"],
     ["Visningsvalg", "Display preferences"],

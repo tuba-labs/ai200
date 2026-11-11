@@ -30,7 +30,7 @@ Tilpasninger av begreper, forkortelser og eksempler vedlikeholdes i `scripts/jar
 | [Prøveeksamen](practice-exam.html) | Prøve direkte på nettstedet med kildens «Real Exam»-merkede spørsmål |
 | [Prøveresultater](practice-exam-results.html) | Poeng, svaroversikt og deling av en fullført prøve |
 
-Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Lærestoff og eksamensinformasjon har egne sider. Alle nåværende sider har samme hovedmeny med Oversikt, Lærestoff, Flashcards, Prøveeksamen, Begreper og Eksamen.
+Forsiden viser alle 27 delmål, gruppert etter fire domener. Kryss av delmålene for å følge fremdriften; avkryssingene lagres i denne nettleseren og beholdes ved språkbytte og oppdatering. Fjern avkryssingen for å markere et delmål som uferdig. Hovedmenyen er Flashcards, Workshops, Prøveeksamen, Lærestoff og Eksamen. Logoen åpner oversikten. Begrepslisten åpnes fra lenken i Begrepshjelp-popupen; bruk mus eller pil ned fra bryteren.
 
 Hovedmenyen vedlikeholdes i [fragments/site-header.html](fragments/site-header.html), med felles utseende i `site-navigation.css`. Kjør `python scripts/build.py` etter endringer i fragmentet. `--check` oppdager sider som ikke er oppdatert, uten å tømme `.tmp/` eller skrive filer. Menyen bygges inn i HTML med riktige relative lenker og aktiv side, så den fungerer uten JavaScript og ved åpning fra fil. Innholdsgeneratorene bruker samme fragment, og publiseringsworkflowen oppdaterer menyen før kontroll og publisering. `study.css` deles av forsiden, lærestoff og eksamenssiden.
 
