@@ -49,7 +49,7 @@ def test_navigation_copy_search_persisted_progress_and_reset(browser, website):
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto(website)
-    expect(page.get_by_role('heading', name='A small system, end to end')).to_be_visible()
+    expect(page.get_by_role('heading', name='What we will build and learn')).to_be_visible()
     expect(page.locator('[data-chapter-link]')).to_have_count(10)
     page.locator('[data-complete-chapter]').click()
     expect(page.locator('#progress-count')).to_have_text('1 of 10 chapters completed')

@@ -1,5 +1,5 @@
 [
-  {"id":"overview","file":"index.html","title":"A small system, end to end","summary":"Deploy a product-manual assistant using containers, events and grounded RAG.","minutes":15},
+  {"id":"overview","file":"index.html","title":"What we will build and learn","summary":"The customer problem, the finished application and the Azure skills you will practise.","minutes":15},
   {"id":"prerequisites","file":"prerequisites.html","title":"Check your starting point","summary":"Check tools, Azure permissions, regional capacity and model access.","minutes":10},
   {"id":"provision","file":"provision.html","title":"Start the Azure resources","summary":"Test model access, then provision Azure while you build locally.","minutes":20},
   {"id":"products","file":"products.html","title":"Read, build and run Products","summary":"Build, tag, push and run the supplied Java/Python images.","minutes":35},
