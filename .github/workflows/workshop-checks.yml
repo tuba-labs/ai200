@@ -23,12 +23,13 @@ jobs:
           --health-cmd "pg_isready -U workshopadmin -d products"
           --health-interval 5s --health-timeout 3s --health-retries 20
     env:
-      AI200_APPS_DIR: ${{ runner.temp }}/ai200-apps
       TEST_DATABASE_URL: jdbc:postgresql://127.0.0.1:5432/products?sslmode=disable
       TEST_DATABASE_DSN: host=127.0.0.1 port=5432 dbname=products user=workshopadmin password=local-test-only sslmode=disable
     steps:
       - uses: actions/checkout@v6
         with: {persist-credentials: false}
+      - name: Set application checkout directory
+        run: echo "AI200_APPS_DIR=$RUNNER_TEMP/ai200-apps" >> "$GITHUB_ENV"
       - uses: actions/setup-java@v5
         with: {distribution: temurin, java-version: '21'}
       - uses: actions/setup-python@v6
